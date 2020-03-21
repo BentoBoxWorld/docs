@@ -25,7 +25,7 @@ BentoBox is a platform plugin for island-style games like AcidIsland or BSkyBloc
 - [Introduction to the API](BentoBox/wiki/Developer-Documentation)
 - [How to get data from Addons to Plugins](BentoBox/wiki/Request-Handler-API---How-plugins-can-get-data-from-addons)
 - [Addons](BentoBox/wiki/Getting-started-with-Addons)
-  - [addon.yml](BentoBox/wiki/How-to-fill-in-the-addon.yml-file)
+  - [addon.yml](BentoBox/wiki/How-to-fill-in-the-addon_yml-file)
   - [Config API](BentoBox/wiki/Config-API)
   - [Databases](BentoBox/wiki/Database)
 - [Creating a Game Mode Add-on](BentoBox/wiki/Creating-a-Game-Mode)

@@ -2,4 +2,9 @@ site_name: BentoBox World
 nav:
     - Home: index.md
     - FAQ: BentoBox/wiki/FAQ.md
+    - BSkyBlock: BSkyBlock/wiki/Home.md
+    - AcidIsland: AcidIsland/wiki/Home.md
+    - Challenges: Challenges/wiki/Home.md
+    - SkyGrid: SkyGrid/wiki/Home.md
+    - CaveBock: CaveBlock/wiki/Home.md
 theme: readthedocs
