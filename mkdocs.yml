@@ -9,5 +9,3 @@ nav:
     - CaveBock: CaveBlock/wiki/index.md
 theme:
   name: mkdocs
-  navigation_depth: 4
-  nav_style: dark

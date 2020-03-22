@@ -28,11 +28,6 @@ BSkyBlock provides a skyblock-type Minecraft game for players that supports a de
 
 The config.yml is similar to ASkyBlock but *not the same*. Note that distance between islands and protection range are **radius values** so the island size will be twice these values in blocks! Also, the distance between islands will be set automatically to a chunk boundary (a multiple of 16 blocks).
 
-## Useful Links
-### [Commands](BSkyBlock/wiki/Commands)
-### [Permissions](BSkyBlock/wiki/Permissions)
-### [Placeholders](BSkyBlock/wiki/Placeholders)
-### [Translate BSkyBlock](BSkyBlock/wiki/Translate-BSkyBlock)
-
 ## Bugs and Feature requests
+
 File bug and feature requests [here](https://github.com/BentoBoxWorld/BSkyBlock/issues)

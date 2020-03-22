@@ -28,13 +28,6 @@ instead of wrold-height it has world-depth.
 It also has option to choose main block for each world, and blocks that will be occasionally replace main block, f.e. diamond ore or shulker.
 It also allows to specifiy if roof and floor for each world must be generated from bedrock.
 
-## Useful Links
-### [Commands](CaveBlock/wiki/Commands)
-### [Permissions](CaveBlock/wiki/Permissions)
-### [Placeholders](CaveBlock/wiki/Placeholders)
-### [Translate CaveBlock](CaveBlock/wiki/Translate-CaveBlock)
+## Bugs and Feature requests
 
-
-Bugs and Feature requests
-=========================
 File bug and feature requests [here](https://github.com/BentoBoxWorld/CaveBlock/issues)
