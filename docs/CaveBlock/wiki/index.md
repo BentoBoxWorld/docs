@@ -29,10 +29,10 @@ It also has option to choose main block for each world, and blocks that will be 
 It also allows to specifiy if roof and floor for each world must be generated from bedrock.
 
 ## Useful Links
-### [Commands](Commands)
-### [Permissions](Permissions)
-### [Placeholders](Placeholders)
-### [Translate CaveBlock](Translate-CaveBlock)
+### [Commands](CaveBlock/wiki/Commands)
+### [Permissions](CaveBlock/wiki/Permissions)
+### [Placeholders](CaveBlock/wiki/Placeholders)
+### [Translate CaveBlock](CaveBlock/wiki/Translate-CaveBlock)
 
 
 Bugs and Feature requests
