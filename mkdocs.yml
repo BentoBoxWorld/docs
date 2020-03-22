@@ -7,5 +7,6 @@ nav:
     - Challenges: Challenges/wiki/index.md
     - SkyGrid: SkyGrid/wiki/index.md
     - CaveBock: CaveBlock/wiki/index.md
+    - Level: Level/wiki/index.md
 theme:
   name: readthedocs
