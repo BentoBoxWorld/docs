@@ -8,4 +8,4 @@ nav:
     - SkyGrid: SkyGrid/wiki/index.md
     - CaveBock: CaveBlock/wiki/index.md
 theme:
-  name: mkdocs
+  name: readthedocs
