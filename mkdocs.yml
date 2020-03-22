@@ -8,8 +8,4 @@ nav:
     - SkyGrid: SkyGrid/wiki/index.md
     - CaveBock: CaveBlock/wiki/index.md
 theme:
-  name: 'bootstrap4'
-plugins:
-  - search
-  - git-committers
-  
+  name: 'mkdocs'
