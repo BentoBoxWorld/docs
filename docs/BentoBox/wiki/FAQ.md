@@ -4,7 +4,7 @@
 [Click here!](/BentoBox/wiki/Install-Bentobox)
 
 ## How do I make my own custom island?
-Have a look at this video here: https://youtu.be/4gvaG89uxAs
+Have a look at this video [here](https://youtu.be/4gvaG89uxAs)
 
 ## My server lags when a new island is created!
 The paste speed may be too much for your machine. Try lowering it. Look in the BentoBox config.yml for this setting:
