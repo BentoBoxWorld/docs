@@ -45,7 +45,7 @@ There exist also Web Library, where users can download public challenges. It is 
 - [x] CaveBlock
 
 ## Useful Links
-### [Commands](/Challenges/wiki/Commands)
-### [Permissions](/Challenges/wiki/Permissions)
-### [Addon-Request](/Challenges/wiki/Addon-Request)
-### [Translate Challenges](/Challenges/wiki/Translate-Challenges)
+### [Commands](Commands)
+### [Permissions](Permissions)
+### [Addon-Request](Addon-Request)
+### [Translate Challenges](Translate-Challenges)

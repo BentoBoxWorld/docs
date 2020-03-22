@@ -2,9 +2,16 @@ site_name: BentoBox World
 nav:
     - Home: index.md
     - FAQ: BentoBox/wiki/FAQ.md
-    - BSkyBlock: BSkyBlock/wiki/Home.md
-    - AcidIsland: AcidIsland/wiki/Home.md
-    - Challenges: Challenges/wiki/Home.md
-    - SkyGrid: SkyGrid/wiki/Home.md
-    - CaveBock: CaveBlock/wiki/Home.md
-theme: readthedocs
+    - BSkyBlock: BSkyBlock/wiki/index.md
+    - AcidIsland: AcidIsland/wiki/index.md
+    - Challenges: Challenges/wiki/index.md
+    - SkyGrid: SkyGrid/wiki/index.md
+    - CaveBock: CaveBlock/wiki/index.md
+theme:
+  name: 'bootstrap4'
+plugins:
+  - search
+  - git-committers:
+      repository: BentoBoxWorld/docs
+      branch: master
+      token: !!python/object/apply:os.getenv ["80ba7f2bd1ef872c671157feda6de2d1b3008d33"]

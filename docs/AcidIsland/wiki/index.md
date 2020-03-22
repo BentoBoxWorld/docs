@@ -29,9 +29,9 @@ This is a variation of SkyBlock. Instead of falling, you must contend with acid 
 
 
 ## Useful Links:
-### [Commands](/AcidIsland/wiki/commands)
-### [Permissions](/AcidIsland/wiki/permissions)
-### [Placeholders](/AcidIsland/wiki/placeholders)
+### [Commands](commands)
+### [Permissions](permissions)
+### [Placeholders](placeholders)
 
 ## Bugs and Feature requests
 File bug and feature requests [here](https://github.com/BentoBoxWorld/AcidIsland/issues)
