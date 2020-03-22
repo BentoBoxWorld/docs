@@ -12,3 +12,7 @@ BentoBox implements a few commands to help you manage your whole BentoBox instal
 | /bentobox migrate                   | bentobox.admin.migrate | Migrates data from one database to another            |
 | /bentobox reload/rl                 | bentobox.admin.reload  | Reloads BentoBox and all addons, settings and locales |
 | /bentobox version/v/versions/addons | bentobox.version       | Displays BentoBox and addons versions                 |
+
+An alias for `/bentobox` is `/bbox`.
+
+When filing bug reports or asking for support, you **must** provide the output of the `/bentobox version` command so that we know what version of the software, database and addons you are using.

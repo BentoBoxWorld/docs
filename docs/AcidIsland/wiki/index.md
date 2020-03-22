@@ -27,5 +27,21 @@ This is a variation of SkyBlock. Instead of falling, you must contend with acid 
 6. Delete any worlds that were created by default if you made changes that would affect them.
 7. Restart the server.
 
+## Permissions
+
+Permissions can be found [here](Permissions).
+
+## Commands
+
+Commands can be found [here](Commands).
+
+## Placeholders
+
+Placeholders can be found [here](Placeholders).
+
+## Translations
+
+We welcome translations! Please see [this page](Translate-AcidIsland) for status.
+
 ## Bugs and Feature requests
 File bug and feature requests [here](https://github.com/BentoBoxWorld/AcidIsland/issues)

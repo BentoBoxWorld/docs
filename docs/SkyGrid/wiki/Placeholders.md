@@ -1,9 +1,9 @@
-<h3>PlaceHolders</h3>
+# SkyGrid PlaceHolders
 
-**SkyGrid** does not have specific placeholders. It integrates into BentoBox plugin and in all its addon, that implements placeholders, like Level and Likes. 
-
+**SkyGrid** does not have specific placeholders but uses BentoBox addons that implements placeholders, like Likes.
+ 
 To use these placeholders, you just need to replace `[gamemode]` with `skygrid` and placeholder will work.
 
-f.e.: `%skygrid_world_friendly_name%`
+For example: `%skygrid_world_friendly_name%`
 
-You can find a list of available placeholders here: [BentoBox Wiki Placeholders](https://github.com/BentoBoxWorld/BentoBox/wiki/Placeholders#default-placeholders-for-gamemode-addons).
+You can find a list of available placeholders here: [BentoBox Wiki Placeholders](/BentoBox/wiki/Placeholders).

@@ -1,4 +1,6 @@
-Permissions listed here are only part of BentoBox. Addons often register their own permissions, which you can find on their respective Wiki pages.
+# BentoBox Permissions
+
+Permissions listed here are for BentoBox. Addons register their own permissions.
 
 **BentoBox permissions (as of 1.6.0)**
 

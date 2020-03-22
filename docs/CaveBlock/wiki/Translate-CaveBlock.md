@@ -1,3 +1,5 @@
+# CaveBlock Translations
+
 ## Available locales
 
 | Available | Language | Language code | Progress |

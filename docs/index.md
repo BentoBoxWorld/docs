@@ -6,15 +6,23 @@ BentoBox is a platform plugin for island-style games like AcidIsland or BSkyBloc
 ## Getting started
 - [Install BentoBox](BentoBox/wiki/Install-Bentobox)
 - [FAQ](BentoBox/wiki/FAQ)
-- [Migration from ASkyBlock or other plugins](BentoBox/wiki/Migration-from-ASkyBlock-or-other-plugins)
+- [Migration from ASkyBlock](Converter/index.md)
 - [Set a BentoBox world as the server default world](BentoBox/wiki/Set-a-BentoBox-world-as-the-server-default-world)
 - [Database transition](BentoBox/wiki/Database-transition) 
 
 ## About BentoBox
 - [Commands](BentoBox/wiki/Commands)
-- [Permissions](BentoBox/wiki/Permissions)
-    - [AcidIsland](AcidIsland/wiki/Permissions), [BSkyBlock](BSkyBlock/wiki/Permissions),  [CaveBlock](CaveBlock/wiki/Permissions), [SkyGrid](SkyGrid/wiki/Permissions)
-    - [Biomes](Biomes/wiki/Permissions), [Challenges](Challenges/wiki/Permissions), [Level](Level/wiki/Permissions), [Limits](addon-limits/wiki/Permissions), [WelcomeWarpSigns](addon-welcomewarpsigns/wiki/Permissions)
+- Permissions
+    - [BentoBox Permissions](BentoBox/wiki/Permissions)
+    - [AcidIsland Permissions](AcidIsland/wiki/Permissions)
+    - [BSkyBlock Permissions](BSkyBlock/wiki/Permissions)
+    - [CaveBlock Permissions](CaveBlock/wiki/Permissions)
+    - [SkyGrid Permissions](SkyGrid/wiki/Permissions)
+    - [Biomes Permissions](Biomes/wiki/Permissions)
+    - [Challenges Permissions](Challenges/wiki/Permissions)
+    - [Level Permissions](Level/wiki/Permissions)
+    - [Limits Permissions](addon-limits/wiki/Permissions)
+    - [Warps Permissions](addon-welcomewarpsigns/wiki/Permissions)
 - [Island Protection, Flags & Ranks](BentoBox/wiki/Island-Protection,-Flags-&-Ranks)
     - [Flags](BentoBox/wiki/Flags)
     - [Ranks](BentoBox/wiki/Island-Protection,-Flags-&-Ranks#ranks)

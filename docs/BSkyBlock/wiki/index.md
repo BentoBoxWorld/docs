@@ -7,9 +7,6 @@ BSkyBlock
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Abskyblock&metric=security_rating)](https://sonarcloud.io/component_measures?id=world.bentobox%3Abskyblock&metric=Security)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Abskyblock&metric=bugs)](https://sonarcloud.io/project/issues?id=world.bentobox%3Abskyblock&resolved=false&types=BUG)
 
-# NOTE
-BSkyBlock requires BentoBox, so to run BSkyBlock, you must have BentoBox installed and place BSkyBlock in BentoBox's addon folder.
-
 ## About
 BSkyBlock provides a skyblock-type Minecraft game for players that supports a default set of 3 islands (overworld, nether and end), protection of islands, team and coop play and other features. Please see the config.yml for all the settings.
 
@@ -30,7 +27,19 @@ The config.yml is similar to ASkyBlock but *not the same*. Note that distance be
 
 ## Permissions
 
-To read all the permissions click [here](Permissions).
+Permissions can be found [here](Permissions).
+
+## Commands
+
+Commands can be found [here](Commands).
+
+## Placeholders
+
+Placeholders can be found [here](Placeholders).
+
+## Translations
+
+We welcome translations! Please see [this page](Translate-BSkyBlock) for status.
 
 ## Bugs and Feature requests
 

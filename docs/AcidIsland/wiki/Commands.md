@@ -6,169 +6,169 @@
 <td align='left'><b>Permission</b></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid</b></td>
-<td align='left' nowrap=nowrap>admin command</td>
-<td align='left' nowrap=nowrap>acidisland.island</td>
+<td align='left'><b>/acid</b></td>
+<td align='left'>admin command</td>
+<td align='left'>acidisland.island</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid add <owner> <player></b></td>
-<td align='left' nowrap=nowrap>add player to owner's team</td>
-<td align='left' nowrap=nowrap>acidisland.mod.register</td>
+<td align='left'><b>/acid add <owner> <player></b></td>
+<td align='left'>add player to owner's team</td>
+<td align='left'>acidisland.mod.register</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid challenges <player></b></td>
-<td align='left' nowrap=nowrap>Access challenge admin commands</td>
-<td align='left' nowrap=nowrap>acidisland.admin.challenges</td>
+<td align='left'><b>/acid challenges <player></b></td>
+<td align='left'>Access challenge admin commands</td>
+<td align='left'>acidisland.admin.challenges</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid deaths</b></td>
-<td align='left' nowrap=nowrap>edits deaths of players</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid deaths</b></td>
+<td align='left'>edits deaths of players</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid deaths reset <player></b></td>
-<td align='left' nowrap=nowrap>resets deaths of the player</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid deaths reset <player></b></td>
+<td align='left'>resets deaths of the player</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid deaths set <player> <deaths></b></td>
-<td align='left' nowrap=nowrap>sets deaths of the player</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid deaths set <player> <deaths></b></td>
+<td align='left'>sets deaths of the player</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid delete</b></td>
-<td align='left' nowrap=nowrap>deletes a player's island</td>
-<td align='left' nowrap=nowrap>acidisland.admin.delete</td>
+<td align='left'><b>/acid delete</b></td>
+<td align='left'>deletes a player's island</td>
+<td align='left'>acidisland.admin.delete</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid disband <owner></b></td>
-<td align='left' nowrap=nowrap>disband owner's team</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid disband <owner></b></td>
+<td align='left'>disband owner's team</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid getrank <player></b></td>
-<td align='left' nowrap=nowrap>get a player's rank on their island</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid getrank <player></b></td>
+<td align='left'>get a player's rank on their island</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid info <player></b></td>
-<td align='left' nowrap=nowrap>get info on where you are or player's island</td>
-<td align='left' nowrap=nowrap>acidisland.mod.info</td>
+<td align='left'><b>/acid info <player></b></td>
+<td align='left'>get info on where you are or player's island</td>
+<td align='left'>acidisland.mod.info</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid kick <team player></b></td>
-<td align='left' nowrap=nowrap>kick a player from a team</td>
-<td align='left' nowrap=nowrap>acidisland.island.expel</td>
+<td align='left'><b>/acid kick <team player></b></td>
+<td align='left'>kick a player from a team</td>
+<td align='left'>acidisland.island.expel</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid range</b></td>
-<td align='left' nowrap=nowrap>AcidIsland range commands</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid range</b></td>
+<td align='left'>AcidIsland range commands</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid range display</b></td>
-<td align='left' nowrap=nowrap>Show/hide island range indicators</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid range display</b></td>
+<td align='left'>Show/hide island range indicators</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid range reset <player></b></td>
-<td align='left' nowrap=nowrap>Resets the island protected range to the world default</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid range reset <player></b></td>
+<td align='left'>Resets the island protected range to the world default</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid range set <player> <range></b></td>
-<td align='left' nowrap=nowrap>Sets the island protected range</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid range set <player> <range></b></td>
+<td align='left'>Sets the island protected range</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid register <player></b></td>
-<td align='left' nowrap=nowrap>register player to unowned island you are on</td>
-<td align='left' nowrap=nowrap>acidisland.admin.register</td>
+<td align='left'><b>/acid register <player></b></td>
+<td align='left'>register player to unowned island you are on</td>
+<td align='left'>acidisland.admin.register</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid reload</b></td>
-<td align='left' nowrap=nowrap>reload the plugin</td>
-<td align='left' nowrap=nowrap>acidisland.admin.reload</td>
+<td align='left'><b>/acid reload</b></td>
+<td align='left'>reload the plugin</td>
+<td align='left'>acidisland.admin.reload</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid reset</b></td>
-<td align='left' nowrap=nowrap>commands.admin.resets.reset.description</td>
-<td align='left' nowrap=nowrap>acidisland.mod.resethome</td>
+<td align='left'><b>/acid reset</b></td>
+<td align='left'>commands.admin.resets.reset.description</td>
+<td align='left'>acidisland.mod.resethome</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid schem</b></td>
-<td align='left' nowrap=nowrap>manipulate schems</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid schem</b></td>
+<td align='left'>manipulate schems</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid schem copy [air]</b></td>
-<td align='left' nowrap=nowrap>copy the clipboard set by pos1 and pos2 and optionally the air blocks</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid schem copy [air]</b></td>
+<td align='left'>copy the clipboard set by pos1 and pos2 and optionally the air blocks</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid schem load <schem name></b></td>
-<td align='left' nowrap=nowrap>load schem into the clipboard</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid schem load <schem name></b></td>
+<td align='left'>load schem into the clipboard</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid schem origin</b></td>
-<td align='left' nowrap=nowrap>set the schem's origin to your position</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid schem origin</b></td>
+<td align='left'>set the schem's origin to your position</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid schem paste</b></td>
-<td align='left' nowrap=nowrap>paste the clipboard to your location</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid schem paste</b></td>
+<td align='left'>paste the clipboard to your location</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid schem pos1</b></td>
-<td align='left' nowrap=nowrap>set 1st corner of cuboid clipboard</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid schem pos1</b></td>
+<td align='left'>set 1st corner of cuboid clipboard</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid schem pos2</b></td>
-<td align='left' nowrap=nowrap>set 2nd corner of cuboid clipboard</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid schem pos2</b></td>
+<td align='left'>set 2nd corner of cuboid clipboard</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid schem save <schem name></b></td>
-<td align='left' nowrap=nowrap>save the copied clipboard</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid schem save <schem name></b></td>
+<td align='left'>save the copied clipboard</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid setrank <player> <rank></b></td>
-<td align='left' nowrap=nowrap>set a player's rank on their island</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid setrank <player> <rank></b></td>
+<td align='left'>set a player's rank on their island</td>
+<td align='left'></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid tp <player></b></td>
-<td align='left' nowrap=nowrap>teleport to a player's island</td>
-<td align='left' nowrap=nowrap>acidisland.mod.tp</td>
+<td align='left'><b>/acid tp <player></b></td>
+<td align='left'>teleport to a player's island</td>
+<td align='left'>acidisland.mod.tp</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid tpnether <player></b></td>
-<td align='left' nowrap=nowrap>teleport to a player's nether island</td>
-<td align='left' nowrap=nowrap>acidisland.mod.tp</td>
+<td align='left'><b>/acid tpnether <player></b></td>
+<td align='left'>teleport to a player's nether island</td>
+<td align='left'>acidisland.mod.tp</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid tpend <player></b></td>
-<td align='left' nowrap=nowrap>teleport to a player's the_end island</td>
-<td align='left' nowrap=nowrap>acidisland.mod.tp</td>
+<td align='left'><b>/acid tpend <player></b></td>
+<td align='left'>teleport to a player's the_end island</td>
+<td align='left'>acidisland.mod.tp</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid unregister <owner></b></td>
-<td align='left' nowrap=nowrap>unregister owner from island, but keep island blocks</td>
-<td align='left' nowrap=nowrap>acidisland.admin.unregister</td>
+<td align='left'><b>/acid unregister <owner></b></td>
+<td align='left'>unregister owner from island, but keep island blocks</td>
+<td align='left'>acidisland.admin.unregister</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid version</b></td>
-<td align='left' nowrap=nowrap>display BentoBox and addons versions</td>
-<td align='left' nowrap=nowrap>acidisland.mod.info</td>
+<td align='left'><b>/acid version</b></td>
+<td align='left'>display BentoBox and addons versions</td>
+<td align='left'>acidisland.mod.info</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/acid why <player></b></td>
-<td align='left' nowrap=nowrap>Toggle on/off debugging for why something isn't working</td>
-<td align='left' nowrap=nowrap></td>
+<td align='left'><b>/acid why <player></b></td>
+<td align='left'>Toggle on/off debugging for why something isn't working</td>
+<td align='left'></td>
 </tr>
 </table>
 
@@ -180,163 +180,163 @@
 <td align='left'><b>Permission</b></td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai</b></td>
-<td align='left' nowrap=nowrap>Teleports player to their AcidIsland</td>
-<td align='left' nowrap=nowrap>acidisland.island</td>
+<td align='left'><b>/ai</b></td>
+<td align='left'>Teleports player to their AcidIsland</td>
+<td align='left'>acidisland.island</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai about</b></td>
-<td align='left' nowrap=nowrap>About this addon</td>
-<td align='left' nowrap=nowrap>acidisland.island</td>
+<td align='left'><b>/ai about</b></td>
+<td align='left'>About this addon</td>
+<td align='left'>acidisland.island</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai ban <player></b></td>
-<td align='left' nowrap=nowrap>ban a player from your island</td>
-<td align='left' nowrap=nowrap>acidisland.island.ban</td>
+<td align='left'><b>/ai ban <player></b></td>
+<td align='left'>ban a player from your island</td>
+<td align='left'>acidisland.island.ban</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai banlist</b></td>
-<td align='left' nowrap=nowrap>list banned players</td>
-<td align='left' nowrap=nowrap>acidisland.island.ban</td>
+<td align='left'><b>/ai banlist</b></td>
+<td align='left'>list banned players</td>
+<td align='left'>acidisland.island.ban</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai coop <player></b></td>
-<td align='left' nowrap=nowrap>make a player coop rank on your island</td>
-<td align='left' nowrap=nowrap>acidisland.island.team.coop</td>
+<td align='left'><b>/ai coop <player></b></td>
+<td align='left'>make a player coop rank on your island</td>
+<td align='left'>acidisland.island.team.coop</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai create</b></td>
-<td align='left' nowrap=nowrap>create an island</td>
-<td align='left' nowrap=nowrap>acidisland.island.create</td>
+<td align='left'><b>/ai create</b></td>
+<td align='left'>create an island</td>
+<td align='left'>acidisland.island.create</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai go</b></td>
-<td align='left' nowrap=nowrap>teleport to your island</td>
-<td align='left' nowrap=nowrap>acidisland.island.home</td>
+<td align='left'><b>/ai go</b></td>
+<td align='left'>teleport to your island</td>
+<td align='left'>acidisland.island.home</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai info [player]</b></td>
-<td align='left' nowrap=nowrap>Calculate your island level or shows level of [player]</td>
-<td align='left' nowrap=nowrap>acidisland.island.info</td>
+<td align='left'><b>/ai info [player]</b></td>
+<td align='left'>Calculate your island level or shows level of [player]</td>
+<td align='left'>acidisland.island.info</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai language</b></td>
-<td align='left' nowrap=nowrap>select language</td>
-<td align='left' nowrap=nowrap>acidisland.island.language</td>
+<td align='left'><b>/ai language</b></td>
+<td align='left'>select language</td>
+<td align='left'>acidisland.island.language</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai reset</b></td>
-<td align='left' nowrap=nowrap>restart your island and remove the old one</td>
-<td align='left' nowrap=nowrap>acidisland.island.reset</td>
+<td align='left'><b>/ai reset</b></td>
+<td align='left'>restart your island and remove the old one</td>
+<td align='left'>acidisland.island.reset</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai resetname</b></td>
-<td align='left' nowrap=nowrap>resets your island name</td>
-<td align='left' nowrap=nowrap>acidisland.mod.resetname</td>
+<td align='left'><b>/ai resetname</b></td>
+<td align='left'>resets your island name</td>
+<td align='left'>acidisland.mod.resetname</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai sethome</b></td>
-<td align='left' nowrap=nowrap>set your home teleport point</td>
-<td align='left' nowrap=nowrap>acidisland.island.home</td>
+<td align='left'><b>/ai sethome</b></td>
+<td align='left'>set your home teleport point</td>
+<td align='left'>acidisland.island.home</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai setname <name></b></td>
-<td align='left' nowrap=nowrap>set a name for your island</td>
-<td align='left' nowrap=nowrap>acidisland.island.name</td>
+<td align='left'><b>/ai setname <name></b></td>
+<td align='left'>set a name for your island</td>
+<td align='left'>acidisland.island.name</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai settings</b></td>
-<td align='left' nowrap=nowrap>Displays AcidIsland Settings Menu</td>
-<td align='left' nowrap=nowrap>acidisland.island.settings</td>
+<td align='left'><b>/ai settings</b></td>
+<td align='left'>Displays AcidIsland Settings Menu</td>
+<td align='left'>acidisland.island.settings</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai team</b></td>
-<td align='left' nowrap=nowrap>Displays Team Commands</td>
-<td align='left' nowrap=nowrap>acidisland.island.team</td>
+<td align='left'><b>/ai team</b></td>
+<td align='left'>Displays Team Commands</td>
+<td align='left'>acidisland.island.team</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai team accept</b></td>
-<td align='left' nowrap=nowrap>accept an invitation</td>
-<td align='left' nowrap=nowrap>acidisland.island.team</td>
+<td align='left'><b>/ai team accept</b></td>
+<td align='left'>accept an invitation</td>
+<td align='left'>acidisland.island.team</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai team coop <player></b></td>
-<td align='left' nowrap=nowrap>make a player coop rank on your island</td>
-<td align='left' nowrap=nowrap>acidisland.island.team.coop</td>
+<td align='left'><b>/ai team coop <player></b></td>
+<td align='left'>make a player coop rank on your island</td>
+<td align='left'>acidisland.island.team.coop</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai team demote <player></b></td>
-<td align='left' nowrap=nowrap>demote a player on your island down a rank</td>
-<td align='left' nowrap=nowrap>acidisland.island.team</td>
+<td align='left'><b>/ai team demote <player></b></td>
+<td align='left'>demote a player on your island down a rank</td>
+<td align='left'>acidisland.island.team</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai team invite</b></td>
-<td align='left' nowrap=nowrap>invite a player to join your island</td>
-<td align='left' nowrap=nowrap>acidisland.island.team</td>
+<td align='left'><b>/ai team invite</b></td>
+<td align='left'>invite a player to join your island</td>
+<td align='left'>acidisland.island.team</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai team kick <player></b></td>
-<td align='left' nowrap=nowrap>remove a member from your island</td>
-<td align='left' nowrap=nowrap>acidisland.island.expel</td>
+<td align='left'><b>/ai team kick <player></b></td>
+<td align='left'>remove a member from your island</td>
+<td align='left'>acidisland.island.expel</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai team leave</b></td>
-<td align='left' nowrap=nowrap>leave your island</td>
-<td align='left' nowrap=nowrap>acidisland.island.team</td>
+<td align='left'><b>/ai team leave</b></td>
+<td align='left'>leave your island</td>
+<td align='left'>acidisland.island.team</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai team promote <player></b></td>
-<td align='left' nowrap=nowrap>promote a player on your island up a rank</td>
-<td align='left' nowrap=nowrap>acidisland.island.team</td>
+<td align='left'><b>/ai team promote <player></b></td>
+<td align='left'>promote a player on your island up a rank</td>
+<td align='left'>acidisland.island.team</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai team reject</b></td>
-<td align='left' nowrap=nowrap>reject an invitation</td>
-<td align='left' nowrap=nowrap>acidisland.mod.team.team</td>
+<td align='left'><b>/ai team reject</b></td>
+<td align='left'>reject an invitation</td>
+<td align='left'>acidisland.mod.team.team</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai team setowner <player></b></td>
-<td align='left' nowrap=nowrap>transfer your island ownership to a member</td>
-<td align='left' nowrap=nowrap>acidisland.admin.register</td>
+<td align='left'><b>/ai team setowner <player></b></td>
+<td align='left'>transfer your island ownership to a member</td>
+<td align='left'>acidisland.admin.register</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai team trust <player></b></td>
-<td align='left' nowrap=nowrap>give a player trusted rank on your island</td>
-<td align='left' nowrap=nowrap>acidisland.island.team.trust</td>
+<td align='left'><b>/ai team trust <player></b></td>
+<td align='left'>give a player trusted rank on your island</td>
+<td align='left'>acidisland.island.team.trust</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai team uncoop <player></b></td>
-<td align='left' nowrap=nowrap>remove a coop rank from player</td>
-<td align='left' nowrap=nowrap>acidisland.island.team</td>
+<td align='left'><b>/ai team uncoop <player></b></td>
+<td align='left'>remove a coop rank from player</td>
+<td align='left'>acidisland.island.team</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai team untrust <player></b></td>
-<td align='left' nowrap=nowrap>remove trusted player rank from player</td>
-<td align='left' nowrap=nowrap>acidisland.island.team.trust</td>
+<td align='left'><b>/ai team untrust <player></b></td>
+<td align='left'>remove trusted player rank from player</td>
+<td align='left'>acidisland.island.team.trust</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai trust <player></b></td>
-<td align='left' nowrap=nowrap>give a player trusted rank on your island</td>
-<td align='left' nowrap=nowrap>acidisland.island.team.trust</td>
+<td align='left'><b>/ai trust <player></b></td>
+<td align='left'>give a player trusted rank on your island</td>
+<td align='left'>acidisland.island.team.trust</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai unban <player></b></td>
-<td align='left' nowrap=nowrap>unban a player from your island</td>
-<td align='left' nowrap=nowrap>acidisland.island.ban</td>
+<td align='left'><b>/ai unban <player></b></td>
+<td align='left'>unban a player from your island</td>
+<td align='left'>acidisland.island.ban</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai untrust <player></b></td>
-<td align='left' nowrap=nowrap>remove trusted player rank from player</td>
-<td align='left' nowrap=nowrap>acidisland.island.team.trust</td>
+<td align='left'><b>/ai untrust <player></b></td>
+<td align='left'>remove trusted player rank from player</td>
+<td align='left'>acidisland.island.team.trust</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai warp <name></b></td>
-<td align='left' nowrap=nowrap>warp to the player's warp sign</td>
-<td align='left' nowrap=nowrap>acidisland.island.home</td>
+<td align='left'><b>/ai warp <name></b></td>
+<td align='left'>warp to the player's warp sign</td>
+<td align='left'>acidisland.island.home</td>
 </tr>
 <tr>
-<td align='left' nowrap=nowrap><b>/ai warps</b></td>
-<td align='left' nowrap=nowrap>open the warps panel</td>
-<td align='left' nowrap=nowrap>acidisland.island.home</td>
+<td align='left'><b>/ai warps</b></td>
+<td align='left'>open the warps panel</td>
+<td align='left'>acidisland.island.home</td>
 </tr>
 </table>

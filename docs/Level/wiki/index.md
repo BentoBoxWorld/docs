@@ -88,3 +88,16 @@ worlds:
 ```
 
 In this example, AcidIsland will use the same values as BSkyBlock for all blocks except for sand, sandstone and ice.
+
+## Permissions
+
+A full list of permissions can be found [here](Permissions).
+
+## Placeholders
+
+Placeholders can be found [here](Placeholders).
+
+## Translations
+
+We welcome translations! Please see [this page](Translate-Level) for status.
+
