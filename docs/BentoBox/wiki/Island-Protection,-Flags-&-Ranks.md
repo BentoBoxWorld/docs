@@ -1,3 +1,7 @@
+# Island Protection, Flags & Ranks
+
+[TOC]
+
 ## Introduction
 Player (and even Environment, such as entities, pistons...) interactions with islands are ruled by a set of **Flags** that **determine *who* or *what* can do what on an island**. These Flags are mostly handled and provided by BentoBox, yet addons (e.g. [Greenhouses](https://github.com/BentoBoxWorld/Greenhouses)) can add their own.
 
