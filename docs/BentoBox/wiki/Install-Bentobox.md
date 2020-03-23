@@ -1,5 +1,3 @@
-:us: | [:fr:](https://github.com/BentoBoxWorld/bentobox/wiki/Installer-Bentobox) [:es:](https://github.com/BentoBoxWorld/bentobox/wiki/Instalar-BentoBox)
-
 # Video tutorial
 
 [![Video thumbnail](https://i.ytimg.com/vi/01MagYDuOCk/hqdefault.jpg?sqp=-oaymwEjCPYBEIoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCzVNO0ObSEMOOpYtUEtv4LjsMhBA)](https://www.youtube.com/watch?v=01MagYDuOCk)
