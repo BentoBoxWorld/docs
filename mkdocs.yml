@@ -4,7 +4,9 @@ nav:
     - FAQ: BentoBox/wiki/FAQ.md
     - Tutorials:
         - Addons:
-            - "Create an addon": Tutorials/api/addons/Create-an-addon.md
+            - "Create an Addon": Tutorials/api/addons/Create-an-addon.md
+            - "Config API": BentoBox/wiki/Config-API.md
+            - "Database API": BentoBox/wiki/Database-API.md
     - BSkyBlock: BSkyBlock/wiki/index.md
     - AcidIsland: AcidIsland/wiki/index.md
     - Challenges: Challenges/wiki/index.md
