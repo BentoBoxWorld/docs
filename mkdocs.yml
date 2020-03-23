@@ -10,3 +10,6 @@ nav:
     - Level: Level/wiki/index.md
 theme:
   name: readthedocs
+markdown_extensions:
+  - toc:
+      permalink: "#"
