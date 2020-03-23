@@ -2,9 +2,9 @@
 
 ## Introduction
 
-BentoBox relies on ***Addons* to provide new features or new *Gamemodes***.
+BentoBox relies on **_Addons_ to provide new features or new _Gamemodes_**.
 This tutorial will guide you through the process of **creating your first addon**.
-It also covers the defining features of a ***Gamemode*** and the necessary steps to create your own.
+It also covers the defining features of a **_Gamemode_** and the necessary steps to create your own.
 
 Creating an Addon is often easier and quicker than creating a plugin from scratch, because BentoBox provides [wrappers](https://en.wikipedia.org/wiki/Wrapper_function) and key API features.
 Addons also have direct access to the other addons' API, unlike plugins, due to the [visibility principle of Java Classloaders](https://www.javatpoint.com/classloader-in-java).
