@@ -2,6 +2,9 @@ site_name: BentoBox World
 nav:
     - Home: index.md
     - FAQ: BentoBox/wiki/FAQ.md
+    - Tutorials:
+        - Addons:
+            - "Create an addon": Tutorials/api/addons/Create-an-addon.md
     - BSkyBlock: BSkyBlock/wiki/index.md
     - AcidIsland: AcidIsland/wiki/index.md
     - Challenges: Challenges/wiki/index.md
