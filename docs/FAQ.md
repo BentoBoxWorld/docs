@@ -1,7 +1,7 @@
 # FAQ
 
 ## How do I install BentoBox, BSkyBlock and all those other addon things?
-[Click here!](/BentoBox/Install-Bentobox)
+[Click here!](BentoBox/Install-Bentobox)
 
 ## How do I make my own custom island?
 Have a look at this video [here](https://youtu.be/4gvaG89uxAs)
