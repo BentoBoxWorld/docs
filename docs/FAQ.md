@@ -5,7 +5,10 @@
 # Installation
 
 ## How do I install BentoBox, BSkyBlock and all those other addon things?
-[Click here!](BentoBox/Install-Bentobox)
+
+We have set up various ways to allow you to easily install BentoBox and its addons.
+You can check out [this tutorial](BentoBox/Install-Bentobox.md) to learn about all of them.
+**Welcome in our community!**
 
 # Configuration
 
@@ -37,12 +40,12 @@ If you see super flat then it is because the world generator is not working for 
 
 ## My server lags when a new island is created!
 The paste speed may be too much for your machine. Try lowering it. Look in the BentoBox config.yml for this setting:
-```
+```yaml
 # Number of blocks to paste per tick when pasting blueprints.
-  # Smaller values will help reduce noticeable lag but will make pasting take slightly longer.
-  # On the contrary, greater values will make pasting take less time, but this benefit is quickly severely impacted by the
-  # resulting amount of chunks that must be loaded to fulfill the process, which often causes the server to hang out.
-  paste-speed: 64
+# Smaller values will help reduce noticeable lag but will make pasting take slightly longer.
+# On the contrary, greater values will make pasting take less time, but this benefit is quickly severely impacted by the
+# resulting amount of chunks that must be loaded to fulfill the process, which often causes the server to hang out.
+paste-speed: 64
 ```
 And change it to 8 or something.
 
@@ -50,7 +53,7 @@ And change it to 8 or something.
 
 ## How do I start writing addons for BentoBox? Is there an API?
 
-Yes, there is definitely an API!
+Yes, there is definitely an API.
 Writing addons is very similar to writing plugins except there is a lot more API available for things like teams, protections, commands, panels and pasting.
 
 Follow [this tutorial](Tutorials/api/addons/Create-an-addon.md) to create your first addon!
