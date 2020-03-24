@@ -2,13 +2,6 @@ site_name: BentoBox World
 nav:
     - Home: index.md
     - FAQ: BentoBox/wiki/FAQ.md
-    - Tutorials:
-        - Generic:
-            - "Set a BentoBox world as the server's default world": BentoBox/wiki/Set-a-BentoBox-world-as-the-server-default-world.md
-        - Addons:
-            - "Create an Addon": Tutorials/api/addons/Create-an-addon.md
-            - "Config API": BentoBox/wiki/Config-API.md
-            - "Database API": BentoBox/wiki/Database-API.md
     - Gamemodes:
         - BSkyBlock: BSkyBlock/wiki/index.md
         - AcidIsland: AcidIsland/wiki/index.md
@@ -21,6 +14,12 @@ nav:
         - Greenhouses: Greenhouses/wiki/index.md
         - CauldronWitchery: CauldronWitchery/wiki/index.md
         - CheckMeOut: CheckMeOut/index.md
+    - "Tutorials – Generic":
+        - "Set a BentoBox world as the server's default world": BentoBox/wiki/Set-a-BentoBox-world-as-the-server-default-world.md
+    - "Tutorials – API":
+        - "Create an Addon": Tutorials/api/addons/Create-an-addon.md
+        - "Config API": BentoBox/wiki/Config-API.md
+        - "Database API": BentoBox/wiki/Database-API.md
 theme:
   name: readthedocs
 markdown_extensions:
