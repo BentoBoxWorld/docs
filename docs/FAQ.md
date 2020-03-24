@@ -11,7 +11,7 @@
 
 ## How do I make my own custom islands?
 
-You are referring to our **in-house schematic format** we call ***Blueprints***.
+You are referring to our **in-house schematic format** we call **_Blueprints_**.
 The [Blueprints page](BentoBox/Blueprints.md) provides all the relevant information to get you started with the Blueprints, as well as a few hints and tricks you can use to further customize them.
 You can also have a look at [this video](https://youtu.be/4gvaG89uxAs) which, although outdated, might help you create your first Blueprint within minutes.
 
