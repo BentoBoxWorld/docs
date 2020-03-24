@@ -5,7 +5,7 @@ This tutorial will guide you through the process of **creating your first addon*
 
 Creating an Addon is often easier and quicker than creating a plugin from scratch, because BentoBox provides [wrappers](https://en.wikipedia.org/wiki/Wrapper_function) and key API features.
 Addons also have direct access to the other addons' API, unlike plugins, due to the [visibility principle of Java Classloaders](https://www.javatpoint.com/classloader-in-java).
-Moreover, they have access to BentoBox's [Config API](../../../BentoBox/wiki/Config-API.md) and [Database API](../../../BentoBox/wiki/Database-API.md).
+Moreover, they have access to BentoBox's [Config API](../../../BentoBox/Config-API.md) and [Database API](../../../BentoBox/Database-API.md).
 
 In order to comfortably follow this tutorial, you should have previous experience in plugin development.
 The addon development process is indeed very similar to the latter, and we will consider throughout this tutorial that you understand the key Java concepts, for the sake of concision.

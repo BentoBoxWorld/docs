@@ -1,7 +1,7 @@
 # FAQ
 
 ## How do I install BentoBox, BSkyBlock and all those other addon things?
-[Click here!](/BentoBox/wiki/Install-Bentobox)
+[Click here!](/BentoBox/Install-Bentobox)
 
 ## How do I make my own custom island?
 Have a look at this video [here](https://youtu.be/4gvaG89uxAs)
@@ -31,7 +31,7 @@ Minimum required versions:
 Yes, there is definitely an API!
 Writing addons is very similar to writing plugins except there is a lot more API available for things like teams, protections, commands, panels and pasting.
 
-Follow [this tutorial](../../Tutorials/api/addons/Create-an-addon.md) to create your first addon!
+Follow [this tutorial](../Tutorials/api/addons/Create-an-addon.md) to create your first addon!
 
 ## I am getting super flat after a while, help!
 

@@ -1,25 +1,25 @@
 site_name: BentoBox World
 nav:
     - Home: index.md
-    - FAQ: BentoBox/wiki/FAQ.md
+    - FAQ: BentoBox/FAQ.md
     - Gamemodes:
-        - BSkyBlock: BSkyBlock/wiki/index.md
-        - AcidIsland: AcidIsland/wiki/index.md
-        - SkyGrid: SkyGrid/wiki/index.md
-        - CaveBock: CaveBlock/wiki/index.md
+        - BSkyBlock: gamemodes/BSkyBlock/index.md
+        - AcidIsland: gamemodes/AcidIsland/index.md
+        - SkyGrid: gamemodes/SkyGrid/index.md
+        - CaveBock: gamemodes/CaveBlock/index.md
     - Addons:
-        - Challenges: Challenges/wiki/index.md
-        - Level: Level/wiki/index.md
-        - Limits: Limits/wiki/index.md
-        - Greenhouses: Greenhouses/wiki/index.md
-        - CauldronWitchery: CauldronWitchery/wiki/index.md
-        - CheckMeOut: CheckMeOut/index.md
+        - Challenges: addons/Challenges/index.md
+        - Level: addons/Level/index.md
+        - Limits: addons/Limits/index.md
+        - Greenhouses: addons/Greenhouses/index.md
+        - CauldronWitchery: addons/CauldronWitchery/index.md
+        - CheckMeOut: addons/CheckMeOut/index.md
     - "Tutorials – Generic":
-        - "Set a BentoBox world as the server's default world": BentoBox/wiki/Set-a-BentoBox-world-as-the-server-default-world.md
+        - "Set a BentoBox world as the server's default world": BentoBox/Set-a-BentoBox-world-as-the-server-default-world.md
     - "Tutorials – API":
         - "Create an Addon": Tutorials/api/addons/Create-an-addon.md
-        - "Config API": BentoBox/wiki/Config-API.md
-        - "Database API": BentoBox/wiki/Database-API.md
+        - "Config API": BentoBox/Config-API.md
+        - "Database API": BentoBox/Database-API.md
 theme:
   name: readthedocs
 markdown_extensions:
