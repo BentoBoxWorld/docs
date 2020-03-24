@@ -1,7 +1,7 @@
 site_name: BentoBox World
 nav:
     - Home: index.md
-    - FAQ: BentoBox/FAQ.md
+    - FAQ: FAQ.md
     - Gamemodes:
         - BSkyBlock: gamemodes/BSkyBlock/index.md
         - AcidIsland: gamemodes/AcidIsland/index.md

@@ -4,7 +4,7 @@ BentoBox is a platform plugin for island-style games like AcidIsland or BSkyBloc
 
 ## Getting started
 - [Install BentoBox](BentoBox/Install-Bentobox)
-- [FAQ](BentoBox/FAQ)
+- [FAQ](FAQ)
 - [Migration from ASkyBlock](Converter/index.md)
 - [Set a BentoBox world as the server default world](BentoBox/Set-a-BentoBox-world-as-the-server-default-world)
 - [Database transition](BentoBox/Database-transition) 
