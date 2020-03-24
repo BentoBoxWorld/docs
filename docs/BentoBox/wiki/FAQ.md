@@ -28,9 +28,10 @@ Minimum required versions:
 
 ## How do I start writing addons for BentoBox? Is there an API?
 
-Yes, there is definitely an API! Writing addons is very similar to writing plugins except there is a lot more API available for things like teams, protections, commands, panels and pasting.
+Yes, there is definitely an API!
+Writing addons is very similar to writing plugins except there is a lot more API available for things like teams, protections, commands, panels and pasting.
 
-Look at the [Getting started with addons](/BentoBox/wiki/Getting-started-with-Addons) page.
+Follow [this tutorial](../../Tutorials/api/addons/Create-an-addon.md) to create your first addon!
 
 ## I am getting super flat after a while, help!
 
