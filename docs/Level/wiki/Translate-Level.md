@@ -10,7 +10,7 @@
 | ✅ | [Czech](https://gitlocalize.com/repo/3013/cs/src/main/resources/locales) | `cs` | ![gitlocalized](https://gitlocalize.com/repo/3013/cs/badge.svg) |
 | ✅ | [French](https://gitlocalize.com/repo/3013/fr/src/main/resources/locales) | `fr` | ![gitlocalized](https://gitlocalize.com/repo/3013/fr/badge.svg) |
 | ✅ | [German](https://gitlocalize.com/repo/3013/de/src/main/resources/locales) | `de` | ![gitlocalized](https://gitlocalize.com/repo/3013/de/badge.svg) |
-| ❌ | [Hungarian](https://gitlocalize.com/repo/3013/hu/src/main/resources/locales) | `hu` | ![gitlocalized](https://gitlocalize.com/repo/3013/hu/badge.svg) |
+| ✅ | [Hungarian](https://gitlocalize.com/repo/3013/hu/src/main/resources/locales) | `hu` | ![gitlocalized](https://gitlocalize.com/repo/3013/hu/badge.svg) |
 | ❌ | [Indonesian](https://gitlocalize.com/repo/3013/id/src/main/resources/locales) | `id` | ![gitlocalized](https://gitlocalize.com/repo/3013/id/badge.svg) |
 | ❌ | [Italian](https://gitlocalize.com/repo/3013/it/src/main/resources/locales) | `it` | ![gitlocalized](https://gitlocalize.com/repo/3013/it/badge.svg) |
 | ✅ | [Japanese](https://gitlocalize.com/repo/3013/ja/src/main/resources/locales) | `ja` | ![gitlocalized](https://gitlocalize.com/repo/3013/ja/badge.svg) |

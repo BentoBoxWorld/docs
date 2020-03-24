@@ -13,6 +13,10 @@ nav:
     - SkyGrid: SkyGrid/wiki/index.md
     - CaveBock: CaveBlock/wiki/index.md
     - Level: Level/wiki/index.md
+    - Limits: Limits/wiki/index.md
+    - Greenhouses: Greenhouses/wiki/index.md
+    - CauldronWitchery: CauldronWitchery/wiki/index.md
+    - CheckMeOut: CheckMeOut/index.md
 theme:
   name: readthedocs
 markdown_extensions:
