@@ -3,6 +3,8 @@ nav:
     - Home: index.md
     - FAQ: BentoBox/wiki/FAQ.md
     - Tutorials:
+        - Generic:
+            - "Set a BentoBox world as the server's default world": BentoBox/wiki/Set-a-BentoBox-world-as-the-server-default-world.md
         - Addons:
             - "Create an Addon": Tutorials/api/addons/Create-an-addon.md
             - "Config API": BentoBox/wiki/Config-API.md
