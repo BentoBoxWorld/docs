@@ -20,6 +20,7 @@ And change it to 8 or something.
 ## What version of MySQL is required? Or any database?
 
 Minimum required versions:
+
 * MySQL versions 5.7 or later
 * MariaDB versions 10.2.3 or later
 * MongoDB versions 3.6 or later
