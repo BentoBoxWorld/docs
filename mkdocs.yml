@@ -9,16 +9,18 @@ nav:
             - "Create an Addon": Tutorials/api/addons/Create-an-addon.md
             - "Config API": BentoBox/wiki/Config-API.md
             - "Database API": BentoBox/wiki/Database-API.md
-    - BSkyBlock: BSkyBlock/wiki/index.md
-    - AcidIsland: AcidIsland/wiki/index.md
-    - Challenges: Challenges/wiki/index.md
-    - SkyGrid: SkyGrid/wiki/index.md
-    - CaveBock: CaveBlock/wiki/index.md
-    - Level: Level/wiki/index.md
-    - Limits: Limits/wiki/index.md
-    - Greenhouses: Greenhouses/wiki/index.md
-    - CauldronWitchery: CauldronWitchery/wiki/index.md
-    - CheckMeOut: CheckMeOut/index.md
+    - Gamemodes:
+        - BSkyBlock: BSkyBlock/wiki/index.md
+        - AcidIsland: AcidIsland/wiki/index.md
+        - SkyGrid: SkyGrid/wiki/index.md
+        - CaveBock: CaveBlock/wiki/index.md
+    - Addons:
+        - Challenges: Challenges/wiki/index.md
+        - Level: Level/wiki/index.md
+        - Limits: Limits/wiki/index.md
+        - Greenhouses: Greenhouses/wiki/index.md
+        - CauldronWitchery: CauldronWitchery/wiki/index.md
+        - CheckMeOut: CheckMeOut/index.md
 theme:
   name: readthedocs
 markdown_extensions:
