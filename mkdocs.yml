@@ -14,19 +14,18 @@ nav:
         - Challenges: addons/Challenges/index.md
         - Chat: addons/Chat/index.md
         - CheckMeOut: addons/CheckMeOut/index.md
-        - Control Panel: addons/ControlPanel/index.md
-        - Dimensional Trees: addons/DimensionalTrees/index.md
-        - Extra Mobs: addons/ExtraMobs/index.md
+        - ControlPanel: addons/ControlPanel/index.md
+        - DimensionalTrees: addons/DimensionalTrees/index.md
+        - ExtraMobs: addons/ExtraMobs/index.md
         - Greenhouses: addons/Greenhouses/index.md
         - InvSwitcher: addons/InvSwitcher/index.md
-        - Island Fly: addons/IslandFly/index.md
+        - IslandFly: addons/IslandFly/index.md
         - Level: addons/Level/index.md
         - Likes: addons/Likes/index.md
         - Limits: addons/Limits/index.md
-        - Magic Cobblestone Generator: addons/MagicCobblestoneGenerator/index.md
-        - Twerking For Trees: addons/TwerkingForTrees/index.md
-        - Void Portals: addons/VoidPortals/index.md
-        
+        - MagicCobblestoneGenerator: addons/MagicCobblestoneGenerator/index.md
+        - TwerkingForTrees: addons/TwerkingForTrees/index.md
+        - VoidPortals: addons/VoidPortals/index.md
     - "Tutorials – Generic":
         - "Set a BentoBox world as the server's default world": BentoBox/Set-a-BentoBox-world-as-the-server-default-world.md
     - "Tutorials – API":
