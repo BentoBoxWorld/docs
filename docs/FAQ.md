@@ -52,12 +52,12 @@ In any case, **stop your server immediately to prevent further damage from being
 
 #### BentoBox or the Gamemode addon is no longer running
 
-##### Why?
+**Why?**
 
 BentoBox or the Gamemode addon is not enabled on the server.
 This can occur if you updated BentoBox or the Gamemode addon to a version which is not compatible with your server or which is incompatible with one of your plugins.
 
-##### Solutions
+**Solutions**
 
 Investigate as to why BentoBox or the Gamemode addon is no longer enabled.
 Read the logs to find errors at startup.
@@ -65,18 +65,18 @@ Try booting your server up while adding a single plugin at a time to find out wh
 
 #### There is no generator set for this world in the `bukkit.yml` file
 
-##### Why?
+**Why?**
 
 This is often the situation.
 While setting the default world of your server to be the Gamemode addon's world, you forgot to specify the right generator for said world in the `bukkit.yml` file.
 
-##### Solutions
+**Solutions**
 
 Make sure you followed each step of [this tutorial](BentoBox/wiki/Set-a-BentoBox-world-as-the-server-default-world) thoroughly.
 
 #### The `use-own-generator` option from the Gamemode's config is set to `true`
 
-##### Why?
+**Why?**
 
 This is a common mistake.
 
@@ -93,7 +93,7 @@ use-own-generator: false
 
 Ultimately, this can also happen if you forgot the specify the world name and generator in the `bukkit.yml` file.
 
-##### Solutions
+**Solutions**
 
 If you do not plan to use an external plugin to generate the world, then you should set this option back to `false`.
 
@@ -101,13 +101,13 @@ On the contrary, you should make sure you have specified the world name and the 
 
 #### Another plugin is trying to control the generator of this world
 
-##### Why?
+**Why?**
 
 Although very rare, this can still happen.
 
 Some plugins, especially world management ones (e.g. Multiverse), tend to provide settings that could override the generator of our worlds.
 
-##### Solutions
+**Solutions**
 
 Review all of your plugins to find out which one is the most likely to cause the issue.
 World management plugins or custom-coded ones that are interacting with worlds are to be investigated first.
@@ -115,14 +115,14 @@ Either report the issue to their developers or fix the configuration files that 
 
 #### There is a bug in BentoBox or in the Gamemode addon
 
-##### Why?
+**Why?**
 
 *Woopsie!*
 
 Nowadays, this is extremely rare.
 But it might still happen for some reasons.
 
-##### Solutions
+**Solutions**
 
 Make sure this is actually a BentoBox-related bug: remove all the plugins from your server one by one until only BentoBox is left.
 
