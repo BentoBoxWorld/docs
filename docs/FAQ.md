@@ -127,7 +127,7 @@ But it might still happen for some reasons.
 Make sure this is actually a BentoBox-related bug: remove all the plugins from your server one by one until only BentoBox is left.
 
 If the issue is no longer occurring, this means another plugin is causing it.
-In that case, please refer yourself to [this section]().
+In that case, please refer yourself to [this section](https://bentobox-world.readthedocs.io/en/latest/FAQ/#another-plugin-is-trying-to-control-the-generator-of-this-world).
 
 If the issue still occurs, this means this is a BentoBox bug.
 Please [report it on our bug tracker](https://github.com/BentoBoxWorld/BentoBox/issues).
