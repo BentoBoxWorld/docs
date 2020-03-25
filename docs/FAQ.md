@@ -29,7 +29,13 @@ Minimum required versions:
 
 # Issues
 
-## I am getting super flat after a while, help!
+## Superflat chunks are generating in my worlds
+
+*Relevant issues:*
+[BentoBox#1212](https://github.com/BentoBoxWorld/BentoBox/issues/1232),
+[BSkyBlock#247](https://github.com/BentoBoxWorld/BSkyBlock/issues/247).
+
+### Possible causes
 
 If you see super flat then it is because the world generator is not working for the world anymore. There are a few reasons why this may be the case:
 
@@ -37,6 +43,8 @@ If you see super flat then it is because the world generator is not working for 
 2. You set the default world to be the addon world but you didn't list the generator in Bukkit.yml. This is often the situation. Check out [this page](/BentoBox/wiki/Set-a-BentoBox-world-as-the-server-default-world) for how to set up your server with a default world. Again, you may need to run the super flat fixer in settings to regenerate chunks.
 3. You have another plugin that is trying to control the generator for this world. This is very rare.
 4. There's a bug in the addon or BentoBox. This is extremely rare (haha) - actually, nowadays it is, but it might happen for some reason, but check #1 and #2 first before filing a bug report. 
+
+### How to clean the superflat chunks afterward?
 
 ## My server lags when a new island is created!
 The paste speed may be too much for your machine. Try lowering it. Look in the BentoBox config.yml for this setting:
