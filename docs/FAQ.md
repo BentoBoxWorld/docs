@@ -87,7 +87,7 @@ This is indeed not what this option is designed for, and this is clearly explain
 # Use your own world generator for this world.
 # In this case, the plugin will not generate anything.
 # If used, you must specify the world name and generator in the bukkit.yml file.
-# See https://bukkit.gamepedia.com/Bukkit.yml#.2AOPTIONAL.2A_worlds
+# See https://bukkit.gamepedia.com/Bukkit.yml
 use-own-generator: false
 ```
 
