@@ -35,16 +35,108 @@ Minimum required versions:
 [BentoBox#1212](https://github.com/BentoBoxWorld/BentoBox/issues/1232),
 [BSkyBlock#247](https://github.com/BentoBoxWorld/BSkyBlock/issues/247).
 
-### Possible causes
+![Superflat world](https://static.planetminecraft.com/files/resource_media/screenshot/1215/2012-04-15_205556_2000620.jpg)
+*A superflat world. (Credit: [1213videogamer on PlanetMinecraft](https://www.planetminecraft.com/member/1213videogamer/)).*
 
-If you see super flat then it is because the world generator is not working for the world anymore. There are a few reasons why this may be the case:
+If you start seeing superflat chunks being generated in your world, then it is because the world generator is not working for the world anymore.
+There are a few reasons why this may be the case. They are ordered according to their likeliness.
 
-1. BentoBox is not actually running, or the addon is not running but you managed to get into the world. This usually doesn't happen because if the world generating addon or BentoBox is not running the server will usually dump you into the main world. If this happens, the obvious fix is to run the addon and BentoBox again and use the fix-superflat setting in admin settings to regenerate the chunks.
-2. You set the default world to be the addon world but you didn't list the generator in Bukkit.yml. This is often the situation. Check out [this page](/BentoBox/wiki/Set-a-BentoBox-world-as-the-server-default-world) for how to set up your server with a default world. Again, you may need to run the super flat fixer in settings to regenerate chunks.
-3. You have another plugin that is trying to control the generator for this world. This is very rare.
-4. There's a bug in the addon or BentoBox. This is extremely rare (haha) - actually, nowadays it is, but it might happen for some reason, but check #1 and #2 first before filing a bug report. 
+**We strongly recommend you to revert to backups made prior to this situation**.
+Although we are providing additional instructions to help recover from such an event in case you do not have backups available, we **do not guarantee their effectiveness**.
+Moreover, these solutions are **designed to address the problem as much as possible, however, ignoring the impact on performance or player islands**.
+Use them knowingly.
 
-### How to clean the superflat chunks afterward?
+In any case, **stop your server immediately to prevent further damage from being done to your worlds**. 
+
+### Causes
+
+#### BentoBox or the Gamemode addon is no longer running
+
+##### Why?
+
+BentoBox or the Gamemode addon is not enabled on the server.
+This can occur if you updated BentoBox or the Gamemode addon to a version which is not compatible with your server or which is incompatible with one of your plugins.
+
+##### Solutions
+
+Investigate as to why BentoBox or the Gamemode addon is no longer enabled.
+Read the logs to find errors at startup.
+Try booting your server up while adding a single plugin at a time to find out which plugin is causing the issue.
+
+#### There is no generator set for this world in the `bukkit.yml` file
+
+##### Why?
+
+This is often the situation.
+While setting the default world of your server to be the Gamemode addon's world, you forgot to specify the right generator for said world in the `bukkit.yml` file.
+
+##### Solutions
+
+Make sure you followed each step of [this tutorial](BentoBox/wiki/Set-a-BentoBox-world-as-the-server-default-world) thoroughly.
+
+#### The `use-own-generator` option from the Gamemode's config is set to `true`
+
+##### Why?
+
+This is a common mistake.
+
+Users tend to misunderstand this option as allowing them to activate a "magic" cobblestone generator (but [it's an addon](addons/MagicCobblestoneGenerator/index.md)!).
+This is indeed not what this option is designed for, and this is clearly explained in the comments surrounding this option in the config file:
+
+```yaml
+# Use your own world generator for this world.
+# In this case, the plugin will not generate anything.
+# If used, you must specify the world name and generator in the bukkit.yml file.
+# See https://bukkit.gamepedia.com/Bukkit.yml#.2AOPTIONAL.2A_worlds
+use-own-generator: false
+```
+
+Ultimately, this can also happen if you forgot the specify the world name and generator in the `bukkit.yml` file.
+
+##### Solutions
+
+If you do not plan to use an external plugin to generate the world, then you should set this option back to `false`.
+
+On the contrary, you should make sure you have specified the world name and the corresponding plugin name as its generator in the `bukkit.yml` file.
+
+#### Another plugin is trying to control the generator of this world
+
+##### Why?
+
+Although very rare, this can still happen.
+
+Some plugins, especially world management ones (e.g. Multiverse), tend to provide settings that could override the generator of our worlds.
+
+##### Solutions
+
+Review all of your plugins to find out which one is the most likely to cause the issue.
+World management plugins or custom-coded ones that are interacting with worlds are to be investigated first.
+Either report the issue to their developers or fix the configuration files that are involved.  
+
+#### There is a bug in BentoBox or in the Gamemode addon
+
+##### Why?
+
+*Woopsie!*
+
+Nowadays, this is extremely rare.
+But it might still happen for some reasons.
+
+##### Solutions
+
+Make sure this is actually a BentoBox-related bug: remove all the plugins from your server one by one until only BentoBox is left.
+
+If the issue is no longer occurring, this means another plugin is causing it.
+In that case, please refer yourself to [this section]().
+
+If the issue still occurs, this means this is a BentoBox bug.
+Please [report it on our bug tracker](https://github.com/BentoBoxWorld/BentoBox/issues).
+
+### How to clean the superflat chunks afterwards?
+
+If you have backups, use them to revert your server's worlds and BentoBox databases to their previous states.
+
+If you do not have backups, <WIP>.
 
 ## My server lags when a new island is created!
 The paste speed may be too much for your machine. Try lowering it. Look in the BentoBox config.yml for this setting:
