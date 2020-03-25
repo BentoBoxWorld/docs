@@ -1,12 +1,12 @@
 # Introduction
 
-Please read the [Placeholders page](/BentoBox/wiki/Placeholders).
+Please read the [Placeholders page](/BentoBox/Placeholders).
 
 # Placeholders
 
 ## Generic placeholders
 
-These placeholders are available in all currently available gamemodes ([BSkyBlock](/BSkyBlock/wiki/Placeholders), [AcidIsland](/AcidIsland/wiki/Placeholders), [CaveBlock](/CaveBlock/wiki/Placeholders), [SkyGrid](/SkyGrid/wiki/Placeholders)).
+These placeholders are available in all currently available gamemodes ([BSkyBlock](/BSkyBlock/Placeholders), [AcidIsland](/AcidIsland/Placeholders), [CaveBlock](/CaveBlock/Placeholders), [SkyGrid](/SkyGrid/Placeholders)).
 
 **List of available placeholders as of Level 1.9.0.**
 

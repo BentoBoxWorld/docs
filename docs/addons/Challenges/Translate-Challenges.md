@@ -25,7 +25,7 @@
 | ❌ | [Vietnamese](https://gitlocalize.com/repo/2896/vi/src/main/resources/locales) | `vi` | ![gitlocalized](https://gitlocalize.com/repo/2896/vi/badge.svg) |
 
 ## Guidelines
-All guidelines are described in [BentoBox Wiki](BentoBox/wiki/Translate-BentoBox-and-addons#guidelines).
+All guidelines are described [here](BentoBox/Translate-BentoBox-and-addons).
 
 ## Challenges and Levels Descriptions
 Currently, there is no option to translate challenges and levels via the Challenges addon repository. However, BentoBox provides [Web Library](https://github.com/BentoBoxWorld/weblink/tree/master/challenges/library) were translated packages can be uploaded.

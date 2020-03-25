@@ -2,18 +2,32 @@ site_name: BentoBox World
 nav:
     - Home: index.md
     - FAQ: FAQ.md
-    - Gamemodes:
+    - Game Modes:
         - BSkyBlock: gamemodes/BSkyBlock/index.md
         - AcidIsland: gamemodes/AcidIsland/index.md
         - SkyGrid: gamemodes/SkyGrid/index.md
         - CaveBock: gamemodes/CaveBlock/index.md
     - Addons:
-        - Challenges: addons/Challenges/index.md
-        - Level: addons/Level/index.md
-        - Limits: addons/Limits/index.md
-        - Greenhouses: addons/Greenhouses/index.md
+        - Biomes: addons/Biomes/index.md
+        - Border: addons/Border/index.md
         - CauldronWitchery: addons/CauldronWitchery/index.md
+        - Challenges: addons/Challenges/index.md
+        - Chat: addons/Chat/index.md
         - CheckMeOut: addons/CheckMeOut/index.md
+        - Control Panel: addons/ControlPanel/index.md
+        - Dimensional Trees: addons/DimensionalTrees/index.md
+        - Extra Mobs: addons/ExtraMobs/index.md
+        - Greenhouses: addons/Greenhouses/index.md
+        - InvSwitcher: addons/InvSwitcher/index.md
+        - Island Fly: addons/IslandFly/index.md
+        - Level: addons/Level/index.md
+        - Likes: addons/Likes/index.md
+        - Limits: addons/Limits/index.md
+        - Limits: addons/Limits/index.md
+        - Magic Cobblestone Generator: addons/MagicCobblestoneGenerator/index.md
+        - Twerking For Trees: addons/TwerkingForTrees/index.md
+        - Void Portals: addons/VoidPortals/index.md
+        
     - "Tutorials – Generic":
         - "Set a BentoBox world as the server's default world": BentoBox/Set-a-BentoBox-world-as-the-server-default-world.md
     - "Tutorials – API":

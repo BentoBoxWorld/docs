@@ -25,4 +25,4 @@
 | ❌ | [Vietnamese](https://gitlocalize.com/repo/2897/vi/src/main/resources/locales) | `vi` | ![gitlocalized](https://gitlocalize.com/repo/2897/vi/badge.svg) |
 
 ## Guidelines
-All guidelines are described in [BentoBox Wiki](https://github.com/BentoBoxWorld/BentoBox/wiki/Translate-BentoBox-and-addons#guidelines).
+All guidelines are described [here](BentoBox/Translate-BentoBox-and-addons).
