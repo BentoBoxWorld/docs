@@ -28,7 +28,7 @@ As of [BentoBox 1.4.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.
 
 As of [1.5.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.5.0), changes were made (and some placeholders added) to ensure a more fluent and convenient usage of these placeholders.
 
-**Available default placeholders in 1.12.0.**
+**Available default placeholders in 1.13.0.**
 
 | Placeholder | Description | Version |
 |-------------------------------------------------------|--------------------------------------------------------------------------------|-----------|
@@ -47,6 +47,7 @@ As of [1.5.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.5.0), cha
 | %[gamemode]_island_center_z% | Z coordinate of the island's center | 1.5.0 |
 | %[gamemode]_island_members_max% | Maximum number of members there can be on the island | 1.5.0 |
 | %[gamemode]_island_members_count% | Number of members, subowners and owner there are on the island | 1.5.0 |
+| %[gamemode]_island_members_list% | Comma separated list of player names that are at least MEMBER on the island| 1.13.0 |
 | %[gamemode]_island_trustees_count% | Number of players trusted to the island | 1.5.0 |
 | %[gamemode]_island_coops_count% | Number of players cooped to the island | 1.5.0 |
 | %[gamemode]_island_visitors_count% | Number of players currently visiting the island | 1.5.0 |
