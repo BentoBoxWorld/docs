@@ -136,7 +136,18 @@ Please [report it on our bug tracker](https://github.com/BentoBoxWorld/BentoBox/
 
 If you have backups, use them to revert your server's worlds and BentoBox databases to their previous states.
 
-If you do not have backups, <WIP>.
+If you do not have backups, log into your server and open the Admin Settings Panel using the `/[admin-command] settings` command.
+Find the "*Clean Super Flat*" flag and toggle it on.
+Depending on your settings, locales and on the BentoBox version you are running, the name, icon or description might be different.
+But we are sure you will be able to find that flag by yourself nonetheless!
+
+![image](https://user-images.githubusercontent.com/20014332/77770414-8256c380-7045-11ea-8ab6-8efe31d6fb87.png)
+*The Clean Super Flat flag in BSkyBlock's Admin Settings Panel*.
+
+This flag will **slowly regenerate any superflat chunk from your world over time**.
+This happens when chunks are loaded, so you might want to either teleport to said chunks to force the regeneration, or you could leave the flag enabled for a few days.
+**Do not forget to disable the flag at some point!**
+It is quite resource-intensive...
 
 ## My server lags when a new island is created!
 The paste speed may be too much for your machine. Try lowering it. Look in the BentoBox config.yml for this setting:
