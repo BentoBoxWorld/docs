@@ -72,7 +72,7 @@ While setting the default world of your server to be the Gamemode addon's world,
 
 **Solutions**
 
-Make sure you followed each step of [this tutorial](BentoBox/Set-a-BentoBox-world-as-the-server-default-world) thoroughly.
+Make sure you followed each step of [this tutorial](BentoBox/Set-a-BentoBox-world-as-the-server-default-world.md) thoroughly.
 
 #### The `use-own-generator` option from the Gamemode's config is set to `true`
 
