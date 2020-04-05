@@ -47,7 +47,7 @@ As of [1.5.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.5.0), cha
 | %[gamemode]_island_center_z% | Z coordinate of the island's center | 1.5.0 |
 | %[gamemode]_island_members_max% | Maximum number of members there can be on the island | 1.5.0 |
 | %[gamemode]_island_members_count% | Number of members, subowners and owner there are on the island | 1.5.0 |
-| %[gamemode]_island_members_list% | Comma separated list of player names that are at least MEMBER on the island| 1.13.0 |
+| %[gamemode]_island_members_list% | Comma separated list of player names that are at least MEMBER on the island | 1.13.0 |
 | %[gamemode]_island_trustees_count% | Number of players trusted to the island | 1.5.0 |
 | %[gamemode]_island_coops_count% | Number of players cooped to the island | 1.5.0 |
 | %[gamemode]_island_visitors_count% | Number of players currently visiting the island | 1.5.0 |
@@ -63,6 +63,7 @@ As of [1.5.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.5.0), cha
 | %[gamemode]_visited_island_center_z% | Z coordinate of the center of the island the player is standing on | 1.5.2 |
 | %[gamemode]_visited_island_members_max% | Maximum number of members there can be on the island the player is standing on | 1.5.2 |
 | %[gamemode]_visited_island_members_count% | Number of members, subowners and owner there are on the island | 1.5.2 |
+| %[gamemode]_visited_island_members_list% | Comma separated list of player names that are at least MEMBER on the island the player is standing on | 1.13.0 |
 | %[gamemode]_visited_island_trustees_count% | Number of players trusted on the island the player is standing on | 1.5.2 |
 | %[gamemode]_visited_island_coops_count% | Number of players cooped to the island the player is standing on | 1.5.2 |
 | %[gamemode]_visited_island_visitors_count% | Number of players currently visiting the island the player is standing on | 1.5.2 |
@@ -72,6 +73,7 @@ As of [1.5.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.5.0), cha
 | %[gamemode]_resets% | Number of times the player has reset his island | 1.5.0 |
 | %[gamemode]_resets_left% | Number of times the player can reset his island | 1.5.0 |
 | %[gamemode]_deaths% | Number of times the player died | 1.12.0 |
+| %[gamemode]_on_island% | Whether the player is on an island he is part of or not | 1.13.0 |
 
 ## See also
 Gamemodes and Addons can also bring their own placeholders. We highly recommend that you look up the following pages, which are likely more adapted to your needs.
