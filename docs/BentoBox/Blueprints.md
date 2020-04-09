@@ -5,6 +5,23 @@ Blueprints are *like* WorldEdit schematics but are **not** compatible. Blueprint
 
 Blueprints are managed with the **Blueprint Manager** and can be bundled together into a **Blueprint Bundle** to contain a set of up to 3 islands (normal world, nether and end world). Blueprint Bundles can have their own icon, description and can contain other settings, like requiring permission to use.
 
+### FAQ: I have a lot of schematics - how do I convert them to Blueprints?
+
+It's quite easy, but you have to do it in-game because you'll need to add some signs to it.
+
+Steps:
+
+1. Load the schematic using WorldEdit
+2. Paste it somewhere, I recommend some space in the BSKyBlock world away from everything
+3. Find where you want the player to spawn and place a sign there with the text [spawn_here] on it.
+4. (Optional) Place a welcome sign facing the place that has the text [start] on it. For details on these signs, look below
+5. Select the island using the admin blueprint commands pos1 and pos2 (Remember to use the blueprint command and not WE!)
+6. Copy the island using the admin blueprint copy command
+7. Save the island using the admin blueprint save command
+8. Repeat for all your islands including Nether and End islands.
+
+Tips: Make sure you have a bedrock block in the center of the island. This is where the island will be centered around.
+
 ## Asynchronous
 All Blueprint copying and pasting is done async and should __never__ lag the server no matter how large the Blueprint. It can take a number of seconds to paste very large Blueprints. You can set how many blocks will be copied or pasted by editing the paste speed in BentoBox's config.yml. The default should be acceptable for most systems. If you run timings, you may see the pasting process taking a long time, but it is just doing about 1000 blocks per tick and should not be lagging your system.
 
