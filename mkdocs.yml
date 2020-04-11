@@ -7,6 +7,7 @@ nav:
         - AcidIsland: gamemodes/AcidIsland/index.md
         - SkyGrid: gamemodes/SkyGrid/index.md
         - CaveBock: gamemodes/CaveBlock/index.md
+        - OneBlock: gamemodes/OneBlock/index.md
     - Addons:
         - Biomes: addons/Biomes/index.md
         - Border: addons/Border/index.md
