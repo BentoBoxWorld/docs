@@ -20,6 +20,8 @@ To store a class in the BentoBox database do the following:
 6. Ensure the class has a [zero argument constructor](https://en.wikipedia.org/wiki/Nullary_constructor)
 7. Create a getter and setter for every field - most IDEs should be able to do that for you automatically
 
+**WARNING:** The full canonical name of the class is used to create the table in the database, but the maximum length of that name can only be **64 characters**. So when you define the data object class, make sure that the package and class names are short enough to fit. **ALSO** as BentoBox allows database tables to have a prefix, make sure your canonical name is less than about 60 characters in total to allow for a prefix.
+
 For some field types, especially custom ones, you may have to define your own Adapter class that will handle serialization and deserialization of the field's data.
 
 ## Example
