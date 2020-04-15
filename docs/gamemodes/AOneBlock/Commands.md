@@ -1,6 +1,6 @@
-# OneBlock Commands
+# AOneBlock Commands
 
-OneBlock has a lot of the same commands as BSkyBlock. These are the unique ones:
+AOneBlock has a lot of the same commands as BSkyBlock. These are the unique ones:
 
 ## Admin Commands
 

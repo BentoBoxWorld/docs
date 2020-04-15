@@ -1,4 +1,4 @@
-# OneBlock Translations
+# AOneBlock Translations
 
 ## Available locales
 

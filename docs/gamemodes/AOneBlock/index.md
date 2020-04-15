@@ -1,15 +1,16 @@
-# OneBlock
-A variation on the OneBlock Minecraft map, written by tastybento. 
-Credit for the original idea: IJAminecraft.
+# AOneBlock
+A OneBlock, written by tastybento.
 
-[![Build Status](https://ci.codemc.org/buildStatus/icon?job=BentoBoxWorld/OneBlock)](https://ci.codemc.org/job/BentoBoxWorld/job/OneBlock/)
+Credit for the original idea: **IJAminecraft**.
+
+[![Build Status](https://ci.codemc.org/buildStatus/icon?job=BentoBoxWorld/AOneBlock)](https://ci.codemc.org/job/BentoBoxWorld/job/AOneBlock/)
 
 ## About
 OneBlock puts you on a block in space. There is only one block. What do you do next?
 
 ## Development Status
 
-The game is in Alpha stage.
+The game is in Beta stage.
 
 ## Commands
 
@@ -138,8 +139,8 @@ Placeholders can be found [here](Placeholders).
 
 ## Translations
 
-We welcome translations! Please see [this page](Translate-OneBlock) for status.
+We welcome translations! Please see [this page](Translate) for status.
 
 ## Bugs and Feature requests
 
-File bug and feature requests here: https://github.com/BentoBoxWorld/OneBlock/issues
+File bug and feature requests here: https://github.com/BentoBoxWorld/AOneBlock/issues
