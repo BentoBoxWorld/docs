@@ -1,6 +1,8 @@
 # PlaceHolders
 
-There are two placeholders:
+There are four placeholders:
 
-`%aoneblock_phase%` - this shows the phase of island that the user is on
-`%aoneblock_count%` - this shows the count of the island that the user is on
+`%aoneblock_my_island_phase%` - the phase of your island
+`%aoneblock_my_island_count%` - the block count of your island
+`%aoneblock_visited_island_phase%` - the phase of the island you are standing on
+`%aoneblock_visited_island_count%` - the block count of the island you are standing on
