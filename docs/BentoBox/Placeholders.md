@@ -75,11 +75,11 @@ All gamemode addons get some default placeholders automatically registered to th
 Gamemodes and Addons can also bring their own placeholders. We highly recommend that you look up the following pages, which are likely more adapted to your needs.
 
 * Gamemodes
-  * [AcidIsland](https://github.com/BentoBoxWorld/AcidIsland/wiki/Placeholders)
-  * [AOneBlock](https://github.com/BentoBoxWorld/AOneBlock/wiki/Placeholders)
-  * [BSkyBlock](https://github.com/BentoBoxWorld/BSkyBlock/wiki/Placeholders)
-  * [CaveBlock](https://github.com/BentoBoxWorld/CaveBlock/wiki/Placeholders)
-  * [SkyGrid](https://github.com/BentoBoxWorld/SkyGrid/wiki/Placeholders)
+  * [AcidIsland](gamemodes/AcidIsland/Placeholders)
+  * [AOneBlock](gamemodes/AOneBlock/Placeholders)
+  * [BSkyBlock](gamemodes/BSkyBlock/Placeholders)
+  * [CaveBlock](gamemodes/CaveBlock/Placeholders)
+  * [SkyGrid](gamemodes/SkyGrid/Placeholders)
 * Addons
-  * [Level](https://github.com/BentoBoxWorld/Level/wiki/Placeholders)
-  * [Likes](https://github.com/BentoBoxWorld/Likes/wiki/Placeholders)
+  * [Level](addons/Level/Placeholders)
+  * [Likes](addons/Likes/Placeholders)
