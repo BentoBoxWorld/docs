@@ -4,9 +4,7 @@ Placeholders allow you to display data from any BentoBox's addons or gamemodes i
 
 ### Download the placeholder API you need.
 
-As of 1.5.0, BentoBox supports both [**PlaceholderAPI**](https://www.spigotmc.org/resources/placeholderapi.6245/) and [**MVdWPlaceholderAPI**](https://www.spigotmc.org/resources/mvdwplaceholderapi.11182/).
-
-We **highly recommend that you use PlaceholderAPI**. In fact, MVdWPlaceholderAPI provides us with way less flexibility with our placeholders than PlaceholderAPI does. As such, we may provide **limited support** for issues related to MVdWPlaceholderAPI.
+BentoBox uses [**PlaceholderAPI**](https://www.spigotmc.org/resources/placeholderapi.6245/) for placeholders.
 
 ### Launch the server and you're ready to go!
 
@@ -24,11 +22,9 @@ If you think a placeholder for BentoBox or another default placeholder for gamem
 
 ## Default placeholders for gamemode addons
 
-As of [BentoBox 1.4.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.4.0), all gamemode addons get some default placeholders automatically registered to them.
+All gamemode addons get some default placeholders automatically registered to them.
 
-As of [1.5.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.5.0), changes were made (and some placeholders added) to ensure a more fluent and convenient usage of these placeholders.
-
-**Available default placeholders in 1.13.0.**
+**Available default placeholders**
 
 | Placeholder | Description | Version |
 |-------------------------------------------------------|--------------------------------------------------------------------------------|-----------|
@@ -80,6 +76,7 @@ Gamemodes and Addons can also bring their own placeholders. We highly recommend 
 
 * Gamemodes
   * [AcidIsland](https://github.com/BentoBoxWorld/AcidIsland/wiki/Placeholders)
+  * [AOneBlock](https://github.com/BentoBoxWorld/AOneBlock/wiki/Placeholders)
   * [BSkyBlock](https://github.com/BentoBoxWorld/BSkyBlock/wiki/Placeholders)
   * [CaveBlock](https://github.com/BentoBoxWorld/CaveBlock/wiki/Placeholders)
   * [SkyGrid](https://github.com/BentoBoxWorld/SkyGrid/wiki/Placeholders)
