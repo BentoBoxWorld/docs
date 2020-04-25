@@ -8,8 +8,10 @@ BentoBox supports the following game modes:
 
 - BSkyBlock - our version of SkyBlock and sequel to ASkyBlock.
 - AcidIsland - survive in a sea of acid!
-- CaveBlock - mining, mining, mining!
+- AOneBlock - our take on the OneBlock map created by IJAMinecraft.
+- CaveBlock - mining, mining, and more mining!
 - SkyGrid - a terrifying grid of blocks!
+
 
 Others to come!
 
