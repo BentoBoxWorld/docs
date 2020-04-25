@@ -266,3 +266,4 @@
   <td align='left'>false</td>
   <td align='left'>Enables modification of teams via kick and add commands</td>
 </tr>
+</table>
