@@ -6,11 +6,11 @@ BentoBox is a platform plugin for island-style games like AcidIsland or BSkyBloc
 
 BentoBox supports the following game modes:
 
-- BSkyBlock - our version of SkyBlock and sequel to ASkyBlock.
-- AcidIsland - survive in a sea of acid!
-- AOneBlock - our take on the OneBlock map created by IJAMinecraft.
-- CaveBlock - mining, mining, and more mining!
-- SkyGrid - a terrifying grid of blocks!
+- [BSkyBlock](gamemodes/BSkyBlock) - our version of SkyBlock and sequel to ASkyBlock.
+- [AcidIsland](gamemodes/AcidIsland) - survive in a sea of acid!
+- [AOneBlock](gamemodes/AOneBlock) - our take on the OneBlock map created by IJAMinecraft.
+- [CaveBlock](gamemodes/CaveBlock) - mining, mining, and more mining!
+- [SkyGrid](gamemodes/SkyGrid) - a terrifying grid of blocks!
 
 
 Others to come!
