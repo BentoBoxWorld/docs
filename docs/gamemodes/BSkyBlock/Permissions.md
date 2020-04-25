@@ -109,7 +109,7 @@
 <tr>
 <td align='left'>bskyblock.mod.info</td>
 <td align='left'>op</td>
-<td align='left'>Let a moderator see info on a player</td>
+<td align='left'>Let a moderator see info on a player and island</td>
 </tr>
 <tr>
 <td align='left'>bskyblock.mod.lock</td>
@@ -207,24 +207,59 @@
 <td align='left'>Player can use the island spawn command if spawn exists</td>
 </tr>
 <tr>
+<td align='left'>bskyblock.island.team.*</td>
+<td align='left'>true</td>
+<td align='left'>Let a player use all team commands (Recommended)</td>
+</tr>
+<tr>
 <td align='left'>bskyblock.island.team</td>
 <td align='left'>true</td>
-<td align='left'>Let a player use team commands</td>
+<td align='left'>Let a player use team command</td>
+</tr>
+<tr>
+<td align='left'>bskyblock.island.team.invite</td>
+<td align='left'>true</td>
+<td align='left'>Let a player invite others</td>
+</tr>
+<tr>
+<td align='left'>bskyblock.island.team.accept</td>
+<td align='left'>true</td>
+<td align='left'>Player can accept team invites</td>
+</tr>
+<tr>
+<td align='left'>bskyblock.island.team.reject</td>
+<td align='left'>true</td>
+<td align='left'>Player can reject team invites</td>
 </tr>
 <tr>
 <td align='left'>bskyblock.island.team.coop</td>
 <td align='left'>true</td>
-<td align='left'>Let a player use team coop commands</td>
-</tr>
-<tr>
-<td align='left'>bskyblock.island.team.promote</td>
-<td align='left'>true</td>
-<td align='left'>Let a player use team promote commands</td>
+<td align='left'>Let a player coop other players</td>
 </tr>
 <tr>
 <td align='left'>bskyblock.island.team.trust</td>
 <td align='left'>true</td>
-<td align='left'>Let a player use team trust commands</td>
+<td align='left'>Let a player trust other players</td>
+</tr>
+<tr>
+<td align='left'>bskyblock.island.team.promote</td>
+<td align='left'>true</td>
+<td align='left'>Let a player promote others</td>
+</tr>
+<tr>
+<td align='left'>bskyblock.island.team.kick</td>
+<td align='left'>true</td>
+<td align='left'>Let a player kick another player from their team</td>
+</tr>
+<tr>
+<td align='left'>bskyblock.island.team.leave</td>
+<td align='left'>true</td>
+<td align='left'>Let a player leave a team</td>
+</tr>
+<tr>
+<td align='left'>bskyblock.island.team.setowner</td>
+<td align='left'>true</td>
+<td align='left'>Let a player set another player as owner of island</td>
 </tr>
 <tr>
 <td align='left'>bskyblock.settings.*</td>
