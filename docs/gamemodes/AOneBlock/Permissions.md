@@ -12,6 +12,11 @@
   <td align='left'>Let a moderator see info on a player</td>
 </tr>
 <tr>
+  <td align='left'>aoneblock.mod.clearreset</td>
+  <td align='left'>false</td>
+  <td align='left'>Allow clearing of island reset limit</td>
+</tr>
+<tr>
   <td align='left'>aoneblock.mod.bypasscooldowns</td>
   <td align='left'>op</td>
   <td align='left'>Allow moderator to bypass cooldowns</td>
@@ -50,6 +55,11 @@
   <td align='left'>aoneblock.mod.bypassban</td>
   <td align='left'>op</td>
   <td align='left'>Bypasses island ban</td>
+</tr>
+<tr>
+  <td align='left'>aoneblock.mod.team</td>
+  <td align='left'>false</td>
+  <td align='left'>Enables modification of teams via kick and add commands</td>
 </tr>
 <tr>
   <td align='left'>aoneblock.admin.tp</td>
@@ -255,15 +265,5 @@
   <td align='left'>aoneblock.settings.*</td>
   <td align='left'>true</td>
   <td align='left'>Allow use of settings on island</td>
-</tr>
-<tr>
-  <td align='left'>aoneblock.mod.clearreset</td>
-  <td align='left'>false</td>
-  <td align='left'>Allow clearing of island reset limit</td>
-</tr>
-<tr>
-  <td align='left'>aoneblock.mod.team</td>
-  <td align='left'>false</td>
-  <td align='left'>Enables modification of teams via kick and add commands</td>
 </tr>
 </table>
