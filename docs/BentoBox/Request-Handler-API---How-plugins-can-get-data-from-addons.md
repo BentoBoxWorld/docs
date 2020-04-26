@@ -18,10 +18,12 @@ Therefore, the code to obtain the level of a player is for example:
 
 ```
 UUID uuid = player.getUniqueId();
+String worldName = player.getWorld().getName();
 Long result = (Long)AddonRequestBuilder
     .addon("Level")
     .label("island-level")
-    .addMetaData("world-name", uuid)
+    .addMetaData("world-name", worldName)
+    .addMetaData("player", uuid)
     .request();
 ```
 
