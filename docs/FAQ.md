@@ -167,4 +167,4 @@ And change it to 8 or something.
 Yes, there is definitely an API.
 Writing addons is very similar to writing plugins except there is a lot more API available for things like teams, protections, commands, panels and pasting.
 
-Follow [this tutorial](Tutorials/api/addons/Create-an-addon.md) to create your first addon!
+Follow [this tutorial](Tutorials/api/Create-an-addon.md) to create your first addon!
