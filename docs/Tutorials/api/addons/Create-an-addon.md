@@ -22,9 +22,49 @@ The addon development process is indeed very similar to the latter, and we will 
 
 ### Import BentoBox as a dependency
 
+BentoBox holds all the API you will need to create and register your addon.
+Therefore, you should add it as a dependency of your project.
+
+BentoBox uses Maven and our Maven repository is kindly provided by [CodeMC](https://codemc.org/).
+However, you can also use Gradle to grab BentoBox.
+
 #### Maven
 
+Add the following to your `pom.xml` file.
+
+```xml
+<repositories>
+  <repository>
+    <id>codemc-repo</id>
+    <url>https://repo.codemc.org/repository/maven-public/</url>
+  </repository>
+</repositories>
+
+<dependencies>
+  <dependency>
+    <groupId>world.bentobox</groupId>
+    <artifactId>bentobox</artifactId>
+    <version>PUT-VERSION-HERE</version>
+    <scope>provided</scope>
+  </dependency>
+</dependencies>
+```
+
 #### Gradle
+
+Add the following to your `build.gradle` file.
+
+```groovy
+repositories {
+  maven { url "https://repo.codemc.org/repository/maven-public/" }
+}
+
+dependencies {
+  compileOnly 'world.bentobox:bentobox:PUT-VERSION-HERE'
+}
+```
+
+If you have any issues, please have a look at [Gradle's documentation about declaring dependencies](https://docs.gradle.org/current/userguide/declaring_dependencies.html).
 
 ### Setup the project architecture
 
