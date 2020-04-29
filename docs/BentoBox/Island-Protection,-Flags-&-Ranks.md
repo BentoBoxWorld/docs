@@ -41,9 +41,29 @@ Admins can set how protections will work outside of island boundaries by using t
 
 ### Display mode
 
+As of [BentoBox 1.6.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.6.0), various amounts of Flags can be displayed in the Settings Panel, depending on the **display mode**.
+It is either `BASIC`, `ADVANCED` or `EXPERT`.
+The display mode can be changed by clicking on the ingot in the top-right corner of the Settings Panel.
+
+![Changing the display mode](https://user-images.githubusercontent.com/20014332/80592558-f0652080-8a1f-11ea-9b7a-eaf3d585b753.png).
+
+`BASIC` is the default display mode and features the Flags we deem essential to manage the island.
+
+![Basic Protection Flags](https://user-images.githubusercontent.com/20014332/80592424-b98f0a80-8a1f-11ea-94f5-3b2246b6ae61.png)
+
+`ADVANCED` features more Flags to allow further customization of the island.
+
+![Advanced Protection Flags](https://user-images.githubusercontent.com/20014332/80592698-24d8dc80-8a20-11ea-93d5-3b1b8dbcd18d.png)
+
+`EXPERT` features all the available Flags. There are so many that it requires additional pages.
+
+![Expert Protection Flags](https://user-images.githubusercontent.com/20014332/80592793-4df96d00-8a20-11ea-891e-8833578642e4.png)
+
 ### Hide Flags
 
-As of [BentoBox 1.4.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.4.0), admins can hide Flags in the GUI by opening the Settings Panel and **shift-left-clicking** on the icon of the Flag they want to hide. This will apply a "Curse of Vanishing" enchantment to the icon and will result in the corresponding Flag being hidden to the players. Admins can later unhide the Flag by reiterating the same procedure.
+As of [BentoBox 1.4.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.4.0), admins can hide Flags in the GUI by opening the Settings Panel and **shift-left-clicking** on the icon of the Flag they want to hide.
+This will apply a "Curse of Vanishing" enchantment to the icon and will result in the corresponding Flag being hidden to the players.
+Admins can later unhide the Flag by reiterating the same procedure.
 
 ![Default flags](https://user-images.githubusercontent.com/20014332/80591609-45a03280-8a1e-11ea-9e37-4725d62cdb3c.png)
 
