@@ -5,7 +5,7 @@
 ## Introduction
 Player (and even Environment, such as entities, pistons...) interactions with islands are ruled by a set of **Flags** that **determine *who* or *what* can do what on an island**. These Flags are mostly handled and provided by BentoBox, yet addons (e.g. [Greenhouses](https://github.com/BentoBoxWorld/Greenhouses)) can add their own.
 
-See a list of flags [here](https://github.com/BentoBoxWorld/BentoBox/wiki/Flags)
+See a list of flags [here](https://github.com/BentoBoxWorld/BentoBox/wiki/Flags).
 
 ## Settings Panel
 
@@ -13,7 +13,7 @@ The **Settings Panel** is the GUI in which the island owner is able to edit how 
 
 This GUI can be opened using the following command: `/[player_command] settings` (which requires the following permission: `[gamemode].island.settings`).
 
-![Default view of the Settings Panel](https://user-images.githubusercontent.com/20014332/62971374-f2e00580-be11-11e9-8011-4d3515111390.png)
+![Default view of the Settings Panel](https://user-images.githubusercontent.com/20014332/80591492-1689c100-8a1e-11ea-9a59-c55f35ab6ad9.png)
 
 *Default view of the Settings Panel.*
 
@@ -43,19 +43,19 @@ Admins can set how protections will work outside of island boundaries by using t
 
 ### Hide Flags
 
-As of [1.4.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.4.0), admins can hide Flags in the GUI by opening the Settings Panel and **shift-left-clicking** on the icon of the Flag they want to hide. This will apply a "Curse of Vanishing" enchantment to the icon and will result in the corresponding Flag being hidden to the players. Admins can later unhide the Flag by reiterating the same procedure.
+As of [BentoBox 1.4.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.4.0), admins can hide Flags in the GUI by opening the Settings Panel and **shift-left-clicking** on the icon of the Flag they want to hide. This will apply a "Curse of Vanishing" enchantment to the icon and will result in the corresponding Flag being hidden to the players. Admins can later unhide the Flag by reiterating the same procedure.
 
-![Default flags](https://user-images.githubusercontent.com/20014332/62943390-a4634480-bdda-11e9-962f-ad0b33958411.png)
+![Default flags](https://user-images.githubusercontent.com/20014332/80591609-45a03280-8a1e-11ea-9e37-4725d62cdb3c.png)
 
 *Player's view of all the basic Flags being allowed to be displayed.*
 
-![Curse of Vanishing](https://user-images.githubusercontent.com/20014332/62943316-77169680-bdda-11e9-8c23-da152f1d8614.png)
+![Curse of Vanishing](https://user-images.githubusercontent.com/20014332/80591692-6799b500-8a1e-11ea-9ab8-e076f47d2220.png)
 
 *The "Curse of Vanishing" being applied to one of the Flag.*
 
-![A bunch of hidden flags](https://user-images.githubusercontent.com/20014332/62943489-e1c7d200-bdda-11e9-97f0-06bbcb98099f.png)
+![A bunch of hidden flags](https://user-images.githubusercontent.com/20014332/80591757-839d5680-8a1e-11ea-8864-83b09252a7b9.png)
 
-*Player's view of the basic Flags, with some of them being hidden.*
+*Player's view of the basic Flags, with the "trapdoor" Flag being hidden.*
 
 ## Ranks
 
