@@ -18,7 +18,7 @@ You can download BentoBox **for free** on different websites. Official releases 
 
 # Setup BentoBox
 
-Once you have downloaded BentoBox, you have to put it in your server's `plugins` folder. Unlike ASkyBlock, there are no required dependencies: BentoBox [will automatically hook into plugins](https://github.com/BentoBoxWorld/bentobox/wiki/Hooks) it finds (such as Vault, PlaceholderAPI, Multiverse-Core, ...) to extend its capacity.
+Once you have downloaded BentoBox, you have to put it in your server's `plugins` folder. Unlike ASkyBlock, there are no required dependencies: BentoBox will automatically hook into plugins it finds (such as Vault, PlaceholderAPI, Multiverse-Core, ...) to extend its capacity.
 
 Boot up your server and wait until all plugins are fully enabled. If you connect on your server, you will notice BentoBox doesn't do anything special. As a matter of fact, **BentoBox does nothing on its own**: it needs you to add [Addons](https://github.com/BentoBoxWorld/bentobox/wiki/Addons) so it can "learn" to manage e.g. the Skyblock gamemode.
 
@@ -26,7 +26,7 @@ Now, turn off your server. You can have a look at BentoBox's `config.yml` file.
 
 # Install Addons
 
-[Addons](https://github.com/BentoBoxWorld/bentobox/wiki/Addons) are what makes BentoBox special. However, note that these **are not plugins**: they **won't launch** if you just put them in the `plugins` folder.
+[Addons](/BentoBox/Addons) are what makes BentoBox special. However, note that these **are not plugins**: they **won't launch** if you just put them in the `plugins` folder.
 
 Firstly, you need to download the Addons you want to add to your server. Official ones can be found in [BentoBoxWorld's repositories list](https://github.com/BentoBoxWorld) and can be downloaded from their `Releases` tab (or from [Jenkins](https://ci.codemc.org/job/BentoBoxWorld/) for **untested** development builds). We will setup a website at some point so it gets easier for you to download them later on.
 

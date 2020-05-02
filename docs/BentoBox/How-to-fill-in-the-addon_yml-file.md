@@ -1,8 +1,8 @@
 # **Table of contents**
 
-1. [What is this file?](https://github.com/tastybento/bskyblock/wiki/How-to-fill-in-the-addon.yml-file#what-is-this-file)
-2. [Mandatory attributes](https://github.com/tastybento/bskyblock/wiki/How-to-fill-in-the-addon.yml-file#mandatory-attributes)
-3. [Optional attributes](https://github.com/tastybento/bskyblock/wiki/How-to-fill-in-the-addon.yml-file#optional-attributes)
+1. [What is this file?](How-to-fill-in-the-addon.yml-file#what-is-this-file)
+2. [Mandatory attributes](How-to-fill-in-the-addon.yml-file#mandatory-attributes)
+3. [Optional attributes](How-to-fill-in-the-addon.yml-file#optional-attributes)
 
 ***
 
@@ -14,9 +14,9 @@ Without this file or if it isn't correctly filled in, BSkyBlock won't load your 
 
 # Mandatory attributes
 
-- [name](https://github.com/tastybento/bskyblock/wiki/How-to-fill-in-the-addon.yml-file#name)
-- [main](https://github.com/tastybento/bskyblock/wiki/How-to-fill-in-the-addon.yml-file#main)
-- [version](https://github.com/tastybento/bskyblock/wiki/How-to-fill-in-the-addon.yml-file#version)
+- [name](How-to-fill-in-the-addon.yml-file#name)
+- [main](How-to-fill-in-the-addon.yml-file#main)
+- [version](How-to-fill-in-the-addon.yml-file#version)
 
 ## name
 
@@ -35,7 +35,7 @@ name: "MySuperAddon"
 
 ## main
 
-**Description:** Adress that points to the class extending `BSAddon`.
+**Description:** Address that points to the class extending `BSAddon`.
 
 **Code:** 
 ```yaml
@@ -62,9 +62,9 @@ version: 1.0.0
 
 Mandatory attributes aside, there are a few more attributes that can be useful to give more information about your addon to BSkyBlock.
 
-- [authors](https://github.com/tastybento/bskyblock/wiki/How-to-fill-in-the-addon.yml-file#authors)
-- [description](https://github.com/tastybento/bskyblock/wiki/How-to-fill-in-the-addon.yml-file#description)
-- [website](https://github.com/tastybento/bskyblock/wiki/How-to-fill-in-the-addon.yml-file#website)
+- [authors](How-to-fill-in-the-addon.yml-file#authors)
+- [description](How-to-fill-in-the-addon.yml-file#description)
+- [website](How-to-fill-in-the-addon.yml-file#website)
 
 These attributes are optional.
 

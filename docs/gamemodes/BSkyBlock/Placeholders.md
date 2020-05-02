@@ -6,4 +6,4 @@ To use these placeholders, you just need to replace `[gamemode]` with `bskyblock
 
 For example: `%bskyblock_world_friendly_name%`
 
-You can find a list of available placeholders here: [BentoBox Placeholders](/BentoBox/wiki/Placeholders).
+You can find a list of available placeholders here: [BentoBox Placeholders](/BentoBox/Placeholders).

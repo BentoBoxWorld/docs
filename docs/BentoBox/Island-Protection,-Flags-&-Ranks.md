@@ -5,7 +5,7 @@
 ## Introduction
 Player (and even Environment, such as entities, pistons...) interactions with islands are ruled by a set of **Flags** that **determine *who* or *what* can do what on an island**. These Flags are mostly handled and provided by BentoBox, yet addons (e.g. [Greenhouses](https://github.com/BentoBoxWorld/Greenhouses)) can add their own.
 
-See a list of flags [here](https://github.com/BentoBoxWorld/BentoBox/wiki/Flags).
+See a list of flags [here](/BentoBox/Flags).
 
 ## Settings Panel
 
@@ -23,7 +23,7 @@ Admins can change the settings of a player's island by using the admin settings 
 
 The **Protection Tab** is the tab displayed upon opening the Setting Panel. It includes the **Protection Flags**.
 
-**Protection Flags** are Flags that can be set by [rank](https://github.com/BentoBoxWorld/BentoBox/wiki/Island-Protection,-Flags-&-Ranks#ranks). By **left-** or **right-clicking** on the icon of a Flag, the island owner will cycle through the various ranks so that the interaction the Flag is ruling will be allowed or disallowed depending on the rank of a player.
+**Protection Flags** are Flags that can be set by [rank](/BentoBox/Island-Protection,-Flags-&-Ranks#ranks). By **left-** or **right-clicking** on the icon of a Flag, the island owner will cycle through the various ranks so that the interaction the Flag is ruling will be allowed or disallowed depending on the rank of a player.
 
 ![Example of a Protection Flag](https://user-images.githubusercontent.com/20014332/62974085-b31c1c80-be17-11e9-8b27-2fd4bf54ae87.png)
 
