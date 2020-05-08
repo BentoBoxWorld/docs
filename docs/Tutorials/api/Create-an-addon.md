@@ -18,6 +18,8 @@ The addon development process is indeed very similar to the latter, and we will 
 
 ## Using the pre-made Addon template
 
+The template currently does not exist.
+
 ## Manually creating the project
 
 ### Import BentoBox as a dependency
@@ -92,11 +94,49 @@ public class MyAddon extends Addon {
 
 ## Mandatory methods
 
+Like Bukkit plugins, Addons must override a few methods in order to be properly enabled.
+
+As such, your main Addon class should look like the following:
+
+```java
+import world.bentobox.bentobox.api.addons.Addon;
+
+public class MyAddon extends Addon {
+    @Override
+    public void onEnable() {}
+    
+    @Override
+    public void onDisable() {}
+}
+```
+
 ### onEnable()
+
+This method is called after `#onLoad()`.
 
 ### onDisable()
 
 ## Optional methods
+
+Additional methods can be overridden if needs be.
+
+```java
+import world.bentobox.bentobox.api.addons.Addon;
+
+public class MyAddon extends Addon {
+    @Override
+    public void onLoad() {}
+
+    @Override
+    public void onEnable() {}
+
+    @Override
+    public void onReload() {}
+    
+    @Override
+    public void onDisable() {}
+}
+```
 
 ### onLoad()
 
