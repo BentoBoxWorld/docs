@@ -30,7 +30,7 @@ nav:
     - "Tutorials – Generic":
         - "Set a BentoBox world as the server's default world": BentoBox/Set-a-BentoBox-world-as-the-server-default-world.md
     - "Tutorials – API":
-        - "Create an Addon": Tutorials/api/addons/Create-an-addon.md
+        - "Create an Addon": Tutorials/api/Create-an-addon.md
         - "Config API": BentoBox/Config-API.md
         - "Database API": BentoBox/Database-API.md
 theme:
