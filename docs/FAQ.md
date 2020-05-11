@@ -149,8 +149,14 @@ This happens when chunks are loaded, so you might want to either teleport to sai
 **Do not forget to disable the flag at some point!**
 It is quite resource-intensive...
 
-## My server lags when a new island is created!
-The paste speed may be too much for your machine. Try lowering it. Look in the BentoBox config.yml for this setting:
+## My server lags when a player creates their island!
+
+Pasting the island or generating the chunks are the main causes of this issue.
+
+Firstly, the paste speed may be too much for your server.
+Try lowering it.
+Look in the BentoBox `config.yml` for this setting:
+
 ```yaml
 # Number of blocks to paste per tick when pasting blueprints.
 # Smaller values will help reduce noticeable lag but will make pasting take slightly longer.
@@ -158,7 +164,18 @@ The paste speed may be too much for your machine. Try lowering it. Look in the B
 # resulting amount of chunks that must be loaded to fulfill the process, which often causes the server to hang out.
 paste-speed: 64
 ```
-And change it to 8 or something.
+
+If you are running timings, the `BlueprintPaster` task should ideally be taking a long time, yet take a low percentage of a tick time.
+
+If the server still struggles when pasting islands, then that implies it struggles to generate the chunks.
+That is something we have little control on as a plugin, but here are a few things you could do to mitigate this:
+* Try reducing the "distance between islands" setting in the gamemode's config file. 
+Lower values means fewer chunks to generate.
+This will require you to entirely reset the worlds and databases.
+* Use Paper as your server software.
+Paper handles asynchronous chunk generation.
+* Pre-generate the world.
+Especially for gamemodes whose generators are resource-intensive, such as CaveBlock or SkyGrid.
 
 # API
 
