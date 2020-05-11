@@ -18,14 +18,30 @@ You are referring to our **in-house schematic format** we call **_Blueprints_**.
 The [Blueprints page](BentoBox/Blueprints.md) provides all the relevant information to get you started with the Blueprints, as well as a few hints and tricks you can use to further customize them.
 You can also have a look at [this video](https://youtu.be/4gvaG89uxAs) which, although outdated, might help you create your first Blueprint within minutes.
 
-## What version of MySQL is required? Or any database?
+## What version of any database is required?
 
 Minimum required versions:
 
-* MySQL versions 5.7 or later
-* MariaDB versions 10.2.3 or later
-* MongoDB versions 3.6 or later
-* SQLite versions 3.28 or later
+* **MySQL** 5.7 or later
+* **MariaDB** 10.2.3 or later
+* **MongoDB** 3.6 or later
+* **SQLite** 3.28 or later
+
+## How can I increase some players' island size?
+
+There are two ways to grant players a greater island size: the permissions or the commands.
+Both have pros and cons, and **should not be used concurrently**.
+
+**Permissions**
+
+Grant players the `[gamemode].island.range.<number>` permission.
+
+* This will only work if the island owner has that permission
+* The island owner will have to reconnect on the server in order to apply the changes
+
+**Commands**
+
+Use the `/[admin_command] range` commands.
 
 # Issues
 
