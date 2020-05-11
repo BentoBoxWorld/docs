@@ -169,6 +169,7 @@ If you are running timings, the `BlueprintPaster` task should ideally be taking 
 
 If the server still struggles when pasting islands, then that implies it struggles to generate the chunks.
 That is something we have little control on as a plugin, but here are a few things you could do to mitigate this:
+
 * Try reducing the "distance between islands" setting in the gamemode's config file. 
 Lower values means fewer chunks to generate.
 This will require you to entirely reset the worlds and databases.
