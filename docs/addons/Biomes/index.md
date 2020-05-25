@@ -77,18 +77,18 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
 ??? question "Something is missing?"
     You can find the comprehensive list of permissions in the [addon.yml](https://github.com/BentoBoxWorld/Biomes/blob/develop/src/main/resources/addon.yml) file of this addon.
 
-### User permissions
-- `[gamemode].biomes` (default: `true`): player can use biomes command that opens GUI.
-- `[gamemode].biomes.info` (default: `true`): player can use biomes info command.
-- `[gamemode].biomes.set` (default: `true`): player can use biomes set command.
+=== "Player permissions"
+    - `[gamemode].biomes` (default: `true`): player can use biomes command that opens GUI.
+    - `[gamemode].biomes.info` (default: `true`): player can use biomes info command.
+    - `[gamemode].biomes.set` (default: `true`): player can use biomes set command.
 
-### Admin permissions
-- `[gamemode].admin.biomes` (default: `op`): player can use admin biomes command that opens GUI.
-- `[gamemode].admin.biomes.add` (default: `op`): player can use admin biomes add command that adds new biome.
-- `[gamemode].admin.biomes.edit` (default: `op`): player can use admin biomes edit command that edits existing biomes parameters.
-- `[gamemode].admin.biomes.set` (default: `op`): player can use admin biomes set command that allows to change other player biomes.
-- `[gamemode].admin.biomes.import` (default: `op`): player can use admin biomes import command allows to import biomes in world.
-- `[gamemode].admin.biomes.settings` (default: `op`): player can use admin biomes settings command that allows to change addon settings.
+=== "Admin permissions"
+    - `[gamemode].admin.biomes` (default: `op`): player can use admin biomes command that opens GUI.
+    - `[gamemode].admin.biomes.add` (default: `op`): player can use admin biomes add command that adds new biome.
+    - `[gamemode].admin.biomes.edit` (default: `op`): player can use admin biomes edit command that edits existing biomes parameters.
+    - `[gamemode].admin.biomes.set` (default: `op`): player can use admin biomes set command that allows to change other player biomes.
+    - `[gamemode].admin.biomes.import` (default: `op`): player can use admin biomes import command allows to import biomes in world.
+    - `[gamemode].admin.biomes.settings` (default: `op`): player can use admin biomes settings command that allows to change addon settings.
 
 ## API Addon Request Handlers
 
