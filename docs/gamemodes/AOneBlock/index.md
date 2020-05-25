@@ -16,8 +16,6 @@ The game is in Beta stage.
 
 The user command is `/ob`. The admin command is `/oba`. 
 
-
-
 ## FAQ
 
 Q: What phases are there?

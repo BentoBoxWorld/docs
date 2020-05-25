@@ -73,7 +73,7 @@ If you have any issues, please have a look at [Gradle's documentation about decl
 # Create the main Addon class
 
 The **main class of an Addon** works similarly as to one of a plugin.
-It most notably handles the code that runs when the addon is loaded, enabled, reloaded or disabled.
+It most notably handles the code that runs when laoding, enabling, reloading and disabling the addon.
 
 The main class **extends `Addon`**. 
 
@@ -86,7 +86,10 @@ public class MyAddon extends Addon {
 }
 ```
 
-*Note:* When creating it, it is **good practice to name it the same as your addon**.
+!!! tip
+    When naming your main class, consider the following:
+    We recommend you to keep its name as close to the addon's name as possible.
+    You can also append "Addon" to the class name to further disambiguate its purpose.
 
 *Genuine examples*: [Greenhouses](https://github.com/BentoBoxWorld/Greenhouses/blob/develop/src/main/java/world/bentobox/greenhouses/Greenhouses.java),
 [Chat](https://github.com/BentoBoxWorld/Chat/blob/develop/src/main/java/world/bentobox/chat/Chat.java),
