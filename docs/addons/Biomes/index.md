@@ -126,7 +126,7 @@ All guidelines are described [here](../../BentoBox/Translate-BentoBox-and-addons
         - `biomeId`: String - the unique ID of the requested biome.
 
     !!! success "Output"
-        The output is a `Map<String, Object>` with the following keys:  
+        The output is a `Map<String, Object>` with the following keys:
         
         - `uniqueId`: String - the unique ID of the requested biome.
         - `world`: String - the name of the world where the biome is available.
@@ -179,3 +179,47 @@ All guidelines are described [here](../../BentoBox/Translate-BentoBox-and-addons
         ```
 
 === "biome-request-change"
+    !!! summary "Description"
+        Requests a biome change with the provided parameters.
+    
+    !!! question "Input"
+        - Mandatory parameters:
+            - `player`: UUID - the UUID of the targetted player.
+            - `world-name`: String - the name of the world where the biome will be changed.
+            - `biomeId`: String - the uniqueId of the biome.
+        - Optional parameters:
+            - `updateMode`: String - the mode to use when changing the biome.
+                                     Can be either ISLAND, RANGE or CHUNK.
+                                     (Default: config)
+            - `range`: Integer - the range within which the biome will be changed.
+                                 (Default: config)
+            - `checkRequirements`: Boolean - if `true`, the player will have to fulfill all the requirements for the specified biome.
+                                   (Default: true)
+            - `withdraw`: Boolean - if `true`, the money will be withdrawn from the player's bank account.
+                          (Default: true)
+
+    !!! success "Output"
+        The output is a `Map<String, Object>` with the following keys:
+        
+        - `status`: Boolean - `true` if the biome was changed successfully, `false` otherwise.
+        - `reason`: String - message explaining what happened (whether the change was successful or not).
+        
+    !!! failure
+        This handler will return `false` as its status with an appropriate reason if it failed.
+    
+    !!! example "Code example"
+        ```java
+        public Map<String, Object> requestBiomeChange(UUID player, String worldName, String biomeId, String mode, int range, boolean requirements, boolean withdraw) {
+            return (Map<String, Object>) new AddonRequestBuilder()
+                .addon("Biomes")
+                .label("biome-request-change")
+                .addMetadata("player", player)
+                .addMetadata("world-name", worldName)
+                .addMetadata("biomeId", biomeId)
+                .addMetadata("updateMode", mode)
+                .addMetadata("range", range)
+                .addMetadata("checkRequirements", requirements)
+                .addMetadata("withdraw", withdraw)
+                .request();
+        }
+        ```
