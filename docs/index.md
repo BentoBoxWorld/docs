@@ -10,12 +10,7 @@ BentoBox supports the following game modes:
 - [AcidIsland](gamemodes/AcidIsland) - survive in a sea of acid!
 - [AOneBlock](gamemodes/AOneBlock) - our take on the OneBlock map created by IJAMinecraft.
 - [CaveBlock](gamemodes/CaveBlock) - mining, mining, and more mining!
-- [SkyGrid](gamemodes/SkyGrid) - a terrifying grid of blocks[^1]!
-
-[^1]: made with heart!
-
-!!! note
-    Others to come!
+- [SkyGrid](gamemodes/SkyGrid) - a terrifying grid of blocks!
 
 ## Getting started
 - [Install BentoBox](BentoBox/Install-Bentobox)
