@@ -47,6 +47,7 @@ markdown_extensions:
       permalink: "#"
 plugins:
   - search
-  - git-revision-date-localized
+  - git-revision-date-localized:
+      type: datetime
   - minify:
       minify_html: true
