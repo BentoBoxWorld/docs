@@ -1,5 +1,5 @@
 site_name: BentoBox World
-extra_css: [css/fullscreen.css]
+extra_css: [css/fullscreen.css, css/progressbar.css]
 nav:
     - Home: index.md
     - FAQ: FAQ.md
