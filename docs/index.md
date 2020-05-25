@@ -1,4 +1,4 @@
-[=5% "We are currently improving the documentation."]{: .candystripe .candystripe-animate}
+[=5% "We are currently improving the documentation."]
 
 # BentoBox
 
