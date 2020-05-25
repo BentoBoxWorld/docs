@@ -1,37 +1,35 @@
 # Biomes
 
-Biomes addon for SkyBlock, SkyGrid, CaveBlock and AcidIsland. It allows to change biome on Island.
+**Biomes** lets your players **change the biome** on their island.
 
-## Where to find
+Created and maintained by [BONNe](https://github.com/BONNe).
 
-Currently Biomes Addon is in **Beta stage**, so it may or may not contain bugs... a lot of bugs. Also it means, that some features are not working or implemented. 
-Latest official **Beta Release is 1.6.0.1**, and you can download it from [Release tab](https://github.com/BentoBoxWorld/Biomes/releases)
+!!! info "Useful links"
+    - [GitHub repository](https://github.com/BentoBoxWorld/Biomes) ([Releases](https://github.com/BentoBoxWorld/Biomes/releases))
+    - [Issue tracker](https://github.com/BentoBoxWorld/Biomes/issues)
+    - [CI](https://ci.codemc.org/job/BentoBoxWorld/job/Biomes) ([Latest stable build](https://ci.codemc.io/job/BentoBoxWorld/job/Biomes/lastStableBuild/))
 
-Or you can try **nightly builds** where you can check and test new features that will be implemented in next release from [Jenkins Server](https://ci.codemc.org/job/BentoBoxWorld/job/Biomes/lastStableBuild/).
+!!! warning
+    The Biomes addon is currently in **Beta**.  
+    Keep in mind that **you are more likely to encounter a bug**.  
+    Some features might not be stable.
 
-If you like this addon but something is missing or is not working as you want, you can always submit an [Issue request](https://github.com/BentoBoxWorld/Biomes/issues) or get a support in Discord [BentoBox ![icon](https://avatars2.githubusercontent.com/u/41555324?s=15&v=4)](https://discord.gg/JgWKvR)
+## Installation
 
-## Translations
+1. Put the addon jar in the `plugins/BentoBox/addons` folder.
+2. Restart the server.
+3. The addon will create a data folder and inside the folder will be a `config.yml` and an example `biomes.yml`
+4. Edit the `config.yml` and `biomes.yml` files how you want. The `biomes.yml` is for importing only.
+5. Restart the server.
 
-As most of BentoBox projects, Biomes Addon is translatable in any language. Everyone can contribute, and translate some parts of the addon in their language via [GitLocalize](https://gitlocalize.com/repo/2894).
-If your language is not in the list, please contact to developers via Discord and it will be added there.
+## Configuration
 
-Translation status is [here](Translate-Biomes).
-
-## How to use
-
-1. Place the addon jar in the addons folder of the BentoBox plugin
-2. Restart the server
-3. The addon will create a data folder and inside the folder will be a *config.yml* and an example *biomes.yml*
-4. Edit the config.yml and *biomes.yml* files how you want. The *biomes.yml* is for importing only.
-5. Restart the server
-
-## Config.yml
+### config.yml
 
 After addon is successful installed, it will create config.yml file. Every option in this file comes with comments about them. Please check file for more information.
-Most of options are also editable admin via commands.
+Most options are also editable admin via commands.
 
-## Biomes.yml
+### biomes.yml
 
 This file contains all necessary information about default biomes. 
 If you change values in biomes.yml, then to apply them, you must run **/bsb biomes import** or **/acid biomes import**.
@@ -45,27 +43,25 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
     `[user_command]` and `[admin_command]` are prefixes that differs depending on the gamemode you are running. Gamemodes config section contains option to modify these values.
     F.e. in BSkyBlock default `[user_command]` is `island` and default `[admin_command]` is `bsbadmin`. 
 
-### User commands
+=== "Player commands"
+    - `/[user_command] biomes`: This method opens GUI that allows to change biome on User island.
+    - `/[user_command] biomes help`: Show help for all the commands
+    - `/[user_command] biomes info <biome>`: This command returns information about given biome, like cost and necessary level.
+    - `/[user_command] biomes set <biome> [<type>] [<size>]`: This command allows to change biome on island without opening GUI. If prarameters < type> and < size> are not provided, command uses default values from addon config.
 
-* `/[user_command] biomes`: This method opens GUI that allows to change biome on User island.
-* `/[user_command] biomes help`: Show help for all the commands
-* `/[user_command] biomes info <biome>`: This command returns information about given biome, like cost and necessary level.
-* `/[user_command] biomes set <biome> [<type>] [<size>]`: This command allows to change biome on island without opening GUI. If prarameters < type> and < size> are not provided, command uses default values from addon config.
-
-!!! info
+    !!! info
         - `<biome>` may not be equal Minecraft biome name. It is defined by admin.
         - `<type>` is one of 3 biome chaning types. It offers to change biome on whole island (`ISLAND`), in current chunk(-s) (`CHUNK`) or by distance around player (`RANGE`).
         - Currently biome is changed in whole height.
 
-### Admin commands
-
-* `/[admin_command] biomes`: To open Admin GUI. 
-* `/[admin_command] biomes help` : Show help for all the commands
-* `/[admin_command] biomes import [overwrite]`: import biomes from biomes.yml
-* `/[admin_command] biomes add <biome>`: add a new biome what can be edited via GUI or `biomes edit` command. Biome will not be deployed. To do it, you should enable it in GUI or via `biomes edit <biome> deployed true` command.
-* `/[admin_command] biomes set <player> <biome> [<type>] [<size>]`: This command works the same as user biome set command, but it is necessary to provide also player, which island biome will be updated.
-* `/[admin_command] biomes edit <biome> <property> <new_value>`: This command allows to edit provided biome property to new value. 
-* `/[admin_command] biomes settings <property> <new_value>`: This command allows to edit current addon settings via command. 
+=== "Admin commands"
+    - `/[admin_command] biomes`: To open Admin GUI. 
+    - `/[admin_command] biomes help` : Show help for all the commands
+    - `/[admin_command] biomes import [overwrite]`: import biomes from biomes.yml
+    - `/[admin_command] biomes add <biome>`: add a new biome what can be edited via GUI or `biomes edit` command. Biome will not be deployed. To do it, you should enable it in GUI or via `biomes edit <biome> deployed true` command.
+    - `/[admin_command] biomes set <player> <biome> [<type>] [<size>]`: This command works the same as user biome set command, but it is necessary to provide also player, which island biome will be updated.
+    - `/[admin_command] biomes edit <biome> <property> <new_value>`: This command allows to edit provided biome property to new value. 
+    - `/[admin_command] biomes settings <property> <new_value>`: This command allows to edit current addon settings via command. 
 
 ## Permissions
 
@@ -90,6 +86,66 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
     - `[gamemode].admin.biomes.import` (default: `op`): player can use admin biomes import command allows to import biomes in world.
     - `[gamemode].admin.biomes.settings` (default: `op`): player can use admin biomes settings command that allows to change addon settings.
 
-## API Addon Request Handlers
+## Translations
 
-The addon request handlers are [here](Addon-Request-Handlers).
+As most of BentoBox projects, Biomes Addon is translatable in any language. Everyone can contribute, and translate some parts of the addon in their language via [GitLocalize](https://gitlocalize.com/repo/2894).
+If your language is not in the list, please contact to developers via Discord and it will be added there.
+
+| Available | Language | Language code | Progress |
+| --- | ---------- | --- | ----------- |
+| ✅ | English (United States) | `en-US` | 100% (Default) |
+| ❌ | [Chinese (China)](https://gitlocalize.com/repo/2894/zh-CN/src/main/resources/locales) | `zh-CN` | ![gitlocalized](https://gitlocalize.com/repo/2894/zh-CN//badge.svg) |
+| ❌ | [Chinese (Taiwan)](https://gitlocalize.com/repo/2894/zh-TW/src/main/resources/locales) | `zh-TW` | ![gitlocalized](https://gitlocalize.com/repo/2894/zh-TW//badge.svg) |
+| ✅ | [Czech](https://gitlocalize.com/repo/2894/cs/src/main/resources/locales) | `cs` | ![gitlocalized](https://gitlocalize.com/repo/2894/cs/badge.svg) |
+| ✅ | [French](https://gitlocalize.com/repo/2894/fr/src/main/resources/locales) | `fr` | ![gitlocalized](https://gitlocalize.com/repo/2894/fr/badge.svg) |
+| ✅ | [German](https://gitlocalize.com/repo/2894/de/src/main/resources/locales) | `de` | ![gitlocalized](https://gitlocalize.com/repo/2894/de/badge.svg) |
+| ❌ | [Hungarian](https://gitlocalize.com/repo/2894/hu/src/main/resources/locales) | `hu` | ![gitlocalized](https://gitlocalize.com/repo/2894/hu/badge.svg) |
+| ❌ | [Indonesian](https://gitlocalize.com/repo/2894/id/src/main/resources/locales) | `id` | ![gitlocalized](https://gitlocalize.com/repo/2894/id/badge.svg) |
+| ❌ | [Italian](https://gitlocalize.com/repo/2894/it/src/main/resources/locales) | `it` | ![gitlocalized](https://gitlocalize.com/repo/2894/it/badge.svg) |
+| ❌ | [Japanese](https://gitlocalize.com/repo/2894/ja/src/main/resources/locales) | `ja` | ![gitlocalized](https://gitlocalize.com/repo/2894/ja/badge.svg) |
+| ❌ | [Korean](https://gitlocalize.com/repo/2894/ko/src/main/resources/locales) | `ko` | ![gitlocalized](https://gitlocalize.com/repo/2894/ko/badge.svg) |
+| ✅ | [Latvian](https://gitlocalize.com/repo/2894/lv/src/main/resources/locales) | `lv` | ![gitlocalized](https://gitlocalize.com/repo/2894/lv/badge.svg) |
+| ❌ | [Polish](https://gitlocalize.com/repo/2894/pl/src/main/resources/locales) | `pl` | ![gitlocalized](https://gitlocalize.com/repo/2894/pl/badge.svg) |
+| ❌ | [Portuguese](https://gitlocalize.com/repo/2894/pt/src/main/resources/locales) | `pt` | ![gitlocalized](https://gitlocalize.com/repo/2894/pt/badge.svg) |
+| ❌ | [Romanian](https://gitlocalize.com/repo/2894/ro/src/main/resources/locales) | `ro` | ![gitlocalized](https://gitlocalize.com/repo/2894/ro/badge.svg) |
+| ❌ | [Russian](https://gitlocalize.com/repo/2894/ru/src/main/resources/locales) | `ru` | ![gitlocalized](https://gitlocalize.com/repo/2894/ru/badge.svg) |
+| ✅ | [Spanish](https://gitlocalize.com/repo/2894/es/src/main/resources/locales) | `es` | ![gitlocalized](https://gitlocalize.com/repo/2894/es/badge.svg) |
+| ❌ | [Turkish](https://gitlocalize.com/repo/2894/tr/src/main/resources/locales) | `tr` | ![gitlocalized](https://gitlocalize.com/repo/2894/tr/badge.svg) |
+| ❌ | [Vietnamese](https://gitlocalize.com/repo/2894/vi/src/main/resources/locales) | `vi` | ![gitlocalized](https://gitlocalize.com/repo/2894/vi/badge.svg) |
+
+All guidelines are described [here](BentoBox/Translate-BentoBox-and-addons).
+
+## API
+
+### Addon Request Handlers
+
+=== "biome-data"
+    !!! summary "Description"
+        Returns a `Map<String, Object>` containing all the information about the requested biome.
+    
+    !!! question "Input"
+        - `biomeId`: String - the unique ID of the requested biome.
+
+    !!! success "Output"
+        The output is a `Map<String, Object>` with the following keys:
+        - `uniqueId`: the same id that was passed to this handler.
+        - `world`: a string that represents world name where biome operates.
+        - `biome`: a string that represents Minecraft Biome name.
+        - `name`: a string object of display name for the biome.
+        - `deployed`: a boolean object of deployment status.
+        - `description`: List of strings that represents biomes description.
+        - `icon`: ItemStack object that represents biome.
+        - `order`: Integer object of order number for the given biome.
+        - `cost`: Integer that represents biomes change the cost.
+        - `level`: Long that represents minimal island level for this biome to work.
+        - `permissions`: Set of strings that represent required permissions.
+        
+    !!! fail
+        This handler will return an empty map if the `biomeId` has not been provided or if the `biomeId` could not be found in the database.
+    
+    !!! example
+        Code example.
+
+=== "biomes-list"
+
+=== "biome-request-change"
