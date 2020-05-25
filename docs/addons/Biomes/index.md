@@ -1,6 +1,4 @@
-# Biomes Addon
-[![Discord](https://img.shields.io/discord/272499714048524288.svg?logo=discord)](https://discord.bentobox.world)
-[![Build Status](https://ci.codemc.org/buildStatus/icon?job=BentoBoxWorld/Biomes)](https://ci.codemc.org/job/BentoBoxWorld/job/Biomes/)
+# Biomes
 
 Biomes addon for SkyBlock, SkyGrid, CaveBlock and AcidIsland. It allows to change biome on Island.
 
