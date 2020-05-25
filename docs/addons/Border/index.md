@@ -14,6 +14,7 @@ Created and maintained by [tastybento](https://github.com/tastybento).
     - [Development builds](https://ci.codemc.org/job/BentoBoxWorld/job/Border) ([Latest stable build](https://ci.codemc.io/job/BentoBoxWorld/job/Border/lastStableBuild/))
 
 ## Installation
+
 1. Put the WorldBorderPlugin jar into the `plugins` folder.
 2. Put the addon jar into the `plugins/BentoBox/addons` folder.
 3. Restart the server.
