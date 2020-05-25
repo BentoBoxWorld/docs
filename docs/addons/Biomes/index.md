@@ -133,12 +133,12 @@ All guidelines are described [here](BentoBox/Translate-BentoBox-and-addons).
         - `biome`: String - the name of the corresponding Minecraft biome.
         - `name`: String - the display name for the biome.
         - `deployed`: Boolean - `true` if the biome is deployed, `false` otherwise.
-        - `description`: List\<String> - the description for the biome.
+        - `description`: List&lt;String&gt; - the description for the biome.
         - `icon`: ItemStack - the item that represents the biome in GUIs.
         - `order`: Integer - the order number for the given biome.
         - `cost`: Integer - the cost to use the biome.
         - `level`: Long - the minimum Island Level required in order to use the biome.
-        - `permissions`: Set\<String> - the list of permissions required in order to use the biome.
+        - `permissions`: Set&lt;String&gt; - the list of permissions required in order to use the biome.
         
     !!! failure
         This handler will return an empty map if the `biomeId` has not been provided or if the `biomeId` could not be found in the database.
@@ -162,30 +162,18 @@ All guidelines are described [here](BentoBox/Translate-BentoBox-and-addons).
         - `world-name`: String - the name of the world.
 
     !!! success "Output"
-        The output is a `Map<String, Object>` with the following keys:  
-        
-        - `uniqueId`: String - the unique ID of the requested biome.
-        - `world`: String - the name of the world where the biome is available.
-        - `biome`: String - the name of the corresponding Minecraft biome.
-        - `name`: String - the display name for the biome.
-        - `deployed`: Boolean - `true` if the biome is deployed, `false` otherwise.
-        - `description`: List&lt;String&gt; - the description for the biome.
-        - `icon`: ItemStack - the item that represents the biome in GUIs.
-        - `order`: Integer - the order number for the given biome.
-        - `cost`: Integer - the cost to use the biome.
-        - `level`: Long - the minimum Island Level required in order to use the biome.
-        - `permissions`: Set&lt;String&gt; - the list of permissions required in order to use the biome.
+        The output is a `List<String>` containing the list of the uniqueIds of the biomes that are defined for the specified world.
         
     !!! failure
-        This handler will return an empty map if the `biomeId` has not been provided or if the `biomeId` could not be found in the database.
+        This handler will return an empty list if the `world-name` has not been provided or if the `world-name` does not exist or is not a gamemode world.
     
     !!! example "Code example"
         ```java
-        public Map<String, Object> getBiomeData(String biomeId) {
+        public Map<String, Object> getBiomeData(String worldName) {
             return (Map<String, Object>) new AddonRequestBuilder()
                 .addon("Biomes")
-                .label("biome-data")
-                .addMetadata("biomeId", biomeId)
+                .label("biome-list")
+                .addMetadata("world-name", worldName)
                 .request();
         }
         ```
