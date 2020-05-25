@@ -1,12 +1,12 @@
 # Biomes
 
-!!! warning
-    The Biomes addon is currently in **Beta**.  
-    Keep in mind that **you are more likely to encounter bugs** and **some features might not be stable**.  
-
 **Biomes** lets your players **change the biome** on their island.
 
 Created and maintained by [BONNe](https://github.com/BONNe).
+
+!!! warning
+    The Biomes addon is currently in **Beta**.  
+    Keep in mind that **you are more likely to encounter bugs** and **some features might not be stable**.
 
 !!! info "Useful links"
     - [GitHub repository](https://github.com/BentoBoxWorld/Biomes) ([Releases](https://github.com/BentoBoxWorld/Biomes/releases))

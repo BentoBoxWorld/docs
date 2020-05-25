@@ -1,12 +1,12 @@
 # Border
 
-!!! warning "Requirements"
-    This addon requires [WorldBorderPlugin](https://github.com/yannicklamprecht/WorldBorderAPI/releases) from **WorldBorderAPI**.  
-    Make sure you downloaded the plugin and put it in your server's `plugins` folder.
-
 **Border** shows a world border around islands. The world border is the Minecraft world border and players cannot go outside of it.
 
 Created and maintained by [tastybento](https://github.com/tastybento).
+
+!!! warning "Requirements"
+    This addon requires [WorldBorderPlugin](https://github.com/yannicklamprecht/WorldBorderAPI/releases) from **WorldBorderAPI**.  
+    Make sure you downloaded the plugin and put it in your server's `plugins` folder.
 
 !!! info "Useful links"
     - [GitHub repository](https://github.com/BentoBoxWorld/Border) ([Releases](https://github.com/BentoBoxWorld/Border/releases))
