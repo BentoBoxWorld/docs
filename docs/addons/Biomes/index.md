@@ -112,7 +112,7 @@ If your language is not in the list, please contact to developers via Discord an
 | ❌ | [Turkish](https://gitlocalize.com/repo/2894/tr/src/main/resources/locales) | `tr` | ![gitlocalized](https://gitlocalize.com/repo/2894/tr/badge.svg) |
 | ❌ | [Vietnamese](https://gitlocalize.com/repo/2894/vi/src/main/resources/locales) | `vi` | ![gitlocalized](https://gitlocalize.com/repo/2894/vi/badge.svg) |
 
-All guidelines are described [here](BentoBox/Translate-BentoBox-and-addons).
+All guidelines are described [here](../../BentoBox/Translate-BentoBox-and-addons).
 
 ## API
 
