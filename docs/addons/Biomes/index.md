@@ -47,7 +47,7 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
 ## Commands
 
 !!! tip
-    `[player_command]` and `[admin_command]` are commands that differs depending on the gamemode you are running.
+    `[player_command]` and `[admin_command]` are commands that differ depending on the gamemode you are running.
     The Gamemodes' `config.yml` file contains options that allows you to modify these values.
     As an example, on BSkyBlock, the default `[player_command]` is `island`, and the default `[admin_command]` is `bsbadmin`. 
 
