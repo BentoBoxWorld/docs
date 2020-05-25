@@ -35,7 +35,7 @@ nav:
         - "Config API": BentoBox/Config-API.md
         - "Database API": BentoBox/Database-API.md
 theme:
-  name: readthedocs
+  name: material
 markdown_extensions:
   - attr_list
   - admonition
