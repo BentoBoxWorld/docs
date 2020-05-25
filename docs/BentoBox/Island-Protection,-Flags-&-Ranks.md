@@ -61,7 +61,7 @@ The display mode can be changed by clicking on the ingot in the top-right corner
 
 ### Hide Flags
 
-As of [BentoBox 1.4.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.4.0), admins can hide Flags in the GUI by opening the Settings Panel and **shift-left-clicking** on the icon of the Flag they want to hide.
+As of [BentoBox 1.4.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.4.0), admins can hide Flags in the GUI by opening the Settings Panel and ++shift+left-button++ on the icon of the Flag they want to hide.
 This will apply a "Curse of Vanishing" enchantment to the icon and will result in the corresponding Flag being hidden to the players.
 Admins can later unhide the Flag by reiterating the same procedure.
 

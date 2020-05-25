@@ -47,6 +47,7 @@ markdown_extensions:
   - pymdownx.escapeall
   - pymdownx.progressbar
   - pymdownx.superfences
+  - pymdownx.keys
   - pymdownx.tabbed
   - pymdownx.tasklist
   - toc:
