@@ -127,7 +127,7 @@ All guidelines are described [here](BentoBox/Translate-BentoBox-and-addons).
         - `biomeId`: String - the unique ID of the requested biome.
 
     !!! success "Output"
-        The output is a `Map<String, Object>` with the following keys:
+        The output is a `Map<String, Object>` with the following keys:  
         - `uniqueId`: the same id that was passed to this handler.
         - `world`: a string that represents world name where biome operates.
         - `biome`: a string that represents Minecraft Biome name.
@@ -140,7 +140,7 @@ All guidelines are described [here](BentoBox/Translate-BentoBox-and-addons).
         - `level`: Long that represents minimal island level for this biome to work.
         - `permissions`: Set of strings that represent required permissions.
         
-    !!! fail
+    !!! failure
         This handler will return an empty map if the `biomeId` has not been provided or if the `biomeId` could not be found in the database.
     
     !!! example
