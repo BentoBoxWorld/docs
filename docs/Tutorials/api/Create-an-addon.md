@@ -10,10 +10,6 @@ Moreover, they have access to BentoBox's [Config API](../../BentoBox/Config-API.
 In order to comfortably follow this tutorial, you should have previous experience in plugin development.
 The addon development process is indeed very similar to the latter, and we will consider throughout this tutorial that you understand the key Java concepts, for the sake of concision.
 
-# Table of Contents
-
-[TOC]
-
 # Prepare the project
 
 ## Using the pre-made Addon template

@@ -1,7 +1,3 @@
-# Table of Contents
-
-[TOC]
-
 # Installation
 
 ## How do I install BentoBox, BSkyBlock and all those other addon things?
