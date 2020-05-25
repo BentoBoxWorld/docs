@@ -74,6 +74,9 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
     The prefix is the lowercased name of the gamemode, i.e. if you are using BSkyBlock, the prefix is `bskyblock`.
     Similarly, if you are using AcidIsland, the prefix is `acidisland`.
 
+??? question "Something is missing?"
+    You can find the comprehensive list of permissions in the [addon.yml](https://github.com/BentoBoxWorld/Biomes/blob/develop/src/main/resources/addon.yml) file of this addon.
+
 ### User permissions
 - `[gamemode].biomes` (default: `true`): player can use biomes command that opens GUI.
 - `[gamemode].biomes.info` (default: `true`): player can use biomes info command.
