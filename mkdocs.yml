@@ -47,4 +47,4 @@ markdown_extensions:
       permalink: "#"
 plugins:
   - search
-  - mkdocs-git-revision-date-localized-plugin
+  - mkdocs-git-revision-date-localized
