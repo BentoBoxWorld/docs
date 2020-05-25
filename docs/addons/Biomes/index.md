@@ -128,6 +128,7 @@ All guidelines are described [here](BentoBox/Translate-BentoBox-and-addons).
 
     !!! success "Output"
         The output is a `Map<String, Object>` with the following keys:  
+        
         - `uniqueId`: the same id that was passed to this handler.
         - `world`: a string that represents world name where biome operates.
         - `biome`: a string that represents Minecraft Biome name.
