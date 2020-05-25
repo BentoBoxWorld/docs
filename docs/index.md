@@ -1,3 +1,5 @@
+[=5% "We are currently improving the documentation."]
+
 # BentoBox
 
 BentoBox is a platform plugin for island-style games like AcidIsland or BSkyBlock. It provides features such a island creation, team management, protection, etc. These games and features are added to BentoBox via addons that are like mini-plugins. Admins can customize their server to have exactly what games and features they want.
@@ -11,17 +13,6 @@ BentoBox supports the following game modes:
 - [AOneBlock](gamemodes/AOneBlock) - our take on the OneBlock map created by IJAMinecraft.
 - [CaveBlock](gamemodes/CaveBlock) - mining, mining, and more mining!
 - [SkyGrid](gamemodes/SkyGrid) - a terrifying grid of blocks!
-
-??? note
-    Testing collapsible notes from Details
-    
-[=0% "0%"]
-[=5% "5%"]
-[=25% "25%"]
-[=45% "45%"]
-[=65% "65%"]
-[=85% "85%"]
-[=100% "100%"]
 
 ## Getting started
 - [Install BentoBox](BentoBox/Install-Bentobox)
