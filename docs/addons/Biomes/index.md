@@ -41,26 +41,33 @@ If you change values in biomes.yml, then to apply them, you must run **/bsb biom
 If you want to force an overwrite of biomes via an import, add the **overwrite** option to the end of the import command.
 Note that you must import biomes into both BSkyBlock and AcidIsland separately.
 
-## User commands
+## Commands
 
-Users can access to biomes addon commands with `/[gamemode] biomes` command. By default for BSkyBlock it is **/island biomes**, for AcidIsland - **/ai biomes**, for CaveBlock - **/cave biomes**, for SkyGrid - **/sg biomes**.
+!!! tip
+    `[user_command]` and `[admin_command]` are prefixes that differs depending on the gamemode you are running. Gamemodes config section contains option to modify these values.
+    F.e. in BSkyBlock default `[user_command]` is `island` and default `[admin_command]` is `bsbadmin`. 
 
-* `/is biomes`: This method opens GUI that allows to change biome on User island.
-* `/is biomes help`: Show help for all the commands
-* `/is biomes info <biome>`: This command returns information about given biome, like cost and necessary level.
-* `/is biomes set <biome> [<type>] [<size>]`: This command allows to change biome on island without opening GUI. If prarameters < type> and < size> are not provided, command uses default values from addon config.
+### User commands
 
-## Admin commands
+* `/[user_command] biomes`: This method opens GUI that allows to change biome on User island.
+* `/[user_command] biomes help`: Show help for all the commands
+* `/[user_command] biomes info <biome>`: This command returns information about given biome, like cost and necessary level.
+* `/[user_command] biomes set <biome> [<type>] [<size>]`: This command allows to change biome on island without opening GUI. If prarameters < type> and < size> are not provided, command uses default values from addon config.
 
-There are a few admin commands and more being written. The main biomes admin command is **/bsb biomes**, **/cba biomes**, **/sgadmin biomes** & **/acid biomes**. Use 
+!!! tip
+    `<biome>` may not be equal Minecraft biome name. It is defined by admin.
+    `<type>` is one of 3 biome chaning types. It offers to change biome on whole island (`ISLAND`), in current chunk(-s) (`CHUNK`) or by distance around player (`RANGE`).
+    Currently biome is changed in whole height.
 
-* `/bsbadmin biomes`: To open Admin GUI. 
-* `/bsbadmin biomes help` : Show help for all the commands
-* `/bsbadmin biomes import [overwrite]`: import biomes from biomes.yml
-* `/bsbadmin biomes add <biome>`: add a new biome what can be edited via GUI or `biomes edit` command. Biome will not be deployed. To do it, you should enable it in GUI or via `biomes edit <biome> deployed true` command.
-* `/bsbadmin biomes set <player> <biome> [<type>] [<size>]`: This command works the same as user biome set command, but it is necessary to provide also player, which island biome will be updated.
-* `/bsbadmin biomes edit <biome> <property> <new_value>`: This command allows to edit provided biome property to new value. 
-* `/bsbadmin biomes settings <property> <new_value>`: This command allows to edit current addon settings via command. 
+### Admin commands
+
+* `/[admin_command] biomes`: To open Admin GUI. 
+* `/[admin_command] biomes help` : Show help for all the commands
+* `/[admin_command] biomes import [overwrite]`: import biomes from biomes.yml
+* `/[admin_command] biomes add <biome>`: add a new biome what can be edited via GUI or `biomes edit` command. Biome will not be deployed. To do it, you should enable it in GUI or via `biomes edit <biome> deployed true` command.
+* `/[admin_command] biomes set <player> <biome> [<type>] [<size>]`: This command works the same as user biome set command, but it is necessary to provide also player, which island biome will be updated.
+* `/[admin_command] biomes edit <biome> <property> <new_value>`: This command allows to edit provided biome property to new value. 
+* `/[admin_command] biomes settings <property> <new_value>`: This command allows to edit current addon settings via command. 
 
 ## Permissions
 
@@ -87,4 +94,3 @@ There are a few admin commands and more being written. The main biomes admin com
 ## API Addon Request Handlers
 
 The addon request handlers are [here](Addon-Request-Handlers).
-
