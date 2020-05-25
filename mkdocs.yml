@@ -43,5 +43,6 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.progressbar
   - pymdownx.superfences
+  - pymdownx.tabbed
   - toc:
       permalink: "#"
