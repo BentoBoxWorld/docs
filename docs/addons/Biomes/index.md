@@ -103,8 +103,8 @@ If your language is not in the list, please contact to developers via Discord an
 | Available | Language | Language code | Progress |
 | --- | ---------- | --- | ----------- |
 | ✅ | English (United States) | `en-US` | 100% (Default) |
-| ❌ | [Chinese (China)](https://gitlocalize.com/repo/2894/zh-CN/src/main/resources/locales) | `zh-CN` | ![gitlocalized](https://gitlocalize.com/repo/2894/zh-CN//badge.svg) |
-| ❌ | [Chinese (Taiwan)](https://gitlocalize.com/repo/2894/zh-TW/src/main/resources/locales) | `zh-TW` | ![gitlocalized](https://gitlocalize.com/repo/2894/zh-TW//badge.svg) |
+| ✅ | [Chinese (China)](https://gitlocalize.com/repo/2894/zh-CN/src/main/resources/locales) | `zh-CN` | ![gitlocalized](https://gitlocalize.com/repo/2894/zh-CN//badge.svg) |
+| ✅ | [Chinese (Taiwan)](https://gitlocalize.com/repo/2894/zh-TW/src/main/resources/locales) | `zh-TW` | ![gitlocalized](https://gitlocalize.com/repo/2894/zh-TW//badge.svg) |
 | ✅ | [Czech](https://gitlocalize.com/repo/2894/cs/src/main/resources/locales) | `cs` | ![gitlocalized](https://gitlocalize.com/repo/2894/cs/badge.svg) |
 | ✅ | [French](https://gitlocalize.com/repo/2894/fr/src/main/resources/locales) | `fr` | ![gitlocalized](https://gitlocalize.com/repo/2894/fr/badge.svg) |
 | ✅ | [German](https://gitlocalize.com/repo/2894/de/src/main/resources/locales) | `de` | ![gitlocalized](https://gitlocalize.com/repo/2894/de/badge.svg) |
