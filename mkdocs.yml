@@ -41,5 +41,6 @@ markdown_extensions:
   - footnotes
   - pymdownx.details
   - pymdownx.progressbar
+  - pymdownx.superfences
   - toc:
       permalink: "#"
