@@ -11,8 +11,7 @@ Created and maintained by [BONNe](https://github.com/BONNe).
 
 !!! warning
     The Biomes addon is currently in **Beta**.  
-    Keep in mind that **you are more likely to encounter a bug**.  
-    Some features might not be stable.
+    Keep in mind that **you are more likely to encounter bugs** and **some features might not be stable**.  
 
 ## Installation
 
@@ -129,23 +128,31 @@ All guidelines are described [here](BentoBox/Translate-BentoBox-and-addons).
     !!! success "Output"
         The output is a `Map<String, Object>` with the following keys:  
         
-        - `uniqueId`: the same id that was passed to this handler.
-        - `world`: a string that represents world name where biome operates.
-        - `biome`: a string that represents Minecraft Biome name.
-        - `name`: a string object of display name for the biome.
-        - `deployed`: a boolean object of deployment status.
-        - `description`: List of strings that represents biomes description.
-        - `icon`: ItemStack object that represents biome.
-        - `order`: Integer object of order number for the given biome.
-        - `cost`: Integer that represents biomes change the cost.
-        - `level`: Long that represents minimal island level for this biome to work.
-        - `permissions`: Set of strings that represent required permissions.
+        - `uniqueId`: String - the unique ID of the requested biome.
+        - `world`: String - the name of the world where the biome is available.
+        - `biome`: String - the name of the corresponding Minecraft biome.
+        - `name`: String - the display name for the biome.
+        - `deployed`: Boolean - `true` if the biome is deployed, `false` otherwise.
+        - `description`: List<String> - the description for the biome.
+        - `icon`: ItemStack - the item that represents the biome in GUIs.
+        - `order`: Integer - the order number for the given biome.
+        - `cost`: Integer - the cost to use the biome.
+        - `level`: Long - the minimum Island Level required in order to use the biome.
+        - `permissions`: Set<String> - the list of permissions required in order to use the biome.
         
     !!! failure
         This handler will return an empty map if the `biomeId` has not been provided or if the `biomeId` could not be found in the database.
     
-    !!! example
-        Code example.
+    !!! example "Code example"
+        ```java
+        public Map<String, Object> getBiomeData(String biomeId) {
+            return (Map<String, Object>) new AddonRequestBuilder()
+                .addon("Biomes")
+                .label("biome-data")
+                .addMetadata("biomeId", biomeId)
+                .request();
+        }
+        ```
 
 === "biomes-list"
 
