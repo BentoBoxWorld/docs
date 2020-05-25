@@ -12,6 +12,17 @@ BentoBox supports the following game modes:
 - [CaveBlock](gamemodes/CaveBlock) - mining, mining, and more mining!
 - [SkyGrid](gamemodes/SkyGrid) - a terrifying grid of blocks!
 
+??? note
+    Testing collapsible notes from Details
+    
+[=0% "0%"]
+[=5% "5%"]
+[=25% "25%"]
+[=45% "45%"]
+[=65% "65%"]
+[=85% "85%"]
+[=100% "100%"]
+
 ## Getting started
 - [Install BentoBox](BentoBox/Install-Bentobox)
 - [FAQ](FAQ)
