@@ -29,7 +29,7 @@ BentoBox supports the following game modes:
     - [BSkyBlock Permissions](gamemodes/BSkyBlock/Permissions)
     - [CaveBlock Permissions](gamemodes/CaveBlock/Permissions)
     - [SkyGrid Permissions](gamemodes/SkyGrid/Permissions)
-    - [Biomes Permissions](addons/Biomes/#Permissions)
+    - [Biomes Permissions](addons/Biomes/#permissions)
     - [Challenges Permissions](addons/Challenges/Permissions)
     - [Level Permissions](addons/Level/Permissions)
     - [Limits Permissions](addons/Limits/Permissions)
