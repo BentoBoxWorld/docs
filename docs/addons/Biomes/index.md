@@ -133,12 +133,12 @@ All guidelines are described [here](BentoBox/Translate-BentoBox-and-addons).
         - `biome`: String - the name of the corresponding Minecraft biome.
         - `name`: String - the display name for the biome.
         - `deployed`: Boolean - `true` if the biome is deployed, `false` otherwise.
-        - `description`: List<String> - the description for the biome.
+        - `description`: List\<String> - the description for the biome.
         - `icon`: ItemStack - the item that represents the biome in GUIs.
         - `order`: Integer - the order number for the given biome.
         - `cost`: Integer - the cost to use the biome.
         - `level`: Long - the minimum Island Level required in order to use the biome.
-        - `permissions`: Set<String> - the list of permissions required in order to use the biome.
+        - `permissions`: Set\<String> - the list of permissions required in order to use the biome.
         
     !!! failure
         This handler will return an empty map if the `biomeId` has not been provided or if the `biomeId` could not be found in the database.
