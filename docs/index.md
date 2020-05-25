@@ -1,4 +1,9 @@
-[=5% "We are currently improving the documentation."]
+!!! warning
+    **We are currently overhauling the documentation.**  
+    Some information might be missing, invalid or outdated.
+    You may also encounter 404s, dead links or blank pages.  
+    **The overhaul will span over the course of this week**.  
+    - Poslovitch | May 25th, 2020.
 
 # BentoBox
 
