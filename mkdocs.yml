@@ -45,3 +45,6 @@ markdown_extensions:
   - pymdownx.tabbed
   - toc:
       permalink: "#"
+plugins:
+  - search
+  - mkdocs-git-revision-date-localized-plugin
