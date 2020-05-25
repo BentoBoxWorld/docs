@@ -169,10 +169,10 @@ All guidelines are described [here](BentoBox/Translate-BentoBox-and-addons).
     
     !!! example "Code example"
         ```java
-        public Map<String, Object> getBiomeData(String worldName) {
-            return (Map<String, Object>) new AddonRequestBuilder()
+        public List<String> getBiomesList(String worldName) {
+            return (List<String>) new AddonRequestBuilder()
                 .addon("Biomes")
-                .label("biome-list")
+                .label("biomes-list")
                 .addMetadata("world-name", worldName)
                 .request();
         }
