@@ -155,5 +155,39 @@ All guidelines are described [here](BentoBox/Translate-BentoBox-and-addons).
         ```
 
 === "biomes-list"
+    !!! summary "Description"
+        Returns a list of all biomes' uniqueIds that are defined in a given world.
+    
+    !!! question "Input"
+        - `world-name`: String - the name of the world.
+
+    !!! success "Output"
+        The output is a `Map<String, Object>` with the following keys:  
+        
+        - `uniqueId`: String - the unique ID of the requested biome.
+        - `world`: String - the name of the world where the biome is available.
+        - `biome`: String - the name of the corresponding Minecraft biome.
+        - `name`: String - the display name for the biome.
+        - `deployed`: Boolean - `true` if the biome is deployed, `false` otherwise.
+        - `description`: List&lt;String&gt; - the description for the biome.
+        - `icon`: ItemStack - the item that represents the biome in GUIs.
+        - `order`: Integer - the order number for the given biome.
+        - `cost`: Integer - the cost to use the biome.
+        - `level`: Long - the minimum Island Level required in order to use the biome.
+        - `permissions`: Set&lt;String&gt; - the list of permissions required in order to use the biome.
+        
+    !!! failure
+        This handler will return an empty map if the `biomeId` has not been provided or if the `biomeId` could not be found in the database.
+    
+    !!! example "Code example"
+        ```java
+        public Map<String, Object> getBiomeData(String biomeId) {
+            return (Map<String, Object>) new AddonRequestBuilder()
+                .addon("Biomes")
+                .label("biome-data")
+                .addMetadata("biomeId", biomeId)
+                .request();
+        }
+        ```
 
 === "biome-request-change"
