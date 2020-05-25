@@ -77,19 +77,17 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
     Similarly, if you are using AcidIsland, the prefix is `acidisland`.
 
 ### User permissions
-- `[gamemode].biomes`: player can use biomes command that opens GUI.
-- `[gamemode].biomes.info`: player can use biomes info command.
-- `[gamemode].biomes.set`: player can use biomes set command.
+- `[gamemode].biomes` (default: `true`): player can use biomes command that opens GUI.
+- `[gamemode].biomes.info` (default: `true`): player can use biomes info command.
+- `[gamemode].biomes.set` (default: `true`): player can use biomes set command.
 
 ### Admin permissions
-- `[gamemode].admin.biomes`: player can use admin biomes command that opens GUI.
-- `[gamemode].admin.biomes.add`: player can use admin biomes add command that adds new biome.
-- `[gamemode].admin.biomes.edit`: player can use admin biomes edit command that edits existing biomes parameters.
-- `[gamemode].admin.biomes.set`: player can use admin biomes set command that allows to change other player biomes.
-- `[gamemode].admin.biomes.import`: player can use admin biomes import command allows to import biomes in world.
-- `[gamemode].admin.biomes.settings`: player can use admin biomes settings command that allows to change addon settings.
-
-[Full permissions](Permissions)
+- `[gamemode].admin.biomes` (default: `op`): player can use admin biomes command that opens GUI.
+- `[gamemode].admin.biomes.add` (default: `op`): player can use admin biomes add command that adds new biome.
+- `[gamemode].admin.biomes.edit` (default: `op`): player can use admin biomes edit command that edits existing biomes parameters.
+- `[gamemode].admin.biomes.set` (default: `op`): player can use admin biomes set command that allows to change other player biomes.
+- `[gamemode].admin.biomes.import` (default: `op`): player can use admin biomes import command allows to import biomes in world.
+- `[gamemode].admin.biomes.settings` (default: `op`): player can use admin biomes settings command that allows to change addon settings.
 
 ## API Addon Request Handlers
 
