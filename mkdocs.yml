@@ -44,6 +44,7 @@ markdown_extensions:
   - admonition
   - footnotes
   - pymdownx.details
+  - pymdownx.escapeall
   - pymdownx.progressbar
   - pymdownx.superfences
   - pymdownx.tabbed
