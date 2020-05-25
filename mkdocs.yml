@@ -35,6 +35,10 @@ nav:
         - "Database API": BentoBox/Database-API.md
 theme:
   name: material
+  palette:
+    scheme: slate
+    primary: deep orange
+    accent: green
 markdown_extensions:
   - attr_list
   - admonition
