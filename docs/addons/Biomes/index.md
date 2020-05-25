@@ -54,10 +54,10 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
 * `/[user_command] biomes info <biome>`: This command returns information about given biome, like cost and necessary level.
 * `/[user_command] biomes set <biome> [<type>] [<size>]`: This command allows to change biome on island without opening GUI. If prarameters < type> and < size> are not provided, command uses default values from addon config.
 
-!!! tip
-    `<biome>` may not be equal Minecraft biome name. It is defined by admin.
-    `<type>` is one of 3 biome chaning types. It offers to change biome on whole island (`ISLAND`), in current chunk(-s) (`CHUNK`) or by distance around player (`RANGE`).
-    Currently biome is changed in whole height.
+!!! info
+    - `<biome>` may not be equal Minecraft biome name. It is defined by admin.
+    - `<type>` is one of 3 biome chaning types. It offers to change biome on whole island (`ISLAND`), in current chunk(-s) (`CHUNK`) or by distance around player (`RANGE`).
+    - Currently biome is changed in whole height.
 
 ### Admin commands
 
