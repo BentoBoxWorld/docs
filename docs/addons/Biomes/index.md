@@ -5,7 +5,7 @@
 Created and maintained by [BONNe](https://github.com/BONNe).
 
 !!! warning
-    The Biomes addon is currently in **Beta**.  
+    **Biomes** is currently in **Beta**.  
     Keep in mind that **you are more likely to encounter bugs** and **some features might not be stable**.
 
 !!! info "Useful links"
