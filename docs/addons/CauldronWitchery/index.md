@@ -1,30 +1,19 @@
 # CauldronWitchery
-[![Discord](https://img.shields.io/discord/272499714048524288.svg?logo=discord)](https://discord.bentobox.world)
-[![Build Status](https://ci.codemc.org/buildStatus/icon?job=BentoBoxWorld/CauldronWitchery)](https://ci.codemc.org/job/BentoBoxWorld/job/CauldronWitchery/)
 
-Add-on for BentoBox to provide ability to summon mobs with a magic for any BentoBox GameMode. 
+**CauldronWitchery** lets your players **summon any kind of mob using a cauldron** filled with water and a magic stick. 
 
-## What is this addon?
+Created and maintained by [BONNe](https://github.com/BONNe).
 
-This addon allows to summon any mob (from config) using a cauldron with water and right clicking with a magic stick (from config) on it.
+!!! warning
+    **CauldronWitchery** is currently in **Beta**.  
+    Keep in mind that **you are more likely to encounter bugs** and **some features might not be stable**.
 
-## Translations
+!!! info "Useful links"
+    - [GitHub repository](https://github.com/BentoBoxWorld/CauldronWitchery) ([Releases](https://github.com/BentoBoxWorld/CauldronWitchery/releases))
+    - [Issue tracker](https://github.com/BentoBoxWorld/CauldronWitchery/issues)
+    - [Development builds](https://ci.codemc.org/job/BentoBoxWorld/job/CauldronWitchery) ([Latest stable build](https://ci.codemc.io/job/BentoBoxWorld/job/CauldronWitchery/lastStableBuild/))
 
-As with most BentoBox projects, CauldronWitchery Addon is translatable into any language. Everyone can contribute, and translate some parts of the addon in their language via [GitLocalize](https://gitlocalize.com/repo/2976).
-If your language is not in the list, please contact the developers via Discord and it will be added there.
-
-Translation status is [here](Translate-CauldronWitchery).
-
-## Where to find
-
-Currently CauldronWitchery Addon is in **Alpha stage**, so it may or may not contain bugs... or a lot of bugs. Also it means, that some features are not working or implemented. 
-You can download it from [Release tab](https://github.com/BentoBoxWorld/CauldronWitchery/releases)
-
-Or you can try **nightly builds** where you can check and test new features that will be implemented in next release from [Jenkins Server](https://ci.codemc.org/job/BentoBoxWorld/job/CauldronWitchery/lastStableBuild/).
-
-If you like this addon but something is missing or is not working as you want, you can always submit an [Issue request](https://github.com/BentoBoxWorld/CauldronWitchery/issues) or get support in Discord [BentoBox ![icon](https://avatars2.githubusercontent.com/u/41555324?s=15&v=4)](https://discord.bentobox.world)
-
-## How to use
+## Installation
 
 1. Place the addon jar in the addons folder of the BentoBox plugin
 2. Restart the server
@@ -32,14 +21,38 @@ If you like this addon but something is missing or is not working as you want, y
 4. Edit the config.yml how you want.
 5. Restart the server.
 
-## Compatibility
+## Configuration
 
-- ✅ BentoBox - 1.5.0 version
-- ✅ BSkyBlock - 1.5.0 version
-- ✅ AcidIsland - 1.5.0 version
-- ✅ SkyGrid - 1.5.0 version
-- ✅ CaveBlock - 1.5.0 version
-
-## Config.yml
+### config.yml
 
 The latest config.yml can be found [here](https://github.com/BentoBoxWorld/CauldronWitchery/blob/develop/src/main/resources/config.yml).
+
+## Translations
+
+As with most BentoBox projects, CauldronWitchery Addon is translatable into any language. Everyone can contribute, and translate some parts of the addon in their language via [GitLocalize](https://gitlocalize.com/repo/2976).
+If your language is not in the list, please contact the developers via Discord and it will be added there.
+
+| Available | Language | Language code | Progress |
+| --- | ---------- | --- | ----------- |
+| ✅ | English (United States) | `en-US` | 100% (Default) |
+| ❌ | [Chinese (China)](https://gitlocalize.com/repo/2976/zh-CN/src/main/resources/locales) | `zh-CN` | ![gitlocalized](https://gitlocalize.com/repo/2976/zh-CN//badge.svg) |
+| ❌ | [Chinese (Taiwan)](https://gitlocalize.com/repo/2976/zh-TW/src/main/resources/locales) | `zh-TW` | ![gitlocalized](https://gitlocalize.com/repo/2976/zh-TW//badge.svg) |
+| ✅ | [Czech](https://gitlocalize.com/repo/2976/cs/src/main/resources/locales) | `cs` | ![gitlocalized](https://gitlocalize.com/repo/2976/cs/badge.svg) |
+| ❌ | [French](https://gitlocalize.com/repo/2976/fr/src/main/resources/locales) | `fr` | ![gitlocalized](https://gitlocalize.com/repo/2976/fr/badge.svg) |
+| ✅ | [German](https://gitlocalize.com/repo/2976/de/src/main/resources/locales) | `de` | ![gitlocalized](https://gitlocalize.com/repo/2976/de/badge.svg) |
+| ❌ | [Hungarian](https://gitlocalize.com/repo/2976/hu/src/main/resources/locales) | `hu` | ![gitlocalized](https://gitlocalize.com/repo/2976/hu/badge.svg) |
+| ❌ | [Indonesian](https://gitlocalize.com/repo/2976/id/src/main/resources/locales) | `id` | ![gitlocalized](https://gitlocalize.com/repo/2976/id/badge.svg) |
+| ❌ | [Italian](https://gitlocalize.com/repo/2976/it/src/main/resources/locales) | `it` | ![gitlocalized](https://gitlocalize.com/repo/2976/it/badge.svg) |
+| ❌ | [Japanese](https://gitlocalize.com/repo/2976/ja/src/main/resources/locales) | `ja` | ![gitlocalized](https://gitlocalize.com/repo/2976/ja/badge.svg) |
+| ❌ | [Korean](https://gitlocalize.com/repo/2976/ko/src/main/resources/locales) | `ko` | ![gitlocalized](https://gitlocalize.com/repo/2976/ko/badge.svg) |
+| ❌ | [Latvian](https://gitlocalize.com/repo/2976/lv/src/main/resources/locales) | `lv` | ![gitlocalized](https://gitlocalize.com/repo/2976/lv/badge.svg) |
+| ❌ | [Polish](https://gitlocalize.com/repo/2976/pl/src/main/resources/locales) | `pl` | ![gitlocalized](https://gitlocalize.com/repo/2976/pl/badge.svg) |
+| ❌ | [Portuguese](https://gitlocalize.com/repo/2976/pt/src/main/resources/locales) | `pt` | ![gitlocalized](https://gitlocalize.com/repo/2976/pt/badge.svg) |
+| ❌ | [Romanian](https://gitlocalize.com/repo/2976/ro/src/main/resources/locales) | `ro` | ![gitlocalized](https://gitlocalize.com/repo/2976/ro/badge.svg) |
+| ❌ | [Russian](https://gitlocalize.com/repo/2976/ru/src/main/resources/locales) | `ru` | ![gitlocalized](https://gitlocalize.com/repo/2976/ru/badge.svg) |
+| ❌ | [Spanish](https://gitlocalize.com/repo/2976/es/src/main/resources/locales) | `es` | ![gitlocalized](https://gitlocalize.com/repo/2976/es/badge.svg) |
+| ❌ | [Turkish](https://gitlocalize.com/repo/2976/tr/src/main/resources/locales) | `tr` | ![gitlocalized](https://gitlocalize.com/repo/2976/tr/badge.svg) |
+| ❌ | [Vietnamese](https://gitlocalize.com/repo/2976/vi/src/main/resources/locales) | `vi` | ![gitlocalized](https://gitlocalize.com/repo/2976/vi/badge.svg) |
+
+!!! note
+    You can find the translation guidelines [here](../../BentoBox/Translate-BentoBox-and-addons).
