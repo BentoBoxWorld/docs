@@ -97,7 +97,7 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
 
 ## Translations
 
-!!! info "We need your help!"
+!!! note "We need your help!"
     Each BentoBox addon can be translated.
     However, we rely on third-party contributions.
     
