@@ -58,3 +58,4 @@ plugins:
       type: datetime
   - minify:
       minify_html: true
+  - macros
