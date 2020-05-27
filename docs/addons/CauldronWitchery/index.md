@@ -29,8 +29,13 @@ The latest config.yml can be found [here](https://github.com/BentoBoxWorld/Cauld
 
 ## Translations
 
-As with most BentoBox projects, CauldronWitchery Addon is translatable into any language. Everyone can contribute, and translate some parts of the addon in their language via [GitLocalize](https://gitlocalize.com/repo/2976).
-If your language is not in the list, please contact the developers via Discord and it will be added there.
+!!! info "We need your help!"
+    Each BentoBox addon can be translated.
+    However, we rely on third-party contributions.
+    
+    * If your language is not available for this addon or if you would like to improve the existing translation,
+    please read the [translation guidelines](../../BentoBox/Translate-BentoBox-and-addons) and [start translating](https://gitlocalize.com/repo/2894)!
+    * If your language is not listed below, please contact us on [Discord](https://discord.bentobox.world) and we will setup everything so that you can start translating!
 
 | Available | Language | Language code | Progress |
 | --- | ---------- | --- | ----------- |
@@ -53,6 +58,3 @@ If your language is not in the list, please contact the developers via Discord a
 | ❌ | [Spanish](https://gitlocalize.com/repo/2976/es/src/main/resources/locales) | `es` | ![gitlocalized](https://gitlocalize.com/repo/2976/es/badge.svg) |
 | ❌ | [Turkish](https://gitlocalize.com/repo/2976/tr/src/main/resources/locales) | `tr` | ![gitlocalized](https://gitlocalize.com/repo/2976/tr/badge.svg) |
 | ❌ | [Vietnamese](https://gitlocalize.com/repo/2976/vi/src/main/resources/locales) | `vi` | ![gitlocalized](https://gitlocalize.com/repo/2976/vi/badge.svg) |
-
-!!! note
-    You can find the translation guidelines [here](../../BentoBox/Translate-BentoBox-and-addons).

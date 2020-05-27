@@ -39,6 +39,15 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 
 ## Translations
 
+!!! info "We need your help!"
+    Each BentoBox addon can be translated.
+    However, we rely on third-party contributions.
+    
+    * If your language is not available for this addon or if you would like to improve the existing translation,
+    please read the [translation guidelines](../../BentoBox/Translate-BentoBox-and-addons) and [start translating](https://gitlocalize.com/repo/2894)!
+    * If your language is not listed below, please contact us on [Discord](https://discord.bentobox.world) and we will setup everything so that you can start translating!
+
+
 | Available | Language | Language code | Progress |
 | --- | ---------- | --- | ----------- |
 | ✅ | English (United States) | `en-US` | 100% (Default) |
@@ -60,6 +69,3 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 | ❌ | [Spanish](https://gitlocalize.com/repo/3896/es/src/main/resources/locales) | `es` | ![gitlocalized](https://gitlocalize.com/repo/3896/es/badge.svg) |
 | ❌ | [Turkish](https://gitlocalize.com/repo/3896/tr/src/main/resources/locales) | `tr` | ![gitlocalized](https://gitlocalize.com/repo/3896/tr/badge.svg) |
 | ❌ | [Vietnamese](https://gitlocalize.com/repo/3896/vi/src/main/resources/locales) | `vi` | ![gitlocalized](https://gitlocalize.com/repo/3896/vi/badge.svg) |
-
-!!! note
-    You can find the translation guidelines [here](../../BentoBox/Translate-BentoBox-and-addons).
