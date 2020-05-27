@@ -36,6 +36,6 @@ def define_env(env):
                 available = yes
             link = f"https://gitlocalize.com/repo/{gitlocalize_id}/{language['id']}/src/main/resources/locales"
             badge = f"https://gitlocalize.com/repo/{gitlocalize_id}/{language['id']}/badge.svg"
-            result += f"\n| {available} | [{language['name']}]({link}) | `{language['id']}` | ![progress]({badge}) |"
+            result += f"| {available} | [{language['name']}]({link}) | `{language['id']}` | ![progress]({badge}) |\n"
 
         return result
