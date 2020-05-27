@@ -6,7 +6,19 @@ def define_env(env):
         {"id": "cs", "name": "Czech"},
         {"id": "fr", "name": "French"},
         {"id": "de", "name": "German"},
-        {"id": "hu", "name": "Hungarian"}
+        {"id": "hu", "name": "Hungarian"},
+        {"id": "id", "name": "Indonesian"},
+        {"id": "it", "name": "Italian"},
+        {"id": "ja", "name": "Japanese"},
+        {"id": "ko", "name": "Korean"},
+        {"id": "lv", "name": "Latvian"},
+        {"id": "pl", "name": "Polish"},
+        {"id": "pt", "name": "Portuguese"},
+        {"id": "ro", "name": "Romanian"},
+        {"id": "ru", "name": "Russian"},
+        {"id": "es", "name": "Spanish"},
+        {"id": "tr", "name": "Turkish"},
+        {"id": "vi", "name": "Vietnamese"}
     ]
 
     @env.macro
