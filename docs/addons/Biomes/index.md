@@ -32,9 +32,9 @@ Most options are also editable admin via commands.
 
 !!! warning
     Unlike usual configuration files, the changes you make to the `biomes.yml` file are not automatically taken into account when starting the server.  
-    You must import manually the changes you made and eventually override them if you already imported a previous configuration. 
+    You must import manually the changes you made and eventually override them if you already imported a previous configuration.
 
-This file contains all necessary information about default biomes. 
+This file contains all necessary information about default biomes.
 If you change values in biomes.yml, then to apply them, you must run **/[admin_command] biomes import**.
 
 If you want to force an overwrite of biomes via an import, add the **overwrite** option to the end of the import command.
@@ -49,7 +49,7 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
 !!! tip
     `[player_command]` and `[admin_command]` are commands that differ depending on the gamemode you are running.
     The Gamemodes' `config.yml` file contains options that allows you to modify these values.
-    As an example, on BSkyBlock, the default `[player_command]` is `island`, and the default `[admin_command]` is `bsbadmin`. 
+    As an example, on BSkyBlock, the default `[player_command]` is `island`, and the default `[admin_command]` is `bsbadmin`.
 
 === "Player commands"
     - `/[player_command] biomes`: This method opens GUI that allows to change biome on User island.
@@ -63,13 +63,13 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
         - Currently, the biome is changed on the entire y axis. This behaviour might change in the future as Minecraft 1.16 brings support for 3D biomes.
 
 === "Admin commands"
-    - `/[admin_command] biomes`: opens the Admin Biomes GUI. 
+    - `/[admin_command] biomes`: opens the Admin Biomes GUI.
     - `/[admin_command] biomes help`: displays the help for all the Biomes-related admin commands.
     - `/[admin_command] biomes import [overwrite]`: imports biomes from the `biomes.yml` configuration file.
     - `/[admin_command] biomes add <biome>`: adds a new biome that can be edited via GUI or `biomes edit` command. Biome will not be deployed. To do it, you should enable it in GUI or via `biomes edit <biome> deployed true` command.
     - `/[admin_command] biomes set <player> <biome> [<type>] [<size>]`: works the same as user biome set command, but it is necessary to provide also player, which island biome will be updated.
-    - `/[admin_command] biomes edit <biome> <property> <new_value>`: edits provided biome property to new value. 
-    - `/[admin_command] biomes settings <property> <new_value>`: edits current addon settings via command. 
+    - `/[admin_command] biomes edit <biome> <property> <new_value>`: edits provided biome property to new value.
+    - `/[admin_command] biomes settings <property> <new_value>`: edits current addon settings via command.
 
 ## Permissions
 
@@ -97,35 +97,7 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
 
 ## Translations
 
-!!! note "We need your help!"
-    Each BentoBox addon can be translated.
-    However, we rely on third-party contributions.
-    
-    * If your language is not available for this addon or if you would like to improve the existing translation,
-    please read the [translation guidelines](../../BentoBox/Translate-BentoBox-and-addons) and [start translating](https://gitlocalize.com/repo/2894)!
-    * If your language is not listed below, please contact us on [Discord](https://discord.bentobox.world) and we will setup everything so that you can start translating!
-
-| Available | Language | Language code | Progress |
-| --- | ---------- | --- | ----------- |
-| ✅ | English (United States) | `en-US` | 100% (Default) |
-| ✅ | [Chinese (China)](https://gitlocalize.com/repo/2894/zh-CN/src/main/resources/locales) | `zh-CN` | ![gitlocalized](https://gitlocalize.com/repo/2894/zh-CN//badge.svg) |
-| ✅ | [Chinese (Taiwan)](https://gitlocalize.com/repo/2894/zh-TW/src/main/resources/locales) | `zh-TW` | ![gitlocalized](https://gitlocalize.com/repo/2894/zh-TW//badge.svg) |
-| ✅ | [Czech](https://gitlocalize.com/repo/2894/cs/src/main/resources/locales) | `cs` | ![gitlocalized](https://gitlocalize.com/repo/2894/cs/badge.svg) |
-| ✅ | [French](https://gitlocalize.com/repo/2894/fr/src/main/resources/locales) | `fr` | ![gitlocalized](https://gitlocalize.com/repo/2894/fr/badge.svg) |
-| ✅ | [German](https://gitlocalize.com/repo/2894/de/src/main/resources/locales) | `de` | ![gitlocalized](https://gitlocalize.com/repo/2894/de/badge.svg) |
-| ❌ | [Hungarian](https://gitlocalize.com/repo/2894/hu/src/main/resources/locales) | `hu` | ![gitlocalized](https://gitlocalize.com/repo/2894/hu/badge.svg) |
-| ❌ | [Indonesian](https://gitlocalize.com/repo/2894/id/src/main/resources/locales) | `id` | ![gitlocalized](https://gitlocalize.com/repo/2894/id/badge.svg) |
-| ❌ | [Italian](https://gitlocalize.com/repo/2894/it/src/main/resources/locales) | `it` | ![gitlocalized](https://gitlocalize.com/repo/2894/it/badge.svg) |
-| ❌ | [Japanese](https://gitlocalize.com/repo/2894/ja/src/main/resources/locales) | `ja` | ![gitlocalized](https://gitlocalize.com/repo/2894/ja/badge.svg) |
-| ❌ | [Korean](https://gitlocalize.com/repo/2894/ko/src/main/resources/locales) | `ko` | ![gitlocalized](https://gitlocalize.com/repo/2894/ko/badge.svg) |
-| ✅ | [Latvian](https://gitlocalize.com/repo/2894/lv/src/main/resources/locales) | `lv` | ![gitlocalized](https://gitlocalize.com/repo/2894/lv/badge.svg) |
-| ❌ | [Polish](https://gitlocalize.com/repo/2894/pl/src/main/resources/locales) | `pl` | ![gitlocalized](https://gitlocalize.com/repo/2894/pl/badge.svg) |
-| ❌ | [Portuguese](https://gitlocalize.com/repo/2894/pt/src/main/resources/locales) | `pt` | ![gitlocalized](https://gitlocalize.com/repo/2894/pt/badge.svg) |
-| ❌ | [Romanian](https://gitlocalize.com/repo/2894/ro/src/main/resources/locales) | `ro` | ![gitlocalized](https://gitlocalize.com/repo/2894/ro/badge.svg) |
-| ❌ | [Russian](https://gitlocalize.com/repo/2894/ru/src/main/resources/locales) | `ru` | ![gitlocalized](https://gitlocalize.com/repo/2894/ru/badge.svg) |
-| ✅ | [Spanish](https://gitlocalize.com/repo/2894/es/src/main/resources/locales) | `es` | ![gitlocalized](https://gitlocalize.com/repo/2894/es/badge.svg) |
-| ❌ | [Turkish](https://gitlocalize.com/repo/2894/tr/src/main/resources/locales) | `tr` | ![gitlocalized](https://gitlocalize.com/repo/2894/tr/badge.svg) |
-| ❌ | [Vietnamese](https://gitlocalize.com/repo/2894/vi/src/main/resources/locales) | `vi` | ![gitlocalized](https://gitlocalize.com/repo/2894/vi/badge.svg) |
+{{ translations(2894, ["zh-CN", "zh-TW", "cs", "fr", "de", "lv", "es"]) }}
 
 ## API
 
@@ -134,13 +106,13 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
 === "biome-data"
     !!! summary "Description"
         Returns a `Map<String, Object>` containing all the information about the requested biome.
-    
+
     !!! question "Input"
         - `biomeId`: String - the unique ID of the requested biome.
 
     !!! success "Output"
         The output is a `Map<String, Object>` with the following keys:
-        
+
         - `uniqueId`: String - the unique ID of the requested biome.
         - `world`: String - the name of the world where the biome is available.
         - `biome`: String - the name of the corresponding Minecraft biome.
@@ -152,10 +124,10 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
         - `cost`: Integer - the cost to use the biome.
         - `level`: Long - the minimum Island Level required in order to use the biome.
         - `permissions`: Set&lt;String&gt; - the list of permissions required in order to use the biome.
-        
+
     !!! failure
         This handler will return an empty map if the `biomeId` has not been provided or if the `biomeId` could not be found in the database.
-    
+
     !!! example "Code example"
         ```java
         public Map<String, Object> getBiomeData(String biomeId) {
@@ -170,16 +142,16 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
 === "biomes-list"
     !!! summary "Description"
         Returns a list of all biomes' uniqueIds that are defined in a given world.
-    
+
     !!! question "Input"
         - `world-name`: String - the name of the world.
 
     !!! success "Output"
         The output is a `List<String>` containing the list of the uniqueIds of the biomes that are defined for the specified world.
-        
+
     !!! failure
         This handler will return an empty list if the `world-name` has not been provided or if the `world-name` does not exist or is not a gamemode world.
-    
+
     !!! example "Code example"
         ```java
         public List<String> getBiomesList(String worldName) {
@@ -194,7 +166,7 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
 === "biome-request-change"
     !!! summary "Description"
         Requests a biome change with the provided parameters.
-    
+
     !!! question "Input"
         - Mandatory parameters:
             - `player`: UUID - the UUID of the targetted player.
@@ -213,13 +185,13 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
 
     !!! success "Output"
         The output is a `Map<String, Object>` with the following keys:
-        
+
         - `status`: Boolean - `true` if the biome was changed successfully, `false` otherwise.
         - `reason`: String - message explaining what happened (whether the change was successful or not).
-        
+
     !!! failure
         This handler will return `false` as its status with an appropriate reason if it failed.
-    
+
     !!! example "Code example"
         ```java
         public Map<String, Object> requestBiomeChange(UUID player, String worldName, String biomeId, String mode, int range, boolean requirements, boolean withdraw) {

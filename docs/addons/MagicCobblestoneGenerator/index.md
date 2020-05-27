@@ -25,7 +25,7 @@ Each tier must contain:
 * name: String that will be displayed in commands
 * blocks: List of Minecraft Materials and chance of getting it.
 
-Note: You can not use decimals for chances and the total chances for your tier do not have to add to 100. Therefore, you can do the same thing as decimals but with larger numbers. 
+Note: You can not use decimals for chances and the total chances for your tier do not have to add to 100. Therefore, you can do the same thing as decimals but with larger numbers.
 
 # FAQ
 1. Can you add feature X?
@@ -42,6 +42,4 @@ No, not yet.
 
 ## Translations
 
-Translations are welcome. Please check the status [here](Translate-MagicCobblestoneGenerator).
-
-
+{{ translations(2972, ["fr", "lv", "es"]) }}

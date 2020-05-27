@@ -1,5 +1,7 @@
 ## Available locales
 
+{{ translations(2855, ["zh-CN", "zh-TW", "cs", "fr", "de", "it", "ja", "lv", "pl", "ru", "es", "tr", "vi"]) }}
+
 | Available | Language | Language code | Progress |
 | --- | ---------- | --- | ----------- |
 | ✅ | English (United States) | `en-US` | 100% (Default) |

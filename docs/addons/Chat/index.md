@@ -58,7 +58,7 @@ permissions:
   bskyblock.chat.spy:
     description: Player can use team or island chat spy
     default: op
- 
+
   acidisland.chat.team-chat:
     description: Player can use team chat
     default: true
@@ -88,7 +88,7 @@ permissions:
   skygrid.chat.spy:
     description: Player can use team or island chat spy
     default: op
- 
+
 ```
 
 ## Like this addon?
@@ -96,4 +96,4 @@ You can [sponsor](https://github.com/sponsors/tastybento) to get more addons lik
 
 ## Translations
 
-Translations are welcome. Please check the status [here](Translate-Chat).
+{{ translations(3680, ["zh-CN", "cs", "fr", "it", "ja", "lv", "es", "tr"]) }}

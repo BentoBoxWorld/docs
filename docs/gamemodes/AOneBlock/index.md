@@ -14,7 +14,7 @@ The game is in Beta stage.
 
 ## Commands
 
-The user command is `/ob`. The admin command is `/oba`. 
+The user command is `/ob`. The admin command is `/oba`.
 
 ## FAQ
 
@@ -80,7 +80,7 @@ A: No. Those worlds are not included yet, just the phases.
 
 Q: What is the end goal?
 
-A: It's whatever you want it to be! 
+A: It's whatever you want it to be!
 
 ## Installation
 
@@ -137,7 +137,7 @@ Placeholders can be found [here](Placeholders).
 
 ## Translations
 
-We welcome translations! Please see [this page](Translate) for status.
+{{ translations(4481, ["ja"]) }}
 
 ## Bugs and Feature requests
 

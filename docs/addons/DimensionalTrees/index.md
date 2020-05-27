@@ -6,4 +6,4 @@ Initial code by **Awakened Redstone**.
 
 ## Translations
 
-Translation status is [here](Translate-DimensionalTrees).
+{{ translations(3842, []) }}

@@ -22,12 +22,12 @@ How many seconds the addon will wait before disabling fly mode when a player exi
 If the fly mode should be disabled when a player disconnect.
 
 ## Commands
-**/is fly** - This command toggles flight **On** and **Off** 
+**/is fly** - This command toggles flight **On** and **Off**
 
 ## Permissions
 **[gamemode].island.fly** - For usage of flight command
 
-Example: 
+Example:
     **bskyblock.island.fly**
 
 **[gamemode].island.flybypass** - Enables user to use fly command on other islands too
@@ -35,10 +35,7 @@ Example:
 
 Example:
 **caveblock.island.flybypass**
-  
+
 ## Translations
 
-Translation status is [here](Translate-IslandFly).
-
-
-
+{{ translations(2898, ["fr", "de", "ja", "lv", "es"]) }}

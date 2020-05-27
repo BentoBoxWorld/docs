@@ -39,7 +39,7 @@ Placeholders can be found [here](Placeholders).
 
 ## Translations
 
-We welcome translations! Please see [this page](Translate-BSkyBlock) for status.
+{{ translations(2953, ["zh-CN", "cs", "fr", "de", "hu", "id", "it", "ja", "ko", "lv", "pl", "pt", "ro", "es", "tr"]) }}
 
 ## Bugs and Feature requests
 

@@ -69,11 +69,11 @@ This section defines a number of overall settings for the add-on.
 
 ### Limits
 This section lists the limits for any particular block. Blocks over this amount are not counted. This limit applies to all game modes and is not world-specific.
-Format is MATERIAL: value 
+Format is MATERIAL: value
 
 ### Block values
 This section lists the value of a block in all game modes (worlds). To specific world-specific values, use the next section. Value must be an integer. Any blocks not listed will have a value of 0. AIR is always zero.
-Format is MATERIAL: value. 
+Format is MATERIAL: value.
 
 ### World-specific block values
 List any blocks that have a different value in a specific world. If a block is not listed, the default value will be used from the blocks section.
@@ -99,5 +99,4 @@ Placeholders can be found [here](Placeholders).
 
 ## Translations
 
-We welcome translations! Please see [this page](Translate-Level) for status.
-
+{{ translations(3013, ["zh-CN", "cs", "fr", "de", "hu", "ja", "lv", "ro", "es", "tr"]) }}

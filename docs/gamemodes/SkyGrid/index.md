@@ -32,7 +32,7 @@ Placeholders can be found [here](Placeholders).
 
 ## Translations
 
-We welcome translations! Please see [this page](Translate-SkyGrid) for status.
+{{ translations(2970, ["zh-CN", "cs", "fr", "de", "ja", "lv", "tr"]) }}
 
 ## Bugs and Feature requests
 

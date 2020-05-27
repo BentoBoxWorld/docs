@@ -41,7 +41,7 @@ Placeholders can be found [here](Placeholders).
 
 ## Translations
 
-We welcome translations! Please see [this page](Translate-AcidIsland) for status.
+{{ translations(2854, ["zh-CN", "cs", "fr", "de", "hu", "it", "ja", "lv", "pl", "ro", "es", "tr"]) }}
 
 ## Bugs and Feature requests
 File bug and feature requests [here](https://github.com/BentoBoxWorld/AcidIsland/issues)

@@ -65,7 +65,7 @@ Full permissions are listed [here](Permissions).
 
 ## Translations
 
-Translations are welcome and performed via GitLocalize. The status is [here](Translate-Limits).
+{{ translations(2974, ["cs", "fr", "de", "hu", "ja", "lv", "ro", "tr"]) }}
 
 ## Items that cannot be limited
 Some items cannot be limited (right now). The reasons are usually because there are too many ways to remove the item without it being tracked. If you are a programmer and can work out how to fix these, then please submit a PR!

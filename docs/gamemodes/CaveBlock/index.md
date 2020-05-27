@@ -5,11 +5,6 @@
 
 CaveBlock is an addon for BentoBox, so to run CaveBlock, you must have BentoBox installed. It is not a Bukkit plugin and trying to use it as one will not work.
 
-## Translation
-
-As most of BentoBox projects, CaveBlock Addon is translatable in any language. Everyone can contribute, and translate some parts of the addon in their language via [GitLocalize](https://gitlocalize.com/repo/2968).
-If your language is not in the list, please contact to developers via Discord and it will be added there.
-
 ## Installation
 
 0. Install BentoBox and run it on the server at least once to create its data folders.
@@ -42,7 +37,7 @@ Placeholders can be found [here](Placeholders).
 
 ## Translations
 
-We welcome translations! Please see [this page](Translate-CaveBlock) for status.
+{{ translations(2968, ["zh-CN", "cs", "ja", "lv"]) }}
 
 ## Bugs and Feature requests
 

@@ -107,7 +107,7 @@ Permission to use specific biomes can be added in biomes.yml.
 For example, the permission for the Nether biome is **greenhouses.biome.nether** and is set here:
 
  NETHER:
- 
+
     permission: greenhouses.biome.nether
 
 The permission can be anything you like, e.g., a rank permission, **myserver.VIP**.
@@ -115,15 +115,15 @@ The permission can be anything you like, e.g., a rank permission, **myserver.VIP
 ### General permissions are:
 
   greenhouses.player:
-  
+
      description: Gives access to player commands
      default: true
-     
+
   greenhouses.admin:
-  
+
      description: Gives access to admin commands
      default: op
 
 ## Translations
 
-Translations are welcome. Go [here](Translate-Greenhouses) to see the status.
+{{ translations(3680, ["cs", "fr", "hu", "ja"]) }}
