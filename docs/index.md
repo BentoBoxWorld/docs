@@ -5,8 +5,6 @@
     **The overhaul will span over the course of this week**.  
     - Poslovitch | May 25th, 2020.
 
-{{ macros_info() }}
-
 # BentoBox
 
 BentoBox is a platform plugin for island-style games like AcidIsland or BSkyBlock. It provides features such a island creation, team management, protection, etc. These games and features are added to BentoBox via addons that are like mini-plugins. Admins can customize their server to have exactly what games and features they want.
