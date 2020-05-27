@@ -21,7 +21,7 @@ Created and maintained by [BONNe](https://github.com/BONNe).
 
 ## Configuration
 
-By default, the challenges addon comes without any challenge or levels. On first runtime only the Admin GUI will be accessible. 
+By default, the challenges addon comes without any challenge or levels. On first runtime only the Admin GUI will be accessible.
 Admins can create their own challenges or load a set of default challenges. Default challenges contains 5 levels and 57 challenges.
 There also exist a Web Library, where admins can download public challenges. It is accessible via the Admin GUI by clicking on the Web icon.
 
@@ -30,19 +30,19 @@ There also exist a Web Library, where admins can download public challenges. It 
 !!! tip
     `[player_command]` and `[admin_command]` are commands that differ depending on the gamemode you are running.
     The Gamemodes' `config.yml` file contains options that allows you to modify these values.
-    As an example, on BSkyBlock, the default `[player_command]` is `island`, and the default `[admin_command]` is `bsbadmin`. 
+    As an example, on BSkyBlock, the default `[player_command]` is `island`, and the default `[admin_command]` is `bsbadmin`.
 
 === "Player commands"
     - `/challenges`: Access Player Challenges GUI. Contains either Challenges in current world or list of worlds where are Challenges enabled. This must be enabled in configuration.
-    - `/[player_command] challenges [challenge] [number]`: Access BSkyBlock Player Challenges GUI. If challenge name is provided, than this method will complete that challenge once. If number is provided, than it will complete challenge from 0-number times. 
+    - `/[player_command] challenges [challenge] [number]`: Access BSkyBlock Player Challenges GUI. If challenge name is provided, than this method will complete that challenge once. If number is provided, than it will complete challenge from 0-number times.
 
 === "Admin commands"
     - `/challengesadmin`: Access Admin Challenges GUI. Contains list of worlds where Challenges are enabled. This must be enabled in configuration.
     - `/[admin_command] challenges`: Access BSkyBlock Admin Challenges GUI
     - `/[admin_command] challenges reload [hard]`: Ability to reload Challengs addon configuration. This method clears also cache data. Parameter hard allows to reset database connection.
-    - `/[admin_command] challenges import [overwrite]`: Ability to import ASkyBlock challenges. Requires challenges.yml file in ./plugins/BentoBox/addons/Challenges/ folder. Parameter overwrite allows to overwrite existing challenges. 
-    - `/[admin_command] challenges defaults import`: Ability to import Default challenges. This method will not work, if in current world already exist challenges or levels. 
-    - `/[admin_command] challenges defaults generate`: Ability to export existing challenges. This method will generate defaults.json file in ./plugins/BentoBox/addons/Challenges/ folder. 
+    - `/[admin_command] challenges import [overwrite]`: Ability to import ASkyBlock challenges. Requires challenges.yml file in ./plugins/BentoBox/addons/Challenges/ folder. Parameter overwrite allows to overwrite existing challenges.
+    - `/[admin_command] challenges defaults import`: Ability to import Default challenges. This method will not work, if in current world already exist challenges or levels.
+    - `/[admin_command] challenges defaults generate`: Ability to export existing challenges. This method will generate defaults.json file in ./plugins/BentoBox/addons/Challenges/ folder.
 
 
 ## Permissions
@@ -64,13 +64,7 @@ Permissions can be found [here](Permissions).
 
 ## Translations
 
-!!! note "We need your help!"
-    Each BentoBox addon can be translated.
-    However, we rely on third-party contributions.
-    
-    * If your language is not available for this addon or if you would like to improve the existing translation,
-    please read the [translation guidelines](../../BentoBox/Translate-BentoBox-and-addons) and [start translating](https://gitlocalize.com/repo/2896)!
-    * If your language is not listed below, please contact us on [Discord](https://discord.bentobox.world) and we will setup everything so that you can start translating!
+{{ translations(2896, []) }}
 
 !!! info "Translations for challenges"
     The translations do not cover the challenges.
