@@ -64,7 +64,7 @@ Permissions can be found [here](Permissions).
 
 ## Translations
 
-{{ translations(2896, []) }}
+{{ translations(2896, ["zh-CN", "zh-TW", "cs", "fr", "de", "ja", "lv", "ru", "es"]) }}
 
 !!! info "Translations for challenges"
     The translations do not cover the challenges.
