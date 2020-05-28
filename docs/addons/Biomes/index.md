@@ -10,6 +10,8 @@ Created and maintained by [BONNe](https://github.com/BONNe).
 
 {{ addon_useful_links }}
 
+{{ testing_stuff }}
+
 ## Installation
 
 1. Put the addon jar in the `plugins/BentoBox/addons` folder.

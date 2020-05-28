@@ -11,6 +11,13 @@ def define_env(env):
     ([Latest stable build](https://ci.codemc.io/job/BentoBoxWorld/job/{{ page.title }}/lastStableBuild/))
     """
 
+    env.variables['testing_stuff'] = f"""
+{ env.variables.config }
+{ env.variables.environment }
+{ env.variables.context }
+{ env.variables.now }
+    """
+
     languages = [
         {"id": "zh-CN", "name": "Chinese (China)"},
         {"id": "zh-HK", "name": "Chinese (Hong Kong)"},
