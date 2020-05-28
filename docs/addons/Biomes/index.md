@@ -8,10 +8,7 @@ Created and maintained by [BONNe](https://github.com/BONNe).
     **Biomes** is currently in **Beta**.  
     Keep in mind that **you are more likely to encounter bugs** and **some features might not be stable**.
 
-!!! info "Useful links"
-    - [GitHub repository](https://github.com/BentoBoxWorld/Biomes) ([Releases](https://github.com/BentoBoxWorld/Biomes/releases))
-    - [Issue tracker](https://github.com/BentoBoxWorld/Biomes/issues)
-    - [Development builds](https://ci.codemc.org/job/BentoBoxWorld/job/Biomes) ([Latest stable build](https://ci.codemc.io/job/BentoBoxWorld/job/Biomes/lastStableBuild/))
+{{ addon_useful_links }}
 
 ## Installation
 
