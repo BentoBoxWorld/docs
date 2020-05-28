@@ -30,8 +30,9 @@ def define_env(env):
 
         # We are adding the intro + header of the language table
         result = f"""!!! note "We need your help!"
-    Each BentoBox addon can be translated.
-    However, we rely on third-party contributions.
+    A vast majority of strings in BentoBox and its addons can be translated into virtually any language.
+    However, most of the translations that are provided with BentoBox or said addons are made by the community, on which we heavily rely.
+    We cannot review all the content of these translations nor guarantee its quality, hence why we highly appreciate any contributions.
 
     * If your language is not available for this addon or if you would like to improve the existing translation,
     please read the [translation guidelines](../../BentoBox/Translate-BentoBox-and-addons)
