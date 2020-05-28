@@ -8,7 +8,7 @@ Created and maintained by [tastybento](https://github.com/tastybento).
     This addon requires [WorldBorderPlugin](https://github.com/yannicklamprecht/WorldBorderAPI/releases) from **WorldBorderAPI**.  
     Make sure you downloaded the plugin and put it in your server's `plugins` folder.
 
-{{ addon_useful_links }}
+{{ addon_useful_links("Border") }}
 
 ## Installation
 

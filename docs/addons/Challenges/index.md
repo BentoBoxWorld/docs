@@ -8,7 +8,7 @@ Created and maintained by [BONNe](https://github.com/BONNe).
     0.8.0 stores data in a different format that in 0.7.5 and below.
     You will need to migrate data with `/[gamemode_admin] challenges migrate` if you are using older versions.
 
-{{ addon_useful_links }}
+{{ addon_useful_links("Challenges") }}
 
 ## Installation
 

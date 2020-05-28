@@ -1,23 +1,5 @@
 def define_env(env):
 
-    # Defines variables which can be used in all pages
-
-    # Defines a Markdown note that provides all the useful links for the addon's page.
-    env.variables['addon_useful_links'] = """!!! info "Useful links"
-    - [GitHub repository](https://github.com/BentoBoxWorld/{{ page.title }})
-    ([Releases](https://github.com/BentoBoxWorld/{{ page.title }}/releases))
-    - [Issue tracker](https://github.com/BentoBoxWorld/{{ page.title }}/issues)
-    - [Development builds](https://ci.codemc.org/job/BentoBoxWorld/job/{{ page.title }})
-    ([Latest stable build](https://ci.codemc.io/job/BentoBoxWorld/job/{{ page.title }}/lastStableBuild/))
-    """
-
-    env.variables['testing_stuff'] = f"""
-{ env.variables.config }
-{ env.variables.environment }
-{ env.variables.context }
-{ env.variables.now }
-    """
-
     languages = [
         {"id": "zh-CN", "name": "Chinese (China)"},
         {"id": "zh-HK", "name": "Chinese (Hong Kong)"},
@@ -60,7 +42,7 @@ def define_env(env):
 | Available | Language | Language code | Progress |
 | --- | ---------- | --- | ----------- |
 | ✅ | English (United States) | `en-US` | 100% (Default) |
-    """
+"""
 
         for language in languages:
             available = no
@@ -71,3 +53,12 @@ def define_env(env):
             result += f"| {available} | [{language['name']}]({link}) | `{language['id']}` | ![progress]({badge}) |\n"
 
         return result
+
+    @env.macro
+    def addon_useful_links(addon_name:str):
+        return f"""!!! info "Useful links"
+    - [GitHub repository](https://github.com/BentoBoxWorld/{addon_name})
+    ([Releases](https://github.com/BentoBoxWorld/{addon_name}/releases))
+    - [Issue tracker](https://github.com/BentoBoxWorld/{addon_name}/issues)
+    - [Development builds](https://ci.codemc.org/job/BentoBoxWorld/job/{addon_name})
+    ([Latest stable build](https://ci.codemc.io/job/BentoBoxWorld/job/{addon_name}/lastStableBuild/))"""

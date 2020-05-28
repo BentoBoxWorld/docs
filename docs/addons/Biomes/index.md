@@ -8,9 +8,7 @@ Created and maintained by [BONNe](https://github.com/BONNe).
     **Biomes** is currently in **Beta**.  
     Keep in mind that **you are more likely to encounter bugs** and **some features might not be stable**.
 
-{{ addon_useful_links }}
-
-{{ testing_stuff }}
+{{ addon_useful_links({{ page.title }}) }}
 
 ## Installation
 
