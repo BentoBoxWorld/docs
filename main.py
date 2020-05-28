@@ -9,7 +9,7 @@ def define_env(env):
     - [Issue tracker](https://github.com/BentoBoxWorld/{page.title}/issues)
     - [Development builds](https://ci.codemc.org/job/BentoBoxWorld/job/{page.title})
     ([Latest stable build](https://ci.codemc.io/job/BentoBoxWorld/job/{page.title}/lastStableBuild/))
-"""
+    """
 
     languages = [
         {"id": "zh-CN", "name": "Chinese (China)"},
@@ -53,7 +53,7 @@ def define_env(env):
 | Available | Language | Language code | Progress |
 | --- | ---------- | --- | ----------- |
 | ✅ | English (United States) | `en-US` | 100% (Default) |
-"""
+    """
 
         for language in languages:
             available = no
