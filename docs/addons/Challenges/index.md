@@ -8,10 +8,7 @@ Created and maintained by [BONNe](https://github.com/BONNe).
     0.8.0 stores data in a different format that in 0.7.5 and below.
     You will need to migrate data with `/[gamemode_admin] challenges migrate` if you are using older versions.
 
-!!! info "Useful links"
-    - [GitHub repository](https://github.com/BentoBoxWorld/Challenges) ([Releases](https://github.com/BentoBoxWorld/Challenges/releases))
-    - [Issue tracker](https://github.com/BentoBoxWorld/Challenges/issues)
-    - [Development builds](https://ci.codemc.org/job/BentoBoxWorld/job/Challenges) ([Latest stable build](https://ci.codemc.io/job/BentoBoxWorld/job/Challenges/lastStableBuild/))
+{{ addon_useful_links }}
 
 ## Installation
 

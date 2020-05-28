@@ -8,10 +8,7 @@ Created and maintained by [tastybento](https://github.com/tastybento).
     This addon requires [WorldBorderPlugin](https://github.com/yannicklamprecht/WorldBorderAPI/releases) from **WorldBorderAPI**.  
     Make sure you downloaded the plugin and put it in your server's `plugins` folder.
 
-!!! info "Useful links"
-    - [GitHub repository](https://github.com/BentoBoxWorld/Border) ([Releases](https://github.com/BentoBoxWorld/Border/releases))
-    - [Issue tracker](https://github.com/BentoBoxWorld/Border/issues)
-    - [Development builds](https://ci.codemc.org/job/BentoBoxWorld/job/Border) ([Latest stable build](https://ci.codemc.io/job/BentoBoxWorld/job/Border/lastStableBuild/))
+{{ addon_useful_links }}
 
 ## Installation
 
