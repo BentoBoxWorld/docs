@@ -3,12 +3,12 @@ def define_env(env):
     # Defines variables which can be used in all pages
 
     # Defines a Markdown note that provides all the useful links for the addon's page.
-    env.variables['addon_useful_links'] = f"""!!! info "Useful links"
-    - [GitHub repository](https://github.com/BentoBoxWorld/{env.variables.page.title})
-    ([Releases](https://github.com/BentoBoxWorld/{env.variables.page.title}/releases))
-    - [Issue tracker](https://github.com/BentoBoxWorld/{env.variables.page.title}/issues)
-    - [Development builds](https://ci.codemc.org/job/BentoBoxWorld/job/{env.variables.page.title})
-    ([Latest stable build](https://ci.codemc.io/job/BentoBoxWorld/job/{env.variables.page.title}/lastStableBuild/))
+    env.variables['addon_useful_links'] = """!!! info "Useful links"
+    - [GitHub repository](https://github.com/BentoBoxWorld/{{page.title}})
+    ([Releases](https://github.com/BentoBoxWorld/{{page.title}}/releases))
+    - [Issue tracker](https://github.com/BentoBoxWorld/{{page.title}}/issues)
+    - [Development builds](https://ci.codemc.org/job/BentoBoxWorld/job/{{page.title}})
+    ([Latest stable build](https://ci.codemc.io/job/BentoBoxWorld/job/{{page.title}}/lastStableBuild/))
     """
 
     languages = [
