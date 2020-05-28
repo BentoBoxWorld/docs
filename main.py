@@ -4,7 +4,7 @@ def define_env(env):
 
     # Defines a Markdown note that provides all the useful links for the addon's page.
     env.variables['addon_useful_links'] = f"""!!! info "Useful links"
-    - [GitHub repository](https://github.com/BentoBoxWorld/{page.title}})
+    - [GitHub repository](https://github.com/BentoBoxWorld/{page.title})
     ([Releases](https://github.com/BentoBoxWorld/{page.title}/releases))
     - [Issue tracker](https://github.com/BentoBoxWorld/{page.title}/issues)
     - [Development builds](https://ci.codemc.org/job/BentoBoxWorld/job/{page.title})
