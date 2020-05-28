@@ -65,7 +65,7 @@ Full permissions are listed [here](Permissions).
 
 ## Translations
 
-{{ translations(2974, ["cs", "fr", "de", "hu", "ja", "lv", "ro", "tr"]) }}
+{{ translations(2974, ["cs", "de", "hu", "ja", "lv", "pl", "tr", "zh-CN"]) }}
 
 ## Items that cannot be limited
 Some items cannot be limited (right now). The reasons are usually because there are too many ways to remove the item without it being tracked. If you are a programmer and can work out how to fix these, then please submit a PR!

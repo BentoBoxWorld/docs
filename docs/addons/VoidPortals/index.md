@@ -29,4 +29,4 @@ If you like this addon but something is missing or is not working as you want, y
 
 ## Translations
 
-{{ translations(2975, ["cs", "fr", "de", "ja", "lv", "es"]) }}
+{{ translations(2975, ["cs", "fr", "ja", "lv"]) }}

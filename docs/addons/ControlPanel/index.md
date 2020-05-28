@@ -20,4 +20,4 @@ This is simple ControlPanel for all BentoBox GameMode addons. Allows to customiz
 
 ## Translations
 
-{{ translations(3135, ["cs", "fr", "de", "lv", "es", "tr"]) }}
+{{ translations(3135, ["cs", "de", "es", "fr", "lv"]) }}

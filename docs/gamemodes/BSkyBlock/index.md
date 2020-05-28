@@ -39,7 +39,7 @@ Placeholders can be found [here](Placeholders).
 
 ## Translations
 
-{{ translations(2953, ["zh-CN", "cs", "fr", "de", "hu", "id", "it", "ja", "ko", "lv", "pl", "pt", "ro", "es", "tr"]) }}
+{{ translations(2953, ["cs", "es", "fr", "id", "it", "ja", "ko", "lv", "pl", "pt", "zh-CN"]) }}
 
 ## Bugs and Feature requests
 

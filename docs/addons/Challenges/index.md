@@ -66,7 +66,7 @@ Permissions can be found [here](Permissions).
     Each challenge has its own "display name" and "description" which are not localized to keep the configuration process as simple as possible for the end user.  
     You can however find or provide translations for various challenges on our [online Challenges Library](https://github.com/BentoBoxWorld/weblink/tree/master/challenges/library) on GitHub.
 
-{{ translations(2896, ["zh-CN", "zh-TW", "cs", "fr", "de", "ja", "lv", "ru", "es"]) }}
+{{ translations(2896, ["cs", "de", "es", "fr", "ja", "lv", "ru", "zh-CN", "zh-TW"]) }}
 
 ## API
 

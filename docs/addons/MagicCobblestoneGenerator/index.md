@@ -42,4 +42,4 @@ No, not yet.
 
 ## Translations
 
-{{ translations(2972, ["fr", "lv", "es"]) }}
+{{ translations(2972, ["de", "es", "lv"]) }}

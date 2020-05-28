@@ -38,4 +38,4 @@ Example:
 
 ## Translations
 
-{{ translations(2898, ["fr", "de", "ja", "lv", "es"]) }}
+{{ translations(2898, ["cs", "de", "es", "fr", "ja", "lv"]) }}

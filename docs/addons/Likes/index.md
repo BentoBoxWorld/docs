@@ -37,4 +37,4 @@ Details can be found [here](Addon-Request).
 
 ## Translations
 
-{{ translations(3331, ["zh-CN", "cs", "fr", "id", "ja", "lv", "es"]) }}
+{{ translations(3331, ["cs", "hu", "ja", "lv", "zh-CN"]) }}

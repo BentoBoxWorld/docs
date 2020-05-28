@@ -6,4 +6,4 @@ Initial code by **Awakened Redstone**.
 
 ## Translations
 
-{{ translations(3842, []) }}
+{{ translations(3842, ["cs"]) }}

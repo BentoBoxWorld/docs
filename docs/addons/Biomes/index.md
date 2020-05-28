@@ -94,7 +94,7 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
 
 ## Translations
 
-{{ translations(2894, ["zh-CN", "zh-TW", "cs", "fr", "de", "lv", "es"]) }}
+{{ translations(2894, ["cs", "de", "es", "fr", "lv", "zh-CN", "zh-TW"]}}
 
 ## API
 

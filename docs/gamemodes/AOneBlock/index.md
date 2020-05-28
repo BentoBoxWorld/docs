@@ -137,7 +137,7 @@ Placeholders can be found [here](Placeholders).
 
 ## Translations
 
-{{ translations(4481, ["ja"]) }}
+{{ translations(4481, ["cs", "de", "es", "fr", "hr", "hu", "id", "it", "ja", "tr", "vi", "zh-CN", "zh-TW"]) }}
 
 ## Bugs and Feature requests
 
