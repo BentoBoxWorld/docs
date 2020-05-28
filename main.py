@@ -13,7 +13,9 @@ def define_env(env):
 
     languages = [
         {"id": "zh-CN", "name": "Chinese (China)"},
+        {"id": "zh-HK", "name": "Chinese (Hong Kong)"},
         {"id": "zh-TW", "name": "Chinese (Taiwan)"},
+        {"id": "hr", "name": "Croatian"},
         {"id": "cs", "name": "Czech"},
         {"id": "fr", "name": "French"},
         {"id": "de", "name": "German"},
