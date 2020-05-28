@@ -50,6 +50,7 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.tabbed
   - pymdownx.tasklist
+  - pymdownx.tilde
   - toc:
       permalink: "#"
 plugins:
