@@ -1,14 +1,11 @@
-BSkyBlock
-==========
-[![Build Status](https://ci.codemc.org/buildStatus/icon?job=BentoBoxWorld/BSkyBlock)](https://ci.codemc.org/job/BentoBoxWorld/job/BSkyBlock/)
-[![Lines Of Code](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Abskyblock&metric=ncloc)](https://sonarcloud.io/component_measures?id=world.bentobox%3Abskyblock&metric=ncloc)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Abskyblock&metric=sqale_rating)](https://sonarcloud.io/component_measures?id=world.bentobox%3Abskyblock&metric=Maintainability)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Abskyblock&metric=reliability_rating)](https://sonarcloud.io/component_measures?id=world.bentobox%3Abskyblock&metric=Reliability)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Abskyblock&metric=security_rating)](https://sonarcloud.io/component_measures?id=world.bentobox%3Abskyblock&metric=Security)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=world.bentobox%3Abskyblock&metric=bugs)](https://sonarcloud.io/project/issues?id=world.bentobox%3Abskyblock&resolved=false&types=BUG)
+# BSkyBlock
 
-## About
-BSkyBlock provides a skyblock-type Minecraft game for players that supports a default set of 3 islands (overworld, nether and end), protection of islands, team and coop play and other features. Please see the config.yml for all the settings.
+**BSkyBlock** is the evolution of our most popular plugin so far: **ASkyBlock**.
+Players have to survive on an island lost in the skies.
+
+Created and maintained by [tastybento](https://github.com/tastybento).
+
+{{ addon_description("BSkyBlock") }}
 
 ## Installation
 
@@ -40,7 +37,3 @@ Placeholders can be found [here](Placeholders).
 ## Translations
 
 {{ translations(2953, ["cs", "es", "fr", "id", "it", "ja", "ko", "lv", "pl", "pt", "zh-CN"]) }}
-
-## Bugs and Feature requests
-
-File bug and feature requests [here](https://github.com/BentoBoxWorld/BSkyBlock/issues)

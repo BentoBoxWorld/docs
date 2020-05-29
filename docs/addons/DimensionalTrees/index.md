@@ -1,8 +1,10 @@
 # DimensionalTrees
 
-**DimensionalTrees** is a addon that makes the trees that grow on the Nether/End change to be a tree of that dimension.
+**DimensionalTrees** is an addon that makes the trees that grow on the Nether/End change to be a tree of that dimension.
 
-Initial code by **Awakened Redstone**.
+Created by [Awakened-Redstone](https://github.com/Awakened-Redstone) and maintained by [tastybento](https://github.com/tastybento).
+
+{{ addon_description("DimensionalTrees") }}
 
 ## Translations
 

@@ -1,6 +1,10 @@
 # CheckMeOut
 This is an island submission addon. This addon enables players to submit their island for consideration by admins. In this way, Admins can set up site-wide challenges or competitions that players can do and then submit their island for consideration. Admins get a GUI that lists submissions and they can teleport to the islands from there. Once an island is reviewed by admins it can be deleted, or when the whole activity is over, all submissions can be cleared.
 
+Created and maintained by [tastybento](https://github.com/tastybento).
+
+{{ addon_description("CheckMeOut") }}
+
 ## Commands
 
 ### Player Command
@@ -38,7 +42,7 @@ permissions:
   bskyblock.checkmeout.admin.seesubs:
     description: Admin can open the submissions GUI
     default: op
-    
+
   acidisland.checkmeout:
     description: Player can use the checkmeout command
     default: true
@@ -54,7 +58,7 @@ permissions:
   acidisland.checkmeout.admin.seesubs:
     description: Admin can open the submissions GUI
     default: op
-    
+
   caveblock.checkmeout:
     description: Player can use the checkmeout command
     default: true
@@ -71,11 +75,11 @@ permissions:
     description: Admin can open the submissions GUI
     default: op
 ```
- 
- 
+
+
 ## Config.yml
- 
- 
+
+
 ```
 # Icon that will be displayed in CheckMeOut list.
 # It uses native Minecraft material strings, but using string 'PLAYER_HEAD', it is possible to
@@ -100,4 +104,3 @@ random-allowed: true
 user-command: checkmeout
 admin-command: cmo
 ```
- 

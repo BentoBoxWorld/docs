@@ -1,9 +1,11 @@
 # AOneBlock
-A OneBlock, written by tastybento.
 
-Credit for the original idea: **IJAminecraft**.
+**AOneBlock** is our take on **IJAminecraft**'s popular survival map: OneBlock.
+Players have to survive on a single block, which appears to be magic...
 
-[![Build Status](https://ci.codemc.org/buildStatus/icon?job=BentoBoxWorld/AOneBlock)](https://ci.codemc.org/job/BentoBoxWorld/job/AOneBlock/)
+Created and maintained by [tastybento](https://github.com/tastybento).
+
+{{ addon_description("AOneBlock") }}
 
 ## About
 OneBlock puts you on a block in space. There is only one block. What do you do next?
@@ -138,7 +140,3 @@ Placeholders can be found [here](Placeholders).
 ## Translations
 
 {{ translations(4481, ["cs", "de", "es", "fr", "hr", "hu", "id", "it", "ja", "tr", "vi", "zh-CN", "zh-TW"]) }}
-
-## Bugs and Feature requests
-
-File bug and feature requests here: https://github.com/BentoBoxWorld/AOneBlock/issues

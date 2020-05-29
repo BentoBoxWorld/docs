@@ -1,14 +1,16 @@
 # Greenhouses
 
-## Note for 1.15.x + servers
-
-Biomes have changed so that they take up a 4x4 area and so greenhouse biomes now can bleed outside of the greenhouse. Unfortunately, this cannot be mitigated (as far as I know). If you have a good imagination, you can say that the biome of the greenhouse influences the surroundings a bit and it is natural! So it's a feature, not a bug!
-
-## About
-
 Greenhouses is a BentoBox add-on to power-up your island world! It enables players to build their own biome greenhouses complete with weather, friendly mob spawning, unique plant growth, and even block erosion!
 
 Greenhouses are made out of glass and must contain the blocks found in the Biome Recipe to be valid. There is a recipe GUI. Once built, the greenhouse can be used to grow plants with bonemeal, and it may spawn biome-specific mobs. If you include a hopper with water in it, snow will form inside the greenhouse when it rains. If you put bonemeal in the hopper, biome-specific plants will grow. Some blocks can also transform over time due to "erosion".
+
+Created and maintained by [tastybento](https://github.com/tastybento).
+
+{{ addon_description("Greenhouses") }}
+
+## Note for 1.15.x + servers
+
+Biomes have changed so that they take up a 4x4 area and so greenhouse biomes now can bleed outside of the greenhouse. Unfortunately, this cannot be mitigated (as far as I know). If you have a good imagination, you can say that the biome of the greenhouse influences the surroundings a bit and it is natural! So it's a feature, not a bug!
 
 ## Features
 
@@ -54,7 +56,6 @@ This example is for when you are in the BSkyBlock world. For AcidIsland, just us
 * Can I build a Nether greenhouse? Try it and see... (Actually, you may need permission)
 * Can I build greenhouses in the Nether? Yes. You can colonize the nether with them.
 * What kind of mobs spawn in the biomes? It's what you would expect, wolves in Cold Taiga, horses on plains, etc.
-
 
 ## Required Plugin
 

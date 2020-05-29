@@ -1,5 +1,10 @@
 # Chat
-This addon gives players Team Chat and Island Chat for any BentoBox gamemode.
+
+**Chat** provides a **Team Chat** and **Island Chat** to let your players talk privately to their visitors or fellow island members.
+
+Created and maintained by [tastybento](https://github.com/tastybento).
+
+{{ addon_description("Chat") }}
 
 ## Island chat
 

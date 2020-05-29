@@ -1,9 +1,12 @@
 # Level
-[![Build Status](https://ci.codemc.org/buildStatus/icon?job=BentoBoxWorld/Level)](https://ci.codemc.org/job/BentoBoxWorld/job/Level/)
 
-Add-on for BentoBox to calculate island levels for BSkyBlock and AcidIsland. This add-on will work for game modes listed in the config.yml.
+**Level** lets your players compete to have the top island! Place blocks and increase the island level!
 
-## How to use
+Created and maintained by [tastybento](https://github.com/tastybento).
+
+{{ addon_description("Level") }}
+
+## Installation
 
 1. Place the level addon jar in the addons folder of the BentoBox plugin
 2. Restart the server

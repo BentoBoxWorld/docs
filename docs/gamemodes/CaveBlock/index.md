@@ -1,9 +1,10 @@
 # CaveBlock
 
-[![Discord](https://img.shields.io/discord/272499714048524288.svg?logo=discord)](https://discord.bentobox.world)
-[![Build Status](https://ci.codemc.org/buildStatus/icon?job=BentoBoxWorld/CaveBlock)](https://ci.codemc.org/job/BentoBoxWorld/job/CaveBlock/)
+**CaveBlock** lets ~~dwarves~~ players survive underground. Mine, craft, and dig a hole (*diggy diggy hole*)!
 
-CaveBlock is an addon for BentoBox, so to run CaveBlock, you must have BentoBox installed. It is not a Bukkit plugin and trying to use it as one will not work.
+Created and maintained by [BONNe](https://github.com/BONNe).
+
+{{ addon_description("CaveBlock") }}
 
 ## Installation
 
@@ -38,7 +39,3 @@ Placeholders can be found [here](Placeholders).
 ## Translations
 
 {{ translations(2968, ["cs", "id", "ja", "lv", "ro", "zh-CN"]) }}
-
-## Bugs and Feature requests
-
-File bug and feature requests [here](https://github.com/BentoBoxWorld/CaveBlock/issues)

@@ -1,5 +1,10 @@
 # InvSwitcher
-World inventory switcher add-on for BentoBox. This add-on will work for any game modes.
+
+**InvSwitcher** separates your players inventories between the various worlds.
+
+Created and maintained by [tastybento](https://github.com/tastybento).
+
+{{ addon_description("InvSwitcher") }}
 
 ## How to use
 

@@ -1,12 +1,14 @@
 # Limits
-[![Build Status](https://ci.codemc.org/buildStatus/icon?job=BentoBoxWorld/Limits)](https://ci.codemc.org/job/BentoBoxWorld/job/Limits/)
 
-Add-on for BentoBox to limit island blocks and entities in GameModes like  BSkyBlock and AcidIsland. This add-on will work
-in any game mode world.
+**Limits** allows you to limit island blocks and entities in GameModes like BSkyBlock and AcidIsland.
 
 This addon was made to help limit lag-inducing entities or blocks, e.g., hoppers. It can be used to limit regular blocks and entities but not all can be limited.
 
-## How to use
+Created and maintained by [tastybento](https://github.com/tastybento).
+
+{{ addon_description("Limits") }}
+
+## Installation
 
 1. Place the Limits addon jar in the addons folder of the BentoBox plugin
 2. Restart the server

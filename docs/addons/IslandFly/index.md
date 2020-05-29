@@ -1,9 +1,12 @@
 # IslandFly
-[![Build Status](https://ci.codemc.org/buildStatus/icon?job=BentoBoxWorld/IslandFly)](https://ci.codemc.org/job/BentoBoxWorld/job/IslandFly/)
 
-Add-on for BentoBox to allow players of Gamemode Addons to fly on their island.
+**IslandFly** allows players to fly on their island.
 
-## How to use
+Created and maintained by [tastybento](https://github.com/tastybento).
+
+{{ addon_description("IslandFly") }}
+
+## Installation
 
 1. Place the .jar in the addons folder of the BentoBox plugin
 2. Restart the server
