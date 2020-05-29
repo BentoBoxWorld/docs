@@ -56,10 +56,20 @@ def define_env(env):
         return result
 
     @env.macro
-    def addon_useful_links(addon_name:str):
-        return f"""!!! info "Useful links"
+    def addon_useful_links(addon_name:str, beta:bool=False):
+        result = ""
+
+        if beta:
+            result += f"""!!! warning
+    **{addon_name}** is currently in **Beta**.  
+    Keep in mind that **you are more likely to encounter bugs** and **some features might not be stable**.
+            """
+
+        result += f"""!!! info "Useful links"
     - [GitHub repository](https://github.com/BentoBoxWorld/{addon_name})
     ([Releases](https://github.com/BentoBoxWorld/{addon_name}/releases))
     - [Issue tracker](https://github.com/BentoBoxWorld/{addon_name}/issues)
     - [Development builds](https://ci.codemc.org/job/BentoBoxWorld/job/{addon_name})
     ([Latest stable build](https://ci.codemc.io/job/BentoBoxWorld/job/{addon_name}/lastStableBuild/))"""
+
+        return result
