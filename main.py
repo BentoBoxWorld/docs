@@ -61,9 +61,8 @@ def define_env(env):
 
         if beta:
             result += f"""!!! warning
-    **{addon_name}** is currently in **Beta**.  
-    Keep in mind that **you are more likely to encounter bugs** and **some features might not be stable**.
-            """
+    **{addon_name}** is currently in **Beta**.
+    Keep in mind that **you are more likely to encounter bugs** and **some features might not be stable**.\n\n"""
 
         result += f"""!!! info "Useful links"
     - [GitHub repository](https://github.com/BentoBoxWorld/{addon_name})
