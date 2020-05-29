@@ -4,11 +4,7 @@
 
 Created and maintained by [BONNe](https://github.com/BONNe).
 
-!!! warning
-    **CauldronWitchery** is currently in **Beta**.  
-    Keep in mind that **you are more likely to encounter bugs** and **some features might not be stable**.
-
-{{ addon_useful_links("CauldronWitchery") }}
+{{ addon_description("CauldronWitchery", beta=True) }}
 
 ## Installation
 

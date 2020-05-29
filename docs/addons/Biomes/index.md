@@ -4,7 +4,7 @@
 
 Created and maintained by [BONNe](https://github.com/BONNe).
 
-{{ addon_useful_links("Biomes", beta=True) }}
+{{ addon_description("Biomes", beta=True) }}
 
 ## Installation
 

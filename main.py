@@ -56,7 +56,7 @@ def define_env(env):
         return result
 
     @env.macro
-    def addon_useful_links(addon_name:str, beta:bool=False):
+    def addon_description(addon_name:str, beta:bool=False):
         result = ""
 
         if beta:
