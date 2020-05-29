@@ -1,20 +1,22 @@
-# Installation
+# FAQ
 
-## How do I install BentoBox, BSkyBlock and all those other addon things?
+## Installation
+
+### How do I install BentoBox, BSkyBlock and all those other addon things?
 
 We have set up various ways to allow you to easily install BentoBox and its addons.
 You can check out [this tutorial](BentoBox/Install-Bentobox.md) to learn about all of them.
 **Welcome in our community!**
 
-# Configuration
+## Configuration
 
-## How do I make my own custom islands?
+### How do I make my own custom islands?
 
 You are referring to our **in-house schematic format** we call **_Blueprints_**.
 The [Blueprints page](BentoBox/Blueprints.md) provides all the relevant information to get you started with the Blueprints, as well as a few hints and tricks you can use to further customize them.
 You can also have a look at [this video](https://youtu.be/4gvaG89uxAs) which, although outdated, might help you create your first Blueprint within minutes.
 
-## What version of any database is required?
+### What version of any database is required?
 
 Minimum required versions:
 
@@ -23,7 +25,7 @@ Minimum required versions:
 * **MongoDB** 3.6 or later
 * **SQLite** 3.28 or later
 
-## How can I increase some players' island size?
+### How can I increase some players' island size?
 
 There are two ways to grant players a greater island size: the permissions or the commands.
 Both have pros and cons, and **should not be used concurrently**.
@@ -39,9 +41,9 @@ Grant players the `[gamemode].island.range.<number>` permission.
 
 Use the `/[admin_command] range` commands.
 
-# Issues
+## Issues
 
-## Superflat chunks are generating in my worlds
+### Superflat chunks are generating in my worlds
 
 *Relevant issues:*
 [BentoBox#1212](https://github.com/BentoBoxWorld/BentoBox/issues/1232),
@@ -58,11 +60,11 @@ Although we are providing additional instructions to help recover from such an e
 Moreover, these solutions are **designed to address the problem as much as possible, however, ignoring the impact on performance or player islands**.
 Use them knowingly.
 
-In any case, **stop your server immediately to prevent further damage from being done to your worlds**. 
+In any case, **stop your server immediately to prevent further damage from being done to your worlds**.
 
-### Causes
+#### Causes
 
-#### BentoBox or the Gamemode addon is no longer running
+##### BentoBox or the Gamemode addon is no longer running
 
 **Why?**
 
@@ -75,7 +77,7 @@ Investigate as to why BentoBox or the Gamemode addon is no longer enabled.
 Read the logs to find errors at startup.
 Try booting your server up while adding a single plugin at a time to find out which plugin is causing the issue.
 
-#### There is no generator set for this world in the `bukkit.yml` file
+##### There is no generator set for this world in the `bukkit.yml` file
 
 **Why?**
 
@@ -86,7 +88,7 @@ While setting the default world of your server to be the Gamemode addon's world,
 
 Make sure you followed each step of [this tutorial](BentoBox/Set-a-BentoBox-world-as-the-server-default-world.md) thoroughly.
 
-#### The `use-own-generator` option from the Gamemode's config is set to `true`
+##### The `use-own-generator` option from the Gamemode's config is set to `true`
 
 **Why?**
 
@@ -111,7 +113,7 @@ If you do not plan to use an external plugin to generate the world, then you sho
 
 On the contrary, you should make sure you have specified the world name and the corresponding plugin name as its generator in the `bukkit.yml` file.
 
-#### Another plugin is trying to control the generator of this world
+##### Another plugin is trying to control the generator of this world
 
 **Why?**
 
@@ -125,7 +127,7 @@ Review all of your plugins to find out which one is the most likely to cause the
 World management plugins or custom-coded ones that are interacting with worlds are to be investigated first.
 Either report the issue to their developers or fix the configuration files that are involved.  
 
-#### There is a bug in BentoBox or in the Gamemode addon
+##### There is a bug in BentoBox or in the Gamemode addon
 
 **Why?**
 
@@ -144,7 +146,7 @@ In that case, please refer yourself to [this section](https://bentobox-world.rea
 If the issue still occurs, this means this is a BentoBox bug.
 Please [report it on our bug tracker](https://github.com/BentoBoxWorld/BentoBox/issues).
 
-### How to clean the superflat chunks afterwards?
+#### How to clean the superflat chunks afterwards?
 
 If you have backups, use them to revert your server's worlds and BentoBox databases to their previous states.
 
@@ -161,7 +163,7 @@ This happens when chunks are loaded, so you might want to either teleport to sai
 **Do not forget to disable the flag at some point!**
 It is quite resource-intensive...
 
-## My server lags when a player creates their island!
+### My server lags when a player creates their island!
 
 Pasting the island or generating the chunks are the main causes of this issue.
 
@@ -182,7 +184,7 @@ If you are running timings, the `BlueprintPaster` task should ideally be taking 
 If the server still struggles when pasting islands, then that implies it struggles to generate the chunks.
 That is something we have little control on as a plugin, but here are a few things you could do to mitigate this:
 
-* Try reducing the "distance between islands" setting in the gamemode's config file. 
+* Try reducing the "distance between islands" setting in the gamemode's config file.
 Lower values means fewer chunks to generate.
 This will require you to entirely reset the worlds and databases.
 * Use Paper as your server software.
@@ -190,9 +192,9 @@ Paper handles asynchronous chunk generation.
 * Pre-generate the world.
 Especially for gamemodes whose generators are resource-intensive, such as CaveBlock or SkyGrid.
 
-# API
+## API
 
-## How do I start writing addons for BentoBox? Is there an API?
+### How do I start writing addons for BentoBox? Is there an API?
 
 Yes, there is definitely an API.
 Writing addons is very similar to writing plugins except there is a lot more API available for things like teams, protections, commands, panels and pasting.
