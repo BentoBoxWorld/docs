@@ -50,4 +50,4 @@ Example:
 
 ## Translations
 
-{{ translations(2898, ["cs", "de", "es", "fr", "ja", "lv"]) }}
+{{ translations(4728, ["cs", "de", "es", "fr", "ja", "lv"]) }}
