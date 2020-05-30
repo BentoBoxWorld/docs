@@ -1,6 +1,6 @@
 # InvSwitcher
 
-**InvSwitcher** separates your players inventories between the various worlds.
+**InvSwitcher** separates player inventories between the various worlds.
 
 Created and maintained by [tastybento](https://github.com/tastybento).
 
@@ -21,15 +21,15 @@ There is no config.yml.
 There are no commands.
 
 ## What it does
-This addon will give players a separate inventory, health, food level and experience for each gamemode installed and it's corresponding worlds. It will try to allow players to play each gamemode independently of another by forbidding share of above mentioned.
+This addon will give players a separate inventory, health, food level and experience for each gamemode installed and its corresponding worlds. It will allow players to play each gamemode independently of another by forbidding sharing of resources between worlds.
 
 ## An example
-**BSkyBlock**'s Inventory, Health, Food level and Experience are shared only between it's corresponding worlds:
+**BSkyBlock**'s Inventory, Health, Food level and Experience are shared only between its corresponding worlds:
 - BSkyBlock_world
 - BSkyBlock_world_nether
 - BSkyBlock_world_the_end
 
-**AcidIsland**'s Inventory, Health, Food level and Experience are shared only between it's corresponding worlds:
+**AcidIsland**'s Inventory, Health, Food level and Experience are shared only between its corresponding worlds:
 - AcidIsland_world
 - AcidIsland_world_nether
 - AcidIsland_world_the_end
