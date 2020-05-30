@@ -16,13 +16,18 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 
 ## Config.yml
 
-There are only two options in the config:
+There are only three options in the config:
 
 **fly-timeout**
 How many seconds the addon will wait before disabling fly mode when a player exit his island.
 
 **logout-disable-fly**
 If the fly mode should be disabled when a player disconnect.
+
+**disabled-gamemode**
+This list stores GameModes in which islandFly addon should not work. To disable addon it is necessary to write its name in new line that starts with -. Example:
+ disabled-gamemodes:
+  - BSkyBlock
 
 ## Commands
 **/is fly** - This command toggles flight **On** and **Off**
