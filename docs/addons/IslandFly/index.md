@@ -25,9 +25,13 @@ How many seconds the addon will wait before disabling fly mode when a player exi
 If the fly mode should be disabled when a player disconnect.
 
 **disabled-gamemode**
-This list stores GameModes in which islandFly addon should not work. To disable addon it is necessary to write its name in new line that starts with -. Example:
+This list stores GameModes in which islandFly addon should not work. To disable addon it is necessary to write its name in new line that starts with -. 
+
+Example:
+```
  disabled-gamemodes:
-  - BSkyBlock
+ - BSkyBlock
+```
 
 ## Commands
 **/is fly** - This command toggles flight **On** and **Off**
