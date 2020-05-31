@@ -4,9 +4,9 @@
 
 ### How do I install BentoBox, BSkyBlock and all those other addon things?
 
-We have set up various ways to allow you to easily install BentoBox and its addons.
-You can check out [this tutorial](BentoBox/Install-Bentobox.md) to learn about all of them.
-**Welcome in our community!**
+The easiest way to start is to download a "pack" of addons and BentoBox from https://download.bentobox.workd.
+You can also check out [this tutorial](BentoBox/Install-Bentobox.md) to learn about other ways.
+**Welcome to our community!**
 
 ## Configuration
 
@@ -24,22 +24,22 @@ Minimum required versions:
 * **MariaDB** 10.2.3 or later
 * **MongoDB** 3.6 or later
 * **SQLite** 3.28 or later
+* **PosgreSQL** latest is always recommended
 
-### How can I increase some players' island size?
+### How can I increase a player's island size?
 
-There are two ways to grant players a greater island size: the permissions or the commands.
-Both have pros and cons, and **should not be used concurrently**.
+Each island has a protected area. You can increase the protected area up to the inter-island distance. Island ranges can be increase via commands or by giving the island owner a permission. Permissions are checked only when a player logs in, so if you use a permission only, the player must relogin to make it happen. Commands work instantly. Remember, the protected range applies to the island as whole.
 
 **Permissions**
 
-Grant players the `[gamemode].island.range.<number>` permission.
+Grant owners the `[gamemode].island.range.<number>` permission.
 
-* This will only work if the island owner has that permission
 * The island owner will have to reconnect on the server in order to apply the changes
+* If the island owner changes, then the island range will adjust to the new island's range permission, or revert to the default range if the owner has no permission.
 
 **Commands**
 
-Use the `/[admin_command] range` commands.
+Use the `/[admin_command] range` commands. 
 
 ## Issues
 
@@ -55,10 +55,10 @@ Use the `/[admin_command] range` commands.
 If you start seeing superflat chunks being generated in your world, then it is because the world generator is not working for the world anymore.
 There are a few reasons why this may be the case. They are ordered according to their likeliness.
 
-**We strongly recommend you to revert to backups made prior to this situation**.
-Although we are providing additional instructions to help recover from such an event in case you do not have backups available, we **do not guarantee their effectiveness**.
-Moreover, these solutions are **designed to address the problem as much as possible, however, ignoring the impact on performance or player islands**.
-Use them knowingly.
+**We strongly recommend you revert to backups made prior to this situation**.
+Although we are providing instructions to help recover from such an event in case you do not have backups available, we **do not guarantee their effectiveness**. Moreover, these solutions are **designed to address the problem as much as possible, however, ignoring the impact on performance or player islands**. Use them knowingly.
+
+As a quick fix, there is a setting in the admin settings console to remove super flat chunks. This is the main tool to fix the damage, but unless you fix the root cause it will just cause super lag and never fix the issue properly.
 
 In any case, **stop your server immediately to prevent further damage from being done to your worlds**.
 
