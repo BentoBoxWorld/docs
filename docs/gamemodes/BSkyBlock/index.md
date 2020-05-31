@@ -1,11 +1,13 @@
 # BSkyBlock
 
-**BSkyBlock** is the evolution of our most popular plugin so far: **ASkyBlock**.
 Players have to survive on an island lost in the skies.
 
 Created and maintained by [tastybento](https://github.com/tastybento).
 
 {{ addon_description("BSkyBlock") }}
+
+## History
+**BSkyBlock** is the evolution of **ASkyBlock** for newer Minecraft server versions.
 
 ## Installation
 
