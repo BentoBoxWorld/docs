@@ -4,7 +4,7 @@
 
 ### How do I install BentoBox, BSkyBlock and all those other addon things?
 
-The easiest way to start is to download a "pack" of addons and BentoBox from https://download.bentobox.workd.
+The easiest way to start is to download a "pack" of addons and BentoBox from [https://download.bentobox.world](https://download.bentobox.world).
 You can also check out [this tutorial](BentoBox/Install-Bentobox.md) to learn about other ways.
 **Welcome to our community!**
 
