@@ -11,11 +11,11 @@ BentoBox is a platform plugin for island-style games like AcidIsland or BSkyBloc
 
 ## Supporting BentoBox
 
-Donate by becoming a [sponsor through GitHub](https://github.com/sponsors/tastybento)! Or [donate via PayPal](https://www.paypal.me/BentoBoxWorld). Funs help support development.
+Donate by becoming a [sponsor through GitHub](https://github.com/sponsors/tastybento) or [donate via PayPal](https://www.paypal.me/BentoBoxWorld). We hope you will have lots of fun with our games and help fund development!
 
 ## Downloading
 
-Download ready to go packs at https://download.bentobox.world
+Download ready to go packs at [https://download.bentobox.world](https://download.bentobox.world)
 
 ## Game Modes
 
