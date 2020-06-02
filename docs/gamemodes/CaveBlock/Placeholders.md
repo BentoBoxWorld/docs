@@ -6,4 +6,4 @@ To use these placeholders, you just need to replace `[gamemode]` with `caveblock
 
 f.e.: `%caveblock_world_friendly_name%`
 
-You can find a list of available placeholders here: [BentoBox Placeholders](../../BentoBox/Placeholders/#default-placeholders-for-gamemode-addons).
+You can find a list of available placeholders here: [BentoBox Placeholders](../../../BentoBox/Placeholders/#default-placeholders-for-gamemode-addons).

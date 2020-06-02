@@ -6,4 +6,4 @@ To use these placeholders, you just need to replace `[gamemode]` with `acidislan
 
 For example: `%acidisland_world_friendly_name%`
 
-You can find a list of available placeholders here: [Placeholders](../../BentoBox/Placeholders/#default-placeholders-for-gamemode-addons).
+You can find a list of available placeholders here: [Placeholders](../../../BentoBox/Placeholders/#default-placeholders-for-gamemode-addons).
