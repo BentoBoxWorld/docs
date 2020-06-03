@@ -1,4 +1,4 @@
-# PlaceHolders
+# Placeholders
 
 There are only four placeholders currently:
 <table align='center'>
