@@ -90,7 +90,7 @@ def define_env(env):
                     source = row['source']
                     result += f"""\n## {source} placeholders
 
-| Placeholder | Description | Version
+| Placeholder | Description | {source} version
 | ---------- | ---------- | ---------- |
 """
 
