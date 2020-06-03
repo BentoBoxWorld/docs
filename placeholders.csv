@@ -42,3 +42,21 @@ BentoBox,[gamemode]_resets_left,Number of times the player can reset his island,
 BentoBox,[gamemode]_deaths,Number of times the player died,1.12.0
 BentoBox,[gamemode]_on_island,Whether the player is on an island he is part of or not,1.13.0
 Level,Level_[gamemode]_island_level,Island level of the player's island,1.9.0
+Level,Level_[gamemode]_visited_island_level,Island level of the island the player is standing on,1.9.0
+Level,Level_[gamemode]_top_value_#RANK#,Island level of the `#RANK#`-th island in the Top 10,1.9.0
+Level,Level_[gamemode]_top_name_#RANK#,Island owner's name of the `#RANK#`-th island in the Top 10,1.9.0
+Likes,[gamemode]_likes_addon_island_likes_count,Count of likes that are set to player island,1.7.0
+Likes,[gamemode]_likes_addon_island_likes_place,Island place by likes count,1.7.0
+Likes,[gamemode]_likes_addon_island_dislikes_count,Count of dislikes that are set to player island,1.7.0
+Likes,[gamemode]_likes_addon_island_dislikes_place,Island place by dislikes count,1.7.0
+Likes,[gamemode]_likes_addon_island_rank_count,Rank number (likes - dislikes) that are set to player island,1.7.0
+Likes,[gamemode]_likes_addon_island_rank_place,Island place by rank,1.7.0
+Likes,[gamemode]_likes_addon_top_likes_owner_name_X,Island owner name who are in place X by likes,1.7.0
+Likes,[gamemode]_likes_addon_top_likes_island_name_X,Island name which are in place X by likes,1.7.0
+Likes,[gamemode]_likes_addon_top_likes_count_X,Count of likes for island that are in place X by likes,1.7.0
+Likes,[gamemode]_likes_addon_top_dislikes_owner_name_X,Island owner name who are in place X by dislikes,1.7.0
+Likes,[gamemode]_likes_addon_top_dislikes_island_name_X,Island name which are in place X by dislikes,1.7.0
+Likes,[gamemode]_likes_addon_top_dislikes_count_X,Count of dislikes for island that are in place X by dislikes,1.7.0
+Likes,[gamemode]_likes_addon_top_rank_owner_name_X,Island owner name who are in place X by rank,1.7.0
+Likes,[gamemode]_likes_addon_top_rank_island_name_X,Island name which are in place X by rank,1.7.0
+Likes,[gamemode]_likes_addon_top_rank_count_X,Rank value for island that are in place X by rank,1.7.0
