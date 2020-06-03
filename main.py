@@ -1,3 +1,5 @@
+import csv
+
 def define_env(env):
 
     languages = [
@@ -70,5 +72,19 @@ def define_env(env):
     - [Issue tracker](https://github.com/BentoBoxWorld/{addon_name}/issues)
     - [Development builds](https://ci.codemc.org/job/BentoBoxWorld/job/{addon_name})
     ([Latest stable build](https://ci.codemc.io/job/BentoBoxWorld/job/{addon_name}/lastStableBuild/))"""
+
+        return result
+
+    @env.macro
+    def placeholders_bundle(gamemode_name:str):
+        result = """| Placeholder | Description | Version |
+| ---------- | ---------- | ---------- |
+        """
+
+        # Let's read the csv file
+        with open('placeholders.csv', newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                result += f"| {row['placeholder'].replace('[gamemode]',gamemode_name)} | {row['desc']} | {row['version']} |\n"
 
         return result

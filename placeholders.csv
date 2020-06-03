@@ -1,0 +1,43 @@
+source,placeholder,desc,version
+BentoBox,[gamemode]_world_friendly_name,Name of the gamemode's world,1.4.0
+BentoBox,[gamemode]_world_islands,Number of islands in this gamemode's world,1.5.0
+BentoBox,[gamemode]_island_distance,Half the distance between islands' centers of the gamemode's world,1.4.0
+BentoBox,[gamemode]_island_distance_diameter,Distance between islands of the gamemode's world,1.5.0
+BentoBox,[gamemode]_island_protection_range,Radius of the island's protection range,1.4.0
+BentoBox,[gamemode]_island_protection_range_diameter,Diameter of the island's protection range ,1.5.0
+BentoBox,[gamemode]_island_owner,Name of the island's owner,1.4.0
+BentoBox,[gamemode]_island_creation_date,Creation date of the island,1.4.0
+BentoBox,[gamemode]_island_name,Name of the island,1.4.0
+BentoBox,[gamemode]_island_center,Coordinates of the island's center,1.5.0
+BentoBox,[gamemode]_island_center_x,X coordinate of the island's center,1.5.0
+BentoBox,[gamemode]_island_center_y,Y coordinate of the island's center,1.5.0
+BentoBox,[gamemode]_island_center_z,Z coordinate of the island's center,1.5.0
+BentoBox,[gamemode]_island_members_max,Maximum number of members there can be on the island,1.5.0
+BentoBox,[gamemode]_island_members_count,"Number of members, subowners and owner there are on the island",1.5.0
+BentoBox,[gamemode]_island_members_list,Comma separated list of player names that are at least MEMBER on the island,1.13.0
+BentoBox,[gamemode]_island_trustees_count,Number of players trusted to the island,1.5.0
+BentoBox,[gamemode]_island_coops_count,Number of players cooped to the island,1.5.0
+BentoBox,[gamemode]_island_visitors_count,Number of players currently visiting the island,1.5.0
+BentoBox,[gamemode]_island_bans_count,Number of players banned from the island,1.5.0
+BentoBox,[gamemode]_visited_island_protection_range,Radius of the protection range of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_protection_range_diameter,Diameter of the protection range of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_owner,Name of the owner of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_creation_date,Creation date of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_name,Name of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_center,Coordinates of the center of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_center_x,X coordinate of the center of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_center_y,Y coordinate of the center of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_center_z,Z coordinate of the center of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_members_max,Maximum number of members there can be on the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_members_count,"Number of members, subowners and owner there are on the island",1.5.2
+BentoBox,[gamemode]_visited_island_members_list,Comma separated list of player names that are at least MEMBER on the island the player is standing on,1.13.0
+BentoBox,[gamemode]_visited_island_trustees_count,Number of players trusted on the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_coops_count,Number of players cooped to the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_visitors_count,Number of players currently visiting the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_bans_count,Number of players banned from the island the player is standing on,1.5.2
+BentoBox,[gamemode]_has_island,Whether the player has an island or not,1.5.0
+BentoBox,[gamemode]_rank,Rank the player has on his island,1.5.0
+BentoBox,[gamemode]_resets,Number of times the player has reset his island,1.5.0
+BentoBox,[gamemode]_resets_left,Number of times the player can reset his island,1.5.0
+BentoBox,[gamemode]_deaths,Number of times the player died,1.12.0
+BentoBox,[gamemode]_on_island,Whether the player is on an island he is part of or not,1.13.0
