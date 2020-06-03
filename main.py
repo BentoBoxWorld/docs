@@ -88,7 +88,7 @@ def define_env(env):
                 if (row['source'] != source):
                     # We are in a new "source" so we have to put the header
                     source = row['source']
-                    result += f"""\n## {source} placeholders
+                    result += f"""## {source} placeholders
 
 | Placeholder | Description | Version
 | ---------- | ---------- | ---------- |
