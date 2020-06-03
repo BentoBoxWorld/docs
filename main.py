@@ -85,6 +85,6 @@ def define_env(env):
         with open('placeholders.csv', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                result += f"| {row['placeholder'].replace('[gamemode]',gamemode_name)} | {row['desc']} | {row['version']} |\n"
+                result += f"| %{row['placeholder'].replace('[gamemode]',gamemode_name)}% | {row['desc']} | {row['version']} |\n"
 
         return result
