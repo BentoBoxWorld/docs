@@ -77,14 +77,23 @@ def define_env(env):
 
     @env.macro
     def placeholders_bundle(gamemode_name:str):
-        result = """| Placeholder | Description | Version |
-| ---------- | ---------- | ---------- |
-        """
+        result = ""
+        source = ""
 
         # Let's read the csv file
         with open('placeholders.csv', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
+                # Analyze the source
+                if (row['source'] != source):
+                    # We are in a new "source" so we have to put the header
+                    source = row['source']
+                    result += f"""\n## {source} placeholders
+
+| Placeholder | Description | Version
+| ---------- | ---------- | ---------- |
+"""
+
                 result += f"| %{row['placeholder'].replace('[gamemode]',gamemode_name)}% | {row['desc']} | {row['version']} |\n"
 
         return result

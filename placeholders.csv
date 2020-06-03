@@ -41,3 +41,4 @@ BentoBox,[gamemode]_resets,Number of times the player has reset his island,1.5.0
 BentoBox,[gamemode]_resets_left,Number of times the player can reset his island,1.5.0
 BentoBox,[gamemode]_deaths,Number of times the player died,1.12.0
 BentoBox,[gamemode]_on_island,Whether the player is on an island he is part of or not,1.13.0
+Level,Level_[gamemode]_island_level,Island level of the player's island,1.9.0
