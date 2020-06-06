@@ -17,22 +17,12 @@ Donate by becoming a [sponsor through GitHub](https://github.com/sponsors/tastyb
 
 Download ready to go packs at [https://download.bentobox.world](https://download.bentobox.world)
 
-## Game Modes
-
-BentoBox supports the following game modes:
-
-- [BSkyBlock](gamemodes/BSkyBlock) - skyblock. Nuff said.
-- [AcidIsland](gamemodes/AcidIsland) - survive in a sea of acid!
-- [AOneBlock](gamemodes/AOneBlock) - you start with one block, now what?
-- [CaveBlock](gamemodes/CaveBlock) - mining, mining, and more mining!
-- [SkyGrid](gamemodes/SkyGrid) - a terrifying grid of blocks!
-
 ## Getting started
 - [Install BentoBox](BentoBox/Install-Bentobox)
 - [FAQ](FAQ)
 - [Migration from ASkyBlock](Converter/index.md)
 - [Set a BentoBox world as the server default world](BentoBox/Set-a-BentoBox-world-as-the-server-default-world)
-- [Database transition](BentoBox/Database-transition) 
+- [Database transition](BentoBox/Database-transition)
 
 ## About BentoBox
 - [Commands](BentoBox/Commands)
