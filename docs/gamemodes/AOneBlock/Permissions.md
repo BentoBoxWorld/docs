@@ -7,6 +7,16 @@
   <td align='left'><b>Description</b></td>
 </tr>
 <tr>
+  <td align='left'>aoneblock.count</td>
+  <td align='left'>true</td>
+  <td align='left'>Allow use of the aoneblock count command</td>
+</tr>
+<tr>
+  <td align='left'>aoneblock.phases</td>
+  <td align='left'>false</td>
+  <td align='left'>Allow the use of the phases command</td>
+</tr>
+<tr>
   <td align='left'>aoneblock.mod.info</td>
   <td align='left'>op</td>
   <td align='left'>Let a moderator see info on a player</td>
