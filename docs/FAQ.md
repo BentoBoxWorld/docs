@@ -39,7 +39,7 @@ Grant owners the `[gamemode].island.range.<number>` permission.
 
 **Commands**
 
-Use the `/[admin_command] range` commands. 
+Use the `/[admin_command] range` commands.
 
 ## Issues
 
@@ -191,6 +191,15 @@ This will require you to entirely reset the worlds and databases.
 Paper handles asynchronous chunk generation.
 * Pre-generate the world.
 Especially for gamemodes whose generators are resource-intensive, such as CaveBlock or SkyGrid.
+
+### I can't place saplings on my island!
+
+*Relevant issue:*
+[BentoBox#277](https://github.com/BentoBoxWorld/BentoBox/issues/277).
+
+If no message shows up to the player telling them that they can't place the sapling, then it means that BentoBox **does not** cause this issue.
+
+If you are using **GriefPrevention** on your server, there is a [config option](https://github.com/TechFortress/GriefPrevention/wiki/Setup-and-Configuration#preventing-tree-grief) in this plugin that prevents players from placing so-called "Sky Trees".
 
 ## API
 
