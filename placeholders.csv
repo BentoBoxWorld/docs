@@ -36,6 +36,7 @@ BentoBox,[gamemode]_visited_island_coops_count,Number of players cooped to the i
 BentoBox,[gamemode]_visited_island_visitors_count,Number of players currently visiting the island the player is standing on,1.5.2
 BentoBox,[gamemode]_visited_island_bans_count,Number of players banned from the island the player is standing on,1.5.2
 BentoBox,[gamemode]_has_island,Whether the player has an island or not,1.5.0
+BentoBox,[gamemode]_owns_island,Whether the player is an owner of an island,1.14.0
 BentoBox,[gamemode]_rank,Rank the player has on his island,1.5.0
 BentoBox,[gamemode]_resets,Number of times the player has reset his island,1.5.0
 BentoBox,[gamemode]_resets_left,Number of times the player can reset his island,1.5.0
