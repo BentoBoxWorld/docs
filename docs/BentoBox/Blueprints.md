@@ -52,7 +52,7 @@ The commands are almost the same as WorldGuard schematic commands. You must be O
 For AcidIsland, use /acid instead of /bsb.
 
 ## Blueprint Manager GUI
-The Blueprint Manager GUI enables you to create, edit and configure the island sets that players can select when they start a new island or reset. The sets of islands (normal world, nether world, and end world) are called "bundles". There is a default bundle that can be customized, but not deleted. 
+The Blueprint Manager GUI enables you to create, edit and configure the island sets that players can select when they start a new island or reset. The sets of islands (normal world, nether world, and end world) are called "bundles". There is a default bundle that can be customized, but not deleted.
 
 To create a new bundle, click on the green banner in the bottom left corner of the GUI. Text entry is done via the chat interface. Enter a name for the new bundle. You can change it later.
 
@@ -82,6 +82,14 @@ When using blueprints in the game, always use just the name of the blueprint. On
 ## Incomplete bundles
 Bundles must always have an Overworld/Normal world blueprint. If they do not, then the default island (island.blu) blueprint will be used and an error logged in the console.
 Bundles do not have to have Nether or End World blueprints, but if they do not, no island will be pasted in those worlds (obviously).
+
+## Entities
+
+!!! new "Coming in BentoBox 1.14.0"
+    In this upcoming release, you will also be able to use `[name]`, which will be replaced by the island owner's name when creating the island.
+
+You can use placeholders in entities' names.
+Rename a name tag with the placeholder in an anvil, then apply the name tag to the entity.
 
 ## Signs
 Blueprints can have two special signs in them to help you place where a player will spawn and to give them a welcome message.
