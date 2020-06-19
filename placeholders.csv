@@ -42,15 +42,17 @@ BentoBox,[gamemode]_resets,Number of times the player has reset his island,1.5.0
 BentoBox,[gamemode]_resets_left,Number of times the player can reset his island,1.5.0
 BentoBox,[gamemode]_deaths,Number of times the player died,1.12.0
 BentoBox,[gamemode]_on_island,Whether the player is on an island he is part of or not,1.13.0
-Challenges,[gamemode]_challenges_total_completion_count,Number of times the player completed challenges,0.8.2
-Challenges,[gamemode]_challenges_completed_count,Number of challenges the player has completed,0.8.2
-Challenges,[gamemode]_challenges_uncompleted_count,Number of challenges the player has not yet completed,0.8.2
-Challenges,[gamemode]_challenges_completed_level_count,Number of levels the player has completed,0.8.2
-Challenges,[gamemode]_challenges_uncompleted_level_count,Number of levels the player has not yet completed,0.8.2
-Challenges,[gamemode]_challenges_unlocked_level_count,Number of levels that are unlocked for the player,0.8.2
-Challenges,[gamemode]_challenges_locked_level_count,Number of levels that are locked for the player,0.8.2
-Challenges,[gamemode]_challenges_latest_level_name,Latest unlocked challenge level name,0.8.2
-Challenges,[gamemode]_challenges_latest_level_id,Latest unlocked challenge level id,0.8.2
+Challenges,[gamemode]_challenges_total_completion_count,Number of times the player completed challenges,0.9.0
+Challenges,[gamemode]_challenges_completed_count,Number of challenges the player has completed,0.9.0
+Challenges,[gamemode]_challenges_uncompleted_count,Number of challenges the player has not yet completed,0.9.0
+Challenges,[gamemode]_challenges_completed_level_count,Number of levels the player has completed,0.9.0
+Challenges,[gamemode]_challenges_uncompleted_level_count,Number of levels the player has not yet completed,0.9.0
+Challenges,[gamemode]_challenges_unlocked_level_count,Number of levels that are unlocked for the player,0.9.0
+Challenges,[gamemode]_challenges_locked_level_count,Number of levels that are locked for the player,0.9.0
+Challenges,[gamemode]_challenges_latest_level_name,Latest unlocked challenge level name,0.9.0
+Challenges,[gamemode]_challenges_latest_level_id,Latest unlocked challenge level id,0.9.0
+Challenges,[gamemode]_challenges_latest_level_completed_count,Number of challenges the player has completed in latest unlocked level,0.9.0
+Challenges,[gamemode]_challenges_latest_level_uncompleted_count,Number of challenges the player has not yet completed in latest unlocked level ,0.9.0
 Level,Level_[gamemode]_island_level,Island level of the player's island,1.9.0
 Level,Level_[gamemode]_visited_island_level,Island level of the island the player is standing on,1.9.0
 Level,Level_[gamemode]_top_value_#RANK#,Island level of the `#RANK#`-th island in the Top 10,1.9.0
