@@ -38,7 +38,7 @@ The basic flow for making a custom island:
 [![thumbnail](https://user-images.githubusercontent.com/20014332/62939503-be4c5980-bdd1-11e9-8814-2253845cecd0.png)](https://youtu.be/4gvaG89uxAs)
 
 ## Commands
-The commands are almost the same as WorldGuard schematic commands. You must be Op or an admin with permissions to use blueprints. Use the admin command and **blueprint** or its alias **bp**:
+The commands are almost the same as WorldEdit schematic commands. You must be Op or an admin with permissions to use blueprints. Use the admin command and **blueprint** or its alias **bp**:
 
 * /bsb bp pos1 - set one corner of the bounding box to the position of your player
 * /bsb bp pos2 - set the other corner
