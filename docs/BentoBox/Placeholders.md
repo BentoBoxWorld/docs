@@ -18,7 +18,7 @@ We recommend you to use an alternative chat plugin which supports PlaceholderAPI
 
 ## How to suggest a new placeholder?
 
-If you think a placeholder for BentoBox or another default placeholder for gamemodes should be added, then please submit us a [placeholder request](https://github.com/BentoBoxWorld/BentoBox/issues/new?assignees=&labels=Status%3A+Pending%2C+Type%3A+Enhancement&template=placeholder_request.md&title=Placeholder%3A+).
+If you think a placeholder for BentoBox or another default placeholder for gamemodes should be added, then please submit a [placeholder request](https://github.com/BentoBoxWorld/BentoBox/issues/new?assignees=&labels=Status%3A+Pending%2C+Type%3A+Enhancement&template=placeholder_request.md&title=Placeholder%3A+).
 
 ## Default placeholders for gamemode addons
 
