@@ -41,6 +41,24 @@ This section lists the default entity limits within a player's island space (pro
 
 Note: Only the first 49 limited blocks and entities are shown in the limits GUI.
 
+### entitygrouplimits
+
+!!! note "Experimental feature"
+    The following feature is only available in development builds, which you may find on ci.codemc.org.
+
+```yaml
+entitygrouplimits:
+  friendly:
+    limit: 2
+    entities:
+      - COW
+      - SHEEP
+  monsters:
+    limit: 4
+    entities:
+      - ZOMBIE
+      - CREEPER
+```
 
 ## Permissions
 
