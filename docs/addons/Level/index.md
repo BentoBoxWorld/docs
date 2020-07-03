@@ -103,3 +103,7 @@ Placeholders can be found [here](Placeholders).
 ## Translations
 
 {{ translations(3013, ["cs", "de", "es", "fr", "hu", "id", "lv", "pl", "ro", "tr", "zh-CN"]) }}
+
+## API
+See this [page](Level-API).
+
