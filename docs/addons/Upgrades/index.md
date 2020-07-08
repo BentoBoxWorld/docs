@@ -63,11 +63,12 @@ tier1:
   permission-level: 1
 ```
 
-* `max-level` Is the maximum level of this tier.
-* `upgrade` Is how much is given at each level.
-* `island-min-level` Is the minimum island level needed to buy this upgrade. It is given by [Level Addon](/addons/Level)
-* `vault-cost` Is the cost to buy this upgrade **(>= 0)**
-* `permission-level` Is the level of permission needed to buy this upgrade (CF: Permission)
+* `max-level` is the maximum level of this tier.
+* `upgrade` is how much is given at each level.
+* `island-min-level` is the minimum island level needed to buy this upgrade. It is given by [Level Addon](/addons/Level)
+* `vault-cost` is the cost to buy this upgrade **(>= 0)**
+* `permission-level` is the level of permission needed to buy this upgrade (cf. Permission)
+
 
 ### Range Upgrade
 
