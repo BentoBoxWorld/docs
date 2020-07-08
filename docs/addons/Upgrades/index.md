@@ -118,7 +118,8 @@ block-limits-upgrade:
 ```
 
 !!! tip "Blocks"
-    A list of blocks can be found [here](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html) (1.16.1)
+    A list of blocks can be found [here](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html)
+
 
 ### Entity Limits Upgrade
 
