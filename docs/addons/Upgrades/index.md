@@ -147,7 +147,7 @@ entity-limits-upgrade:
 ```
 
 !!! tip "Entities"
-    A list of entities can be found [here](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html) (1.16.1)
+    A list of entities can be found [here](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html)
 
 ### Command Upgrade
 
@@ -231,10 +231,10 @@ entity-icon:
 ```
 
 !!! tip "Entities"
-    A list of entities can be found [here](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html) (1.16.1)
+    A list of entities can be found [here](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html)
 
 !!! tip "Material"
-    A list of materials can be found [here](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html) (1.16.1)
+    A list of materials can be found [here](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html)
 
 ### Command Icon
 
@@ -253,7 +253,7 @@ command-icon:
 ```
 
 !!! tip "Material"
-    A list of materials can be found [here](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html) (1.16.1)
+    A list of materials can be found [here](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html)
 
 ## Permissions
 
@@ -269,7 +269,7 @@ Where:
 
 * `[GAMEMODE]` is the name of the gamemode where this permission should be set
 * `[UPGRADE]` is the name of the upgrade (CF: [Name Upgrades](#name-upgrades))
-* `[LEVEL]` Is the level to give to the player
+* `[LEVEL]` is the level to give to the player
 
 Exemple:
 
