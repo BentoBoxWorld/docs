@@ -27,6 +27,7 @@ nav:
         - MagicCobblestoneGenerator: addons/MagicCobblestoneGenerator/index.md
         - TwerkingForTrees: addons/TwerkingForTrees/index.md
         - VoidPortals: addons/VoidPortals/index.md
+        - Upgrades: addons/Upgrades/index.md
     - "Tutorials – Generic":
         - "Set a BentoBox world as the server's default world": BentoBox/Set-a-BentoBox-world-as-the-server-default-world.md
     - "Tutorials – API":
