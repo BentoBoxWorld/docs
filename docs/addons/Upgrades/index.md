@@ -44,9 +44,10 @@ The config.yml has the following sections:
 
     * +,-,*,/,^,(,) can be used
     * sqrt(), sin(), cos(), tan() can be used
-    * `[level]` Is replaced by the actual level for this upgrade
-    * `[islandLevel]` Is replaced by the island level from level addon **(Can be 0)**
-    * `[numberPlayer]` Is replaced by the number of players in the team
+    * `[level]` is replaced by the actual level for this upgrade
+    * `[islandLevel]` is replaced by the island level from level addon **(Can be 0)**
+    * `[numberPlayer]` is replaced by the number of players in the team
+
 
 ### General
 
