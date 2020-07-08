@@ -189,7 +189,8 @@ command-upgrade:
         - "say [player] has reached the max level"
 ```
 
-### GameMode
+### Gamemode
+
 
 It is possible to set differences in upgrade between each gamemode.
 
