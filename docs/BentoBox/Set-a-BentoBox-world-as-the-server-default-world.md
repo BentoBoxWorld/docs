@@ -2,7 +2,9 @@
 
 **Setting a BentoBox world as the server default world** allows to avoid the generation of the **default vanilla worlds**.
 
-In this step-by-step example/tutorial, we're considering you're doing this for `BSkyBlock`, yet **the process remains identical for all available gamemodes**.
+!!! warning 
+    In this step-by-step example/tutorial, we are considering you are doing this for `BSkyBlock`.
+    The process is the same for other gamemodes, but **mind the worlds' names**!
 
 ## Preparations
 
