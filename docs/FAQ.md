@@ -146,6 +146,10 @@ In that case, please refer yourself to [this section](https://bentobox-world.rea
 If the issue still occurs, this means this is a BentoBox bug.
 Please [report it on our bug tracker](https://github.com/BentoBoxWorld/BentoBox/issues).
 
+**Using multicraft**
+
+In the case of using multicraft if you set the "world" to any gamemode world you will generate chunks either DEFAULT or FLAT. To prevent this you need to change the load: setting in your Bukkit.yml. Change `load: POSTWORLD` to `load: STARTUP`. This will force bentobox to load before the world is generated and allow bentobox to load/generate the world.
+
 #### How to clean the superflat chunks afterwards?
 
 If you have backups, use them to revert your server's worlds and BentoBox databases to their previous states.
