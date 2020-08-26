@@ -174,7 +174,7 @@
 <tr>
   <td align='left'>aoneblock.island.info</td>
   <td align='left'>true</td>
-  <td align='left'>Let the player check other players info</td>
+  <td align='left'>Let the player use the info command</td>
 </tr>
 <tr>
   <td align='left'>aoneblock.island.lock</td>
