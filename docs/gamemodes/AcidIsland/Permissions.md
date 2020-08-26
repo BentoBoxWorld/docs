@@ -164,7 +164,7 @@
 <tr>
 <td align='left'>acidisland.island.info</td>
 <td align='left'>true</td>
-<td align='left'>Let the player check their island level</td>
+<td align='left'>Let the player use the island info command</td>
 </tr>
 <tr>
 <td align='left'>acidisland.island.language</td>
