@@ -44,7 +44,7 @@ def define_env(env):
 
 | Available | Language | Language code | Progress |
 | --- | ---------- | --- | ----------- |
-| ✅ | English (United States) | `en-US` | 100% (Default) |
+| :material-check: | English (United States) | `en-US` | 100% (Default) |
 """
 
         for language in languages:
