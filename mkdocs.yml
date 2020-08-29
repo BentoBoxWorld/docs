@@ -1,5 +1,8 @@
 site_name: BentoBox World
 copyright: "© Copyright 2017-2020 Tastybento, Poslovitch and the BentoBoxWorld community (CC-BY 4.0)."
+repo_url: https://github.com/BentoBoxWorld/BentoBox
+repo_name: BentoBoxWorld/BentoBox
+edit_uri: ""
 nav:
     - Home: index.md
     - FAQ: FAQ.md
@@ -42,6 +45,8 @@ theme:
     scheme: slate
     primary: deep orange
     accent: green
+  icon:
+    repo: fontawesome/brands/git-alt
 extra:
   social:
     - icon: fontawesome/brands/github
