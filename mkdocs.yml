@@ -1,4 +1,5 @@
 site_name: BentoBox World
+copyright: "© Copyright 2017-2020 Tastybento, Poslovitch and the BentoBoxWorld community (CC-BY 4.0)."
 nav:
     - Home: index.md
     - FAQ: FAQ.md
