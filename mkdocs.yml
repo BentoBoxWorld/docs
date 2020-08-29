@@ -44,9 +44,18 @@ theme:
     accent: green
 extra:
   social:
+    - icon: fontawesome/brands/github-square
+      link: https://github.com/BentoBoxWorld
+      name: BentoBoxWorld on GitHub
+    - icon: fontawesome/brands/jenkins
+      link: https://ci.bentobox.world
+      name: BentoBoxWorld on CodeMC CI
     - icon: fontawesome/brands/discord
       link: https://discord.bentobox.world
       name: BentoBoxWorld on Discord
+    - icon: fontawesome/brands/youtube-square
+      link: https://www.youtube.com/channel/UCPaNnfxhr1-wCy0KBs9PLdQ
+      name: BentoBoxWorld on YouTube
 markdown_extensions:
   - attr_list
   - admonition
