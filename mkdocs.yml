@@ -79,7 +79,9 @@ markdown_extensions:
   - pymdownx.tabbed
   - pymdownx.tasklist
   - pymdownx.tilde
-  - pymdownx.emoji
+  - pymdownx.emoji:
+      emoji_index: pymdownx.emoji.twemoji
+      emoji_generator: pymdownx.emoji.to_svg
   - toc:
       permalink: "#"
 plugins:
