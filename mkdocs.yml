@@ -42,6 +42,11 @@ theme:
     scheme: slate
     primary: deep orange
     accent: green
+extra:
+  social:
+    - icon: fontawesome/brands/discord
+      link: https://discord.bentobox.world
+      name: BentoBoxWorld on Discord
 markdown_extensions:
   - attr_list
   - admonition
