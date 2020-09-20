@@ -35,11 +35,11 @@ level-name=bskyblock_world
 
 ## bukkit.yml
 
-Open the `bukkit.yml` file: we need to tell Bukkit that the world we're willing to make the default one uses a custom generator, **otherwise it will mess up the world generation**.
+Open the `bukkit.yml` file: we need to tell Bukkit that the default world uses a custom generator, **otherwise it will mess up the world generation**. Note that if you want to use the vanilla nether or end, do not list them in this file.
 
-The configuration section we're willing to edit being optional, it is extremely likely that it does not exist already in your `bukkit.yml` file. See the official [Bukkit Wiki](https://bukkit.gamepedia.com/Bukkit.yml#.2AOPTIONAL.2A_worlds) for more details about the section.
+The configuration section we're adding likely does not exist already in your `bukkit.yml` file, so you need to create it. See the official [Bukkit Wiki](https://bukkit.gamepedia.com/Bukkit.yml#.2AOPTIONAL.2A_worlds) for more details about the section.
 
-Add the following section to your file (do appropriate revisions if you're not using the Nether or the End at all):
+Add the following section to your file. The names listed **must** be the names of the worlds:
 ```yaml
 worlds:
   bskyblock_world:
@@ -49,3 +49,11 @@ worlds:
   bskyblock_world_the_end:
     generator: BentoBox
 ```
+
+If you are going to use the vanilla nether or end, do not list them. Just list the overworld. For example:
+```yaml
+worlds:
+  bskyblock_world:
+    generator: BentoBox
+```
+
