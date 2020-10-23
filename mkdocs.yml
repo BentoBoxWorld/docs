@@ -13,6 +13,7 @@ nav:
         - CaveBlock: gamemodes/CaveBlock/index.md
         - AOneBlock: gamemodes/AOneBlock/index.md
     - Addons:
+        - Bank: addons/Bank/index.md
         - Biomes: addons/Biomes/index.md
         - Border: addons/Border/index.md
         - CauldronWitchery: addons/CauldronWitchery/index.md
