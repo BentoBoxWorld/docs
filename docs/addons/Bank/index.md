@@ -40,6 +40,9 @@ Admin commands make money by magic.
 * `bank balance <player>` - see a player's island bank balance
 * `bank statement <player>` - see a fancy statement of deposits/withdrawals, etc. on the player's island bank account
 
+## Placeholders
+
+Placeholders can be found [here](Placeholders).
 
 
 ## Configuration
@@ -58,6 +61,12 @@ bank:
     user: bank
     # Admin command
     admin: bank
+  placeholders:
+    # This is how many ranks will be registered with the placeholder API.
+    # There are two placeholders per rank:
+    # %Bank_[gamemode]_top_name_1% with island level: %Bank_[gamemode]_top_value_1%
+    # [gamemode] is bskyblock, acidisland, etc.
+    number-of-ranks: 10
 ```
 
 ## Permissions
