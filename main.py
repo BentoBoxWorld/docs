@@ -81,7 +81,7 @@ def define_env(env):
         source = ""
 
         # Let's read the csv file
-        with open('placeholders.csv', newline='') as csvfile:
+        with open('data/placeholders.csv', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 # Analyze the source
