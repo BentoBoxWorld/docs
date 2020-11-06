@@ -16,6 +16,10 @@ If you're using **EssentialsChat** and **PlaceholderAPI**, you **must** install 
 
 We recommend you to use an alternative chat plugin which supports PlaceholderAPI, such as [**ChatControl**](https://www.spigotmc.org/resources/chatcontrol%E2%84%A2-the-ultimate-chat-plugin-500-000-downloads-1-2-5-1-14-4.271/).
 
+## How to display a placeholder in a scoreboard?
+
+If you're using a scoreboard plugin that natively does not support **PlaceholderAPI**, but supports **MVdWPlaceholderAPI** (like **Featherboard**), you still can use BentoBox placeholders, however, you need to add **{placeholderapi_[text]}**, and replace *[text]* with a placeholder without *%* chars, like *{placeholderapi_bskyblock_island_name}*.
+
 ## How to suggest a new placeholder?
 
 If you think a placeholder for BentoBox or another default placeholder for gamemodes should be added, then please submit a [placeholder request](https://github.com/BentoBoxWorld/BentoBox/issues/new?assignees=&labels=Status%3A+Pending%2C+Type%3A+Enhancement&template=placeholder_request.md&title=Placeholder%3A+).
