@@ -41,8 +41,8 @@ nav:
         - "Config API": BentoBox/Config-API.md
         - "Database API": BentoBox/Database-API.md
     - "About - What does BentoBox do?":
-        - Team Handling: About/Teams.md
-        - Protection: About/Protections.md
+        - Team Handling: BentoBox/About/Teams.md
+        - Protection: BentoBox/About/Protections.md
 theme:
   name: material
   palette:
