@@ -177,9 +177,9 @@ Please read the main [Placeholders page](/en/latest/BentoBox/Placeholders).
 
 ??? question "How can I add a new generator tier?"
     Currently, addon supports 3 ways how to add a new generator:
-    a) By using ingame GUI that is available via `/[admin] generator` command.
-    b) By adding generator to a template file. 
-    c) By adding generator to the exported database file.
+    - By using ingame GUI that is available via `/[admin] generator` command.
+    - By adding generator to a template file. 
+    - By adding generator to the exported database file.
 
 ??? question "I added generator to the template/database file, but it does not shows up in game."
     For easier configuration with multiple gamemodes, generators are stored in the internal database. After editing template or database file, you need to import them into that memory. You can do it via Admin GUI by clicking on `Import Template` or `Import Database` buttons.
