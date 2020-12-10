@@ -177,6 +177,7 @@ Please read the main [Placeholders page](/en/latest/BentoBox/Placeholders).
 
 ??? question "How can I add a new generator tier?"
     Currently, addon supports 3 ways how to add a new generator:
+    
     - By using ingame GUI that is available via `/[admin] generator` command.
     - By adding generator to a template file. 
     - By adding generator to the exported database file.
