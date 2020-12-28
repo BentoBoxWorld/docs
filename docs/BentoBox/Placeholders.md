@@ -52,6 +52,7 @@ All gamemode addons get some default placeholders automatically registered to th
 | %[gamemode]_island_coops_count% | Number of players cooped to the island | 1.5.0 |
 | %[gamemode]_island_visitors_count% | Number of players currently visiting the island | 1.5.0 |
 | %[gamemode]_island_bans_count% | Number of players banned from the island | 1.5.0 |
+| %[gamemode]_island_uuid% | The unique ID of the island as used in the database | 1.15.4 |
 | %[gamemode]_visited_island_protection_range% | Radius of the protection range of the island the player is standing on | 1.5.2 |
 | %[gamemode]_visited_island_protection_range_diameter% | Diameter of the protection range of the island the player is standing on | 1.5.2 |
 | %[gamemode]_visited_island_owner% | Name of the owner of the island the player is standing on | 1.5.2 |
