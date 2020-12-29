@@ -69,6 +69,7 @@ All gamemode addons get some default placeholders automatically registered to th
 | %[gamemode]_visited_island_coops_count% | Number of players cooped to the island the player is standing on | 1.5.2 |
 | %[gamemode]_visited_island_visitors_count% | Number of players currently visiting the island the player is standing on | 1.5.2 |
 | %[gamemode]_visited_island_bans_count% | Number of players banned from the island the player is standing on | 1.5.2 |
+| %[gamemode]_visited_island_uuid% | The unique ID of the island the player is standing on | 1.15.4 |
 | %[gamemode]_has_island% | Whether the player has an island or not | 1.5.0 |
 | %[gamemode]_rank% | Rank the player has on his island | 1.5.0 |
 | %[gamemode]_resets% | Number of times the player has reset his island | 1.5.0 |
