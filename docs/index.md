@@ -45,4 +45,5 @@ Download ready to go packs at [https://download.bentobox.world](https://download
     - [Databases](BentoBox/Database)
 - [Creating a Game Mode Add-on](BentoBox/Creating-a-Game-Mode)
 - [Built-in Commands](BentoBox/Built-in-Commands)
+- [Metadata API](BentoBox/MetadataAPI)
 - [Javadocs](https://bentoboxworld.github.io/BentoBox)
