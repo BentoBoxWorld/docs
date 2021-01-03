@@ -1,6 +1,6 @@
 # BentoBox Persistent Metadata API
 
-As of 1.15.4, BentoBox has a persistent metadata API that enables metadata to be stored on Users or Islands persistently.
+BentoBox has a persistent metadata API that enables metadata to be stored on Users, Players or Islands persistently.
 This enables addons that do not need or want to handle their own database storage to store data using this API instead.
 For example, the Border addon only needs to store a simple boolean that records whether the border is switched on or off
 for the user. It would be overkill to store this in a database table, so instead, the addon can place this boolean into
@@ -88,6 +88,7 @@ Although keys can be named anything, you should avoid clashing with other addons
 * Border_state
 * etc.
 
-## Island Metadata
-The Island object has a similar API for metadata as the User class except it does not use Optionals. Once you get an Island object, you can get, set and remove metaData from it, but it will require null handling.
+## Island and Player Object Metadata
+The Island and Player objects have the same API for metadata as the User class. Although it's possible to manitfulate Player object metadata, it is best done though the User class API.
+
 Island metadata is saved when the server shuts down or when the database is saved periodically.
