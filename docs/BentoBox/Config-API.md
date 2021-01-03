@@ -130,7 +130,7 @@ Settings settings = new Settings();
 new Config<>(this, Settings.class).saveConfigObject(settings);
 ```
 
-It is good practice for an addon to load the settings, then save them immediately. This will keep the config file up to date with the latest options and comments. But if you load first, how is the very first config file saved???
+It is good practice for an addon to load the settings, then save them immediately. This will keep the config file up to date with the latest options and comments. To create the initial config, use the Addon's `saveDefaultConfig()` method to save the default config.yml stored in the addon's jar. If you are using a different file that config.yml, you can use the `saveResource(resourcePath, replace)` method.
 
 ### Default config file
 Set up a default config.yml file in your addon jar. Then save it to the file system in your addon using the standard `saveDefaultConfig()` method. So the overall approach is as follows:
