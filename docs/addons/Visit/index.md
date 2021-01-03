@@ -55,8 +55,9 @@ The latest config options, and their detailed explanations can be found [here](h
 ## Flags
 
 Addon introduces 2 BentoBox protection flags:
-- ![pumpkin_pie](https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/ac/Pumpkin_Pie_JE2_BE2.png/revision/latest?cb=20190512213136){: loading=lazy width=16 } ALLOW_VISITS_FLAG: flag in island settings that allows enabling/disabling island visiting.
-- ![pumpkin](https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/fc/Pumpkin_JE2_BE2.png/revision/latest?cb=20201207085225){: loading=lazy width=16 } VISIT_CONFIG_PERMISSION: flag in island permissions that allows changing which member group can change island visit settings.
+
+- ![pumpkin_pie](https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/ac/Pumpkin_Pie_JE2_BE2.png){: loading=lazy width=32px } ALLOW_VISITS_FLAG: flag in island settings that allows enabling/disabling island visiting.
+- ![pumpkin](https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/fc/Pumpkin_JE2_BE2.png){: loading=lazy width=32px } VISIT_CONFIG_PERMISSION: flag in island permissions that allows changing which member group can change island visit settings.
 
 ## FAQ
 
