@@ -67,6 +67,16 @@ Likes,[gamemode]_likes_addon_island_dislikes_count,Count of dislikes that are se
 Likes,[gamemode]_likes_addon_island_dislikes_place,Island place by dislikes count,1.7.0
 Likes,[gamemode]_likes_addon_island_rank_count,Rank number (likes - dislikes) that are set to player island,1.7.0
 Likes,[gamemode]_likes_addon_island_rank_place,Island place by rank,1.7.0
+Likes,[gamemode]_likes_addon_island_stars_value,Average stars added to player island,2.0.0
+Likes,[gamemode]_likes_addon_island_stars_place,Island place by stars,2.0.0
+Likes,[gamemode]_likes_addon_visited_island_likes_count,Count of likes that are set to island at player location,2.1.0
+Likes,[gamemode]_likes_addon_visited_island_likes_place,Island place by likes count for island at player location,2.1.0
+Likes,[gamemode]_likes_addon_visited_island_dislikes_count,Count of dislikes that are set to island at player location,2.1.0
+Likes,[gamemode]_likes_addon_visited_island_dislikes_place,Island place by dislikes count for island at player location,2.1.0
+Likes,[gamemode]_likes_addon_visited_island_rank_count,Rank number (likes - dislikes) that are set to island at player location,2.1.0
+Likes,[gamemode]_likes_addon_visited_island_rank_place,Island place by rank for island at player location,2.1.0
+Likes,[gamemode]_likes_addon_visited_island_stars_value,Average stars added to island at player location,2.1.0
+Likes,[gamemode]_likes_addon_visited_island_stars_place,Island place by stars for island at player location,2.1.0
 Likes,[gamemode]_likes_addon_top_likes_owner_name_X,Island owner name who are in place X by likes,1.7.0
 Likes,[gamemode]_likes_addon_top_likes_island_name_X,Island name which are in place X by likes,1.7.0
 Likes,[gamemode]_likes_addon_top_likes_count_X,Count of likes for island that are in place X by likes,1.7.0
@@ -76,6 +86,9 @@ Likes,[gamemode]_likes_addon_top_dislikes_count_X,Count of dislikes for island t
 Likes,[gamemode]_likes_addon_top_rank_owner_name_X,Island owner name who are in place X by rank,1.7.0
 Likes,[gamemode]_likes_addon_top_rank_island_name_X,Island name which are in place X by rank,1.7.0
 Likes,[gamemode]_likes_addon_top_rank_count_X,Rank value for island that are in place X by rank,1.7.0
+Likes,[gamemode]_likes_addon_top_stars_owner_name_X,Island owner name who are in place X by stars,2.0.0
+Likes,[gamemode]_likes_addon_top_stars_island_name_X,Island name which are in place X by stars,2.0.0
+Likes,[gamemode]_likes_addon_top_stars_count_X,Average stars for island that are in place X by stars,2.0.0
 MagicCobblestoneGenerator,[gamemode]_magiccobblestonegenerator_active_generator_count,Number of currently active generators on player island,2.2.0
 MagicCobblestoneGenerator,[gamemode]_magiccobblestonegenerator_max_active_generator_count,Number of maximal allowed active generators on player island,2.2.0
 MagicCobblestoneGenerator,[gamemode]_magiccobblestonegenerator_active_generator_names,List of active generator names separated with comma,2.2.0
