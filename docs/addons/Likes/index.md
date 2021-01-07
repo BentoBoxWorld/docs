@@ -130,7 +130,7 @@ All other options can be changed via ingame GUI.
 
 
     !!! failure
-        This handler will return an empty map if the `world-name` has not been provided or if the `world-name` does not exist or is not a gamemode world or island is not provided or data for island is empty.
+        This handler will return an empty map if the `world-name` has not been provided or if the `world-name` does not exist or is not a gamemode world or island is not provided or data for island is empty. 
 
     !!! example "Code example"
         ```java
