@@ -98,21 +98,21 @@ def define_env(env):
 
         return result
 
-	# Adds placeholder table to the addon pages.
+    # Adds placeholder table to the addon pages.
     @env.macro
     def placeholders_source(source:str):
         result = f"""!!! tip "Tip"\n
-	`[gamemode]` is a prefix that differs depending on the gamemode you are running.\n
+    `[gamemode]` is a prefix that differs depending on the gamemode you are running.\n
     The prefix is the lowercased name of the gamemode, i.e. if you are using BSkyBlock, the prefix is `bskyblock`.\n\n
-	Properly translated placeholders for each gamemode can be found:\n
-		[AcidIsland](/en/latest/gamemodes/AcidIsland/Placeholders)
-		[AOneBlock](/en/latest/gamemodes/AOneBlock/Placeholders)
-		[BSkyBlock](/en/latest/gamemodes/BSkyBlock/Placeholders)
-		[CaveBlock](/en/latest/gamemodes/CaveBlock/Placeholders)
-		[SkyGrid](/en/latest/gamemodes/SkyGrid/Placeholders)).\n
-	Please read the main [Placeholders page](/en/latest/BentoBox/Placeholders).\n\n"""
+    Properly translated placeholders for each gamemode can be found:\n
+        [AcidIsland](/en/latest/gamemodes/AcidIsland/Placeholders)
+        [AOneBlock](/en/latest/gamemodes/AOneBlock/Placeholders)
+        [BSkyBlock](/en/latest/gamemodes/BSkyBlock/Placeholders)
+        [CaveBlock](/en/latest/gamemodes/CaveBlock/Placeholders)
+        [SkyGrid](/en/latest/gamemodes/SkyGrid/Placeholders)).\n
+    Please read the main [Placeholders page](/en/latest/BentoBox/Placeholders).\n\n"""
 
-		result += f"""\n
+        result += f"""\n
 
 | Placeholder | Description | {source} version
 | ---------- | ---------- | ---------- |
