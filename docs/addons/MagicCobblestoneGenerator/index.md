@@ -156,18 +156,11 @@ Template file are mostly for users who do not like to use ingame editing GUI. Ho
 ??? question "Something is missing?"
     You can find the comprehensive list of permissions in the [addon.yml](https://github.com/BentoBoxWorld/MagicCobblestoneGenerator/blob/develop/src/main/resources/addon.yml) file of this addon.  
     If something is indeed missing from the list below, please let us know!
-   
+
 
 ## Placeholders
-Please read the main [Placeholders page](/en/latest/BentoBox/Placeholders).
 
-| Placeholder | Description | Version |
-|-------------------------------------------------------|--------------------------------------------------------------------------------|-----------|
-| `%[gamemode]_magiccobblestonegenerator_active_generator_count` | Returns number of currently active generator tiers | 2.2.0 |
-| `%[gamemode]_magiccobblestonegenerator_max_active_generator_count` | Returns number of maximal amount of active generator tiers | 2.2.0 |
-| `%[gamemode]_magiccobblestonegenerator_active_generator_names` | Returns text that contains all active generator names separated with `,` | 2.2.0 |
-| `%[gamemode]_magiccobblestonegenerator_unlocked_generator_names` | Returns text that contains all unlocked generator names separated with `,` | 2.2.0 |
-| `%[gamemode]_magiccobblestonegenerator_purchased_generator_names` | Returns text that contains all purchased generator names separated with `,` | 2.2.0 |
+{{ placeholders_source(source="MagicCobblestoneGenerator") }}
 
 
 ## FAQ

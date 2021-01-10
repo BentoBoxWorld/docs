@@ -66,21 +66,11 @@ Permissions can be found [here](Permissions).
     You can find the comprehensive list of permissions in the [addon.yml](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/resources/addon.yml) file of this addon.  
     If something is indeed missing from the list below, please let us know!
 
-## Placeholders
-Please read the main [Placeholders page](/en/latest/BentoBox/Placeholders).
 
-| Placeholder | Description | Version |
-|-------------------------------------------------------|--------------------------------------------------------------------------------|-----------|
-| `%[gamemode]_challenges_completed_count%` | Number of challenges the player has completed | 0.8.3  |
-| `%[gamemode]_challenges_uncompleted_count%` | Number of challenges the player has not yet completed | 0.8.3 |
-| `%[gamemode]_challenges_completed_level_count%` | Number of levels the player has completed | 0.8.3 |
-| `%[gamemode]_challenges_uncompleted_level_count%` | Number of levels the player has not yet completed | 0.8.3 |
-| `%[gamemode]_challenges_unlocked_level_count%` | Number of levels that are unlocked for the player | 0.8.3 |
-| `%[gamemode]_challenges_locked_level_count%` | Number of levels that are locked for the player | 0.8.3 |
-| `%[gamemode]_challenges_latest_level_name%` | Latest unlocked challenge level name | 0.8.3 |
-| `%[gamemode]_challenges_latest_level_id%` | Latest unlocked challenge level id | 0.8.3 |
-| `%[gamemode]_challenges_latest_level_completed_count%` | Number of challenges the player has completed in latest unlocked level | 0.8.3 |
-| `%[gamemode]_challenges_latest_level_uncompleted_count%` | Number of challenges the player has not yet completed in latest unlocked level | 0.8.3 |
+## Placeholders
+
+{{ placeholders_source(source="Challenges") }}
+
 
 ## FAQ
 

@@ -109,7 +109,7 @@ def define_env(env):
     - [AOneBlock](/en/latest/gamemodes/AOneBlock/Placeholders)
     - [BSkyBlock](/en/latest/gamemodes/BSkyBlock/Placeholders)
     - [CaveBlock](/en/latest/gamemodes/CaveBlock/Placeholders)
-    - [SkyGrid](/en/latest/gamemodes/SkyGrid/Placeholders)).\n
+    - [SkyGrid](/en/latest/gamemodes/SkyGrid/Placeholders).\n
     Please read the main [Placeholders page](/en/latest/BentoBox/Placeholders).\n\n"""
 
         result += f"""\n
