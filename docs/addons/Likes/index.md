@@ -19,10 +19,11 @@ Created and maintained by [BONNe](https://github.com/BONNe).
 Some config options can be changed via administration GUI in game. However, some options cannot.
 
 There are 2 important config options:
+
 - mode: allows changing which mode addon works
-        a) LIKES - Allows adding only Like to island.
-        b) LIKES_DISLIKES - Allows adding only Like and Dislikes to island.
-        c) STARS - Allows adding Starts to island.
+    - LIKES - Allows adding only Like to island.
+    - LIKES_DISLIKES - Allows adding only Like and Dislikes to island.
+    - STARS - Allows adding Starts to island.
 
 - disabled-gamemode: allows disabling addon in some gamemode addons completely.
 
@@ -77,10 +78,11 @@ All other options can be changed via ingame GUI.
     Please add it to the list [here](https://github.com/BentoBoxWorld/Challenges/issues).
 
 ??? question "Can I disable dislikes?"
-    Yes, Likes addon supports 3 working modes:   
-        - Likes: allows adding only likes to the island
-        - LikesDislikes: allows adding likes and dislikes
-        - Stars: allows to rate player islands with 1 till 5 stars
+    Yes, Likes addon supports 3 working modes:
+
+    - Likes: allows adding only likes to the island
+    - LikesDislikes: allows adding likes and dislikes
+    - Stars: allows to rate player islands with 1 till 5 stars
        
 ??? question "Can I view other player likes?"
     Yes, but you need a permission: `[gamemode].likes.view.others`. 
@@ -92,8 +94,8 @@ All other options can be changed via ingame GUI.
     
     There are 2 ways:
     
-        a) using Admin GUI you can choose island and block that will be displayed for it.
-        b) adding permission to island owner: `[gamemode].likes.icon.[MATERIAL]`
+    1. using Admin GUI you can choose island and block that will be displayed for it.
+    2. adding permission to island owner: `[gamemode].likes.icon.[MATERIAL]`
         
     Be aware, PLAYER_HEAD will be converted to island owner head.
 
@@ -178,8 +180,8 @@ All other options can be changed via ingame GUI.
         Event is only informative. Cannot be cancelled.
 
     !!! question "Variables"
-        `UUID user` - id of the player who added the like.
-        `String islandId` - id of the island which receive the like.
+        - `UUID user` - id of the player who added the like.
+        - `String islandId` - id of the island which receive the like.
 
     !!! warning "Class Loader Issue"
         Due Java Class Loader hierarchy, plugins cannot listen for the event directly. 
@@ -209,8 +211,8 @@ All other options can be changed via ingame GUI.
         Event is only informative. Cannot be cancelled.
 
     !!! question "Variables"
-        `UUID user` - id of the player who added the like.
-        `String islandId` - id of the island which receive the like.
+        - `UUID user` - id of the player who removed the like.
+        - `String islandId` - id of the island which lose the like.
 
     !!! warning "Class Loader Issue"
         Due Java Class Loader hierarchy, plugins cannot listen for the event directly. 
@@ -240,8 +242,8 @@ All other options can be changed via ingame GUI.
         Event is only informative. Cannot be cancelled.
 
     !!! question "Variables"
-        `UUID user` - id of the player who added the like.
-        `String islandId` - id of the island which receive the like.
+        - `UUID user` - id of the player who added the dislike.
+        - `String islandId` - id of the island which receive the dislike.
 
     !!! warning "Class Loader Issue"
         Due Java Class Loader hierarchy, plugins cannot listen for the event directly. 
@@ -271,8 +273,8 @@ All other options can be changed via ingame GUI.
         Event is only informative. Cannot be cancelled.
 
     !!! question "Variables"
-        `UUID user` - id of the player who added the like.
-        `String islandId` - id of the island which receive the like.
+        - `UUID user` - id of the player who removed the dislike.
+        - `String islandId` - id of the island which lose the dislike.
 
     !!! warning "Class Loader Issue"
         Due Java Class Loader hierarchy, plugins cannot listen for the event directly. 
@@ -302,9 +304,9 @@ All other options can be changed via ingame GUI.
         Event is only informative. Cannot be cancelled.
 
     !!! question "Variables"
-        `UUID user` - id of the player who added the like.
-        `String islandId` - id of the island which receive the like.
-        `int value` - the value of added stars (from 1 till 5)
+        - `UUID user` - id of the player who added the stars.
+        - `String islandId` - id of the island which receive the stars.
+        - `int value` - the value of added stars (from 1 till 5)
 
     !!! warning "Class Loader Issue"
         Due Java Class Loader hierarchy, plugins cannot listen for the event directly. 
@@ -336,8 +338,8 @@ All other options can be changed via ingame GUI.
         Event is only informative. Cannot be cancelled.
 
     !!! question "Variables"
-        `UUID user` - id of the player who added the like.
-        `String islandId` - id of the island which receive the like.
+        - `UUID user` - id of the player who added the stars.
+        - `String islandId` - id of the island which lose the stars.
 
     !!! warning "Class Loader Issue"
         Due Java Class Loader hierarchy, plugins cannot listen for the event directly. 
