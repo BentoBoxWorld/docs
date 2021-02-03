@@ -1,14 +1,10 @@
-# Introduction
+# Level Placeholders
+
+## Introduction
 
 Please read the [Placeholders page](../../../BentoBox/Placeholders).
 
-# Placeholders
-
-## Generic placeholders
-
-These placeholders are available in all currently available gamemodes ([BSkyBlock](../../../gamemodes/BSkyBlock/Placeholders), [AcidIsland](../../../gamemodes/AcidIsland/Placeholders), [CaveBlock](../../../gamemodes/CaveBlock/Placeholders), [SkyGrid](../../../gamemodes/SkyGrid/Placeholders), [AOneBlock](../../../gamemodes/AOneBlock/Placeholders)).
-
-**List of available placeholders as of Level 1.9.0.**
+## List of available placeholders as of Level 1.9.0.
 
 | Placeholder | Description | Level Version |
 |-------------------------------------------------------|--------------------------------------------------------------------------------|-----------|
@@ -31,3 +27,5 @@ These placeholders are available in all currently available gamemodes ([BSkyBloc
 8. `%Level_bskyblock_top_name_8% with island level: %Level_bskyblock_top_value_8%`
 9. `%Level_bskyblock_top_name_9% with island level: %Level_bskyblock_top_value_9%`
 10. `%Level_bskyblock_top_name_10% with island level: %Level_bskyblock_top_value_10%`
+
+These placeholders are available in all currently available gamemodes ([BSkyBlock](../../../gamemodes/BSkyBlock/Placeholders), [AcidIsland](../../../gamemodes/AcidIsland/Placeholders), [CaveBlock](../../../gamemodes/CaveBlock/Placeholders), [SkyGrid](../../../gamemodes/SkyGrid/Placeholders), [AOneBlock](../../../gamemodes/AOneBlock/Placeholders)).
