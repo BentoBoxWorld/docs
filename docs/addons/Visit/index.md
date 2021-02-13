@@ -66,6 +66,7 @@ Addon introduces 2 BentoBox protection flags:
 
 ## Translations
 
+{{ translations(5740, ["cs", "es", "de", "hu", "ja", "lv", "pl", "tr", "zh-CN"]) }}
 
 ## Api
 ### Events
