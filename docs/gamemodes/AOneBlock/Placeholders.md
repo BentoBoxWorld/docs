@@ -16,3 +16,5 @@ These are the placeholders available:
 |%aoneblock_visited_island_percent_done%|phase completion percentage of the island you are standing on|
 |%aoneblock_my_island_done_scale%|phase completion scale of your island|
 |%aoneblock_visited_island_done_scale%|phase completion scale of the island you are standing on|
+
+{{ placeholders_bundle(gamemode_name="aoneblock") }}
