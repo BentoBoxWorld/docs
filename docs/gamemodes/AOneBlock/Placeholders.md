@@ -2,9 +2,8 @@
 
 These are the placeholders available:
 
-|||
-|--- |--- |
 |Placeholder|Description|
+|--- |--- |
 |%aoneblock_my_island_phase%|the phase of your island|
 |%aoneblock_my_island_count%|the block count of your island|
 |%aoneblock_visited_island_phase%|the phase of the island you are standing on|
