@@ -40,6 +40,7 @@ Challenges,[gamemode].admin.challenges.reset,Allows to use '/[admincmd] challeng
 Challenges,addon.admin.challenges,Allows to use '/challengesadmin' command if it is enabled,,op,admin,,
 Visit,[gamemode].visit,Let the player use the '/[playercmd] visit' command,,true,player,,
 Visit,[gamemode].visit.configure,Let the player use the '/[playercmd] visit configure' command,,true,player,,
+Visit,[gamemode].visit.setlocation,Let the player use the '/[playercmd] visit setlocation' command,,true,player,,
 Visit,visit.icon.[material],Allows to change icon for owners island in Visit GUIs',,false,player,,
 Visit,[gamemode].admin.visit,Allows to use '/[admincmd] visit' command,,op,admin,,
 Likes,[gamemode].likes,Allows to use '/[playercmd] likes' command,,true,player,,
