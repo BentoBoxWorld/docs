@@ -29,6 +29,7 @@ The latest config options, and their detailed explanations can be found [here](h
 === "Player commands"
     - `/[player_command] visit <player>`: opens GUI or visits targeted player island.
     - `/[player_command] visit configure`: opens GUI that allows to manage visiting settings.
+    - `/[player_command] visit setlocation`: allows to change visitor spawn location.
 
 === "Admin commands"
     - `/[admin_command] visit <player>`: opens GUI that allows editing addon settings and configure island data.
@@ -43,6 +44,7 @@ The latest config options, and their detailed explanations can be found [here](h
 === "Player permissions"
     - `[gamemode].visit` - Let the player use the '/[player_command] visit' command.
     - `[gamemode].visit.configure` - Let the player use the '/[admin_command] visit configure' command.
+    - `[gamemode].visit.setlocation` - Let the player use the '/[admin_command] visit setlocation' command.
     - `visit.icon.[material]` - Allows changing icon for a player owned island in Visit GUI.
 
 === "Admin permissions"
