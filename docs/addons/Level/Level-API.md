@@ -17,7 +17,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import world.bentobox.bentobox.api.events.addon.AddonEvent.AddonGeneralEvent;
+import world.bentobox.bentobox.api.events.IslandBaseEvent;
 
 public class TestPlugin extends JavaPlugin implements Listener {
 
@@ -27,7 +27,7 @@ public class TestPlugin extends JavaPlugin implements Listener {
     }
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-    public void onLevel(AddonGeneralEvent e) {
+    public void onLevel(IslandBaseEvent e) {
         Bukkit.getLogger().info("DEBUG: " + e.getEventName());
         e.getKeyValues().entrySet().stream().forEach(en -> Bukkit.getLogger().info("Key " + en.getKey() + " Value " + en.getValue()));
         // Set the new value
