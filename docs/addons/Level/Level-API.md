@@ -31,7 +31,7 @@ public class TestPlugin extends JavaPlugin implements Listener {
         Bukkit.getLogger().info("DEBUG: " + e.getEventName());
         e.getKeyValues().entrySet().stream().forEach(en -> Bukkit.getLogger().info("Key " + en.getKey() + " Value " + en.getValue()));
         // Set the new value
-        if (e.getKeyValues().containsKey("eventName") && e.getKeyValues().get("eventName").equals("IslandLevelCalculatedEvent")) {
+        if (e.getEventName() != null && e.getEventName().equals("IslandLevelCalculatedEvent")) {
             Bukkit.getLogger().info("DEBUG: setting new values");
             e.getKeyValues().compute("level", (k,v) -> 500L);
             e.getKeyValues().compute("deathHandicap", (k,v) -> 5);
@@ -49,7 +49,6 @@ You do not need to include Level as a dependency in your POM because you never d
 
 The specific key values that Level provides are:
 
-* eventName: which will always be "IslandLevelCalculatedEvent"
 * targetPlayer, (UUID) targetPlayer's
 * islandUUID - (String) the unique id of the island
 * level - (Long) the calculated island level
