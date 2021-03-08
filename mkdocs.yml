@@ -37,7 +37,7 @@ nav:
         - Warps: addons/Warps/index.md
         - Upgrades: addons/Upgrades/index.md
     - "Tutorials – Generic":
-        - "How To Install": BentoBox/Install-BentoBox.md
+        - "How To Install": BentoBox/Install-Bentobox.md
         - "Set a BentoBox world as the server's default world": BentoBox/Set-a-BentoBox-world-as-the-server-default-world.md
     - "Tutorials – API":
         - "Create an Addon": Tutorials/api/Create-an-addon.md
