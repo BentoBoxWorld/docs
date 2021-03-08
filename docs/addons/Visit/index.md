@@ -74,10 +74,13 @@ Addon introduces 2 BentoBox protection flags:
 
 ### Events
 
-=== "[VisitEvent](https://github.com/BentoBoxWorld/Visit/blob/develop/src/main/java/world/bentobox/visit/events/VisitEvent.java)"
-!!! summary "Description"
-Event that is triggered before player is teleported to the island, but after payments.
-Can be cancelled. (payments are not returned on cancellation)
+=== "VisitEvent"
+    !!! summary "Description"
+        Event that is triggered before player is teleported to the island, but after payments.
+
+        Can be cancelled. (payments are not returned on cancellation)
+
+        Link to the class: [VisitEvent](https://github.com/BentoBoxWorld/Visit/blob/develop/src/main/java/world/bentobox/visit/events/VisitEvent.java)
 
     !!! question "Variables"
         - `UUID player` - id of the player who tries to visit an island.
