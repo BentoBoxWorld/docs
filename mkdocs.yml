@@ -8,6 +8,7 @@ nav:
     - FAQ: FAQ.md
     - Game Modes:
         - BSkyBlock: gamemodes/BSkyBlock/index.md
+        - Boxed: gamemodes/Boxed/index.md
         - AcidIsland: gamemodes/AcidIsland/index.md
         - SkyGrid: gamemodes/SkyGrid/index.md
         - CaveBlock: gamemodes/CaveBlock/index.md
