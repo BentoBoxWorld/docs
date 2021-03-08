@@ -6,10 +6,6 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 
 {{ addon_description("Boxed") }}
 
-# Boxed
-
-A game mode where you are boxed into a tiny space that only expands by completing advancements.
-
 ## BentoBox Requirements
 
 * Requires BentoBox 1.16.0 or later (Snapshots can be downloaded here: [https://ci.bentobox.world](https://ci.bentobox.world))
