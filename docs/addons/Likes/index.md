@@ -177,7 +177,11 @@ All other options can be changed via ingame GUI.
 === "LikeAddEvent"
     !!! summary "Description"
         Event that is triggered when player adds a new like to the island.
+
         Event is only informative. Cannot be cancelled.
+
+        Link to the class: [LikeAddEvent](https://github.com/BentoBoxWorld/Likes/blob/develop/src/main/java/world/bentobox/likes/events/LikeAddEvent.java)
+
 
     !!! question "Variables"
         - `UUID user` - id of the player who added the like.
@@ -190,16 +194,18 @@ All other options can be changed via ingame GUI.
     !!! example "Code example for Plugins"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevel(BentoBoxEvent event) {
-            UUID user = (UUID) event.getKeyValues().get("user");
-            String islandId = (String) event.getKeyValues().get("islandId");
+        public void onLike(BentoBoxEvent event) {
+            if (event.getEventName().equals("LikeAddEvent")) {
+                UUID user = (UUID) event.getKeyValues().get("user");
+                String islandId = (String) event.getKeyValues().get("islandId");
+            }
         }
         ```
         
     !!! example "Code example for Addons"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevel(LikeAddEvent event) {
+        public void onLike(LikeAddEvent event) {
             UUID user = event.getUser();
             String islandId = event.getIslandId();
         }
@@ -208,7 +214,10 @@ All other options can be changed via ingame GUI.
 === "LikeRemoveEvent"
     !!! summary "Description"
         Event that is triggered when player removes his like from the island.
+
         Event is only informative. Cannot be cancelled.
+
+        Link to the class: [LikeRemoveEvent](https://github.com/BentoBoxWorld/Likes/blob/develop/src/main/java/world/bentobox/likes/events/LikeRemoveEvent.java)
 
     !!! question "Variables"
         - `UUID user` - id of the player who removed the like.
@@ -221,16 +230,18 @@ All other options can be changed via ingame GUI.
     !!! example "Code example for Plugins"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevel(BentoBoxEvent event) {
-            UUID user = (UUID) event.getKeyValues().get("user");
-            String islandId = (String) event.getKeyValues().get("islandId");
+        public void onLikeRemove(BentoBoxEvent event) {
+            if (event.getEventName().equals("LikeRemoveEvent")) {
+                UUID user = (UUID) event.getKeyValues().get("user");
+                String islandId = (String) event.getKeyValues().get("islandId");
+            }
         }
         ```
         
     !!! example "Code example for Addons"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevel(LikeRemoveEvent event) {
+        public void onLikeRemove(LikeRemoveEvent event) {
             UUID user = event.getUser();
             String islandId = event.getIslandId();
         }
@@ -239,7 +250,10 @@ All other options can be changed via ingame GUI.
 === "DislikeAddEvent"
     !!! summary "Description"
         Event that is triggered when player adds a new dislike to the island.
+
         Event is only informative. Cannot be cancelled.
+
+        Link to the class: [DislikeAddEvent](https://github.com/BentoBoxWorld/Likes/blob/develop/src/main/java/world/bentobox/likes/events/DislikeAddEvent.java)
 
     !!! question "Variables"
         - `UUID user` - id of the player who added the dislike.
@@ -252,16 +266,18 @@ All other options can be changed via ingame GUI.
     !!! example "Code example for Plugins"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevel(BentoBoxEvent event) {
-            UUID user = (UUID) event.getKeyValues().get("user");
-            String islandId = (String) event.getKeyValues().get("islandId");
+        public void onDislike(BentoBoxEvent event) {
+            if (event.getEventName().equals("DislikeAddEvent")) {
+                UUID user = (UUID) event.getKeyValues().get("user");
+                String islandId = (String) event.getKeyValues().get("islandId");
+            }
         }
         ```
         
     !!! example "Code example for Addons"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevel(DislikeAddEvent event) {
+        public void onDislike(DislikeAddEvent event) {
             UUID user = event.getUser();
             String islandId = event.getIslandId();
         }
@@ -270,7 +286,10 @@ All other options can be changed via ingame GUI.
 === "DislikeRemoveEvent"
     !!! summary "Description"
         Event that is triggered when player removes his dislike from the island.
+
         Event is only informative. Cannot be cancelled.
+
+        Link to the class: [DislikeRemoveEvent](https://github.com/BentoBoxWorld/Likes/blob/develop/src/main/java/world/bentobox/likes/events/DislikeRemoveEvent.java)
 
     !!! question "Variables"
         - `UUID user` - id of the player who removed the dislike.
@@ -283,16 +302,18 @@ All other options can be changed via ingame GUI.
     !!! example "Code example for Plugins"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevel(BentoBoxEvent event) {
-            UUID user = (UUID) event.getKeyValues().get("user");
-            String islandId = (String) event.getKeyValues().get("islandId");
+        public void onDislikeRemove(BentoBoxEvent event) {
+            if (event.getEventName().equals("DislikeRemoveEvent")) {
+                UUID user = (UUID) event.getKeyValues().get("user");
+                String islandId = (String) event.getKeyValues().get("islandId");
+            }
         }
         ```
         
     !!! example "Code example for Addons"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevel(DislikeRemoveEvent event) {
+        public void onDislikeRemove(DislikeRemoveEvent event) {
             UUID user = event.getUser();
             String islandId = event.getIslandId();
         }
@@ -301,7 +322,10 @@ All other options can be changed via ingame GUI.
 === "StarsAddEvent"
     !!! summary "Description"
         Event that is triggered when player adds new stars to the island.
+
         Event is only informative. Cannot be cancelled.
+
+        Link to the class: [StarsAddEvent](https://github.com/BentoBoxWorld/Likes/blob/develop/src/main/java/world/bentobox/likes/events/StarsAddEvent.java)
 
     !!! question "Variables"
         - `UUID user` - id of the player who added the stars.
@@ -315,17 +339,19 @@ All other options can be changed via ingame GUI.
     !!! example "Code example for Plugins"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevel(BentoBoxEvent event) {
-            UUID user = (UUID) event.getKeyValues().get("user");
-            String islandId = (String) event.getKeyValues().get("islandId");
-            int value = (int) event.getKeyValues().get("value");
+        public void onStarsAdd(BentoBoxEvent event) {
+            if (event.getEventName().equals("StarsAddEvent")) {
+                UUID user = (UUID) event.getKeyValues().get("user");
+                String islandId = (String) event.getKeyValues().get("islandId");
+                int value = (int) event.getKeyValues().get("value");
+            }
         }
         ```
         
     !!! example "Code example for Addons"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevel(StarsAddEvent event) {
+        public void onStarsAdd(StarsAddEvent event) {
             UUID user = event.getUser();
             String islandId = event.getIslandId();
             int value = event.getValue();
@@ -335,7 +361,10 @@ All other options can be changed via ingame GUI.
 === "StarsRemoveEvent"
     !!! summary "Description"
         Event that is triggered when player removes his stars from the island.
+
         Event is only informative. Cannot be cancelled.
+
+        Link to the class: [StarsRemoveEvent](https://github.com/BentoBoxWorld/Likes/blob/develop/src/main/java/world/bentobox/likes/events/StarsRemoveEvent.java)
 
     !!! question "Variables"
         - `UUID user` - id of the player who added the stars.
@@ -348,16 +377,18 @@ All other options can be changed via ingame GUI.
     !!! example "Code example for Plugins"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevel(BentoBoxEvent event) {
-            UUID user = (UUID) event.getKeyValues().get("user");
-            String islandId = (String) event.getKeyValues().get("islandId");
+        public void onStarsRemove(BentoBoxEvent event) {
+            if (event.getEventName().equals("StarsRemoveEvent")) {
+                UUID user = (UUID) event.getKeyValues().get("user");
+                String islandId = (String) event.getKeyValues().get("islandId");
+            }
         }
         ```
         
     !!! example "Code example for Addons"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevel(StarsRemoveEvent event) {
+        public void onStarsRemove(StarsRemoveEvent event) {
             UUID user = event.getUser();
             String islandId = event.getIslandId();
         }

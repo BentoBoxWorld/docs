@@ -94,7 +94,7 @@ Addon introduces 2 BentoBox protection flags:
     !!! example "Code example for Plugins"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevel(BentoBoxEvent event) {
+        public void onVisit(BentoBoxEvent event) {
             if (event.getEventName().equals("VisitEvent")) {
                 UUID player = (UUID) event.getKeyValues().get("player");
                 Island island = (Island) event.getKeyValues().get("island");
@@ -105,7 +105,7 @@ Addon introduces 2 BentoBox protection flags:
     !!! example "Code example for Addons"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevel(VisitEvent event) {
+        public void onVisit(VisitEvent event) {
             UUID player = event.getPlayer();
             Island island = event.getIsland();
         }
