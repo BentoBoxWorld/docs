@@ -107,6 +107,7 @@ def define_env(env):
     Properly translated placeholders for each gamemode can be found:\n
     - [AcidIsland](/en/latest/gamemodes/AcidIsland/Placeholders)
     - [AOneBlock](/en/latest/gamemodes/AOneBlock/Placeholders)
+    - [Boxed](/en/latest/gamemodes/Boxed/Placeholders)
     - [BSkyBlock](/en/latest/gamemodes/BSkyBlock/Placeholders)
     - [CaveBlock](/en/latest/gamemodes/CaveBlock/Placeholders)
     - [SkyGrid](/en/latest/gamemodes/SkyGrid/Placeholders).\n
