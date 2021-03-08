@@ -71,8 +71,39 @@ Addon introduces 2 BentoBox protection flags:
 {{ translations(5740, ["cs", "es", "de", "hu", "ja", "lv", "pl", "tr", "zh-CN"]) }}
 
 ## Api
+
 ### Events
 
-This addon introduces a new event: [VisitEvent](https://github.com/BentoBoxWorld/Visit/blob/develop/src/main/java/world/bentobox/visit/events/VisitEvent.java)
+=== "[VisitEvent](https://github.com/BentoBoxWorld/Visit/blob/develop/src/main/java/world/bentobox/visit/events/VisitEvent.java)"
+!!! summary "Description"
+Event that is triggered before player is teleported to the island, but after payments.
+Can be cancelled. (payments are not returned on cancellation)
 
-This event is triggered before processing teleportation and it can be cancelled. 
+    !!! question "Variables"
+        - `UUID player` - id of the player who tries to visit an island.
+        - `Island island` - the island which player tries to visit.
+        - `boolean cancelled` - the boolean that indicates if event is cancelled.
+
+    !!! warning "Class Loader Issue"
+        Due Java Class Loader hierarchy, plugins cannot listen for the event directly. 
+        Only BentoBox addons can use event class directly.
+
+    !!! example "Code example for Plugins"
+        ```java
+        @EventHandler(priority = EventPriority.MONITOR)
+        public void onLevel(BentoBoxEvent event) {
+            if (event.getEventName().equals("VisitEvent")) {
+                UUID player = (UUID) event.getKeyValues().get("player");
+                Island island = (Island) event.getKeyValues().get("island");
+            }
+        }
+        ```
+        
+    !!! example "Code example for Addons"
+        ```java
+        @EventHandler(priority = EventPriority.MONITOR)
+        public void onLevel(VisitEvent event) {
+            UUID player = event.getPlayer();
+            Island island = event.getIsland();
+        }
+        ```
