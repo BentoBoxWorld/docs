@@ -37,12 +37,10 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 * The box owner can move the box using enderpearls thrown from within the box. Beware! It's a one-way trip.
 * The island settings have an option to allow box moving by other ranks (look for the Composter box icon)
 
-### Other comments
-* Visitors are not generally protected.
-* You can trade with villagers anywhere.
-* Boats can be used anywhere.
-* Items can be dropped and picked up anywhere.
-* Workbenches can be used anywhere.
+## Custom Advancements
+
+You can add custom advancements via data packs. See the [tutorial video for more information](https://youtu.be/zNzQvIbweQs)
+
 
 ## Advanced Config
 
