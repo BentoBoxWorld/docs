@@ -59,19 +59,25 @@ The world seed is what it is used to generate the lands. I recommend keeping thi
 There is one blueprint "island" that is used to generate the tree, chest and blocks below down to y = 5. The default height of the surface is about y = 65, so the blueprint has to be about 60 blocks tall. If you make any good blueprints, please share them!
 
 ### advancements.yml
-This file contains all the advancements and how much your box should grow if you get one. The file can contain custom advancements if you have them. The default is for most recipe advancements to give nothing.
+This file contains all the advancements and how much your box should grow if you get one. The file can contain custom advancements if you have them.
+
+There are two settings at the top - the first `default-root-increase` you probably don't need to change. This sets the score of any root advancement to 0. In other words, players will not get box expansion just for seeing the new advancement tab.
+
+The second setting `unknown-advancement-increase` gives any unknown advancements, i.e., ones not listed in this file, a default value. This is the default value used should you add custom advancements via a data pack and it frees you up from having to list every new advancement in this file.
 
 Example:
+
 ```
+# Lists how many blocks the box will increase when advancement occurs
+settings:
+  default-root-increase: 0
+  unknown-advancement-increase: 1
 advancements:
   'minecraft:adventure/adventuring_time': 1
   'minecraft:adventure/arbalistic': 1
   'minecraft:adventure/bullseye': 1
-  'minecraft:adventure/hero_of_the_village': 1
-  'minecraft:adventure/honey_block_slide': 1
-  'minecraft:adventure/kill_a_mob': 1
-  ...
-  ```
+...
+```
   
 ### biomes.yml
 The player's land has biomes and they are defined here. It's not possible to define where the biomes are right now, only what affect they have on the terrain.
