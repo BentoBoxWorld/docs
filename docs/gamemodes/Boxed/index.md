@@ -27,7 +27,7 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 4. Restart the server - new worlds will be created. There may be a delay.
 5. Login
 6. Type `/boxed` to start.
-
+7. Turn off advancement announcements `/gamerule announceAdvancements false` otherwise there is a lot of spam from the server when players get advancements.
 
 * You will start by a tree. The is a chest with some handy items in it. (This is the island blueprint)
 * The only area you can operate on is your box that shows as a border.
@@ -43,10 +43,6 @@ You can add custom advancements via data packs. See the [tutorial video for more
 
 
 ## Advanced Config
-
-### Game rule
-
-If you are using InvSwitcher, then it will switch out Advancements when you change worlds and that can cause spam, so we recommend you set the game rule `/gamerule announceAdvancements false`.
 
 ### config.yml
 The config is very similar to BSkyBlock, AcidIsland, etc.
