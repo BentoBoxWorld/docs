@@ -44,6 +44,10 @@ You can add custom advancements via data packs. See the [tutorial video for more
 
 ## Advanced Config
 
+### Game rule
+
+If you are using InvSwitcher, then it will switch out Advancements when you change worlds and that can cause spam, so we recommend you set the game rule `/gamerule announceAdvancements false`.
+
 ### config.yml
 The config is very similar to BSkyBlock, AcidIsland, etc.
 
