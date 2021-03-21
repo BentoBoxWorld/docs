@@ -47,6 +47,7 @@ nav:
         - "Config API": BentoBox/Config-API.md
         - "Database API": BentoBox/Database-API.md
         - "Metadata API": BentoBox/MetadataAPI.md
+        - "Get Data From Addons": BentoBox/Request-Handler-API---How-plugins-can-get-data-from-addons.md
 theme:
   name: material
   palette:
