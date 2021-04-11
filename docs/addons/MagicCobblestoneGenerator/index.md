@@ -265,3 +265,35 @@ Template file are mostly for users who do not like to use ingame editing GUI. Ho
 ## Translations
 
 {{ translations(2972, ["de", "es", "lv"]) }}
+
+## API
+
+### Addon Request Handlers
+
+=== "active-generator-names"
+!!! summary "Description"
+Returns the names of active generators for the player.
+
+Since 2.4.0 version.
+
+    !!! question "Input"
+        - `world-name`: String - the name of the world.
+        - `player`: String - the UUID of the player.
+
+    !!! success "Output"
+        The output is a `List<String>` which contains names of active generators.
+
+    !!! failure
+        This handler will return null if the `world-name` has not been provided or if the `world-name` does not exist or `player` is not provided.
+
+    !!! example "Code example"
+        ```java
+        public Map<String, Object> getLikesData(String worldName, UUID playerUUID) {
+            return (Map<String, Object>) new AddonRequestBuilder()
+                .addon("MagicCobblestoneGenerator")
+                .label("active-generator-names")
+                .addMetadata("world-name", worldName)
+                .addMetadata("player", playerUUID)
+                .request();
+        }
+        ```
