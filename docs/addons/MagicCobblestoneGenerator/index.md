@@ -271,10 +271,10 @@ Template file are mostly for users who do not like to use ingame editing GUI. Ho
 ### Addon Request Handlers
 
 === "active-generator-names"
-!!! summary "Description"
-Returns the names of active generators for the player.
+    !!! summary "Description"
+        Returns the names of active generators for the player.
 
-Since 2.4.0 version.
+        Since 2.4.0 version.
 
     !!! question "Input"
         - `world-name`: String - the name of the world.
