@@ -288,12 +288,12 @@ Template file are mostly for users who do not like to use ingame editing GUI. Ho
 
     !!! example "Code example"
         ```java
-        public Map<String, Object> getLikesData(String worldName, UUID playerUUID) {
-            return (Map<String, Object>) new AddonRequestBuilder()
+        public List<String> getActiveGeneratorNames(String worldName, UUID playerUUID) {
+            return (List<String>) new AddonRequestBuilder()
                 .addon("MagicCobblestoneGenerator")
                 .label("active-generator-names")
-                .addMetadata("world-name", worldName)
-                .addMetadata("player", playerUUID)
+                .addMetaData("world-name", worldName)
+                .addMetaData("player", playerUUID)
                 .request();
         }
         ```
