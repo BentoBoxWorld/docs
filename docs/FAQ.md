@@ -201,6 +201,53 @@ If no message shows up to the player telling them that they can't place the sapl
 
 If you are using **GriefPrevention** on your server, there is a [config option](https://github.com/TechFortress/GriefPrevention/wiki/Setup-and-Configuration#preventing-tree-grief) in this plugin that prevents players from placing so-called "Sky Trees".
 
+### How do I change the island distance?
+
+All the game modes have a configuration for the distance between player islands. In BSkyBlock, is is called `distance-between-islands` and it is found in the config.yml file here:
+
+```
+# Radius of island in blocks. (So distance between islands is twice this)
+  # It is the same for every dimension : Overworld, Nether and End.
+  # This value cannot be changed mid-game and the plugin will not start if it is different.
+  # /!\ BentoBox currently does not support changing this value mid-game. If you do need to change it, do a full reset of your databases and worlds.
+  distance-between-islands: 400
+```
+
+In the case of BSkyBlock, the default value is 400, which means that players will start 800 blocks apart from each other. It also means that a player's protection area can grow up to a value of 400.
+
+Most of the time, the default setting should be sufficient for your server. However, some admins like to space out players even further, or sometimes, have them closer together. Whatever you choose, once the game is running, **you cannot change this value**. If you do try to change it, BentoBox will refuse to start and give a warning in the console like this:
+
+```
+[14:08:20 ERROR]: [BentoBox] *****************CRITIAL ERROR!******************
+[14:08:20 ERROR]: [BentoBox] Island distance mismatch!
+World 'bskyblock_world' distance 800 != island range 400!
+Island ID in database is BSkyBlock99ea1c15-f5f8-410a-9019-d6b843a5a254.
+Island distance in config.yml cannot be changed mid-game! Fix config.yml or clean database.
+[14:08:20 ERROR]: [BentoBox] Could not load islands! Disabling BentoBox...
+[14:08:20 ERROR]: [BentoBox] *************************************************
+```
+This is a protection mechanism, because if you do change the value and were able to proceed, islands could end up on top of each other and that would lead to very unhappy players!
+
+** But I am just starting my server! How do I change this value and clean the database? **
+
+I will assume you are using the default JSON database (flat file). Follow these steps:
+
+1. Stop the server
+2. Change the config.yml value for the island distance to whatever you want.
+3. If you have no other BentoBox games running, or just want to reset everything, then delete the `plugins/BentoBox/database` and the `plugins/BentoBox/database_backup` folders
+4. Delete the worlds that the game modes made, for BSkyBlock, this is by default these folders in your server folder: `bskyblock_world`, `bskyblock_world_nether`, and `bskyblock_world_the_end` 
+5. Restart the server.
+
+If you already have other BentoBox game modes running on your server, then things are a little more complex:
+1. Stop the server
+2. Change the config.yml value for the island distance to whatever you want.
+3. Open the `plugins/BentoBox/database/Island` folder and delete all the files that start with the name of your game mode, e.g., `BSkyBlock99ea1c15-f5f8-410a-9019-d6b843a5a254.json`
+4. Delete the worlds that the game modes made, for BSkyBlock, this is by default these folders in your server folder: `bskyblock_world`, `bskyblock_world_nether`, and `bskyblock_world_the_end` 
+5. Restart the server.
+
+If you are using other databases like MySQL, then the steps are the same, but you will need to use SQL commands to remove the database, tables, or entries.
+
+
 ## API
 
 ### How do I start writing addons for BentoBox? Is there an API?
