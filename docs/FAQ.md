@@ -248,6 +248,17 @@ If you already have other BentoBox game modes running on your server, then thing
 If you are using other databases like MySQL, then the steps are the same, but you will need to use SQL commands to remove the database, tables, or entries.
 
 
+### How can I enable nether portals to link together?
+
+In BentoBox 1.16 we implemented an option to properly link together portals. However this option works only if `allow-nether` is enabled in server.properties and `allow-end` in bukkit.yml. 
+
+To enable linking nether portals you need to find option in gamemode config: `create-and-link-portals` and set it to `true`.
+
+To enable creating proper end obsidian platform (like in vanilla end) you need to find option `create-obsidian-platform` and set it to `true`.
+
+Be aware, that enabling these options opens the same exploits with unlimitated obsidian generation that original Minecraft has.  
+
+
 ## API
 
 ### How do I start writing addons for BentoBox? Is there an API?
