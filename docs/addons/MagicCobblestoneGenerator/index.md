@@ -312,10 +312,12 @@ Template file are mostly for users who do not like to use ingame editing GUI. Ho
         The output is a `Map<String, Object>` which contains raw generator data.
         
         Output map contains:
+
         - `uniqueId`: String - the unique ID of the generator. Should be the same as in input.
         - `friendlyName`: String - the display name of the generator (unformatted).
         - `description`: List<String> - the list of strings for the lore message (unformatted).
         - `generatorType`: String - the type of the generator. Available types:
+
             - COBBLESTONE
             - STONE
             - BASALT
@@ -323,6 +325,7 @@ Template file are mostly for users who do not like to use ingame editing GUI. Ho
             - BASALT_OR_COBBLESTONE
             - BASALT_OR_STONE
             - ANY
+
         - `generatorIcon`: ItemStack - the itemStack of the generator icon.
         - `lockedIcon`: ItemStack - the itemStack of the locked generator icon.
         - `defaultGenerator`: boolean - the boolean that indicates if generator is default or not.
