@@ -297,3 +297,57 @@ Template file are mostly for users who do not like to use ingame editing GUI. Ho
                 .request();
         }
         ```
+
+
+=== "generator-data"
+    !!! summary "Description"
+        Returns the raw data stored for the requested generator object. 
+
+        Since 2.4.0 version.
+
+    !!! question "Input"
+        - `generator`: String - the UUID of the generator.
+
+    !!! success "Output"
+        The output is a `Map<String, Object>` which contains raw generator data.
+        
+        Output map contains:
+        - `uniqueId`: String - the unique ID of the generator. Should be the same as in input.
+        - `friendlyName`: String - the display name of the generator (unformatted).
+        - `description`: List<String> - the list of strings for the lore message (unformatted).
+        - `generatorType`: String - the type of the generator. Available types:
+            - COBBLESTONE
+            - STONE
+            - BASALT
+            - COBBLESTONE_OR_STONE
+            - BASALT_OR_COBBLESTONE
+            - BASALT_OR_STONE
+            - ANY
+        - `generatorIcon`: ItemStack - the itemStack of the generator icon.
+        - `lockedIcon`: ItemStack - the itemStack of the locked generator icon.
+        - `defaultGenerator`: boolean - the boolean that indicates if generator is default or not.
+        - `priority`: int - the priority vaule of the generator.
+        - `requiredMinIslandLevel`: int - the minimal island level for generator to work.
+        - `requiredBiomes`: Set<Biome> - the set of required biomes for generator to work.
+        - `requiredPermissions`: Set<String> - the set of required permissions for generator to be purchasable.
+        - `generatorTierCost`: double - the price of the generator.
+        - `activationCost`: double - the activation price of the generator.
+        - `deployed`: boolean - the boolean that indicates if generator is available for players.
+        - `blockChanceMap`: TreeMap<Double, Material> - the map that contains raw data for block chances.
+        - `treasureItemChanceMap`: TreeMap<Double, ItemStack> - the map that contains raw data for treasure chances.
+        - `treasureChance`: double - the value of the treasure to be dropped from generating block.
+        - `maxTreasureAmount`: int - the maximal amount of treasures to be dropped at once.
+
+    !!! failure
+        This handler will return null if the `generator` has not been provided or an empty map if `generator` does not exist.
+
+    !!! example "Code example"
+        ```java
+        public Map<String, Object> getGeneratorData(String generatorId) {
+            return (List<String>) new AddonRequestBuilder()
+                .addon("MagicCobblestoneGenerator")
+                .label("generator-data")
+                .addMetaData("generator", generatorId)
+                .request();
+        }
+        ```
