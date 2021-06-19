@@ -48,49 +48,24 @@ island-chat:
   - SkyGrid
   # Log island chats to console.
   log: false
+chat-listener:
+  # Sets priority of AsyncPlayerChatEvent. Change this if Chat addon
+  # is conflicting with other plugins which listen to the same event
+  # Acceptable values: lowest, low, normal, high, highest, monitor
+  priority: normal
 ```
 
 ## Permissions
 
 ```
 permissions:
-  bskyblock.chat.team-chat:
+  '[gamemode].chat.team-chat':
     description: Player can use team chat
     default: true
-  bskyblock.chat.island-chat:
-    description: Player can create a welcome warp sign
+  '[gamemode].chat.island-chat':
+    description: Player can use island chat
     default: true
-  bskyblock.chat.spy:
-    description: Player can use team or island chat spy
-    default: op
-
-  acidisland.chat.team-chat:
-    description: Player can use team chat
-    default: true
-  acidisland.chat.island-chat:
-    description: Player can create a welcome warp sign
-    default: true
-  acidisland.chat.spy:
-    description: Player can use team or island chat spy
-    default: op
-
-  caveblock.chat.team-chat:
-    description: Player can use team chat
-    default: true
-  caveblock.chat.island-chat:
-    description: Player can create a welcome warp sign
-    default: true
-  caveblock.chat.spy:
-    description: Player can use team or island chat spy
-    default: op
-
-  skygrid.chat.team-chat:
-    description: Player can use team chat
-    default: true
-  skygrid.chat.island-chat:
-    description: Player can create a welcome warp sign
-    default: true
-  skygrid.chat.spy:
+  '[gamemode].chat.spy':
     description: Player can use team or island chat spy
     default: op
 
