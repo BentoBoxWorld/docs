@@ -144,10 +144,10 @@ Template file are mostly for users who do not like to use ingame editing GUI. Ho
 
 === "Player permissions"
     - `[gamemode].stone-generator` - Let the player use the '/[player_command] generator' command and its subcommands.
-    - `[gamemode].admin.stone-generator` - Let the player use the '/[admin_command] generator' command and its subcommands.
-    - `[gamemode].admin.stone-generator.why` - Let the player use a debug command '/[admin_command] why generator <player>'.
-    - `[gamemode].admin.stone-generator.database` - Let the player use the '/[admin_command] generator database' command and its subcommands.
-
+    - `[gamemode].stone-generator.active-generators.3` - Sets the maximum number of active generators the island owner can have. 3 can be replaced with any positive integer. This is just an example.
+    - `[gamemode].stone-generator.max-range.30` - Sets the maximum distance from the generator so it continues to work. 30 can be replaced with any positive integer. This is just an example.
+    - `[gamemode].stone-generator.bundle.[bundle_id]` - Specifies which bundle will be used for user owned island.
+    
 === "Admin permissions"
     - `[gamemode].admin.stone-generator` - Let the player use the '/[admin_command] generator' command and its subcommands.
     - `[gamemode].admin.stone-generator.why` - Let the player use a debug command '/[admin_command] why generator <player>'.
