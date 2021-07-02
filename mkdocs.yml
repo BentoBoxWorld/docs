@@ -42,6 +42,7 @@ nav:
     - "Tutorials – Generic":
         - "How To Install": BentoBox/Install-Bentobox.md
         - "Set a BentoBox world as the server's default world": BentoBox/Set-a-BentoBox-world-as-the-server-default-world.md
+        - "Database transition": BentoBox/Database-transition.md
     - "Tutorials – API":
         - "Create an Addon": Tutorials/api/Create-an-addon.md
         - "Config API": BentoBox/Config-API.md
