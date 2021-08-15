@@ -4,7 +4,7 @@
 
 Please read the [Placeholders page](../../../BentoBox/Placeholders).
 
-## List of available placeholders as of Level 1.9.0.
+## List of available placeholders
 
 | Placeholder | Description | Level Version |
 |-------------------------------------------------------|--------------------------------------------------------------------------------|-----------|
@@ -12,6 +12,7 @@ Please read the [Placeholders page](../../../BentoBox/Placeholders).
 | `%Level_[gamemode]_visited_island_level%` | Island level of the island the player is standing on | 1.9.0 |
 | `%Level_[gamemode]_top_value_#RANK#%` | Island level of the `#RANK#`-th island in the Top 10 | 1.9.0 |
 | `%Level_[gamemode]_top_name_#RANK#%` | Island owner's name of the `#RANK#`-th island in the Top 10 | 1.9.0 |
+| `%Level_[gamemode]_rank_value%` | Player's position in the rankings (could be > 10) | 2.7.2 |
 
 *Note*: `#RANK#` is a number between 1 and 10.
 
