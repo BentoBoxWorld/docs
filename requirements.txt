@@ -2,6 +2,6 @@ pymdown-extensions>=7.0
 mkdocs==1.2.2
 mkdocs-material
 mkdocs-git-revision-date-localized-plugin
-mkdocs-minify-plugin
+mkdocs-minify-plugin==0.4.0
 mkdocs-macros-plugin
 mkdocs-material-extensions==1.0
