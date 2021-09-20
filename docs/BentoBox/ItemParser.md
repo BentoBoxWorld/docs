@@ -66,7 +66,7 @@ You can find all dye colors here: [DyeColor](https://hub.spigotmc.org/javadocs/s
 
 Player Heads has a custom parsing options. It follows this scheme:
 
- - PLAYER_HEAD:<Name/Trimmed UUID/UUID/Texture>:<QUANTITY>
+ - PLAYER_HEAD:<Name|Trimmed UUID|UUID|Texture>:<QUANTITY>
 
 PLAYER_HEAD - indicates that the item will be Player Head.
 In next part you can specify:
