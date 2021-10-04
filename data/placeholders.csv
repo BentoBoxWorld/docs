@@ -61,6 +61,7 @@ Level,Level_[gamemode]_island_level,Island level of the player's island,1.9.0
 Level,Level_[gamemode]_visited_island_level,Island level of the island the player is standing on,1.9.0
 Level,Level_[gamemode]_top_value_#RANK#,Island level of the `#RANK#`-th island in the Top 10,1.9.0
 Level,Level_[gamemode]_top_name_#RANK#,Island owner's name of the `#RANK#`-th island in the Top 10,1.9.0
+Level,Level_[gamemode]_rank_value,Displays island rank value,2.7.2
 Likes,[gamemode]_likes_addon_island_likes_count,Count of likes that are set to player island,1.7.0
 Likes,[gamemode]_likes_addon_island_likes_place,Island place by likes count,1.7.0
 Likes,[gamemode]_likes_addon_island_dislikes_count,Count of dislikes that are set to player island,1.7.0
