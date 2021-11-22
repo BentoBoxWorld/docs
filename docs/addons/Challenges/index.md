@@ -4,10 +4,6 @@
 
 Created and maintained by [BONNe](https://github.com/BONNe).
 
-!!! warning
-    0.8.0 stores data in a different format that in 0.7.5 and below.
-    You will need to migrate data with `/[gamemode_admin] challenges migrate` if you are using older versions.
-
 {{ addon_description("Challenges") }}
 
 ## Installation
@@ -21,6 +17,30 @@ Created and maintained by [BONNe](https://github.com/BONNe).
 By default, the challenges addon comes without any challenge or levels. On first runtime only the Admin GUI will be accessible.
 Admins can create their own challenges or load a set of default challenges. Default challenges contains 5 levels and 57 challenges.
 There also exist a Web Library, where admins can download public challenges. It is accessible via the Admin GUI by clicking on the Web icon.
+
+## Template
+
+Challenges addon contains a template file which can be used to import challenges into database. This file is useful for bulk challenge adding for people that do not like to use ingame-gui. However, be aware, that not all functions are available for the template file, and some items/options can be added only via GUI.
+
+The example template file: [template.yml](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/resources/template.yml)
+
+!!! tip
+    The template file must contain both: challenges and levels. Without them, it will not work.
+
+??? question "What is challenge type?"
+    Challenges addon has 4 different types of challenges. Each type offers different things to be tested for challenge to be marked as completed. These types are:
+    - Inventory Challenge (`INVENTORY_TYPE`) - challenge that requires items in player inventory to be completed.
+    - Island Challenge (`ISLAND_TYPE`) - challenge that requires blocks or entities on the player island to be completed.
+    - Other Challenge (`OTHER_TYPE`) - challenge that requires player XP, money or island level to be completed.
+    - Statistic Challenge (`STATISTIC_TYPE`) - challenge that requires certain value from player statistic to be completed.
+
+??? question "Can I specify an enchantment on required/reward items?"
+    Unfortunately Spigot does not have a general item parsing mechanics. So plugin authors need to create their own. Challenges addon uses BentoBox [Item Parser](/en/latest/BentoBox/ItemParser/). If function is not supported by it, then you cannot. However, you can always use in-game admin GUI to set any items you want. There is not any limitation.
+
+??? question "How I can know what values I can put in statistic challenge type?"
+    The statistic type you can find here: [Statistic](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Statistic.html).
+    Some information can be found in fandom site: [minecraft.fandom](https://minecraft.fandom.com/wiki/Statistics)
+    However, there is not a place where you could find out what things you can specify. I would recommend to use ingame admin GUI for creating statistic challenges, as it has more options to detect which fields can fill.
 
 ## Commands
 
@@ -54,7 +74,8 @@ Permissions can be found [here](Permissions).
     - `[gamemode].challenges` - (default: `true`) - Let the player use the '/[player_command] challenges' command.
     - `[gamemode].challenges.multiple` - (default: `true`) - Allows the player complete challenge multiple times at once.
     - `[gamemode].challenges.complete` - (default: `false`) - Let the player use the '/[player_command] challenges complete <challenge> <number>' command.
-    - `addon.challenges` - (default: `true`) - Allows the access to '/challenges' command if it is enabled in the config. 
+    - `addon.challenges` - (default: `true`) - Allows the access to '/challenges' command if it is enabled in the config.
+    - `[gamemode].command.challengeexempt` - (default: `false`) - Allows blocking reward command executing for player.
 
 === "Admin permissions"
     - `[gamemode].admin.challenges` - (default: `op`) - Let the player use the '/[admin_command] challenges' command.
@@ -71,6 +92,121 @@ Permissions can be found [here](Permissions).
 
 {{ placeholders_source(source="Challenges") }}
 
+## Customizable GUI's
+
+BentoBox 1.17 API introduced a function that allows to implement customizable GUI's. Challenges addon is one of the first one which uses this functionality. We tried to be as simple as possible for customization, however, some features requires explanation.
+You can find more information how BentoBox custom GUI's works here: [Custom GUI's](/en/latest/Tutorials/generic/Customizable-GUI/)
+
+??? question "How can I customize GUI's"
+    To customize Challenges Addon GUI's you need to have version 1.0. This is a first version that has implemented them. Addon will create a new directory under `/plugins/bentobox/addons/challenges` with a name `panels`
+    
+    Currently you can customize 3 GUI's:
+    - Main Challenges Panel: `main_panel` - panel that is opened when player can see list of challenges.
+    - Multiple Completion Panel: `multiple_panel` - panel that is opened when player wants to specify number of times challenge must be completed.
+    - Gamemode Selection Panel: `gamemode_panel` - panel that is opened when `commands.global-command` is enabled in settings and there are multiple gamemodes installed.
+
+    Each GUI contains functions that is supported only by itself.
+
+??? question "What does `PREVIOUS`|`NEXT` button type?"
+    This button is available in main_panel and gamemode_panel.
+    The PREVIOUS and NEXT button types allows creating automatic paging, when you have more challenges than spaces in GUI.
+    These types have extra parameters under data:
+    - `target` - indicates if button will switch `LEVEL` or `CHALLENGE` in main_panel and `GAMEMODE` in gamemode_panel.
+    - `indexing` - indicates if button will show page number.
+
+    Example: 
+    ```yaml
+        icon: TIPPED_ARROW:INSTANT_HEAL::::1
+        title: challenges.gui.buttons.previous.name
+        description: challenges.gui.buttons.previous.description
+        data:
+          type: PREVIOUS
+          target: CHALLENGE
+          indexing: true
+        action:
+          left:
+            tooltip: challenges.gui.tips.click-to-previous
+    ```
+
+??? question "What does `CHALLENGE` button type?"
+    This button is available in main_panel.
+    The CHALLENGE button creates a dynamic entry for a challenge. Button will be filled only if there exist a challenge. F.e. if you have only 3 challenge, but defined 7 spots for challenges in the GUI, then only 3 spots will be filled. Other spots will be left empty.
+
+    By default challenges will be ordered by their order numbers, however, you can specify a specific level to be in a specific slot with `id` parameter under data.
+    
+    ```yaml
+      data:
+        type: CHALLENGE
+        id: example_challenge
+    ```
+
+    Specifying title, description and icon will overwrite dynammic generation based on database data. By default these values will be generated from database entries.
+    This button supports 3 different action types:
+    - COMPLETE - just completes a challenge once.
+    - COMPLETE_MAX - completes a challenge as much as possible.
+    - MULTIPLE_PANEL - opens multiple completion panel which allows to select how many times must be completed.
+
+    Example: 
+    ```yaml
+      data:
+        type: CHALLENGE
+      actions:
+        left:
+          type: COMPLETE
+          tooltip: challenges.gui.tips.click-to-complete
+        right:
+          type: MULTIPLE_PANEL
+          tooltip: challenges.gui.tips.right-click-multiple-open
+        shift_left:
+          type: COMPLETE_MAX
+          tooltip: challenges.gui.tips.shift-left-click-to-complete-all
+    ```
+
+
+??? question "What does `LEVEL` button type?"
+    This button is available in main_panel.
+    The LEVEL button creates a dynamic entry for a challenge level. Button will be filled only if there exist a level. F.e. if you have only 3 levels, but defined 7 spots for level in the GUI, then only 3 spots will be filled. Other spots will be left empty.
+
+    By default levels will be ordered in their progression, however, you can specify a specific level to be in a specific slot with `id` parameter under data.
+    
+    ```yaml
+      data:
+        type: LEVEL
+        id: example_level
+    ```
+
+    Specifying title, description and icon will overwrite dynammic generation based on database data. By default these values will be generated from database entries.
+    
+    Example: 
+    ```yaml
+      data:
+        type: LEVEL
+      actions:
+        left:
+          tooltip: challenges.gui.tips.click-to-select
+    ```
+    
+??? question "What does `UNASSIGNED_CHALLENGES` button type?"
+    This button is available in main_panel.
+    The UNASSIGNED_CHALLENGES button allows to select a button for free challenges.
+    It does not have any extra functions or dynamic generations.
+
+??? question "What does `GAMEMODE` button type?"
+    This button is available in gamemode_panel
+    It generates a button for each GameMode addon that has Challenges installed.
+
+??? question "What does `INCREASE`|`REDUCE` button type"
+    This button is available in multiple_panel.
+    These types allow increasing/reducing the number of challenge completion.
+
+    Specifying `value: <number>` under `data` allows to set different custom number of increment/reducement.
+
+??? question "What does `ACCEPT` button type"
+    This button is available in multiple_panel.
+    This type allows accepting input number and complete challenge that much time.
+
+    Specifying `type: ACCEPT` under action allows to complete challenge. 
+    Specifying `type: INPUT` under action allows request player to write number in chat. 
 
 ## FAQ
 
@@ -105,6 +241,8 @@ Permissions can be found [here](Permissions).
 {{ translations(2896, ["cs", "de", "es", "fr", "ja", "lv", "ru", "zh-CN", "zh-TW"]) }}
 
 ## API
+
+Since Challenges 1.0 and BentoBox 1.17 other plugins can access to the Challenges addon data directly. However, addon requests are still a good solution for a plugins that do not want to use too many dependencies.
 
 ### Addon Request Handlers
 
@@ -248,5 +386,116 @@ Permissions can be found [here](Permissions).
                 .addMetadata("player", playerUUID)
                 .addMetadata("world-name", worldName)
                 .request();
+        }
+        ```
+
+### Events
+
+Since BentoBox 1.17 API implemented a feature that solved an issue with classloaders. Plugins that wants to use events directly, now can do it.
+
+=== "ChallengeCompletedEvent"
+    !!! summary "Description"
+        Event that is triggered when player completes a challenge.
+
+        Event is only informative. Cannot be cancelled.
+
+        Link to the class: [ChallengeCompletedEvent](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/java/world/bentobox/challenges/events/ChallengeCompletedEvent.java)
+
+
+    !!! question "Variables"
+        - `String challengeId` - id of the challenge that was completed.
+        - `UUID user` - id of the player who completed the challenge.
+        - `Boolean admin` - indicates if challenge was completed by admin.
+        - `Integer completionCount` - count of challenge completion.
+        
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.MONITOR)
+        public void onLevelCompletion(ChallengeCompletedEvent event) {
+            UUID user = event.getPlayerUUID();
+            String challenge = event.getChallengeID();
+            boolean isAdmin = event.isAdmin();
+            int count = event.getCompletionCount();
+        }
+        ``` 
+
+=== "LevelCompletedEvent"
+    !!! summary "Description"
+        Event that is triggered when player completes a level.
+
+        Event is only informative. Cannot be cancelled.
+
+        Link to the class: [LevelCompletedEvent](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/java/world/bentobox/challenges/events/LevelCompletedEvent.java)
+
+
+    !!! question "Variables"
+        - `String levelId` - id of the level that was completed.
+        - `UUID user` - id of the player who completed the level.
+        - `Boolean admin` - indicates if level was completed by admin.
+        
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.MONITOR)
+        public void onLevelCompletion(LevelCompletedEvent event) {
+            UUID user = event.getPlayerUUID();
+            String levelId = event.getLevelID();
+            boolean isAdmin = event.isAdmin();
+        }
+        ``` 
+
+=== "ChallengeResetAllEvent"
+    !!! summary "Description"
+        Event that is triggered when all challenges are reset for player. It includes challenges level data.
+
+        Event is only informative. Cannot be cancelled.
+
+        Link to the class: [ChallengeResetAllEvent](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/java/world/bentobox/challenges/events/ChallengeResetAllEvent.java)
+
+    !!! question "Variables"
+        - `String worldName` - name of the world where challenges were reset.
+        - `UUID playerUUID` - id of the player who was targeted.
+        - `Boolean admin` - indicates if reset was done by admin.
+        - `String reason` - contains the reason for a reset.
+
+    !!! warning "Constant Values"
+        - `reason` - is set to "ISLAND_RESET" if done my player or "RESET_ALL" if done by admin.
+
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.MONITOR)
+        public void onLevelCompletion(ChallengeResetAllEvent event) {
+            UUID user = event.getPlayerUUID();
+            String worldName = event.getWorldName();
+            boolean isAdmin = event.isAdmin();
+            String reason = event.getReason();
+        }
+        ``` 
+
+=== "ChallengeResetEvent"
+    !!! summary "Description"
+        Event that is triggered when challenge is reset by admin.
+
+        Event is only informative. Cannot be cancelled.
+
+        Link to the class: [ChallengeResetEvent](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/java/world/bentobox/challenges/events/ChallengeResetEvent.java)
+
+    !!! question "Variables"
+        - `String challengeID` - id of the challenge that was reset.
+        - `UUID playerUUID` - id of the player who was targeted.
+        - `Boolean admin` - indicates if challenge was reset by admin.
+        - `String reason` - contains the reason for a reset.
+
+    !!! warning "Constant Values"
+        - `admin` -  is set to true. Non-admin reset for single challenge is not implemented yet.
+        - `reason` - is set to "RESET".
+
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.MONITOR)
+        public void onLevelCompletion(ChallengeResetEvent event) {
+            UUID user = event.getPlayerUUID();
+            String challengeId = event.getChallengeID();
+            boolean isAdmin = event.isAdmin();
+            String reason = event.getReason();
         }
         ```
