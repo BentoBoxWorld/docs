@@ -29,6 +29,7 @@ The example template file: [template.yml](https://github.com/BentoBoxWorld/Chall
 
 ??? question "What is challenge type?"
     Challenges addon has 4 different types of challenges. Each type offers different things to be tested for challenge to be marked as completed. These types are:
+    
     - Inventory Challenge (`INVENTORY_TYPE`) - challenge that requires items in player inventory to be completed.
     - Island Challenge (`ISLAND_TYPE`) - challenge that requires blocks or entities on the player island to be completed.
     - Other Challenge (`OTHER_TYPE`) - challenge that requires player XP, money or island level to be completed.
@@ -39,7 +40,9 @@ The example template file: [template.yml](https://github.com/BentoBoxWorld/Chall
 
 ??? question "How I can know what values I can put in statistic challenge type?"
     The statistic type you can find here: [Statistic](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Statistic.html).
+    
     Some information can be found in fandom site: [minecraft.fandom](https://minecraft.fandom.com/wiki/Statistics)
+    
     However, there is not a place where you could find out what things you can specify. I would recommend to use ingame admin GUI for creating statistic challenges, as it has more options to detect which fields can fill.
 
 ## Commands
