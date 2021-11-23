@@ -18,10 +18,16 @@ By default, the challenges addon comes without any challenge or levels. On first
 Admins can create their own challenges or load a set of default challenges. Default challenges contains 5 levels and 57 challenges.
 There also exist a Web Library, where admins can download public challenges. It is accessible via the Admin GUI by clicking on the Web icon.
 
-## Template
+### config.yml
+
+Config file contains main functions for the addon.
+
+The latest config.yml can be found [here](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/resources/config.yml).
+
+### Template
 
 Challenges addon contains a template file which can be used to import challenges into database. This file is useful for bulk challenge adding for people that do not like to use ingame-gui. However, be aware, that not all functions are available for the template file, and some items/options can be added only via GUI.
-
+You can have as many template files as you want. Admin GUI will allow choosing which one you want to import.
 The example template file: [template.yml](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/resources/template.yml)
 
 !!! tip
@@ -60,9 +66,6 @@ The example template file: [template.yml](https://github.com/BentoBoxWorld/Chall
     - `/challengesadmin`: Access Admin Challenges GUI. Contains list of worlds where Challenges are enabled. This must be enabled in configuration.
     - `/[admin_command] challenges`: Access BSkyBlock Admin Challenges GUI
     - `/[admin_command] challenges reload [hard]`: Ability to reload Challengs addon configuration. This method clears also cache data. Parameter hard allows to reset database connection.
-    - `/[admin_command] challenges import [overwrite]`: Ability to import ASkyBlock challenges. Requires challenges.yml file in ./plugins/BentoBox/addons/Challenges/ folder. Parameter overwrite allows to overwrite existing challenges.
-    - `/[admin_command] challenges defaults import`: Ability to import Default challenges. This method will not work, if in current world already exist challenges or levels.
-    - `/[admin_command] challenges defaults generate`: Ability to export existing challenges. This method will generate defaults.json file in ./plugins/BentoBox/addons/Challenges/ folder.
 
 ## Permissions
 
@@ -217,14 +220,23 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     Please add it to the list [here](https://github.com/BentoBoxWorld/Challenges/issues).
 
 ??? question "How can I add a new challenge?"
-    The official way is to add challenge via Admin GUI.
+    The official way is to add challenge via Admin GUI or Template file.
+    Be aware, that template file is imported only after using proper icon in Admin GUI ("Import Template"). The GUI will allow choosing which template you will want to import into gamemode. 
     
-    However, there is an option to edit exported database file. It can be done by exporting to file via: `/[admin_command] challenges defaults generate`. To import file you will need to remove all existing challenges. It can be done by clicking on TNT button in Admin GUI. After that you need to import your file via `/[admin_command] challenges defaults import`.
+    However, there is an option to edit exported database file. It can be done by exporting to file via: `/[admin_command] challenges` and clicking on "Export Database" button.
+
+??? question "Can I enable challenges per island? So all island members has the same challenges?"
+    Yes, you can do it via addon config file: `store-island-data: true`
+
+??? question "Can I enable challenges per player?"
+    Yes, you can do it via addon config file: `store-island-data: false`
 
 ??? question "Reward commands are not working. Why?"
     Most likely reward commands are not working because of incorrect definition. The command does not require `/` symbol before it.
     
     If you want to call command from player perspective, you need to add `[SELF]` before command call, f.e. `[SELF] kill` will result in player calling `/kill` command.
+
+    It also could be caused by permissions. `[gamemode].command.challengeexempt` will prevent player to execute commands. Check if player does not have this permission.
 
 ??? question "How to add placeholders in reward commands?"
     Currently, addon do not support placeholders in reward commands. If that is necessary, you can request them in gitHub.
@@ -232,7 +244,35 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     Only placeholder that currently is supported in reward commands is `[player]` which returns player who completed challenge name.
 
 ??? question "I do not like order of elements in challenge description. Can I change it?"
-    Yes, order of elements are defined in addon settings. It can be easily changed in Admin GUI under settings. Challenges description is under Challenges Lore, while challenges levels are under Levels Lore.
+    Yes, order of elements are defined in addon locales file.
+
+    [Challenge Description](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/resources/locales/en-US.yml#L852-L994)
+    [Level Description](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/resources/locales/en-US.yml#L995-L1042)
+
+    Switching or removing parts of lore will change the order of elemetns displayed in it.
+
+    ```yaml
+        lore: |-
+            [description]
+            [status]
+            [cooldown]
+            [requirements]
+            [rewards]
+    ```
+
+    Each of these parts are generated by tags below, and you can change them too. F.e. [status] part is generated from:
+
+    ```yaml
+    status:
+        # Status message for completed unrepeatable challenge
+        completed: "&2&l Completed"
+        # Status message that contains number of completions for unlimited repeatable challenge
+        completed-times: "&2 Completed &7&l [number] &r&2 time(-s)"
+        # Status message that contains number of completions from max available for repeatable challenge
+        completed-times-of: "&2 Completed &7&l [number] &r&2 out of &7&l [max] &r&2 times"
+        # Status message that indicates that max completion count reached for repeatable challenge
+        completed-times-reached: "&2&l Completed all &7 [max] &2 times"
+    ```
 
 ## Translations
 
@@ -241,7 +281,9 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     Each challenge has its own "display name" and "description" which are not localized to keep the configuration process as simple as possible for the end user.  
     You can however find or provide translations for various challenges on our [online Challenges Library](https://github.com/BentoBoxWorld/weblink/tree/master/challenges/library) on GitHub.
 
-{{ translations(2896, ["cs", "de", "es", "fr", "ja", "lv", "ru", "zh-CN", "zh-TW"]) }}
+    There is also option to translate parts via locales [file](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/resources/locales/en-US.yml#L1248-L1270)
+
+{{ translations(2896, ["lv"]) }}
 
 ## API
 
