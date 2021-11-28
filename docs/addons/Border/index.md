@@ -1,93 +1,143 @@
 # Border
 
-**Border** shows a world border around islands. The world border is the Minecraft world border and players cannot go outside of it or a barrier block border that can show up when required.
+**Border** can create and show a border around islands which players cannot pass.  
+The border can be:
+- the vanilla world border (using [**WorldBorderAPI**](https://github.com/yannicklamprecht/WorldBorderAPI/releases) plugin)
+- a custom border that shows up when the player is near (visuals can be configured).
 
 Created and maintained by [tastybento](https://github.com/tastybento).
 
-!!! warning "Requirements"
-    This addon requires [WorldBorderPlugin](https://github.com/yannicklamprecht/WorldBorderAPI/releases) from **WorldBorderAPI**.  
-    Make sure you downloaded the plugin and put it in your server's `plugins` folder.
+!!! warning "Dependencies"
+    This addon is configured by default to use the **WorldBorderAPI** to show the border, 
+    **but it can be turned off**, see the `use-wbapi` setting.
 
 {{ addon_description("Border") }}
 
 ## Installation
 
-1. Put the WorldBorderPlugin jar into the `plugins` folder if you want the vanilla world border.
-2. Put the addon jar into the `plugins/BentoBox/addons` folder.
-3. Restart the server.
-4. Edit the config.yml (Optional)
-5. Restart the server to take the new settings
+1. Restart the server (to enable the addon and have the `config.yml` file generated)
+2. If you want to enable the vanilla border type, put the WorldBorderPlugin jar into the `plugins` folder and make sure to set `use-wbapi: true` in `config.yml`. Otherwise, set `use-wbapi: false` in the configuration.
+3. Put the addon jar into the `plugins/BentoBox/addons` folder
+4. Customize settings in `config.yml` (optional)
+5. Restart the server to apply new settings
 
 ## Commands
 
 !!! tip
     `[player_command]` is a command that differs depending on the gamemode you are running.
-    The Gamemodes' `config.yml` file contains options that allows you to modify this value.
+    The Gamemodes' `config.yml` file contains settings that allows you to modify this value.
     As an example, on BSkyBlock, the default `[player_command]` is `island`.
 
-- `/[player_command] border`: toggles whether the border is shown or not.
+### border
+**Command**: `/[player command] border`  
+**Description**: Turns the border on/off.  
+**Permission**: `[gamemode].border.toggle`. Default: `op`.  
+**Notes**: Since Version 3.0.0 it requires a permission.  
 
-## Permissions
+### border type {...}
+**Command**: `/[player command] border type {barrier | vanilla}`  
+**Description**: Sets the border type.  
+**Permission**: `[gamemode].border.set-type`. Default: `true`.  
+**Example**: `/[player command] border type barrier`  
 
 !!! tip
     `[gamemode]` is a prefix that differs depending on the gamemode you are running.
     The prefix is the lowercased name of the gamemode, i.e. if you are using BSkyBlock, the prefix is `bskyblock`.
     Similarly, if you are using AcidIsland, the prefix is `acidisland`.
 
-- `[gamemode].border.toggle` (default: Op): enables/disables the use of the command.
-
 ## Configuration
 
-The config.yml file contains a number of options.
+The `config.yml` file contains settings.  
+The default value is usually the example value unless explicitly stated.
 
-### Disabled GameModes
-By default, Border will operate in all game mode worlds on the BentoBox server. To disable a game mode it is necessary to write its name on new line that starts with -. Example:
+### Disable game modes
+You can disable the addon with this setting.  
+By default, Border will operate in all game mode worlds on the BentoBox server.
+
+You can disable a game mode by writing its name on a new line that starts with `-`.  
+Example to disable BSkyBlock:
+
+```yml
+disabled-gamemodes:
+  - BSkyBlock
 ```
- disabled-gamemodes:
-   - BSkyBlock
+
+Default value:
+
+```yml
+disabled-gamemodes: []
 ```
 
 ### Use WorldBorderAPI (WBAPI)
-If you want to use the vanilla world border then you must download the WorldBorderAPI plugin. You can find them here: https://github.com/yannicklamprecht/WorldBorderAPI/releases
+Enables or disables the usage of **WorldBorderAPI**.  
+If you want to use it then download and enable the [WorldBorderAPI plugin](https://github.com/yannicklamprecht/WorldBorderAPI/releases).
 
-Players cannot exit past the vanilla world border, so it will completely block movement outside of a player's protected island area. If you do not want this, then do not use WBAPI.
+Set it to `true` to enable (and require) the WBAPI integration.
 
-To activate/deactivate WBAPI, set this to true/false in the config.yml:
-
-```
+```yml
 use-wbapi: true
 ```
 
-### Use barrier blocks.
-This only applies if you are not using WBAPI.
+### Return teleport
+Controls whether if players somehow manage to pass through the border (e.g. teleport in the same world), should they be teleported back to their islands.
 
-If true, the the border will use barrier blocks to prevent most players from exiting the border. If players do manage to exit it, they will get teleported back inside it. 
+Set to `true` if you want players to be teleported back.
 
-If false, the border is indicated by particles only.
+**Warning**: If you set this value to `false` along with having `use-barrier-blocks` as `false`, players will be able to just simply walk through the border.
 
-The default is to use barrier blocks.
-
+```yml
+return-teleport: true
 ```
+
+!!! tip
+    If you want to use this addon **only to show** the borders for the players, use the following settings:
+    ```yml
+    use-barrier-blocks: false
+    return-teleport: false
+    ```
+
+### Use barrier blocks.
+Only applies for players who are **not** using the vanilla border type.
+
+- `true`: the border will be made of barrier blocks.  
+- `false`: there will be no barrier block-based border. This means it is up to the `return-teleport` setting whether players are teleported back when leaving the island.
+
+```yml
 use-barrier-blocks: true
 ```
 
 ### Default border behavior
-Players can turn the border on and off if they have the right permission using the border command. This setting makes the default on or off:
+Players can turn the border on and off with a command if they have the right permission.  
+This setting makes the default on or off; set it to `true` to have it on by default.
 
-``` 
+```yml
 show-by-default: true
 ```
 
 ### Show max-protection range border.
+Only applies for players who are **not** using the vanilla border type.
 
-This only applies if you are not using WBAPI.
+Set to `true` to show barrier (🚫) particles shown at the max protection range.  
+This is useful for game modes like Boxed where the player's protection area can move around.
 
-This is a visual border only and not a barrier. It displays the 🚫 particle. This is useful for game modes like Boxed where the player's protection area can move around.
+Note that these are **not barrier blocks** but _particles_, so the "air" just _looks like_ them.
+
+```yml
+show-max-border: true
+``` 
+
+### Show particles
+Enables/disables all types of wall particles shown by the addon (border and max-protection range particles).
+
+Set to `false` if you don't want **any** wall particles to be shown.
 
 ```
-show-max-border: true
+show-particles: true
 ```
 
 ## Translations
 
 {{ translations(3896, ["cs", "it", "lv"]) }}
+
+## Source
+Want to contribute? See this documentation's source code at [GitHub](https://github.com/BentoBoxWorld/docs/blob/master/docs/addons/Border/).
