@@ -107,6 +107,7 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     To customize Challenges Addon GUI's you need to have version 1.0. This is a first version that has implemented them. Addon will create a new directory under `/plugins/bentobox/addons/challenges` with a name `panels`
     
     Currently you can customize 3 GUI's:
+
     - Main Challenges Panel: `main_panel` - panel that is opened when player can see list of challenges.
     - Multiple Completion Panel: `multiple_panel` - panel that is opened when player wants to specify number of times challenge must be completed.
     - Gamemode Selection Panel: `gamemode_panel` - panel that is opened when `commands.global-command` is enabled in settings and there are multiple gamemodes installed.
@@ -148,6 +149,7 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
     Specifying title, description and icon will overwrite dynammic generation based on database data. By default these values will be generated from database entries.
     This button supports 3 different action types:
+
     - COMPLETE - just completes a challenge once.
     - COMPLETE_MAX - completes a challenge as much as possible.
     - MULTIPLE_PANEL - opens multiple completion panel which allows to select how many times must be completed.
