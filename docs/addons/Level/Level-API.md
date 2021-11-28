@@ -1,62 +1,37 @@
 # Level API
 
-Level provides an API for other addons and plugins. This covers Level 2.3.0 and onwards.
+Level provides an API for other plugins. This covers Level 2.8.1 and onwards.
 
-## For Plugins
-
-As Level is loaded by BentoBox, it is not possible to directly interact with the classes it uses due to Java Classloader protections. So, you must use the key-value API provided by BentoBox.
-
-Here is an example plugin that shows how to obtain the key-value pairs and change them:
+Add the Level dependency to your Maven POM.xml:
 
 ```
-package us.tastybento.test;
+        <dependency>
+            <groupId>world.bentobox</groupId>
+            <artifactId>level</artifactId>
+            <version>2.8.1</version>
+            <scope>provided</scope>
+        </dependency>
+```
+Use the latest Level version.
 
-import org.bukkit.Bukkit;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
-import org.bukkit.plugin.java.JavaPlugin;
+Then you can obtain the level for a player by asking Level once you have the world that the island is in and confirming that the player is the owner of an island in that world.
 
-import world.bentobox.bentobox.api.events.IslandBaseEvent;
 
-public class TestPlugin extends JavaPlugin implements Listener {
-
-    @Override
-    public void onEnable() {
-        Bukkit.getPluginManager().registerEvents(this, this);
-    }
-
-    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-    public void onLevel(IslandBaseEvent e) {
-        Bukkit.getLogger().info("DEBUG: " + e.getEventName());
-        e.getKeyValues().entrySet().stream().forEach(en -> Bukkit.getLogger().info("Key " + en.getKey() + " Value " + en.getValue()));
-        // Set the new value
-        if (e.getEventName() != null && e.getEventName().equals("IslandLevelCalculatedEvent")) {
-            Bukkit.getLogger().info("DEBUG: setting new values");
-            e.getKeyValues().compute("level", (k,v) -> 500L);
-            e.getKeyValues().compute("deathHandicap", (k,v) -> 5);
-            e.getKeyValues().compute("pointsToNextLevel", (k,v) -> 50L);
-            e.getKeyValues().compute("initialLevel", (k,v) -> 1L);
-        }
-        Bukkit.getLogger().info("DEBUG: Now set to:");
-        e.getKeyValues().entrySet().stream().forEach(en -> Bukkit.getLogger().info("Key " + en.getKey() + " Value " + en.getValue()));
-    }
-
+```
+// Get the game mode world for the game mode you are requesting, e.g., BSkyBlock 
+World w = BentoBox.getInstance().getIWM().getOverWorld("BSkyBlock");
+if (w == null) {
+    // World does not exist - is BSkyBlock loaded?
+    return;
 }
+UUID owner = BentoBox.getInstance().getIslandsManager().getOwner(w, playerUUID);
+if (owner == null) {
+    // This player is not the owner of an island in this world
+    return;
+}
+// Get the level
+long level = BentoBox.getInstance().getAddonsManager().getAddonByName("Level").map(l -> ((Level) l).getIslandLevel(w, owner)).orElse(0L);
 ```
 
-You do not need to include Level as a dependency in your POM because you never directly interact with it.
-
-The specific key values that Level provides are:
-
-* targetPlayer, (UUID) targetPlayer's
-* islandUUID - (String) the unique id of the island
-* level - (Long) the calculated island level
-* pointsToNextLevel - (Long) points to the next level as calculated
-* deathHandicap - (int) the number of levels lost due to deaths in this world
-* initialLevel - (Long) the initial level of the island. This is deducted from the overall island level
-* isCancelled - (Boolean) will be false. If set to true, then island calculation will just stop
-
-Don't forget to cast the key values to their correct types otherwise you will cause errors
-
+The JavaDocs for Level can be found [here](https://ci.codemc.io/job/BentoBoxWorld/job/Level/ws/target/apidocs/index.html).
 
