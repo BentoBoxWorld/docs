@@ -2,6 +2,7 @@
 
 **Border** can create and show a border around islands which players cannot pass.  
 The border can be:
+
 - the vanilla world border (using [**WorldBorderAPI**](https://github.com/yannicklamprecht/WorldBorderAPI/releases) plugin)
 - a custom border that shows up when the player is near (visuals can be configured).
 
