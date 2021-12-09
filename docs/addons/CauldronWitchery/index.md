@@ -54,6 +54,100 @@ Books are the way how players could find recipes. The books are very customizabl
 ??? question "Can I add more books?"
     Yes, just create a new file under `books` directory. File must be named `[book_id]-[locale_code].yml` and it must start with `[book_id]:`.
 
+## Customizable GUI's
+
+BentoBox 1.17 API introduced a function that allows to implement customizable GUI's. This addon is one of the first one which uses this functionality. We tried to be as simple as possible for customization, however, some features requires explanation.
+You can find more information how BentoBox custom GUI's works here: [Custom GUI's](/en/latest/Tutorials/generic/Customizable-GUI/)
+
+??? question "How can I customize GUI's"
+    To customize Addon GUI's you need to have version 2.0. This is a first version that has implemented them. Addon will create a new directory under `/plugins/BentoBox/addons/CauldronWitchery` with a name `panels`
+
+    Currently you can customize 2 GUI's:
+
+    - Stick Panel: `stick_panel` - panel that contains all magic sticks and users can purchase or get them.
+    - Recipe Panel: `recipe_panel` - panel that contains all recipes that are available for the magic stick.
+
+    Each GUI contains functions that is supported only by itself.
+
+??? question "What does `PREVIOUS`|`NEXT` button type?"
+    The PREVIOUS and NEXT button types allows creating automatic paging, when you have more sticks or recipes than spaces in GUI.
+    These types have extra parameters under data:
+ 
+    - `indexing` - indicates if button will show page number.
+
+    Example: 
+    ```yaml
+        icon: TIPPED_ARROW:INSTANT_HEAL::::1
+        title: cauldron-witchery.gui.buttons.previous.name
+        description: cauldron-witchery.gui.buttons.previous.description
+        data:
+          type: PREVIOUS
+          indexing: true
+        action:
+          left:
+            tooltip: cauldron-witchery.gui.tips.click-to-previous
+    ```
+
+??? question "What does `RETURN` button type?"
+    The RETURN button type is available in recipe_panel. It allows returning to the sticks panel.
+
+    Example: 
+    ```yaml
+        icon: OAK_DOOR
+        title: cauldron-witchery.gui.buttons.return.name
+        description: cauldron-witchery.gui.buttons.return.description
+        data:
+          type: RETURN
+        action:
+          left:
+            tooltip: cauldron-witchery.gui.tips.click-to-return
+    ```
+
+??? question "What is `STICK` button type?"
+    This button is available in stick_panel.
+    The STICK button creates a dynamic entry for a magic stick. Button will be filled only if there exist a magic stick. F.e. if you have only 3 magic sticks, but defined 7 spots for them in the GUI, then only 3 spots will be filled. Other spots will be left empty.
+
+    By default sticks will be ordered by their order numbers, however, you can specify a specific stick to be in a specific slot with `id` parameter under data.
+    
+    ```yaml
+      data:
+        type: STICK
+        id: example_stick
+    ```
+
+    Specifying title, description and icon will overwrite dynammic generation based on database data. By default these values will be generated from database entries.
+    This button supports 2 different action types:
+
+    - RECIPES - opens a recipe view panel
+    - PURCHASE - purchases or gives the magic stick for a player.
+
+    Example: 
+    ```yaml
+      data:
+        type: STICK
+      actions:
+        left:
+          type: RECIPES
+          tooltip: cauldron-witchery.gui.tips.left-click-to-view
+        right:
+          type: PURCHASE
+          tooltip: cauldron-witchery.gui.tips.right-click-to-buy
+    ```
+
+
+??? question "What is `RECIPE` button type?"
+    This button is available in recipe_panel.
+    The RECIPE button creates a dynamic entry for a recipe. Button will be filled only if there exist a recipe. F.e. if you have only 3 recipes, but defined 7 spots for level in the GUI, then only 3 spots will be filled. Other spots will be left empty.
+
+    By default recipes will be ordered by their order number and then by their reward item name.
+    Specifying title, description and icon will overwrite dynammic generation based on database data. By default these values will be generated from database entries.
+    
+    Example: 
+    ```yaml
+      data:
+        type: RECIPE
+    ```
+
 ## FAQ
 
 ??? question "How does recipes works?"
@@ -76,4 +170,4 @@ Books are the way how players could find recipes. The books are very customizabl
 
 ## Translations
 
-{{ translations(2976, ["lv"]) }}
+{{ translations(2976, ["lv", "zh-CN"]) }}
