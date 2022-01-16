@@ -12,7 +12,7 @@ Regardless of the placeholder API you're using, just start the server. There are
 
 ## How to display a placeholder in the chat?
 
-If you're using **EssentialsChat** and **PlaceholderAPI**, you **must** install [**ChatInjector**](https://www.spigotmc.org/resources/chatinjector.38327/) in order for the placeholders to show up in the chat. However, please note it has been reported that ChatInjector might cause issues.
+If you're using **EssentialsChat** and **PlaceholderAPI**, you **must** install [**ChatInjector**](https://www.spigotmc.org/resources/chatinjector-1-13.81201/) in order for the placeholders to show up in the chat. However, please note it has been reported that ChatInjector might cause issues.
 
 We recommend you to use an alternative chat plugin which supports PlaceholderAPI, such as [**ChatControl**](https://www.spigotmc.org/resources/chatcontrol%E2%84%A2-the-ultimate-chat-plugin-500-000-downloads-1-2-5-1-14-4.271/).
 
