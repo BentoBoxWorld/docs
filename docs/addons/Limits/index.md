@@ -83,6 +83,11 @@ Usage permissions are (put the gamemode name, e.g. acidisland at the front):
 
 Full permissions are listed [here](Permissions).
 
+## Placeholders
+
+{{ placeholders_source(source="Limits") }}
+
+
 ## Translations
 
 {{ translations(2974, ["cs", "de", "hu", "ja", "lv", "pl", "tr", "zh-CN"]) }}
