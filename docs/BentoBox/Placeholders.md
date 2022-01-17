@@ -83,9 +83,14 @@ Gamemodes and Addons can also bring their own placeholders. We highly recommend 
 - Gamemodes
     - [AcidIsland](../../gamemodes/AcidIsland/Placeholders)
     - [AOneBlock](../../gamemodes/AOneBlock/Placeholders)
+    - [Boxed](../../gamemodes/Boxed/Placeholders)
     - [BSkyBlock](../../gamemodes/BSkyBlock/Placeholders)
     - [CaveBlock](../../gamemodes/CaveBlock/Placeholders)
     - [SkyGrid](../../gamemodes/SkyGrid/Placeholders)
 - Addons
+    - [Bank](../../addons/Bank/Placeholders)
+    - [Challenges](../../addons/Challenges/Placeholders)
     - [Level](../../addons/Level/Placeholders)
     - [Likes](../../addons/Likes/Placeholders)
+    - [Limits](../../addons/Limits/Placeholders)
+    - [MagicCobblestoneGenerator](../../addons/MagicCobblestoneGenerator/Placeholders)
