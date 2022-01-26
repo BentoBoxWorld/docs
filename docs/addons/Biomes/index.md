@@ -10,7 +10,7 @@ Created and maintained by [BONNe](https://github.com/BONNe).
 
 1. Put the addon jar in the `plugins/BentoBox/addons` folder.
 2. Start and stop the server to let Biomes generate its configuration files.
-3. Edit the [`config.yml`](#configyml) and [`biomes.yml`](#biomesyml) files (you can find them in the `plugins/BentoBox/addons/Biomes` folder).
+3. Edit the [`config.yml`](#config.yml) and [`biomesTemplate.yml`](#Template) files (you can find them in the `plugins/BentoBox/addons/Biomes` folder).
 4. Restart the server.
 5. Import the biomes into the gamemode.
 
@@ -18,24 +18,193 @@ Created and maintained by [BONNe](https://github.com/BONNe).
 
 ### config.yml
 
-After addon is successful installed, it will create config.yml file. Every option in this file comes with comments about them. Please check file for more information.
-Most options are also editable admin via commands.
+After addon is successfully installed, it will create config.yml file. Every option in this file comes with comments about them. Please check file for more information.
+You can find the latest config file: [config.yml](https://github.com/BentoBoxWorld/Biomes/blob/develop/src/main/resources/config.yml)
 
-### biomes.yml
+### Template
 
 !!! warning
-    Unlike usual configuration files, the changes you make to the `biomes.yml` file are not automatically taken into account when starting the server.  
+    Unlike usual configuration files, the changes you make to the `biomesTemplate.yml` file are not automatically taken into account when starting the server.  
     You must import manually the changes you made and eventually override them if you already imported a previous configuration.
 
 This file contains all necessary information about default biomes.
-If you change values in biomes.yml, then to apply them, you must run **/[admin_command] biomes import**.
+If you change values in biomes.yml, then to apply them, you must run **/[admin_command] biomes**.
 
-If you want to force an overwrite of biomes via an import, add the **overwrite** option to the end of the import command.
-Note that you must import biomes into both BSkyBlock and AcidIsland separately.
+Default template file can be found here: [biomesTemplate.yml](https://github.com/BentoBoxWorld/Biomes/blob/develop/src/main/resources/biomesTemplate.yml)
 
 !!! info "Useful resources about biomes"
     - [Comprehensive list of available biomes on Spigot](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/block/Biome.html)
     - ["Biome" page on the official Minecraft wiki](https://minecraft.gamepedia.com/Biome)
+
+??? Template file Structure
+    ```
+    biomes:                                      # Internal Data Structure. DO NOT CHANGE!
+      <unique_name>:                             # Unique name for the biome. Required!
+        biome: <BIOME>                           # Spigot BIOME TYPE. Valid values can be found in link below. Required!
+        environment: <ENVIRONMENT>               # Spigot WORLD ENVIRONMENT TYPE. World environment value. Default Normal.
+        name: <String>                           # String. Custom name for biome. Default <unique_name>.
+        description: <String>                    # String. Some extra description in icon lore. Default empty.
+        icon: <Item>                             # BentoBox ItemParser type. Write format can be found in: https://docs.bentobox.world/en/latest/BentoBox/ItemParser/. Default Paper.
+        order: <Integer>                         # Integer. Order of current biome. Default -1.
+        unlock:                                  # Section that configures biomes unlock/buy options. Not required.
+          level: <Long>                          # Minimal island level for biome to be unlockable. Requires Level addon. Default 0.
+          permissions: [<String>]                # Set of permissions for biome to be unlockable. Default empty.
+          cost: <Double>                         # Purchase cost (once) for biome. Requires Vault and Economy plugins. Default 0.
+          items: [<Item>]                        # Set of items for purchasing biome (once). Write format for each item can be found in: https://docs.bentobox.world/en/latest/BentoBox/ItemParser/. Default empty.
+        change:                                  # Section that configures cost for each biome usage. Not required.
+          mode: <Mode>                           # Mode how cost is applied. Supported values: STATIC - price never changes, PER_BLOCK - cost is applied for each block in area, PER_USAGE - cost increases by [increment] after each usage. Default STATIC.
+          cost: <Double>                         # Biome change cost. Requires Vault and Economy plugins. Default 0.
+          items: [<Item>]                        # Set of items for changing biome. Write format for each item can be found in: https://docs.bentobox.world/en/latest/BentoBox/ItemParser/. Default empty.
+          increment: <Double>                    # Increment for all costs (money and items) if usage is set to PER_USAGE. Default 0. (works as static)
+    # Here starts the Bundle List
+    bundles:                                     # Internal Data Structure.
+      <unique_name>:                             # Unique name for the bundle. Required!
+        name: <String>                           # String. Custom name for bundle. Default <unique_name>.
+        description: <String>                    # String. Some extra description in icon lore. Default empty.
+        icon: <Item>                             # BentoBox ItemParser type. Write format can be found in: https://docs.bentobox.world/en/latest/BentoBox/ItemParser/. Default Paper.
+        biomes: [<String>]                       # Set of <unique_names> that you used in biomes section. Default empty.
+    ```
+
+### Customizable GUI's
+
+BentoBox 1.17 API introduced a function that allows to implement customizable GUI's. This addon is one of the first one which uses this functionality. We tried to be as simple as possible for customization, however, some features requires explanation.
+You can find more information how BentoBox custom GUI's works here: [Custom GUI's](/en/latest/Tutorials/generic/Customizable-GUI/)
+
+??? question "How can I customize GUI's"
+    To customize Addon GUI's you need to have version 2.0. This is a first version that has implemented them. Addon will create a new directory under `/plugins/BentoBox/addons/Biomes` with a name `panels`
+
+    Currently you can customize 3 GUI's:
+
+    - Main Panel: `main_panel` - panel that contains all biomes that users can purchase or use them.
+    - Advanced Panel: `advanced_panel` - panel that contains different ways how biome can be applied on island.
+    - Buy Panel: `buy_panel` - panel that contains biomes which player can buy.
+
+    Each GUI contains functions that is supported only by itself.
+
+??? question "What does `PREVIOUS`|`NEXT` button type?"
+    The PREVIOUS and NEXT button types allows creating automatic paging, when you have more biomes than spaces in GUI.
+    These types have extra parameters under data:
+ 
+    - `indexing` - indicates if button will show page number.
+
+    Example: 
+    ```yaml
+        icon: TIPPED_ARROW:INSTANT_HEAL::::1
+        title: biomes.gui.buttons.previous.name
+        description: biomes.gui.buttons.previous.description
+        data:
+          type: PREVIOUS
+          indexing: true
+        action:
+          left:
+            tooltip: biomes.gui.tips.click-to-previous
+    ```
+
+??? question "What is `RETURN` button type?"
+    This button is available in all panels.
+    It creates a button that allows to return to previous menu or exit the gui. Description is generated by addon, however, like with all buttons, you can specify your own text in panel.
+
+    Example: 
+    ```yaml
+        data:
+          type: RETURN
+    ```
+
+??? question "What is `BIOME` button type?"
+    This button is available in main_panel and buy_panel.
+    The BIOME button creates a dynamic entry for a biomes object. Button will be filled only if there exist a biome. F.e. if you have only 3 biomes, but defined 7 spots for them in the GUI, then only 3 spots will be filled. Other spots will be left empty.
+
+    By default biomes will be ordered by their order numbers, however, you can specify a specific biome to be in a specific slot with `id` parameter under data.
+    
+    ```yaml
+      data:
+        type: BIOME
+        id: example_biome
+    ```
+
+    Specifying title, description and icon will overwrite dynammic generation based on database data. By default these values will be generated from database entries.
+    This button supports 3 different action types:
+
+    - CHANGE - changes biome based on default update mode and default range values. Available in main_panel.
+    - ADVANCED_PANEL - opens advanced panel that allows to choose different biome update modes. Available in main_panel.
+    - BUY - purchases selected biome. Available in buy_panel.
+
+    Example: 
+    ```yaml
+      data:
+        type: BIOME
+      actions:
+        left:
+          type: CHANGE
+          # Supports ISLAND | CHUNK:NUMBER | RANGE:NUMBER
+          content: ISLAND
+          tooltip: biomes.gui.tips.left-click-to-apply
+        right: 
+          type: ADVANCED_PANEL
+          tooltip: biomes.gui.tips.right-click-to-open
+    ```
+
+??? question "What is `PURCHASE` button type?"
+    This button is available in main_panel.
+    It creates a button that opens a new panel that contains biomes which player can buy.
+
+    Example: 
+    ```yaml
+        data:
+          type: PURCHASE
+        action:
+          left:
+            tooltip: biomes.gui.tips.click-to-view
+    ```
+
+
+??? question "What is `INCREASE|REDUCE` button type?"
+    This button is available in advanced_panel.
+    It creates a button that increases/reduces "range" for changing biome. The number by how much it increases/reduces, can be defined alongside with the button type.
+
+    Example: 
+    ```yaml
+        data:
+          type: INCREASE
+          value: 5
+        actions:
+          left:
+            tooltip: biomes.gui.tips.click-to-increase
+    ```
+
+??? question "What is `MODE` button type?"
+    This button is available in advanced_panel.
+    It creates a button that allows to change biome update mode between ISLAND, CHUNK and RANGE modes. Mode is defined alongside with button type.
+
+    Example: 
+    ```yaml
+        data:
+          type: MODE
+          value: CHUNK
+        actions:
+          left:
+            tooltip: biomes.gui.tips.click-to-choose
+    ```
+
+??? question "What is `ACCEPT` button type?"
+    This button is available in advanced_panel.
+    It creates a button that allows to start biome update with selected settings. It has two actions: 
+      
+       - ACCEPT: starts biome update
+       - INPUT: allows to manually input number via chat.
+
+    Example: 
+    ```yaml
+        data:
+          type: ACCEPT
+        actions:
+          left:
+            type: ACCEPT
+            tooltip: biomes.gui.tips.left-click-to-accept
+          right:
+            type: INPUT
+            tooltip: biomes.gui.tips.right-click-to-write
+    ```
 
 ## Commands
 
@@ -44,25 +213,27 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
     The Gamemodes' `config.yml` file contains options that allows you to modify these values.
     As an example, on BSkyBlock, the default `[player_command]` is `island`, and the default `[admin_command]` is `bsbadmin`.
 
+!!! info
+    Biomes Addon player commands is completely configurable. You can change them in the Biomes Addon config file. Bellow is just default names for these commands.
+
 === "Player commands"
     - `/[player_command] biomes`: This method opens GUI that allows to change biome on User island.
     - `/[player_command] biomes help`: Show help for all the commands
-    - `/[player_command] biomes info <biome>`: This command returns information about given biome, like cost and necessary level.
     - `/[player_command] biomes set <biome> [<type>] [<size>]`: This command allows to change biome on island without opening GUI. If prarameters < type> and < size> are not provided, command uses default values from addon config.
+    - `/[player_command] biomes buy <biome>`: This command allows to buy biome without opening GUI.
 
     !!! info
         - `<biome>` may not be the actual Minecraft biome name. It is defined by the admin.
         - `<type>` is one of the three biome change types. It offers to change biome on whole island (`ISLAND`), in current chunk(s) (`CHUNK`) or by distance around player (`RANGE`).
-        - Currently, the biome is changed on the entire y axis. This behaviour might change in the future as Minecraft 1.16 brings support for 3D biomes.
+
 
 === "Admin commands"
     - `/[admin_command] biomes`: opens the Admin Biomes GUI.
     - `/[admin_command] biomes help`: displays the help for all the Biomes-related admin commands.
-    - `/[admin_command] biomes import [overwrite]`: imports biomes from the `biomes.yml` configuration file.
-    - `/[admin_command] biomes add <biome>`: adds a new biome that can be edited via GUI or `biomes edit` command. Biome will not be deployed. To do it, you should enable it in GUI or via `biomes edit <biome> deployed true` command.
+    - `/[admin_command] biomes import [<file>]`: imports biomes from the `biomesTemplate.yml` configuration file, or from provided file.
     - `/[admin_command] biomes set <player> <biome> [<type>] [<size>]`: works the same as user biome set command, but it is necessary to provide also player, which island biome will be updated.
-    - `/[admin_command] biomes edit <biome> <property> <new_value>`: edits provided biome property to new value.
-    - `/[admin_command] biomes settings <property> <new_value>`: edits current addon settings via command.
+    - `/[admin_command] biomes migrate`: migrates biomes addon data. Usually used when upgrade from older version to a new version.
+    - `/[admin_command] biomes unlock <player> <biome_id> [true]`: unlocks (and buys if added `true` at the end) passed biome for a player island.
 
 ## Permissions
 
@@ -79,22 +250,202 @@ Note that you must import biomes into both BSkyBlock and AcidIsland separately.
     - `[gamemode].biomes` (default: `true`): player can use biomes command that opens GUI.
     - `[gamemode].biomes.info` (default: `true`): player can use biomes info command.
     - `[gamemode].biomes.set` (default: `true`): player can use biomes set command.
+    - `[gamemode].biomes.buy` (default: `true`): player can use biomes buy command.
 
 === "Admin permissions"
     - `[gamemode].admin.biomes` (default: `op`): player can use admin biomes command that opens GUI.
-    - `[gamemode].admin.biomes.add` (default: `op`): player can use admin biomes add command that adds new biome.
-    - `[gamemode].admin.biomes.edit` (default: `op`): player can use admin biomes edit command that edits existing biomes parameters.
-    - `[gamemode].admin.biomes.set` (default: `op`): player can use admin biomes set command that allows to change other player biomes.
-    - `[gamemode].admin.biomes.import` (default: `op`): player can use admin biomes import command allows to import biomes in world.
-    - `[gamemode].admin.biomes.settings` (default: `op`): player can use admin biomes settings command that allows to change addon settings.
 
 ## Translations
 
-{{ translations(2894, ["cs", "de", "es", "fr", "lv", "zh-CN", "zh-TW"]) }}
+{{ translations(2894, ["lv"]) }}
 
 ## API
 
+### Events
+
+Since BentoBox 1.17 API implemented a feature that solved an issue with classloaders. Plugins that wants to use events directly, now can do it.
+
+You just need to add Biomes to your project as dependency. You can use Maven for that:
+```xml
+<dependency>
+    <groupId>world.bentobox</groupId>
+    <artifactId>biomes</artifactId>
+    <version>2.0.0</version>
+    <scope>provided</scope>
+</dependency>
+```
+
+=== "BiomeUnlockedEvent"
+    !!! summary "Description"
+        Event that is triggered when player unlocks a new biome.
+
+        Event is cancellable. Cancelling evnet will prevent user from unlocking the biomesObject.
+
+        Link to the class: [BiomeUnlockedEvent](https://github.com/BentoBoxWorld/Biomes/blob/develop/src/main/java/world/bentobox/biomes/events/BiomeUnlockedEvent.java)
+
+    !!! summary "Since"
+        Event is added in Biomes 2.0 version.
+
+    !!! question "Variables"
+        - `@NotNull BiomesObject biomesObject` - the biomesOjbect that is unlocked.
+        - `@Nullable User user` - the user who unlocks the biomesObject.
+        - `@NotNull Island island` - the island on which biomesObject is unlocked.
+        
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.LOW)
+        public void onBiomesUnlock(BiomeUnlockedEvent event) {
+            User user = event.getUser();
+            BiomesObject biomesOjbect = event.getBiomesObject();
+            Island island = event.getIsland();
+            
+            // There is also converted methods, that do not use Biomes Addon objects.
+            UUID userUUID = event.getUserUUID();
+            String islandUUID = event.getIslandUUID();
+            String biomeId = event.getBiomeId();
+            Biome biome = event.getBiome();
+
+            event.setCancelled(false);
+        }
+        ```
+
+=== "BiomePurchasedEvent"
+    !!! summary "Description"
+        Event that is triggered when player purchases a new biome.
+
+        Event is only informative. Cannot be cancelled.
+
+        Link to the class: [BiomePurchasedEvent](https://github.com/BentoBoxWorld/Biomes/blob/develop/src/main/java/world/bentobox/biomes/events/BiomePurchasedEvent.java)
+
+    !!! summary "Since"
+        Event is added in Biomes 2.0 version.
+
+    !!! question "Variables"
+        - `@NotNull BiomesObject biomesObject` - the biomesOjbect that is purchased.
+        - `@NotNull User user` - the user who purchase the biomesObject.
+        - `@NotNull Island island` - the island on which biomesObject is purchased.
+        
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.MONITOR)
+        public void onBiomesPurchase(BiomePurchasedEvent event) {
+            User user = event.getUser();
+            BiomesObject biomesOjbect = event.getBiomesObject();
+            Island island = event.getIsland();
+            
+            // There is also converted methods, that do not use Biomes Addon objects.
+            UUID userUUID = event.getUserUUID();
+            String islandUUID = event.getIslandUUID();
+            String biomeId = event.getBiomeId();
+            Biome biome = event.getBiome();
+        }
+        ```
+
+=== "BiomePreChangeEvent"
+    !!! summary "Description"
+        Event that is triggered before withdrawing items and changing biome in area.
+
+        Event is only informative. Cannot be cancelled.
+
+        Link to the class: [BiomePreChangeEvent](https://github.com/BentoBoxWorld/Biomes/blob/develop/src/main/java/world/bentobox/biomes/events/BiomePreChangeEvent.java)
+
+    !!! summary "Since"
+        Event is added in Biomes 2.0 version.
+
+    !!! question "Variables"
+        - `@NotNull BiomesObject biomesObject` - the biomesOjbect that is used.
+        - `@Nullable User user` - the user who triggered biome change.
+        - `@NotNull Island island` - the island on which biome is changed.
+        - `@NotNull BlockVector minCoordinate` - the minimal coordinate for biome change.
+        - `@NotNull BlockVector maxCoordinate` - the maximal coordinate for biome change.
+        
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.MONITOR)
+        public void onBiomesPreChange(BiomePreChangeEvent event) {
+            User user = event.getUser();
+            BiomesObject biomesOjbect = event.getBiomesObject();
+            Island island = event.getIsland();
+            
+            BlockVector minCoordinate = event.getMinCoordinate();
+            BlockVector maxCoordinate = event.getMaxCoordinate();
+            
+            // There is also converted methods, that do not use Biomes Addon objects.
+            UUID userUUID = event.getUserUUID();
+            String islandUUID = event.getIslandUUID();
+            String biomeId = event.getBiomeId();
+            Biome biome = event.getBiome();
+
+            int minX = event.getMinX();
+            int minY = event.getMinY();
+            int minZ = event.getMinZ();
+
+            int maxX = event.getMaxX();
+            int maxY = event.getMaxY();
+            int maxZ = event.getMaxZ();
+        }
+        ```
+
+
+=== "BiomeChangedEvent"
+    !!! summary "Description"
+        Event that is triggered after biome is changed on whole area. It is triggered even if biome change failed.
+
+        Event is only informative. Cannot be cancelled.
+
+        Link to the class: [BiomeChangedEvent](https://github.com/BentoBoxWorld/Biomes/blob/develop/src/main/java/world/bentobox/biomes/events/BiomeChangedEvent.java)
+
+    !!! summary "Since"
+        Event is added in Biomes 2.0 version.
+
+    !!! question "Variables"
+        - `@NotNull BiomesObject biomesObject` - the biomesOjbect that was used.
+        - `@Nullable User user` - the user who triggered biome change.
+        - `@NotNull Island island` - the island on which biome was changed.
+        - `@NotNull BlockVector minCoordinate` - the minimal coordinate for biome change.
+        - `@NotNull BlockVector maxCoordinate` - the maximal coordinate for biome change.
+        - `@Nullable Result result` - the result value after biome change. The result values may be:
+                                        - FINISHED: biomes change was succesfull.
+                                        - TIMEOUT: biomes change took longer then timeout value and failed.
+                                        - FAILED: biomes change failed for some other reason.
+
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.MONITOR)
+        public void onBiomeChanged(BiomeChangedEvent event) {
+            User user = event.getUser();
+            BiomesObject biomesOjbect = event.getBiomesObject();
+            Island island = event.getIsland();
+            
+            BlockVector minCoordinate = event.getMinCoordinate();
+            BlockVector maxCoordinate = event.getMaxCoordinate();
+            
+            Result result = event.getResult();            
+
+            // There is also converted methods, that do not use Biomes Addon objects.
+            UUID userUUID = event.getUserUUID();
+            String islandUUID = event.getIslandUUID();
+            String biomeId = event.getBiomeId();
+            Biome biome = event.getBiome();
+
+            int minX = event.getMinX();
+            int minY = event.getMinY();
+            int minZ = event.getMinZ();
+
+            int maxX = event.getMaxX();
+            int maxY = event.getMaxY();
+            int maxZ = event.getMaxZ();
+
+            String resultName = event.getResultName();
+        }
+        ```
+
 ### Addon Request Handlers
+
+Till BentoBox 1.17 we had an issue with accessing data outside BentoBox environment doe to the class loader we used to load addons. 
+This meant that data was accessible only from other addons. But BentoBox implemented PlAddon functionality, which means that request
+handlers are not necessary anymore.
+
 
 === "biome-data"
     !!! summary "Description"
