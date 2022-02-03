@@ -238,6 +238,8 @@ Addon introduces 1 BentoBox protection flags:
 ??? question "Can admins change a spot where visitors are teleported?"
     Yes, admins can set it with command: `/[admin_cmd] setspawnpoint` command. However, be aware, that visitors will not be teleported in "dangerous" spots, and if location is not safe, they will be teleported to a safer location.
 
+??? question "Can players have customized icons?"
+    Yes, island icon in Visit panel can be changed by adding permissions `visit.icon.[material]` to island owner.
 
 ??? question "I do not want to use economy. Can I disable it completely?"
     Yes, the config option `disable-economy` will completely disable all economy parts.
