@@ -74,8 +74,6 @@ The example template file: [template.yml](https://github.com/BentoBoxWorld/Chall
     The prefix is the lowercased name of the gamemode, i.e. if you are using BSkyBlock, the prefix is `bskyblock`.
     Similarly, if you are using AcidIsland, the prefix is `acidisland`.
 
-Permissions can be found [here](Permissions).
-
 === "Player permissions"
     - `[gamemode].challenges` - (default: `true`) - Let the player use the '/[player_command] challenges' command.
     - `[gamemode].challenges.multiple` - (default: `true`) - Allows the player complete challenge multiple times at once.
