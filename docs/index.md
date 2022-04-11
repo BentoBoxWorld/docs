@@ -26,7 +26,7 @@ Download ready to go packs at [https://download.bentobox.world](https://download
     - [CaveBlock Permissions](gamemodes/CaveBlock/Permissions)
     - [SkyGrid Permissions](gamemodes/SkyGrid/Permissions)
     - [Biomes Permissions](addons/Biomes/#permissions)
-    - [Challenges Permissions](addons/Challenges/Permissions)
+    - [Challenges Permissions](addons/Challenges/#permissions)
     - [Level Permissions](addons/Level/Permissions)
     - [Limits Permissions](addons/Limits/Permissions)
     - [Warps Permissions](addons/Warps/Permissions)
