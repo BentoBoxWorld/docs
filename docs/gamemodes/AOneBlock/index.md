@@ -76,6 +76,10 @@ Q: What is the end goal?
 
 A: It's whatever you want it to be! 
 
+Q: How to use holograms?
+
+A: AOneBlock uses [Holographic Displays](https://dev.bukkit.org/projects/holographic-displays) for holograms. You need to install this plugin to use holograms sections! 
+
 Q. Should I use the Levels addon?
 
 A. It's up to you, but if you do be aware that levels could get high because players have an infinite block. I prefer not to use it and instead use the Likes addon.
