@@ -16,5 +16,7 @@ These are the placeholders available:
 |%aoneblock_visited_island_percent_done%|phase completion percentage of the island you are standing on|1.5.2|
 |%aoneblock_my_island_done_scale%|phase completion scale of your island|1.5.2|
 |%aoneblock_visited_island_done_scale%|phase completion scale of the island you are standing on|1.5.2|
+|%aoneblock_my_island_lifetime_count%|the block count of lifetime for your island|1.10.0|
+|%aoneblock_visited_island_lifetime_count%|the block count of lifetime for the island you are standing on|1.10.0|
 
 {{ placeholders_bundle(gamemode_name="aoneblock") }}
