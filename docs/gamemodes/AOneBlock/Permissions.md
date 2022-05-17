@@ -1,5 +1,7 @@
 # AOneBlock Permissions
 
+**NOTE** this list is not complete yet.
+
 <table align='center'>
 <tr>
   <td align='left'><b>Permission</b></td>

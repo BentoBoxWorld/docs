@@ -2,6 +2,8 @@
 
 AOneBlock has a lot of the same commands as BSkyBlock. These are the unique ones:
 
+**NOTE** this list is not complete yet.
+
 ## Admin Commands
 
 * /obadmin setchest <phase> <rarity> set a looked-at chest to be in a phase with a given rartiy
