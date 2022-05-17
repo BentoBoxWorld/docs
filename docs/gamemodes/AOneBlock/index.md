@@ -42,144 +42,160 @@ There are two files per phase - a file that contains the blocks and mobs, and a 
 The first number of any file is how many blocks need to be mined to reach that phase. This is the phase's key number.
 
 === "name"
-    The display name for phases. This name will be displayed in all spots where player try to view a phase. 
+    !!! summary "Description"
+        The display name for phases. This name will be displayed in all spots where player try to view a phase. 
 
 === "icon"
-    The icon of the phase is used only in the `phases` panel. The icon is created using [BentoBox ItemParser](https://docs.bentobox.world/en/latest/BentoBox/ItemParser/)
+    !!! summary "Description"
+        The icon of the phase is used only in the `phases` panel. 
+
+        The icon is created using [BentoBox ItemParser](https://docs.bentobox.world/en/latest/BentoBox/ItemParser/)
 
 === "fixedBlocks"
-    The fixedBlocks section allows forcing certain blocks when player breaks it. The first is a number of block in phase, and then it follows with Bukkit Material. The first block in phase has the index 0, while adding number that is larger than phase running time, will mean that it will not be reached.
+    !!! summary "Description"
+        The fixedBlocks section allows forcing certain blocks when player breaks it. The first is a number of block in phase, and then it follows with Bukkit Material. The first block in phase has the index 0, while adding number that is larger than phase running time, will mean that it will not be reached.
+        
+        Available values you can find here: [Materials](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html)    
     
-    Available values you can find here: [Materials](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html)    
+        We recomend to use blocks that does not require a support block (like torch, rails, plants).
 
-    We recomend to use blocks that does not require a support block (like torch, rails, plants).
+    !!! example "Example"
+        ```yaml
+            0: GRASS_BLOCK
+            1: GRASS_BLOCK
+            2: GRASS_BLOCK
+            50: SPONGE
+        ```
 
-    Example:
-    ```yaml
-        0: GRASS_BLOCK
-        1: GRASS_BLOCK
-        2: GRASS_BLOCK
-        50: SPONGE
-    ```
 === "holograms"
-    AOneBlock uses [Holographic Displays](https://dev.bukkit.org/projects/holographic-displays) plugin for showing these lines. The first line that is showed before any phase has started is located in aoneblock locales file.
-    
-    Similar to the `fixedBlocks`, `holograms` also starts with a number when it should be displayed that follows with a displayed text.
+    !!! summary "Description"
+        AOneBlock uses [Holographic Displays](https://dev.bukkit.org/projects/holographic-displays) plugin for showing these lines. The first line that is showed before any phase has started is located in aoneblock locales file.
+        
+        Similar to the `fixedBlocks`, `holograms` also starts with a number when it should be displayed that follows with a displayed text.
 
-    Example:
-    ```yaml
-        0: "&aFirst block is grass!"
-        1: "&aSecond block is grass!"
-        2: "&cWhat if there will be no next block?"
-        3: "&aGood Luck!"
-    ```
+    !!! example "Example"
+        ```yaml
+            0: "&aFirst block is grass!"
+            1: "&aSecond block is grass!"
+            2: "&cWhat if there will be no next block?"
+            3: "&aGood Luck!"
+        ```
 
 === "biome"
-    `biome` is an experimental option. However, it changes biome only for the "magic" block location. So we would suggest to use Biomes addon that has an option to change biome on whole island. You can do it with phase start commands which would trigger biome change.
+    !!! summary "Description"
+        `biome` is an experimental option. However, it changes biome only for the "magic" block location. 
+        So we would suggest to use Biomes addon that has an option to change biome on whole island. 
+        You can do it with phase start commands which would trigger biome change.
 
 === "start-commands"
-    `start-commands` section allows defining commands that will be triggered when player starts this phase.
+    !!! summary "Description"
+        `start-commands` section allows defining commands that will be triggered when player starts this phase.
+    
+        Commands are run as the Console unless the command is prefixed with `[SUDO]`, then the command is run as the player triggering the commands.
+    
+        These placeholders in the command string will be replaced with the appropriate value:
+    
+        - `[island]` - Island name
+        - `[owner]` - Island owner's name
+        - `[player]` - The name of the player who broke the block triggering the commands
+        - `[phase]` - the name of this phase
+        - `[blocks]` - the number of blocks broken
+        - `[level]` - your island level (Requires Levels Addon)
+        - `[bank-balance]` - your island bank balance (Requires Bank Addon)
+        - `[eco-balance]` - player's economy balance (Requires Vault and an economy plugin)
 
-    Commands are run as the Console unless the command is prefixed with `[SUDO]`, then the command is run as the player triggering the commands.
-
-    These placeholders in the command string will be replaced with the appropriate value:
-
-    - `[island]` - Island name
-    - `[owner]` - Island owner's name
-    - `[player]` - The name of the player who broke the block triggering the commands
-    - `[phase]` - the name of this phase
-    - `[blocks]` - the number of blocks broken
-    - `[level]` - your island level (Requires Levels Addon)
-    - `[bank-balance]` - your island bank balance (Requires Bank Addon)
-    - `[eco-balance]` - player's economy balance (Requires Vault and an economy plugin)
-
-    Example:
-    ```yaml
-        start-commands:
-        - 'give [player] WOODEN_AXE 1'
-        - 'broadcast [player] just started OneBlock!'
-        - 'obadmin biomes set [player] aoneblock_fields ISLAND!'
-    ```
+    !!! example "Example"
+        ```yaml
+            start-commands:
+            - 'give [player] WOODEN_AXE 1'
+            - 'broadcast [player] just started OneBlock!'
+            - 'obadmin biomes set [player] aoneblock_fields ISLAND!'
+        ```
 
 === "end-commands"
-    `end-commands` section allows defining commands that will be triggered when player finishes this phase.
+    !!! summary "Description"
+        `end-commands` section allows defining commands that will be triggered when player finishes this phase.
+    
+        Commands are run as the Console unless the command is prefixed with `[SUDO]`, then the command is run as the player triggering the commands.
+    
+        These placeholders in the command string will be replaced with the appropriate value:
+    
+        - `[island]` - Island name
+        - `[owner]` - Island owner's name
+        - `[player]` - The name of the player who broke the block triggering the commands
+        - `[phase]` - the name of this phase
+        - `[blocks]` - the number of blocks broken
+        - `[level]` - your island level (Requires Levels Addon)
+        - `[bank-balance]` - your island bank balance (Requires Bank Addon)
+        - `[eco-balance]` - player's economy balance (Requires Vault and an economy plugin)
 
-    Commands are run as the Console unless the command is prefixed with `[SUDO]`, then the command is run as the player triggering the commands.
-
-    These placeholders in the command string will be replaced with the appropriate value:
-
-    - `[island]` - Island name
-    - `[owner]` - Island owner's name
-    - `[player]` - The name of the player who broke the block triggering the commands
-    - `[phase]` - the name of this phase
-    - `[blocks]` - the number of blocks broken
-    - `[level]` - your island level (Requires Levels Addon)
-    - `[bank-balance]` - your island bank balance (Requires Bank Addon)
-    - `[eco-balance]` - player's economy balance (Requires Vault and an economy plugin)
-
-    Example:
-    ```yaml
-        end-commands:
-        - '[SUDO]say Just finished [phase]'
-    ```
+    !!! example "Example"
+        ```yaml
+            end-commands:
+            - '[SUDO]say Just finished [phase]'
+        ```
 
 === "requirements"
-    `requirements` section allows limiting access to the next phase until specified requirements are met.
-    Currently, there are 4 requirement fields:
+    !!! summary "Description"
+        `requirements` section allows limiting access to the next phase until specified requirements are met.
+        Currently, there are 4 requirement fields:
+    
+        - `economy-balance` - the minimum player's economy balance (Requires Vault and an economy plugin)
+        - `bank-balance` - the minimum island bank balance (requires Bank Addon)
+        - `level` - the island level (Requires Levels Addon)
+        - `permission` - a permission string
 
-    - `economy-balance` - the minimum player's economy balance (Requires Vault and an economy plugin)
-    - `bank-balance` - the minimum island bank balance (requires Bank Addon)
-    - `level` - the island level (Requires Levels Addon)
-    - `permission` - a permission string
-
-    Example:
-    ```yaml
-        requirements:
-          bank-balance: 10000
-          level: 10
-          permission: ready.for.battle
-    ```
+    !!! example "Example"
+        ```yaml
+            requirements:
+              bank-balance: 10000
+              level: 10
+              permission: ready.for.battle
+        ```
 
 === "blocks"
-    The blocks section list Bukkit Materials followed by a relative probability. 
-
-    Available values you can find here: [Materials](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html)
-
-    All the probability values are added up for the whole phase and the chance of the block being placed is the relative probability divided by the total of all the probabilities.
-
-    Example:
-    ```yaml
-        blocks:
-          GRASS_BLOCK: 2
-          STONE: 3
-    ```
+    !!! summary "Description"
+        The blocks section list Bukkit Materials followed by a relative probability. 
     
-    This example shows that there is 40% chance to spawn a grass block while 60% to spawn stone. (2 / (2+3)) and (3 / (2+3))
+        Available values you can find here: [Materials](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html)
+    
+        All the probability values are added up for the whole phase and the chance of the block being placed is the relative probability divided by the total of all the probabilities.
+
+    !!! example "Example"
+        ```yaml
+            blocks:
+              GRASS_BLOCK: 2
+              STONE: 3
+        ```
+        
+        This example shows that there is 40% chance to spawn a grass block while 60% to spawn stone. (2 / (2+3)) and (3 / (2+3))
 
 === "mobs"
-    The mob section list mobs that can spawn and their relative probability along with blocks.
-    You can only list entities that are alive and can spawn in this list. [EntityTypes](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html)
+    !!! summary "Description"
+        The mob section list mobs that can spawn and their relative probability along with blocks.
+        You can only list entities that are alive and can spawn in this list. [EntityTypes](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html)
 
-    Example:
-    ```yaml
-        mobs:
-          COW: 150
-          SPIDER: 75
-    ```
+    !!! example "Example"
+        ```yaml
+            mobs:
+              COW: 150
+              SPIDER: 75
+        ```
 
 
 In the chests file, it just has the phase number and a chests section.
 
 === "chests"
-    If CHEST is listed in the blocks section, then it will be randomly filled according to this section. 
-    You can define as many chests as you like. The first number is a unique chest number.
-    Then follows the chest contents that includes the slot number and the item stack contents. 
-    Finally, there is the chest's rarity, which can be COMMON, UNCOMMON, RARE or EPIC. 
+    !!! summary "Description"
+        If CHEST is listed in the blocks section, then it will be randomly filled according to this section. 
+        You can define as many chests as you like. The first number is a unique chest number.
+        Then follows the chest contents that includes the slot number and the item stack contents. 
+        Finally, there is the chest's rarity, which can be COMMON, UNCOMMON, RARE or EPIC. 
+        
+        The best way to set chests is to do it in game.
+        Fill a chest with the contents you want and then while looking at it enter the command `/[admin_cmd] setchest <phase> <rarity>` where <phase> is the name of the phase and rarity is the rarity. Use Tab Complete to see the options. The chest will be automatically added to the oneblocks.yml file and be ready to use. Deleting chests must be done by editing the oneblocks.yml file for now and reloading the addon.
     
-    The best way to set chests is to do it in game.
-    Fill a chest with the contents you want and then while looking at it enter the command `/[admin_cmd] setchest <phase> <rarity>` where <phase> is the name of the phase and rarity is the rarity. Use Tab Complete to see the options. The chest will be automatically added to the oneblocks.yml file and be ready to use. Deleting chests must be done by editing the oneblocks.yml file for now and reloading the addon.
-
-    Be very careful when editing the chest items and check that the material is a true Bukkit material and spelled correctly.
+        Be very careful when editing the chest items and check that the material is a true Bukkit material and spelled correctly.
 
 
 ### Customizable GUI's
@@ -233,8 +249,11 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
 !!! tip
     `[player_command]` and `[admin_command]` are commands that differ depending on the gamemode you are running.
+    
     The Gamemodes' `config.yml` file contains options that allows you to modify these values.
+    
     As an example, on AOneBlock, the default `[player_command]` is `ob`, and the default `[admin_command]` is `oba`.
+    
     Be aware, that this addon allows changing player commands aliases in addon `config.yml` file.
 
 === "AOneBlock unique player commands"
