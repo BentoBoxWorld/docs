@@ -186,16 +186,16 @@ By default, BentoBox GameMode addons comes with [default placeholders set](../..
 
 Addon introduces 1 BentoBox Settings flag:
 
-- ![pumpkin_pie](https://static.wikia.nocookie.net/minecraft_gamepedia/images/e/e2/Feather_JE3_BE2.png/revision/latest/scale-to-width-down/160){: loading=lazy width=16px } SKY_WALKER_FLAG: flag in world settings that allows enabling/disabling player walking on cave roof.
+- ![feather](https://static.wikia.nocookie.net/minecraft_gamepedia/images/e/e2/Feather_JE3_BE2.png){: loading=lazy width=16px } SKY_WALKER_FLAG: flag in world settings that allows enabling/disabling player walking on cave roof.
 
 
 ## FAQ
 
 ??? question "Can you add a feature X?"
-Please add it to the list [here](https://github.com/BentoBoxWorld/CaveBlock/issues).
+    Please add it to the list [here](https://github.com/BentoBoxWorld/CaveBlock/issues).
 
 ??? question "I have a bug, where should I report it?"
-Please add it to the list [here](https://github.com/BentoBoxWorld/CaveBlock/issues).
+    Please add it to the list [here](https://github.com/BentoBoxWorld/CaveBlock/issues).
 
 
 ## Translations
