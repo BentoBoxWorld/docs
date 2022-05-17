@@ -41,13 +41,13 @@ There are two files per phase - a file that contains the blocks and mobs, and a 
 
 The first number of any file is how many blocks need to be mined to reach that phase. This is the phase's key number.
 
-=== name
+=== "name"
     The display name for phases. This name will be displayed in all spots where player try to view a phase. 
 
-=== icon
+=== "icon"
     The icon of the phase is used only in the `phases` panel. The icon is created using [BentoBox ItemParser](https://docs.bentobox.world/en/latest/BentoBox/ItemParser/)
 
-=== fixedBlocks
+=== "fixedBlocks"
     The fixedBlocks section allows forcing certain blocks when player breaks it. The first is a number of block in phase, and then it follows with Bukkit Material. The first block in phase has the index 0, while adding number that is larger than phase running time, will mean that it will not be reached.
     
     Available values you can find here: [Materials](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html)    
@@ -61,7 +61,7 @@ The first number of any file is how many blocks need to be mined to reach that p
         2: GRASS_BLOCK
         50: SPONGE
     ```
-=== holograms
+=== "holograms"
     AOneBlock uses [Holographic Displays](https://dev.bukkit.org/projects/holographic-displays) plugin for showing these lines. The first line that is showed before any phase has started is located in aoneblock locales file.
     
     Similar to the `fixedBlocks`, `holograms` also starts with a number when it should be displayed that follows with a displayed text.
@@ -74,10 +74,10 @@ The first number of any file is how many blocks need to be mined to reach that p
         3: "&aGood Luck!"
     ```
 
-=== biome  
+=== "biome"
     `biome` is an experimental option. However, it changes biome only for the "magic" block location. So we would suggest to use Biomes addon that has an option to change biome on whole island. You can do it with phase start commands which would trigger biome change.
 
-=== start-commands
+=== "start-commands"
     `start-commands` section allows defining commands that will be triggered when player starts this phase.
 
     Commands are run as the Console unless the command is prefixed with `[SUDO]`, then the command is run as the player triggering the commands.
@@ -101,7 +101,7 @@ The first number of any file is how many blocks need to be mined to reach that p
         - 'obadmin biomes set [player] aoneblock_fields ISLAND!'
     ```
 
-=== end-commands
+=== "end-commands"
     `end-commands` section allows defining commands that will be triggered when player finishes this phase.
 
     Commands are run as the Console unless the command is prefixed with `[SUDO]`, then the command is run as the player triggering the commands.
@@ -123,7 +123,7 @@ The first number of any file is how many blocks need to be mined to reach that p
         - '[SUDO]say Just finished [phase]'
     ```
 
-=== requirements
+=== "requirements"
     `requirements` section allows limiting access to the next phase until specified requirements are met.
     Currently, there are 4 requirement fields:
 
@@ -140,7 +140,7 @@ The first number of any file is how many blocks need to be mined to reach that p
           permission: ready.for.battle
     ```
 
-=== blocks
+=== "blocks"
     The blocks section list Bukkit Materials followed by a relative probability. 
 
     Available values you can find here: [Materials](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html)
@@ -156,7 +156,7 @@ The first number of any file is how many blocks need to be mined to reach that p
     
     This example shows that there is 40% chance to spawn a grass block while 60% to spawn stone. (2 / (2+3)) and (3 / (2+3))
 
-=== mobs
+=== "mobs"
     The mob section list mobs that can spawn and their relative probability along with blocks.
     You can only list entities that are alive and can spawn in this list. [EntityTypes](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html)
 
@@ -170,7 +170,7 @@ The first number of any file is how many blocks need to be mined to reach that p
 
 In the chests file, it just has the phase number and a chests section.
 
-=== chests
+=== "chests"
     If CHEST is listed in the blocks section, then it will be randomly filled according to this section. 
     You can define as many chests as you like. The first number is a unique chest number.
     Then follows the chest contents that includes the slot number and the item stack contents. 
@@ -387,30 +387,35 @@ You just need to add AOneBlock to your project as dependency. You can use Maven 
 AOneBlock addon stores data in a separate database table.
 
 === "OneBlockIslands"
-    Link to the source code: [OneBlockIslands](https://github.com/BentoBoxWorld/AOneBlock/blob/develop/src/main/java/world/bentobox/aoneblock/dataobjects/OneBlockIslands.java)
-    The table contains data about each island progress:
+    !!! summary "Description"
+        OneBlockIslands stores all information about island progress through phases.
 
-    - "uniqueId": the island unique ID. It is equal to the Island uniqueId.
-    - "blockNumber": the current broken block number.
-    - "lifetime": the overall number of broken blocks.
-    - "phaseName": the current phase name.
-    - "hologram": the hologram text that is shown.
+        Link to the source code: [OneBlockIslands](https://github.com/BentoBoxWorld/AOneBlock/blob/develop/src/main/java/world/bentobox/aoneblock/dataobjects/OneBlockIslands.java)
 
-To access this data, you need to access to AOneBlock addon:
+    !!! question "Variables"
+        - "uniqueId": the island unique ID. It is equal to the Island uniqueId.
+        - "blockNumber": the current broken block number.
+        - "lifetime": the overall number of broken blocks.
+        - "phaseName": the current phase name.
+        - "hologram": the hologram text that is shown.
 
-    ```java
+    !!! example "Code example"
+        To access this data, you need to access to AOneBlock addon. It can be several ways, but example bellow shows
+        a generic way that is accessible from everywhere.
+        
+        ```java
         public void accessToAOneBlockData(@NonNull Island island) {
-            BentoBox.getInstance().getAddonsManager().<AOneBlock>getAddonByName("AOneBlock").ifPresent(aOneBlock -> {
+           BentoBox.getInstance().getAddonsManager().<AOneBlock>getAddonByName("AOneBlock").ifPresent(aOneBlock -> {
                 OneBlockIslands oneBlockData = aOneBlock.getOneBlocksIsland(island);           
-                
+                        
                 String islandUniqueId = oneBlockData.getUniqueId();
                 int brokenBlocks = oneBlockData.getBlockNumber();
                 long lifetimeBlocks = oneBlockData.getLifetime();
                 String phase = oneBlockData.getPhaseName();
                 String hologram = oneBlockData.getHologram();
-            });
+           });
         }
-    ```
+```
 
 ### Events
 
