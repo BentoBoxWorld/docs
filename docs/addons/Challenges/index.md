@@ -51,52 +51,7 @@ The example template file: [template.yml](https://github.com/BentoBoxWorld/Chall
     
     However, there is not a place where you could find out what things you can specify. I would recommend to use ingame admin GUI for creating statistic challenges, as it has more options to detect which fields can fill.
 
-## Commands
-
-!!! tip
-    `[player_command]` and `[admin_command]` are commands that differ depending on the gamemode you are running.
-    The Gamemodes' `config.yml` file contains options that allows you to modify these values.
-    As an example, on BSkyBlock, the default `[player_command]` is `island`, and the default `[admin_command]` is `bsbadmin`.
-
-=== "Player commands"
-    - `/challenges`: Access Player Challenges GUI. Contains either Challenges in current world or list of worlds where are Challenges enabled. This must be enabled in configuration.
-    - `/[player_command] challenges [challenge] [number]`: Access BSkyBlock Player Challenges GUI. If challenge name is provided, than this method will complete that challenge once. If number is provided, than it will complete challenge from 0-number times.
-
-=== "Admin commands"
-    - `/challengesadmin`: Access Admin Challenges GUI. Contains list of worlds where Challenges are enabled. This must be enabled in configuration.
-    - `/[admin_command] challenges`: Access BSkyBlock Admin Challenges GUI
-    - `/[admin_command] challenges reload [hard]`: Ability to reload Challengs addon configuration. This method clears also cache data. Parameter hard allows to reset database connection.
-
-## Permissions
-
-!!! tip
-    `[gamemode]` is a prefix that differs depending on the gamemode you are running.
-    The prefix is the lowercased name of the gamemode, i.e. if you are using BSkyBlock, the prefix is `bskyblock`.
-    Similarly, if you are using AcidIsland, the prefix is `acidisland`.
-
-=== "Player permissions"
-    - `[gamemode].challenges` - (default: `true`) - Let the player use the '/[player_command] challenges' command.
-    - `[gamemode].challenges.multiple` - (default: `true`) - Allows the player complete challenge multiple times at once.
-    - `[gamemode].challenges.complete` - (default: `false`) - Let the player use the '/[player_command] challenges complete <challenge> <number>' command.
-    - `addon.challenges` - (default: `true`) - Allows the access to '/challenges' command if it is enabled in the config.
-    - `[gamemode].command.challengeexempt` - (default: `false`) - Allows blocking reward command executing for player.
-
-=== "Admin permissions"
-    - `[gamemode].admin.challenges` - (default: `op`) - Let the player use the '/[admin_command] challenges' command.
-    - `[gamemode].admin.challenges.complete` - (default: `op`) - Let the player use the '/[admin_command] challenges complete' command.
-    - `[gamemode].admin.challenges.reset` - (default: `op`) - Let the player use the '/[admin_command] challenges reset' command.
-    - `addon.admin.challenges` - (default: `op`) - Allows the access to '/challengesadmin' command if it is enabled in the config. 
-
-??? question "Something is missing?"
-    You can find the comprehensive list of permissions in the [addon.yml](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/resources/addon.yml) file of this addon.  
-    If something is indeed missing from the list below, please let us know!
-
-
-## Placeholders
-
-{{ placeholders_source(source="Challenges") }}
-
-## Customizable GUI's
+### Customizable GUI's
 
 BentoBox 1.17 API introduced a function that allows to implement customizable GUI's. Challenges addon is one of the first one which uses this functionality. We tried to be as simple as possible for customization, however, some features requires explanation.
 You can find more information how BentoBox custom GUI's works here: [Custom GUI's](/en/latest/Tutorials/generic/Customizable-GUI/)
@@ -212,7 +167,52 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     This type allows accepting input number and complete challenge that much time.
 
     Specifying `type: ACCEPT` under action allows to complete challenge. 
-    Specifying `type: INPUT` under action allows request player to write number in chat. 
+    Specifying `type: INPUT` under action allows request player to write number in chat.
+
+## Commands
+
+!!! tip
+    `[player_command]` and `[admin_command]` are commands that differ depending on the gamemode you are running.
+    The Gamemodes' `config.yml` file contains options that allows you to modify these values.
+    As an example, on BSkyBlock, the default `[player_command]` is `island`, and the default `[admin_command]` is `bsbadmin`.
+
+=== "Player commands"
+    - `/challenges`: Access Player Challenges GUI. Contains either Challenges in current world or list of worlds where are Challenges enabled. This must be enabled in configuration.
+    - `/[player_command] challenges [challenge] [number]`: Access BSkyBlock Player Challenges GUI. If challenge name is provided, than this method will complete that challenge once. If number is provided, than it will complete challenge from 0-number times.
+
+=== "Admin commands"
+    - `/challengesadmin`: Access Admin Challenges GUI. Contains list of worlds where Challenges are enabled. This must be enabled in configuration.
+    - `/[admin_command] challenges`: Access BSkyBlock Admin Challenges GUI
+    - `/[admin_command] challenges reload [hard]`: Ability to reload Challengs addon configuration. This method clears also cache data. Parameter hard allows to reset database connection.
+
+## Permissions
+
+!!! tip
+    `[gamemode]` is a prefix that differs depending on the gamemode you are running.
+    The prefix is the lowercased name of the gamemode, i.e. if you are using BSkyBlock, the prefix is `bskyblock`.
+    Similarly, if you are using AcidIsland, the prefix is `acidisland`.
+
+=== "Player permissions"
+    - `[gamemode].challenges` - (default: `true`) - Let the player use the '/[player_command] challenges' command.
+    - `[gamemode].challenges.multiple` - (default: `true`) - Allows the player complete challenge multiple times at once.
+    - `[gamemode].challenges.complete` - (default: `false`) - Let the player use the '/[player_command] challenges complete <challenge> <number>' command.
+    - `addon.challenges` - (default: `true`) - Allows the access to '/challenges' command if it is enabled in the config.
+    - `[gamemode].command.challengeexempt` - (default: `false`) - Allows blocking reward command executing for player.
+
+=== "Admin permissions"
+    - `[gamemode].admin.challenges` - (default: `op`) - Let the player use the '/[admin_command] challenges' command.
+    - `[gamemode].admin.challenges.complete` - (default: `op`) - Let the player use the '/[admin_command] challenges complete' command.
+    - `[gamemode].admin.challenges.reset` - (default: `op`) - Let the player use the '/[admin_command] challenges reset' command.
+    - `addon.admin.challenges` - (default: `op`) - Allows the access to '/challengesadmin' command if it is enabled in the config. 
+
+??? question "Something is missing?"
+    You can find the comprehensive list of permissions in the [addon.yml](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/resources/addon.yml) file of this addon.  
+    If something is indeed missing from the list below, please let us know!
+
+
+## Placeholders
+
+{{ placeholders_source(source="Challenges") }}
 
 ## FAQ
 
