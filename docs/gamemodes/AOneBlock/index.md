@@ -434,7 +434,7 @@ AOneBlock addon stores data in a separate database table.
                 String hologram = oneBlockData.getHologram();
            });
         }
-```
+        ```
 
 ### Events
 
