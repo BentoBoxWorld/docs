@@ -12,7 +12,7 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 0. Install BentoBox and run it on the server at least once to create its data folders.
 1. Place this jar in the addons folder of the BentoBox plugin.
 2. Restart the server.
-3. The addon will create worlds and a data folder and inside the folder will be a config.yml and config files in phases folder.
+3. The addon will create a data folder and inside the folder will be a config.yml.
 4. Stop the server.
 5. Edit config.yml how you want.
 7. Restart the server.
