@@ -8,26 +8,54 @@ Created and maintained by [BONNe](https://github.com/BONNe).
 
 ## Installation
 
-1. Place the addon jar in the addons folder of the BentoBox plugin
-2. Start the server
-3. Stop the server
-4. Edit configuration located in `/plugins/BentoBox/addons/Likes` folder.
-5. Start the server.
+0. Install BentoBox and run it on the server at least once to create its data folders.
+1. Place this jar in the addons folder of the BentoBox plugin.
+2. Restart the server.
+3. The addon will create a data folder and inside the folder will be a config.yml.
+4. Stop the server.
+5. Edit config.yml how you want.
+7. Restart the server.
 
 ## Configuration
 
+The main `config.yml` file contains basic information about game-mode addon setup.
+
+`panels` allows to customize some user accessible panels.
+
+
+### config.yml
+
+After addon is successfully installed, it will create config.yml file. Every option in this file comes with comments about them. Please check file for more information.
+You can find the latest config file: [config.yml](https://github.com/BentoBoxWorld/Likes/blob/develop/src/main/resources/config.yml)
+
 Some config options can be changed via administration GUI in game. However, some options cannot.
 
-There are 2 important config options:
+The most important config option is mode:
 
-- mode: allows changing which mode addon works
+!!! summary "Likes mode"
+    mode: allows changing which mode addon works
     - LIKES - Allows adding only Like to island.
     - LIKES_DISLIKES - Allows adding only Like and Dislikes to island.
     - STARS - Allows adding Starts to island.
 
-- disabled-gamemode: allows disabling addon in some gamemode addons completely.
+You can use only one mode at the time.
 
-All other options can be changed via ingame GUI.
+### Customizable GUI's
+
+BentoBox 1.17 API introduced a function that allows to implement customizable GUI's. This addon is one of the first one which uses this functionality. We tried to be as simple as possible for customization, however, some features requires explanation.
+You can find more information how BentoBox custom GUI's works here: [Custom GUI's](/en/latest/Tutorials/generic/Customizable-GUI/)
+
+??? question "How can I customize GUI's"
+    To customize Addon GUI's you need to have version 2.2. This is a first version that has implemented them. Addon will create a new directory under `/plugins/BentoBox/addons/Likes` with a name `panels`
+
+    Currently you can customize 3 GUI:
+
+    - View Panel: `view_panels` - panel that allows to view who liked player island.
+    - Top Panel: `top_panel` - panel that contains top islands by certain value.
+    - Manage Panel: `manage_panels` - panel that allows to add like/dislike or stars.
+
+    View and Manage panels contains 3 different panels for each mode.
+
 
 ## Commands
 
@@ -75,7 +103,7 @@ All other options can be changed via ingame GUI.
 ## FAQ
 
 ??? question "Can you add a feature X?"
-    Please add it to the list [here](https://github.com/BentoBoxWorld/Challenges/issues).
+    Please add it to the list [here](https://github.com/BentoBoxWorld/Likes/issues).
 
 ??? question "Can I disable dislikes?"
     Yes, Likes addon supports 3 working modes:
@@ -104,6 +132,19 @@ All other options can be changed via ingame GUI.
 {{ translations(3331, []) }}
 
 ## API
+
+Since BentoBox 1.17 API implemented a feature that solved an issue with classloaders. Plugins that wants to use events directly, now can do it.
+
+You just need to add Likes to your project as dependency. You can use Maven for that:
+
+```xml
+<dependency>
+    <groupId>world.bentobox</groupId>
+    <artifactId>likes</artifactId>
+    <version>2.2.0</version>
+    <scope>provided</scope>
+</dependency>
+```
 
 ### Addon Request Handlers
 
@@ -186,23 +227,8 @@ All other options can be changed via ingame GUI.
     !!! question "Variables"
         - `UUID user` - id of the player who added the like.
         - `String islandId` - id of the island which receive the like.
-
-    !!! warning "Class Loader Issue"
-        Due Java Class Loader hierarchy, plugins cannot listen for the event directly. 
-        Only BentoBox addons can use event class directly.
-
-    !!! example "Code example for Plugins"
-        ```java
-        @EventHandler(priority = EventPriority.MONITOR)
-        public void onLike(BentoBoxEvent event) {
-            if (event.getEventName().equals("LikeAddEvent")) {
-                UUID user = (UUID) event.getKeyValues().get("user");
-                String islandId = (String) event.getKeyValues().get("islandId");
-            }
-        }
-        ```
         
-    !!! example "Code example for Addons"
+    !!! example "Example
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
         public void onLike(LikeAddEvent event) {
@@ -222,23 +248,8 @@ All other options can be changed via ingame GUI.
     !!! question "Variables"
         - `UUID user` - id of the player who removed the like.
         - `String islandId` - id of the island which lose the like.
-
-    !!! warning "Class Loader Issue"
-        Due Java Class Loader hierarchy, plugins cannot listen for the event directly. 
-        Only BentoBox addons can use event class directly.
-
-    !!! example "Code example for Plugins"
-        ```java
-        @EventHandler(priority = EventPriority.MONITOR)
-        public void onLikeRemove(BentoBoxEvent event) {
-            if (event.getEventName().equals("LikeRemoveEvent")) {
-                UUID user = (UUID) event.getKeyValues().get("user");
-                String islandId = (String) event.getKeyValues().get("islandId");
-            }
-        }
-        ```
         
-    !!! example "Code example for Addons"
+    !!! example "Example"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
         public void onLikeRemove(LikeRemoveEvent event) {
@@ -259,22 +270,7 @@ All other options can be changed via ingame GUI.
         - `UUID user` - id of the player who added the dislike.
         - `String islandId` - id of the island which receive the dislike.
 
-    !!! warning "Class Loader Issue"
-        Due Java Class Loader hierarchy, plugins cannot listen for the event directly. 
-        Only BentoBox addons can use event class directly.
-
-    !!! example "Code example for Plugins"
-        ```java
-        @EventHandler(priority = EventPriority.MONITOR)
-        public void onDislike(BentoBoxEvent event) {
-            if (event.getEventName().equals("DislikeAddEvent")) {
-                UUID user = (UUID) event.getKeyValues().get("user");
-                String islandId = (String) event.getKeyValues().get("islandId");
-            }
-        }
-        ```
-        
-    !!! example "Code example for Addons"
+    !!! example "Example"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
         public void onDislike(DislikeAddEvent event) {
@@ -295,22 +291,7 @@ All other options can be changed via ingame GUI.
         - `UUID user` - id of the player who removed the dislike.
         - `String islandId` - id of the island which lose the dislike.
 
-    !!! warning "Class Loader Issue"
-        Due Java Class Loader hierarchy, plugins cannot listen for the event directly. 
-        Only BentoBox addons can use event class directly.
-
-    !!! example "Code example for Plugins"
-        ```java
-        @EventHandler(priority = EventPriority.MONITOR)
-        public void onDislikeRemove(BentoBoxEvent event) {
-            if (event.getEventName().equals("DislikeRemoveEvent")) {
-                UUID user = (UUID) event.getKeyValues().get("user");
-                String islandId = (String) event.getKeyValues().get("islandId");
-            }
-        }
-        ```
-        
-    !!! example "Code example for Addons"
+    !!! example "Example"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
         public void onDislikeRemove(DislikeRemoveEvent event) {
@@ -332,23 +313,7 @@ All other options can be changed via ingame GUI.
         - `String islandId` - id of the island which receive the stars.
         - `int value` - the value of added stars (from 1 till 5)
 
-    !!! warning "Class Loader Issue"
-        Due Java Class Loader hierarchy, plugins cannot listen for the event directly. 
-        Only BentoBox addons can use event class directly.
-
-    !!! example "Code example for Plugins"
-        ```java
-        @EventHandler(priority = EventPriority.MONITOR)
-        public void onStarsAdd(BentoBoxEvent event) {
-            if (event.getEventName().equals("StarsAddEvent")) {
-                UUID user = (UUID) event.getKeyValues().get("user");
-                String islandId = (String) event.getKeyValues().get("islandId");
-                int value = (int) event.getKeyValues().get("value");
-            }
-        }
-        ```
-        
-    !!! example "Code example for Addons"
+    !!! example "Example"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
         public void onStarsAdd(StarsAddEvent event) {
@@ -370,22 +335,7 @@ All other options can be changed via ingame GUI.
         - `UUID user` - id of the player who added the stars.
         - `String islandId` - id of the island which lose the stars.
 
-    !!! warning "Class Loader Issue"
-        Due Java Class Loader hierarchy, plugins cannot listen for the event directly. 
-        Only BentoBox addons can use event class directly.
-
-    !!! example "Code example for Plugins"
-        ```java
-        @EventHandler(priority = EventPriority.MONITOR)
-        public void onStarsRemove(BentoBoxEvent event) {
-            if (event.getEventName().equals("StarsRemoveEvent")) {
-                UUID user = (UUID) event.getKeyValues().get("user");
-                String islandId = (String) event.getKeyValues().get("islandId");
-            }
-        }
-        ```
-        
-    !!! example "Code example for Addons"
+    !!! example "Example"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
         public void onStarsRemove(StarsRemoveEvent event) {
