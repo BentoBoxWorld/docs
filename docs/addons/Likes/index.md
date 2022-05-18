@@ -229,7 +229,7 @@ You just need to add Likes to your project as dependency. You can use Maven for 
         - `UUID user` - id of the player who added the like.
         - `String islandId` - id of the island which receive the like.
         
-    !!! example "Example
+    !!! example "Example"
         ```java
         @EventHandler(priority = EventPriority.MONITOR)
         public void onLike(LikeAddEvent event) {
