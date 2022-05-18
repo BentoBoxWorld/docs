@@ -34,6 +34,7 @@ The most important config option is mode:
 
 !!! summary "Likes mode"
     mode: allows changing which mode addon works
+
     - LIKES - Allows adding only Like to island.
     - LIKES_DISLIKES - Allows adding only Like and Dislikes to island.
     - STARS - Allows adding Starts to island.
