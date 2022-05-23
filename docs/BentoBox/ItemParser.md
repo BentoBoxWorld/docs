@@ -79,3 +79,14 @@ In next part you can specify:
 At the end you can specify the amount of player heads in the stack.
 As example: `PLAYER_HEAD:BONNe1704` - will give 1 player head with BONNe1704 skin.
 
+### Custom Model Data
+
+Custom Model data can be added to any parsable item stack. The custom model data text can be added at any part of parsable string. The scheme for custom model data:
+
+- `CMD-[number]`
+
+Examples:
+
+- IRON_INGOT:2:CMD-12345678 => Creates an item stack with 2 iron ingots and custom model data `12345678` 
+- GOLD_INGOT:CMD-12345678 => Creates an item stack with gold ingot and custom model data `12345678`
+- PLAYER_HEAD:BONNe1704:CMD-12345678 => Creates an item stack with BONNe1704 player head and custom model data `12345678` 
