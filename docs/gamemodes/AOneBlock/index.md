@@ -182,6 +182,32 @@ The first number of any file is how many blocks need to be mined to reach that p
               SPIDER: 75
         ```
 
+=== "Custom Blocks"
+    !!! summary "Description"
+        Since version 1.11 you can now specify custom blocks (thanks to [@HSGamer](https://github.com/HSGamer)).
+        You can do it in both places: blocks and fixed-blocks. 
+        
+        To define custom blocks in `blocks` section, you need to add `-` before each element.
+        Also, blocks must be defined with type, data and probability values.
+
+    !!! example "Example"
+        ```yaml
+            fixedBlocks:
+              0:
+                type: data
+                data: minecraft:chest[waterlogged=true]
+              1: GRASS_BLOCK
+              2: GRASS_BLOCK
+            blocks:
+              - type: data
+                data: minecraft:chest[waterlogged=true]
+                probability: 10
+              - type: data
+                data: minecraft:chest
+                probability: 10
+              - DIRT: 10     # old syntax still works.
+        ```
+
 
 In the chests file, it just has the phase number and a chests section.
 
