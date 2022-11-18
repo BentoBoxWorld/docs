@@ -310,7 +310,7 @@ Since Challenges 1.0 and BentoBox 1.17 other plugins can access to the Challenge
             return (List<String>) new AddonRequestBuilder()
                 .addon("Challenges")
                 .label("challenge-list")
-                .addMetadata("world-name", worldName)
+                .addMetaData("world-name", worldName)
                 .request();
         }
         ```
@@ -345,7 +345,7 @@ Since Challenges 1.0 and BentoBox 1.17 other plugins can access to the Challenge
             return (Map<String, Object>) new AddonRequestBuilder()
                 .addon("Challenges")
                 .label("challenge-data")
-                .addMetadata("challenge-name", challengeId)
+                .addMetaData("challenge-name", challengeId)
                 .request();
         }
         ```
@@ -369,7 +369,7 @@ Since Challenges 1.0 and BentoBox 1.17 other plugins can access to the Challenge
             return (List<String>) new AddonRequestBuilder()
                 .addon("Challenges")
                 .label("level-list")
-                .addMetadata("world-name", worldName)
+                .addMetaData("world-name", worldName)
                 .request();
         }
         ```
@@ -402,7 +402,7 @@ Since Challenges 1.0 and BentoBox 1.17 other plugins can access to the Challenge
             return (Map<String, Object>) new AddonRequestBuilder()
                 .addon("Challenges")
                 .label("level-data")
-                .addMetadata("level-name", levelId)
+                .addMetaData("level-name", levelId)
                 .request();
         }
         ```
@@ -428,8 +428,8 @@ Since Challenges 1.0 and BentoBox 1.17 other plugins can access to the Challenge
             return (List<String>) new AddonRequestBuilder()
                 .addon("Challenges")
                 .label("completed-challenges")
-                .addMetadata("player", playerUUID)
-                .addMetadata("world-name", worldName)
+                .addMetaData("player", playerUUID)
+                .addMetaData("world-name", worldName)
                 .request();
         }
         ```

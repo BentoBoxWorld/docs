@@ -478,7 +478,7 @@ handlers are not necessary anymore.
             return (Map<String, Object>) new AddonRequestBuilder()
                 .addon("Biomes")
                 .label("biome-data")
-                .addMetadata("biomeId", biomeId)
+                .addMetaData("biomeId", biomeId)
                 .request();
         }
         ```
@@ -502,7 +502,7 @@ handlers are not necessary anymore.
             return (List<String>) new AddonRequestBuilder()
                 .addon("Biomes")
                 .label("biomes-list")
-                .addMetadata("world-name", worldName)
+                .addMetaData("world-name", worldName)
                 .request();
         }
         ```
@@ -542,13 +542,13 @@ handlers are not necessary anymore.
             return (Map<String, Object>) new AddonRequestBuilder()
                 .addon("Biomes")
                 .label("biome-request-change")
-                .addMetadata("player", player)
-                .addMetadata("world-name", worldName)
-                .addMetadata("biomeId", biomeId)
-                .addMetadata("updateMode", mode)
-                .addMetadata("range", range)
-                .addMetadata("checkRequirements", requirements)
-                .addMetadata("withdraw", withdraw)
+                .addMetaData("player", player)
+                .addMetaData("world-name", worldName)
+                .addMetaData("biomeId", biomeId)
+                .addMetaData("updateMode", mode)
+                .addMetaData("range", range)
+                .addMetaData("checkRequirements", requirements)
+                .addMetaData("withdraw", withdraw)
                 .request();
         }
         ```
