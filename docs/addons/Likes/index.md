@@ -182,8 +182,8 @@ You just need to add Likes to your project as dependency. You can use Maven for 
             return (Map<String, Object>) new AddonRequestBuilder()
                 .addon("Likes")
                 .label("island-likes")
-                .addMetadata("world-name", worldName)
-                .addMetadata("island", islandUUID)
+                .addMetaData("world-name", worldName)
+                .addMetaData("island", islandUUID)
                 .request();
         }
         ```
@@ -208,8 +208,8 @@ You just need to add Likes to your project as dependency. You can use Maven for 
             return (Map<String, Number>) new AddonRequestBuilder()
                 .addon("Likes")
                 .label("top-ten-likes")
-                .addMetadata("world-name", worldName)
-                .addMetadata("type", type)
+                .addMetaData("world-name", worldName)
+                .addMetaData("type", type)
                 .request();
         }
         ```
