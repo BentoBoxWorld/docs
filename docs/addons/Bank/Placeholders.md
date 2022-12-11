@@ -12,8 +12,10 @@ These placeholders are available in all currently available gamemodes ([BSkyBloc
 
 | Placeholder | Description | Bank Version |
 |-------------------------------------------------------|--------------------------------------------------------------------------------|-----------|
-| `%Bank_[gamemode]_island_balance%` | Island balance of the player's island | 1.1.0 |
-| `%Bank_[gamemode]_visited_island_balance%` | Island balance of the island the player is standing on | 1.1.0 |
+| `%Bank_[gamemode]_island_balance%` | Island balance of the player's island formatted by Vault | 1.1.0 |
+| `%Bank_[gamemode]_visited_island_balance%` | Island balance of the island the player is standing on formatted by Vault| 1.1.0 |
+| `%Bank_[gamemode]_island_balance_number%` | Island balance of the player's island - no formatting. Raw value.| 1.4.0 |
+| `%Bank_[gamemode]_visited_island_balance_number%` | Island balance of the island the player is standing on - no formatting. Raw value.| 1.4.0 |
 | `%Bank_[gamemode]_island_balance_formatted%` | Formatted island balance of the player's island, e.g. 1.5M | 1.1.1 |
 | `%Bank_[gamemode]_visited_island_balance_formatted%` | Formatted island balance of the island the player is standing on. e.g. 1.2k | 1.1.0 |
 | `%Bank_[gamemode]_top_value_#RANK#%` | Island balance of the `#RANK#`-th island on the leader board | 1.1.0 |
