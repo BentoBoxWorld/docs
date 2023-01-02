@@ -167,7 +167,7 @@ The code in the onLoad() method is run when the Addon is loaded and before onEna
 The code in this method is run when (or if) the admin reloads Addons using the `bbox reload` command.
 
 # Create the addon.yml
-The addon.yml is required to describe your addon to BentoBox. It is almost identical to addon.yml used by Bukkit. Here is a minimal example:
+The addon.yml is required to describe your addon to BentoBox. It is almost identical to plugin.yml used by Bukkit. Here is a minimal example:
 
 ```
 name: Bank
