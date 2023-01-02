@@ -371,7 +371,7 @@ or<br>
 </table>
 
 # Pladdons
-Pladdons are a combination of a Bukkit Plugin and Addon. The main benefit of a Pladdon is that it is loaded with the Bukkit Server class loader and so data within it can be accessed directly by Plugins. If you are writing a utility Addon, for example, the Level addon then a lot of other Plugin writers may want to access the data it generates in code. The simplest way to do this is to make a Pladdon. The contrary to this is that if you do **not** want plugins to access data in your addon, then keep it as an addon.
+Pladdons are a combination of a Bukkit Plugin and Addon. The main benefit of a Pladdon is that it is loaded with the Bukkit Server class loader and so data within it can be accessed directly by Plugins. If you are writing a utility Addon, for example, a Level addon, then other Plugin writers may want to access the data it generates in code via an API. The simplest way to do this is to make a Pladdon and they can call methods in your code directly. If you do **not** want plugins to access data in your addon, then keep it as an Addon.
 
 ## Making the Addon a Pladdon
 To do this, make a class with the recommended name of `MyAddonPladdon.java`, where MyAddon is the same name as your Addon and extend `Pladdon`. Instead of creating a `plugin.yml` the components are declared using Annotations. The annotations should be as below. The ApiVersion may be updated to the latest server version if you require it.
@@ -388,7 +388,7 @@ public class LevelPladdon extends Pladdon {
 }
 ```
 
-The only method that should be defined is the `getAddon()` method thst must return an instance of your Addon.
+The only method that should be defined is the `getAddon()` method that must return an instance of your Addon.
 
 Once this is done, the Addon will be loaded just like a plugin and will be able to be accessed via other plugins.
 
