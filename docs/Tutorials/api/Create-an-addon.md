@@ -270,7 +270,7 @@ or<br>
            </td>
            <td>
                <ul>
-                   <li>You can define both author and authors, however they will be merged into one list internally.</li>
+                   <li>You can list one author or multiple authors.</li>
                </ul>
            </td>
        </tr>
