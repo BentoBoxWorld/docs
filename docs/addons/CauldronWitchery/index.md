@@ -164,6 +164,29 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 ??? question "Can I add custom magic stick item?"
     Yes, as long as Spigot supports them. However, you will not be able to do it via template file. Only Admin GUI supports custom item adding.
 
+??? question "How players can get magic sticks?"
+    Players can buy magic sticks using `/[player_cmd] witchery` command. 
+
+    Admins can also create their own way how to distribute sticks. There is an admin command to generate them:
+   
+    `/[admin_cmd] witchery get stick <stick_id>`
+
+??? question "What is the difference between main ingredient and extra ingredient?"
+    The main ingredient is always the "last" item player needs to have for recipe. It is always an item in player offhand.
+
+    Extra ingredients are items that must be either in player inventory or dropped into cauldron (depending on config).
+
+??? question "Items are not burning in lava cauldron, and they are not despawning?"
+    If `mix-in-cauldron` option is enabled in addon settings, then no items will burn in lava cauldron and they will not despawn.
+    It is necessary for addon operation, as there can be recipes that requires lava cauldron. These recipes would not be possible
+    to fulfill if items were burning off. Item depsawning inside cauldron is disabled just as protective measure. 
+
+??? question "Anyone on my island can use magic sticks. Can I prevent it?"
+    Yes, you can limit which user groups can use the sticks using Island Protection Flags.
+    CauldronWitchery adds `CAULDRON_WITCHERY_ISLAND_PROTECTION` which can be toggled from island visitor till owner.
+
+    Users outside member group will not be able to use magic sticks on island.
+
 ??? question "Can you add a feature X?"
     Please add it to the list [here](https://github.com/BentoBoxWorld/CauldronWitchery/issues).
 
