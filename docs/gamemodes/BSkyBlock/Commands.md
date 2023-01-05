@@ -13,12 +13,12 @@
 <tr>
 <td align='left'><b>/bsbadmin add <owner> <player></b></td>
 <td align='left'>add player to owner's team</td>
-<td align='left'></td>
+<td align='left'>bskyblock.mod.team</td>
 </tr>
 <tr>
 <td align='left'><b>/bsbadmin biomes</b></td>
 <td align='left'>Main biome addon admin command. Opens Admin GUI for players</td>
-<td align='left'></td>
+<td align='left'>bskyblock.admin.biomes</td>
 </tr>
 <tr>
 <td align='left'><b>/bsbadmin challenges</b></td>
@@ -28,7 +28,7 @@
 <tr>
 <td align='left'><b>/bsbadmin deaths</b></td>
 <td align='left'>edit deaths of players</td>
-<td align='left'></td>
+<td align='left'>bskyblock.admin.deaths</td>
 </tr>
 <tr>
 <td align='left'><b>/bsbadmin delete</b></td>
@@ -38,12 +38,12 @@
 <tr>
 <td align='left'><b>/bsbadmin disband <owner></b></td>
 <td align='left'>disband owner's team</td>
-<td align='left'>bskyblock.mod.bypassprotect</td>
+<td align='left'>bskyblock.mod.team</td>
 </tr>
 <tr>
 <td align='left'><b>/bsbadmin getrank <player></b></td>
 <td align='left'>get a player's rank on their island</td>
-<td align='left'></td>
+<td align='left'>bskyblock.admin.getrank</td>
 </tr>
 <tr>
 <td align='left'><b>/bsbadmin info <player></b></td>
@@ -54,17 +54,17 @@
 <tr>
 <td align='left'><b>/bsbadmin kick <team player></b></td>
 <td align='left'>kick a player from a team</td>
-<td align='left'>bskyblock.mod.bypassexpel</td>
+<td align='left'>bskyblock.mod.team</td>
 </tr>
 <tr>
 <td align='left'><b>/bsbadmin level <player></b></td>
-<td align='left'>calculate the island level for player</td>
-<td align='left'></td>
+<td align='left'>calculate the island level for player - requires Level addon</td>
+<td align='left'>bskyblock.admin.level</td>
 </tr>
 <tr>
 <td align='left'><b>/bsbadmin range</b></td>
 <td align='left'>Admin island range command</td>
-<td align='left'></td>
+<td align='left'>bskyblock.admin.range</td>
 </tr>
 <tr>
 <td align='left'><b>/bsbadmin register <player></b></td>
@@ -82,64 +82,68 @@
 <td align='left'>bskyblock.admin.settingsreset</td>
 </tr>
 <tr>
-<td align='left'><b>/bsbadmin schem</b></td>
-<td align='left'>manipulate schems</td>
-<td align='left'></td>
+<td align='left'><b>/bsbadmin bp</b></td>
+<td align='left'>manipulate blueprints</td>
+<td align='left'>bskyblock.admin.blueprint</td>
 </tr>
 <tr>
-<td align='left'><b>/bsbadmin schem copy [air]</b></td>
+<td align='left'><b>/bsbadmin bp copy [air]</b></td>
 <td align='left'>copy the clipboard set by pos1 and pos2 and optionally the air blocks</td>
-<td align='left'></td>
+<td align='left'>bskyblock.admin.blueprint</td>
 </tr>
 <tr>
-<td align='left'><b>/bsbadmin schem load <schem name></b></td>
-<td align='left'>load schem into the clipboard</td>
-<td align='left'></td>
+<td align='left'><b>/bsbadmin bp load <schem name></b></td>
+<td align='left'>load blueprint into the clipboard</td>
+<td align='left'>bskyblock.admin.blueprint</td>
 </tr>
 <tr>
-<td align='left'><b>/bsbadmin schem origin</b></td>
-<td align='left'>set the schem's origin to your position</td>
-<td align='left'></td>
+<td align='left'><b>/bsbadmin bp origin</b></td>
+<td align='left'>set the blueprint's origin to your position</td>
+<td align='left'>bskyblock.admin.blueprint</td>
 </tr>
 <tr>
-<td align='left'><b>/bsbadmin schem paste</b></td>
+<td align='left'><b>/bsbadmin bp paste</b></td>
 <td align='left'>paste the clipboard to your location</td>
-<td align='left'></td>
+<td align='left'>bskyblock.admin.blueprint</td>
 </tr>
 <tr>
-<td align='left'><b>/bsbadmin schem pos1</b></td>
+<td align='left'><b>/bsbadmin bp pos1</b></td>
 <td align='left'>set 1st corner of cuboid clipboard</td>
-<td align='left'></td>
+<td align='left'>bskyblock.admin.blueprint</td>
 </tr>
 <tr>
-<td align='left'><b>/bsbadmin schem pos2</b></td>
+<td align='left'><b>/bsbadmin bp pos2</b></td>
 <td align='left'>set 2nd corner of cuboid clipboard</td>
-<td align='left'></td>
+<td align='left'>bskyblock.admin.blueprint</td>
 </tr>
 <tr>
-<td align='left'><b>/bsbadmin schem save <schem name></b></td>
+<td align='left'><b>/bsbadmin bp save <blueprint name></b></td>
 <td align='left'>save the copied clipboard</td>
-<td align='left'></td>
+<td align='left'>bskyblock.admin.blueprint</td>
+</tr>
+<td align='left'><b>/bsbadmin bp rename <blueprint name></b></td>
+<td align='left'>rename the blueprint</td>
+<td align='left'>bskyblock.admin.blueprint</td>
 </tr>
 <tr>
 <td align='left'><b>/bsbadmin setowner <player></b></td>
 <td align='left'>transfers island ownership to the player</td>
-<td align='left'>bskyblock.admin.register</td>
+<td align='left'>bskyblock.mod.team</td>
 </tr>
 <tr>
 <td align='left'><b>/bsbadmin setrank <player> <rank></b></td>
 <td align='left'>set a player's rank on their island</td>
-<td align='left'></td>
+<td align='left'>bskyblock.admin.setrank</td>
 </tr>
 <tr>
 <td align='left'><b>/bsbadmin setspawn</b></td>
-<td align='left'>commands.admin.setspawn.description</td>
+<td align='left'>Sets the world spawn position to this location/td>
 <td align='left'>bskyblock.admin.setspawn</td>
 </tr>
 <tr>
 <td align='left'><b>/bsbadmin top</b></td>
-<td align='left'>show the top ten list</td>
-<td align='left'></td>
+<td align='left'>show the top ten list - requires the Level addon</td>
+<td align='left'>bskyblock.admin.top</td>
 </tr>
 <tr>
 <td align='left'><b>/bsbadmin tp <player></b></td>
@@ -148,12 +152,12 @@
 </tr>
 <tr>
 <td align='left'><b>/bsbadmin tpend <player></b></td>
-<td align='left'>teleport to a player's island</td>
+<td align='left'>teleport to a player's end island</td>
 <td align='left'>bskyblock.mod.tp</td>
 </tr>
 <tr>
 <td align='left'><b>/bsbadmin tpnether <player></b></td>
-<td align='left'>teleport to a player's island</td>
+<td align='left'>teleport to a player's nether island</td>
 <td align='left'>bskyblock.mod.tp</td>
 </tr>
 <tr>
@@ -164,12 +168,12 @@
 <tr>
 <td align='left'><b>/bsbadmin version</b></td>
 <td align='left'>display BentoBox and addons versions</td>
-<td align='left'>bskyblock.island</td>
+<td align='left'>bskyblock.admin.version</td>
 </tr>
 <tr>
 <td align='left'><b>/bsbadmin why <player></b></td>
 <td align='left'>toggle console protection debug reporting</td>
-<td align='left'></td>
+<td align='left'>bskyblock.admin.why</td>
 </tr>
 </table>
 
@@ -202,27 +206,27 @@
 </tr>
 <tr>
 <td align='left'><b>/island biomes</b></td>
-<td align='left'>Main biome addon command that opens biome change GUI</td>
-<td align='left'></td>
+<td align='left'>Main biome addon command that opens biome change GUI. Requires the Biomes addon.</td>
+<td align='left'>bskyblock.admin.biomes</td>
 </tr>
 <tr>
 <td align='left'><b>/island challenges [Level]</b></td>
-<td align='left'>Let the player use /island challenges command</td>
+<td align='left'>Let the player use /island challenges command. Requires the Chanllenges addon</td>
 <td align='left'>bskyblock.challenges</td>
 </tr>
 <tr>
-<td align='left'><b>/island create</b></td>
-<td align='left'>create an island</td>
+<td align='left'><b>/island create <blueprint></b></td>
+<td align='left'>create an island with an optional blueprint. (Not usually used by players directly)</td>
 <td align='left'>bskyblock.island.create</td>
 </tr>
 <tr>
-<td align='left'><b>/island go</b></td>
-<td align='left'>teleport you to your island</td>
-<td align='left'>bskyblock.island</td>
+<td align='left'><b>/island go [home name]</b></td>
+<td align='left'>teleport you to your island or to a specific home name, if enabled</td>
+<td align='left'>bskyblock.island.home</td>
 </tr>
 <tr>
 <td align='left'><b>/island info <player></b></td>
-<td align='left'>display info about your island or the player's island</td>
+<td align='left'>display info about your island or a player's island</td>
 <td align='left'>bskyblock.island.info</td>
 </tr>
 <tr>
@@ -232,8 +236,13 @@
 </tr>
 <tr>
 <td align='left'><b>/island level [player]</b></td>
-<td align='left'>calculate your island level or show the level of [player]</td>
-<td align='left'></td>
+<td align='left'>calculate your island level or show the level of [player] - requires the Level addon</td>
+<td align='left'>bskyblock.island.level</td>
+</tr>
+<tr>
+<td align='left'><b>/island near</b></td>
+<td align='left'>Show the name of neighboring islands around you, if any</td>
+<td align='left'>bskyblock.island.near</td>
 </tr>
 <tr>
 <td align='left'><b>/island reset</b></td>
@@ -241,14 +250,24 @@
 <td align='left'>bskyblock.island.reset</td>
 </tr>
 <tr>
-<td align='left'><b>/island sethome</b></td>
-<td align='left'>set your home teleport point</td>
+<td align='left'><b>/island homes</b></td>
+<td align='left'>list the homes you have set</td>
+<td align='left'>bskyblock.island.homes</td>
+</tr>
+<tr>
+<td align='left'><b>/island sethome [home name]</b></td>
+<td align='left'>set your home teleport point and optionally name it</td>
 <td align='left'>bskyblock.island.sethome</td>
 </tr>
 <tr>
-<td align='left'><b>/island setname <name></b></td>
-<td align='left'>set a name for your island</td>
-<td align='left'>bskyblock.island.name</td>
+<td align='left'><b>/island deletehome [home name]</b></td>
+<td align='left'>delete a home teleport point</td>
+<td align='left'>bskyblock.island.deletehome</td>
+</tr>
+<tr>
+<td align='left'><b>/island rename [home name]</b></td>
+<td align='left'>rename a home teleport point</td>
+<td align='left'>bskyblock.island.renamehome</td>
 </tr>
 <tr>
 <td align='left'><b>/island settings</b></td>
@@ -259,6 +278,11 @@
 <td align='left'><b>/island spawn</b></td>
 <td align='left'>teleport you to the spawn</td>
 <td align='left'>bskyblock.island.home</td>
+</tr>
+  <tr>
+<td align='left'><b>/island setname</b></td>
+<td align='left'>set your island name</td>
+<td align='left'>bskyblock.mod.setname</td>
 </tr>
 <tr>
 <td align='left'><b>/island resetname</b></td>
@@ -327,8 +351,8 @@
 </tr>
 <tr>
 <td align='left'><b>/island top</b></td>
-<td align='left'>show the Top Ten</td>
-<td align='left'></td>
+<td align='left'>show the Top Ten - required the Level addon</td>
+<td align='left'>bskyblock.island.level</td>
 </tr>
 <tr>
 <td align='left'><b>/island team uncoop <player></b></td>
@@ -342,18 +366,18 @@
 </tr>
 <tr>
 <td align='left'><b>/island warp <name></b></td>
-<td align='left'>warp to the player's warp sign</td>
-<td align='left'></td>
+<td align='left'>warp to the player's warp sign - requires the Warp Addon</td>
+<td align='left'>bskyblock.island.warp</td>
 </tr>
 <tr>
 <td align='left'><b>/island warps</b></td>
-<td align='left'>open the warps panel</td>
-<td align='left'></td>
+<td align='left'>open the warps panel - rwquires the Warp addon</td>
+<td align='left'>bskyblock.island.warp</td>
 </tr>
 </table>
 <BR>
 <h3>Island Settings (/is settings)</h3>
-There are currently 59 Protection Settings, 6 General Settings and 17 BSkyBlock Island Settings that can be applied to the BSkyBlock Island.  Each of which ENABLE or DISABLE access to one or more types of players: Visitor, Coop, Trusted, Member, Sub-Owner and Owners for that island.  The below images provides the icons associated with each type and can be set by clicking once or more times to acquire the settings you desired for one or all player types.
+There are Protection Settings,General Settings and BSkyBlock Island Settings that can be applied to the BSkyBlock Island.  Each of which ENABLE or DISABLE access to one or more types of players: Visitor, Coop, Trusted, Member, Sub-Owner and Owners for that island.  The below images provides the icons associated with each type and can be set by clicking once or more times to acquire the settings you desired for one or all player types.
 
 <table width='100%' align='center'>
 <tr>
