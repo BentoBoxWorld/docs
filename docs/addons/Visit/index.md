@@ -223,9 +223,11 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
    
 ## Flags
 
-Addon introduces 1 BentoBox protection flags:
+Addon introduces 2 BentoBox protection flags:
 
 - ![pumpkin_pie](https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/ac/Pumpkin_Pie_JE2_BE2.png){: loading=lazy width=16px } ALLOW_VISITS_FLAG: flag in island settings that allows enabling/disabling island visiting.
+- ![paper](https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/f2/Paper_JE2_BE2.png){: loading=lazy width=16px } RECEIVE_VISIT_MESSAGE_FLAG: flag in island settings that allows enabling/disabling island members to receive visiting/leaving messages.
+
 
 ## FAQ
 
