@@ -122,13 +122,20 @@ BentoBox,VISITOR_KEEP_INVENTORY,"Visitors keep inventory on death",TOTEM_OF_UNDY
 BentoBox,VISITOR_TRIGGER_RAID,"Visitors triggers raids",RAVAGER_SPAWN_EGG,"Toggles if visitors can start a raid on an island which they are visiting. Bad Omen effect will be removed!",WORLD_SETTING,EXPERT,true,,
 BentoBox,WITHER_DAMAGE,"Toggle wither damage",WITHER_SKELETON_SKULL,"If active, withers can damage blocks and players",WORLD_SETTING,EXPERT,false,,
 BentoBox,WORLD_BLOCK_EXPLODE_DAMAGE,"World block explode damage",TNT_MINECART,"Allow Bed & Respawn Anchors to break blocks and damage entities outside of island limits.",WORLD_SETTING,EXPERT,false,,
+Boxed,MOVE_BOX,Move Box,COMPOSTER,"Toggle who can move the box with EnderPearls",PROTECTION,BASIC,OWNER_RANK,VISITOR_RANK,OWNER_RANK
+Boxed,ALLOW_MOVE_BOX,Allow Move Box,COMPOSTER,"Toggle if box can be moved with EnderPearls",WORLD_SETTING,BASIC,true,,
+CaveBlock,SKY_WALKER_FLAG,Sky Walker,FEATHER,"Toggles the ability to walk on the top of the cave world without extra permissions.",WORLD_SETTING,BASIC,false,,
+Bank,BANK_ACCESS,Island Bank Access,GOLD_INGOT,Allow access to the island bank.,PROTECTION,BASIC,MEMBER_RANK,MEMBER_RANK,OWNER_RANK
 Biomes,BIOMES_ISLAND_PROTECTION,Biome control,GRASS_BLOCK,Toggle who can change the island biome.,PROTECTION,ADVANCED,VISITOR_RANK,VISITOR_RANK,OWNER_RANK
 Biomes,BIOMES_WORLD_PROTECTION,Biome Island limitation,GRASS_BLOCK,Toggle requirement for players to be on their island to change biome.,WORLD_SETTING,ADVANCED,true,,
 CauldronWitchery,CAULDRON_WITCHERY_ISLAND_PROTECTION,Cauldron Witchery Protection,CHICKEN_SPAWN_EGG,Toggle who can use cauldron witchery on this island.,PROTECTION,BASIC,VISITOR_RANK,VISITOR_RANK,OWNER_RANK
 Challenges,CHALLENGES_WORLD_PROTECTION,Challenges Island limitation,GRASS_BLOCK,Toggle requirement for players to be on their island to complete a challenge,WORLD_SETTING,BASIC,true,,
 Challenges,CHALLENGES_ISLAND_PROTECTION,Challenges protection,COMMAND_BLOCK,Toggle who can complete challenges.,PROTECTION,BASIC,VISITOR_RANK,VISITOR_RANK,OWNER_RANK
+Greenhouses,GREENHOUSE,Greenhouses,GREEN_STAINED_GLASS,Toggle who can control greenhouses.,PROTECTION,BASIC,VISITOR_RANK,VISITOR_RANK,OWNER_RANK
+IslandFly,ISLAND_FLY_PROTECTION,Fly prevention,ELYTRA,Toggle who can fly on your island.,PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
 MagicCobblestoneGenerator,MAGIC_COBBLESTONE_GENERATOR,Magic Generator,DIAMOND_PICKAXE,Toggle to enable or disable all Magic Generators on the whole island.,SETTING,BASIC,true,,
 MagicCobblestoneGenerator,MAGIC_COBBLESTONE_GENERATOR_PERMISSION,Magic Generator Permissions,DIAMOND_PICKAXE,Select who can activate and deactivate generators.,PROTECTION,BASIC,SUB_OWNER_RANK,MEMBER_RANK,OWNER_RANK
+Upgrades,UPGRADES_RANK_RIGHT,Upgrade Rank,GOLD_INGOT,Switch who can upgrade.,PROTECTION,BASIC,MEMBER_RANK,MEMBER_RANK,OWNER_RANK
 Visit,ALLOW_VISITS_FLAG,Visit protection,PUMPKIN_PIE,Toggle if island can be visited by anyone.,SETTING,BASIC,true,,
 Visit,RECEIVE_VISIT_MESSAGE_FLAG,Receive Visiting Messages,PAPER,Toggle if members should receive a message if someone visits their island.,SETTING,BASIC,true,,
 VoidPortals,VOID_WORLD_TELEPORT_FLAG,Void world teleports,ENDER_PEARL,This allows to toggle ability to teleport to different dimension if player falls in void.,WORLD_SETTING,BASIC,false,,
