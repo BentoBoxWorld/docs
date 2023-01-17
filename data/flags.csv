@@ -1,6 +1,8 @@
 source,flag,name,icon,description,type,mode,default,min,max
 Biomes,BIOMES_ISLAND_PROTECTION,Biome control,GRASS_BLOCK,Toggle who can change the island biome.,PROTECTION,ADVANCED,VISITOR,VISITOR,OWNER
 Biomes,BIOMES_WORLD_PROTECTION,Biome Island limitation,GRASS_BLOCK,Toggle requirement for players to be on their island to change biome.,WORLD_SETTING,ADVANCED,true,,
+Challenges,CHALLENGES_WORLD_PROTECTION,Challenges Island limitation,GRASS_BLOCK,Toggle requirement for players to be on their island to complete a challenge,WORLD_SETTING,BASIC,true,,
+Challenges,CHALLENGES_ISLAND_PROTECTION,Challenges protection,COMMAND_BLOCK,Toggle who can complete challenges.,PROTECTION,BASIC,VISITOR_RANK,VISITOR_RANK,OWNER_RANK
 MagicCobblestoneGenerator,MAGIC_COBBLESTONE_GENERATOR,Magic Generator,DIAMOND_PICKAXE,Toggle to enable or disable all Magic Generators on the whole island.,SETTING,BASIC,true,,
 MagicCobblestoneGenerator,MAGIC_COBBLESTONE_GENERATOR_PERMISSION,Magic Generator Permissions,DIAMOND_PICKAXE,Select who can activate and deactivate generators.,PROTECTION,BASIC,SUB_OWNER_RANK,MEMBER_RANK,OWNER_RANK
 Visit,ALLOW_VISITS_FLAG,Visit protection,PUMPKIN_PIE,Toggle if island can be visited by anyone.,SETTING,BASIC,true,,
