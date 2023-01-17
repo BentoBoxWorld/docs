@@ -1,5 +1,128 @@
 source,flag,name,icon,description,type,mode,default,min,max
-Biomes,BIOMES_ISLAND_PROTECTION,Biome control,GRASS_BLOCK,Toggle who can change the island biome.,PROTECTION,ADVANCED,VISITOR,VISITOR,OWNER
+BentoBox,ALLAY,"Allay interaction",AMETHYST_SHARD,"Allow giving and taking items to/from Allay",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,ANIMAL_NATURAL_SPAWN,"Animal natural spawn",APPLE,"Toggle natural animal spawning",SETTING,EXPERT,true,,
+BentoBox,ANIMAL_SPAWNERS_SPAWN,"Animal spawners",SPAWNER,"Toggle animal spawning with spawners",SETTING,EXPERT,true,,
+BentoBox,ANVIL,"Anvils",ANVIL,"Toggle interaction",PROTECTION,BASIC,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,ARMOR_STAND,"Armor stands",ARMOR_STAND,"Toggle interaction",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,AXOLOTL_SCOOPING,"Axolotl Scooping",AXOLOTL_BUCKET,"Allow scooping of axolotl using a bucket",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,BARREL,"Barrels",BARREL,"Toggle barrel interaction",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,BEACON,"Beacons",BEACON,"Toggle interaction",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,BED,"Beds",RED_BED,"Toggle interaction",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,BLOCK_EXPLODE_DAMAGE,"Block explode damage",TNT_MINECART,"Allow Bed & Respawn Anchors to break blocks and damage entities.",SETTING,ADVANCED,false,,
+BentoBox,BOAT,"Boats",OAK_BOAT,"Toggle placing, breaking and entering into boats.",PROTECTION,BASIC,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,BREAK_BLOCKS,"Break blocks",STONE_PICKAXE,"Toggle breaking",PROTECTION,BASIC,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,BREAK_HOPPERS,"Break hoppers",HOPPER,"Toggle hoppers breaking. Overrides the Break Blocks flag.",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,BREAK_SPAWNERS,"Break spawners",SPAWNER,"Toggle spawners breaking. Overrides the Break Blocks flag.",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,BREEDING,"Breed animals",CARROT,"Toggle breeding",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,BREWING,"Brewing stands",BREWING_STAND,"Toggle interaction",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,BUCKET,"Buckets",BUCKET,"Toggle interaction",PROTECTION,BASIC,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,BUTTON,"Buttons",OAK_BUTTON,"Toggle button use",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,CAKE,"Cakes",CAKE,"Toggle cake interaction",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,CHANGE_SETTINGS,"Change Settings",CRAFTING_TABLE,"Allow to switch which member role can change island settings.",PROTECTION,TOP_ROW,OWNER_RANK,MEMBER_RANK,OWNER_RANK
+BentoBox,CHEST,"Chests and minecart chests",CHEST,"Toggle interaction with chests and chest minecarts. (does not include trapped chests)",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,CHEST_DAMAGE,"Chest Damage",TRAPPED_CHEST,"Toggle chest damage from explosions",WORLD_SETTING,EXPERT,false,,
+BentoBox,CHORUS_FRUIT,"Chorus fruits",CHORUS_FRUIT,"Toggle teleportation",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,CLEAN_SUPER_FLAT,"Clean Super Flat",BEDROCK,"Enable to clean any super-flat chunks in island worlds",WORLD_SETTING,EXPERT,false,,
+BentoBox,COARSE_DIRT_TILLING,"Coarse dirt tilling",COARSE_DIRT,"Toggle tilling coarse dirt and breaking podzol to obtain dirt",WORLD_SETTING,EXPERT,true,,
+BentoBox,COLLECT_LAVA,"Collect lava",LAVA_BUCKET,"Toggle collecting lava (override Buckets)",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,COLLECT_POWDERED_SNOW,"Collect powdered snow",POWDER_SNOW_BUCKET,"Toggle collecting powdered snow (override Buckets)",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,COLLECT_WATER,"Collect water",WATER_BUCKET,"Toggle collecting water (override Buckets)",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,COMMAND_RANKS,"Command Ranks",PLAYER_HEAD,"Configure command ranks",PROTECTION,EXPERT,MEMBER_RANK,
+BentoBox,COMPOSTER,"Composters",COMPOSTER,"Toggle composter interaction",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,CONTAINER,"All containers",CHEST,"Toggle interaction with all containers. Includes: Barrel, bee hive, brewing stand, chest, composter, dispenser, dropper, flower pot, furnace, hopper, item frame, jukebox, minecart chest, shulker box, trapped chest.  Changing individual settings overrides this flag.",PROTECTION,BASIC,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,CRAFTING,"Workbenches",CRAFTING_TABLE,"Toggle use",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,CREEPER_DAMAGE,"Creeper damage protection",GREEN_SHULKER_BOX,"Toggle creeper damage protection ",WORLD_SETTING,EXPERT,true,,
+BentoBox,CREEPER_GRIEFING,"Creeper griefing protection",CREEPER_HEAD,"Toggle creeper griefing protection when ignited by island visitor. ",WORLD_SETTING,EXPERT,false,,
+BentoBox,CROP_TRAMPLE,"Trample crops",WHEAT,"Toggle crop trampling",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,DISPENSER,"Dispensers",DISPENSER,"Toggle dispenser interaction",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,DOOR,"Use doors",OAK_DOOR,"Toggle door usage",PROTECTION,BASIC,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,DRAGON_EGG,"Dragon Egg",DRAGON_EGG,"Prevents interaction with Dragon Eggs.  This does not protect it from being placed or broken.",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,DROPPER,"Droppers",DROPPER,"Toggle dropper interaction",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,DYE,"Dye use",LIGHT_BLUE_DYE,"Prevent dye use",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,EGGS,"Egg throwing",EGG,"Toggle egg throwing",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,ELYTRA,"Elytra",ELYTRA,"Toggle elytra allowed or not",PROTECTION,ADVANCED,VISITOR_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,ENCHANTING,"Enchanting table",ENCHANTING_TABLE,"Toggle use",PROTECTION,BASIC,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,ENDERMAN_GRIEFING,"Enderman griefing",END_STONE_BRICKS,"Endermen can remove blocks from islands",WORLD_SETTING,EXPERT,true,,
+BentoBox,ENDER_CHEST,"Ender Chests",ENDER_CHEST,"Toggle use/crafting",WORLD_SETTING,EXPERT,false,,
+BentoBox,ENDER_PEARL,"EnderPearls",ENDER_PEARL,"Toggle use",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,END_PORTAL,"End Portal",END_PORTAL_FRAME,"Toggle use",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,ENTER_EXIT_MESSAGES,"Enter/Exit messages",DIRT,"Display entry and exit messages",WORLD_SETTING,EXPERT,true,,
+BentoBox,ENTITY_PORTAL_TELEPORT,"Entity portal usage",ENDER_EYE,"Toggles if entities (non-player) can use portals to teleport between dimensions",WORLD_SETTING,EXPERT,false,,
+BentoBox,EXPERIENCE_BOTTLE_THROWING,"Experience bottle throwing",EXPERIENCE_BOTTLE,"Toggle throwing experience bottles.",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,EXPERIENCE_PICKUP,"Experience pickup",EXPERIENCE_BOTTLE,"Toggle experience orb pickup",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,FIRE_BURNING,"Fire burning",CHARCOAL,"Toggle whether fire can burn blocks or not.",SETTING,ADVANCED,true,,
+BentoBox,FIRE_EXTINGUISH,"Fire extinguish",POTION,"Toggle extinguishing fires",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,FIRE_IGNITE,"Fire ignition",FLINT_AND_STEEL,"Toggle whether fire can be ignited by non-player means or not.",SETTING,ADVANCED,true,,
+BentoBox,FIRE_SPREAD,"Fire spread",FIREWORK_STAR,"Toggle whether fire can spread to nearby blocks or not.",SETTING,ADVANCED,true,,
+BentoBox,FISH_SCOOPING,"Fish Scooping",TROPICAL_FISH_BUCKET,"Allow scooping of fishes using a bucket",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,FLINT_AND_STEEL,"Flint and steel",FLINT_AND_STEEL,"Allow players to ignite fires or campfires using flint and steel or fire charges.",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,FLOWER_POT,"Flower pots",FLOWER_POT,"Toggle flower pot interaction",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,FROST_WALKER,"Frost Walker",ICE,"Toggle Frost Walker enchantment",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,FURNACE,"Furnace",FURNACE,"Toggle use",PROTECTION,BASIC,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,GATE,"Gates",OAK_FENCE_GATE,"Toggle use",PROTECTION,BASIC,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,GEO_LIMIT_MOBS,"Limit mobs to island",CHAINMAIL_CHESTPLATE,"Remove mobs that go outside protected island space",WORLD_SETTING,EXPERT,false,,
+BentoBox,HIVE,"Hive harvesting",HONEY_BOTTLE,"Toggle hive harvesting.",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,HOPPER,"Hoppers",HOPPER,"Toggle hopper interaction",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,HURT_ANIMALS,"Hurt animals",STONE_SWORD,"Toggle hurting",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,HURT_MONSTERS,"Hurt monsters",WOODEN_SWORD,"Toggle hurting",PROTECTION,BASIC,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,HURT_VILLAGERS,"Hurt villagers",GOLDEN_SWORD,"Toggle hurting",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,INVINCIBLE_VISITORS,"Invincible Visitors",DIAMOND_CHESTPLATE,"Configure invincible visitor settings.",WORLD_SETTING,EXPERT,false,,
+BentoBox,ISLAND_RESPAWN,"Island respawn",TORCH,"Players respawn on island",WORLD_SETTING,EXPERT,true,,
+BentoBox,ITEM_DROP,"Item drop",DIAMOND,"Toggle dropping",PROTECTION,BASIC,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,ITEM_FRAME,"Item Frame",ITEM_FRAME,"Toggle interaction. Overrides place or break blocks",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,ITEM_FRAME_DAMAGE,"Item Frame Damage",ITEM_FRAME,"Mobs can damage item frames",WORLD_SETTING,EXPERT,false,,
+BentoBox,ITEM_PICKUP,"Item pickup",SUGAR_CANE,"Toggle pickup",PROTECTION,BASIC,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,JUKEBOX,"Jukebox use",JUKEBOX,"Toggle usage",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,LEAF_DECAY,"Leaf decay",OAK_LEAVES,"Allow leaves to naturally decay",SETTING,EXPERT,true,,
+BentoBox,LEASH,"Leash use",LEAD,"Toggle use",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,LECTERN,"Lecterns",LECTERN,"Allow to place books on a lectern or to take books from it.  It does not prevent players from reading the books.",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,LEVER,"Lever use",LEVER,"Toggle use",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,LIMIT_MOBS,"Limit entity type spawning",CHAINMAIL_BOOTS,"Limit entities from spawning in this game mode.",WORLD_SETTING,EXPERT,false,,
+BentoBox,LIQUIDS_FLOWING_OUT,"Liquids flowing outside islands",WATER_BUCKET,"Toggle whether liquids can flow outside of the island's protection range. Disabling it helps avoiding lava and water generating cobblestone in the area between two islands.  Note that liquids will still flow vertically. They will also not spread horizontally if they are placed outside an island's protection range.",WORLD_SETTING,EXPERT,false,,
+BentoBox,LOCK,"Lock island",TRIPWIRE_HOOK,"Toggle lock",PROTECTION,TOP_ROW,VISITOR_RANK,VISITOR_RANK,MEMBER_RANK
+BentoBox,MILKING,"Milking",MILK_BUCKET,"Toggle cow milking",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,MINECART,"Minecarts",MINECART,"Toggle placing, breaking and entering into minecarts.",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,MONSTER_NATURAL_SPAWN,"Monster natural spawn",ZOMBIE_HEAD,"Toggle natural monster spawning",SETTING,EXPERT,true,,
+BentoBox,MONSTER_SPAWNERS_SPAWN,"Monster spawners",SPAWNER,"Toggle monster spawning with spawners",SETTING,EXPERT,true,,
+BentoBox,MOUNT_INVENTORY,"Mount inventory",IRON_HORSE_ARMOR,"Toggle access to mount inventory",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,NAME_TAG,"Name tags",NAME_TAG,"Toggle use",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,NATURAL_SPAWNING_OUTSIDE_RANGE,"Natural creature spawning outside range",ZOMBIE_SPAWN_EGG,"Toggle whether creatures (animals and monsters) can spawn naturally outside an island's protection range.  Note that it doesn't prevent creatures to spawn via a mob spawner or a spawn egg.",WORLD_SETTING,EXPERT,true,,
+BentoBox,NETHER_PORTAL,"Nether Portal",NETHERRACK,"Toggle use",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,NOTE_BLOCK,"Note block",NOTE_BLOCK,"Toggle use",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,OBSIDIAN_SCOOPING,"Obsidian scooping",OBSIDIAN,"Allow players to scoop up obsidian with an empty bucket back into lava.  This helps the newbies that failed to build their cobblestone generator.  Note: obsidian cannot be scooped up if there are other obsidian blocks within a 2-block radius.",WORLD_SETTING,EXPERT,true,,
+BentoBox,OFFLINE_GROWTH,"Offline Growth",WHEAT_SEEDS,"When disabled, plants will not grow on islands where all members are offline. May help reduce lag.",WORLD_SETTING,EXPERT,true,,
+BentoBox,OFFLINE_REDSTONE,"Offline Redstone",COMPARATOR,"When disabled, redstone will not operate on islands where all members are offline. May help reduce lag. Does not affect spawn island.",WORLD_SETTING,EXPERT,true,,
+BentoBox,PETS_STAY_AT_HOME,"Pets Stay At Home",TROPICAL_FISH,"When active, tamed pets can only go to and cannot leave the owner's home island.",WORLD_SETTING,EXPERT,true,,
+BentoBox,PISTON_PUSH,"Piston Push Protection",PISTON,"Enable this to prevent pistons from pushing blocks outside island",WORLD_SETTING,EXPERT,true,,
+BentoBox,PLACE_BLOCKS,"Place blocks",OAK_PLANKS,"Toggle placing",PROTECTION,BASIC,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,POTION_THROWING,"Potion throwing",SPLASH_POTION,"Toggle throwing potions. This include splash and lingering potions.",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,PRESSURE_PLATE,"Pressure Plates",STONE_PRESSURE_PLATE,"Toggle usage",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,PREVENT_TELEPORT_WHEN_FALLING,"Prevent teleport when falling",FEATHER,"Prevent players from teleporting back to their island using commands if they are falling.",WORLD_SETTING,EXPERT,false,,
+BentoBox,PVP_END,"End PVP",END_CRYSTAL,"Enable/Disable PVP in the End.",SETTING,BASIC,false,,
+BentoBox,PVP_NETHER,"Nether PVP",IRON_AXE,"Enable/Disable PVP in the Nether.",SETTING,BASIC,false,,
+BentoBox,PVP_OVERWORLD,"Overworld PVP",ARROW,"Enable/Disable PVP on island.",SETTING,BASIC,false,,
+BentoBox,REDSTONE,"Redstone items",REDSTONE,"Toggle use",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,REMOVE_END_EXIT_ISLAND,"Remove end exit island",DRAGON_HEAD,"Prevents the end exit island from generating at coordinates 0,0",WORLD_SETTING,EXPERT,true,,
+BentoBox,REMOVE_MOBS,"Remove monsters",GLOWSTONE_DUST,"Remove monsters when teleporting to island",WORLD_SETTING,EXPERT,true,,
+BentoBox,RIDING,"Animal riding",GOLDEN_HORSE_ARMOR,"Toggle riding",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,SCULK_SENSOR,"Sculk Sensor",SCULK_SENSOR,"Toggles sculk sensor activation.",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,MEMBER_RANK
+BentoBox,SCULK_SHRIEKER,"Sculk Shrieker",SCULK_SHRIEKER,"Toggles sculk shrieker activation.",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,MEMBER_RANK
+BentoBox,SHEARING,"Shearing",SHEARS,"Toggle shearing",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,SHULKER_BOX,"Shulker boxes",SHULKER_BOX,"Toggle shulker box interaction",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,SPAWNER_SPAWN_EGGS,"Spawn eggs on spawners",SPAWNER,"Allows to change a spawner's entity type using spawn eggs.",WORLD_SETTING,EXPERT,true,,
+BentoBox,SPAWN_EGGS,"Spawn eggs",COW_SPAWN_EGG,"Toggle use",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,TNT_DAMAGE,"TNT damage",TNT,"Allow TNT and TNT minecarts to break blocks and damage entities.",SETTING,ADVANCED,false,,
+BentoBox,TNT_PRIMING,"TNT priming",TNT,"Prevents priming TNT. It does not override the Flint and steel protection.",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,TRADING,"Villager trading",EMERALD,"Toggle trading",PROTECTION,BASIC,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,TRAPDOOR,"Trap doors",OAK_TRAPDOOR,"Toggle access",PROTECTION,BASIC,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,TRAPPED_CHEST,"Trapped chests",TRAPPED_CHEST,"Toggle trapped chest interaction",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,TREES_GROWING_OUTSIDE_RANGE,"Trees growing outside range",OAK_SAPLING,"Toggle whether trees can grow outside an island's protection range or not. Not only will it prevent saplings placed outside an island's protection range from growing, but it will also block generation of leaves/logs outside of the island, thus cutting the tree.",WORLD_SETTING,EXPERT,false,,
+BentoBox,TURTLE_EGGS,"Turtle Eggs",TURTLE_EGG,"Toggle crushing",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,VISITOR_KEEP_INVENTORY,"Visitors keep inventory on death",TOTEM_OF_UNDYING,"Prevent players from losing their items and experience if they die on an island in which they are a visitor. Island members still lose their items if they die on their own island!",WORLD_SETTING,EXPERT,false,,
+BentoBox,VISITOR_TRIGGER_RAID,"Visitors triggers raids",RAVAGER_SPAWN_EGG,"Toggles if visitors can start a raid on an island which they are visiting. Bad Omen effect will be removed!",WORLD_SETTING,EXPERT,true,,
+BentoBox,WITHER_DAMAGE,"Toggle wither damage",WITHER_SKELETON_SKULL,"If active, withers can damage blocks and players",WORLD_SETTING,EXPERT,false,,
+BentoBox,WORLD_BLOCK_EXPLODE_DAMAGE,"World block explode damage",TNT_MINECART,"Allow Bed & Respawn Anchors to break blocks and damage entities outside of island limits.",WORLD_SETTING,EXPERT,false,,
+Biomes,BIOMES_ISLAND_PROTECTION,Biome control,GRASS_BLOCK,Toggle who can change the island biome.,PROTECTION,ADVANCED,VISITOR_RANK,VISITOR_RANK,OWNER_RANK
 Biomes,BIOMES_WORLD_PROTECTION,Biome Island limitation,GRASS_BLOCK,Toggle requirement for players to be on their island to change biome.,WORLD_SETTING,ADVANCED,true,,
 CauldronWitchery,CAULDRON_WITCHERY_ISLAND_PROTECTION,Cauldron Witchery Protection,CHICKEN_SPAWN_EGG,Toggle who can use cauldron witchery on this island.,PROTECTION,BASIC,VISITOR_RANK,VISITOR_RANK,OWNER_RANK
 Challenges,CHALLENGES_WORLD_PROTECTION,Challenges Island limitation,GRASS_BLOCK,Toggle requirement for players to be on their island to complete a challenge,WORLD_SETTING,BASIC,true,,
