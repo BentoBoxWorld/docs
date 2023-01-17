@@ -1,4 +1,8 @@
 import csv
+from json import loads
+
+
+parsedJson = loads ("data/minecraft-block-and-entity.json")
 
 def define_env(env):
 
@@ -129,3 +133,80 @@ def define_env(env):
                     result += f"| %{row['placeholder']}% | {row['desc']} | {row['version']} |\n"
 
         return result
+
+
+    # Creates a table of requested flags type.
+    @env.macro
+    def flags_bundle(type:str):
+        result = ""
+        source = ""
+
+        # Let's read the csv file
+        with open('data/flags.csv', newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                # Analyze the source
+                if (row['source'] != source):
+                    # We are in a new "source" so we have to put the header
+                    source = row['source']
+
+                    if (row['type'] == type | type == "WORLD_DEFAULT_PROTECTION" & row['type'] == "PROTECTION"):
+                        if (type == "PROTECTION"):
+                            result += f"""\n## {source} {type.replace("_", " ").capitalize()} flags
+    
+| Flag ID | Flag | Description | Default | Min Rank | Max Rank |
+| ---------- | ---------- | ---------- | ---------- | ---------- | ---------- |
+"""
+
+                            result += f"| {row['flag'] | {row['name']} | {row['description']} | {row['default']} | {row['min']} | {row['max']} |\n"
+                        else:
+                            result += f"""\n## {source} {type.replace("_", " ").capitalize()} flags
+    
+| Flag ID | Flag | Description | Default |
+| ---------- | ---------- | ---------- | ---------- |
+"""
+                            result += f"| {row['flag'] | {row['name']} | {row['description']} | {row['default']} |\n"
+
+        return result
+
+
+    # Creates a table of requested flags type.
+    @env.macro
+    def flags_source(source:str, type:str):
+        result = ""
+
+        # Let's read the csv file
+        with open('data/flags.csv', newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                # Analyze the source
+                if (row['source'] == source):
+                    # We are in a new "source" so we have to put the header
+
+                    if (row['type'] == type | type == "WORLD_DEFAULT_PROTECTION" & row['type'] == "PROTECTION"):
+                        if (type == "PROTECTION"):
+                            result += f"""\n## {source} {type.replace("_", " ").capitalize()} flags
+    
+| | Flag ID | Flag | Description | Default | Min Rank | Max Rank |
+| - | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- |
+"""
+
+                            result += f"| <i class='icon-minecraft {icon_css(row['icon'])}'></i> | {row['flag'] | {row['name']} | {row['description']} | {row['default']} | {row['min']} | {row['max']} |\n"
+                        else:
+                            result += f"""\n## {source} {type.replace("_", " ").capitalize()} flags
+    
+| | Flag ID | Flag | Description | Default |
+| - | ---------- | ---------- | ---------- | ---------- |
+"""
+                            result += f"| <i class='icon-minecraft {icon_css(row['icon'])}'></i> | {row['flag'] | {row['name']} | {row['description']} | {row['default']} |\n"
+
+        return result
+
+    # Creates a table of requested flags type.
+    @env.macro
+    def icon_css(icon:str):
+        for entry in parsedJson:
+            if icon.lower() == entry['name']:
+                return entry['css']
+
+        return ""
