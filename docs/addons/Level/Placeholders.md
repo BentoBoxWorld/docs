@@ -15,6 +15,12 @@ Please read the [Placeholders page](../../../BentoBox/Placeholders).
 | `%Level_[gamemode]_rank_value%` | Player's position in the rankings (could be > 10) | 2.7.2 |
 | `%Level_[gamemode]_top_island_name_#RANK#%` | Name of the `#RANK#`-th island in the Top 10 | 2.8.0 |
 | `%Level_[gamemode]_top_members_#RANK#%` | Comma separated list of island member names for the `#RANK#`-th island in the Top 10 | 2.8.0 |
+| `%Level_[gamemode]_island_total_points%` | Total number of points counted before applying level formula | 2.10.0 |
+| `%Level_[gamemode]_island_level_raw%` | Unformatted island level | 2.8.1 |
+| `%Level_[gamemode]_points_to_next_level%` | Points to the next level for player | 2.3.3 |
+| `%Level_[gamemode]_island_level_max%` | Maximum level this island has ever been. Current level maybe lower. | 2.10.0 |
+
+
 
 
 *Note*: `#RANK#` is a number between 1 and 10.
