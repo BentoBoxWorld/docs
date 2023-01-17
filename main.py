@@ -154,18 +154,18 @@ def define_env(env):
                         if (type == "PROTECTION"):
                             result += f"""\n## {source} {type.replace("_", " ").capitalize()} flags
     
-| Flag ID | Flag | Description | Default | Min Rank | Max Rank |
-| ---------- | ---------- | ---------- | ---------- | ---------- | ---------- |
+| | Flag ID | Flag | Description | Default | Min Rank | Max Rank |
+| - | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- |
 """
 
-                            result += f"| {row['flag'] | {row['name']} | {row['description']} | {row['default']} | {row['min']} | {row['max']} |\n"
+                            result += f"| <i class='icon-minecraft {icon_css(row['icon'])}'></i> | {row['flag']} | {row['name']} | {row['description']} | {row['default']} | {row['min']} | {row['max']} |\n"
                         else:
                             result += f"""\n## {source} {type.replace("_", " ").capitalize()} flags
     
-| Flag ID | Flag | Description | Default |
-| ---------- | ---------- | ---------- | ---------- |
+| | Flag ID | Flag | Description | Default |
+| - | ---------- | ---------- | ---------- | ---------- |
 """
-                            result += f"| {row['flag'] | {row['name']} | {row['description']} | {row['default']} |\n"
+                            result += f"| <i class='icon-minecraft {icon_css(row['icon'])}'></i> | {row['flag']} | {row['name']} | {row['description']} | {row['default']} |\n"
 
         return result
 
@@ -191,14 +191,14 @@ def define_env(env):
 | - | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- |
 """
 
-                            result += f"| <i class='icon-minecraft {icon_css(row['icon'])}'></i> | {row['flag'] | {row['name']} | {row['description']} | {row['default']} | {row['min']} | {row['max']} |\n"
+                            result += f"| <i class='icon-minecraft {icon_css(row['icon'])}'></i> | {row['flag']} | {row['name']} | {row['description']} | {row['default']} | {row['min']} | {row['max']} |\n"
                         else:
                             result += f"""\n## {source} {type.replace("_", " ").capitalize()} flags
     
 | | Flag ID | Flag | Description | Default |
 | - | ---------- | ---------- | ---------- | ---------- |
 """
-                            result += f"| <i class='icon-minecraft {icon_css(row['icon'])}'></i> | {row['flag'] | {row['name']} | {row['description']} | {row['default']} |\n"
+                            result += f"| <i class='icon-minecraft {icon_css(row['icon'])}'></i> | {row['flag']} | {row['name']} | {row['description']} | {row['default']} |\n"
 
         return result
 
