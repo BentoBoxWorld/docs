@@ -147,7 +147,7 @@ def define_env(env):
                     # We are in a new "source" so we have to put the header
                     source = row['source']
 
-                    if (row['type'] == type | type == "WORLD_DEFAULT_PROTECTION" & row['type'] == "PROTECTION"):
+                    if (row['type'] == type) or (type == "WORLD_DEFAULT_PROTECTION" and row['type'] == "PROTECTION"):
                         if (type == "PROTECTION"):
                             result += f"""\n## {source} {type.replace("_", " ").capitalize()} flags
     
@@ -180,7 +180,7 @@ def define_env(env):
                 if (row['source'] == source):
                     # We are in a new "source" so we have to put the header
 
-                    if (row['type'] == type | type == "WORLD_DEFAULT_PROTECTION" & row['type'] == "PROTECTION"):
+                    if (row['type'] == type) or (type == "WORLD_DEFAULT_PROTECTION" and row['type'] == "PROTECTION"):
                         if (type == "PROTECTION"):
                             result += f"""\n## {source} {type.replace("_", " ").capitalize()} flags
     
