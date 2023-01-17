@@ -44,8 +44,8 @@ BentoBox,[gamemode]_deaths,Number of times the player died,1.12.0
 BentoBox,[gamemode]_on_island,Whether the player is on an island he is part of or not,1.13.0
 Bank,Bank_[gamemode]_island_balance,Island balance of the player's island,1.1.0
 Bank,Bank_[gamemode]_visited_island_balance,Island balance of the island the player is standing on,1.1.0
-Bank,Bank_[gamemode]_top_value_<rank>,Island balance of the `<rank>`-th island on the leader board,1.1.0
-Bank,Bank_[gamemode]_top_name_<rank>,Island owner's name of the `<rank>`-th island on the leader board,1.1.0
+Bank,Bank_[gamemode]_top_value_#rank#,Island balance of the `#rank#`-th island on the leader board,1.1.0
+Bank,Bank_[gamemode]_top_name_#rank#,Island owner's name of the `#rank#`-th island on the leader board,1.1.0
 Challenges,[gamemode]_challenges_total_completion_count,Number of times the player completed challenges,0.8.3
 Challenges,[gamemode]_challenges_completed_count,Number of challenges the player has completed,0.8.3
 Challenges,[gamemode]_challenges_uncompleted_count,Number of challenges the player has not yet completed,0.8.3
@@ -59,8 +59,8 @@ Challenges,[gamemode]_challenges_latest_level_completed_count,Number of challeng
 Challenges,[gamemode]_challenges_latest_level_uncompleted_count,Number of challenges the player has not yet completed in latest unlocked level,0.8.3
 Level,Level_[gamemode]_island_level,Island level of the player's island,1.9.0
 Level,Level_[gamemode]_visited_island_level,Island level of the island the player is standing on,1.9.0
-Level,Level_[gamemode]_top_value_<rank>,Island level of the `<rank>`-th island in the Top 10,1.9.0
-Level,Level_[gamemode]_top_name_<rank>,Island owner's name of the `<rank>`-th island in the Top 10,1.9.0
+Level,Level_[gamemode]_top_value_#rank#,Island level of the `#rank#`-th island in the Top 10,1.9.0
+Level,Level_[gamemode]_top_name_#rank#,Island owner's name of the `#rank#`-th island in the Top 10,1.9.0
 Level,Level_[gamemode]_points_to_next_level,Points to the next level for player,2.3.3
 Level,Level_[gamemode]_rank_value,Displays island rank value,2.7.2
 Level,Level_[gamemode]_island_level_raw,Unformatted island level,2.8.1
@@ -82,18 +82,18 @@ Likes,[gamemode]_likes_addon_visited_island_rank_count,Rank number (likes - disl
 Likes,[gamemode]_likes_addon_visited_island_rank_place,Island place by rank for island at player location,2.1.0
 Likes,[gamemode]_likes_addon_visited_island_stars_value,Average stars added to island at player location,2.1.0
 Likes,[gamemode]_likes_addon_visited_island_stars_place,Island place by stars for island at player location,2.1.0
-Likes,[gamemode]_likes_addon_top_likes_owner_name_<rank>,Island owner name who are in place `<rank>` by likes,1.7.0
-Likes,[gamemode]_likes_addon_top_likes_island_name_<rank>,Island name which are in place `<rank>` by likes,1.7.0
-Likes,[gamemode]_likes_addon_top_likes_count_<rank>,Count of likes for island that are in place `<rank>` by likes,1.7.0
-Likes,[gamemode]_likes_addon_top_dislikes_owner_name_<rank>,Island owner name who are in place `<rank>` by dislikes,1.7.0
-Likes,[gamemode]_likes_addon_top_dislikes_island_name_<rank>,Island name which are in place `<rank>` by dislikes,1.7.0
-Likes,[gamemode]_likes_addon_top_dislikes_count_<rank>,Count of dislikes for island that are in place `<rank>` by dislikes,1.7.0
-Likes,[gamemode]_likes_addon_top_rank_owner_name_<rank>,Island owner name who are in place `<rank>` by rank,1.7.0
-Likes,[gamemode]_likes_addon_top_rank_island_name_<rank>,Island name which are in place `<rank>` by rank,1.7.0
-Likes,[gamemode]_likes_addon_top_rank_count_<rank>,Rank value for island that are in place `<rank>` by rank,1.7.0
-Likes,[gamemode]_likes_addon_top_stars_owner_name_<rank>,Island owner name who are in place `<rank>` by stars,2.0.0
-Likes,[gamemode]_likes_addon_top_stars_island_name_<rank>,Island name which are in place `<rank>` by stars,2.0.0
-Likes,[gamemode]_likes_addon_top_stars_count_<rank>,Average stars for island that are in place `<rank>` by stars,2.0.0
+Likes,[gamemode]_likes_addon_top_likes_owner_name_#rank#,Island owner name who are in place `#rank#` by likes,1.7.0
+Likes,[gamemode]_likes_addon_top_likes_island_name_#rank#,Island name which are in place `#rank#` by likes,1.7.0
+Likes,[gamemode]_likes_addon_top_likes_count_#rank#,Count of likes for island that are in place `#rank#` by likes,1.7.0
+Likes,[gamemode]_likes_addon_top_dislikes_owner_name_#rank#,Island owner name who are in place `#rank#` by dislikes,1.7.0
+Likes,[gamemode]_likes_addon_top_dislikes_island_name_#rank#,Island name which are in place `#rank#` by dislikes,1.7.0
+Likes,[gamemode]_likes_addon_top_dislikes_count_#rank#,Count of dislikes for island that are in place `#rank#` by dislikes,1.7.0
+Likes,[gamemode]_likes_addon_top_rank_owner_name_#rank#,Island owner name who are in place `#rank#` by rank,1.7.0
+Likes,[gamemode]_likes_addon_top_rank_island_name_#rank#,Island name which are in place `#rank#` by rank,1.7.0
+Likes,[gamemode]_likes_addon_top_rank_count_#rank#,Rank value for island that are in place `#rank#` by rank,1.7.0
+Likes,[gamemode]_likes_addon_top_stars_owner_name_#rank#,Island owner name who are in place `#rank#` by stars,2.0.0
+Likes,[gamemode]_likes_addon_top_stars_island_name_#rank#,Island name which are in place `#rank#` by stars,2.0.0
+Likes,[gamemode]_likes_addon_top_stars_count_#rank#,Average stars for island that are in place `#rank#` by stars,2.0.0
 MagicCobblestoneGenerator,[gamemode]_magiccobblestonegenerator_active_generator_count,Number of currently active generators on player island,2.2.0
 MagicCobblestoneGenerator,[gamemode]_magiccobblestonegenerator_max_active_generator_count,Number of maximal allowed active generators on player island,2.2.0
 MagicCobblestoneGenerator,[gamemode]_magiccobblestonegenerator_active_generator_names,List of active generator names separated with comma,2.2.0
