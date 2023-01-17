@@ -1,0 +1,5 @@
+source,flag,name,icon,description,type,mode,default,min,max
+Biomes,BIOMES_ISLAND_PROTECTION,Biome control,GRASS_BLOCK,Toggle who can change the island biome,PROTECTION,ADVANCED,VISITOR,VISITOR,OWNER
+Biomes,BIOMES_WORLD_PROTECTION,Biome Island limitation,GRASS_BLOCK,Toggle requirement for players to be on their island to change biome.,WORLD_SETTING,ADVANCED,true,,
+
+
