@@ -401,7 +401,102 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
 Since Level 2.7.2 and BentoBox 1.17 other plugins can access to the Level addon data directly. However, addon requests are still a good solution for a plugins that do not want to use too many dependencies.
 
+### Maven Dependency
+Level provides an API for other plugins. This covers Level 2.8.1 and onwards.
+
+!!! note
+    Add the Level dependency to your Maven POM.xml:
+
+    ```xml
+        <repositories>
+            <repository>
+                <id>codemc-repo</id>
+                <url>https://repo.codemc.io/repository/maven-public/</url>
+            </repository>
+        </repositories>
+        
+        <dependencies>
+            <dependency>
+                <groupId>world.bentobox</groupId>
+                <artifactId>level</artifactId>
+                <version>2.8.1</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    ```
+Use the latest Level version.
+
+Then you can obtain the level for a player by asking Level once you have the world that the island is in and confirming that the player is the owner of an island in that world.
+
+The JavaDocs for Level can be found [here](https://ci.codemc.io/job/BentoBoxWorld/job/Level/ws/target/apidocs/index.html).
+
+### Events
+
+=== "IslandLevelCalculatedEvent"
+    !!! summary "Description"
+        Event that is triggered when player level is calculated.
+
+        Link to the class: [IslandLevelCalculatedEvent](https://github.com/BentoBoxWorld/Level/blob/develop/src/main/java/world/bentobox/level/events/IslandLevelCalculatedEvent.java)
+
+    !!! question "Variables"
+        - `Island island` - the island object.
+        - `UUID targetPlayer` - id of the player who calculated level.
+        - `Results results` - the calculated island results.
+        
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.MONITOR)
+        public void onLevelCalculated(IslandLevelCalculatedEvent event) {
+            UUID user = event.getTargetPlayer();
+            Island island = event.getIsland();
+            Results results = event.getResults();
+            
+            // death handicap from results.
+            int deathHandicap = event.getDeathHandicap();
+
+            // the island initial level from results.
+            long initialLevel = event.getInitialLevel();
+            
+            // the island level from results.
+            long level = event.getLevel();
+
+            // this will overwrite island level to 100.
+            event.setLevel(100);
+            
+            // number of points required to next level
+            long pointsToNextLevel = event.getPointsToNextLevel();
+
+            // the report text from results.
+            List<String> report = event.getReport();
+        }
+        ``` 
+
+=== "IslandPreLevelEvent "
+    !!! summary "Description"
+        Event that is triggered before player level is calculated.
+
+        Link to the class: [IslandPreLevelEvent](https://github.com/BentoBoxWorld/Level/blob/develop/src/main/java/world/bentobox/level/events/IslandPreLevelEvent.java)
+
+    !!! question "Variables"
+        - `Island island` - the island object.
+        - `UUID targetPlayer` - id of the player who calculated level.
+        
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.LOW)
+        public void beforeLevelCalculated(IslandPreLevelEvent event) {
+            UUID user = event.getTargetPlayer();
+            Island island = event.getIsland();
+        }
+        ```
+
 ### Addon Request Handlers
+
+Till BentoBox 1.17 we had an issue with accessing data outside BentoBox environment doe to the class loader we used to load addons.
+This meant that data was accessible only from other addons. But BentoBox implemented PlAddon functionality, which means that request
+handlers are not necessary anymore.
+
+More information about addon request handlers can be found [here](/en/latest/BentoBox/Request-Handler-API---How-plugins-can-get-data-from-addons/)
 
 === "island-level"
     !!! summary "Description"
@@ -464,94 +559,4 @@ Since Level 2.7.2 and BentoBox 1.17 other plugins can access to the Level addon 
                     .addMetaData("world-name", worldName)
                     .request();
             }
-        ```
-
-### Maven Dependency
-Level provides an API for other plugins. This covers Level 2.8.1 and onwards.
-
-!!! note
-    Add the Level dependency to your Maven POM.xml:
-
-    ```xml
-        <repositories>
-            <repository>
-                <id>codemc-repo</id>
-                <url>https://repo.codemc.io/repository/maven-public/</url>
-            </repository>
-        </repositories>
-        
-        <dependencies>
-            <dependency>
-                <groupId>world.bentobox</groupId>
-                <artifactId>level</artifactId>
-                <version>2.8.1</version>
-                <scope>provided</scope>
-            </dependency>
-        </dependencies>
-    ```
-Use the latest Level version.
-
-Then you can obtain the level for a player by asking Level once you have the world that the island is in and confirming that the player is the owner of an island in that world.
-
-The JavaDocs for Level can be found [here](https://ci.codemc.io/job/BentoBoxWorld/job/Level/ws/target/apidocs/index.html).
-
-### Events
-Since BentoBox 1.17 API implemented a feature that solved an issue with classloaders. Plugins that wants to use events directly, now can do it.
-
-=== "IslandLevelCalculatedEvent"
-    !!! summary "Description"
-        Event that is triggered when player level is calculated.
-
-        Link to the class: [IslandLevelCalculatedEvent](https://github.com/BentoBoxWorld/Level/blob/develop/src/main/java/world/bentobox/level/events/IslandLevelCalculatedEvent.java)
-
-    !!! question "Variables"
-        - `Island island` - the island object.
-        - `UUID targetPlayer` - id of the player who calculated level.
-        - `Results results` - the calculated island results.
-        
-    !!! example "Code example"
-        ```java
-        @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevelCalculated(IslandLevelCalculatedEvent event) {
-            UUID user = event.getTargetPlayer();
-            Island island = event.getIsland();
-            Results results = event.getResults();
-            
-            // death handicap from results.
-            int deathHandicap = event.getDeathHandicap();
-
-            // the island initial level from results.
-            long initialLevel = event.getInitialLevel();
-            
-            // the island level from results.
-            long level = event.getLevel();
-
-            // this will overwrite island level to 100.
-            event.setLevel(100);
-            
-            // number of points required to next level
-            long pointsToNextLevel = event.getPointsToNextLevel();
-
-            // the report text from results.
-            List<String> report = event.getReport();
-        }
-        ``` 
-
-=== "IslandPreLevelEvent "
-    !!! summary "Description"
-        Event that is triggered before player level is calculated.
-
-        Link to the class: [IslandPreLevelEvent](https://github.com/BentoBoxWorld/Level/blob/develop/src/main/java/world/bentobox/level/events/IslandPreLevelEvent.java)
-
-    !!! question "Variables"
-        - `Island island` - the island object.
-        - `UUID targetPlayer` - id of the player who calculated level.
-        
-    !!! example "Code example"
-        ```java
-        @EventHandler(priority = EventPriority.LOW)
-        public void beforeLevelCalculated(IslandPreLevelEvent event) {
-            UUID user = event.getTargetPlayer();
-            Island island = event.getIsland();
-        }
         ```
