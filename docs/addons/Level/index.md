@@ -405,7 +405,7 @@ Since Level 2.7.2 and BentoBox 1.17 other plugins can access to the Level addon 
 
 === "island-level"
     !!! summary "Description"
-    Returns the level of this player's island in the given world.
+        Returns the level of this player's island in the given world.
 
     !!! question "Input"
         - `world-name`: String - the name of the world.
@@ -438,7 +438,7 @@ Since Level 2.7.2 and BentoBox 1.17 other plugins can access to the Level addon 
 
 === "top-ten-level"
     !!! summary "Description"
-    Returns the players whose island they own is in the Top 10 mapped to the level of their island.
+        Returns the players whose island they own is in the Top 10 mapped to the level of their island.
 
     !!! question "Input"
         - `world-name`: String - the name of the world.
@@ -469,9 +469,10 @@ Since Level 2.7.2 and BentoBox 1.17 other plugins can access to the Level addon 
 ### Maven Dependency
 Level provides an API for other plugins. This covers Level 2.8.1 and onwards.
 
-Add the Level dependency to your Maven POM.xml:
+!!! note
+    Add the Level dependency to your Maven POM.xml:
 
-```
+    ```xml
         <repositories>
             <repository>
                 <id>codemc-repo</id>
@@ -487,7 +488,7 @@ Add the Level dependency to your Maven POM.xml:
                 <scope>provided</scope>
             </dependency>
         </dependencies>
-```
+    ```
 Use the latest Level version.
 
 Then you can obtain the level for a player by asking Level once you have the world that the island is in and confirming that the player is the owner of an island in that world.
