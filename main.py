@@ -154,15 +154,18 @@ def define_env(env):
 | | Flag ID | Flag | Description | Default | Min Rank | Max Rank |
 | - | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- |
 """
-
-                            result += f"| <i class='icon-minecraft {icon_css(row['icon'])}'></i> | {row['flag']} | {row['name']} | {row['description']} | {row['default']} | {row['min']} | {row['max']} |\n"
                         else:
                             result += f"""\n## {source} {type.replace("_", " ").capitalize()} flags
     
 | | Flag ID | Flag | Description | Default |
 | - | ---------- | ---------- | ---------- | ---------- |
 """
-                            result += f"| <i class='icon-minecraft {icon_css(row['icon'])}'></i> | {row['flag']} | {row['name']} | {row['description']} | {row['default']} |\n"
+
+                if (row['type'] == type) or (type == "WORLD_DEFAULT_PROTECTION" and row['type'] == "PROTECTION"):
+                    if (type == "PROTECTION"):
+                        result += f"| <span class='icon-minecraft {icon_css(row['icon'])}'></span> | {row['flag']} | {row['name']} | {row['description']} | {row['default']} | {row['min']} | {row['max']} |\n"
+                    else:
+                        result += f"| <span class='icon-minecraft {icon_css(row['icon'])}'></span> | {row['flag']} | {row['name']} | {row['description']} | {row['default']} |\n"
 
         return result
 
@@ -188,14 +191,14 @@ def define_env(env):
 | - | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- |
 """
 
-                            result += f"| <i class='icon-minecraft {icon_css(row['icon'])}'></i> | {row['flag']} | {row['name']} | {row['description']} | {row['default']} | {row['min']} | {row['max']} |\n"
+                            result += f"| <span class='icon-minecraft {icon_css(row['icon'])}'></span> | {row['flag']} | {row['name']} | {row['description']} | {row['default']} | {row['min']} | {row['max']} |\n"
                         else:
                             result += f"""\n## {source} {type.replace("_", " ").capitalize()} flags
     
 | | Flag ID | Flag | Description | Default |
 | - | ---------- | ---------- | ---------- | ---------- |
 """
-                            result += f"| <i class='icon-minecraft {icon_css(row['icon'])}'></i> | {row['flag']} | {row['name']} | {row['description']} | {row['default']} |\n"
+                            result += f"| <span class='icon-minecraft {icon_css(row['icon'])}'></span> | {row['flag']} | {row['name']} | {row['description']} | {row['default']} |\n"
 
         return result
 
