@@ -202,10 +202,11 @@ def define_env(env):
     # Creates a table of requested flags type.
     @env.macro
     def icon_css(icon:str):
-        data = json.load("data/minecraft-block-and-entity.json")
+        with open("data/minecraft-block-and-entity.json", 'r') as j:
+            contents = json.loads(j.read())
 
-        for entry in data:
-            if icon.lower() == entry['name']:
-                return entry['css']
+            for entry in contents:
+                if icon.lower() == entry['name']:
+                    return entry['css']
 
         return ""
