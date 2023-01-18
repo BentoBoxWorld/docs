@@ -59,7 +59,7 @@ theme:
   icon:
     repo: fontawesome/brands/git-alt
 extra_css:
-  - stylesheets/extra.css
+  - stylesheets/icons-minecraft-0.5.css
 extra:
   social:
     - icon: fontawesome/brands/github
