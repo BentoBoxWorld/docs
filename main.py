@@ -1,5 +1,5 @@
 import csv
-from json import loads
+import json
 
 def define_env(env):
 
@@ -202,7 +202,9 @@ def define_env(env):
     # Creates a table of requested flags type.
     @env.macro
     def icon_css(icon:str):
-        for entry in loads("data/minecraft-block-and-entity.json"):
+        data = json.load("data/minecraft-block-and-entity.json")
+
+        for entry in data:
             if icon.lower() == entry['name']:
                 return entry['css']
 
