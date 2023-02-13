@@ -289,7 +289,153 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
 Since Challenges 1.0 and BentoBox 1.17 other plugins can access to the Challenges addon data directly. However, addon requests are still a good solution for a plugins that do not want to use too many dependencies.
 
+### Maven Dependency
+
+Challenges provides an API for other plugins. This covers version 1.1.0 and onwards.
+
+!!! note
+    Add the Challenges dependency to your Maven POM.xml:
+
+    ```xml
+        <repositories>
+            <repository>
+                <id>codemc-repo</id>
+                <url>https://repo.codemc.io/repository/maven-public/</url>
+            </repository>
+        </repositories>
+        
+        <dependencies>
+            <dependency>
+                <groupId>world.bentobox</groupId>
+                <artifactId>challenges</artifactId>
+                <version>1.1.0</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    ```
+
+Use the latest Challenges version.
+
+The JavaDocs for Challenges can be found [here](https://ci.codemc.io/job/BentoBoxWorld/job/Challenges/ws/target/apidocs/index.html).
+
+### Events
+
+Since BentoBox 1.17 API implemented a feature that solved an issue with classloaders. Plugins that wants to use events directly, now can do it.
+
+=== "ChallengeCompletedEvent"
+    !!! summary "Description"
+        Event that is triggered when player completes a challenge.
+
+        Event is only informative. Cannot be cancelled.
+
+        Link to the class: [ChallengeCompletedEvent](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/java/world/bentobox/challenges/events/ChallengeCompletedEvent.java)
+
+
+    !!! question "Variables"
+        - `String challengeId` - id of the challenge that was completed.
+        - `UUID user` - id of the player who completed the challenge.
+        - `Boolean admin` - indicates if challenge was completed by admin.
+        - `Integer completionCount` - count of challenge completion.
+        
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.MONITOR)
+        public void onLevelCompletion(ChallengeCompletedEvent event) {
+            UUID user = event.getPlayerUUID();
+            String challenge = event.getChallengeID();
+            boolean isAdmin = event.isAdmin();
+            int count = event.getCompletionCount();
+        }
+        ``` 
+
+=== "LevelCompletedEvent"
+    !!! summary "Description"
+        Event that is triggered when player completes a level.
+
+        Event is only informative. Cannot be cancelled.
+
+        Link to the class: [LevelCompletedEvent](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/java/world/bentobox/challenges/events/LevelCompletedEvent.java)
+
+
+    !!! question "Variables"
+        - `String levelId` - id of the level that was completed.
+        - `UUID user` - id of the player who completed the level.
+        - `Boolean admin` - indicates if level was completed by admin.
+        
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.MONITOR)
+        public void onLevelCompletion(LevelCompletedEvent event) {
+            UUID user = event.getPlayerUUID();
+            String levelId = event.getLevelID();
+            boolean isAdmin = event.isAdmin();
+        }
+        ``` 
+
+=== "ChallengeResetAllEvent"
+    !!! summary "Description"
+        Event that is triggered when all challenges are reset for player. It includes challenges level data.
+
+        Event is only informative. Cannot be cancelled.
+
+        Link to the class: [ChallengeResetAllEvent](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/java/world/bentobox/challenges/events/ChallengeResetAllEvent.java)
+
+    !!! question "Variables"
+        - `String worldName` - name of the world where challenges were reset.
+        - `UUID playerUUID` - id of the player who was targeted.
+        - `Boolean admin` - indicates if reset was done by admin.
+        - `String reason` - contains the reason for a reset.
+
+    !!! warning "Constant Values"
+        - `reason` - is set to "ISLAND_RESET" if done my player or "RESET_ALL" if done by admin.
+
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.MONITOR)
+        public void onLevelCompletion(ChallengeResetAllEvent event) {
+            UUID user = event.getPlayerUUID();
+            String worldName = event.getWorldName();
+            boolean isAdmin = event.isAdmin();
+            String reason = event.getReason();
+        }
+        ``` 
+
+=== "ChallengeResetEvent"
+    !!! summary "Description"
+        Event that is triggered when challenge is reset by admin.
+
+        Event is only informative. Cannot be cancelled.
+
+        Link to the class: [ChallengeResetEvent](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/java/world/bentobox/challenges/events/ChallengeResetEvent.java)
+
+    !!! question "Variables"
+        - `String challengeID` - id of the challenge that was reset.
+        - `UUID playerUUID` - id of the player who was targeted.
+        - `Boolean admin` - indicates if challenge was reset by admin.
+        - `String reason` - contains the reason for a reset.
+
+    !!! warning "Constant Values"
+        - `admin` -  is set to true. Non-admin reset for single challenge is not implemented yet.
+        - `reason` - is set to "RESET".
+
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.MONITOR)
+        public void onLevelCompletion(ChallengeResetEvent event) {
+            UUID user = event.getPlayerUUID();
+            String challengeId = event.getChallengeID();
+            boolean isAdmin = event.isAdmin();
+            String reason = event.getReason();
+        }
+        ```
+
 ### Addon Request Handlers
+
+Till BentoBox 1.17 we had an issue with accessing data outside BentoBox environment doe to the class loader we used to load addons.
+This meant that data was accessible only from other addons. But BentoBox implemented PlAddon functionality, which means that request
+handlers are not necessary anymore.
+
+More information about addon request handlers can be found [here](/en/latest/BentoBox/Request-Handler-API---How-plugins-can-get-data-from-addons/)
 
 === "challenge-list"
     !!! summary "Description"
@@ -431,116 +577,5 @@ Since Challenges 1.0 and BentoBox 1.17 other plugins can access to the Challenge
                 .addMetaData("player", playerUUID)
                 .addMetaData("world-name", worldName)
                 .request();
-        }
-        ```
-
-### Events
-
-Since BentoBox 1.17 API implemented a feature that solved an issue with classloaders. Plugins that wants to use events directly, now can do it.
-
-=== "ChallengeCompletedEvent"
-    !!! summary "Description"
-        Event that is triggered when player completes a challenge.
-
-        Event is only informative. Cannot be cancelled.
-
-        Link to the class: [ChallengeCompletedEvent](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/java/world/bentobox/challenges/events/ChallengeCompletedEvent.java)
-
-
-    !!! question "Variables"
-        - `String challengeId` - id of the challenge that was completed.
-        - `UUID user` - id of the player who completed the challenge.
-        - `Boolean admin` - indicates if challenge was completed by admin.
-        - `Integer completionCount` - count of challenge completion.
-        
-    !!! example "Code example"
-        ```java
-        @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevelCompletion(ChallengeCompletedEvent event) {
-            UUID user = event.getPlayerUUID();
-            String challenge = event.getChallengeID();
-            boolean isAdmin = event.isAdmin();
-            int count = event.getCompletionCount();
-        }
-        ``` 
-
-=== "LevelCompletedEvent"
-    !!! summary "Description"
-        Event that is triggered when player completes a level.
-
-        Event is only informative. Cannot be cancelled.
-
-        Link to the class: [LevelCompletedEvent](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/java/world/bentobox/challenges/events/LevelCompletedEvent.java)
-
-
-    !!! question "Variables"
-        - `String levelId` - id of the level that was completed.
-        - `UUID user` - id of the player who completed the level.
-        - `Boolean admin` - indicates if level was completed by admin.
-        
-    !!! example "Code example"
-        ```java
-        @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevelCompletion(LevelCompletedEvent event) {
-            UUID user = event.getPlayerUUID();
-            String levelId = event.getLevelID();
-            boolean isAdmin = event.isAdmin();
-        }
-        ``` 
-
-=== "ChallengeResetAllEvent"
-    !!! summary "Description"
-        Event that is triggered when all challenges are reset for player. It includes challenges level data.
-
-        Event is only informative. Cannot be cancelled.
-
-        Link to the class: [ChallengeResetAllEvent](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/java/world/bentobox/challenges/events/ChallengeResetAllEvent.java)
-
-    !!! question "Variables"
-        - `String worldName` - name of the world where challenges were reset.
-        - `UUID playerUUID` - id of the player who was targeted.
-        - `Boolean admin` - indicates if reset was done by admin.
-        - `String reason` - contains the reason for a reset.
-
-    !!! warning "Constant Values"
-        - `reason` - is set to "ISLAND_RESET" if done my player or "RESET_ALL" if done by admin.
-
-    !!! example "Code example"
-        ```java
-        @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevelCompletion(ChallengeResetAllEvent event) {
-            UUID user = event.getPlayerUUID();
-            String worldName = event.getWorldName();
-            boolean isAdmin = event.isAdmin();
-            String reason = event.getReason();
-        }
-        ``` 
-
-=== "ChallengeResetEvent"
-    !!! summary "Description"
-        Event that is triggered when challenge is reset by admin.
-
-        Event is only informative. Cannot be cancelled.
-
-        Link to the class: [ChallengeResetEvent](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/java/world/bentobox/challenges/events/ChallengeResetEvent.java)
-
-    !!! question "Variables"
-        - `String challengeID` - id of the challenge that was reset.
-        - `UUID playerUUID` - id of the player who was targeted.
-        - `Boolean admin` - indicates if challenge was reset by admin.
-        - `String reason` - contains the reason for a reset.
-
-    !!! warning "Constant Values"
-        - `admin` -  is set to true. Non-admin reset for single challenge is not implemented yet.
-        - `reason` - is set to "RESET".
-
-    !!! example "Code example"
-        ```java
-        @EventHandler(priority = EventPriority.MONITOR)
-        public void onLevelCompletion(ChallengeResetEvent event) {
-            UUID user = event.getPlayerUUID();
-            String challengeId = event.getChallengeID();
-            boolean isAdmin = event.isAdmin();
-            String reason = event.getReason();
         }
         ```
