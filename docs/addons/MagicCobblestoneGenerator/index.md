@@ -271,7 +271,7 @@ Template file are mostly for users who do not like to use ingame editing GUI. Ho
 Since MagicCobblestoneGenerator 2.4.0 and BentoBox 1.17 other plugins can access to the MagicCobblestoneData addon data directly. However, addon requests are still a good solution for a plugins that do not want to use too many dependencies.
 
 ### Maven Dependency
-MagicCobblestoneGenerator provides an API for other plugins. This covers Level 2.5.0 and onwards.
+MagicCobblestoneGenerator provides an API for other plugins. This covers version 2.5.0 and onwards.
 
 !!! note
     Add the MagicCobblestoneGenerator dependency to your Maven POM.xml:

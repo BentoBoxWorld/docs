@@ -258,20 +258,38 @@ Addon introduces 2 BentoBox protection flags:
 
 ## Api
 
+Since Visit 1.4.0 and BentoBox 1.17 other plugins can access to the Visit addon data directly.
+
+### Maven Dependency
+
+Visit provides an API for other plugins. This covers version 1.5.0 and onwards.
+
+!!! note
+    Add the MagicCobblestoneGenerator dependency to your Maven POM.xml:
+
+    ```xml
+        <repositories>
+            <repository>
+                <id>codemc-repo</id>
+                <url>https://repo.codemc.io/repository/maven-public/</url>
+            </repository>
+        </repositories>
+        
+        <dependencies>
+            <dependency>
+                <groupId>world.bentobox</groupId>
+                <artifactId>visit</artifactId>
+                <version>1.5.0</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    ```
+
+Use the latest Visit version.
+
+The JavaDocs for Visit can be found [here](https://ci.codemc.io/job/BentoBoxWorld/job/Visit/ws/target/apidocs/index.html).
+
 ### Events
-
-Since BentoBox 1.17 API implemented a feature that solved an issue with classloaders. Plugins that wants to use events directly, now can do it.
-
-You just need to add Visit to your project as dependency. You can use Maven for that:
-
-```xml
-<dependency>
-    <groupId>world.bentobox</groupId>
-    <artifactId>visit</artifactId>
-    <version>1.4.0</version>
-    <scope>provided</scope>
-</dependency>
-```
 
 === "VisitEvent"
     !!! summary "Description"
