@@ -134,85 +134,36 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
 ## API
 
-Since BentoBox 1.17 API implemented a feature that solved an issue with classloaders. Plugins that wants to use events directly, now can do it.
+Since Likes 2.2.0 and BentoBox 1.17 other plugins can access to the Likes addon data directly.
 
-You just need to add Likes to your project as dependency. You can use Maven for that:
+### Maven Dependency
 
-```xml
-<dependency>
-    <groupId>world.bentobox</groupId>
-    <artifactId>likes</artifactId>
-    <version>2.2.0</version>
-    <scope>provided</scope>
-</dependency>
-```
+Likes provides an API for other plugins. This covers version 2.2.0 and onwards.
 
-### Addon Request Handlers
+!!! note
+    Add the Likes dependency to your Maven POM.xml:
 
-=== "island-likes"
-    !!! summary "Description"
-        Returns island likes data that is stored for island in given world.
+    ```xml
+        <repositories>
+            <repository>
+                <id>codemc-repo</id>
+                <url>https://repo.codemc.io/repository/maven-public/</url>
+            </repository>
+        </repositories>
+        
+        <dependencies>
+            <dependency>
+                <groupId>world.bentobox</groupId>
+                <artifactId>likes</artifactId>
+                <version>2.2.0</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    ```
 
-    !!! question "Input"
-        - `world-name`: String - the name of the world.
-        - `island`: String - the UUID of the island.
+Use the latest Likes version.
 
-    !!! success "Output"
-        The output is a `Map<String, Object>` with the following keys:
-
-        - `likes`: long - the number of likes that are set for given island.
-        - `dislikes`: long - the number of dislikes that are set for given island.
-        - `rank`: long - the number of rank for given island.
-        - `stars`: double - the average stars value for given island.
-        - `placeByLikes`: integer - the place in ranking by likes that are set for given island.
-        - `placeByDislikes`: integer - the place in ranking by dislikes that are set for given island.
-        - `placeByRank`: integer - the place in ranking by rank that are set for given island.
-        - `placeByStars`: integer - the place in ranking by stars that are set for given island.
-        - `likedBy`: List&lt;UUID&gt; - the list of player UUIDs who liked given island.
-        - `dislikedBy`: List&lt;UUID&gt; - the list of player UUIDs who disliked given island.
-        - `staredBy`: Map&lt;UUID, Integer&gt; - the map of player UUIDs who stared given island with a number of stars that they added.
-
-
-    !!! failure
-        This handler will return an empty map if the `world-name` has not been provided or if the `world-name` does not exist or is not a gamemode world or island is not provided or data for island is empty. 
-
-    !!! example "Code example"
-        ```java
-        public Map<String, Object> getLikesData(String worldName, String islandUUID) {
-            return (Map<String, Object>) new AddonRequestBuilder()
-                .addon("Likes")
-                .label("island-likes")
-                .addMetaData("world-name", worldName)
-                .addMetaData("island", islandUUID)
-                .request();
-        }
-        ```
-
-=== "top-ten-likes"
-    !!! summary "Description"
-        Returns a `Map<String, Number>` containing top 10 island UUID's, and their values in given top.
-
-    !!! question "Input"
-        - `world-name`: String - the name of the world.
-        - `type`: String - the type of the Top. Supports: STARS, LIKES, DISLIKES, RANK.
-
-    !!! success "Output"
-        A Map containing the UUIDs of the islands is in the Top 10, mapped to the top value of their island.
-
-    !!! failure
-        This handler will return an empty map if the `world-name` has not been provided or if the `world-name` does not exist or is not a gamemode world or provided top type does not have any data in it.
-
-    !!! example "Code example"
-        ```java
-        public Map<String, Number> getTopTenLikes(String worldName, String type) {
-            return (Map<String, Number>) new AddonRequestBuilder()
-                .addon("Likes")
-                .label("top-ten-likes")
-                .addMetaData("world-name", worldName)
-                .addMetaData("type", type)
-                .request();
-        }
-        ```
+The JavaDocs for Likes can be found [here](https://ci.codemc.io/job/BentoBoxWorld/job/Likes/ws/target/apidocs/index.html).
 
 ### Events
 
@@ -344,3 +295,76 @@ You just need to add Likes to your project as dependency. You can use Maven for 
             String islandId = event.getIslandId();
         }
         ```  
+
+### Addon Request Handlers
+
+Till BentoBox 1.17 we had an issue with accessing data outside BentoBox environment doe to the class loader we used to load addons.
+This meant that data was accessible only from other addons. But BentoBox implemented PlAddon functionality, which means that request
+handlers are not necessary anymore.
+
+More information about addon request handlers can be found [here](/en/latest/BentoBox/Request-Handler-API---How-plugins-can-get-data-from-addons/)
+
+=== "island-likes"
+    !!! summary "Description"
+        Returns island likes data that is stored for island in given world.
+
+    !!! question "Input"
+        - `world-name`: String - the name of the world.
+        - `island`: String - the UUID of the island.
+
+    !!! success "Output"
+        The output is a `Map<String, Object>` with the following keys:
+
+        - `likes`: long - the number of likes that are set for given island.
+        - `dislikes`: long - the number of dislikes that are set for given island.
+        - `rank`: long - the number of rank for given island.
+        - `stars`: double - the average stars value for given island.
+        - `placeByLikes`: integer - the place in ranking by likes that are set for given island.
+        - `placeByDislikes`: integer - the place in ranking by dislikes that are set for given island.
+        - `placeByRank`: integer - the place in ranking by rank that are set for given island.
+        - `placeByStars`: integer - the place in ranking by stars that are set for given island.
+        - `likedBy`: List&lt;UUID&gt; - the list of player UUIDs who liked given island.
+        - `dislikedBy`: List&lt;UUID&gt; - the list of player UUIDs who disliked given island.
+        - `staredBy`: Map&lt;UUID, Integer&gt; - the map of player UUIDs who stared given island with a number of stars that they added.
+
+
+    !!! failure
+        This handler will return an empty map if the `world-name` has not been provided or if the `world-name` does not exist or is not a gamemode world or island is not provided or data for island is empty. 
+
+    !!! example "Code example"
+        ```java
+        public Map<String, Object> getLikesData(String worldName, String islandUUID) {
+            return (Map<String, Object>) new AddonRequestBuilder()
+                .addon("Likes")
+                .label("island-likes")
+                .addMetaData("world-name", worldName)
+                .addMetaData("island", islandUUID)
+                .request();
+        }
+        ```
+
+=== "top-ten-likes"
+    !!! summary "Description"
+        Returns a `Map<String, Number>` containing top 10 island UUID's, and their values in given top.
+
+    !!! question "Input"
+        - `world-name`: String - the name of the world.
+        - `type`: String - the type of the Top. Supports: STARS, LIKES, DISLIKES, RANK.
+
+    !!! success "Output"
+        A Map containing the UUIDs of the islands is in the Top 10, mapped to the top value of their island.
+
+    !!! failure
+        This handler will return an empty map if the `world-name` has not been provided or if the `world-name` does not exist or is not a gamemode world or provided top type does not have any data in it.
+
+    !!! example "Code example"
+        ```java
+        public Map<String, Number> getTopTenLikes(String worldName, String type) {
+            return (Map<String, Number>) new AddonRequestBuilder()
+                .addon("Likes")
+                .label("top-ten-likes")
+                .addMetaData("world-name", worldName)
+                .addMetaData("type", type)
+                .request();
+        }
+        ```
