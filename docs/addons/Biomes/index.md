@@ -261,19 +261,38 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
 ## API
 
+Since Biomes 2.0 and BentoBox 1.17 other plugins can access to the Biomes addon data directly. However, addon requests are still a good solution for a plugins that do not want to use too many dependencies.
+
+### Maven Dependency
+
+Biomes provides an API for other plugins. This covers version 2.1.0 and onwards.
+
+!!! note
+Add the Biomes dependency to your Maven POM.xml:
+
+    ```xml
+        <repositories>
+            <repository>
+                <id>codemc-repo</id>
+                <url>https://repo.codemc.io/repository/maven-public/</url>
+            </repository>
+        </repositories>
+        
+        <dependencies>
+            <dependency>
+                <groupId>world.bentobox</groupId>
+                <artifactId>biomes</artifactId>
+                <version>2.1.0</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    ```
+
+Use the latest Biomes version.
+
+The JavaDocs for Biomes can be found [here](https://ci.codemc.io/job/BentoBoxWorld/job/Biomes/ws/target/apidocs/index.html).
+
 ### Events
-
-Since BentoBox 1.17 API implemented a feature that solved an issue with classloaders. Plugins that wants to use events directly, now can do it.
-
-You just need to add Biomes to your project as dependency. You can use Maven for that:
-```xml
-<dependency>
-    <groupId>world.bentobox</groupId>
-    <artifactId>biomes</artifactId>
-    <version>2.0.0</version>
-    <scope>provided</scope>
-</dependency>
-```
 
 === "BiomeUnlockedEvent"
     !!! summary "Description"
