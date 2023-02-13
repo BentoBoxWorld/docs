@@ -265,7 +265,7 @@ Since Visit 1.4.0 and BentoBox 1.17 other plugins can access to the Visit addon 
 Visit provides an API for other plugins. This covers version 1.5.0 and onwards.
 
 !!! note
-    Add the MagicCobblestoneGenerator dependency to your Maven POM.xml:
+    Add the Visit dependency to your Maven POM.xml:
 
     ```xml
         <repositories>

@@ -381,6 +381,12 @@ The JavaDocs for MagicCobblestoneGenerator can be found [here](https://ci.codemc
 
 ### Addon Request Handlers
 
+Till BentoBox 1.17 we had an issue with accessing data outside BentoBox environment doe to the class loader we used to load addons.
+This meant that data was accessible only from other addons. But BentoBox implemented PlAddon functionality, which means that request
+handlers are not necessary anymore.
+
+More information about addon request handlers can be found [here](/en/latest/BentoBox/Request-Handler-API---How-plugins-can-get-data-from-addons/)
+
 === "active-generator-names"
     !!! summary "Description"
         Returns the names of active generators for the player.
