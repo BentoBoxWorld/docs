@@ -268,6 +268,117 @@ Template file are mostly for users who do not like to use ingame editing GUI. Ho
 
 ## API
 
+Since MagicCobblestoneGenerator 2.4.0 and BentoBox 1.17 other plugins can access to the MagicCobblestoneData addon data directly. However, addon requests are still a good solution for a plugins that do not want to use too many dependencies.
+
+### Maven Dependency
+MagicCobblestoneGenerator provides an API for other plugins. This covers Level 2.5.0 and onwards.
+
+!!! note
+    Add the MagicCobblestoneGenerator dependency to your Maven POM.xml:
+
+    ```xml
+        <repositories>
+            <repository>
+                <id>codemc-repo</id>
+                <url>https://repo.codemc.io/repository/maven-public/</url>
+            </repository>
+        </repositories>
+        
+        <dependencies>
+            <dependency>
+                <groupId>world.bentobox</groupId>
+                <artifactId>magiccobblestonegenerator</artifactId>
+                <version>2.5.0</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    ```
+Use the latest MagicCobblestoneGenerator version.
+
+The JavaDocs for MagicCobblestoneGenerator can be found [here](https://ci.codemc.io/job/BentoBoxWorld/job/MagicCobblestoneGenerator/ws/target/apidocs/index.html).
+
+### Events
+
+=== "GeneratorActivationEvent"
+    !!! summary "Description"
+        Event that is triggered when player activates/deactivates a generator on their island.
+        This event is cancellable.
+
+        Link to the class: [GeneratorActivationEvent](https://github.com/BentoBoxWorld/MagicCobblestoneGenerator/blob/develop/src/main/java/world/bentobox/magiccobblestonegenerator/events/GeneratorActivationEvent.java)
+
+    !!! question "Variables"
+        - `String islandUUID` - the targeted island id.
+        - `UUID targetPlayer` - id of the player who triggered generator activation.
+        - `String generator` - the name of activated generator.
+        - `String generatorID` - the id of activated generator.
+        - `boolean activate` - the boolean that indicates if generator is activated or deactivated.
+
+        
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.LOW)
+        public void onGeneratorActivationChange(GeneratorActivationEvent event) {
+            UUID user = event.getTargetPlayer();
+            String island = event.getIslandUUID();
+
+            String generator = event.getGenerator();
+            String generatorID = event.getGeneratorID();
+            boolean activate = event.isActivate();
+        }
+        ```
+
+=== "GeneratorUnlockEvent"
+    !!! summary "Description"
+        Event that is triggered when player unlocks a new generator on their island.
+        This event is cancellable.
+
+        Link to the class: [GeneratorUnlockEvent](https://github.com/BentoBoxWorld/MagicCobblestoneGenerator/blob/develop/src/main/java/world/bentobox/magiccobblestonegenerator/events/GeneratorUnlockEvent.java)
+
+    !!! question "Variables"
+        - `String islandUUID` - the targeted island id.
+        - `UUID targetPlayer` - id of the player who triggered generator unlock.
+        - `String generator` - the name of unlocked generator.
+        - `String generatorID` - the id of unlocked generator.
+
+        
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.LOW)
+        public void onGeneratorUnlock(GeneratorUnlockEvent event) {
+            UUID user = event.getTargetPlayer();
+            String island = event.getIslandUUID();
+
+            String generator = event.getGenerator();
+            String generatorID = event.getGeneratorID();
+        }
+        ```
+
+=== "GeneratorBuyEvent"
+    !!! summary "Description"
+        Event that is triggered when player buys a new generator on their island.
+        This event is NOT cancellable.
+
+        Link to the class: [GeneratorBuyEvent](https://github.com/BentoBoxWorld/MagicCobblestoneGenerator/blob/develop/src/main/java/world/bentobox/magiccobblestonegenerator/events/GeneratorBuyEvent.java)
+
+    !!! question "Variables"
+        - `String islandUUID` - the targeted island id.
+        - `UUID targetPlayer` - id of the player who bought generator.
+        - `String generator` - the name of bought generator.
+        - `String generatorID` - the id of bought generator.
+
+        
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.LOW)
+        public void onGeneratorBuy(GeneratorBuyEvent event) {
+            UUID user = event.getTargetPlayer();
+            String island = event.getIslandUUID();
+
+            String generator = event.getGenerator();
+            String generatorID = event.getGeneratorID();
+        }
+        ```
+
 ### Addon Request Handlers
 
 === "active-generator-names"
