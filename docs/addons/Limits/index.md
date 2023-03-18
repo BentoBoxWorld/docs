@@ -76,6 +76,9 @@ Usage permissions are (put the gamemode name, e.g. acidisland at the front):
   GAMEMODE_NAME.limits.player.limits:
     description: Player can use limits command
     default: true
+  GAMEMODE_NAME.mod.bypass:
+    description: Player can bypass limits
+    default: op
   GAMEMODE_NAME.limits.admin.limits:
     description: Player can use admin limits command
     default: op
