@@ -3,7 +3,12 @@
 {{ translations(2855, ["cs", "de", "es", "fr", "hu", "id", "it", "ja", "lv", "pl", "pt", "ro", "ru", "tr", "vi", "zh-CN", "zh-HK"]) }}
 
 ## Guidelines
-wip
+
+* Please use GitLocalize for the translations and when you think you are done, alert us on Discord. Translators get a special badge!
+* Do not translate text inside square brackets because those are placeholders, e.g. [name] should remain in English
+* Test your translations - try to check everything you can before submitting it
+* Do not include any advertising, swear words, or derogatory comments in the translations. We do check them before accepting the PR.
+* Feel free to ask questions on Discord about translations.
 
 ## Addons
 - [AcidIsland](/gamemodes/AcidIsland/#translations)
