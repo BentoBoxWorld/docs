@@ -402,8 +402,10 @@ By default, BentoBox GameMode addons comes with [default placeholders set](../..
     It's whatever you want it to be! 
 
 ??? question "How to use holograms?"
-    AOneBlock uses [Holographic Displays](https://dev.bukkit.org/projects/holographic-displays) for holograms. 
-    You need to install this plugin to use holograms sections! 
+    AOneBlock uses [Holographic Displays](https://dev.bukkit.org/projects/holographic-displays) for holograms if you use 1.12.3 and below.
+    You need to install this plugin to use holograms sections!
+    
+    However, since 1.13 version and Minecraft 1.19.4, you do not need any extra plugins for holograms. They will be displayed using Minecraft Text Entity.
 
 ??? question "Should I use the Levels addon?"
     It's up to you, but if you do be aware that levels could get high because players have an infinite block. 
