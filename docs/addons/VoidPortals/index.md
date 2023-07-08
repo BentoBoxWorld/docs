@@ -14,4 +14,4 @@ Created and maintained by [BONNe](https://github.com/BONNe).
 
 ## Translations
 
-{{ translations(2975, ["cs", "fr", "ja", "lv"]) }}
+{{ translations(2975, ["cs", "fr", "ja", "lv", "de", "pl", "ru", "es"]) }}

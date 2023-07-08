@@ -163,7 +163,7 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
 ## Translations
 
-{{ translations(2973, ["cs", "de", "es", "fr", "hu", "ja", "lv", "pl", "tr", "zh-CN"]) }}
+{{ translations(2973, ["cs", "de", "es", "fr", "hu", "ja", "lv", "pl", "tr", "zh-CN", "zh-TW", "id", "it", "ru", "vi"]) }}
 
 ## Api
 

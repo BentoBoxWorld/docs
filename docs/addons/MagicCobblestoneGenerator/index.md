@@ -264,7 +264,7 @@ Template file are mostly for users who do not like to use ingame editing GUI. Ho
 
 ## Translations
 
-{{ translations(2972, ["de", "es", "lv"]) }}
+{{ translations(2972, ["de", "es", "lv", "zh-CN", "zh-TW", "fr", "ru", "pl", "tr"]) }}
 
 ## API
 

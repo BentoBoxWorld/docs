@@ -8,4 +8,4 @@ Created by [Awakened-Redstone](https://github.com/Awakened-Redstone) and maintai
 
 ## Translations
 
-{{ translations(3842, ["cs"]) }}
+{{ translations(3842, ["cs", "zh-CN", "hu", "vi"]) }}

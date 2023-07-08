@@ -8,10 +8,6 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 
 {{ addon_description("Greenhouses") }}
 
-## Note for 1.15.x + servers
-
-Biomes have changed so that they take up a 4x4 area and so greenhouse biomes now can bleed outside of the greenhouse. Unfortunately, this cannot be mitigated (as far as I know). If you have a good imagination, you can say that the biome of the greenhouse influences the surroundings a bit and it is natural! So it's a feature, not a bug!
-
 ## Features
 
 * Craft your own self-contained biome greenhouse on an island (or elsewhere if you like)
@@ -127,4 +123,4 @@ The permission can be anything you like, e.g., a rank permission, **myserver.VIP
 
 ## Translations
 
-{{ translations(3680, ["cs", "hu", "ja"]) }}
+{{ translations(3680, ["cs", "hu", "ja", "zh-CN", "fr", "de", "it", "lv", "pl", "ru", "es", "tr", "vi"]) }}
