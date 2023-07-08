@@ -117,4 +117,4 @@ You can [sponsor](https://github.com/sponsors/tastybento) to get more addons lik
 
 ## Translations
 
-{{ translations(5451, ["cs", "de", "es", "et", "fr", "ja", "tr", "zh-CN"]) }}
+{{ translations(5451, ["cs", "de", "es", "et", "fr", "ja", "tr", "zh-CN", "id", "ko"]) }}

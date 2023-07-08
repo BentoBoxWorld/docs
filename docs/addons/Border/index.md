@@ -138,7 +138,7 @@ show-particles: true
 
 ## Translations
 
-{{ translations(3896, ["cs", "it", "lv"]) }}
+{{ translations(3896, ["cs", "it", "lv", "fr", "de", "hu", "id", "zh-TW", "ko", "pl", "ru", "es", "vi"]) }}
 
 ## Source
 Want to contribute? See this documentation's source code at [GitHub](https://github.com/BentoBoxWorld/docs/blob/master/docs/addons/Border/).

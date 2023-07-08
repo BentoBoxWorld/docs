@@ -283,7 +283,7 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
     There is also option to translate parts via locales [file](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/resources/locales/en-US.yml#L1248-L1270)
 
-{{ translations(2896, ["lv"]) }}
+{{ translations(2896, ["lv", "zh-CN", "zh-TW", "cs", "fr", "de", "hu", "pl", "pt", "ru"]) }}
 
 ## API
 
