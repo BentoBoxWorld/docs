@@ -36,4 +36,4 @@ Placeholders can be found [here](Placeholders).
 
 ## Translations
 
-{{ translations(2854, ["cs", "de", "es", "hu", "it", "ja", "lv", "pl", "zh-CN"]) }}
+{{ translations(2854, ["cs", "de", "es", "hu", "it", "ja", "lv", "pl", "zh-CN", "fr", "id", "ko", "ro", "ru", "tr", "vi"]) }}

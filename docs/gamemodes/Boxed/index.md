@@ -102,4 +102,4 @@ Placeholders can be found [here](Placeholders).
 
 ## Translations
 
-In progress!
+{{ translations(2953, ["cs", "es", "fr", "id", "it", "ja", "ko", "lv", "pl", "pt", "zh-CN", "zh-TW", "hr", "de", "hu", "ro", "ru", "tr", "vi"]) }}

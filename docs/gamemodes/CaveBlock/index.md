@@ -161,7 +161,7 @@ You can find the latest config file: [config.yml](https://github.com/BentoBoxWor
     Be aware, that this addon allows changing player commands aliases in addon `config.yml` file.
 
 
-By default, BentoBox GameMode addons comes with [default sub-command set](#), however, each addon may introduce even more sub commands.
+By default, BentoBox GameMode addons comes with the default sub-command set, however, each addon may introduce even more sub commands.
 
 [Complete CaveBlock Command List](Commands)
 
@@ -170,7 +170,7 @@ By default, BentoBox GameMode addons comes with [default sub-command set](#), ho
 !!! tip
     `[gamemode]` prefix in every place for CaveBlock addon must be replaced with `caveblock`.
 
-By default, BentoBox GameMode addons comes with [default sub-permission set](#), however, each addon may introduce even more sub-permissions.
+By default, BentoBox GameMode addons comes with the default sub-permission set, however, each addon may introduce even more sub-permissions.
 
 [Complete CaveBlock Permission List](Permissions)
 
@@ -200,4 +200,4 @@ Addon introduces 1 BentoBox Settings flag:
 
 ## Translations
 
-{{ translations(2968, ["cs", "id", "ja", "lv", "ro", "zh-CN"]) }}
+{{ translations(2968, ["cs", "id", "ja", "lv", "ro", "zh-CN", "de", "pl", "ru", "es", "tr", "vi"]) }}

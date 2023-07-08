@@ -294,7 +294,7 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     - `/[admin_command] setchest <phase> <rarity>`: saves a chest that player is looking at into <phase> chests section with <rarity>.
 
 
-By default, BentoBox GameMode addons comes with [default sub-command set](#), however, each addon may introduce even more sub commands.
+By default, BentoBox GameMode addons comes with the default sub-command set, however, each addon may introduce even more sub commands.
 
 [Complete AOneBlock Command List](Commands)
 
@@ -315,7 +315,7 @@ By default, BentoBox GameMode addons comes with [default sub-command set](#), ho
     - `aoneblock.admin.setchest` - Let the player use the '/[admin_command] setchest' command. Default OP.
     - `aoneblock.admin.setcount` - Let the player use the '/[admin_command] setcount' command. Default OP.
 
-By default, BentoBox GameMode addons comes with [default sub-permission set](#), however, each addon may introduce even more sub-permissions.
+By default, BentoBox GameMode addons comes with the default sub-permission set, however, each addon may introduce even more sub-permissions.
 
 [Complete AOneBlock Permission List](Permissions)
 
@@ -414,7 +414,7 @@ By default, BentoBox GameMode addons comes with [default placeholders set](../..
 
 ## Translations
 
-{{ translations(4481, ["cs", "lv", "de", "es", "fr", "hr", "hu", "id", "it", "ja", "tr", "vi", "zh-CN", "zh-TW"]) }}
+{{ translations(4481, ["cs", "de", "es", "fr", "hr", "hu", "id", "it", "ja", "tr", "vi", "zh-CN", "zh-TW", "pl", "pt", "ro", "ru"]) }}
 
 ## Api
 
