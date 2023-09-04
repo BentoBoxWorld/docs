@@ -28,15 +28,17 @@ This command will show any named homes that they player has set along with the n
 
 Players can set the default location of their island by running the `sethome` command. If players have the ability to set multiple homes, then they can set them using the `sethome [home name]` command. The maximum number of homes allowed in the config for the game world is shared across all the islands tat the player owns.
 
+### Island transfer
+
+Island ownership can be transfered to other players on the team using the `setowner` command. Ownership cannot be transfered if the owner already has the maximum number of concurrent islands allowed.
+
+*NEW:* When a player transfers ownership then now automatically leave the team.
+
 ### Teams
 
-*[IN DEVELOPMENT - STILL NEEDS TO BE WORKED OUT]*
-
-- Teams are island based and do not cross islands.
-- TBD: It is/is not possible for a player to have multiple teams, one for each island.
-- TBD: Players can only have one team.
-- Players cannot be on more than one team.
-- Team chat needs more testing 
+- Teams are island-based and teams do not span islands.
+- It's not possible to invite a player who is already in a team.
+- It is possible to have a team on each of your islands and be the leader of them all, but members cannot be in more than one team, and if you transfer ownership of the team to another player, you will automatically leave the team and that person will gain the island.
 
 ## Game Mode Support
 
@@ -60,8 +62,7 @@ This lists the addons and their compatibility with concurrent islands.
 | Greenhouses 1.7.3 | Compatible  |
 | InvSwitcher 1.11.0 | Compatible  |
 | IslandFly 1.11.0 | Compatible  |
-| Level 2.11.0 | Levels are calculated by island. The Top Ten will show the score for the last calculated island.
-If teleporting is allowed when clicking on the Top Ten head, then players will go to the player's current island.  |
+| Level 2.11.0 | Levels are calculated by island. The Top Ten will show the score for the last calculated island. If teleporting is allowed when clicking on the Top Ten head, then players will go to the player's current island.  |
 | Likes 2.3.1 |   |
 | Limits 1.19.1 | Compatible. Limits are per-island.  |
 | MagicCobblestoneGenerator 2.5.1 |   |
@@ -69,7 +70,6 @@ If teleporting is allowed when clicking on the Top Ten head, then players will g
 | Visit 1.6.0 |   |
 | VoidPortals 1.5.0.0 |   |
 | Warps 1.13.0 | As usual, players may have only one active warp sign.   |
-
 
 
 
