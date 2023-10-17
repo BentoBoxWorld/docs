@@ -23,6 +23,7 @@
 | bskyblock.island.settings | Allow use of '/island settings' command - display island settings | TRUE |
 | bskyblock.island.name | Allow use of '/island setname' command - set a name for your island | TRUE |
 | bskyblock.island.name | Allow use of '/island resetname' command - reset your island name | TRUE |
+| bskyblock.island.number.x | x sets how many islands the player can make. | FALSE |
 | bskyblock.island.language | Allow use of '/island language' command - select language | TRUE |
 | bskyblock.island.ban | Allow use of '/island ban', '/island  unban', '/island  banlist' commands - banned players | TRUE |
 | bskyblock.island.expel | Allow use of '/island expel' command - expel a player from your island | TRUE |
