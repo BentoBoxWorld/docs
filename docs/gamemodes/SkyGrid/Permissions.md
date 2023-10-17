@@ -156,6 +156,10 @@
 <td align='left'>true</td>
 <td align='left'>Player can set the name of their area</td>
 </tr>
+<td align='left'>skygrid.island.number</td>
+<td align='left'>false</td>
+<td align='left'>x sets how many areas the player can make.</td>
+</tr>
 <tr>
 <td align='left'>skygrid.island.reset</td>
 <td align='left'>true</td>
