@@ -169,6 +169,11 @@
   <td align='left'>Allow teleporting to player island</td>
 </tr>
 <tr>
+  <td align='left'>aoneblock.island.number.x</td>
+  <td align='left'>false</td>
+  <td align='left'>x sets how many islands the player can make.</td>
+</tr>
+<tr>
   <td align='left'>aoneblock.island.sethome</td>
   <td align='left'>true</td>
   <td align='left'>Let the player use the sethome command</td>
