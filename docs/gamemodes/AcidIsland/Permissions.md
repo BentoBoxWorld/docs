@@ -24,7 +24,7 @@
 | acidisland.island.settings | Allow use of '/ai settings' command - display island settings | TRUE |
 | acidisland.island.name | Allow use of '/ai  setname' command - set a name for your island | TRUE |
 | acidisland.island.name | Allow use of '/ai  resetname' command - reset your island name | TRUE |
-| aoneblock.island.number.x | x sets how many islands the player can make.| FLASE |
+| acidisland.island.number.x | x sets how many islands the player can make.| FLASE |
 | acidisland.island.language | Allow use of '/ai language' command - select language | TRUE |
 | acidisland.island.ban | Allow use of '/ai ban' command - ban a player from your island | TRUE |
 | acidisland.island.ban | Allow use of '/ai  unban' command - unban a player from your island | TRUE |
