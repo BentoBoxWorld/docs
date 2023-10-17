@@ -189,6 +189,11 @@ All permissions are the same as other game modes, like BSkyBlock
 <td align='left'>Player can set the name of their island</td>
 </tr>
 <tr>
+<td align='left'>boxed.island.number</td>
+<td align='left'>false</td>
+<td align='left'>x sets how many islands the player can make.</td>
+</tr>
+<tr>
 <td align='left'>boxed.island.reset</td>
 <td align='left'>true</td>
 <td align='left'>Player can use the island reset or restart command</td>
