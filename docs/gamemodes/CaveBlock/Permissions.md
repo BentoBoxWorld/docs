@@ -181,6 +181,10 @@
 <td align='left'>true</td>
 <td align='left'>Player can set the name of their cave</td>
 </tr>
+<td align='left'>caveblock.island.number</td>
+<td align='left'>false</td>
+<td align='left'>x sets how many islands the player can make.</td>
+</tr>
 <tr>
 <td align='left'>caveblock.island.reset</td>
 <td align='left'>true</td>
