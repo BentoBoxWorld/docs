@@ -12,18 +12,20 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 * InvSwitcher - keeps advancements, inventory, etc. separate between worlds on a server.
 * Border - shows the box
 
-## Required Plugins
+## Required Plugins for Minecraft 1.16/1.17
 
 * Requires WorldGeneratorAPI plugin. [Download the correct one for your server here.](https://github.com/rutgerkok/WorldGeneratorApi/releases)
 * Border requires WorldBorderAPI by default. [Download it here.](https://github.com/yannicklamprecht/WorldBorderAPI/releases)
+
+Note, that 1.19+ version does not require any additional API plugins.
 
 ## How to install
 
 ### Quick Start
 
 1. Place Boxed addon into the BentoBox addons folder along with InvSwitcher and Border (use the latest versions!).
-2. Place the WorldGeneratorAPI and WorldBorderAPI plugins into your plugins folder.
-3. Make sure you are using BentoBox 1.16.0-SNAPSHOT or later.
+2*. Place the WorldGeneratorAPI and WorldBorderAPI plugins into your plugins folder. (for 1.16/1.17)
+3. Make sure you are using BentoBox 1.16.0 or later.
 4. Restart the server - new worlds will be created. There may be a delay.
 5. Login
 6. Type `/boxed` to start.
