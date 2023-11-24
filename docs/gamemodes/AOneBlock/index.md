@@ -194,15 +194,15 @@ The first number of any file is how many blocks need to be mined to reach that p
         ```yaml
             fixedBlocks:
               0:
-                type: data
+                type: block-data
                 data: minecraft:chest[waterlogged=true]
               1: GRASS_BLOCK
               2: GRASS_BLOCK
             blocks:
-              - type: data
+              - type: block-data
                 data: minecraft:chest[waterlogged=true]
                 probability: 10
-              - type: data
+              - type: block-data
                 data: minecraft:chest
                 probability: 10
               - DIRT: 10     # old syntax still works.
