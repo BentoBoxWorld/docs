@@ -8,40 +8,70 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 
 ## BentoBox Requirements
 
-* Requires BentoBox 1.16.0 or later (Snapshots can be downloaded here: [https://ci.bentobox.world](https://ci.bentobox.world))
+* Always used the latest BentoBox version (Snapshots can be downloaded here: [https://ci.bentobox.world](https://ci.bentobox.world))
 * InvSwitcher - keeps advancements, inventory, etc. separate between worlds on a server.
 * Border - shows the box
-
-## Required Plugins for Minecraft 1.16/1.17
-
-* Requires WorldGeneratorAPI plugin. [Download the correct one for your server here.](https://github.com/rutgerkok/WorldGeneratorApi/releases)
-* Border requires WorldBorderAPI by default. [Download it here.](https://github.com/yannicklamprecht/WorldBorderAPI/releases)
-
-Note, that 1.19+ version does not require any additional API plugins.
 
 ## How to install
 
 ### Quick Start
 
 1. Place Boxed addon into the BentoBox addons folder along with InvSwitcher and Border (use the latest versions!).
-2*. Place the WorldGeneratorAPI and WorldBorderAPI plugins into your plugins folder. (for 1.16/1.17)
-3. Make sure you are using BentoBox 1.16.0 or later.
-4. Restart the server - new worlds will be created. There may be a delay.
-5. Login
-6. Type `/boxed` to start.
-7. Turn off advancement announcements `/gamerule announceAdvancements false` otherwise there is a lot of spam from the server when players get advancements.
+2. Restart the server - new worlds will be created. *This will take a long time first time through*
+3. Login
+4. Type `/boxed` to start.
+5. (Optional) Turn off advancement announcements `/gamerule announceAdvancements false` otherwise there is a lot of spam from the server when players get advancements.
 
 * You will start by a tree. The is a chest with some handy items in it. (This is the island blueprint)
 * The only area you can operate on is your box that shows as a border.
 * To make your box bigger, complete advancements.
 * Check your progress with the Advancements screen, (L-key).
 * Monsters do not spawn by default outside your box, but your box becomes bigger, and it only takes one block to spawn a mob!
-* The box owner can move the box using enderpearls thrown from within the box. Beware! It's a one-way trip.
-* The island settings have an option to allow box moving by other ranks (look for the Composter box icon)
+* The box owner can move the box using enderpearls thrown from within the box. Beware! It's a one-way trip. (Optional setting in config.yml)
+* The box settings have an option to allow box moving by other ranks (look for the Composter box icon)
 
 ## Custom Advancements
 
-You can add custom advancements via data packs. See the [tutorial video for more information](https://youtu.be/zNzQvIbweQs)
+[Download the official Boxed DataPack](https://github.com/BentoBoxWorld/BoxedDataPack) for custom advancements.
+Or you can do it yourself. See the [tutorial video for more information](https://youtu.be/zNzQvIbweQs)
+
+## Using Regionerator
+
+*Note: This plugin is designed to delete unused regions of you world! Make sure you take backups if you use it! Use at your own risk!*
+
+[Regionerator](https://github.com/Jikoo/Regionerator) is a plugin that gradually deletes unused chunks to keep world sizes low. It is not written by the BentoBox team, but it supports BentoBox and respects box boundaries. It can be used to delete box chunks so that they can be regenerated. As Boxed uses seed worlds to copy from, these can appear to be unused by Regionerator and deleted, which means that startup becomes very slow. To avoid this, set the seed worlds as exempt from its deletions by having these in the world section of the Regionarator config file:
+
+```
+# Worlds the plugin is able to delete regions in
+worlds:
+  # "default" applies to all worlds not specified.
+  boxed_world/seed_base:
+    days-till-flag-expires: -1
+  boxed_world/seed:
+    days-till-flag-expires: -1
+  default:
+    # Flags older than x days can be ignored and the region deleted.
+    # Set to -1 to disable Regionerator in a world.
+    # To disable flagging, set this to 0.
+    # days-till-flag-expires must be greater than 0 to be used with delete-new-unvisited-chunks
+    days-till-flag-expires: 0
+```
+
+To get the most out of Regionarator, change the BentoBox config.yml file to *not* delete chunks when an island is removed. This will then leave the deletion up to it and it should clean up the chunks if the unused area is big enough. The config is to set `keep-previous-island-on-reset: true`:
+
+```
+deletion:
+    # Toggles whether islands, when players are resetting them, should be kept in the world or deleted.
+    # * If set to 'true', whenever a player resets his island, his previous island will become unowned and won't be deleted from the world.
+    #   You can, however, still delete those unowned islands through purging.
+    #   On bigger servers, this can lead to an increasing world size.
+    #   Yet, this allows admins to retrieve a player's old island in case of an improper use of the reset command.
+    #   Admins can indeed re-add the player to his old island by registering him to it.
+    # * If set to 'false', whenever a player resets his island, his previous island will be deleted from the world.
+    #   This is the default behaviour.
+    # Added since 1.13.0.
+    keep-previous-island-on-reset: true
+```
 
 
 ## Advanced Config
