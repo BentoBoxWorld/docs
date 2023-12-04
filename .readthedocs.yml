@@ -5,11 +5,16 @@
 # Required
 version: 2
 
+# Set the version of Python and other tools you might need
+build:
+  os: ubuntu-22.04
+
 # Build documentation with MkDocs
 mkdocs:
   configuration: mkdocs.yml
 
-# Optionally set the version of Python and requirements required to build your docs
+# We recommend specifying your dependencies to enable reproducible builds:
+# https://docs.readthedocs.io/en/stable/guides/reproducible-builds.html
 python:
   version: 3.7
   install:
