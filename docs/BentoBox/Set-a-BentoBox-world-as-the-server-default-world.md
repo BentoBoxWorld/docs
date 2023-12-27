@@ -37,7 +37,7 @@ level-name=bskyblock_world
 
 Open the `bukkit.yml` file: we need to tell Bukkit that the default world uses a custom generator, **otherwise it will mess up the world generation**. Note that if you want to use the vanilla nether or end, do not list them in this file.
 
-The configuration section we're adding likely does not exist already in your `bukkit.yml` file, so you need to create it. See the official [Bukkit Wiki](https://bukkit.gamepedia.com/Bukkit.yml#.2AOPTIONAL.2A_worlds) for more details about the section.
+The configuration section we're adding likely does not exist already in your `bukkit.yml` file, so you need to create it. See the official [Bukkit Wiki](https://bukkit.fandom.com/wiki/Bukkit.yml) for more details about the section.
 
 Add the following section to your file. The names listed **must** be the names of the worlds:
 ```yaml
