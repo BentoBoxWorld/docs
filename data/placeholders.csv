@@ -64,6 +64,9 @@ Level,Level_[gamemode]_top_name_#rank#,Island owner's name of the `#rank#`-th is
 Level,Level_[gamemode]_top_island_name_#rank#,Name of the `#rank#`-th island in the Top 10,2.11.0
 Level,Level_[gamemode]_top_members_#rank#,List of the members of the `#rank#`-th island in the Top 10,2.11.0
 Level,Level_[gamemode]_top_weighted_value_#rank#,Weighted island level (level/number of members) of the `#rank#`-th island in the Top 10,2.12.0
+Level,Level_[gamemode]_top_weighted_name_#rank#,Weighted island level name (level/number of members) of the `#rank#`-th island in the Top 10,2.12.0
+Level,Level_[gamemode]_top_weighted_members_#rank#,Weighted island members (level/number of members) of the `#rank#`-th island in the Top 10,2.12.0
+Level,Level_[gamemode]_top_weighted_island_name_#rank#,Weighted island name (level/number of members) of the `#rank#`-th island in the Top 10,2.12.0
 Level,Level_[gamemode]_points_to_next_level,Points to the next level for player,2.3.3
 Level,Level_[gamemode]_rank_value,Displays island rank value,2.7.2
 Level,Level_[gamemode]_island_level_raw,Unformatted island level,2.8.1
