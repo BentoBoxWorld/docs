@@ -87,15 +87,16 @@ def define_env(env):
             for row in reader:
                 # Analyze the source
                 if (row['source'] != source):
-                    # We are in a new "source" so we have to put the header
-                    source = row['source']
-                    result += f"""\n## {source} placeholders
+                    if ("[gamemode]" in row['placeholder'] or gamemode_name in row['placeholder']):
+                        # We are in a new "source" so we have to put the header
+                        source = row['source']
+                        result += f"""\n## {source} placeholders
 
 | Placeholder | Description | {source} version
 | ---------- | ---------- | ---------- |
 """
 
-                result += f"| %{row['placeholder'].replace('[gamemode]',gamemode_name)}% | {row['desc']} | {row['version']} |\n"
+                        result += f"| %{row['placeholder'].replace('[gamemode]',gamemode_name)}% | {row['desc']} | {row['version']} |\n"
 
         return result
 

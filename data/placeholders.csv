@@ -104,3 +104,9 @@ MagicCobblestoneGenerator,[gamemode]_magiccobblestonegenerator_unlocked_generato
 MagicCobblestoneGenerator,[gamemode]_magiccobblestonegenerator_purchased_generator_names,List of purchased generator names separated with comma,2.2.0
 Limits,Limits_[gamemode]_island_[material]_count,Current count of material (lower cased) on the island,1.17.2
 Limits,Limits_[gamemode]_island_[material]_limit,The limit of material (lower cased) for the island,1.17.2
+TopBlock,aoneblock_island_player_name_top_#rank#,Island owner's name at the `#rank#` position, 1.0.1
+TopBlock,aoneblock_island_member_names_top_#rank#,Name of island team members at the `#rank#` position, 1.0.1
+TopBlock,aoneblock_island_phase_name_top_#rank#,Name of the phase they have reached at the `#rank#` position, 1.0.1
+TopBlock,aoneblock_island_phase_number_top_#rank#,Phase number (e.g. Plains is 1; Underground is 2) at the `#rank#` position, 1.0.1
+TopBlock,aoneblock_island_count_top_#rank#,Block Count of magic blocks mined this round at the `#rank#` position, 1.0.1
+TopBlock,aoneblock_island_lifetime_top_#rank#,Lifetime count of magic blocks mined at the `#rank#` position, 1.0.1
