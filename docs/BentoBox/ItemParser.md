@@ -6,6 +6,14 @@ So BentoBox uses very weird format that comes from ASkyBlock times.
 
 ## Quick Example
 
+### Generic Minecraft Item Translations
+
+Since BentoBox 2.0.0 you can use minecraft item translations like in give command:
+
+    - minecraft:diamond_sword{display:{Lore:["\"A legendary weapon\""]}}
+    - minecraft:stone
+    - diamond_chestplate{Enchantments:[{id:mending,lvl:1},{id:protection,lvl:4},{id:unbreaking,lvl:3}]}
+
 ### General Translation
 
 By default, all items are translated in format:
@@ -30,24 +38,17 @@ Damage Amount and quantity is optional.
 
 Potions, Splash Potions, Lingering Potions and Tipped Arrows follows the same pattern:
 
-    - [TYPE]:PotionType:<LEVEL>:<EXTENDED>:<SPLASH/LINGER>:QUANTITY
+    - [TYPE]:<POTION_TYPE>:QUANTITY
 
 [TYPE] you can replace with POTION, SPLASH_POTION, LINGERING_POTION or TIPPED_ARROW.
-
-Level is a number 1 or 2 that indicates which potion level it is. (upgraded or not.)
-
-EXTENDED is a word that you must write if you want your potion to have extended effect.
-
-SPLASH and LINGER is a necessary parts to indicate if potion is that type. (leftover from ASkyBlock)
-
 All potion types you can find by this link: [PotionTypes](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/potion/PotionType.html)
 
 Examples:
 
-    - POTION:STRENGTH:1:EXTENDED:SPLASH:1 - Will create splash potion with extended strength 1 effect.
-    - POTION:INSTANT_DAMAGE:2::LINGER:2 - Will create 2 lingering potions with instant damage 2 effect
-    - POTION:JUMP:2:::1 - Will create Jump 2 potion.
-    - POTION:WEAKNESS::::1 - Will create weakness 1 potion.
+    - POTION:STRENGTH:1 - Will create splash potion with extended strength 1 effect.
+    - SPLASH_POTION:INSTANT_DAMAGE:2 - Will create 2 splash potions with instant damage 2 effect
+    - LINGERING_POTION:STRONG_LEAPING:1 - Will create Jump 2 lingering potion.
+    - TIPPED_ARROW:WEAKNESS:1 - Will create weakness 1 tipped arrow.
 
 ### Banners
 
