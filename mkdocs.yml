@@ -35,11 +35,12 @@ nav:
         - Likes: addons/Likes/index.md
         - Limits: addons/Limits/index.md
         - MagicCobblestoneGenerator: addons/MagicCobblestoneGenerator/index.md
+        - TopBlock: addons/TopBlock/index.md
         - TwerkingForTrees: addons/TwerkingForTrees/index.md
+        - Upgrades: addons/Upgrades/index.md
         - Visit: addons/Visit/index.md
         - VoidPortals: addons/VoidPortals/index.md
         - Warps: addons/Warps/index.md
-        - Upgrades: addons/Upgrades/index.md
     - "Tutorials – Generic":
         - "How To Install": BentoBox/Install-Bentobox.md
         - "Set a BentoBox world as the server's default world": BentoBox/Set-a-BentoBox-world-as-the-server-default-world.md
