@@ -116,7 +116,7 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     As an example, on BSkyBlock, the default `[player_command]` is `island`, and the default `[admin_command]` is `bsbadmin`.
 
 === "Player commands"
-    - `/[player_command] top`: access to the top panel. Requires `[gamemode].island.topblock` permission.
+    - `/[player_command] topblock`: access to the top panel. Requires `[gamemode].island.topblock` permission.
 
 ## Permissions
 
