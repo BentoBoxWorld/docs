@@ -96,7 +96,8 @@ def define_env(env):
 | ---------- | ---------- | ---------- |
 """
 
-                        result += f"| %{row['placeholder'].replace('[gamemode]',gamemode_name)}% | {row['desc']} | {row['version']} |\n"
+                if ("[gamemode]" in row['placeholder'] or gamemode_name in row['placeholder']):
+                    result += f"| %{row['placeholder'].replace('[gamemode]',gamemode_name)}% | {row['desc']} | {row['version']} |\n"
 
         return result
 
