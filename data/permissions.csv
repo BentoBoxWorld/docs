@@ -61,3 +61,4 @@ Level,[gamemode].island.level.details.underwater,Player can see the underwater t
 Level,[gamemode].island.level.details.above-sea-level,Player can see the above sea level tab in the level details.,,false,player,,
 Level,[gamemode].admin.level,Player can use admin level command.,,op,admin,,
 Level,[gamemode].admin.topten,Player can use admin top ten command.,,op,admin,,
+TopBlock,aoneblock.island.topblock,Player can use topblock command.,,true,player,,
