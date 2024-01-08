@@ -23,7 +23,8 @@ def define_env(env):
         {"id": "ru", "name": "Russian"},
         {"id": "es", "name": "Spanish"},
         {"id": "tr", "name": "Turkish"},
-        {"id": "vi", "name": "Vietnamese"}
+        {"id": "vi", "name": "Vietnamese"},
+        {"id": "uk", "name": "Ukrainian"}
     ]
 
     @env.macro
