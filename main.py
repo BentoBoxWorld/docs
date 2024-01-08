@@ -4,9 +4,9 @@ import json
 def define_env(env):
 
     languages = [
-        {"id": "zh-CN", "name": "Chinese (China)"},
-        {"id": "zh-HK", "name": "Chinese (Hong Kong)"},
-        {"id": "zh-TW", "name": "Chinese (Taiwan)"},
+        {"id": "zh-CN", "name": "Chinese, China"},
+        {"id": "zh-HK", "name": "Chinese, Hong Kong"},
+        {"id": "zh-TW", "name": "Chinese, Taiwan"},
         {"id": "hr", "name": "Croatian"},
         {"id": "cs", "name": "Czech"},
         {"id": "fr", "name": "French"},
@@ -24,7 +24,8 @@ def define_env(env):
         {"id": "es", "name": "Spanish"},
         {"id": "tr", "name": "Turkish"},
         {"id": "vi", "name": "Vietnamese"},
-        {"id": "uk", "name": "Ukrainian"}
+        {"id": "uk", "name": "Ukrainian"},
+        {"id": "nl", "name": "Dutch"}
     ]
 
     @env.macro
