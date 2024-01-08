@@ -134,4 +134,4 @@ Placeholders can be found [here](Placeholders).
 
 ## Translations
 
-{{ translations(2953, ["cs", "es", "fr", "id", "it", "ja", "ko", "lv", "pl", "pt", "zh-CN", "zh-TW", "hr", "de", "hu", "ro", "ru", "tr", "vi"]) }}
+{{ translations(9225, ["cs", "es", "fr", "id", "it", "ja", "ko", "lv", "pl", "pt", "zh-CN", "zh-TW", "hr", "de", "hu", "ro", "ru", "tr", "vi", "uk"]) }}

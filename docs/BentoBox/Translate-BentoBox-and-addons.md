@@ -1,6 +1,6 @@
 ## Available locales
 
-{{ translations(2855, ["cs", "de", "es", "fr", "hu", "id", "it", "ja", "lv", "pl", "pt", "ro", "ru", "tr", "vi", "zh-CN", "zh-HK"]) }}
+{{ translations(2855, ["cs", "de", "es", "fr", "hu", "id", "it", "ja", "lv", "pl", "pt", "ro", "ru", "tr", "vi", "zh-CN", "zh-HK", "zh-TW", "hr", "ko", "uk"]) }}
 
 ## Guidelines
 

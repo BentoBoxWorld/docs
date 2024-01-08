@@ -414,7 +414,7 @@ By default, BentoBox GameMode addons comes with [default placeholders set](../..
 
 ## Translations
 
-{{ translations(4481, ["cs", "de", "es", "fr", "hr", "hu", "id", "it", "ja", "tr", "vi", "zh-CN", "zh-TW", "pl", "pt", "ro", "ru"]) }}
+{{ translations(4481, ["cs", "de", "es", "fr", "hr", "hu", "id", "it", "ja", "tr", "vi", "zh-CN", "zh-TW", "pl", "pt", "ro", "ru", "uk"]) }}
 
 ## Api
 
