@@ -89,7 +89,7 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
     Example: 
     ```yaml
-        icon: TIPPED_ARROW:INSTANT_HEAL::::1
+        icon: tipped_arrow{CustomPotionColor:11546150}
         title: biomes.gui.buttons.previous.name
         description: biomes.gui.buttons.previous.description
         data:
