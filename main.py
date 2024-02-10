@@ -99,7 +99,7 @@ def define_env(env):
 """
 
                 if ("[gamemode]" in row['placeholder'] or gamemode_name in row['placeholder']):
-                    result += f"| %{row['placeholder'].replace('[gamemode]',gamemode_name)}% | {row['desc']} | {row['version']} |\n"
+                    result += f"| `%{row['placeholder'].replace('[gamemode]',gamemode_name)}%` | {row['desc']} | {row['version']} |\n"
 
         return result
 
@@ -131,7 +131,7 @@ def define_env(env):
                 # Analyze the source
                 if (row['source'] == source):
                     # We are in our plugin, populate rows
-                    result += f"| %{row['placeholder']}% | {row['desc']} | {row['version']} |\n"
+                    result += f"| `%{row['placeholder']}%` | {row['desc']} | {row['version']} |\n"
 
         return result
 
