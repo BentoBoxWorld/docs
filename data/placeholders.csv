@@ -42,6 +42,8 @@ BentoBox,[gamemode]_resets,Number of times the player has reset his island,1.5.0
 BentoBox,[gamemode]_resets_left,Number of times the player can reset his island,1.5.0
 BentoBox,[gamemode]_deaths,Number of times the player died,1.12.0
 BentoBox,[gamemode]_on_island,Whether the player is on an island he is part of or not,1.13.0
+BentoBox,[gamemode]_island_online_members_count,The number of online island members,2.0.1
+BentoBox,[gamemode]_visited_island_online_members_count,The number of online visited island members,2.0.1
 Bank,Bank_[gamemode]_island_balance,Island balance of the player's island,1.1.0
 Bank,Bank_[gamemode]_visited_island_balance,Island balance of the island the player is standing on,1.1.0
 Bank,Bank_[gamemode]_top_value_#rank#,Island balance of the `#rank#`-th island on the leader board,1.1.0
