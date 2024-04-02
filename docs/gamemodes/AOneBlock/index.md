@@ -69,7 +69,7 @@ The first number of any file is how many blocks need to be mined to reach that p
 
 === "holograms"
     !!! summary "Description"
-        AOneBlock uses [Holographic Displays](https://dev.bukkit.org/projects/holographic-displays) plugin for showing these lines. The first line that is showed before any phase has started is located in aoneblock locales file.
+        AOneBlock uses native holograms to show these lines. The first line that is shown before any phase has started is located in aoneblock locales file.
         
         Similar to the `fixedBlocks`, `holograms` also starts with a number when it should be displayed that follows with a displayed text.
 

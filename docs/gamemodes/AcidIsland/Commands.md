@@ -96,42 +96,42 @@
 <td align='left'>acidisland.mod.resethome</td>
 </tr>
 <tr>
-<td align='left'><b>/acid schem</b></td>
-<td align='left'>manipulate schems</td>
+<td align='left'><b>/acid blueprint</b></td>
+<td align='left'>manipulate blueprints</td>
 <td align='left'></td>
 </tr>
 <tr>
-<td align='left'><b>/acid schem copy [air]</b></td>
+<td align='left'><b>/acid blueprint copy [air]</b></td>
 <td align='left'>copy the clipboard set by pos1 and pos2 and optionally the air blocks</td>
 <td align='left'></td>
 </tr>
 <tr>
-<td align='left'><b>/acid schem load <schem name></b></td>
-<td align='left'>load schem into the clipboard</td>
+<td align='left'><b>/acid blueprint load <blueprint name></b></td>
+<td align='left'>load blueprint into the clipboard</td>
 <td align='left'></td>
 </tr>
 <tr>
-<td align='left'><b>/acid schem origin</b></td>
-<td align='left'>set the schem's origin to your position</td>
+<td align='left'><b>/acid blueprint origin</b></td>
+<td align='left'>set the blueprint's origin to your position</td>
 <td align='left'></td>
 </tr>
 <tr>
-<td align='left'><b>/acid schem paste</b></td>
+<td align='left'><b>/acid blueprint paste</b></td>
 <td align='left'>paste the clipboard to your location</td>
 <td align='left'></td>
 </tr>
 <tr>
-<td align='left'><b>/acid schem pos1</b></td>
+<td align='left'><b>/acid blueprint pos1</b></td>
 <td align='left'>set 1st corner of cuboid clipboard</td>
 <td align='left'></td>
 </tr>
 <tr>
-<td align='left'><b>/acid schem pos2</b></td>
+<td align='left'><b>/acid blueprint pos2</b></td>
 <td align='left'>set 2nd corner of cuboid clipboard</td>
 <td align='left'></td>
 </tr>
 <tr>
-<td align='left'><b>/acid schem save <schem name></b></td>
+<td align='left'><b>/acid blueprint save <blueprint name></b></td>
 <td align='left'>save the copied clipboard</td>
 <td align='left'></td>
 </tr>
