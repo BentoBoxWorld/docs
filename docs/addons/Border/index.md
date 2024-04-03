@@ -3,24 +3,19 @@
 **Border** can create and show a border around islands which players cannot pass.  
 The border can be:
 
-- the vanilla world border (using [**WorldBorderAPI**](https://github.com/yannicklamprecht/WorldBorderAPI/releases) plugin)
+- the vanilla world border
 - a custom border that shows up when the player is near (visuals can be configured).
 
 Created and maintained by [tastybento](https://github.com/tastybento).
-
-!!! warning "Dependencies"
-    This addon is configured by default to use the **WorldBorderAPI** to show the border, 
-    **but it can be turned off**, see the `use-wbapi` setting.
 
 {{ addon_description("Border") }}
 
 ## Installation
 
 1. Restart the server (to enable the addon and have the `config.yml` file generated)
-2. If you want to enable the vanilla border type, put the WorldBorderPlugin jar into the `plugins` folder and make sure to set `use-wbapi: true` in `config.yml`. Otherwise, set `use-wbapi: false` in the configuration.
-3. Put the addon jar into the `plugins/BentoBox/addons` folder
-4. Customize settings in `config.yml` (optional)
-5. Restart the server to apply new settings
+2. Put the addon jar into the `plugins/BentoBox/addons` folder
+3. Customize settings in `config.yml` (optional)
+4. Restart the server to apply new settings
 
 ## Commands
 
@@ -67,16 +62,6 @@ Default value:
 
 ```yml
 disabled-gamemodes: []
-```
-
-### Use WorldBorderAPI (WBAPI)
-Enables or disables the usage of **WorldBorderAPI**.  
-If you want to use it then download and enable the [WorldBorderAPI plugin](https://github.com/yannicklamprecht/WorldBorderAPI/releases).
-
-Set it to `true` to enable (and require) the WBAPI integration.
-
-```yml
-use-wbapi: true
 ```
 
 ### Return teleport
