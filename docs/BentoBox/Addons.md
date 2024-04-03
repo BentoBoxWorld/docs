@@ -1,7 +1,8 @@
 Addons are what makes BentoBox special. However, note that these **are not plugins**: they **won't launch** if you just put them in the `plugins` folder.
 
 These include some popular Gamemodes:
-* [**BSkyBlock**](https://github.com/BentoBoxWorld/BSkyBlock): the successor to the popular ASkyBlock.
+* [**BSkyBlock**](https://github.com/BentoBoxWorld/BSkyBlock): Skyblock! The successor to the popular ASkyBlock.
+* [**AOneBlock**](https://github.com/BentoBoxWorld/AOneBlock): you have one block!
 * [**AcidIsland**](https://github.com/BentoBoxWorld/AcidIsland): you are marooned in a sea of acid!
 * [**CaveBlock**](https://github.com/BentoBoxWorld/CaveBlock): try to live underground!
 * [**SkyGrid**](https://github.com/BentoBoxWorld/SkyGrid): survive in world made up of scattered blocks - what an adventure!

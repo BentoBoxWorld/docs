@@ -3,7 +3,7 @@
 
 Blueprints are *like* WorldEdit schematics but are **not** compatible. Blueprints are optimized for BentoBox addons and do not require any other plugin or library to use.
 
-Blueprints are managed with the **Blueprint Manager** and can be bundled together into a **Blueprint Bundle** to contain a set of up to 3 islands (normal world, nether and end world). Blueprint Bundles can have their own icon, description and can contain other settings, like requiring permission to use.
+Blueprints are managed with the **Blueprint Manager** and can be bundled together into a **Blueprint Bundle** to contain a set of up to 3 islands for each dimension - normal world, nether and end world. Blueprint Bundles have their own icon, description and can contain other settings, like requiring permission to use.
 
 ### FAQ: I have a lot of schematics - how do I convert them to Blueprints?
 
@@ -95,10 +95,10 @@ Rename a name tag with the placeholder in an anvil, then apply the name tag to t
 Blueprints can have two special signs in them to help you place where a player will spawn and to give them a welcome message.
 
 ### Spawn Here Sign
-Place a sign with the first line as [spawn_here] where you want the player to spawn. They will appear in this position and the sign will not be pasted. This applies to all world islands, so you can specify where players will appear in the Nether when they go through a portal, for example.
+Place a sign with the first line as [spawn_here] (in English) where you want the player to spawn. They will appear in this position and the sign will not be pasted. This applies to all world islands, so you can specify where players will appear in the Nether when they go through a portal, for example.
 
 ### Welcome Sign
-The welcome sign provides a friendly way to give players a hint about the game and what to do, or not do! Place a sign with [start] on the first line. The sign's text will be replaced by the sign text in the GameModeAddon's locale file.
+The welcome sign provides a friendly way to give players a hint about the game and what to do, or not do! Place a sign with [start] (in English) on the first line. The sign's text will be replaced by the sign text in the GameModeAddon's locale file.
 
 ## Tips & Recommendations
 * We recommend that you keep starting islands small to make the game a challenge. Put just enough items and blocks on an island for players to be able to grow their island.

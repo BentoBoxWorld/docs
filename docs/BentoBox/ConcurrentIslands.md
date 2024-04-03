@@ -37,8 +37,7 @@ Island ownership can be transfered to other players on the team using the `setow
 ### Teams
 
 - Teams are island-based and teams do not span islands.
-- It's not possible to invite a player who is already in a team.
-- It is possible to have a team on each of your islands and be the leader of them all, but members cannot be in more than one team, and if you transfer ownership of the team to another player, you will automatically leave the team and that person will gain the island.
+- As of BentoBox 2.3.0, there is a setting in to allow team members to have their own islands, in which case players can be members of multiple teams on different islands.
 
 ## Game Mode Support
 
@@ -46,7 +45,7 @@ All game modes should support concurrent islands.
 
 ## Addon Support
 
-This lists the addons and their compatibility with concurrent islands.
+This lists the addons and their compatibility with concurrent islands. As of 2024-04-03:
 
 | Addon | Comments          |
 |-------|-------------------|
