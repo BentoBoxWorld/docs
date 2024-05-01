@@ -58,9 +58,10 @@ repositories {
 }
 
 dependencies {
-  compileOnly 'world.bentobox:bentobox:PUT-VERSION-HERE'
+  compileOnly 'world.bentobox:bentobox:PUT-VERSION-HERE-SNAPSHOT'
 }
 ```
+**Note:** Due to a Gradle issue with versions for Maven, you need to use -SNAPSHOT at the end.
 
 If you have any issues, please have a look at [Gradle's documentation about declaring dependencies](https://docs.gradle.org/current/userguide/declaring_dependencies.html).
 
