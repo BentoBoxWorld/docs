@@ -26,11 +26,11 @@ The main `config.yml` file contains basic information about game-mode addon setu
 
 `phases` contains all information about phases that will be present in your AOneBlock world.
 
-`panels` allows to customize some user accessible panels.
+`panels` allows you to customize some user accessible panels.
 
 ### config.yml
 
-After addon is successfully installed, it will create config.yml file. Every option in this file comes with comments about them. Please check file for more information.
+After addon is successfully installed, it will create a config.yml file. Every option in this file comes with comments about them. Please check file for more information.
 You can find the latest config file: [config.yml](https://github.com/BentoBoxWorld/AOneBlock/blob/develop/src/main/resources/config.yml)
 
 ### Phase Config Files
@@ -71,7 +71,7 @@ The first number of any file is how many blocks need to be mined to reach that p
     !!! summary "Description"
         AOneBlock uses native holograms to show these lines. The first line that is shown before any phase has started is located in aoneblock locales file.
         
-        Similar to the `fixedBlocks`, `holograms` also starts with a number when it should be displayed that follows with a displayed text.
+        Similar to the `fixedBlocks`, `holograms` also start with a number when it should be displayed that follows with a displayed text.
 
     !!! example "Example"
         ```yaml
@@ -84,7 +84,7 @@ The first number of any file is how many blocks need to be mined to reach that p
 === "biome"
     !!! summary "Description"
         `biome` is an experimental option. However, it changes biome only for the "magic" block location. 
-        So we would suggest to use Biomes addon that has an option to change biome on whole island. 
+        So we would suggest to use the Biomes addon that has an option to change the biome on whole island. 
         You can do it with phase start commands which would trigger biome change.
 
 === "start-commands"
@@ -284,14 +284,14 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
 === "AOneBlock unique player commands"
     - `/[player_command] count`: sends a message in chat about current phase progress.
-    - `/[player_command] phases`: opens GUI that allows to view and choose phases.
-    - `/[player_command] setcount <number>`: allows changing current phase where <number> is phase start number.
-    - `/[player_command] check`: spawns particles around magic block or respawns it, if for some reason it was mising.
+    - `/[player_command] phases`: opens a GUI that allows the viewing and choosing of phases.
+    - `/[player_command] setcount <number>`: allows changing the current phase where `<number>` is the phase start number.
+    - `/[player_command] check`: spawns particles around the magic block or respawns it, if for some reason it was mising.
 
 === "Admin commands"
-    - `/[admin_command] sanity [<phase>]`: sends a message if phases (or <phase>) chests are correct.
-    - `/[admin_command] setcount <player> <number>`: allows changing current phase to a <player> where <number> is phase start number.
-    - `/[admin_command] setchest <phase> <rarity>`: saves a chest that player is looking at into <phase> chests section with <rarity>.
+    - `/[admin_command] sanity [<phase>]`: sends a message if phases (or `<phase>`) chests are correct.
+    - `/[admin_command] setcount <player> <number>`: allows changing the current phase to a `<player>` where `<number>` is the phase start number.
+    - `/[admin_command] setchest <phase> <rarity>`: saves a chest that player is looking at into `<phase>` chests section with `<rarity>`.
 
 
 By default, BentoBox GameMode addons comes with the default sub-command set, however, each addon may introduce even more sub commands.
