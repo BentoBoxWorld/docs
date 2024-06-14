@@ -283,7 +283,7 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     Be aware, that this addon allows changing player commands aliases in addon `config.yml` file.
 
 === "AOneBlock unique player commands"
-    - `/[player_command] count`: sends a message in chant about current phase progress.
+    - `/[player_command] count`: sends a message in chat about current phase progress.
     - `/[player_command] phases`: opens GUI that allows to view and choose phases.
     - `/[player_command] setcount <number>`: allows changing current phase where <number> is phase start number.
     - `/[player_command] check`: spawns particles around magic block or respawns it, if for some reason it was mising.
