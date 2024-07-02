@@ -382,14 +382,19 @@ To do this, make a class with the recommended name of `MyAddonPladdon.java`, whe
 @ApiVersion(ApiVersion.Target.v1_16)
 @Dependency(value = "BentoBox")
 public class LevelPladdon extends Pladdon {
+    private Addon addon;
+    
     @Override
     public Addon getAddon() {
-        return new Level();
+        if (addon == null) {
+            addon = new Level();
+        }
+        return addon;
     }
 }
 ```
 
-The only method that should be defined is the `getAddon()` method that must return an instance of your Addon.
+The only method that should be defined is the `getAddon()` method that must return the instance of your Addon. Make sure you return only one instance so that duplicates are not created should this method be called multiple times.
 
 Once this is done, the Addon will be loaded just like a plugin and will be able to be accessed via other plugins.
 
