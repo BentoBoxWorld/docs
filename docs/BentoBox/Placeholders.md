@@ -48,6 +48,8 @@ All gamemode addons get some default placeholders automatically registered to th
 | %[gamemode]_island_members_max% | Maximum number of members there can be on the island | 1.5.0 |
 | %[gamemode]_island_members_count% | Number of members, subowners and owner there are on the island | 1.5.0 |
 | %[gamemode]_island_members_list% | Comma separated list of player names that are at least MEMBER on the island | 1.13.0 |
+| %[gamemode]_island_coop_list% | Comma separated list of player names that are COOP on the island | 2.4.2 |
+| %[gamemode]_island_trusted_list% | Comma separated list of player names that are TRUSTED on the island | 2.4.2 |
 | %[gamemode]_island_trustees_count% | Number of players trusted to the island | 1.5.0 |
 | %[gamemode]_island_coops_count% | Number of players cooped to the island | 1.5.0 |
 | %[gamemode]_island_visitors_count% | Number of players currently visiting the island | 1.5.0 |
@@ -64,6 +66,8 @@ All gamemode addons get some default placeholders automatically registered to th
 | %[gamemode]_visited_island_center_z% | Z coordinate of the center of the island the player is standing on | 1.5.2 |
 | %[gamemode]_visited_island_members_max% | Maximum number of members there can be on the island the player is standing on | 1.5.2 |
 | %[gamemode]_visited_island_members_count% | Number of members, subowners and owner there are on the island | 1.5.2 |
+| %[gamemode]_visited_island_coop_list% | Comma separated list of player names that are COOP on the island the player is standing on | 2.4.2 |
+| %[gamemode]_visited_island_trusted_list% | Comma separated list of player names that are TRUSTED on the island the player is standing on | 2.4.2 |
 | %[gamemode]_visited_island_members_list% | Comma separated list of player names that are at least MEMBER on the island the player is standing on | 1.13.0 |
 | %[gamemode]_visited_island_trustees_count% | Number of players trusted on the island the player is standing on | 1.5.2 |
 | %[gamemode]_visited_island_coops_count% | Number of players cooped to the island the player is standing on | 1.5.2 |
