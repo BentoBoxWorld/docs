@@ -1,9 +1,10 @@
-Addons are what makes BentoBox special. However, note that these **are not plugins**: they **won't launch** if you just put them in the `plugins` folder.
+Addons are what makes BentoBox special. They provide the game modes and utility functions for them. 
 
 These include some popular Gamemodes:
-* [**BSkyBlock**](https://github.com/BentoBoxWorld/BSkyBlock): Skyblock! The successor to the popular ASkyBlock.
+* [**BSkyBlock**](https://github.com/BentoBoxWorld/BSkyBlock): Skyblock!
 * [**AOneBlock**](https://github.com/BentoBoxWorld/AOneBlock): you have one block!
 * [**AcidIsland**](https://github.com/BentoBoxWorld/AcidIsland): you are marooned in a sea of acid!
+* [**Boxed**](https://github.com/BentoBoxWorld/Boxed): you start in a tiny 4x4 box and can only make it bigger by conpleting Advancements!
 * [**CaveBlock**](https://github.com/BentoBoxWorld/CaveBlock): try to live underground!
 * [**SkyGrid**](https://github.com/BentoBoxWorld/SkyGrid): survive in world made up of scattered blocks - what an adventure!
 
