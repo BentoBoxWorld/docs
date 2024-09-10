@@ -2,10 +2,6 @@
 
 These are the placeholders available:
 
-Here is the updated table with the missing placeholder `%aoneblock_my_island_blocks_for_phase%` added, sorted alphabetically by the first column:
-
-Here's the table without the "AOneBlock Version" column:
-
 |Placeholder|Description|
 |--- |--- |
 |%aoneblock_my_island_blocks_for_phase%|blocks for the current phase of your island|
