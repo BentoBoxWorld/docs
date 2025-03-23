@@ -46,7 +46,7 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
     Example: 
     ```yaml
-        icon: tipped_arrow{CustomPotionColor:11546150}
+        icon: tipped_arrow[potion_contents={custom_color:11546150}]
         title: visit.gui.buttons.previous.name
         description: visit.gui.buttons.previous.description
         data:

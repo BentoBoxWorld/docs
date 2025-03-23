@@ -1,4 +1,4 @@
-## Permissions
+## Warps Permissions
 
 Usage permissions are (put the gamemode name, e.g. acidisland at the front):
 
