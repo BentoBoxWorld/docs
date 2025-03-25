@@ -76,14 +76,22 @@ The main team command is `team`. To issue this command you must have an island. 
 ## Team Sizes
 Teams can be any size and the maximum size can be set globally on a gamemode-basis or determine by a numbered permission given to the team owner. The default max team size is 4. The maximum number of coop and trusted members is also set to 4.
 
+### Team Size Permissions
+
+* Team Size: The permission for team size is `[gamemode].team.maxsize.X` where X is a number.
+* Coop Size: `[gamemode].team.coopsize.X` where X is a number
+* Trust Size: `[gamemode].team.trustsize.X` where X is a number
+
 ## Team Member Ranks
 BentoBox has the following team ranks built-in:
+
 * Owner - this is the owner of the island. There can be only one owner.
 * Sub-Owner - this is a member rank that has almost the same permissions as the owner. There can be multiple sub-owners.
 * Member - this is the default member rank.
 
 ### Non-team member ranks
 Islands have other ranks that are related to teams but are not team members:
+
 * Trusted - this is a non-team member who has permanent permissions on the island, i.e., they have them until they are untrusted by a team member.
 * Coop - this is a non-team member who has temporary permissions on the island and these permissions will cease if the team member who gave them logs off, or if they are uncoop-ed.
 * Visitor - this is the default rank for any players who visit the island
@@ -110,6 +118,7 @@ If the island team size is already at the maximum, the invite command will tell 
 
 #### Cooldown
 Invites can be abused by players, so BentoBox prevents the same player being invited to an island in the cool down period. The cool down is imposed on the island as a whole, so it is not possible for various members of the island to spam another player with invites. The default cool down times for the various invites are:
+
 * Team member - 60 minutes
 * Coop invite - 5 minutes
 * Trusted invite - 5 minutes
@@ -129,8 +138,10 @@ There is a small chance that the inviter loses the rank required to invite playe
 **Accessability:** The default cool down response time is set globally for all game modes in **BentoBox's** `config.yml` and is 10 seconds. Extend this value if your players need more time to confirm commands. Remember that hitting the up arrow when in command mode will show the previous command so it is not required to type in the whole command again to confirm.
 
 **API:** After all validation checks are complete, but before the invite is sent, the `TeamJoinEvent` will be fired. If this event is canceled then the invite will not be sent. Once the player has joined the island, there are subsequent events that are fired depending on the invite type:
+
 *  `TeamJoinedEvent` that is fired once the player joins the  island team.
 * `IslandRankChange` is fired to indicate the new player rank of member, trusted or coop.
+
 These subsequent events are for notification and cannot be canceled.
 
 #### Process of becoming a team member
