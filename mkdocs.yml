@@ -16,6 +16,7 @@ nav:
         - SkyGrid: gamemodes/SkyGrid/index.md
         - CaveBlock: gamemodes/CaveBlock/index.md
         - AOneBlock: gamemodes/AOneBlock/index.md
+        - Poseidon: gamemodes/Poseidon/index.md
     - Addons:
         - Bank: addons/Bank/index.md
         - Biomes: addons/Biomes/index.md

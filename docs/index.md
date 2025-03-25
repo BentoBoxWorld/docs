@@ -1,6 +1,6 @@
 # BentoBox
 
-BentoBox is a powerful Bukkit library plugin that provides core features for island-style games like SkyBlock, AcidIsland, OneBlock and others. It provides features such a island creation, team management, protection, etc. These games and features are added to BentoBox via addons that are like mini-plugins. Admins can customize their server to have exactly what games and features they want.
+BentoBox is a powerful Bukkit/Paper library plugin that provides core features for island-style games like SkyBlock, AcidIsland, OneBlock and others. It provides features such a island creation, team management, protection, etc. These games and features are added to BentoBox via addons that are like mini-plugins. Admins can customize their server to have exactly what games and features they want.
 
 ## Supporting BentoBox
 
@@ -24,6 +24,7 @@ Download ready to go packs at [https://download.bentobox.world](https://download
     - [AcidIsland Permissions](gamemodes/AcidIsland/#permissions)
     - [BSkyBlock Permissions](gamemodes/BSkyBlock/#permissions)
     - [CaveBlock Permissions](gamemodes/CaveBlock/#permissions)
+    - [Poseidon Permissions](gamemodes/Poseidon/#permissions)
     - [SkyGrid Permissions](gamemodes/SkyGrid/#permissions)
     - [Biomes Permissions](addons/Biomes/#permissions)
     - [Challenges Permissions](addons/Challenges/#permissions)
