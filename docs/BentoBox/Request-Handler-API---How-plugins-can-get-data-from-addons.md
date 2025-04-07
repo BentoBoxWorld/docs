@@ -1,4 +1,9 @@
 # The Request Handler API
+
+**Note:** This API is deprecated because most Addons are now loaded as Plugins. This page is left up just for reference.
+
+---
+
 This API enables plugin authors to request data from addons. Addon authors can decide exactly what data they wish to expose. Plugins cannot directly access any classes inside an addon because of Java security rules on class loaders.
 
 ## Example with Level addon
