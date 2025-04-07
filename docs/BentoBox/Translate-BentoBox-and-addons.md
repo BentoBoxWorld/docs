@@ -4,7 +4,8 @@
 
 ## Guidelines
 
-* Please use GitLocalize for the translations and when you think you are done, alert us on Discord. Translators get a special badge!
+* We now have a tool to enable translations of file at [https://download.bentobox.world/translate.html](https://download.bentobox.world/translate.html). This runs localling in your browser and may help translation. Submit new files as PRs on GitHub.
+* Translators get a special badge!
 * Do not translate text inside square brackets because those are placeholders, e.g. [name] should remain in English
 * Test your translations - try to check everything you can before submitting it
 * Do not include any advertising, swear words, or derogatory comments in the translations. We do check them before accepting the PR.
