@@ -1,6 +1,6 @@
 # BentoBox
 
-BentoBox is a powerful Bukkit/Paper library plugin that provides core features for island-style games like SkyBlock, AcidIsland, OneBlock and others. It provides features such a island creation, team management, protection, etc. These games and features are added to BentoBox via addons that are like mini-plugins. Admins can customize their server to have exactly what games and features they want.
+BentoBox is a powerful Paper library plugin that provides core features for island-style games like SkyBlock, AcidIsland, OneBlock and others. It provides features such a island creation, team management, protection, etc. These games and features are added to BentoBox via addons that are like mini-plugins. Admins can customize their server to have exactly what games and features they want.
 
 ## Supporting BentoBox
 
@@ -22,15 +22,36 @@ Download ready to go packs at [https://download.bentobox.world](https://download
 - Permissions
     - [BentoBox Permissions](BentoBox/Permissions)
     - [AcidIsland Permissions](gamemodes/AcidIsland/#permissions)
+    - [AOneBlock Permissions](gamemodes/AOneBlock/#permissions)
+    - [Bank Permissions](addons/Bank/#permissions)
+    - [Biomes Permissions](addons/Biomes/#permissions)
+    - [Border Permissions](addons/Border/#permissions)
     - [BSkyBlock Permissions](gamemodes/BSkyBlock/#permissions)
     - [CaveBlock Permissions](gamemodes/CaveBlock/#permissions)
+    - [Cauldron Witchery](addons/CauldronWitchery/#permissions)
+    - [Challenges Permissions](addons/Challenges/#permissions)
+    - [Chat Permissions](addons/Chat/#permissions)
+    - [Check Me Out Permissions](addons/CheckMeOut/#permissions)
+    - [Control Panel Permissions](addons/ControlPanel/#permissions)
+    - [Dimensional Trees Permissions](addons/DimensionalTrees/#permissions)
+    - [Extra Mobs Permissions](addons/ExtraMobs/#permissions)
+    - [Farmers Dance Permissions](addons/FramersDance/#permissions)
+    - [Greenhouses Permissions](addons/Greenhouses/Permissions)
+    - [InvSwitcher Permissions](addons/InvSwitcher/#permissions)
+    - [Island Fly Permissions](addons/IslandFly/#permissions)
+    - [Level Permissions](addons/Level/#permissions)
+    - [Likes Permissions](addons/Likes/Permissions)
+    - [Limits Permissions](addons/Limits/Permissions)
+    - [Magic Cobblestone Generator Permissions](addons/MagicCobblestoneGenerator/#permissions)
     - [Poseidon Permissions](gamemodes/Poseidon/#permissions)
     - [SkyGrid Permissions](gamemodes/SkyGrid/#permissions)
-    - [Biomes Permissions](addons/Biomes/#permissions)
-    - [Challenges Permissions](addons/Challenges/#permissions)
-    - [Level Permissions](addons/Level/#permissions)
-    - [Limits Permissions](addons/Limits/#permissions)
-    - [Warps Permissions](addons/Warps/#permissions)
+    - [TopBlock Permissions](addons/TopBlock/#permissions)
+    - [Twerking For Trees Permissions](addons/TwerkingForTrees/#permissions)
+    - [Upgrades Permissions](addons/Upgrades/#permissions)
+    - [TopBlock Permissions](addons/TopBlock/#permissions)
+    - [Visit Permissions](addons/Visit/#permissions)
+    - [VoidPortals Permissions](addons/VoidPortals/#permissions)
+    - [Warps Permissions](addons/Warps/Permissions)
 - [Island Protection, Flags & Ranks](BentoBox/Island-Protection,-Flags-&-Ranks)
     - [Flags](BentoBox/Flags)
     - [Ranks](BentoBox/Island-Protection,-Flags-&-Ranks#ranks)
