@@ -2,6 +2,10 @@
 
 BentoBox manages teams for game modes. Teams enable players to group together on one island. Teams have one owner, or leader, and at least one team member. 
 
+## Team GUI
+
+When players issue the `team` command it brings up a GUI that enables them to see their team, invite other players, search for players, and manage the team. The commands can also be used, but players often like the GUI.
+
 ## Team commands
 This is a list of team commands available to players. The command is used after the main player command, for example `/island team` for BSkyBlock. 
 <table width="100%" align="center">
