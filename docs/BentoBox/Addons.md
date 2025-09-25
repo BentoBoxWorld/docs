@@ -24,7 +24,7 @@ And there are plenty of other official or community-made Addons you can try and 
 
 # Install Addons
 
-Firstly, you need to download the Addons you want to add to your server. Official ones can be found on [BentoBoxWorld's repositories list](https://github.com/BentoBoxWorld) (links provided above) and can be downloaded from their `Releases` tab (or from [Jenkins](https://ci.codemc.org/job/BentoBoxWorld/) for **untested** development builds).
+Firstly, you need to download the Addons you want to add to your server. Official ones can be found on [BentoBoxWorld's repositories list](https://github.com/BentoBoxWorld) (links provided above) and can be downloaded from their `Releases` tab (or from [Jenkins](https://ci.codemc.io/job/BentoBoxWorld/) for **untested** development builds).
 
 Once you have downloaded everything you need, you just have to put them all in the `plugins\BentoBox\addons` folder, boot up your server so that config files and folders get created, and finally turn it off again in order to be able to edit everything without causing any harm to your server.
 

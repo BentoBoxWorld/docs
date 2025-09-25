@@ -14,7 +14,7 @@ Let's get started!
 
 # Download BentoBox
 
-You can download BentoBox **for free** on different websites. Official releases can be found on the plugin's Spigot page or in the [GitHub `Releases` tab](https://github.com/BentoBoxWorld/bentobox/releases), whereas **untested** development builds can be downloaded from [Jenkins](https://ci.codemc.org/job/BentoBoxWorld/job/BentoBox/).
+You can download BentoBox **for free** on different websites. Official releases can be found on the plugin's Spigot page or in the [GitHub `Releases` tab](https://github.com/BentoBoxWorld/bentobox/releases), whereas **untested** development builds can be downloaded from [Jenkins](https://ci.codemc.io/job/BentoBoxWorld/job/BentoBox/).
 
 # Setup BentoBox
 
@@ -28,7 +28,7 @@ Now, turn off your server. You can have a look at BentoBox's `config.yml` file.
 
 [Addons](/BentoBox/Addons) are what makes BentoBox special. However, note that these **are not plugins**: they **won't launch** if you just put them in the `plugins` folder.
 
-Firstly, you need to download the Addons you want to add to your server. Official ones can be found in [BentoBoxWorld's repositories list](https://github.com/BentoBoxWorld) and can be downloaded from their `Releases` tab (or from [Jenkins](https://ci.codemc.org/job/BentoBoxWorld/) for **untested** development builds). We will setup a website at some point so it gets easier for you to download them later on.
+Firstly, you need to download the Addons you want to add to your server. Official ones can be found in [BentoBoxWorld's repositories list](https://github.com/BentoBoxWorld) and can be downloaded from their `Releases` tab (or from [Jenkins](https://ci.codemc.io/job/BentoBoxWorld/) for **untested** development builds). We will setup a website at some point so it gets easier for you to download them later on.
 
 Once you have downloaded everything you need, you just have to put them all in the `plugins\BentoBox\addons` folder, boot up your server so that config files and folders get created, and finally turn it off again in order to be able to edit everything without causing any harm to your server.
 

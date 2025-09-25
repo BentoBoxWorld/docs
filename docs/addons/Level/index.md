@@ -411,7 +411,7 @@ Level provides an API for other plugins. This covers Level 2.8.1 and onwards.
         <repositories>
             <repository>
                 <id>codemc-repo</id>
-                <url>https://repo.codemc.io/repository/maven-public/</url>
+                <url>https://repo.codemc.io/repository/bentoboxworld/</url>
             </repository>
         </repositories>
         

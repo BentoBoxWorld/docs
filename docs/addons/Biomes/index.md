@@ -274,7 +274,7 @@ Add the Biomes dependency to your Maven POM.xml:
         <repositories>
             <repository>
                 <id>codemc-repo</id>
-                <url>https://repo.codemc.io/repository/maven-public/</url>
+                <url>https://repo.codemc.io/repository/bentoboxworld/</url>
             </repository>
         </repositories>
         

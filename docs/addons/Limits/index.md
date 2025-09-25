@@ -44,7 +44,7 @@ Note: Only the first 49 limited blocks and entities are shown in the limits GUI.
 ### entitygrouplimits
 
 !!! note "Experimental feature"
-    The following feature is only available in development builds, which you may find on ci.codemc.org.
+    The following feature is only available in development builds, which you may find on ci.codemc.io.
 
 ```yaml
 entitygrouplimits:

@@ -73,7 +73,7 @@ def define_env(env):
     - [GitHub repository](https://github.com/BentoBoxWorld/{addon_name})
     ([Releases](https://github.com/BentoBoxWorld/{addon_name}/releases))
     - [Issue tracker](https://github.com/BentoBoxWorld/{addon_name}/issues)
-    - [Development builds](https://ci.codemc.org/job/BentoBoxWorld/job/{addon_name})
+    - [Development builds](https://ci.codemc.io/job/BentoBoxWorld/job/{addon_name})
     ([Latest stable build](https://ci.codemc.io/job/BentoBoxWorld/job/{addon_name}/lastStableBuild/))"""
 
         return result
