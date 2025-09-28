@@ -12,7 +12,7 @@ The Pladdon wrapper's job is to generate the Addon instance and supply it any ti
 As a result of Addons being Plugins, they will be listed as such by the server, however they should still be placed in the `Bentobox/Addons` folder. 
 
 # JavaDocs
-Javadocs are here: [https://javadocs.bentobox.world](https://javadocs.bentobox.world)
+Javadocs are here: [https://javadocs.bentobox.world](https://ci.codemc.io/job/BentoBoxWorld/job/BentoBox/javadoc/)
 
 The core API package is `world.bentobox.bentobox.api.*`. Methods in those packages are kept as stable as possible over the long term. Methods and classes outside of the api package may change a lot or more frequently.
 
