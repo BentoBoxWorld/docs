@@ -1,5 +1,5 @@
 site_name: BentoBox World
-copyright: "© Copyright 2017-2023 Tastybento, Poslovitch and the BentoBoxWorld community (CC-BY 4.0)."
+copyright: "© Copyright 2017-2025 Tastybento, Poslovitch and the BentoBoxWorld community (CC-BY 4.0)."
 repo_url: https://github.com/BentoBoxWorld/BentoBox
 repo_name: BentoBoxWorld/BentoBox
 edit_uri: ""
@@ -10,13 +10,15 @@ nav:
         - Protection: BentoBox/About/Protections.md
     - FAQ: FAQ.md
     - Game Modes:
+        - AcidIsland: gamemodes/AcidIsland/index.md
+        - AOneBlock: gamemodes/AOneBlock/index.md
         - BSkyBlock: gamemodes/BSkyBlock/index.md
         - Boxed: gamemodes/Boxed/index.md
-        - AcidIsland: gamemodes/AcidIsland/index.md
-        - SkyGrid: gamemodes/SkyGrid/index.md
         - CaveBlock: gamemodes/CaveBlock/index.md
-        - AOneBlock: gamemodes/AOneBlock/index.md
         - Poseidon: gamemodes/Poseidon/index.md
+        - SkyGrid: gamemodes/SkyGrid/index.md
+        - Stranger Realms: gamemodes/StrangerRealms/index.md
+              
     - Addons:
         - Bank: addons/Bank/index.md
         - Biomes: addons/Biomes/index.md

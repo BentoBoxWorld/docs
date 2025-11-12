@@ -45,6 +45,7 @@ Download ready to go packs at [https://download.bentobox.world](https://download
     - [Magic Cobblestone Generator Permissions](addons/MagicCobblestoneGenerator/#permissions)
     - [Poseidon Permissions](gamemodes/Poseidon/Permissions)
     - [SkyGrid Permissions](gamemodes/SkyGrid/Permissions)
+    - [Stranger Realms](gamemodes/StrangerRealms/Permissions)
     - [TopBlock Permissions](addons/TopBlock/#permissions)
     - [Twerking For Trees Permissions](addons/TwerkingForTrees/#permissions)
     - [TopBlock Permissions](addons/TopBlock/#permissions)
