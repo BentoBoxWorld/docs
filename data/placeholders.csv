@@ -48,8 +48,13 @@ BentoBox,[gamemode]_island_online_members_count,The number of online island memb
 BentoBox,[gamemode]_visited_island_online_members_count,The number of online visited island members,2.0.1
 Bank,Bank_[gamemode]_island_balance,Island balance of the player's island,1.1.0
 Bank,Bank_[gamemode]_visited_island_balance,Island balance of the island the player is standing on,1.1.0
+Bank,Bank_[gamemode]_island_balance_number,Island balance of the player's island as a raw number,1.3.0
+Bank,Bank_[gamemode]_visited_island_balance_number,Island balance of the island the player is standing on as a raw number,1.3.0
+Bank,Bank_[gamemode]_island_balance_formatted,Island balance of the player's island as formatted number,1.3.0
+Bank,Bank_[gamemode]_visited_island_balance_formatted,Island balance of the island the player is standing on as formatted number,1.3.0
 Bank,Bank_[gamemode]_top_value_<number>,Island balance of the `<number>`-th island on the leader board,1.1.0
 Bank,Bank_[gamemode]_top_name_<number>,Island owner's name of the `<number>`-th island on the leader board,1.1.0
+Bank,Bank_[gamemode]_top_island_<number>,Island name of the `<number>`-th island on the leader board,1.10.0
 Challenges,[gamemode]_challenges_total_completion_count,Number of times the player completed challenges,0.8.3
 Challenges,[gamemode]_challenges_completed_count,Number of challenges the player has completed,0.8.3
 Challenges,[gamemode]_challenges_uncompleted_count,Number of challenges the player has not yet completed,0.8.3
