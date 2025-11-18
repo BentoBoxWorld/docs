@@ -190,6 +190,7 @@ The first number of any file is how many blocks need to be mined to reach that p
         To define custom blocks in `blocks` section, you need to add `-` before each element.
         Also, blocks must be defined with type, data and probability values.
         Supported types are: 
+        
           - `block-data`: uses `/setblock` command to place a block in the world. Requires `data` field
           - `mob`: uses `spawn entity` API to create requested entity. Requires `mod` field
           - `itemsadder`: uses ItemsAdder API to create block. Requires `id` field.
