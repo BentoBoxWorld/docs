@@ -11,7 +11,10 @@ Please donate by becoming a [sponsor through GitHub](https://github.com/sponsors
 Download ready to go packs at [https://download.bentobox.world](https://download.bentobox.world)
 
 ## Getting started
+- [Your First 30 Minutes](BentoBox/First-Steps) — what to do right after installing
 - [Install BentoBox](BentoBox/Install-Bentobox)
+- [Choose a Game Mode](gamemodes/Comparison)
+- [Glossary](Glossary) — key terms explained
 - [FAQ](FAQ)
 - [Migration from ASkyBlock](Converter/index.md)
 - [Set a BentoBox world as the server default world](BentoBox/Set-a-BentoBox-world-as-the-server-default-world)

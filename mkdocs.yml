@@ -6,10 +6,18 @@ edit_uri: ""
 nav:
     - Home: index.md
     - "What does BentoBox do?":
+        - Island Management: BentoBox/About/IslandManagement.md
+        - Game Modes: BentoBox/About/GameModes.md
+        - Addons: BentoBox/About/Addons.md
         - Team Handling: BentoBox/About/Teams.md
         - Protection: BentoBox/About/Protections.md
+        - Blueprints: BentoBox/About/BlueprintsSummary.md
+        - Multilingual Support: BentoBox/About/Multilingual.md
+        - Admin Tools: BentoBox/About/AdminTools.md
+    - Glossary: Glossary.md
     - FAQ: FAQ.md
     - Game Modes:
+        - Choosing a Game Mode: gamemodes/Comparison.md
         - AcidIsland: gamemodes/AcidIsland/index.md
         - AOneBlock: gamemodes/AOneBlock/index.md
         - BSkyBlock: gamemodes/BSkyBlock/index.md
@@ -45,6 +53,7 @@ nav:
         - VoidPortals: addons/VoidPortals/index.md
         - Warps: addons/Warps/index.md
     - "Tutorials – Generic":
+        - "Your First 30 Minutes": BentoBox/First-Steps.md
         - "How To Install": BentoBox/Install-Bentobox.md
         - "Set a BentoBox world as the server's default world": BentoBox/Set-a-BentoBox-world-as-the-server-default-world.md
         - "Database transition": BentoBox/Database-transition.md

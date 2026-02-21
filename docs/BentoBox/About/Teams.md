@@ -114,11 +114,9 @@ Currently, the only promotion or demotion possible is between the ranks of Membe
 ## Joining Teams
 ### Inviting
 Players can be invited to join a team using the `team invite` command. To invite players to join a team, the inviter must be an island owner or have sufficient rank to use the command (see [Configurable Rank Command](#configurable-rank-commands)). Players are invited by name and must be online. Invites can only be made to players who are not already on a team. If a player wants to switch teams, they must leave their current team before they can be invited.
-Invited players cannot be invited again until they reject the invite. 
+Invited players cannot be invited again until they reject the invite.
 Invited players can only have **one** active invite at a time. This includes team, coop and trusted invites. If a player receives a new valid invite while another is pending, the old one is replaced by the new invite.
 If the island team size is already at the maximum, the invite command will tell the user that the island is full.
-
-**API:** After all validation checks are complete, but before the invite is sent, the `TeamInviteEvent` will be fired. If this event is canceled then the invite will not be sent.
 
 #### Cooldown
 Invites can be abused by players, so BentoBox prevents the same player being invited to an island in the cool down period. The cool down is imposed on the island as a whole, so it is not possible for various members of the island to spam another player with invites. The default cool down times for the various invites are:
@@ -139,87 +137,43 @@ The admin can decide whether confirmation is required or not for this command. T
 
 There is a small chance that the inviter loses the rank required to invite players before the player accepts the invite. In this case, the acceptance will not process and the user will be told that the invite is no longer valid.
 
-**Accessability:** The default cool down response time is set globally for all game modes in **BentoBox's** `config.yml` and is 10 seconds. Extend this value if your players need more time to confirm commands. Remember that hitting the up arrow when in command mode will show the previous command so it is not required to type in the whole command again to confirm.
+!!! tip "Confirmation time"
+    The default time players have to confirm a command is 10 seconds. If your players need more time, increase this value in BentoBox's `config.yml`. Players can also press the up arrow to recall the previous command rather than retyping it.
 
-**API:** After all validation checks are complete, but before the invite is sent, the `TeamJoinEvent` will be fired. If this event is canceled then the invite will not be sent. Once the player has joined the island, there are subsequent events that are fired depending on the invite type:
+#### What happens when a player accepts
 
-*  `TeamJoinedEvent` that is fired once the player joins the  island team.
-* `IslandRankChange` is fired to indicate the new player rank of member, trusted or coop.
+When a player accepts a team invite, BentoBox automatically:
 
-These subsequent events are for notification and cannot be canceled.
+- Removes them as owner of their previous island (if they had one) and begins deleting it
+- Clears the player based on the game mode's config settings (ender chest, inventory, money, health, hunger, experience)
+- Adds them as a member of the new island and teleports them to its home point
 
-#### Process of becoming a team member
-BentoBox performs the following steps to make a player a team member:
-
- 1. Removes the invite.
- 2. Removes the player as owner of their old island (remember, team members cannot join another team, so only owners or those with no island can become members).
- 3. Cleans up the player based on settings - see game mode's `config.yml`:
-     - Ender chest inventory (default: do nothing)
-     - Player inventory (default: do not change **see note below!**)
-     - Money (default: do not zero)
-     - Restores health (default: restore all health)
-     - Restores hunger (default: remove all hunger)
-     - Zeros experience points (default: do not zero)
- 4. Adds the player as a team member of the new island.
- 5. Clears out the old home locations.
- 6. Teleports the player to their new island home.
- 7. Starts to delete the old island.
- 8. Resets their death counter, if the admin has set that setting.
- 9. Tells the player that they have joined the new island.
- 10. Tells the inviter that the player has joined the team island.
- 11. Saves the island to the database.
- 12. Fires the notification events. 
-
-**Reseting Player Inventory**
-Admins should change this setting to clear player's inventory when they join a team! The reason why it is not set is to avoid accidents during installation. Some admins do not understand that joining an island will clear their inventory and so we decided to take the "do no harm" approach and leave inventories alone. However, to avoid exploits, it should be cleared.
+!!! warning "Inventory cleanup"
+    By default, BentoBox does **not** clear a player's inventory when they join a team, to avoid accidents during initial setup. However, **admins should enable this in the game mode's `config.yml`** to prevent players from carrying items from their old island to the new one. Check the config for the `on-join` cleanup settings.
 
 ### Rejecting an invite
-A player rejects an invite by issuing the `team invite reject` command. 
+A player rejects an invite by issuing the `team invite reject` command.
 
-A player must have a valid invite to reject otherwise they just receive an error.
-
-**API:** If a player has a valid invite pending then the `TeamRejectEvent` will be fired. If this event is canceled then the invite will not be rejected and the command will fail silently. The canceling code is recommended to inform the user why the rejection did not happen.
-
-Once the validations checks are complete, the invite will be rejected and the inviter will be notified.
+A player must have a valid invite to reject otherwise they just receive an error. Once rejected, the inviter is notified.
 
 ## Changing Team Ownership
 
-Owners can make another team member an owner using the `team setowner` command with the new owner's name as the parameter.
+Owners can make another team member an owner using the `team setowner` command with the new owner's name as the parameter. Once ownership transfers, the previous owner becomes a Sub-Owner.
 
-**API:** After the various checks are done to confirm the command can be executed but before it is executed, the  `TeamSetownerEvent` is fired. If this event is canceled then the ownership change will not occur and the command will fail silently. The canceling code is recommended to inform the user why the change did not happen.
-
-Once the ownership changes, there are two `IslandRankChange` events that are fired: one for the new owner and one for the old owner.
-
-Owners must select a new owner before that can leave a team. 
+Owners must select a new owner before they can leave a team.
 
 ## Kicking A Player
 Sometimes a team member needs to be forced out of a team. This is done using the `team kick` command. The owner can always kick players and the owner can allow lower-ranked team members to kick too via the Command Ranks menu in island settings. The team member does not have to be online to be kicked.
 
-The command by default required confirmation. This can be configured in BentoBox's `config.yml`. 
+The command by default requires confirmation. This can be configured in BentoBox's `config.yml`.
 
-When a player is kicked, the following happens:
-
- 1. The kicked player is notified (if online)
- 2. The player is removed from the island
- 3. If there are any commands configured to be run when a player leaves an island (see the GameMode's `config.yml`) then they will be executed at this point.
- 4. The player is "cleaned" based on the config settings:
-   - Ender chest is reset (default: do not reset). If the player is offline and resetting is to be done, then it is queued for when they next log in.
-   - Inventory reset (default: do not clear). If the player is offline and resetting is to be done, then it is queued for when they next log in.
-   - Money reset (default: do not reset). This can happen even if the player is offline.
-   - Set health to maximum (default: do not do anything). Only occurs if the player is online.
-   - Set food level to maximum (default: do not do anything). Only occurs if the player is online.
-   - Zero experience points (default: do not do anything). Only occurs if the player is online.
- 5. The kicker is informed that the kick is successful.
- 6. Notification events are fired.
-**API:** Two events are fired - `TeamKickEvent` and `IslandRankChangeEvent`. The latter notifies that the player now has the Visitor rank.
-  7. An invite cool down is applied to both the kicker and the kicked player. This helps limit any potential exploits that involve team members kicking players and then inviting them back immediately.
+When a player is kicked, BentoBox removes them from the island, runs any configured on-leave commands, cleans up their inventory/ender chest/money based on the game mode config, and notifies both parties. An invite cooldown is applied to prevent the exploit of repeatedly kicking and re-inviting players.
 
 ## Leaving a Team
 A player can voluntarily leave a team using the `team leave` command. The command requires confirmation by default, but this can be switched off in the BentoBox's config. When leaving a team voluntarily, a player may use up one of their allowed island resets. This is set in the GameMode's config and the default is not to lose a reset. If the player will lose a reset, then they will be warned about it if the leave command has a confirmation requirements. **Note:** is it possible for a player to use up all their resets by leaving a team and therefore not be able to make a new island of their own. That is something admins will have to consider.
 
 When a player leaves the island, the sequence and process is the same as when a player is kicked, except that the player may lose a reset.
 
-**API:** After the player leaves the team, two notification events are fired: `TeamLeaveEvent` and `IslandRankChangeEvent`. The latter notifies that the player now has the Visitor rank.
 
 ## Trusting and Cooping Other Players
 Sometimes players want to help out on other islands without having to join the team as a full member. This can be done by trusting a player or cooping an online player:
@@ -235,12 +189,8 @@ If a player already has an invite pending from someone else or for a different r
 
 Once accepted, the player will receive the rank given for the new island. The inviter is notified of the acceptance.
 
-**API:** One notification event is fired: `IslandRankChangeEvent` indicating the new Trusted or Coop rank.
-
 Coop players hold their rank until the player who invited them logs out, or until the server shuts down, whichever occurs first.
 
 ### Untrusting or uncooping players
-Island owners, or players with a high enough rank can issue the `team untrusted` or `team uncoop` commands to remove players from the team with these ranks.
-
-**API:** If successful, an `IslandRankChangeEvent` event will be fired for the affected player marking them now as having the Visitor rank.
+Island owners, or players with a high enough rank, can issue the `team untrust` or `team uncoop` commands to remove players from the island with these ranks. The removed player reverts to Visitor status.
 
