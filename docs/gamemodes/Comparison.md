@@ -12,7 +12,7 @@ You can also run **more than one** at the same time — many servers offer two o
 |---|---|---|---|---|
 | **BSkyBlock** | Sky (floating islands) | Medium | Expand from a tiny island in the void | Medium |
 | **AOneBlock** | Sky (void) | Medium | Mine a single magical block that never runs out | Low–Medium |
-| **AcidIsland** | Sky (acid ocean) | Medium–Hard | Skyblock with dangerous acid water | Medium |
+| **AcidIsland** | Sea (acid ocean) | Medium–Hard | Skyblock with dangerous acid water | Medium |
 | **CaveBlock** | Underground | Medium | Carve out space in a solid stone world | Medium |
 | **SkyGrid** | Sky (scattered blocks) | Hard | Collect resources from a grid of single blocks | Low |
 | **Boxed** | Normal world | Easy–Medium | Complete advancements to grow your confined space | Medium |
