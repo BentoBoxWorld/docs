@@ -64,10 +64,9 @@ Before players arrive, open the game mode's `config.yml` (found in `plugins/Bent
 | Setting | What it controls | Recommendation |
 |---|---|---|
 | `distance-between-islands` | Space between island centres | Set this **before** any islands are created — it cannot be changed later |
-| `island-protection-range` | Default protection radius | Should be less than half the distance above |
+| `island-protection-range` | Default protection radius | Should be less than half the distance above to give space to growth |
 | `reset-limit` | How many times players can reset their island | `-1` for unlimited, or a number like `3` |
 | `max-team-size` | Maximum players per island team | `4` is the default; increase for more cooperative play |
-| `allow-new-islands` | Whether players can create new islands | Should be `true` |
 
 !!! warning "Island distance cannot be changed later"
     Once any islands have been created, changing `distance-between-islands` will cause BentoBox to refuse to start. Choose your value and set it before opening to players. The default (400 blocks radius = 800 blocks between centres) works well for most servers.
@@ -76,7 +75,7 @@ Before players arrive, open the game mode's `config.yml` (found in `plugins/Bent
 
 ## Step 5 — Set Up Permissions
 
-BentoBox uses your server's permissions plugin (such as LuckPerms) to control what players can do. At a minimum, make sure your default player group has:
+BentoBox uses your server's permissions plugin (such as LuckPerms) to control what players can do. Players will usually be given a set of default permissions, which include:
 
 ```
 [gamemode].island.create       # Create an island
@@ -101,9 +100,9 @@ A bare BentoBox game mode works, but players will expect a few extras. Consider 
 - **Warps** — Players can create warp signs on their island so others can visit easily
 - **Level** — Calculates an island score and shows a leaderboard; gives players something to work towards
 - **Challenges** — Gives players tasks and rewards; dramatically improves retention
-- **InvSwitcher** — Essential if you run more than one game mode; keeps inventories separate
+- **InvSwitcher** — Essential if you run more than one game mode or have other worlds; keeps inventories separate
 
-Download addons from [github.com/BentoBoxWorld](https://github.com/BentoBoxWorld), place the `.jar` in `plugins/BentoBox/addons/`, and restart the server.
+Download addons from [BentoBoxWorld](https://download.bentobox.world), place the `.jar` in `plugins/BentoBox/addons/`, and restart the server.
 
 ---
 
@@ -125,7 +124,7 @@ See [Blueprints](About/BlueprintsSummary.md) for the full walkthrough.
 
 You're ready. A few final things to check before announcing:
 
-- [ ] Test that new players can create an island without errors
+- [ ] Test that new players can create an island without errors - especially if you are using other plugins
 - [ ] Confirm protection is working (visitors can't grief)
 - [ ] Confirm the game mode appears in `/bentobox version`
 - [ ] Read through the [FAQ](../FAQ.md) for common gotchas
