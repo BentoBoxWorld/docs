@@ -135,15 +135,39 @@ The first number of any file is how many blocks need to be mined to reach that p
             - '[SUDO]say Just finished [phase]'
         ```
 
+=== "end-commands-first-time"
+    !!! summary "Description"
+        `end-commands-first-time` section allows defining commands that will be triggered **only the first time** a player completes this phase. These will not run on subsequent completions.
+    
+        Commands are run as the Console unless the command is prefixed with `[SUDO]`, then the command is run as the player triggering the commands.
+    
+        These placeholders in the command string will be replaced with the appropriate value:
+    
+        - `[island]` - Island name
+        - `[owner]` - Island owner's name
+        - `[player]` - The name of the player who broke the block triggering the commands
+        - `[phase]` - the name of this phase
+        - `[blocks]` - the number of blocks broken
+        - `[level]` - your island level (Requires Levels Addon)
+        - `[bank-balance]` - your island bank balance (Requires Bank Addon)
+        - `[eco-balance]` - player's economy balance (Requires Vault and an economy plugin)
+
+    !!! example "Example"
+        ```yaml
+            end-commands-first-time:
+            - 'broadcast &c&l[!] &b[player] &fhas completed the &d&n[phase]&f phase for the first time.'
+        ```
+
 === "requirements"
     !!! summary "Description"
         `requirements` section allows limiting access to the next phase until specified requirements are met.
-        Currently, there are 4 requirement fields:
+        Currently, there are 5 requirement fields:
     
         - `economy-balance` - the minimum player's economy balance (Requires Vault and an economy plugin)
         - `bank-balance` - the minimum island bank balance (requires Bank Addon)
         - `level` - the island level (Requires Levels Addon)
         - `permission` - a permission string
+        - `cooldown` - the minimum number of seconds that must pass since the phase was last started (prevents rapid phase switching)
 
     !!! example "Example"
         ```yaml
@@ -151,6 +175,7 @@ The first number of any file is how many blocks need to be mined to reach that p
               bank-balance: 10000
               level: 10
               permission: ready.for.battle
+              cooldown: 60
         ```
 
 === "blocks"
@@ -192,8 +217,9 @@ The first number of any file is how many blocks need to be mined to reach that p
         Supported types are: 
         
           - `block-data`: uses `/setblock` command to place a block in the world. Requires `data` field
-          - `mob`: uses `spawn entity` API to create requested entity. Requires `mod` field
-          - `itemsadder`: uses ItemsAdder API to create block. Requires `id` field.
+          - `mob`: uses Spawn Entity API to create requested entity. Requires `mob` field, and optionally `underlying-block` field (default: STONE)
+          - `itemsadder`: uses [ItemsAdder](https://itemsadder.devs.beer/) API to create block. Requires `id` field. ItemsAdder plugin must be installed.
+          - `nexo`: uses [Nexo](https://polymart.org/resource/nexo.6901) API to create block. Requires `id` field. Nexo plugin must be installed.
 
     !!! example "Example"
         ```yaml
@@ -210,8 +236,23 @@ The first number of any file is how many blocks need to be mined to reach that p
               - type: block-data
                 data: minecraft:chest
                 probability: 10
+              - type: mob
+                mob: ZOMBIE
+                underlying-block: STONE
+                probability: 5
+              - type: itemsadder
+                id: mypack:ruby_ore
+                probability: 10
+              - type: nexo
+                id: mypack:custom_block
+                probability: 10
               - DIRT: 10     # old syntax still works.
         ```
+
+    !!! tip "ItemsAdder and Nexo"
+        To use custom blocks from ItemsAdder or Nexo, the respective plugin must be installed on your server.
+        AOneBlock automatically detects these plugins on startup and registers the appropriate block handlers.
+        If you configure an `itemsadder` or `nexo` block but the plugin is not installed, the block will fall back to STONE.
 
 
 In the chests file, it just has the phase number and a chests section.
@@ -291,7 +332,9 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     - `/[player_command] count`: sends a message in chat about current phase progress.
     - `/[player_command] phases`: opens a GUI that allows the viewing and choosing of phases.
     - `/[player_command] setcount <number>`: allows changing the current phase where `<number>` is the phase start number.
-    - `/[player_command] check`: spawns particles around the magic block or respawns it, if for some reason it was mising.
+    - `/[player_command] check`: spawns particles around the magic block or respawns it, if for some reason it was missing.
+    - `/[player_command] bossbar`: toggles the boss bar display showing phase progress. (Since 1.21.2, requires `bossbar: true` in config)
+    - `/[player_command] actionbar`: toggles the action bar display showing phase progress. (Since 1.21.2, requires `actionbar: true` in config)
 
 === "Admin commands"
     - `/[admin_command] sanity [<phase>]`: sends a message if phases (or `<phase>`) chests are correct.
@@ -314,6 +357,8 @@ By default, BentoBox GameMode addons comes with the default sub-command set, how
     - `aoneblock.phases` - Let the player use the '/[player_command] phases' command. Disabled by default.
     - `aoneblock.island.setcount` - Let the player use the '/[player_command] setcount' command. Disabled by default.
     - `aoneblock.respawn-block` - Let the player use the '/[player_command] check' command. Enabled by default.
+    - `aoneblock.island.bossbar` - Let the player use the '/[player_command] bossbar' command. Enabled by default. (Requires `bossbar: true` in config)
+    - `aoneblock.island.actionbar` - Let the player use the '/[player_command] actionbar' command. Enabled by default. (Requires `actionbar: true` in config)
 
 === "Admin permissions"
     - `aoneblock.admin.sanity` - Let the player use the '/[admin_command] sanity' command. Default OP.
@@ -323,6 +368,18 @@ By default, BentoBox GameMode addons comes with the default sub-command set, how
 By default, BentoBox GameMode addons comes with the default sub-permission set, however, each addon may introduce even more sub-permissions.
 
 [Complete AOneBlock Permission List](Permissions)
+
+
+## Flags
+
+AOneBlock introduces several custom flags that control gameplay behavior:
+
+| Flag | Type | Description | Default |
+|------|------|-------------|---------|
+| `START_SAFETY` | World Setting | When enabled, players cannot move for a brief period when they create a new island, preventing them from falling off immediately. Duration is set by `starting-safety-duration` in config. | false |
+| `ONEBLOCK_BOSSBAR` | Island Setting | Toggles whether the OneBlock phase progress boss bar is shown for the player. Only available if `bossbar: true` is set in config. | true |
+| `ONEBLOCK_ACTIONBAR` | Island Setting | Toggles whether the OneBlock phase progress action bar is shown for the player. Only available if `actionbar: true` is set in config. | true |
+| `MAGIC_BLOCK` | Protection | Sets the minimum island rank required to break the magic block. Default rank is Coop. | COOP |
 
 
 ## Placeholders
