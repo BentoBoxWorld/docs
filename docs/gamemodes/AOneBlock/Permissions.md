@@ -20,8 +20,11 @@
 | aoneblock.admin.setspawn          | op         | Allows use of spawn tools                          |
 | aoneblock.admin.settingsreset     | op         | Resets all the islands to default protection settings |
 | aoneblock.admin.tp                | op         | Allows teleport to an island                       |
+| aoneblock.island.actionbar        | true       | Allow use of '/ob actionbar' command - toggle the actionbar progress display |
+| aoneblock.island.bossbar          | true       | Allow use of '/ob bossbar' command - toggle the bossbar progress display |
 | aoneblock.count                   | true       | Allow use of the aoneblock count command           |
 | aoneblock.island                  | true       | Allow use of '/ob' command - the main island command |
+| aoneblock.phases                  | false      | Allow use of '/ob phases' command - show a list of all the phases |
 | aoneblock.island.ban              | true       | Allow use of '/ob ban' or '/ob unban' command - manage banned players |
 | aoneblock.island.create           | true       | Allow use of '/ob create' command - create an island, using optional blueprint |
 | aoneblock.island.deletehome       | op         | Allow use of '/ob deletehome' command - delete a home location |
