@@ -72,6 +72,11 @@
 <td align='left'>Allow moderator to bypass cooldowns</td>
 </tr>
 <tr>
+<td align='left'>skygrid.mod.bypassdelays</td>
+<td align='left'>op</td>
+<td align='left'>Allow moderator to bypass delays</td>
+</tr>
+<tr>
 <td align='left'>skygrid.mod.bypassexpel</td>
 <td align='left'>op</td>
 <td align='left'>Allow moderator to bypass area expulsion</td>
@@ -142,6 +147,11 @@
 <td align='left'>Allow teleporting to player area</td>
 </tr>
 <tr>
+<td align='left'>skygrid.island.go</td>
+<td align='left'>true</td>
+<td align='left'>Use the skygrid go command</td>
+</tr>
+<tr>
 <td align='left'>skygrid.island.language</td>
 <td align='left'>true</td>
 <td align='left'>Player can select a language</td>
@@ -201,9 +211,14 @@
 <td align='left'>Allow use of settings on area</td>
 </tr>
 <tr>
-<td align='left'>skygrid.skygrid</td>
+<td align='left'>skygrid.island</td>
 <td align='left'>true</td>
 <td align='left'>Use the <b>/skygrid</b> command</td>
+</tr>
+<tr>
+<td align='left'>skygrid.island.create</td>
+<td align='left'>true</td>
+<td align='left'>Allow creating of a player area</td>
 </tr>
 <tr>
 <td align='left'>skygrid.team.maxsize.[NUMBER]</td>

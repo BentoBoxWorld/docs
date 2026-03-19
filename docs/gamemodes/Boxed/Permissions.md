@@ -6,6 +6,7 @@
 | boxed.admin.delete                       | op             | Let a player completely remove a player (including island)      |
 | boxed.admin.deleteisland                 | op             | Let a player completely remove the island the player is on      |
 | boxed.admin.noban                        | op             | Player cannot be banned from an island                         |
+| boxed.admin.noexpel                      | op             | Player cannot be expelled from an island                        |
 | boxed.admin.purge                        | op             | Let a player purge old islands                                  |
 | boxed.admin.register                     | op             | Let a player register the nearest island to another player      |
 | boxed.admin.reload                       | op             | Reload the config.yml                                           |
@@ -59,6 +60,8 @@
 | boxed.mod.bypassdelays                   | op             | Allow moderator to bypass delays                                |
 | boxed.mod.bypassexpel                    | op             | Allow moderator to bypass island expulsion                      |
 | boxed.mod.bypasslock                     | op             | Bypasses an island lock                                         |
+| boxed.mod.bypassban                      | op             | Bypasses island ban                                             |
+| boxed.mod.switch                         | op             | Allows moderator to switch bypass protection on and off         |
 | boxed.mod.bypassprotect                  | op             | Allow moderator to bypass island protection                     |
 | boxed.mod.clearreset                     | false          | Allow clearing of island reset limit                            |
 | boxed.mod.info                           | op             | Let a moderator see info on a player and island                 |
