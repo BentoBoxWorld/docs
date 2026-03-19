@@ -44,8 +44,8 @@
 | bskyblock.island.sethome | Allow use of '/island sethome' command - set your home teleport point | TRUE |
 | bskyblock.island.deletehome | Allow use of '/island deletehome' command - delete a home location | OP |
 | bskyblock.island.renamehome | Allow use of '/island renamehome' command - rename a home location | OP |
-| bskyblock.island.homes | Allow use of '/island homes' command - list your homes | OP |
-| bskyblock.admin | Allow use of '/bsbadmin' command - admincommand | OP |
+| bskyblock.island.homes | Allow use of '/island homes' command - list your homes | TRUE |
+| bskyblock.admin | Allow use of '/bsbadmin' command - admin command | OP |
 | bskyblock.admin.version | Allow use of '/bsbadmin version' command - display BentoBox and addons versions | OP |
 | bskyblock.admin.tp | Allow use of '/bsbadmin tp', '/bsbadmin tpnether', '/bsbadmin tpend' command - teleport to a player's island | OP |
 | bskyblock.admin.getrank | Allow use of '/bsbadmin getrank' command - get a player's rank on their island or the island owner | OP |

@@ -57,6 +57,11 @@
 <td align='left'>Allows use of spawn tools</td>
 </tr>
 <tr>
+<td align='left'>caveblock.admin.setspawnpoint</td>
+<td align='left'>op</td>
+<td align='left'>Allows to set spawn point of cave</td>
+</tr>
+<tr>
 <td align='left'>caveblock.admin.setrange</td>
 <td align='left'>op</td>
 <td align='left'>Allows setting of cave protection range</td>
@@ -72,14 +77,39 @@
 <td align='left'>Removes a player from an cave without deleting the cave blocks</td>
 </tr>
 <tr>
+<td align='left'>caveblock.admin.noexpel</td>
+<td align='left'>op</td>
+<td align='left'>Player cannot be expelled from a cave</td>
+</tr>
+<tr>
+<td align='left'>caveblock.admin.getrank</td>
+<td align='left'>op</td>
+<td align='left'>Get a player's rank</td>
+</tr>
+<tr>
+<td align='left'>caveblock.admin.setrank</td>
+<td align='left'>op</td>
+<td align='left'>Set a player's rank</td>
+</tr>
+<tr>
 <td align='left'>caveblock.mod.bypasscooldowns</td>
 <td align='left'>op</td>
 <td align='left'>Allow moderator to bypass cooldowns</td>
 </tr>
 <tr>
+<td align='left'>caveblock.mod.bypassdelays</td>
+<td align='left'>op</td>
+<td align='left'>Allow moderator to bypass delays</td>
+</tr>
+<tr>
 <td align='left'>caveblock.mod.bypassexpel</td>
 <td align='left'>op</td>
 <td align='left'>Allow moderator to bypass cave expulsion</td>
+</tr>
+<tr>
+<td align='left'>caveblock.mod.bypassban</td>
+<td align='left'>op</td>
+<td align='left'>Bypasses cave ban</td>
 </tr>
 <tr>
 <td align='left'>caveblock.mod.bypasslock</td>
@@ -105,6 +135,11 @@
 <td align='left'>caveblock.mod.lock</td>
 <td align='left'>op</td>
 <td align='left'>Locks or unlocks an cave</td>
+</tr>
+<tr>
+<td align='left'>caveblock.mod.switch</td>
+<td align='left'>op</td>
+<td align='left'>Allows moderator to switch bypass protection on and off</td>
 </tr>
 <tr>
 <td align='left'>caveblock.mod.name</td>
@@ -167,6 +202,11 @@
 <td align='left'>Let the player use the island info command</td>
 </tr>
 <tr>
+<td align='left'>caveblock.island.near</td>
+<td align='left'>true</td>
+<td align='left'>Players can see nearby cave names</td>
+</tr>
+<tr>
 <td align='left'>caveblock.island.language</td>
 <td align='left'>true</td>
 <td align='left'>Player can select a language</td>
@@ -209,6 +249,41 @@
 <td align='left'>caveblock.island.team</td>
 <td align='left'>true</td>
 <td align='left'>Let a player use team commands</td>
+</tr>
+<tr>
+<td align='left'>caveblock.island.team.setowner</td>
+<td align='left'>true</td>
+<td align='left'>Let a player change the team owner</td>
+</tr>
+<tr>
+<td align='left'>caveblock.island.team.invite</td>
+<td align='left'>true</td>
+<td align='left'>Let a player invite others</td>
+</tr>
+<tr>
+<td align='left'>caveblock.island.team.accept</td>
+<td align='left'>true</td>
+<td align='left'>Let a player accept invitations</td>
+</tr>
+<tr>
+<td align='left'>caveblock.island.team.reject</td>
+<td align='left'>true</td>
+<td align='left'>Let a player reject invites</td>
+</tr>
+<tr>
+<td align='left'>caveblock.island.team.leave</td>
+<td align='left'>true</td>
+<td align='left'>Let a player leave the team</td>
+</tr>
+<tr>
+<td align='left'>caveblock.island.team.kick</td>
+<td align='left'>true</td>
+<td align='left'>Let a player kick team members</td>
+</tr>
+<tr>
+<td align='left'>caveblock.island.team.promote</td>
+<td align='left'>true</td>
+<td align='left'>Let a player use promote commands</td>
 </tr>
 <tr>
 <td align='left'>caveblock.island.team.coop</td>

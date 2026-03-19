@@ -22,13 +22,13 @@
 | acidisland.island.reset | Allow use of '/ai reset' command - restart your island | TRUE |
 | acidisland.island.info | Allow use of '/ai info' command - display info about your island | TRUE |
 | acidisland.island.settings | Allow use of '/ai settings' command - display island settings | TRUE |
-| acidisland.island.name | Allow use of '/ai  setname' command - set a name for your island | TRUE |
-| acidisland.island.name | Allow use of '/ai  resetname' command - reset your island name | TRUE |
-| acidisland.island.number.x | x sets how many islands the player can make.| FLASE |
+| acidisland.island.name | Allow use of '/ai setname' command - set a name for your island | TRUE |
+| acidisland.island.name | Allow use of '/ai resetname' command - reset your island name | TRUE |
+| acidisland.island.number.x | x sets how many islands the player can make.| FALSE |
 | acidisland.island.language | Allow use of '/ai language' command - select language | TRUE |
 | acidisland.island.ban | Allow use of '/ai ban' command - ban a player from your island | TRUE |
-| acidisland.island.ban | Allow use of '/ai  unban' command - unban a player from your island | TRUE |
-| acidisland.island.ban | Allow use of '/ai  banlist' command - list banned players | TRUE |
+| acidisland.island.ban | Allow use of '/ai unban' command - unban a player from your island | TRUE |
+| acidisland.island.ban | Allow use of '/ai banlist' command - list banned players | TRUE |
 | acidisland.island.expel | Allow use of '/ai expel' command - expel a player from your island | TRUE |
 | acidisland.island.near | Allow use of '/ai near' command - show neighboring islands | TRUE |
 | acidisland.island.team | Allow use of '/ai team' command - manage your team | TRUE |
@@ -44,11 +44,11 @@
 | acidisland.island.team.untrust | Allow use of '/ai team untrust' command - remove trusted player rank from player | TRUE |
 | acidisland.island.team.promote | Allow use of '/ai team promote' command - promote a player on your island up a rank | TRUE |
 | acidisland.island.team.demote | Allow use of '/ai team demote' command - demote a player on your island down a rank | TRUE |
-| acidisland.island.sethome | Allow use of '/ai  sethome' command - set your home teleport point | TRUE |
-| acidisland.island.deletehome | Allow use of '/aideletehome' command - delete a home location | OP |
-| acidisland.island.renamehome | Allow use of '/airenamehome' command - rename a home location | OP |
+| acidisland.island.sethome | Allow use of '/ai sethome' command - set your home teleport point | TRUE |
+| acidisland.island.deletehome | Allow use of '/ai deletehome' command - delete a home location | OP |
+| acidisland.island.renamehome | Allow use of '/ai renamehome' command - rename a home location | OP |
 | acidisland.island.homes | Allow use of '/ai homes' command - list your homes | OP |
-| acidisland.admin | Allow use of '/acid' command - admincommand | OP |
+| acidisland.admin | Allow use of '/acid' command - admin command | OP |
 | acidisland.admin.version | Allow use of '/acid version' command - display BentoBox and addons versions | OP |
 | acidisland.admin.tp | Allow use of '/acid tp' command - teleport to a player's island | OP |
 | acidisland.admin.tpnether | Allow use of '/acid tpnether' command - teleport to a player's island | OP |
@@ -56,7 +56,6 @@
 | acidisland.admin.getrank | Allow use of '/acid getrank' command - get a player's rank on their island or the island owner | OP |
 | acidisland.admin.setrank | Allow use of '/acid setrank' command - set a player's rank on their island or the island owner | OP |
 | acidisland.mod.info | Allow use of '/acid info' command - get info on where you are or player's island | OP |
-| acidisland.mod.team | Allow use of '/acid team' command - manage teams | FALSE |
 | acidisland.mod.team | Allow use of '/acid team' command - manage teams | FALSE |
 | acidisland.mod.team.add | Allow use of '/acid team add' command - add player to owner's team | OP |
 | acidisland.mod.team.disband | Allow use of '/acid team disband' command - disband owner's team | OP |
