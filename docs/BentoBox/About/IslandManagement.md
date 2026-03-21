@@ -57,6 +57,53 @@ If a player is a member (not owner) and leaves a team or is kicked, they lose ac
 
 By default, each player has one island per game mode. BentoBox optionally supports **concurrent islands** — allowing a single player to own more than one island at a time. This is an advanced feature configured in the game mode's `config.yml` and controlled by permissions.
 
+### Config Examples
+
+There are two places where concurrent islands can be configured:
+
+**1. BentoBox `config.yml`** — sets the global default for all game modes:
+
+```yaml
+island:
+  # The default number of concurrent islands a player may have.
+  # This may be overridden by individual game mode config settings.
+  concurrent-islands: 1
+```
+
+**2. Game mode `config.yml`** (e.g. BSkyBlock) — overrides the global default for that game mode:
+
+```yaml
+world:
+  # The number of concurrent islands a player can have in the world.
+  # A value of 0 will use the BentoBox config.yml default.
+  concurrent-islands: 1
+  # Disallow players to have other islands if they are in a team.
+  disallow-team-member-islands: true
+```
+
+For example, to let every player own up to **3** islands in BSkyBlock, set `concurrent-islands: 3` in the BSkyBlock `config.yml`. If you also want team members to be able to create their own islands, set `disallow-team-member-islands: false`.
+
+### Permission
+
+The per-player maximum can be overridden with a permission node:
+
+```
+[gamemode].island.number.<number>
+```
+
+Replace `[gamemode]` with the game mode prefix and `<number>` with the maximum number of islands allowed. For example:
+
+| Permission | Effect |
+|---|---|
+| `bskyblock.island.number.5` | Allows the player up to 5 islands in BSkyBlock |
+| `acidisland.island.number.3` | Allows the player up to 3 islands in AcidIsland |
+| `caveblock.island.number.2` | Allows the player up to 2 islands in CaveBlock |
+
+The permission value overrides the `concurrent-islands` config value for that player. If a player does not have the permission, the config value is used as the default.
+
+!!! tip
+    For a full guide — including how players create, navigate, and manage multiple islands — see the [Concurrent Islands](../../BentoBox/ConcurrentIslands.md) page.
+
 ## Island Range and Spacing
 
 Islands are placed in a grid. The spacing between island centres is set once in `config.yml` (`distance-between-islands`) and **cannot be changed once the world has been created**. Choose this value before players start joining. A larger value gives more build space between islands; a smaller value makes the world more compact.
