@@ -45,8 +45,8 @@ The commands are almost the same as WorldEdit schematic commands. You must be Op
 * /bsb bp copy - copy the blocks and entities inside the box to the clipboard
 * /bsb bp copy air - copy the blocks, entities, and air inside the box to the clipboard. This is important if you plan to paste the island into water (AcidIsland) or rock (CaveBlock).
 * /bsb bp paste - paste the clipboard to your location
-* /bsb bp save <name> - saves the clipboard to a file (appends a .schem suffix)
-* /bsb bp load <name> - load a blueprint file (do not append the .schem suffix)
+* /bsb bp save <name> - saves the clipboard to a file (saved as a `.blueprint` plain JSON file)
+* /bsb bp load <name> - load a blueprint file (do not append the `.blueprint` or `.blu` suffix)
 * /bsb bp - open the Blueprint Manager GUI
 
 For AcidIsland, use /acid instead of /bsb.
@@ -77,10 +77,13 @@ To delete a bundle, right click on the TNT.
 Bundles and blueprints must be renamed in the GUI. Do not try to rename them using the file system.
 
 ## Files and Editing
-When using blueprints in the game, always use just the name of the blueprint. On the file system, blueprints are saved in a compressed format with the **.blu** suffix and blueprint bundles are saved as **.json** text files. You can edit the JSON blueprint bundles with a text editor, but you should never edit .blu files outside of the game.
+When using blueprints in the game, always use just the name of the blueprint. On the file system, blueprints are now saved as **plain JSON text** files with the `.blueprint` suffix. Blueprint bundles are also saved as `.json` text files. Both `.blueprint` and bundle `.json` files can be edited with any text editor.
+
+!!! note "Legacy `.blu` files"
+    Blueprint files previously used a compressed binary `.blu` format. BentoBox will automatically load legacy `.blu` files for backward compatibility, but all new blueprints are saved as `.blueprint` (plain JSON). You can version-control and diff `.blueprint` files normally. Do not try to create or edit `.blu` files by hand.
 
 ## Incomplete bundles
-Bundles must always have an Overworld/Normal world blueprint. If they do not, then the default island (island.blu) blueprint will be used and an error logged in the console.
+Bundles must always have an Overworld/Normal world blueprint. If they do not, then the default island blueprint will be used and an error logged in the console.
 Bundles do not have to have Nether or End World blueprints, but if they do not, no island will be pasted in those worlds (obviously).
 
 ## Entities
