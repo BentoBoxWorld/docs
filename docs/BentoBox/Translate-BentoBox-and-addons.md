@@ -12,7 +12,7 @@ my-message: "<bold><red>Warning!</red></bold> Something happened."
 my-message: "<gradient:gold:yellow>Island Name</gradient>"
 ```
 
-Legacy `§` color codes are still supported for backwards compatibility and will be automatically converted to MiniMessage format when loaded.
+Legacy `§` or `&` color codes are still supported for backwards compatibility and will be automatically converted to MiniMessage format when loaded.
 
 ## Message Delivery Tags
 
