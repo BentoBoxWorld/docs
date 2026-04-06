@@ -81,6 +81,24 @@ All gamemode addons get some default placeholders automatically registered to th
 | %[gamemode]_deaths% | Number of times the player died | 1.12.0 |
 | %[gamemode]_on_island% | Whether the player is on an island he is part of or not | 1.13.0 |
 
+### Flag placeholders
+
+Every protection flag registered in a gamemode also exposes a placeholder. The placeholder name is `flag_` followed by the lower-case flag ID:
+
+| Placeholder | Description |
+|-------------|-------------|
+| %[gamemode]_flag_[flag_id]% | Value depends on the flag type: **PROTECTION** → translated name of the minimum allowed rank (e.g. `Member`); **SETTING** → `true` or `false`; **WORLD_SETTING** → `true` or `false` |
+
+**Examples:**
+
+```
+%bskyblock_flag_pvp_overworld%   → "false"
+%bskyblock_flag_break_blocks%    → "Member"
+%bskyblock_flag_ender_chest%     → "true"
+```
+
+Addon-defined flags are registered automatically when the flag is added at runtime.
+
 ## See also
 Gamemodes and Addons can also bring their own placeholders. We highly recommend that you look up the following pages, which are likely more adapted to your needs.
 
