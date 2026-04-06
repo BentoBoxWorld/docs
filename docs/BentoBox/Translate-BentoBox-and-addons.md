@@ -28,10 +28,13 @@ island-go: "[actionbar]Teleporting..."
 
 ### `[title]` and `[subtitle]`
 
-Sends the message as a **title** overlay on screen. Use `[title]` for the large text and `[subtitle]` for the smaller text below it. They can be used together in the same string.
+Sends the message as a **title** overlay on screen. `[title]` displays the large heading text and `[subtitle]` displays smaller text below it. `[subtitle]` is not a standalone delivery type — it only works as a separator inside a `[title]` message. Without `[title]`, it falls through to the chat path.
 
 ```yaml
+# Title with subtitle
 island-go: "[title]Teleporting...[subtitle]Wait a second."
+# Title only (empty title, text as subtitle)
+scooping: "[title][subtitle]You scooped the lava!"
 ```
 
 ### `[sound:name:volume:pitch]`

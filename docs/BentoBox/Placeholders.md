@@ -83,7 +83,7 @@ All gamemode addons get some default placeholders automatically registered to th
 
 ### Flag placeholders
 
-Every protection flag registered in a gamemode also exposes a placeholder. The placeholder name is `flag_` followed by the lower-case flag ID:
+Every protection flag and settings flag registered in a gamemode also exposes a placeholder. The placeholder name is `flag_` followed by the lower-case flag ID:
 
 | Placeholder | Description |
 |-------------|-------------|

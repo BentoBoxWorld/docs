@@ -107,9 +107,9 @@ Controls which protection flags are active outside of any island boundaries (i.e
 
 ### Island Defaults
 
-!!! new "Added in BentoBox 2.x"
-    The **Island Defaults** tab is a new tab in the Admin Settings Panel that allows admins to set the default protection flag ranks applied to **newly created islands**.
+!!! new "Added in BentoBox 3.14.0"
+    The **Island Defaults** tab is a new tab in the Admin Settings Panel that allows admins to set the default flag values applied to **newly created islands**.
 
 Previously, these defaults could only be changed in the gamemode's `config.yml`. Now they can be changed directly in-game by opening `/[admin_command] settings` and navigating to the **Island Defaults** tab (tab 3).
 
-Each protection flag is listed with its current default rank. Clicking on a flag cycles the default rank through the rank ladder. Changes are saved immediately to the world settings and take effect for all **new** islands created after the change. Existing islands are not affected.
+Each protection flag is listed with its current default rank — clicking cycles it through the rank ladder. Each island settings flag shows its current default `true`/`false` state — clicking toggles it. Changes are saved immediately to the world settings and take effect for all **new** islands created after the change. Existing islands are not affected.
