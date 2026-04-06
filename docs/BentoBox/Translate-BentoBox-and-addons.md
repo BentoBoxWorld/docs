@@ -6,7 +6,7 @@
 
 BentoBox uses [MiniMessage](https://docs.advntr.dev/minimessage/format.html) for all locale strings. This means you can use MiniMessage tags in your translations to apply rich text formatting. For example:
 
-```yaml
+```
 my-message: "<green>Welcome to the island!</green>"
 my-message: "<bold><red>Warning!</red></bold> Something happened."
 my-message: "<gradient:gold:yellow>Island Name</gradient>"
