@@ -360,34 +360,36 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     Please add it to the list [here](https://github.com/BentoBoxWorld/Level/issues).
 
 ??? question "How to make that `level-cost` increases after each level?"
-    You cannot do it directly because BentoBox level calculation happens at once, and not iterative for each level.
+    The `level-cost` setting is a fixed value and cannot be made to increase iteratively per level, because BentoBox calculates island levels by applying a single formula to the total block count — not by iterating level by level.
 
-    However, this can be done using the `level-calc` formula, if you know what formula you need. If we use your example of making each level 50% harder to reach than the previous level, then the approximate formula for that is:
-    
+    The way to achieve increasing level costs is to use the `level-calc` formula. For example, to make each level 50% harder to reach than the previous one (i.e., level 1 costs 100 blocks, level 2 costs 150, level 3 costs 225, etc.), the formula is:
+
     `level-calc: 2.4661 * log(blocks) - (2.4661 * log(level_cost) - 1)`
-    
-    where `level_cost` is the cost in blocks to get to level 1. e.g., if level 1 costs 100 blocks, the level 2 costs 150 blocks, level 3 costs 225, etc.
-    
-    Here's the graph:
+
+    where `level_cost` is the number of blocks required to reach level 1.
+
+    Here's the graph for that progression:
 
     ![template](https://user-images.githubusercontent.com/4407265/212771452-edc943fe-c861-4ba1-b581-8ec987e52f94.png){: loading=lazy }
- 
-    Note that that particular formula does start to asymptote around level 25, i.e., it becomes really hard to get to level 26 or 27 because so many blocks are required, so having that particular rule might not be that good an approach because eventually almost everyone will end up with the same level.
-     
-    Anyway, although I understand what you're asking, the `level-calc` formula should actually be able to provide what you want so long as it supports the right formula. Having the `next-levelcost` is problematic from a programming standpoint because the level calculations would have to be done iteratively instead of by just applying a single formula to the blocks counted. I can't quite work out how to do that right now but I do know that the current method of having a formula for how you want levels increased does work for sure.
-    
-    How can I work out a formula for levels?
 
-    The best way is to start with a formula and plot it to see if it makes sense, e.g., by using something like Excel. If you want to work out what formula you need from say a table of values, then Excel (or maybe some other spreadsheet) can do that too: make a graph of levels and how many blocks for each level and then plot a graph of the table (X Y Plot). Right click the graph to add a trend line, select the approximation, e.g., linear, log, exponential, etc. that best fits, and then select "Display equation on chart" to display the formula and substitute `blocks` for `x`. Here's some screenshots of what I did you find out the equation for increasing by 50% each time with a starting cost of 100 blocks.
-    
+    !!! warning
+        This formula begins to asymptote around level 25 — reaching level 26 or 27 requires an extremely large number of blocks, which may cause most players to converge on the same maximum level over time. Consider this when choosing your progression curve.
+
+    **Deriving a custom formula**
+
+    To build a formula tailored to a specific progression curve:
+
+    1. Create a table of target levels and their corresponding block costs in a spreadsheet (e.g., Excel or Google Sheets).
+    2. Plot an X/Y graph of the table.
+    3. Right-click the graph and add a trend line. Choose the approximation type (linear, logarithmic, exponential, etc.) that best fits the curve, then enable "Display equation on chart".
+    4. In the resulting equation, substitute `blocks` for `x` and use that as the `level-calc` value.
+
+    For example, the 50% progression above was derived this way and yields:
+
+    `level-calc: 2.4661 * log(blocks) - 10.357`
+
     ![template](https://user-images.githubusercontent.com/4407265/212773894-6f635ed4-f337-4936-b50f-3b616b6bf041.png){: loading=lazy }
     ![template](https://user-images.githubusercontent.com/4407265/212773929-b51ae6b3-5df3-43ae-b35f-bc6fcb42d78f.png){: loading=lazy }
- 
-    So, for that, it would be:
-    
-    `level-calc: 2.4661 * log(blocks) - 10.357`
-    
-    I hope that helps.
 
 
 
