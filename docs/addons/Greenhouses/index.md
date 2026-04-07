@@ -123,4 +123,4 @@ The permission can be anything you like, e.g., a rank permission, **myserver.VIP
 
 ## Translations
 
-{{ translations(3680, ["cs", "hu", "ja", "zh-CN", "fr", "de", "it", "lv", "pl", "ru", "es", "tr", "vi"]) }}
+{{ translations("Greenhouses") }}

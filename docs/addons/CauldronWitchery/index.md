@@ -193,4 +193,4 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
 ## Translations
 
-{{ translations(2976, ["lv", "zh-CN"]) }}
+{{ translations("CauldronWitchery") }}

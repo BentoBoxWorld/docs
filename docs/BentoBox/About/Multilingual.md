@@ -64,13 +64,21 @@ The translations for BentoBox and its addons are contributed by the community. T
 
 ## How to Contribute a Translation
 
-If your language is not yet available, or if the existing translation needs improvement:
+Most translations are now generated with the help of AI, so the bulk of the
+work is already done — but **AI is not perfect**. The most valuable thing the
+community can do is **report errors** and **suggest corrections**.
 
-1. Visit the translation page for BentoBox or the specific addon on [GitLocalize](https://gitlocalize.com/repo/2855).
-2. Select your language (or request a new one on our [Discord](https://discord.bentobox.world)).
-3. Translate the strings — do **not** translate text inside square brackets, e.g. `[name]` should stay as-is.
-4. Submit your work. Translators earn a special community badge!
+* **Spotted a mistake?** Open an issue or a PR on the relevant repository at
+  [bentobox.world](https://bentobox.world) (a short link to our GitHub org),
+  or tell us on [Discord](https://discord.bentobox.world).
+* **Want to correct a string?** Edit the locale file under
+  `src/main/resources/locales/` in the relevant repo and open a PR. Do **not**
+  translate text inside square brackets — e.g. `[name]` should stay as-is.
+* **Want to add a brand-new language?** Open a PR adding a new locale file
+  alongside the existing ones, or ask on Discord and we'll get you started.
 
-A translation helper tool is available at [download.bentobox.world/translate.html](https://download.bentobox.world/translate.html) — it runs entirely in your browser.
+A translation helper tool is available at
+[download.bentobox.world/translate.html](https://download.bentobox.world/translate.html)
+— it runs entirely in your browser. Translators earn a special community badge!
 
 See the full list of addon translation pages at [Translate BentoBox and Addons](../Translate-BentoBox-and-addons.md).

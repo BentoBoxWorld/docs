@@ -44,7 +44,7 @@ The local server runs at `http://127.0.0.1:8000` by default.
 The `mkdocs-macros-plugin` allows Jinja2 macro calls inside Markdown files. Macros defined in `main.py`:
 
 - `{{ addon_description("AddonName") }}` — Renders a standard "Useful links" info box (GitHub, issues, CI) for an addon
-- `{{ translations(gitlocalize_id, ["lang-codes"]) }}` — Renders the translation status table for an addon
+- `{{ translations("RepoName") }}` — Renders the translation status table for an addon. At build time it fetches `src/main/resources/locales/` from `BentoBoxWorld/<RepoName>` on GitHub (defaults to the `develop` branch) and computes a real percentage per locale by comparing each YAML file against `en-US.yml`. Falls back gracefully if GitHub is unreachable. Set the `GITHUB_TOKEN` env var on the build host to lift the unauthenticated 60/hr rate limit.
 - `{{ placeholders_bundle("gamemode_name") }}` — Renders all placeholders for a specific gamemode from `data/placeholders.csv`
 - `{{ placeholders_source("SourceName") }}` — Renders placeholders from a specific addon/source
 - `{{ flags_bundle("FLAG_TYPE") }}` — Renders a table of flags by type (e.g., `PROTECTION`, `SETTING`) across all sources
