@@ -57,25 +57,40 @@ island-go: "[sound:entity_experience_orb_pickup:1:1][title]Teleporting...[subtit
 * Do not include any advertising, swear words, or derogatory comments in the translations. We do check them before accepting the PR.
 * Feel free to ask questions on Discord about translations.
 
+## Game Modes
+
+- [AcidIsland](../gamemodes/AcidIsland/index.md#translations)
+- [AOneBlock](../gamemodes/AOneBlock/index.md#translations)
+- [Boxed](../gamemodes/Boxed/index.md#translations)
+- [BSkyBlock](../gamemodes/BSkyBlock/index.md#translations)
+- [CaveBlock](../gamemodes/CaveBlock/index.md#translations)
+- [Poseidon](../gamemodes/Poseidon/index.md#translations)
+- [SkyGrid](../gamemodes/SkyGrid/index.md#translations)
+- [Stranger Realms](../gamemodes/StrangerRealms/index.md#translations)
+
 ## Addons
-- [AcidIsland](/gamemodes/AcidIsland/#translations)
-- [BSkyBlock](/gamemodes/BSkyBlock/#translations)
-- [CaveBlock](/gamemodes/CaveBlock/#translations)
-- [SkyGrid](/gamemodes/SkyGrid/#translations)
-- [Biomes](/addons/Biomes/#translations)
-- [Border](/addons/Border/#translations)
-- [CauldronWitchery](/addons/CauldronWitchery/#translations)
-- [Challenges](/addons/Challenges/#translations)
-- [Chat](/addons/Chat/#translations)
-- [ControlPanel](/addons/ControlPanel/#translations)
-- [DimensionalTrees](/addons/DimensionalTrees/#translations)
-- ~~[ExtraMobs](Addons)~~
-- [Greenhouses](/addons/Greenhouses/#translations)
-- [IslandFly](/addons/IslandFly/#translations)
-- ~~[InvSwitcher](Addons)~~
-- [Level](/addons/Level/#translations)
-- [Likes](/addons/Likes/#translations)
-- [Limits](/addons/Limits/#translations)
-- [MagicCobblestoneGenerator](/addons/MagicCobblestoneGenerator/#translations)
-- ~~[TwerkingForTrees](Addons)~~
-- [VoidPortals](/addons/VoidPortals/#translations)
+
+- [Bank](../addons/Bank/index.md#translations)
+- [Biomes](../addons/Biomes/index.md#translations)
+- [Border](../addons/Border/index.md#translations)
+- [CauldronWitchery](../addons/CauldronWitchery/index.md#translations)
+- [Challenges](../addons/Challenges/index.md#translations)
+- [Chat](../addons/Chat/index.md#translations)
+- [CheckMeOut](../addons/CheckMeOut/index.md#translations)
+- [ControlPanel](../addons/ControlPanel/index.md#translations)
+- [DimensionalTrees](../addons/DimensionalTrees/index.md#translations)
+- [ExtraMobs](../addons/ExtraMobs/index.md#translations)
+- [FarmersDance](../addons/FarmersDance/index.md#translations)
+- [Greenhouses](../addons/Greenhouses/index.md#translations)
+- [InvSwitcher](../addons/InvSwitcher/index.md#translations)
+- [IslandFly](../addons/IslandFly/index.md#translations)
+- [Level](../addons/Level/index.md#translations)
+- [Likes](../addons/Likes/index.md#translations)
+- [Limits](../addons/Limits/index.md#translations)
+- [MagicCobblestoneGenerator](../addons/MagicCobblestoneGenerator/index.md#translations)
+- [TopBlock](../addons/TopBlock/index.md#translations)
+- [TwerkingForTrees](../addons/TwerkingForTrees/index.md#translations)
+- [Upgrades](../addons/Upgrades/index.md#translations)
+- [Visit](../addons/Visit/index.md#translations)
+- [VoidPortals](../addons/VoidPortals/index.md#translations)
+- [Warps](../addons/Warps/index.md#translations)

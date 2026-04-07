@@ -45,3 +45,7 @@ Addon will replace Cod, Salmon or Tropical fish with Guardian by chance from con
 Addon is build on Minecraft 1.15.2 and BentoBox 1.11.0 version, however, it should even work on Minecraft 1.13.2 and BentoBox 1.0 Release.
 
 Addon supports all Game mode addons.
+
+## Translations
+
+{{ translations("ExtraMobs") }}

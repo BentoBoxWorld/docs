@@ -64,3 +64,7 @@ The core game mechanics and claim features are highly configurable via the Bento
 ## Permissions
 
 Permissions can be found [here](Permissions).
+
+## Translations
+
+{{ translations("StrangerRealms") }}

@@ -81,3 +81,7 @@ Commands can be found [here](Commands).
 
 Placeholders can be found [here](Placeholders).
 
+## Translations
+
+{{ translations("Poseidon") }}
+

@@ -208,3 +208,7 @@ You just need to add CheckMeOut to your project as dependency. You can use Maven
             Location location = event.getLocation();
         }
         ```
+
+## Translations
+
+{{ translations("CheckMeOut") }}
