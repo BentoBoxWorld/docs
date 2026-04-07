@@ -300,3 +300,7 @@ Exemple:
 `command-[NAME]` | Exemple: `bskyblock.upgrades.command-lambda-upgrade.6`
 
 `NAME` being the real name of the command upgrade (!= display name)
+
+## Translations
+
+{{ translations("Upgrades") }}

@@ -49,3 +49,7 @@ You can find the latest config file: [config.yml](https://github.com/BentoBoxWor
 Addon is build on Minecraft 1.19.2 and BentoBox 1.20.0 version.
 
 Addon supports all Game mode addons.
+
+## Translations
+
+{{ translations("FarmersDance") }}

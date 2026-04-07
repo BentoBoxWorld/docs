@@ -40,3 +40,7 @@ This addon will give players a separate inventory, health, food level, advanceme
 
 **Please note:**
 - It is not limited to just BentoBox worlds. It applies to all worlds on the server (right now).
+
+## Translations
+
+{{ translations("InvSwitcher") }}

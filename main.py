@@ -97,6 +97,11 @@ def _fetch_translation_status(repo: str, branch: str):
     )
     try:
         r = session.get(api_url, timeout=15)
+        if r.status_code == 404:
+            # The repo has no locales/ directory at all — distinct from a
+            # transient failure so callers can render an accurate message.
+            _translations_cache[cache_key] = "missing"
+            return "missing"
         if r.status_code != 200:
             log.warning(
                 "translations(%s): GitHub listing returned %s", repo, r.status_code
@@ -216,6 +221,14 @@ def define_env(env):
         )
 
         rows = _fetch_translation_status(repo, branch)
+        if rows == "missing":
+            # No locales/ directory in the repo — this addon currently has
+            # no translatable strings.
+            note = (
+                f"\n_This project does not yet have any translatable locale "
+                f"files. Only English is shipped at the moment._\n"
+            )
+            return intro + header + note
         if rows is None:
             # Network/parse failure — render a graceful fallback that still
             # links to the locales directory on GitHub.
