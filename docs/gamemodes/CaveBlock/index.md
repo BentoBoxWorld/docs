@@ -200,4 +200,4 @@ Addon introduces 1 BentoBox Settings flag:
 
 ## Translations
 
-{{ translations(2968, ["cs", "id", "ja", "lv", "ro", "zh-CN", "de", "pl", "ru", "es", "tr", "vi"]) }}
+{{ translations("CaveBlock") }}
