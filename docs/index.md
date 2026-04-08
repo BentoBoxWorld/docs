@@ -1,6 +1,6 @@
 # BentoBox
 
-BentoBox is a powerful Paper library plugin that provides core features for island-style games like SkyBlock, AcidIsland, OneBlock and others. It provides features such a island creation, team management, protection, etc. These games and features are added to BentoBox via addons that are like mini-plugins. Admins can customize their server to have exactly what games and features they want.
+BentoBox turns your Paper server into a playground of island adventures. Drop your players into **SkyBlock**, **AcidIsland**, **OneBlock**, **CaveBlock**, **SkyGrid**, **Boxed**, **Poseidon**, **Stranger Realms** and more — all running side‑by‑side on the same server, each with its own world, rules and progression. Players get islands to call their own, teammates to build with, challenges to chase, levels to climb and warps to show off. Admins get the easy life: one plugin to install, sensible defaults that just work, and a huge library of drop‑in addons (Bank, Biomes, Border, Challenges, Greenhouses, Level, Limits, Warps and dozens more) to mix and match into exactly the server you want — no coding required. Whether you want a single classic SkyBlock world or a sprawling hub of every island game ever made, BentoBox is the flexible, battle‑tested foundation thousands of servers already trust.
 
 ## Supporting BentoBox
 
