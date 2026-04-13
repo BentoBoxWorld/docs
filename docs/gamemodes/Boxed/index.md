@@ -1,6 +1,8 @@
 # Boxed
 
-Players survive in a box that can only be expanded by accomplishing advancements!
+You start inside a box. A small box. Everything outside it — mobs, blocks, resources — is off limits. To get more space, you have to earn it: complete advancements and your box grows. Every advancement matters. Every new block of territory is a reward you worked for.
+
+**Boxed** is an island game mode with a twist: your world doesn't expand from mining or building, it expands from *doing things*. Craft something new. Explore a structure. Kill a mob. Grow a crop. The whole vanilla advancement tree drives your progression, and the optional custom datapack adds even more to chase.
 
 Created and maintained by [tastybento](https://github.com/tastybento).
 
