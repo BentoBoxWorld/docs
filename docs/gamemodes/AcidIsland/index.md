@@ -34,6 +34,19 @@ Commands can be found [here](Commands).
 
 Placeholders can be found [here](Placeholders).
 
+## Changelog
+
+??? warning "What's new in v1.21.0 — BentoBox 3.14.0 required, locale migration"
+    **Released:** 2026-04-12
+
+    - **Cherry Grove Sanctuary starter island.** A new starter island blueprint themed around the Cherry Grove biome is included for Minecraft 1.21+ servers. To activate it, delete `BentoBox/addons/AcidIsland/blueprints/` so blueprints regenerate on the next startup.
+    - 🔺 **BentoBox API 3.14.0 is now required.** Update BentoBox before installing this release.
+    - 🔡 **All 24 locale files migrated from `&` codes to MiniMessage.** Delete `BentoBox/locales/AcidIsland/` and restart to regenerate. Any remaining `&` codes in custom files will render as plain text.
+    - Bug fix: NullPointerException in the EssentialsX god mode check when EssentialsX fails to load at startup.
+    - Several pre-existing locale bugs fixed during migration.
+
+    [Release v1.21.0](https://github.com/BentoBoxWorld/AcidIsland/releases/tag/1.21.0)
+
 ## Translations
 
 {{ translations("AcidIsland") }}

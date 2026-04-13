@@ -122,3 +122,4 @@ TopBlock,aoneblock_island_phase_name_top_<number>,Name of the phase they have re
 TopBlock,aoneblock_island_phase_number_top_<number>,Phase number (e.g. Plains is 1; Underground is 2) at the `<number>` position, 1.0.1
 TopBlock,aoneblock_island_count_top_<number>,Block Count of magic blocks mined this round at the `<number>` position, 1.0.1
 TopBlock,aoneblock_island_lifetime_top_<number>,Lifetime count of magic blocks mined at the `<number>` position, 1.0.1
+Border,Border_color,Current border color (red/green/blue) for the player,4.8.0

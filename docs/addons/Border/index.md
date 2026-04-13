@@ -36,6 +36,12 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 **Permission**: `[gamemode].border.set-type`. Default: `true`.  
 **Example**: `/[player command] border type barrier`  
 
+### color {red|green|blue}
+**Command**: `/[player command] color {red | green | blue}`  
+**Description**: Sets the vanilla world border color for the player. Only applies when using the vanilla border type.  
+**Permission**: `[gamemode].color.red`, `[gamemode].color.green`, `[gamemode].color.blue` (or `[gamemode].color.*` for all). Default: `op`.  
+**Example**: `/[player command] color green`  
+
 !!! tip
     `[gamemode]` is a prefix that differs depending on the gamemode you are running.
     The prefix is the lowercased name of the gamemode, i.e. if you are using BSkyBlock, the prefix is `bskyblock`.
@@ -120,6 +126,34 @@ Set to `false` if you don't want **any** wall particles to be shown.
 ```
 show-particles: true
 ```
+
+### Show warps on map
+Controls whether the vanilla world border color feature is available. Colors for individual players are set with the `/[player_command] color` command. Requires a web map plugin (Dynmap or BlueMap) and the BentoBox map hook.
+
+```yml
+show-warps-on-map: true
+```
+
+## Placeholders
+
+| Placeholder | Description | Version |
+|---|---|---|
+| `%Border_color%` | The current border color for the player (`red`, `green`, or `blue`) | 4.8.0 |
+
+## Changelog
+
+??? note "What's new in v4.7.0 → v4.8.2"
+    **Released:** 2026-02-16 to 2026-04-04
+
+    - **Vanilla world border color selection.** Players using the vanilla border type can now choose their border color — red, green, or blue — via `/[player_command] color {red|green|blue}`.
+    - New `%Border_color%` placeholder returns the player's current border color.
+    - New permissions `[gamemode].color.red`, `[gamemode].color.green`, `[gamemode].color.blue` (or `[gamemode].color.*` for all colors). Default: op.
+    - Bug fix: border teleportation bypass when a player is outside all island spaces (4.7.0).
+    - Bug fix: vanilla world border not resetting when a player teleports between islands — was causing Bedrock/Geyser players to enter a restricted state (4.8.1).
+    - Bug fix: `%Border_color%` placeholder throwing null error in some configurations (4.8.1).
+    - Bug fix: border incorrectly activating in vanilla nether and end worlds (4.8.1).
+
+    [Release v4.7.0](https://github.com/BentoBoxWorld/Border/releases/tag/4.7.0) · [v4.8.0](https://github.com/BentoBoxWorld/Border/releases/tag/4.8.0) · [v4.8.1](https://github.com/BentoBoxWorld/Border/releases/tag/4.8.1) · [v4.8.2](https://github.com/BentoBoxWorld/Border/releases/tag/4.8.2)
 
 ## Translations
 

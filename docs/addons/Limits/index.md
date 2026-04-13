@@ -120,3 +120,27 @@ Some items cannot be limited (right now). The reasons are usually because there 
 * Ender dragon
 * Item frames
 * Paintings
+
+
+## Changelog
+
+??? warning "What's new in v1.28.0 — Java 21 required"
+    **Released:** 2026-04-01
+
+    - **Shulker duplication farms properly limited on Paper.** Uses Paper's `ShulkerDuplicateEvent` to enforce limits before duplication occurs, fixing a bypass where shulkers teleported outside the island before the limit check.
+    - **Copper chest limits can no longer be bypassed.** All copper chest variants (oxidized, waxed, scraped, golem-created) are now normalized to a single tracked material. Block state transitions are properly counted.
+    - **Invalid config entries handled gracefully.** Malformed namespaced keys, non-block materials, and uncountable materials (lava, water, air) in `blocklimits` config now produce clear warning messages instead of NPEs.
+    - 🔺 **Java 21 is now required** (previously Java 17). Ensure your server runs Java 21 before upgrading.
+    - Bumped Spigot target to 1.21.11.
+
+    [Release v1.28.0](https://github.com/BentoBoxWorld/Limits/releases/tag/1.28.0)
+
+??? note "What's new in v1.28.1"
+    **Released:** 2026-04-07
+
+    Hotfix for two regressions in 1.28.0:
+
+    - **Existing databases load again.** In 1.28.0 the `IslandBlockCount` map fields changed from `Map<Material, Integer>` to `Map<NamespacedKey, Integer>`, breaking reads of pre-1.28.0 JSON files. A backwards-compatible Gson `TypeAdapter` now reads legacy enum names, namespaced strings, and the complex array form. **No manual migration required** — old files load as-is.
+    - **Block names in the limits GUI are readable again.** Items were showing as `Minecraft:hopper` due to incorrect key formatting.
+
+    [Release v1.28.1](https://github.com/BentoBoxWorld/Limits/releases/tag/1.28.1)

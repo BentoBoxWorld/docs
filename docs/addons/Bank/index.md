@@ -115,6 +115,16 @@ permissions:
 ## Like this addon?
 You can [sponsor](https://github.com/sponsors/tastybento) to get more addons like this and make this one better!
 
+## Changelog
+
+??? note "What's new in v1.9.1"
+    **Released:** 2026-03-28
+
+    - **Top island name placeholders.** `%Bank_[gamemode]_top_island_<number>%` now exposes the island name (not just the owner name) for each leaderboard position. Island names are cached alongside owner names and balances.
+    - ⚙️ Interest compounding documentation and config comments corrected — the `compound-periods-per-year` calculation had an off-by-one that caused slightly incorrect compound interest. Update your config comments by replacing the old jar.
+
+    [Release v1.9.1](https://github.com/BentoBoxWorld/Bank/releases/tag/1.9.1)
+
 ## Translations
 
 {{ translations("Bank") }}

@@ -49,6 +49,13 @@ You can find the latest config file: [config.yml](https://github.com/BentoBoxWor
 
     Players must have the `welcomewarpsigns.warp` permission to use.
 
+??? question "What is show-warps-on-map?"
+    When set to `true`, warp sign locations are shown as markers on web map plugins (Dynmap, BlueMap).
+
+    Requires a compatible map plugin and the BentoBox map hook to be active. Each warp sign appears as a point marker with the text from the sign lines below `[Welcome]`.
+
+    Default: `true`
+
 ??? question "What is warp and warps?"
     The command `warp` requires `<player>` to which warp should happen, while `warps` opens menu that allows to choose a player.
 
@@ -160,6 +167,34 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
 ??? question "I have a bug, where should I report it?"
     Please add it to the list [here](https://github.com/BentoBoxWorld/Warps/issues).
+
+## Changelog
+
+??? note "What's new in v1.18.0"
+    **Released:** 2026-04-05
+
+    - **Web map support (Dynmap / BlueMap).** Warp signs now show as point markers on web maps when the `show-warps-on-map` option is enabled (default: true). Requires a BentoBox-compatible map plugin.
+    - ⚙️ New `show-warps-on-map` config option (see Configuration above).
+    - 🔡 Russian locale updated to MiniMessage format with full key coverage.
+    - Additional locale files added and updated to match BentoBox formatting.
+    - Requires BentoBox API 3.12.0+.
+
+    🔡 Delete `BentoBox/addons/Warps/locales/` to regenerate locale files with the new format.
+
+    [Release v1.18.0](https://github.com/BentoBoxWorld/Warps/releases/tag/1.18.0)
+
+??? warning "What's new in v1.19.0 — locale migration required"
+    **Released:** 2026-04-11
+
+    - **All locale files migrated to MiniMessage.** Every locale file has been converted from legacy `&` color codes to MiniMessage tags for consistency with BentoBox 3.14.
+    - Requires BentoBox API 3.14.0+.
+    - Warps now builds against Paper 1.21.11 exclusively (Spigot API dropped).
+
+    🔺 **BentoBox 3.14.0 required.** Ensure your BentoBox is updated before upgrading Warps.
+
+    🔡 **Regenerate locale files** — delete `BentoBox/locales/Warps/` and restart the server. Any `&` color codes in custom locale files will no longer render.
+
+    [Release v1.19.0](https://github.com/BentoBoxWorld/Warps/releases/tag/1.19.0)
 
 ## Translations
 
