@@ -1,6 +1,8 @@
 # CaveBlock
 
-**CaveBlock** lets ~~dwarves~~ players survive underground. Mine, craft, and dig a hole (*diggy diggy hole*)!
+No sky. No surface. Just stone in every direction and a pickaxe in your hand.
+
+**CaveBlock** flips the island game on its head: instead of building up into the open air, players carve out their world from solid underground. Dig for ores, hollow out a home, expand through the dark. It's the same satisfying island progression — challenges, levels, teammates — but the whole thing plays out underground. ~~Dwarves~~ Players everywhere love it.
 
 Created and maintained by [BONNe](https://github.com/BONNe).
 

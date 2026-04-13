@@ -1,13 +1,14 @@
 # AOneBlock
 
-**AOneBlock** is our take on **IJAminecraft**'s popular survival map: OneBlock.
-Players have to survive on a single block, which appears to be magic...
+One block. That's it. That's where you start.
+
+Mine it and it comes back as something else — a grass block, a tree, a chest, a mob. Mine it again. Keep going. Slowly, painstakingly, you build an island from nothing, unlocking new phases as you progress: Plains, Underground, Ocean, Jungle, Nether, and beyond. Each phase brings new blocks, new mobs, and new surprises. Some very hostile surprises.
+
+**AOneBlock** is BentoBox's take on IJAminecraft's beloved OneBlock map — rebuilt as a full multiplayer server experience with 11 themed phases, 11,000+ blocks of content, loot chests of varying rarity, and enough depth to keep players coming back for weeks.
 
 Created and maintained by [tastybento](https://github.com/tastybento).
 
 {{ addon_description("AOneBlock") }}
-
-OneBlock puts you on a block in space. There is only one block. What do you do next?
 
 ## Installation
 

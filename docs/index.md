@@ -1,19 +1,25 @@
 # BentoBox
 
-BentoBox turns your Paper server into a playground of island adventures. Drop your players into **SkyBlock**, **AcidIsland**, **OneBlock**, **CaveBlock**, **SkyGrid**, **Boxed**, **Poseidon**, **Stranger Realms** and more — all running side‑by‑side on the same server, each with its own world, rules and progression. Players get islands to call their own, teammates to build with, challenges to chase, levels to climb and warps to show off. Admins get the easy life: one plugin to install, sensible defaults that just work, and a huge library of drop‑in addons (Bank, Biomes, Border, Challenges, Greenhouses, Level, Limits, Warps and dozens more) to mix and match into exactly the server you want — no coding required. Whether you want a single classic SkyBlock world or a sprawling hub of every island game ever made, BentoBox is the flexible, battle‑tested foundation thousands of servers already trust.
+Your players are going to have a great time.
+
+**BSkyBlock**, **AOneBlock**, **AcidIsland**, **CaveBlock**, **SkyGrid**, **Boxed**, **Poseidon**, **Stranger Realms** and more — all running side by side on your Paper server, each with its own world, rules, and progression. Island games are some of the most replayed, most streamed, most "just one more hour" genres in Minecraft, and BentoBox is the platform that makes running them easy.
+
+One plugin. Drop in the game modes you want. Players get islands to call their own, teammates to build with, challenges to chase, levels to climb, and warps to show off. Admins get sensible defaults, a library of 20+ drop-in addons (Bank, Biomes, Border, Challenges, Greenhouses, Level, Limits, Warps and many more) to mix and match, and a codebase that actually keeps up with Minecraft. No forks, no outdated hacks — just a solid, actively maintained foundation used on over 1,100 servers worldwide.
+
+We build all of this for the fun your players will have. That's it. That's the whole point.
 
 ## Supporting BentoBox
 
-Please donate by becoming a [sponsor through GitHub](https://github.com/sponsors/tastybento) or [donate via PayPal](https://www.paypal.me/BentoBoxWorld). We hope you will have lots of fun with our games and help fund development!
+Please donate by becoming a [sponsor through GitHub](https://github.com/sponsors/tastybento) or [donate via PayPal](https://www.paypal.me/BentoBoxWorld). Every contribution keeps the games running and the updates coming!
 
 ## Downloading
 
-Download ready to go packs at [https://download.bentobox.world](https://download.bentobox.world)
+Download ready-to-go packs at [https://download.bentobox.world](https://download.bentobox.world)
 
 ## Getting started
-- [Your First 30 Minutes](BentoBox/First-Steps) — what to do right after installing
+- [Your First 30 Minutes](BentoBox/First-Steps) — from fresh install to players having fun
 - [Install BentoBox](BentoBox/Install-Bentobox)
-- [Choose a Game Mode](gamemodes/Comparison)
+- [Choose a Game Mode](gamemodes/Comparison) — not sure which to run? Start here
 - [Glossary](Glossary) — key terms explained
 - [FAQ](FAQ)
 - [Migration from ASkyBlock](Converter/index.md)

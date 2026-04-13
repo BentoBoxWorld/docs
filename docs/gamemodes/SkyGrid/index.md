@@ -1,8 +1,10 @@
 # SkyGrid
 
-**SkyGrid** is a map filled with floating blocks placed on a four block grid. So every fourth block in every direction is an actual block, and everything else is air.  The creator of the original SkyBlick, SethBling, released SkyGrid in 2012 and it has become one of the most popular Minecraft maps to play in.
+Every fourth block in every direction is a real block. Everything else is air.
 
-There are goals and techniques to playing (and surviving) in SkyGrid and there is no shortage of online help, tips and ways to make this game very fun!
+That means gravel floating over the void. Lava pools suspended in nothing. A creeper on a sand block twelve metres above you. Getting anywhere requires planning, precision, and a healthy respect for what happens if you miss a jump.
+
+**SkyGrid** was created by SethBling back in 2012 and became one of the most beloved Minecraft challenge maps ever made. This is the BentoBox version — same chaotic grid, now running as a full multiplayer island experience with all the progression, challenges, and leaderboards players expect.
 
 Created and maintained by [tastybento](https://github.com/tastybento).
 
