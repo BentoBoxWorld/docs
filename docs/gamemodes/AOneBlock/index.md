@@ -633,3 +633,19 @@ AOneBlock has some custom events that are called only in AOneBlock. But BentoBox
             Block block = event.getBlock();
         }
         ```
+
+## Changelog
+
+??? warning "What's new in v1.23.0 — locale and config update required"
+    **Released:** 2026-04-11
+
+    - **Nexo custom block support.** AOneBlock now supports [Nexo](https://github.com/Nexo-MC/Nexo) custom blocks in phase definitions (alongside the existing ItemsAdder support). Define them with `type: nexo` and an `id` field in your phases config.
+    - **HEX / MiniMessage color support in action bar.** The `/ob actionbar` text now correctly renders HEX colors and full MiniMessage formatting.
+    - 🔡 Russian locale updated to MiniMessage format with grammar corrections.
+    - Several action bar locale and translation bug fixes.
+
+    🔺 **Nexo support is a new config option.** If you use Nexo, add Nexo-type block entries to your phase `.yml` files.
+
+    🔡 **Regenerate locale files** if you have customisations.
+
+    [Release v1.23.0](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.23.0)

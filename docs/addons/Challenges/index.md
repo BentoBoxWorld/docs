@@ -274,6 +274,23 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
         completed-times-reached: "&2&l Completed all &7 [max] &2 times"
     ```
 
+## Changelog
+
+??? warning "What's new in v1.6.0 — locale regeneration required"
+    **Released:** 2026-04-13
+
+    - 🔡 **All locale files migrated to MiniMessage.** Every locale file has been converted from legacy `&` color codes to MiniMessage tags. Delete `BentoBox/locales/Challenges/` and restart to regenerate updated files.
+    - New challenge menu settings (contributed by @stuffyerface).
+    - Improved Web Library panel: language filter added, descriptions word-wrapped, loading indicator shown while catalog downloads, malformed catalog entries handled gracefully.
+    - Word-wrap applied to reward text in challenge and level lore for cleaner display.
+    - **New downloadable challenge libraries** available via the in-game Web Library:
+        - **Skyblock** — Modern Skyblock challenges with multiple progression paths (EN, ZH-CN, DE, ES, RU, FR)
+        - **AcidIsland** — Nautical challenge progression from Shipwrecked to Admiral (EN, ZH-CN, DE, ES, RU, FR)
+        - **Poseidon** — Default challenges for the Poseidon game mode (EN, ZH-CN, DE, ES, RU, FR)
+    - Requires BentoBox API 3.12.0+.
+
+    [Release v1.6.0](https://github.com/BentoBoxWorld/Challenges/releases/tag/1.6.0)
+
 ## Translations
 
 !!! info "Translations for challenges"

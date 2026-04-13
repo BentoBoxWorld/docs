@@ -311,6 +311,8 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     - `/[player_command] top`: access to the top panel. Requires `[gamemode].island.top` permission.
     - `/[player_command] level`: triggers level calculation for player. Requires `[gamemode].island.level` permission.
     - `/[player_command] value [material]`: allows to check block value. Requires `[gamemode].island.value` permission.
+    - `/[player_command] donate`: opens a chest-style GUI to donate blocks directly to your island's level. Donated points survive future level recalculations. Requires `[gamemode].island.level.donate` permission.
+    - `/[player_command] donate hand [amount]`: donates the item currently held in the player's hand (or the specified amount of it) directly to island level without opening the GUI. Requires `[gamemode].island.level.donate` permission.
 
 
 === "Admin commands"
@@ -337,6 +339,7 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     - `[gamemode].island.level.details.spawners` - (default: `false`) - Allows player to see detailed list of spawners for island.
     - `[gamemode].island.level.details.underwater` - (default: `false`) - Allows player to see detailed list of underwater blocks for island.
     - `[gamemode].island.level.details.above-sea-level` - (default: `false`) - Allows player to see detailed list of above the sea level blocks for island.
+    - `[gamemode].island.level.donate` - (default: `true`) - Allows player to use the `/[player_command] donate` command.
 
 === "Admin permissions"
     - `[gamemode].admin.level` - (default: `op`) - Let the player use the `/[admin_command] level <player>` command.
@@ -392,6 +395,35 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     ![template](https://user-images.githubusercontent.com/4407265/212773929-b51ae6b3-5df3-43ae-b35f-bc6fcb42d78f.png){: loading=lazy }
 
 
+
+## Changelog
+
+??? note "What's new in v2.23.0"
+    **Released:** 2026-02-21
+
+    - **Oraxen and Nexo furniture/custom block support.** Level can now count Oraxen furniture mechanics and Nexo custom blocks and furniture towards island level. These integrations are in beta — enable them if you have either plugin installed.
+    - New per-block placeholders: `[gamemode]_island_count_<block>` (count of a specific block on the island), `[gamemode]_island_value_<block>` (value of a block type), and `[gamemode]_island_limit_<block>` (configured block limit). Block keys use underscores, e.g. `_island_count_minecraft_stone`.
+
+    [Release v2.23.0](https://github.com/BentoBoxWorld/Level/releases/tag/2.23.0)
+
+??? warning "What's new in v2.24.0 — action required"
+    **Released:** 2026-04-12
+
+    - **Block donation system.** Players can now permanently donate blocks to their island's level via `/[player_command] donate` (GUI) or `/[player_command] donate hand [amount]` (quick donate from hand). Donated points are stored per-island and re-added after every level recalculation.
+    - New `ISLAND_BLOCK_DONATION` protection flag controls who can donate. Default is owner-only; can be extended down to Member rank.
+    - New **DONATED** tab in `detail_panel.yml` showing the island's donation history.
+    - New `island_members` variable available in the `level-cost` formula for handicapping larger teams.
+    - Admin level report now includes a donated-blocks breakdown.
+    - All locale files migrated to MiniMessage formatting.
+    - 🆕 Russian (`ru.yml`) locale added.
+    - Top ten ordering fix under concurrent writes.
+    - Block icons for hanging signs, vines, and cave vines now render correctly.
+
+    🔺 **Delete `plugins/BentoBox/addons/Level/panels/detail_panel.yml`** before restarting so the new DONATED tab template is generated. The file is not overwritten on upgrade.
+
+    🔡 **Regenerate locale files** if you have customisations — the old `&` color codes are no longer valid.
+
+    [Release v2.24.0](https://github.com/BentoBoxWorld/Level/releases/tag/2.24.0)
 
 ## Translations
 
