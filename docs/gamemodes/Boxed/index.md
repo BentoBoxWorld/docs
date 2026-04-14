@@ -34,8 +34,11 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 
 ## Custom Advancements
 
-[Download the official Boxed DataPack](https://github.com/BentoBoxWorld/BoxedDataPack) for custom advancements.
-Or you can do it yourself. See the [tutorial video for more information](https://youtu.be/zNzQvIbweQs)
+The official **BoxedDataPack** adds a set of custom advancements designed specifically for Boxed, giving players more to chase and your server a more complete experience out of the box.
+
+[Download the latest BoxedDataPack release](https://github.com/BentoBoxWorld/BoxedDataPack/releases) and drop the `.zip` into your server's `world/datapacks/` folder (or whichever world Boxed is running in), then run `/reload` or restart.
+
+Prefer to build your own? See the [tutorial video](https://youtu.be/zNzQvIbweQs) for how to create custom advancements that integrate with Boxed's expansion system.
 
 ## Using Regionerator
 
