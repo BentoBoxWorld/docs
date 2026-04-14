@@ -1,6 +1,8 @@
 # Boxed
 
-Players survive in a box that can only be expanded by accomplishing advancements!
+You start inside a box. A small box. Everything outside it — mobs, blocks, resources — is off limits. To get more space, you have to earn it: complete advancements and your box grows. Every advancement matters. Every new block of territory is a reward you worked for.
+
+**Boxed** is an island game mode with a twist: your world doesn't expand from mining or building, it expands from *doing things*. Craft something new. Explore a structure. Kill a mob. Grow a crop. The whole vanilla advancement tree drives your progression, and the optional custom datapack adds even more to chase.
 
 Created and maintained by [tastybento](https://github.com/tastybento).
 
@@ -32,8 +34,11 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 
 ## Custom Advancements
 
-[Download the official Boxed DataPack](https://github.com/BentoBoxWorld/BoxedDataPack) for custom advancements.
-Or you can do it yourself. See the [tutorial video for more information](https://youtu.be/zNzQvIbweQs)
+The official **BoxedDataPack** adds a set of custom advancements designed specifically for Boxed, giving players more to chase and your server a more complete experience out of the box.
+
+[Download the latest BoxedDataPack release](https://github.com/BentoBoxWorld/BoxedDataPack/releases) and drop the `.zip` into your server's `world/datapacks/` folder (or whichever world Boxed is running in), then run `/reload` or restart.
+
+Prefer to build your own? See the [tutorial video](https://youtu.be/zNzQvIbweQs) for how to create custom advancements that integrate with Boxed's expansion system.
 
 ## Using Regionerator
 

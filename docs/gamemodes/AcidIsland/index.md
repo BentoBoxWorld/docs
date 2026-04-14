@@ -1,15 +1,14 @@
 # AcidIsland
 
-**AcidIsland** is a Survival gamemode where players have to survive on an island surrounded by a sea of acid.
+It's SkyBlock — but the ocean is trying to kill you.
+
+**AcidIsland** puts players on a tiny island surrounded by a sea of acid. Fall in and you're taking damage. That changes everything: expanding your island becomes a careful, high-stakes operation. Building over the edge is a gamble. And yet players can still boat across to visit each other — if they're brave enough.
+
+It's a familiar premise with one twist that keeps players on their toes the entire time.
 
 Created and maintained by [tastybento](https://github.com/tastybento).
 
 {{ addon_description("AcidIsland") }}
-
-## The Story
-You're on an island, in a sea of acid! If you like Skyblock, try AcidIsland for a new challenge!
-
-This is a variation of SkyBlock. Instead of falling, you must contend with acid water when expanding your island and players can boat to each other's islands.
 
 ## Installation
 
