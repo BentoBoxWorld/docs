@@ -22,6 +22,15 @@ Upgrades, their tiers, prices, and rewards are stored in BentoBox's database (YA
 
 On first install the seeder creates 8 example upgrades. Once you delete an example upgrade it will not be re-seeded on the next restart. To re-trigger seeding, delete the `.seeded-gamemodes` marker file from the addon data folder.
 
+## Tiers and Levels
+
+Each upgrade is made up of one or more **tiers**. A tier covers a range of levels — for example, a tier might cover levels 0 to 4, meaning any player whose upgrade level falls in that range is affected by that tier's rewards.
+
+- When a player purchases an upgrade their level increases by 1.
+- The rewards applied are always those of the tier whose range contains the player's current level. Moving into a new tier's range immediately switches to that tier's rewards.
+- A tier can require **multiple prices** (all must be paid) and grant **multiple rewards** (all are applied).
+- Price and reward formulas can use variables (see [Formula Variables](#formula-variables)) to scale automatically with level, island level, or team size.
+
 ## Commands
 
 !!! tip
@@ -48,23 +57,68 @@ Each upgrade tier can require any combination of the following prices (all must 
 
 Each upgrade tier can grant any combination of the following rewards:
 
-| Type | Description |
+| Type | Description | Applied |
+|---|---|---|
+| **Range** | Increases the island protection range | At purchase |
+| **Block Limits** | Raises a block type's per-island limit (requires Limits addon) | At purchase |
+| **Entity Limits** | Raises an entity type's limit (requires Limits addon) | At purchase |
+| **Entity Group Limits** | Raises an entity group's limit (requires Limits addon) | At purchase |
+| **Commands** | Runs console or player commands | At purchase |
+| **Spawner Boost** | Adds extra mob spawns to every spawner event on the island | Passive — always on |
+| **Crop Growth Boost** | Adds extra growth ticks to every natural crop growth event on the island | Passive — always on |
+
+### Commands
+
+The Commands reward runs one or more commands when a player purchases the upgrade.
+
+- **Console mode**: commands run as the server console (use this for `/give`, rank-up commands, or anything requiring elevated permissions).
+- **Player mode**: commands run as the purchasing player (limited to their own permissions).
+
+The following placeholders are available in command strings:
+
+- `[player]` — the name of the player who purchased the upgrade
+- `[owner]` — the island owner's name
+
+### Spawner Boost
+
+Spawner Boost is a **passive, always-on** effect. It does not do anything at purchase time; it takes effect immediately and stays active as long as the island holds that upgrade level.
+
+Every time a spawner on the island fires, the addon totals the island's Spawner Boost value across all active upgrade tiers and spawns that many additional mobs of the same type at the same location.
+
+The formula value is a **bonus multiplier**:
+
+| Formula value | Effect per spawner event |
 |---|---|
-| **Range** | Increases the island protection range |
-| **Block Limits** | Raises a block type's limit (requires Limits addon) |
-| **Entity Limits** | Raises an entity type's limit (requires Limits addon) |
-| **Entity Group Limits** | Raises an entity group's limit (requires Limits addon) |
-| **Commands** | Runs console or player commands on purchase |
-| **Spawner Boost** | Multiplies spawner spawn rates |
-| **Crop Growth Boost** | Multiplies crop growth speed |
+| `0.5` | 50% chance of 1 extra mob |
+| `1.0` | Always 1 extra mob |
+| `1.5` | Always 1 extra mob + 50% chance of a second |
+| `2.0` | Always 2 extra mobs |
 
-## Level Formula Variables
+Bonuses from multiple upgrades that include a Spawner Boost reward are **added together**. The boost works for all spawner types.
 
-In price formulas, the following variables are available:
+### Crop Growth Boost
 
-- `[level]` — the current upgrade level being purchased
-- `[islandLevel]` — the island's current level (from Level addon; may be 0)
+Crop Growth Boost is also a **passive, always-on** effect. When a crop grows naturally, the addon applies additional bone-meal growth ticks equal to the bonus value — making crops grow faster the higher a player's upgrade level.
+
+The formula value works the same way as Spawner Boost:
+
+| Formula value | Effect per natural growth event |
+|---|---|
+| `0.5` | 50% chance of 1 extra growth tick |
+| `1.0` | Always 1 extra tick |
+| `2.0` | Always 2 extra ticks |
+
+Bonuses from multiple upgrades stack. Supported crops: **Wheat, Carrots, Potatoes, Beetroots, Nether Wart, Sweet Berry Bush, Torchflower, Pitcher Plant**.
+
+## Formula Variables
+
+Formula fields in both prices and rewards support the following variables:
+
+- `[level]` — the current upgrade level being purchased (or active)
+- `[islandLevel]` — the island's current level (from Level addon; may be 0 if Level is not installed)
 - `[numberPlayer]` — the number of players on the island team
+
+These let you write formulas that scale automatically, e.g. a money cost of `500 * [level]` or a spawner bonus of `0.1 * [level]`.
 
 ## Permissions
 
@@ -97,6 +151,16 @@ The `UpgradeAPI` class is exposed for other addons to query and modify upgrade d
     - **Seeder fix.** Example upgrades no longer regenerate on every restart after being deleted. The seeder now tracks which game modes have been seeded in a persistent `.seeded-gamemodes` marker file.
 
     [Release v1.0.1](https://github.com/BentoBoxWorld/Upgrades/releases/tag/1.0.1)
+
+??? note "What's new in v1.0.2"
+    **Released:** 2026-04-14
+
+    Two data-persistence bugs fixed that caused upgrade data to be lost on server restart:
+
+    - **Admin upgrade definitions now saved** — Changes made through the admin GUI (names, descriptions, icons, price/reward formulas, tier counts, deletions) are now written to the database immediately instead of being discarded on restart.
+    - **Player purchase levels now saved** — When a player buys an upgrade, the new level is written to the database immediately. Islands no longer revert to pre-purchase levels after a restart.
+
+    [Release v1.0.2](https://github.com/BentoBoxWorld/Upgrades/releases/tag/1.0.2)
 
 ## Translations
 
