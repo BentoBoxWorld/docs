@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-04-13T06:53:32Z",
+  "last_run": "2026-04-14T00:44:27Z",
   "repos": {
     "BentoBox": {
       "last_checked": "2026-04-13T06:53:32Z",
@@ -86,8 +86,8 @@
       "category": "addon"
     },
     "Chat": {
-      "last_checked": "2026-01-13T06:31:47Z",
-      "last_release": "",
+      "last_checked": "2026-04-14T00:44:27Z",
+      "last_release": "1.4.0",
       "doc_path": "addons/Chat/index.md",
       "category": "addon"
     },
@@ -176,8 +176,8 @@
       "category": "addon"
     },
     "Upgrades": {
-      "last_checked": "2026-04-13T06:53:32Z",
-      "last_release": "1.0.1",
+      "last_checked": "2026-04-14T00:44:27Z",
+      "last_release": "1.0.2",
       "doc_path": "addons/Upgrades/index.md",
       "category": "addon"
     },
