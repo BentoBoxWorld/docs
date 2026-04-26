@@ -102,6 +102,13 @@ You can [sponsor](https://github.com/sponsors/tastybento) to get more addons lik
 
     [Release v1.4.0](https://github.com/BentoBoxWorld/Chat/releases/tag/1.4.0)
 
+??? note "What's new in v1.4.1"
+    **Released:** 2026-04-26
+
+    - 🔡 **Czech locale fix** — The `cs.yml` locale had a malformed YAML entry for `island-chat-spy` that caused a `ScannerException` on server startup. Delete `plugins/BentoBox/addons/Chat/locales/cs.yml` before restarting so it is regenerated from the fixed version.
+
+    [Release v1.4.1](https://github.com/BentoBoxWorld/Chat/releases/tag/1.4.1)
+
 ## Translations
 
 {{ translations("Chat") }}

@@ -98,10 +98,9 @@
 | poseidon.admin.setspawnpoint | Allow use of '/padmin setspawnpoint' command - set current location as spawn point for this realm | OP |
 | poseidon.admin.resetflags | Allow use of '/padmin resetflags' command - Reset all realms to default flag settings in config.yml | OP |
 | poseidon.mod.switch | Allow use of '/padmin switch' command - switch on/off protection bypass | OP |
-| poseidon.admin.purge | Allow use of '/padmin purge' command - purge realms abandoned for more than [days] | OP |
-| poseidon.admin.purge.status | Allow use of '/padmin purge status' command - displays the status of the purge | OP |
-| poseidon.admin.purge.stop | Allow use of '/padmin purge stop' command - stop a purge in progress | OP |
-| poseidon.admin.purge.unowned | Allow use of '/padmin purge unowned' command - purge unowned realms | OP |
+| poseidon.admin.purge | Allow use of '/padmin purge &lt;days&gt;' command - identify and delete region files for realms abandoned for more than [days] | OP |
+| poseidon.admin.purge.deleted | Allow use of '/padmin purge deleted' command - reap region files for realms already flagged as deletable | OP |
+| poseidon.admin.purge.unowned | Allow use of '/padmin purge unowned' command - flag unowned realms as deletable | OP |
 | poseidon.admin.purge.protect | Allow use of '/padmin purge protect' command - toggle realm purge protection | OP |
 | poseidon.admin.settings | Allow use of '/padmin settings' command - open settings GUI or set settings | OP |
 | poseidon.admin.setprotectionlocation | Allow use of '/padmin setprotectionlocation' command - set current location or [x y z] as center of realm's protection area | OP |

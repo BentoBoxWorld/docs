@@ -68,6 +68,9 @@ The first number of any file is how many blocks need to be mined to reach that p
             50: SPONGE
         ```
 
+    !!! tip "CHEST_WITH_X notation"
+        Fixed blocks entries can use the `CHEST_WITH_X` shorthand to place a chest pre-filled with a specific item, for example `CHEST_WITH_WATER_BUCKET`. The item must be a valid Bukkit material name.
+
 === "holograms"
     !!! summary "Description"
         AOneBlock uses native holograms to show these lines. The first line that is shown before any phase has started is located in aoneblock locales file.
@@ -221,6 +224,7 @@ The first number of any file is how many blocks need to be mined to reach that p
           - `mob`: uses Spawn Entity API to create requested entity. Requires `mob` field, and optionally `underlying-block` field (default: STONE)
           - `itemsadder`: uses [ItemsAdder](https://itemsadder.devs.beer/) API to create block. Requires `id` field. ItemsAdder plugin must be installed.
           - `nexo`: uses [Nexo](https://polymart.org/resource/nexo.6901) API to create block. Requires `id` field. Nexo plugin must be installed.
+          - `craftengine`: uses [CraftEngine](https://github.com/Xiao-MoMi/craft-core) API to create block. Requires `id` field. CraftEngine plugin must be installed. Requires BentoBox 3.15.0+.
 
     !!! example "Example"
         ```yaml
@@ -245,6 +249,9 @@ The first number of any file is how many blocks need to be mined to reach that p
                 id: mypack:ruby_ore
                 probability: 10
               - type: nexo
+                id: mypack:custom_block
+                probability: 10
+              - type: craftengine
                 id: mypack:custom_block
                 probability: 10
               - DIRT: 10     # old syntax still works.
@@ -650,3 +657,20 @@ AOneBlock has some custom events that are called only in AOneBlock. But BentoBox
     🔡 **Regenerate locale files** if you have customisations.
 
     [Release v1.23.0](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.23.0)
+
+??? warning "What's new in v1.24.0 — requires BentoBox 3.15.0"
+    **Released:** 2026-04-26
+
+    - **CraftEngine custom block support.** Phases can now spawn [CraftEngine](https://github.com/Xiao-MoMi/craft-core) blocks using `type: craftengine` in phase definitions. Requires BentoBox 3.15.0+.
+    - **Configurable chest particles per rarity.** The particle type and color shown above UNCOMMON/RARE/EPIC chests are now configurable in `config.yml` under `world.chest-particles`. Set a particle to `NONE` to disable it.
+    - **`CHEST_WITH_X` fixed-block notation.** Phase `fixedBlocks` now accept `CHEST_WITH_<ITEM>` entries to place a chest pre-filled with that item (e.g. `CHEST_WITH_WATER_BUCKET`).
+    - **`OBSIDIAN_SCOOPING` now off by default.** New installs have this flag set to `false`. Existing servers with an explicit setting are unaffected.
+    - 🔡 Placeholder defaults for islandless players: `%aoneblock_my_island_phase%`, `%aoneblock_my_island_count%`, and `%aoneblock_my_island_percent_done%` now return `Unknown`, `0`, and `0%` instead of empty strings.
+
+    🔺 **Requires BentoBox 3.15.0 or later** — this release will not load against older BentoBox versions.
+
+    ⚙️ **New config section** `world.chest-particles` — copy from the latest `config.yml` if you want configurable particle effects.
+
+    🔡 **Regenerate locale files** to pick up new keys.
+
+    [Release v1.24.0](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.24.0)
