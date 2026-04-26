@@ -36,8 +36,15 @@ The local server runs at `http://127.0.0.1:8000` by default.
   - `placeholders.csv` — All placeholder variables across BentoBox and addons
   - `flags.csv` — Protection flags (type, icon, description, defaults, ranks)
   - `minecraft-block-and-entity.json` — Block/entity icon CSS class mapping
+- `docs/stylesheets/` — Custom CSS loaded via `extra_css` in `mkdocs.yml`
+  - `bentobox-theme.css` — Blueprint palette override for the Material slate scheme (navy/cyan; Space Grotesk + Inter Tight + JetBrains Mono). Also defines all `.bb-*` layout classes used exclusively by `docs/index.md`.
+  - `icons-minecraft-0.5.css` — Minecraft block/entity icon sprites
 - `main.py` — MkDocs macros plugin entry point (`define_env`); defines all Jinja2 macros used in docs
 - `mkdocs.yml` — Site configuration: nav tree, theme, plugins, Markdown extensions
+
+### Homepage (docs/index.md)
+
+`index.md` is structurally different from all other pages. It uses `hide: [navigation, toc]` frontmatter and its body is a single raw HTML block (no Markdown) built from `.bb-*` CSS classes defined in `bentobox-theme.css`. Do not add Markdown content or macros directly inside the `.bb-homepage` wrapper — use plain HTML.
 
 ### Macros (main.py)
 
