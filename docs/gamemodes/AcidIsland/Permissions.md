@@ -103,10 +103,9 @@
 | acidisland.admin.setspawnpoint | Allow use of '/acid setspawnpoint' command - set current location as spawn point for this island | OP |
 | acidisland.admin.resetflags | Allow use of '/acid resetflags' command - Reset all islands to default flag settings in config.yml | OP |
 | acidisland.mod.switch | Allow use of '/acid switch' command - switch on/off protection bypass | OP |
-| acidisland.admin.purge | Allow use of '/acid purge' command - purge islands abandoned for more than [days] | OP |
-| acidisland.admin.purge.status | Allow use of '/acid purge status' command - displays the status of the purge | OP |
-| acidisland.admin.purge.stop | Allow use of '/acid purge stop' command - stop a purge in progress | OP |
-| acidisland.admin.purge.unowned | Allow use of '/acid purge unowned' command - purge unowned islands | OP |
+| acidisland.admin.purge | Allow use of '/acid purge &lt;days&gt;' command - identify and delete region files for islands abandoned for more than [days] | OP |
+| acidisland.admin.purge.deleted | Allow use of '/acid purge deleted' command - reap region files for islands already flagged as deletable | OP |
+| acidisland.admin.purge.unowned | Allow use of '/acid purge unowned' command - flag unowned islands as deletable | OP |
 | acidisland.admin.purge.protect | Allow use of '/acid purge protect' command - toggle island purge protection | OP |
 | acidisland.admin.settings | Allow use of '/acid settings' command - open settings GUI or set settings | OP |
 | acidisland.admin.setprotectionlocation | Allow use of '/acid setprotectionlocation' command - set current location or [x y z] as center of island's protection area | OP |

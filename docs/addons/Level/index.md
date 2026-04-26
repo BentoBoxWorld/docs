@@ -181,6 +181,14 @@ This section defines values for blocks and limits for them.
 
     Format: `MATERIAL: NUMBER`
 
+    CraftEngine custom blocks are also supported (requires BentoBox 3.15.0+). Use their namespaced ID as the key:
+
+    ```yaml
+    blocks:
+      mynamespace:my_block: 50
+      mynamespace:custom_ore: 3
+    ```
+
 ??? note "worlds"
     List any blocks that have a different value in a specific world. 
     If a block is not listed, the default value will be used from the blocks section.
@@ -424,6 +432,18 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     🔡 **Regenerate locale files** if you have customisations — the old `&` color codes are no longer valid.
 
     [Release v2.24.0](https://github.com/BentoBoxWorld/Level/releases/tag/2.24.0)
+
+??? note "What's new in v2.25.0"
+    **Released:** 2026-04-26
+
+    - **CraftEngine custom block support.** CraftEngine blocks are now counted during island level calculations. Add them to `blockconfig.yml` using their namespaced IDs (e.g. `mynamespace:my_block: 50`). Requires BentoBox 3.15.0+. CraftEngine can be disabled with `disabled-plugin-hooks: [CraftEngine]` in `config.yml`.
+    - **Localizable `hand` keyword.** The `hand` argument in `/island donate` and `/island value` is now translatable via a new `island.donate.hand.keyword` locale key. English `hand` is always accepted as a fallback.
+    - 🔡 All 16 non-English locale files updated to include missing keys.
+    - 🔡 Ukrainian locale now fully translated.
+
+    🔡 **Regenerate locale files** to pick up the new `island.donate.hand.keyword` key.
+
+    [Release v2.25.0](https://github.com/BentoBoxWorld/Level/releases/tag/2.25.0)
 
 ## Translations
 

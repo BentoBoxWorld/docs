@@ -122,6 +122,7 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
 === "Player permissions"
     - `aoneblock.island.topblock` - (default: `true`) - Allows player to use the `/[player_command] top` command.
+    - `aoneblock.intopten` - (default: `true`) - Controls whether the player's island appears in the top ten. Remove from an admin or tester to exclude them from the leaderboard.
 
 ??? question "Something is missing?"
     You can find the comprehensive list of permissions in the [addon.yml](https://github.com/BentoBoxWorld/TopBlock/blob/develop/src/main/resources/addon.yml) file of this addon.  
@@ -136,6 +137,22 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
 ??? question "Can you add a feature X?"
     Please add it to the list [here](https://github.com/BentoBoxWorld/TopBlock/issues).
+
+## Changelog
+
+??? warning "What's new in v2.0.0 — platform upgrade required"
+    **Released:** 2026-04-26
+
+    - 🐛 **Top Ten panel fixed.** A long-standing bug caused the top ten panel to show only empty green placeholders. The event handler was `private`, causing Bukkit to silently skip it. Now fixed — the panel renders player heads and stats correctly.
+    - ✨ **`aoneblock.intopten` permission.** Admins and testers can be excluded from the top ten by removing this permission (granted to all players by default).
+    - 🔡 **22 new locales** — cs, de, es, fr, hr, hu, id, it, ja, ko, lv, nl, pl, pt, pt-BR, ro, ru, tr, uk, vi, zh-CN, zh-HK.
+    - 🔺 Now requires **Paper 1.21.x**, **Java 21**, **BentoBox 3.14.0+**, and **AOneBlock 1.18.0+**. Spigot is no longer supported.
+
+    🔺 **Delete `addons/TopBlock/panels/top_panel.yml`** before restarting so the updated panel template is extracted. Re-apply any custom layout changes after.
+
+    🔡 Run `/bentobox reload` after updating so BentoBox merges new locale keys into your existing locale files.
+
+    [Release v2.0.0](https://github.com/BentoBoxWorld/TopBlock/releases/tag/2.0.0)
 
 ## Translations
 
