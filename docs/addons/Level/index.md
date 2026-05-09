@@ -445,6 +445,18 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
     [Release v2.25.0](https://github.com/BentoBoxWorld/Level/releases/tag/2.25.0)
 
+??? note "What's new in v2.26.0"
+    **Released:** 2026-05-04
+
+    - **Configurable donation panel.** The donate GUI is now fully template-driven via a new `panels/donation_panel.yml`, matching the value, detail, and top-ten panels. Admins can resize the panel from 1 to 6 rows, relocate the four named buttons (`INFO`, `CANCEL`, `PREVIEW`, `CONFIRM`), swap their icons, and add decorative items. The donation grid auto-fills every cell that isn't a border or named button.
+    - `force-shown: [1,2,3,4]` controls how many rows the panel uses (1–6 supported). The four required buttons are placed by `data.type`. If the template is missing or any required button is absent, the panel falls back to the previous hardcoded 4-row layout.
+    - 🐛 Decorative template items now actually render in the inventory; the custom `title:` on the donation panel is now respected; `force-shown` is parsed as a list (consistent with other panel YAMLs).
+    - No API breaks, no locale changes, no `config.yml` migrations.
+
+    ⚙️ **Donation panel layout.** A new `panels/donation_panel.yml` is shipped on first launch — leave it alone to keep the 2.25.0 layout, or edit it to customise.
+
+    [Release v2.26.0](https://github.com/BentoBoxWorld/Level/releases/tag/2.26.0)
+
 ## Translations
 
 {{ translations("Level") }}
