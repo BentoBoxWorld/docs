@@ -674,3 +674,16 @@ AOneBlock has some custom events that are called only in AOneBlock. But BentoBox
     🔡 **Regenerate locale files** to pick up new keys.
 
     [Release v1.24.0](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.24.0)
+
+??? note "What's new in v1.25.0"
+    **Released:** 2026-05-03
+
+    - **Populated bee nest in Plenty.** The Plenty phase now spawns a `bee_nest` (3 bees inside, `honey_level=0`) at the same density as the existing honey items, closing the long-standing honey-farming gap.
+    - **Magic block client-side resync after mob rolls.** When the magic block rolled a mob, the cancelled break event left the block looking transparent client-side until the next chunk resync. The block state is now resent to the mining player immediately.
+    - 🐛 **CraftEngine startup-order fix.** `AOneBlock`'s `onEnable` runs before CraftEngine has populated its block registry, which previously caused a flood of false `Bad custom block` errors. The block parser now trusts an explicit `type: craftengine` declaration at config-load time and validates the ID at placement instead.
+    - 🐛 **Stricter CraftEngine block-ID validation at config load.** Blank IDs and IDs missing the `namespace:key` form are now rejected at config-load time instead of silently accepted and failing later.
+    - 🐛 **Configurable chest particles no longer crash on non-`DUST` types.** Particle types whose data type is non-`Void` (e.g. `ITEM`, `BLOCK`, `ENTITY_EFFECT`) used to throw `IllegalArgumentException`. They are now detected, logged as a warning, and skipped. `DUST` and void-data particles work unchanged.
+
+    🔺 If you want the new bee nest, copy the new entry into your `phases/8500_plenty.yml` (or delete the phases folder so it regenerates) — customised phase files are not overwritten on upgrade.
+
+    [Release v1.25.0](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.25.0)

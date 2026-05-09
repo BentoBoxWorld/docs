@@ -94,6 +94,13 @@ This addon will give players a separate inventory, health, food level, advanceme
 
     [Release v1.17.0](https://github.com/BentoBoxWorld/InvSwitcher/releases/tag/1.17.0)
 
+??? note "What's new in v1.17.1"
+    **Released:** 2026-05-09
+
+    - 🐛 **Fixed inventory cleared when teleporting from a BentoBox world to a non-BentoBox world.** When a player left a BentoBox game world (e.g. BSkyBlock) for a non-BentoBox world (e.g. the default overworld or a third-party plugin world), their "outside" inventory could be lost because each non-BentoBox world stored data under its own key. All non-BentoBox worlds now share a single storage key, so the player's inventory is always restored correctly. Includes automatic migration for data saved under the old per-world keys.
+
+    [Release v1.17.1](https://github.com/BentoBoxWorld/InvSwitcher/releases/tag/1.17.1)
+
 ## Translations
 
 {{ translations("InvSwitcher") }}

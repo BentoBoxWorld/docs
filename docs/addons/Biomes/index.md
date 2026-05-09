@@ -255,6 +255,30 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 === "Admin permissions"
     - `[gamemode].admin.biomes` (default: `op`): player can use admin biomes command that opens GUI.
 
+## Changelog
+
+??? warning "What's new in v2.3.0 — requires BentoBox 3.14.0+ and Paper"
+    **Released:** 2026-05-05
+
+    - ⚙️ **Ocean biome preservation.** New `change-ocean-biomes` config option (default: `false`) prevents biome changes from overwriting ocean blocks (`OCEAN`, `WARM_OCEAN`, `DEEP_OCEAN`, etc.), keeping island shorelines and underwater areas intact. Set to `true` to restore the previous behaviour.
+    - **`COMMAND` panel action type.** Panel buttons can now run commands when clicked, both as a standalone button type and as an action on existing biome buttons alongside `CHANGE`/`BUY`/`ADVANCED_PANEL`. Useful for "Back to Island Panel" buttons or any custom integration.
+    - **Overhauled `biomesTemplate.yml`.** 44 biomes (up from ~29) with rebalanced costs, 9 new additions including Mangrove Swamp, Pale Garden (with The Creaking), and Bamboo Jungle, 3 starter bundles (Starter, Explorer, Nether & End), and `PER_USAGE` cost showcases.
+    - **Gamemode-aware unlock notifications.** Players in the correct gamemode world get the clickable "use it now" prompt; players elsewhere get a plain message naming the gamemode where the biome was unlocked, instead of a confused command in the wrong world.
+    - **Auto-import default biomes on first start.** When no biomes are configured for a gamemode, the addon now imports `biomesTemplate.yml` automatically — no more manual `import` step on fresh installs.
+    - **Biome queue cancellation on island delete/reset.** Queued and in-progress biome update tasks are cancelled on `IslandDeleteEvent` and `IslandResettedEvent`, with in-progress tasks stopping at the next chunk boundary via an `AtomicBoolean` flag.
+    - 🐛 Fixed floating-point display imprecision in admin GUI tooltips (e.g. `0.0299999999329447746` → `0.03`).
+    - 🐛 Decimal formatter pinned to `Locale.ROOT` so locales using comma decimals (e.g. German) render `0.5` as `0.5`, not `0,5`.
+    - 🐛 Biomes template items above the 99-block stack limit now split into valid stack sizes instead of failing to load.
+    - 🔡 All 23 locale files, panel YAMLs, and hardcoded Java strings migrated from legacy `&`-style color codes to MiniMessage. 14 new translations added (cs, de, hr, hu, id, it, ko, pt, pt-BR, ro, ru, tr, vi, zh-HK).
+
+    🔺 **Breaking:** This release requires **BentoBox 3.14.0+**, **Paper** (Spigot is no longer supported), and **Java 21**. The addon will not load against older versions.
+
+    🔡 **Locale note:** Customised locale files need updating — convert `&c`/`&l`/etc. to MiniMessage tags (`<red>`, `<bold>`), or delete your customisations to pick up the defaults.
+
+    ⚙️ **Config note:** Review `config.yml` for the new `change-ocean-biomes` option (default `false`).
+
+    [Release v2.3.0](https://github.com/BentoBoxWorld/Biomes/releases/tag/2.3.0)
+
 ## Translations
 
 {{ translations("Biomes") }}
