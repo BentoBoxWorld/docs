@@ -30,9 +30,11 @@ Players can set the default location of their island by running the `sethome` co
 
 ### Island transfer
 
-Island ownership can be transfered to other players on the team using the `setowner` command. Ownership cannot be transfered if the owner already has the maximum number of concurrent islands allowed.
+Island ownership can be transferred to other players on the team using the `setowner` command. Ownership cannot be transferred if the recipient is already at their maximum number of concurrent islands.
 
-*NEW:* When a player transfers ownership then now automatically leave the team.
+As of BentoBox 3.16.0, this cap is enforced on both `/island team setowner` and `/[admin] team setowner`. Earlier versions only emitted a warning after an admin transfer (and the player command had no check at all), which allowed players to be pushed over their `concurrent-islands` limit. To allow more islands for the recipient, raise their `[gamemode].island.number.<n>` permission first.
+
+*NEW:* When a player transfers ownership they now automatically leave the team.
 
 ### Teams
 
