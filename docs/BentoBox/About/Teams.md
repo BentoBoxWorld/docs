@@ -194,3 +194,51 @@ Coop players hold their rank until the player who invited them logs out, or unti
 ### Untrusting or uncooping players
 Island owners, or players with a high enough rank, can issue the `team untrust` or `team uncoop` commands to remove players from the island with these ranks. The removed player reverts to Visitor status.
 
+## Disabling Teams Per-World
+
+As of BentoBox 3.16.0, a game mode can opt out of the team subsystem on a per-world basis via the `WorldSettings#isTeamsDisabled()` API (default `false`). When enabled, the action commands that add, remove or reorganise team members refuse to run with the locale message `commands.island.team.errors.teams-disabled`.
+
+**Blocked when teams are disabled:**
+
+- `/island team invite` and `team invite accept` (TEAM invitations only — COOP and TRUST invitations remain accepted)
+- `/island team kick`, `team leave`, `team promote`, `team demote`, `team setowner`
+- `/[admin] team add`
+
+**Still available:**
+
+- Read-only player commands: `/island team` panel, `team info`, `team invites`, `team invite reject`
+- Trust and coop relationships: `trust`, `coop`, `untrust`, `uncoop` — these are the supported alternative when teams are off
+- Admin commands that operate on existing teams: `kick`, `disband`, `disbandall`, `setowner`, `fix`, `maxsize`
+
+After flipping `isTeamsDisabled` on for a world that already has teams, run `/[admin] team disbandall` once to clean up pre-existing teams. This admin command strips every member and sub-owner from every island in the current world in one confirmable pass. Trusted and coop players are intentionally untouched.
+
+??? note "What's new in v3.16.0"
+    **Released:** 2026-05-10
+
+    See the full notes: [Release 3.16.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.16.0)
+
+    **Team handling**
+
+    - New `WorldSettings#isTeamsDisabled()` API (default `false`) lets a game mode opt out of the team subsystem on a per-world basis.
+    - New admin command `/[admin] team disbandall` strips every member and sub-owner from every island in the current world in one confirmable pass.
+    - `/[admin] team kick` now requires explicit `x,y,z` coordinates when the target is on multiple team islands, and refuses to kick island owners (pointing the admin to `setowner` or `disband` instead).
+    - Setowner cap is now enforced on both `/island team setowner` and `/[admin] team setowner` — transfers refuse when the recipient is at their concurrent-islands cap.
+
+    **Bug fixes**
+
+    - `ISLAND_RESPAWN` no longer drops players at world spawn (0,0) when their home block is missing — it now walks a fallback chain ending in `SafeSpotTeleport`.
+    - `OFFLINE_GROWTH` now blocks every spreading plant (vines, weeping/twisting vines, etc.) and trees/mushrooms growing from saplings — not just kelp and bamboo.
+    - Dynmap area/polygon markers now use the world's full min/max height instead of always rendering at y=64.
+
+    **API additions**
+
+    - `CraftEngineHook.getItemStack(String id)` and `CraftEngineHook.getItemId(ItemStack item)` let addons render and recognise CraftEngine custom items without depending on CraftEngine directly.
+
+    **Locale**
+
+    - New keys: `commands.admin.team.disbandall.{description,confirmation,success}`, `commands.island.team.errors.teams-disabled`, `commands.admin.team.setowner.errors.at-max`.
+    - Updated `commands.admin.team.kick.cannot-kick-owner` message that points admins to `setowner`/`disband`.
+    - Removed the dead `commands.admin.team.kick.success-all` key.
+    - All 22 bundled translations are in sync.
+
+    **Compatibility:** Paper Minecraft 1.21.5 – 26.1.2, Java 21+.
