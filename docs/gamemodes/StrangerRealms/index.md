@@ -65,6 +65,17 @@ The core game mechanics and claim features are highly configurable via the Bento
 
 Permissions can be found [here](Permissions).
 
+??? note "What's new in v1.0.4"
+    **Released:** 2026-05-16
+
+    Bug-fix release for the dynamic world border. See the full notes: [Release 1.0.4](https://github.com/BentoBoxWorld/StrangerRealms/releases/tag/1.0.4)
+
+    - Fixed a sporadic `NullPointerException` in `getBorderSize()` on the first dynamic-border shrink (e.g., when player count dropped) that spammed the console and stalled the border until the next restart. The cancel path now uses the null-guarded `cancelBorderTask()` helper.
+    - The startup warning about not using the BentoBox `Border` addon previously referenced "the Crowdbound world" by mistake; it now reads `StrangerRealms has its own Border, so do not use Border addon.`
+    - Built and tested against Paper API 1.21.11 to keep pace with MockBukkit's tracking branch.
+
+    **Compatibility:** BentoBox API 3.9.0+, Minecraft 1.21.10+, Java 21.
+
 ## Translations
 
 {{ translations("StrangerRealms") }}

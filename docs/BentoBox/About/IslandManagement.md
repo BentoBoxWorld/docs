@@ -43,7 +43,9 @@ Admins can delete a player's island with:
 /[admin_command] delete <player>
 ```
 
-This removes the island from the database and queues the area for cleanup. The player will be able to create a new island afterwards.
+This removes the island from the database and marks the area for cleanup. The player can create a new island immediately afterwards.
+
+As of BentoBox 3.16.1, the actual region files are reaped on the next housekeeping sweep (default: 24 h) rather than on demand. If the island shares a region file with other live islands, the deleted area stays in place until that region is clear. To force immediate cleanup, run `/bbox admin purge deleted` after the delete — it will only remove blocks if the region file no longer hosts any live island. For surgical block removal in a shared region, use WorldEdit or remove the blocks manually.
 
 ## Inactive Island Cleanup
 
@@ -117,3 +119,14 @@ Players can check their own island info with `/island info`. Admins can check an
 /[admin_command] info <player>
 ```
 This shows the island's location, owner, team members, and current protection range.
+
+??? note "What's new in v3.16.1"
+    **Released:** 2026-05-17
+
+    Targeted patch for `/bbox admin delete`. See the full notes: [Release 3.16.1](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.16.1)
+
+    - 🔺 `/bbox admin delete` now actually deletes the island. The reap happens on the next housekeeping sweep (default: 24 h) rather than instantly; if the region file still hosts live islands, the deleted island remains in the deleted state until the region is clear. Use WorldEdit or remove blocks manually if you need immediate cleanup of a shared region.
+    - 🔺 Seed worlds (`<world>/bentobox`) are no longer created. The seed-world plumbing (`createSeedWorlds`, `removeSeedWorlds`, the in-memory copies, the on-disk folders) is gone. Any stale `<world>/bentobox` folders left over from earlier versions are safe to delete manually.
+    - 🔺 API: `GameModeAddon#isUsesNewChunkGeneration()` is deprecated for removal. Existing overrides keep working (the value is ignored) but emit a deprecation warning — remove the override at your convenience.
+
+    **Compatibility:** Paper Minecraft 1.21.5 – 26.1.2, Java 21+.
