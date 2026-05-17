@@ -66,6 +66,17 @@ This section defines a number of overall settings for the add-on.
 
     Default: `true`
 
+??? note "donations-only"
+    If true, the island block scan is skipped entirely and the island level is computed only from blocks donated via `/island donate`. This removes the per-recalculation CPU cost of scanning the island.
+
+    `/island level`, `/island top`, `/island value`, and `/island donate` continue to work. `/island detail` is not registered in this mode, since there are no scanned blocks to break down. The top-ten panel's viewer button no longer shows "Click to view" or opens the detail panel.
+
+    The zero-island scan that runs on island creation/reset still runs when `zero-new-island-levels: true`, so the starter-island handicap is recorded into `initialCount` and applied correctly if an admin later turns donations-only off. While donations-only is on, the stored `initialCount` is ignored at `/island level` time, so flipping the mode on for a server with existing islands does not push players to wildly negative levels.
+
+    Requires BentoBox 3.16.0 or later.
+
+    Default: `false`
+
 ??? note "login"
     Allows to set that island level is calculated on player login.
 
@@ -181,13 +192,15 @@ This section defines values for blocks and limits for them.
 
     Format: `MATERIAL: NUMBER`
 
-    CraftEngine custom blocks are also supported (requires BentoBox 3.15.0+). Use their namespaced ID as the key:
+    Custom blocks from Oraxen, Nexo, ItemsAdder, and CraftEngine are also supported. Use their namespaced ID as the key:
 
     ```yaml
     blocks:
       mynamespace:my_block: 50
       mynamespace:custom_ore: 3
     ```
+
+    As of Level 2.27.0, custom blocks are no longer filtered out of `/level value`, render with their real texture/model data and display name in `/level detail` and the value panel, and can be donated via `/island donate hand`, `/island donate inv`, and the donation panel. CraftEngine items are resolved via BentoBox 3.16.0's `CraftEngineHook.getItemId` / `getItemStack` helpers — earlier BentoBox versions will refuse to load Level 2.27.0+.
 
 ??? note "worlds"
     List any blocks that have a different value in a specific world. 
@@ -321,6 +334,7 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     - `/[player_command] value [material]`: allows to check block value. Requires `[gamemode].island.value` permission.
     - `/[player_command] donate`: opens a chest-style GUI to donate blocks directly to your island's level. Donated points survive future level recalculations. Requires `[gamemode].island.level.donate` permission.
     - `/[player_command] donate hand [amount]`: donates the item currently held in the player's hand (or the specified amount of it) directly to island level without opening the GUI. Requires `[gamemode].island.level.donate` permission.
+    - `/[player_command] donate inv`: lists every donatable block in the player's inventory with per-material values and a running total, then on confirm donates them all and runs a level recalc. Items with no configured value and non-blocks stay in the inventory. Requires `[gamemode].island.level.donate` permission.
 
 
 === "Admin commands"
@@ -456,6 +470,21 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     ⚙️ **Donation panel layout.** A new `panels/donation_panel.yml` is shipped on first launch — leave it alone to keep the 2.25.0 layout, or edit it to customise.
 
     [Release v2.26.0](https://github.com/BentoBoxWorld/Level/releases/tag/2.26.0)
+
+??? warning "What's new in v2.27.0 — action required"
+    **Released:** 2026-05-13
+
+    🔺 **Requires BentoBox 3.16.0 or later.** This release bumps the `api-version` in `addon.yml` to `3.16.0` and depends on the new `CraftEngineHook.getItemId` / `getItemStack` helpers. Older BentoBox versions will refuse to load the addon.
+
+    - ⚙️ **Donations-only mode.** New `donations-only` option in `config.yml` (default `false`). When `true`, the per-recalculation chunk scan is skipped entirely and the island level is computed from donated points alone using the configured `level-calc` formula. `/island detail` is not registered in this mode and the top-ten viewer button stops opening the detail panel. The stored `initialCount` is ignored at `/island level` time, so flipping the mode on for a server with existing islands does not push players to wildly negative levels.
+    - 💎 **`/island donate inv` — donate everything from inventory.** New confirmable `inv` subcommand: lists every donatable block in the player's inventory with per-material values and a running total, then on confirm donates them all and runs a level recalc. Items with no configured value and non-blocks stay in the inventory. Tab-complete now suggests `hand` / `inv` for the first arg, and the held-item count after `hand`.
+    - 🧱 **Custom block support across value, detail, and donate menus.** Oraxen, Nexo, ItemsAdder, and CraftEngine custom blocks are no longer filtered out of `/level value` or rendered as nameless PAPER icons in `/level detail`. The value panel and details panel look up the real custom-block `ItemStack` from each plugin's registry, so the configured texture/model data and display name are preserved. `/island value hand` on a held custom item now reports the configured value and display name. Donation paths (`/island donate hand`, `/island donate inv`, the donation panel) accept custom-block items and record donations under the custom ID.
+    - 🐛 **Negative progression fix.** Non-linear `level-calc` formulas (e.g. `3 * sqrt(blocks / level_cost)`) no longer dip below zero between levels. Thanks @msmith-codes!
+    - ⚡ **Performance.** `tidyUp()` no longer walks up to 10M points linearly on the primary thread when computing point boundaries — the forward and backward scans now use binary search (~23 iterations instead of millions).
+
+    🔡 **Locales updated.** All 18 shipped locales gained new `island.donate.inv.*` keys (`keyword`, `confirm-header`, `confirm-line`, `confirm-total`). If you have customised locale files in `plugins/BentoBox/addons/Level/locales/`, copy the new `donate.inv` block into them or the new `/island donate inv` flow will show raw keys.
+
+    [Release v2.27.0](https://github.com/BentoBoxWorld/Level/releases/tag/2.27.0)
 
 ## Translations
 
