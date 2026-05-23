@@ -242,3 +242,14 @@ After flipping `isTeamsDisabled` on for a world that already has teams, run `/[a
     - All 22 bundled translations are in sync.
 
     **Compatibility:** Paper Minecraft 1.21.5 – 26.1.2, Java 21+.
+
+??? note "What's new in v3.16.2"
+    **Released:** 2026-05-19
+
+    Small follow-up patch. See the full notes: [Release 3.16.2](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.16.2)
+
+    - 🐛 **Team-accept no longer eats inventories under InvSwitcher.** Players who accepted a team invite while standing in a non-BentoBox world (with `island.reset.on-join.inventory: true` — Boxed and AOneBlock ship with this) could return to that world to find their items gone. The on-join inventory/XP/health/hunger/money resets now run *after* the teleport into the island world completes, so InvSwitcher (and similar plugins) save the player's real inventory under the old world before the reset fires. Fixes the case reported against AOneBlock 1.25.0 / Boxed 3.3.0 / InvSwitcher 1.17.1.
+    - 🔺 **API: `Island.setRange` no longer silently corrupts island data.** `setRange` now refuses any value that disagrees with the game mode's configured `distance-between-islands` and logs the calling stack frame. Game modes that legitimately resize claims (e.g., StrangerRealms) continue to work — they already override `GameModeAddon.isEnforceEqualRanges()` to return `false`. If you maintain an addon and see `Refusing Island.setRange(...)` warnings, the log names the exact caller.
+    - 🐛 **CraftEngine 26.5+ compatibility.** `CraftEngineHook.getItemStack(id)` now uses `BukkitItemDefinition#buildBukkitItem()` and works against the rewritten CraftEngine API.
+
+    **Compatibility:** Paper Minecraft 1.21.5 – 26.1.2, Java 21+.
