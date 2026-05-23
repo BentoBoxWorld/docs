@@ -76,6 +76,20 @@ Permissions can be found [here](Permissions).
 
     **Compatibility:** BentoBox API 3.9.0+, Minecraft 1.21.10+, Java 21.
 
+!!! warning "What's new in v1.0.5 — Hotfix"
+    **Released:** 2026-05-19
+
+    Hotfix for a bug that could corrupt islands in other game modes sharing the same server. See the full notes: [Release 1.0.5](https://github.com/BentoBoxWorld/StrangerRealms/releases/tag/1.0.5)
+
+    - 🔺 **Fix `TeamListener` corrupting range on other game modes' islands.** When a player left a team or was kicked, the claim reset code was affecting islands belonging to other game modes (e.g., AOneBlock) on the same server. Upgrade immediately if you run StrangerRealms alongside another game mode.
+
+    **Recovery for affected servers.** If a previous StrangerRealms version corrupted other game modes' islands, those islands will still fail to load on startup with an `Island distance mismatch` error. To recover, either:
+
+    - Edit `plugins/BentoBox/database/Island/*.json` and set `range` back to the affected game mode's configured `distance-between-islands` (e.g. `400` for AOneBlock / BSkyBlock, `320` for Boxed), **or**
+    - Delete the offending island JSON files if losing them is acceptable.
+
+    **Compatibility:** BentoBox API 3.9.0+, Minecraft 1.21.10+, Java 21.
+
 ## Translations
 
 {{ translations("StrangerRealms") }}
