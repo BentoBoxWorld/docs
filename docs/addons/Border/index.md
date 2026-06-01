@@ -167,6 +167,16 @@ show-warps-on-map: true
 
     [Release v4.8.3](https://github.com/BentoBoxWorld/Border/releases/tag/4.8.3)
 
+??? note "What's new in v4.8.4"
+    **Released:** 2026-05-26
+
+    - 🐛 **Fixed `NoSuchMethodError: WorldBorder.changeSize` on Paper/Purpur 1.21.10.** The 4.8.3 build was compiled against Paper 1.21.11, which renamed the world-border lerp method, so the vanilla border type crashed on 1.21.10 servers when `/[player_command] bordertype vanilla` was used. Border now uses the cross-version `setSize` API and works on **both 1.21.10 and 1.21.11**.
+    - 🐛 Fixed the Modrinth publish workflow (incorrect artifact path).
+
+    No config or locale changes are required. If you worked around the bug with `bordertype barrier`, you can switch back to `vanilla` once 4.8.4 is installed.
+
+    [Release v4.8.4](https://github.com/BentoBoxWorld/Border/releases/tag/4.8.4)
+
 ## Translations
 
 {{ translations("Border") }}

@@ -19,3 +19,45 @@ The core API package is `world.bentobox.bentobox.api.*`. Methods in those packag
 # Example Addon
 
 @BONNe maintains an example addon here: [https://github.com/BONNePlayground/ExampleAddon](https://github.com/BONNePlayground/ExampleAddon)
+
+# Cancellable player reset events
+
+*Added in BentoBox 3.17.0.*
+
+When a player leaves a team or their island is reset, BentoBox can clear their inventory, ender chest, money, health, hunger and XP, and untame their animals — depending on each game mode's `island.reset.on-leave` settings. Each of these reset actions now fires a **cancellable** event **before** it runs, so an addon can veto an individual reset instead of all-or-nothing. If a listener cancels the event, BentoBox skips that action.
+
+These events live in `world.bentobox.bentobox.api.events.player`:
+
+| Event | Fired before |
+| --- | --- |
+| `PlayerTamedRemovalEvent` | untaming the player's animals |
+| `PlayerResetEnderChestEvent` | clearing the ender chest |
+| `PlayerResetInventoryEvent` | clearing the inventory |
+| `PlayerResetMoneyEvent` | withdrawing the player's balance |
+| `PlayerResetHealthEvent` | resetting health |
+| `PlayerResetHungerEvent` | resetting hunger |
+| `PlayerResetExpEvent` | resetting XP |
+
+All events extend `PlayerBaseEvent` (which implements `Cancellable`) and carry the player UUID, the island, and the world. Listening is standard Bukkit:
+
+```java
+@EventHandler
+public void onInventoryReset(PlayerResetInventoryEvent e) {
+    if (shouldKeepInventory(e.getPlayerUUID())) {
+        e.setCancelled(true); // inventory will not be cleared
+    }
+}
+```
+
+Events are constructed and dispatched through a small builder API:
+
+```java
+PlayerEvent.builder()
+    .reason(PlayerEvent.Reason.INVENTORY_RESET)
+    .involvedPlayer(uuid)
+    .island(island)
+    .world(world)
+    .build();
+```
+
+This is purely additive — all classes are new and no existing API changed, so 3.17.0 is binary-compatible with existing addons. The [Inventory Switcher addon](../addons/InvSwitcher/index.md) uses these events to protect per-world inventories and balances during resets. See [Release 3.17.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.17.0).

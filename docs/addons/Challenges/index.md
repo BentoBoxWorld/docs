@@ -291,6 +291,15 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
     [Release v1.6.0](https://github.com/BentoBoxWorld/Challenges/releases/tag/1.6.0)
 
+??? note "What's new in v1.6.1"
+    **Released:** 2026-05-26
+
+    - 🐛 **Confirmation conversations no longer NPE on abandon.** The web library and the wipe/delete prompts in the admin GUI could flood the console with a `NullPointerException` when a confirmation conversation was abandoned instead of answered (for example, clicking a library entry several times before typing `confirm`, or letting the prompt time out). Abandons are now silently treated as no-ops.
+
+    Drop-in replacement — no config or locale changes are required.
+
+    [Release v1.6.1](https://github.com/BentoBoxWorld/Challenges/releases/tag/1.6.1)
+
 ## Translations
 
 !!! info "Translations for challenges"

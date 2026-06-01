@@ -1,9 +1,9 @@
 {
-  "last_run": "2026-05-23T00:37:17Z",
+  "last_run": "2026-06-01T01:05:19Z",
   "repos": {
     "BentoBox": {
-      "last_checked": "2026-05-23T00:37:17Z",
-      "last_release": "3.16.2",
+      "last_checked": "2026-06-01T01:05:19Z",
+      "last_release": "3.17.0",
       "doc_path": "BentoBox/",
       "category": "core"
     },
@@ -20,8 +20,8 @@
       "category": "gamemode"
     },
     "Boxed": {
-      "last_checked": "2026-05-23T00:37:17Z",
-      "last_release": "",
+      "last_checked": "2026-06-01T01:05:19Z",
+      "last_release": "3.4.0",
       "doc_path": "gamemodes/Boxed/index.md",
       "category": "gamemode"
     },
@@ -74,14 +74,14 @@
       "category": "addon"
     },
     "Border": {
-      "last_checked": "2026-05-23T00:37:17Z",
-      "last_release": "4.8.3",
+      "last_checked": "2026-06-01T01:05:19Z",
+      "last_release": "4.8.4",
       "doc_path": "addons/Border/index.md",
       "category": "addon"
     },
     "Challenges": {
-      "last_checked": "2026-05-23T00:37:17Z",
-      "last_release": "1.6.0",
+      "last_checked": "2026-06-01T01:05:19Z",
+      "last_release": "1.6.1",
       "doc_path": "addons/Challenges/index.md",
       "category": "addon"
     },
@@ -128,8 +128,8 @@
       "category": "addon"
     },
     "InvSwitcher": {
-      "last_checked": "2026-05-23T00:37:17Z",
-      "last_release": "1.17.1",
+      "last_checked": "2026-06-01T01:05:19Z",
+      "last_release": "1.18.0",
       "doc_path": "addons/InvSwitcher/index.md",
       "category": "addon"
     },
