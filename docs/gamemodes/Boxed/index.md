@@ -137,6 +137,22 @@ Commands can be found [here](Commands).
 
 Placeholders can be found [here](Placeholders).
 
+## Changelog
+
+??? note "What's new in v3.4.0"
+    **Released:** 2026-05-30
+
+    - **Trial Chambers support.** Boxed now captures and restores Trial Spawner state — including both the normal *and* ominous configurations — when structures are pulled from the seed world into a player's box, and recognises `trial_chambers` as a tracked structure for advancement-driven box growth.
+    - 🐛 **No more cross-game-mode progress loss.** Boxed no longer clears a player's advancements and statistics when an island is reset in a *different*, non-Boxed game mode.
+    - 🐛 Pending structure pastes are now cancelled when an island is deleted, preventing structures being placed into a box that no longer exists.
+    - 🐛 Ominous trial spawners now restore the correct configuration rather than always applying the normal one.
+    - Modernised build & test stack: Paper 1.21.11, BentoBox API 3.13.0, JUnit 5 + Mockito + MockBukkit.
+
+    !!! note
+        Trial Chambers are captured from the seed world when a box is generated, so boxes created *before* 3.4.0 will not retroactively gain them. New boxes (and newly expanded regions) will include them.
+
+    [Release v3.4.0](https://github.com/BentoBoxWorld/Boxed/releases/tag/3.4.0)
+
 ## Translations
 
 {{ translations("Boxed") }}
