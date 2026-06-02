@@ -192,6 +192,12 @@
       "last_release": "1.19.0",
       "doc_path": "addons/Warps/index.md",
       "category": "addon"
+    },
+    "VoidPortals": {
+      "last_checked": "2026-06-01T01:45:43Z",
+      "last_release": "1.6.0",
+      "doc_path": "addons/VoidPortals/index.md",
+      "category": "addon"
     }
   }
 }
