@@ -124,3 +124,12 @@ The permission can be anything you like, e.g., a rank permission, **myserver.VIP
 ## Translations
 
 {{ translations("Greenhouses") }}
+
+??? note "What's new in v1.9.5"
+    **Released:** 2026-06-03
+
+    A bug-fix release focused on plant growth and the recipe GUI. See the full [Release v1.9.5](https://github.com/BentoBoxWorld/Greenhouses/releases/tag/1.9.5) notes.
+
+    - 🔡 Fixed a GUI colour bleed where the Nether recipe entry's red colour code was never reset, turning the rest of the recipe panel text red. Tall/double plants (sunflowers, lilacs, rose bushes, etc.) now correctly place their upper half.
+    - Glow Lichen now grows on land blocks (e.g. `GLOW_LICHEN: 10:STONE`) instead of being treated as underwater-only.
+    - The `maxmobs` limit is now enforced on every spawn, so greenhouses can no longer overshoot the configured mob maximum.

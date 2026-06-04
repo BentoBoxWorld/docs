@@ -25,6 +25,13 @@ VoidPortals adds a single world setting flag. Toggle it per world from the Game 
 
 {{ translations("VoidPortals") }}
 
+??? note "What's new in v1.6.1"
+    **Released:** 2026-06-01
+
+    A bug-fix release. See the full [Release v1.6.1](https://github.com/BentoBoxWorld/VoidPortals/releases/tag/1.6.1) notes.
+
+    - Void-fall no longer kills you on arrival. Falling into the void built up downward velocity that carried through the teleport, slamming you into the ground the moment you arrived in the next dimension. Your velocity and fall distance are now reset on arrival, so you land safely.
+
 ??? warning "What's new in v1.6.0 — Breaking changes"
     **Released:** 2026-06-01
 
