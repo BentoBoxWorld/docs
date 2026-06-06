@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-06-01T01:05:19Z",
+  "last_run": "2026-06-04T14:25:55Z",
   "repos": {
     "BentoBox": {
       "last_checked": "2026-06-01T01:05:19Z",
@@ -122,8 +122,8 @@
       "category": "addon"
     },
     "Greenhouses": {
-      "last_checked": "2026-05-23T00:37:17Z",
-      "last_release": "",
+      "last_checked": "2026-06-04T14:25:55Z",
+      "last_release": "1.9.5",
       "doc_path": "addons/Greenhouses/index.md",
       "category": "addon"
     },
@@ -170,8 +170,8 @@
       "category": "addon"
     },
     "TwerkingForTrees": {
-      "last_checked": "2026-05-23T00:37:17Z",
-      "last_release": "",
+      "last_checked": "2026-06-04T14:25:55Z",
+      "last_release": "1.6.0",
       "doc_path": "addons/TwerkingForTrees/index.md",
       "category": "addon"
     },
@@ -194,8 +194,8 @@
       "category": "addon"
     },
     "VoidPortals": {
-      "last_checked": "2026-06-01T01:45:43Z",
-      "last_release": "1.6.0",
+      "last_checked": "2026-06-04T14:25:55Z",
+      "last_release": "1.6.1",
       "doc_path": "addons/VoidPortals/index.md",
       "category": "addon"
     }
