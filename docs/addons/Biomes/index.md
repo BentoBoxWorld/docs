@@ -257,6 +257,27 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
 ## Changelog
 
+??? note "What's new in v2.3.2"
+    **Released:** 2026-06-15
+
+    A small follow-up to 2.3.1 that completes the ocean-biome fix and repairs how the addon writes its config.
+
+    - ⚙️ **`change-ocean-biomes` is now in `config.yml`.** The option (added in 2.3.0) was never written to the shipped config template, so it didn't appear on disk and couldn't be configured.
+    - 🔧 **`config.yml` now self-heals on load.** Settings are written back after loading, so options added in new versions are added to existing configs automatically with their defaults — this was the root cause behind the option being invisible.
+
+    🔺 **Upgrading from 2.3.0 / 2.3.1 — no config edit needed.** On first load the config self-heals: `change-ocean-biomes` is written out as `true` automatically and biome changes work out of the box. (If you previously set it to `false` on purpose to preserve oceans, that value is kept.)
+
+    [Release v2.3.2](https://github.com/BentoBoxWorld/Biomes/releases/tag/2.3.2)
+
+??? warning "What's new in v2.3.1 — ocean islands fixed"
+    **Released:** 2026-06-14
+
+    - ⚙️🔺 **Biome changes apply to ocean islands again.** The `change-ocean-biomes` option (added in 2.3.0) defaulted to `false`, which made Biomes skip every block already in an ocean biome — so an all-ocean island (SkyBlock/AcidIsland void worlds, which are entirely `warm_ocean`) was skipped entirely while still reporting success. **The default is now `true`.** Fixes [#171](https://github.com/BentoBoxWorld/Biomes/issues/171).
+
+    🔺 **Note:** On a server upgrading from 2.3.0, the `change-ocean-biomes` line is not written to your existing `config.yml` automatically in this version, but the new default (`true`) takes effect in memory, so biome changes work again. This config-visibility gap is fully fixed in 2.3.2.
+
+    [Release v2.3.1](https://github.com/BentoBoxWorld/Biomes/releases/tag/2.3.1)
+
 ??? warning "What's new in v2.3.0 — requires BentoBox 3.14.0+ and Paper"
     **Released:** 2026-05-05
 

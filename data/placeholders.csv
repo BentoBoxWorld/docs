@@ -55,6 +55,7 @@ Bank,Bank_[gamemode]_visited_island_balance_formatted,Island balance of the isla
 Bank,Bank_[gamemode]_top_value_<number>,Island balance of the `<number>`-th island on the leader board,1.1.0
 Bank,Bank_[gamemode]_top_name_<number>,Island owner's name of the `<number>`-th island on the leader board,1.1.0
 Bank,Bank_[gamemode]_top_island_<number>,Island name of the `<number>`-th island on the leader board,1.10.0
+Bank,Bank_[gamemode]_latest_transaction,The player's most recent island bank transaction (rendered as `[Username] [TxType] $[Amount]`),1.10.0
 Challenges,[gamemode]_challenges_total_completion_count,Number of times the player completed challenges,0.8.3
 Challenges,[gamemode]_challenges_completed_count,Number of challenges the player has completed,0.8.3
 Challenges,[gamemode]_challenges_uncompleted_count,Number of challenges the player has not yet completed,0.8.3
