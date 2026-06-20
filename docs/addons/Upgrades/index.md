@@ -14,7 +14,7 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 1. Place the Upgrades addon jar in the addons folder of the BentoBox plugin.
 2. Restart the server.
 3. On first run, 8 example upgrades are seeded automatically so you can get started right away.
-4. Use `/[admin_command] upgrades` to customise or create upgrades in-game.
+4. Use `/[admin_command] upgrade` to customise or create upgrades in-game.
 
 ## How It Works
 
@@ -40,7 +40,7 @@ Each upgrade is made up of one or more **tiers**. A tier covers a range of level
     - `/[player_command] upgrade`: opens the upgrade purchase panel.
 
 === "Admin commands"
-    - `/[admin_command] upgrades`: opens the admin GUI to create, edit, and delete upgrades and their tiers.
+    - `/[admin_command] upgrade`: opens the admin GUI to create, edit, and delete upgrades and their tiers.
 
 ## Price Types
 
@@ -66,6 +66,32 @@ Each upgrade tier can grant any combination of the following rewards:
 | **Commands** | Runs console or player commands | At purchase |
 | **Spawner Boost** | Adds extra mob spawns to every spawner event on the island | Passive — always on |
 | **Crop Growth Boost** | Adds extra growth ticks to every natural crop growth event on the island | Passive — always on |
+
+### Block, Entity & Entity Group Limits
+
+The three Limits rewards all use the **same reward editor** and let you raise a per-island limit when an upgrade is purchased. They require the [Limits](../Limits/index.md) addon — without it the reward does nothing.
+
+!!! info "Upgrades *adds to* the base limit — it does not set it"
+    The **base (starting) limit** for a block, entity, or group is configured in the **Limits addon**, not here. A Limits reward only adds an **offset** on top of that base. Each purchased level adds the reward's amount again, so the player's effective limit is `Limits-addon base + (sum of upgrade offsets)`.
+
+    Example: if the Limits addon caps hoppers at `8` and a player buys 3 levels of an upgrade that adds `1` hopper per level, their island can place `8 + 3 = 11` hoppers.
+
+#### Configuring a limit reward
+
+1. Run `/[admin_command] upgrade` to open the admin GUI and create or select an upgrade.
+2. Open the upgrade, add a **tier** (an upgrade needs at least one tier), then open that tier and click **Rewards**.
+3. Create a new **Limits** reward (the barrier icon). The reward editor has three settings:
+
+| Setting | What it does |
+|---|---|
+| **Type** | Click to cycle between `BLOCK`, `ENTITY`, and `ENTITY_GROUP`. Choose `BLOCK` to limit a block such as a hopper. |
+| **Target** | The thing being limited. Type it in chat. For `BLOCK` use a Bukkit [Material](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html) name (e.g. `HOPPER`, `CHEST`); for `ENTITY` an [EntityType](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html) name (e.g. `CHICKEN`); for `ENTITY_GROUP` a group name that **matches a group defined in the Limits addon**. |
+| **Amount** | How much the limit is raised **per level**. Accepts a plain number or a formula using the [Formula Variables](#formula-variables) (e.g. `1`, or `[level] * 2`). |
+
+A green pane in the reward editor means the configuration is valid; a red pane means a required field (usually the Target) is still missing.
+
+!!! tip "Different blocks need different upgrades or tiers"
+    Each Limits reward targets a single block/entity/group. To raise the limit on several block types, add a separate Limits reward for each one — either as multiple rewards on the same tier or as separate upgrades — and give each its own Target.
 
 ### Commands
 
