@@ -20,6 +20,8 @@ These placeholders are available in all currently available gamemodes ([BSkyBloc
 | `%Bank_[gamemode]_visited_island_balance_formatted%` | Formatted island balance of the island the player is standing on. e.g. 1.2k | 1.1.0 |
 | `%Bank_[gamemode]_top_value_#RANK#%` | Island balance of the `#RANK#`-th island on the leader board | 1.1.0 |
 | `%Bank_[gamemode]_top_name_#RANK#%` | Island owner's name of the `#RANK#`-th island on the leader board | 1.1.0 |
+| `%Bank_[gamemode]_top_island_#RANK#%` | Island name of the `#RANK#`-th island on the leader board | 1.10.0 |
+| `%Bank_[gamemode]_latest_transaction%` | The player's most recent island bank transaction, rendered as `[Username] [TxType] $[Amount]` (e.g. `tastybento Deposited $500.0`) | 1.10.0 |
 
 *Note*: `#RANK#` is a number between 1 and the `number-of-ranks` setting in Bank's config.yml.
 

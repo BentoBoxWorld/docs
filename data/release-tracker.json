@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-06-13T17:23:23Z",
+  "last_run": "2026-06-16T00:43:25Z",
   "repos": {
     "BentoBox": {
       "last_checked": "2026-06-01T01:05:19Z",
@@ -62,14 +62,14 @@
       "category": "gamemode"
     },
     "Bank": {
-      "last_checked": "2026-05-23T00:37:17Z",
-      "last_release": "1.9.1",
+      "last_checked": "2026-06-16T00:43:25Z",
+      "last_release": "1.10.0",
       "doc_path": "addons/Bank/index.md",
       "category": "addon"
     },
     "Biomes": {
-      "last_checked": "2026-05-23T00:37:17Z",
-      "last_release": "2.3.0",
+      "last_checked": "2026-06-16T00:43:25Z",
+      "last_release": "2.3.2",
       "doc_path": "addons/Biomes/index.md",
       "category": "addon"
     },
@@ -176,8 +176,8 @@
       "category": "addon"
     },
     "Upgrades": {
-      "last_checked": "2026-05-23T00:37:17Z",
-      "last_release": "1.0.2",
+      "last_checked": "2026-06-16T00:43:25Z",
+      "last_release": "1.0.3",
       "doc_path": "addons/Upgrades/index.md",
       "category": "addon"
     },

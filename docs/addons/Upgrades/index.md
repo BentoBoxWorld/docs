@@ -130,6 +130,13 @@ The `UpgradeAPI` class is exposed for other addons to query and modify upgrade d
 
 ## Changelog
 
+??? note "What's new in v1.0.3"
+    **Released:** 2026-06-16
+
+    - 🐛 **Startup crash fixed.** Resolves a `ConcurrentModificationException` that could crash the addon on startup when an upgrade tier referenced a missing upgrade data entry (e.g. after partial seeding or manual data edits). Orphaned tiers are now skipped safely with a warning instead of aborting the whole addon load.
+
+    [Release v1.0.3](https://github.com/BentoBoxWorld/Upgrades/releases/tag/1.0.3)
+
 ??? warning "What's new in v1.0.0 — complete rewrite, action required"
     **Released:** 2026-04-12
 
