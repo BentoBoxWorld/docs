@@ -183,6 +183,20 @@ BentoBox has no built-in shop. The pinned messages in `#support-en` describe two
 
 The visual border lives at the protection range. If a player has been granted a higher range permission but hasn't relogged, the border still shows the old radius. Have them rejoin (or use the admin range command which applies instantly).
 
+### I deleted an island but the blocks are still there — "This island is marked for deletion and is awaiting region cleanup"
+
+This is expected behaviour, not a bug. As of **BentoBox 3.16.1**, `/[admin_command] delete <player>` (and `/island reset`) removes the island from the database immediately — the player can make a new island straight away — but the **blocks are reaped on the next housekeeping sweep** (default: every 24 h) rather than instantly. Until then the area is flagged as "deleted" and you'll see the *awaiting region cleanup* message.
+
+The reap is delayed because BentoBox deletes the underlying region files, and one region file can hold **several islands** packed together. BentoBox will only delete a region file once **no live island** is left in it, so a deleted island whose region still hosts active neighbours stays on the map until those neighbours are also cleared.
+
+To act sooner:
+
+- **Force a sweep now:** run `/bbox admin purge deleted`. It reaps every soft‑deleted island whose region file is now empty — islands sharing a region with a live island are skipped.
+- **Shared region, need it gone immediately:** remove the blocks by hand with **WorldEdit** (`//pos1`/`//pos2`/`//set air`) or by regenerating the chunks. The island is already gone from the database; this is purely cosmetic block removal.
+- **Restart after purging** so Paper's chunk cache is cleared and the empty area stops rendering.
+
+See [Island Deletion (Admin)](BentoBox/About/IslandManagement.md#island-deletion-admin) for the full lifecycle.
+
 ## Teams, coop and visitors
 
 ### What's the difference between team, coop, trust and visit?
