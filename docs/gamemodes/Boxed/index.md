@@ -40,43 +40,43 @@ The official **BoxedDataPack** adds a set of custom advancements designed specif
 
 Prefer to build your own? See the [tutorial video](https://youtu.be/zNzQvIbweQs) for how to create custom advancements that integrate with Boxed's expansion system.
 
-## Using Regionerator
+## Keeping world size down
 
-*Note: This plugin is designed to delete unused regions of you world! Make sure you take backups if you use it! Use at your own risk!*
+!!! warning "Regionerator is no longer needed"
+    Older versions of this guide recommended the third-party [Regionerator](https://github.com/Jikoo/Regionerator) plugin to prune unused chunks. **As of BentoBox 3.15.0 this is built in** — BentoBox now deletes region (`.mca`) files directly, so Regionerator is no longer required and is no longer recommended for Boxed. If you are still running it, you can remove it: it is redundant and, unless its seed-world exemptions are set up correctly, it can delete Boxed's seed worlds and make server startup very slow.
 
-[Regionerator](https://github.com/Jikoo/Regionerator) is a plugin that gradually deletes unused chunks to keep world sizes low. It is not written by the BentoBox team, but it supports BentoBox and respects box boundaries. It can be used to delete box chunks so that they can be regenerated. As Boxed uses seed worlds to copy from, these can appear to be unused by Regionerator and deleted, which means that startup becomes very slow. To avoid this, set the seed worlds as exempt from its deletions by having these in the world section of the Regionarator config file:
+Boxed worlds grow as players expand their boxes and reset, and that disk usage is now reclaimed by BentoBox itself in two ways.
 
+**Automatic housekeeping (on by default).** When a box is reset it is *soft-deleted* — flagged for deletion rather than wiped block-by-block — and a scheduled sweep reaps its region files in the background. The deleted-sweep runs every 24 hours out of the box. The relevant section of BentoBox's `config.yml` is:
+
+```yaml
+island:
+  deletion:
+    housekeeping:
+      # Reaps region files for boxes already flagged deleted (e.g. from a reset).
+      # On by default.
+      deleted-sweep:
+        enabled: true
+        interval-hours: 24
+      # Reaps region files that simply haven't been touched for a long time,
+      # regardless of whether the box was reset. Off by default — turn this on
+      # for the most aggressive size control.
+      age-sweep:
+        enabled: false
+        interval-days: 30
+        min-age-days: 60
 ```
-# Worlds the plugin is able to delete regions in
-worlds:
-  # "default" applies to all worlds not specified.
-  boxed_world/seed_base:
-    days-till-flag-expires: -1
-  boxed_world/seed:
-    days-till-flag-expires: -1
-  default:
-    # Flags older than x days can be ignored and the region deleted.
-    # Set to -1 to disable Regionerator in a world.
-    # To disable flagging, set this to 0.
-    # days-till-flag-expires must be greater than 0 to be used with delete-new-unvisited-chunks
-    days-till-flag-expires: 0
-```
 
-To get the most out of Regionarator, change the BentoBox config.yml file to *not* delete chunks when an island is removed. This will then leave the deletion up to it and it should clean up the chunks if the unused area is big enough. The config is to set `keep-previous-island-on-reset: true`:
+**Manual purging.** You can also reclaim space on demand from the server console or in-game (see [Commands](Commands)):
 
-```
-deletion:
-    # Toggles whether islands, when players are resetting them, should be kept in the world or deleted.
-    # * If set to 'true', whenever a player resets his island, his previous island will become unowned and won't be deleted from the world.
-    #   You can, however, still delete those unowned islands through purging.
-    #   On bigger servers, this can lead to an increasing world size.
-    #   Yet, this allows admins to retrieve a player's old island in case of an improper use of the reset command.
-    #   Admins can indeed re-add the player to his old island by registering him to it.
-    # * If set to 'false', whenever a player resets his island, his previous island will be deleted from the world.
-    #   This is the default behaviour.
-    # Added since 1.13.0.
-    keep-previous-island-on-reset: true
-```
+* `/boxadmin purge deleted` — immediately reap region files for every box already flagged as deleted.
+* `/boxadmin purge <days>` — reap region files for boxes whose owners haven't logged in for `<days>` days and whose region files are at least that old.
+* `/boxadmin purge unowned` — flag every unowned box as deletable so the next sweep removes it.
+
+!!! note "Restart after a big purge"
+    Region files are deleted from disk immediately, but Paper keeps recently-loaded chunks in an in-memory cache. **Restart the server after a large purge** so that cache is cleared and the freed space is fully released. Purge-protected boxes, spawn islands, and (if the Level addon is installed) boxes above the configured purge level are always skipped. As always, **back up your world folder before purging.**
+
+The old `keep-previous-island-on-reset` setting no longer exists — boxes are always soft-deleted on reset and cleaned up by housekeeping, so there is nothing to configure for Regionerator to "take over".
 
 
 ## Advanced Config
