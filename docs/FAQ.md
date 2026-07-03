@@ -336,6 +336,10 @@ You are referring to our **in-house schematic format** we call **_Blueprints_**.
 The [Blueprints page](BentoBox/Blueprints.md) provides all the relevant information to get you started with the Blueprints, as well as a few hints and tricks you can use to further customize them.
 You can also have a look at [this video](https://youtu.be/4gvaG89uxAs) which, although outdated, might help you create your first Blueprint within minutes.
 
+### Can I make the Create Island menu bigger (5 or 6 rows)?
+
+Yes. The Create Island menu (and the identical menu shown when a player resets their island) is a [customizable GUI](Tutorials/generic/Bigger-Create-Island-Menu.md) driven by the `island_creation_panel.yml` template. If you just want a taller-looking menu, add `force-shown: 6` for a full 6-row (54-slot) panel. If you want *more island bundles visible at once*, you must also add extra `blueprint_bundle_button` entries on the new rows — `force-shown` alone only opens empty rows. Six rows (54 slots) is the hard maximum for a Minecraft chest GUI. See [Making the Create Island menu bigger](Tutorials/generic/Bigger-Create-Island-Menu.md) for a full 6-row example and where to place the file.
+
 ### How do I change a language string / message?
 
 Locale files live under `plugins/BentoBox/locales/` (BentoBox core) and `plugins/BentoBox/addons/<AddonName>/locales/` (each addon). Edit the relevant `<lang>.yml` file. If you only ever want one language, set the `default-language` in BentoBox's `config.yml` and remove permissions for players to switch.
