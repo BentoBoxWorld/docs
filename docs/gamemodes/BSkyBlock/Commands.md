@@ -126,8 +126,8 @@
 <td align='left'>bskyblock.admin.blueprint</td>
 </tr>
 <tr>
-<td align='left'><b>/bsbadmin setowner <player></b></td>
-<td align='left'>transfers island ownership to the player</td>
+<td align='left'><b>/bsbadmin setowner <player> [island owner]</b></td>
+<td align='left'>transfers island ownership to the player; name the current owner to run it from the console</td>
 <td align='left'>bskyblock.mod.team</td>
 </tr>
 <tr>

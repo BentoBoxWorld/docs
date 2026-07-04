@@ -270,8 +270,8 @@ tr>
 <td align='left'>strangerrealms.admin.blueprint</td>
 </tr>
 <tr>
-<td align='left'><b>/stranger setowner <player></b></td>
-<td align='left'>transfers claim ownership to the player</td>
+<td align='left'><b>/stranger setowner <player> [claim owner]</b></td>
+<td align='left'>transfers claim ownership to the player; name the current owner to run it from the console</td>
 <td align='left'>strangerrealms.mod.team</td>
 </tr>
 <tr>

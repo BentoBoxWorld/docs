@@ -124,8 +124,8 @@ All the commands are the same as other game modes, like BSkyBlock.
 <td align='left'></td>
 </tr>
 <tr>
-<td align='left'><b>/boxadmin setowner <player></b></td>
-<td align='left'>transfers island ownership to the player</td>
+<td align='left'><b>/boxadmin setowner <player> [island owner]</b></td>
+<td align='left'>transfers island ownership to the player; name the current owner to run it from the console</td>
 <td align='left'>boxed.admin.register</td>
 </tr>
 <tr>
