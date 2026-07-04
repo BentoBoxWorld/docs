@@ -93,6 +93,60 @@ TODO.
 
 ## Bypass the protection
 
+Protection flags are only enforced inside BentoBox game worlds, and only against players who have no legitimate way through them. There are several ways the protection can be bypassed — some are intended (island ranks), some are for staff (operator status and moderator permissions), and some are structural (the world or the flag type).
+
+!!! tip
+    `[gamemode]` in the permissions below is the lowercased name of the game mode. For BSkyBlock the nodes start `bskyblock.mod…`, for AcidIsland `acidisland.mod…`, and so on.
+
+### Island ranks — the intended way
+
+The normal, designed way to "bypass" a protection flag is to have a high enough **rank** on the island. Every protection flag has a required rank, and any member whose rank is greater than or equal to it is allowed the action. This is why an owner can build while a visitor cannot — it is not really a bypass, just the flag working as configured. See the [Ranks](#ranks) list above.
+
+### Operators
+
+A server operator (`/op`) is the broadest bypass. Ops pass **every protection flag** in every BentoBox world, can enter locked and banned islands, and are immune to being banned or expelled.
+
+Two important caveats:
+
+- **Ops do not bypass island setting flags.** `SETTING`-type flags (island toggles such as *Allow PVP*, *Mob spawning*, …) are evaluated before the operator check, so an op is subject to them exactly like any other player. Operator status only overrides *protection* flags.
+- **The admin switch cannot fully "un-op" a player on their own island.** Even with the switch turned on (see below), an op is still allowed on an island because the rank check treats operator status as always-allowed. To test protection as a true non-op, remove operator status.
+
+### Moderator bypass permissions
+
+For staff who should *not* be full operators, protection can be bypassed with permissions instead. These are gated by the admin switch (see below), so a moderator can toggle their own bypass off to experience the world as a normal player would.
+
+- `[gamemode].mod.bypassprotect` — bypass **all** protection flags, everywhere in the world.
+- `[gamemode].mod.bypass.<FLAG_ID>.everywhere` — bypass **one** named flag (e.g. `BREAK_BLOCKS`) everywhere in the world.
+- `[gamemode].mod.bypass.<FLAG_ID>.island` — bypass **one** named flag, but only where the player would otherwise be blocked on an island.
+
+### The admin "switch" — testing as a normal player
+
+The command `/[admin_command] switch` (permission `[gamemode].mod.switch`) toggles a moderator's bypass permissions on and off. By default the bypass permissions are **active** (the moderator is bypassing protection); running the command once switches the bypass **off** so they are subject to protection like an ordinary player, and running it again switches it back on. This affects the `mod.bypassprotect` and `mod.bypass.*` permissions above — it does **not** disable raw operator status.
+
+### Locks, bans and expels
+
+Island locks, bans and expulsions have their own bypass permissions, separate from the flag system:
+
+- `[gamemode].mod.bypasslock` — enter a locked island.
+- `[gamemode].mod.bypassban` — enter an island you are banned from.
+- `[gamemode].mod.bypassexpel` and `[gamemode].admin.noexpel` — cannot be expelled.
+- `[gamemode].admin.noban` — cannot be banned.
+
+Any entity carrying the Bukkit `NPC` metadata (for example Citizens NPCs) is also allowed through lock, ban, PVP and invincible-visitor checks, so plugin NPCs are not trapped or harmed by island protection.
+
+### Cooldowns and delays
+
+Command cooldowns and teleport warm-up delays can be skipped with:
+
+- `[gamemode].mod.bypasscooldowns` — ignore command cooldowns.
+- `[gamemode].mod.bypassdelays` — skip the movement warm-up delay on delayed-teleport commands.
+
+### What is never protected
+
+- **Non-BentoBox worlds.** Protection only exists in game-mode worlds (and their linked standard Nether/End). The server's default worlds and other plugins' worlds are never checked.
+- **The "wild".** When a player is inside a game-mode world but not standing on any island, the world's default flag settings apply rather than an island's — these are configured in the **Admin Settings Panel** below (or the game mode's `config.yml`).
+- **Deleted islands are the exception:** on an island that is pending deletion, nothing is allowed by default — apart from operators and holders of a `mod.bypassprotect` / `mod.bypass.<FLAG_ID>.everywhere` permission, whose bypass is checked first.
+
 ## Admin Settings Panel
 
 The **Admin Settings Panel** is accessible via `/[admin_command] settings` (with no arguments). It contains three tabs:
