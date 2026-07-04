@@ -687,3 +687,13 @@ AOneBlock has some custom events that are called only in AOneBlock. But BentoBox
     🔺 If you want the new bee nest, copy the new entry into your `phases/8500_plenty.yml` (or delete the phases folder so it regenerates) — customised phase files are not overwritten on upgrade.
 
     [Release v1.25.0](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.25.0)
+
+??? note "What's new in v1.25.1"
+    **Released:** 2026-07-03
+
+    Bug-fix release — drop-in replacement, no config or locale changes.
+
+    - 🐛 **Miner minions can mine the magic block again.** Breaking the magic block with a JetsMinions Miner minion threw a `NullPointerException` and left the block missing until it was manually restored with `/ob respawnblock`. The minion break path no longer runs the player-only magic-block protection check that caused the crash, so the block cycles and respawns as expected. This regression had been present since 1.22.0.
+    - 🐛 **`my_island_*` placeholders fixed for visiting team members.** When a player who belongs to a team visited another island, the `my_island_*` placeholders resolved to the visited island's team data instead of the player's own island. They now always resolve to the player's own island.
+
+    [Release v1.25.1](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.25.1)

@@ -117,6 +117,15 @@ You can [sponsor](https://github.com/sponsors/tastybento) to get more addons lik
 
 ## Changelog
 
+??? note "What's new in v1.10.1"
+    **Released:** 2026-06-21
+
+    Bug-fix release — drop-in replacement, no config or locale changes.
+
+    - 🐛 **Bank no longer disables itself when the economy is provided by an addon.** BentoBox hooks Vault during its early-hook phase, before addons enable. If no economy plugin had registered a provider by then, that early hook was discarded — so when the economy came from an addon (e.g. [InvSwitcher](../InvSwitcher/index.md), which registers a per-world Vault economy in its own `onEnable()`), Bank found no Vault provider and shut itself down with *"Vault is required"*. Bank now retries the Vault hook before giving up, and declares `InvSwitcher` as a `softdepend` so it enables first when present, making the load order deterministic.
+
+    [Release v1.10.1](https://github.com/BentoBoxWorld/Bank/releases/tag/1.10.1)
+
 ??? warning "What's new in v1.10.0 — Breaking changes (Java 21, BentoBox 3.14.0, MiniMessage)"
     **Released:** 2026-06-16
 

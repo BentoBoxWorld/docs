@@ -29,67 +29,26 @@ After addon is successfully installed, it will create config.yml file. Every opt
 
 You can find the latest config file: [config.yml](https://github.com/BentoBoxWorld/CaveBlock/blob/develop/src/main/resources/config.yml)
 
+!!! info "World generation reworked in 1.21.0"
+    Since **1.21.0** the overworld is carved by Minecraft's own vanilla 1.18+ noise generator, so islands run through genuine cheese, spaghetti, lush, dripstone and deep-dark caves — complete with vanilla ores, decorations, structures and underground biomes. Every column is then capped so the world stays solid rock with no open sky. Because the server now handles carving, ores and biomes, the old block-replacement generation options (`generation-tries`, `use-new-material-generator`, the per-dimension `blocks` lists, and the `natural-*` toggles) were removed. The Nether and End keep a fill-and-decorate approach with a new ore-vein populator. See the changelog at the bottom of this page before upgrading.
+
 === "world.world-depth"
     !!! summary "Description"
         The depth of world indicates till which height blocks will be generated in world. Setting it to -64 will create just a basic void world.
 
         Allows to create some fresh air above your cave.
 
-=== "world.generation-tries"
-    !!! summary "Description"
-        This allows to specify how many tries will it take to change a main dimension block with an ore block.
-
-=== "world.use-new-material-generator"
-    !!! summary "Description"
-        Improve material generator generates vanillish ore bolbs, granite, diorite and tuff patches, as well as uses some deepslate.
-
-        However, it will disable any customization you are adding via dimension block configs.
-
 === "world.normal.roof"
     !!! summary "Description"
         Allows toggling if overworld top block should be bedrock block. Otherwise, it will be made of stone.
-
-=== "world.normal.natural-surface"
-    !!! summary "Description"
-        Option allows toggling if world generator should generate natural(-ish) looking surface with dirt and grass blocks. 
-        Currently, natural(-ish) is just dirt and grass block layers.
-
-        This option disables `world.normal.roof` option.
-
-=== "world.normal.natural-caves"
-    !!! summary "Description"
-        Option allows toggling if world generator should generate natural caves like in vanilla world.
-        Caves will be generated with all blocks and biomes.
 
 === "world.normal.floor"
     !!! summary "Description"
         Allows toggling if overworld bottom block should be bedrock block. Otherwise, it will be made of stone.
 
-=== "world.normal.natural-bedrock"
-    !!! summary "Description"
-        Allows toggling if overworld bedrock should be generated like in vanilla world with 4 block height.
-
 === "world.normal.main-block"
     !!! summary "Description"
-        Allows setting main block that will be used for overworld generation. Setting it to AIR will create void world.
-
-=== "world.normal.blocks"
-    !!! summary "Description"
-        Blocks that will occasionally replace main block by random chance.
-        Blocks will replace only main-block and will try to create packs that
-        are set in their strings. Chance of spawning also is required.
-        
-        For materials first string must be MATERIAL, for entity: ENTITY.
-        
-        Entities spawned via generator are not protected from despawing.
-        Working only with 2 high mobs currently.
-
-    !!! example "Example"
-        ```yaml
-            blocks:
-                - MATERIAL:DIAMOND_ORE:100:5 
-        ```        
-        Means there is 100% chace of spawing diamonds where max amount in pack are 5 per each subchunk!
+        Main block used to cap the sky gaps above the vanilla-generated terrain. Vanilla cave carving, ores, structures and underground biomes (lush caves, dripstone caves, deep dark) are produced by the server; this setting only affects the material used to fill the surface layer. Setting it to AIR will leave open sky above the caves.
 
 === "world.nether.roof"
     !!! summary "Description"
@@ -101,25 +60,7 @@ You can find the latest config file: [config.yml](https://github.com/BentoBoxWor
 
 === "world.nether.main-block"
     !!! summary "Description"
-        Allows setting main block that will be used for the nether world generation. Setting it to AIR will create void world.
-
-=== "world.nether.blocks"
-    !!! summary "Description"
-        Blocks that will occasionally replace main block by random chance.
-        Blocks will replace only main-block and will try to create packs that
-        are set in their strings. Chance of spawning also is required.
-        
-        For materials first string must be MATERIAL, for entity: ENTITY.
-        
-        Entities spawned via generator are not protected from despawing.
-        Working only with 2 high mobs currently.
-
-    !!! example "Example"
-        ```yaml
-            blocks:
-                - MATERIAL:DIAMOND_ORE:100:5 
-        ```        
-        Means there is 100% chace of spawing diamonds where max amount in pack are 5 per each subchunk!
+        Allows setting main block that will be used for the nether world generation. Setting it to AIR will create void world. Ore veins (ancient debris, nether quartz, obsidian, glowstone and more) are placed on top of this by the vein populator.
 
 === "world.end.roof"
     !!! summary "Description"
@@ -131,25 +72,7 @@ You can find the latest config file: [config.yml](https://github.com/BentoBoxWor
 
 === "world.end.main-block"
     !!! summary "Description"
-        Allows setting main block that will be used for the end world generation. Setting it to AIR will create void world.
-
-=== "world.end.blocks"
-    !!! summary "Description"
-        Blocks that will occasionally replace main block by random chance.
-        Blocks will replace only main-block and will try to create packs that
-        are set in their strings. Chance of spawning also is required.
-        
-        For materials first string must be MATERIAL, for entity: ENTITY.
-        
-        Entities spawned via generator are not protected from despawing.
-        Working only with 2 high mobs currently.
-
-    !!! example "Example"
-        ```yaml
-            blocks:
-                - MATERIAL:DIAMOND_ORE:100:5 
-        ```        
-        Means there is 100% chace of spawing diamonds where max amount in pack are 5 per each subchunk!
+        Allows setting main block that will be used for the end world generation. Setting it to AIR will create void world. Ore veins are placed on top of this by the vein populator.
 
 ## Commands
 
@@ -199,6 +122,23 @@ Addon introduces 1 BentoBox Settings flag:
 ??? question "I have a bug, where should I report it?"
     Please add it to the list [here](https://github.com/BentoBoxWorld/CaveBlock/issues).
 
+
+## Changelog
+
+!!! warning "What's new in v1.21.0 — Breaking: world generation reworked"
+    **Released:** 2026-06-27
+
+    A major generation overhaul. CaveBlock now targets **Paper 1.21.11 on Java 21** and the **BentoBox 3.14 API**.
+
+    - 🔺 **Vanilla cave world generation.** The overworld delegates to Minecraft's own 1.18+ noise generator, so islands are carved through genuine cheese, spaghetti, lush, dripstone and deep-dark caves, complete with vanilla ores, decorations, structures (mineshafts, dungeons, trial chambers, amethyst geodes, ancient cities) and underground biomes. The sky is capped with stone so the world stays solid rock from bedrock to the roof.
+    - 💎 **Reworked Nether & End ore veins.** The Nether and End keep the fill-and-decorate approach with a new vein populator that places properly sized ore blobs (ancient debris, quartz, obsidian, glowstone and more) instead of single blocks.
+    - ⚙️ **Config cleanup.** World-generation settings were reworked and dead options removed — `generation-tries`, `use-new-material-generator`, the per-dimension `blocks` lists, the `natural-surface`/`natural-caves`/`natural-bedrock` toggles and the old `netherBlocks`/`endBlocks`/`debug` settings are gone. Back up your existing `config.yml` before letting the addon write the new defaults.
+    - 🔡 **MiniMessage locales.** All locale files were migrated from legacy colour codes to MiniMessage, and the height-limit message key was renamed to `caveblock.general.errors.cave-limit-reached`. Regenerate your locale files if you have customised them.
+    - 🧪 A full JUnit 5 + MockBukkit test suite was added to guard generation, height limits and addon lifecycle.
+
+    🔺 **World generation changed:** Newly generated overworld chunks now use vanilla noise caves instead of solid-fill carving. Already-generated chunks are untouched, but new terrain at the edges of your world will look different from older areas. Test on a copy first if this matters to you.
+
+    [Release v1.21.0](https://github.com/BentoBoxWorld/CaveBlock/releases/tag/1.21.0)
 
 ## Translations
 

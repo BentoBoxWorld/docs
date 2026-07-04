@@ -34,6 +34,8 @@ Each game mode has its own admin command. For BSkyBlock it's `/bsb`, for AcidIsl
 | `/[admin] info <player>` | Shows full details of a player's island |
 | `/[admin] delete <player>` | Deletes a player's island |
 | `/[admin] setrange <player> <range>` | Changes a player's island protection range |
+| `/[admin] range removebonus <player> [id]` | Removes all bonus protection ranges from a single island, or just those for a given id |
+| `/[admin] range purgebonus <id>` | Removes a bonus range id from **every** island in the world — ideal after uninstalling an addon that granted bonus ranges. The scan runs asynchronously so it won't freeze large servers |
 | `/[admin] settings` | Opens the world settings panel for admins |
 | `/[admin] settings <player>` | Opens the island settings panel for a specific player |
 | `/[admin] why <player>` | Starts tracking why a player can or cannot do something (see below) |
@@ -97,3 +99,25 @@ After changing a config file, you can apply it without fully restarting the serv
 /bentobox reload
 ```
 This reloads BentoBox and all addons, including locales. Note that some changes (like world generation settings) always require a full restart to take effect.
+
+## Changelog
+
+!!! warning "What's new in v3.18.0 — Minecraft 26.2 support requires Java 25 (server)"
+    **Released:** 2026-06-27
+
+    - 🔺 **Minecraft 26.2 support + Java 25.** BentoBox now runs on the Minecraft 26.x line (26.2 supported at runtime) and the build has migrated to the Java 25 toolchain. **Your server must run on a Java 25-capable Paper build for the 26.x line.** Already-built addon jars keep working unchanged — only addon *developers* recompiling against this release need to move their own build to Java 25. Compatibility: Paper Minecraft 1.21.5 – 26.2, Java 25+.
+    - ⚙️ **Dynmap island marker / area toggles.** A new `dynmap` section in `config.yml` adds `island-markers` (the house icon at the centre of every island) and `island-areas` (the protected-area border box) switches. Both default to `true`, preserving existing behaviour; set either to `false` and run `/bbox reload` to hide those overlays on servers where dense islands flood the map.
+    - **Admin range bonus management.** New `/[admin] range removebonus` and `/[admin] range purgebonus` commands clear bonus protection ranges from one island or every island — ideal after uninstalling an addon that granted them (see the Per-Game-Mode Admin Commands table above).
+    - 🐛 `/is team setowner` is no longer blocked by the island limit when transferring to an existing team member.
+    - 🐛 The Vault hook now retries after addons enable, fixing economy integration that depended on load order.
+
+    [Release v3.18.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.18.0)
+
+??? note "What's new in v3.18.1"
+    **Released:** 2026-07-01
+
+    Maintenance release.
+
+    - 🐛 **Multi-line lore & names keep their colour.** Text after the first line of a GUI tooltip no longer falls back to the default purple — the serializer now re-emits the active colour (and decorations) after each newline, fixing tooltips across all addons.
+
+    [Release v3.18.1](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.18.1)
