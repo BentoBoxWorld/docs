@@ -36,6 +36,21 @@ As of BentoBox 3.16.0, this cap is enforced on both `/island team setowner` and 
 
 *NEW:* When a player transfers ownership they now automatically leave the team.
 
+#### Transferring from the console (admin)
+
+Run in-game, `/[gamemode] admin team setowner <player>` transfers the island the admin is **standing on** and asks for confirmation.
+
+Since BentoBox 3.18.0 you can also name the island's current owner:
+
+`/[gamemode] admin team setowner <newOwner> <islandOwner>`
+
+Naming the island this way means the admin no longer has to stand on it, so the command works from the **server console** — and therefore from automation such as Skript. When run from the console the confirmation prompt is skipped, because the console cannot answer one.
+
+- `<newOwner>` — the player who becomes the owner. They do **not** need to be online or standing anywhere; any player BentoBox already knows (or a raw UUID) works.
+- `<islandOwner>` — the current owner, used only to identify **which** island to transfer. The command transfers the island that player actually owns; if their active island is a team island belonging to someone else, the transfer is refused. If they own more than one island, their **primary/active** island is used.
+
+The concurrent-island cap still applies: if `<newOwner>` is already at their maximum number of islands the transfer is refused, and you must raise their `[gamemode].island.number.<n>` permission (or the world's `concurrent-islands` setting) first. As with the in-game form, the previous owner is demoted to Member of the island rather than removed.
+
 ### Teams
 
 - Teams are island-based and teams do not span islands.
