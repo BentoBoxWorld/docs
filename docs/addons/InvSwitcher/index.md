@@ -127,6 +127,25 @@ This addon will give players a separate inventory, health, food level, advanceme
 
 ## Changelog
 
+??? note "What's new in v1.19.1"
+    **Released:** 2026-07-02
+
+    Bug-fix release — drop-in replacement, no config or locale changes.
+
+    - 🐛 **Fixed per-island health death loop.** With per-island health enabled, a player who owned more than one island could get trapped in an endless respawn/death screen after dying. When their state was captured mid-death it recorded a health of `0`; loading that value back on the death island applied `setHealth(0)`, killing them again the instant the world loaded. InvSwitcher now never applies a fatal stored health to a live player — a stored value of `0` (only ever produced mid-death) restores full health instead, matching vanilla respawn behaviour.
+
+    [Release v1.19.1](https://github.com/BentoBoxWorld/InvSwitcher/releases/tag/1.19.1)
+
+??? note "What's new in v1.19.0"
+    **Released:** 2026-06-21
+
+    Follow-up to the 1.18.0 per-world economy release. Drop-in replacement — no config or locale changes.
+
+    - 🐛 **Standalone economy now works on its own.** InvSwitcher registers its own per-world Vault economy, but BentoBox hooks Vault before addons enable, so when InvSwitcher was the only economy on the server that early hook found nothing and was discarded — and economy-dependent addons such as **Bank** disabled themselves with *"Vault is required"*. InvSwitcher now registers a fresh Vault hook with BentoBox once its provider is live, so it works as the server's only economy (no separate economy plugin such as EssentialsX is needed).
+    - 🐛 **Correct balance reported for offline economy transactions.** Admin `eco give/set/take` on an offline player reported a stale balance (e.g. "New balance: 0.00" right after giving 2,000). The money was always stored correctly; the confirmation message re-read the balance before the asynchronous save had flushed. Commands now report the authoritative balance returned by the transaction itself, and the offline read-after-write path was hardened so two rapid sequential transactions can no longer lose an update.
+
+    [Release v1.19.0](https://github.com/BentoBoxWorld/InvSwitcher/releases/tag/1.19.0)
+
 ??? note "What's new in v1.17.0"
     **Released:** 2026-03-31
 

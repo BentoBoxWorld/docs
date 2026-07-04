@@ -145,6 +145,16 @@ Some items cannot be limited (right now). The reasons are usually because there 
 
 ## Changelog
 
+??? note "What's new in v1.28.3"
+    **Released:** 2026-06-29
+
+    Bug-fix release — no data, config or locale changes; a drop-in replacement that makes per-island **entity counts** reliable across server restarts.
+
+    - 🐛 **Entity counts no longer drift after a restart.** The map linking each entity to its island was kept in memory only and lost on every restart. Entities reloaded from chunks never re-entered it, so when they later died or despawned **off-island** their count was never decremented and slowly crept upward. Entities are now re-registered as their chunks load, so off-island removals decrement correctly again.
+    - 🩹 **No more map growth on chunk unload.** The in-memory mapping is now released when a chunk unloads (and rebuilt on reload), preventing unbounded growth on long-running servers.
+
+    [Release v1.28.3](https://github.com/BentoBoxWorld/Limits/releases/tag/1.28.3)
+
 ??? warning "What's new in v1.28.0 — Java 21 required"
     **Released:** 2026-04-01
 

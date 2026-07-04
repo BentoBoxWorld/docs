@@ -41,6 +41,14 @@ The example template file: [template.yml](https://github.com/BentoBoxWorld/Chall
     - Other Challenge (`OTHER_TYPE`) - challenge that requires player XP, money or island level to be completed.
     - Statistic Challenge (`STATISTIC_TYPE`) - challenge that requires certain value from player statistic to be completed.
 
+??? question "What are team challenges?"
+    Since **1.7.0**, any challenge can additionally be marked as a **team challenge** — a challenge that is only available to islands with a team. Team challenges can require a configurable percentage of the team to be online before they can be completed, and support two collaborative modes:
+
+    - **Aggregate ("Pooled Tribute")** — the required items or statistics are summed across the online members. When items are consumed, the cost is split equitably across contributors: everyone chips in equally, and anyone short gives what they have while the rest cover the difference.
+    - **Per-member ("Roll Call Feast")** — every present member must contribute their own share, so no one can freeload; the configured amount is the team total, split across the online members.
+
+    Rewards go to every online member, completion and cooldown are shared by the whole team, and team statistic challenges only count progress earned *while on the team*. Team challenges can be shown greyed-out to soloists as a recruitment nudge or hidden entirely. Five reference challenges — **All Hands on Deck**, **Pooled Tribute**, **Synchronized Build**, **Combined Effort** and **Roll Call Feast** — ship in the bundled `default.json`, and the admin challenge editor exposes toggles for all of the new options.
+
 ??? question "Can I specify an enchantment on required/reward items?"
     Unfortunately Spigot does not have a general item parsing mechanics. So plugin authors need to create their own. Challenges addon uses BentoBox [Item Parser](/en/latest/BentoBox/ItemParser/). If function is not supported by it, then you cannot. However, you can always use in-game admin GUI to set any items you want. There is not any limitation.
 
@@ -275,6 +283,17 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     ```
 
 ## Changelog
+
+??? note "What's new in v1.7.0"
+    **Released:** 2026-07-01
+
+    - 🔡 **Team challenges** — a brand-new class of challenge built for island teams. Team challenges only appear for players who have a team, can require a share of the team to be online, and can either pool resources or ask every member to chip in. Five ready-to-use examples ship in the bundled challenge set. See the *"What are team challenges?"* FAQ above for details.
+    - **Clearer import errors.** Failures while importing challenges are now reported back to the admin running the import, with details, instead of being silently written to the console log.
+    - 🔡 **All translations refreshed** — every locale file was synced with the English source, including the new team-challenge strings. If you maintain custom translations, re-check them against `en-US.yml`, as several new keys were added (team-challenge buttons, errors and lore).
+
+    Existing challenges are unaffected — all team behaviour is opt-in and defaults to off. Requires BentoBox 3.14.0+.
+
+    [Release v1.7.0](https://github.com/BentoBoxWorld/Challenges/releases/tag/1.7.0)
 
 ??? warning "What's new in v1.6.0 — locale regeneration required"
     **Released:** 2026-04-13

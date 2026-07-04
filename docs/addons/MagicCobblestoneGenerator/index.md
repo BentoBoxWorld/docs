@@ -114,6 +114,41 @@ Template file are mostly for users who do not like to use ingame editing GUI. Ho
           - generator_id_2
     ```
 
+### Generator exhaustion (rate limiting)
+
+Since **2.8.0** generators can be capped so they only produce a set number of blocks within a time period before going on cooldown — useful for discouraging fully-automated AFK farms. The feature is **opt-in and disabled by default** (a limit of `0`), so existing setups are unaffected until you enable it. When a generator is temporarily on cooldown, players receive a `generator-exhausted` message.
+
+=== "exhaustion.limit"
+    !!! summary "Description"
+        The default number of blocks a generator may produce during a single exhaustion period. `0` or less disables the limitation (the default). Each generator tier can override this via the per-tier `exhaustion-limit` key (see below).
+
+        Default: `0`
+
+=== "exhaustion.period"
+    !!! summary "Description"
+        The length of the exhaustion period, in **minutes**. The block count resets at the end of each period.
+
+        Default: `60`
+
+=== "exhaustion.cooldown"
+    !!! summary "Description"
+        How long, in **minutes**, a generator stays on cooldown after reaching its exhaustion limit.
+
+        Default: `1440` (24 hours)
+
+=== "exhaustion.notification-cooldown"
+    !!! summary "Description"
+        The minimum time, in **seconds**, between two exhaustion warning messages shown to the same player.
+
+        Default: `60`
+
+!!! tip "Per-tier limit"
+    Each generator tier can override the global limit with an `exhaustion-limit` key in the generator template (and in the admin GUI), so different tiers can be throttled independently.
+
+### Per-block height ranges
+
+Also since **2.8.0**, generators — and individual blocks within a generator — can be limited to a minimum and maximum Y level, so different materials are produced at different heights. New GUI buttons let admins set and clear the range, and the generator lore shows players where each generator operates. Legacy templates without a height range remain fully compatible.
+
 ## Commands
 
 !!! tip
@@ -261,6 +296,19 @@ Template file are mostly for users who do not like to use ingame editing GUI. Ho
               basalt: "&8 Basalt Generators"
               any: "&7&l Supports &e&o all &r&7&l generators"
     ```
+
+## Changelog
+
+!!! warning "What's new in v2.8.0 — requires BentoBox 3.14.0 / Java 21"
+    **Released:** 2026-07-03
+
+    - ⚙️ **Generator exhaustion.** Optionally rate-limit how many blocks a generator produces per period, with a cooldown once the limit is hit. Configurable globally (`exhaustion.*` in `config.yml`) and per generator tier (`exhaustion-limit` in the template). Opt-in and disabled by default. See the Configuration section above.
+    - **Per-block height ranges.** Restrict generators and individual blocks to a minimum/maximum Y level, with new GUI controls and player-facing lore.
+    - 🔡 **New placeholders** `[gamemode]_magiccobblestonegenerator_generator_exhaustion_status` and `[gamemode]_magiccobblestonegenerator_exhausted_generator_names` expose exhaustion state.
+    - 🔡 🔺 **MiniMessage locales + 13 new languages.** Every locale file was converted from legacy `&`/`§` colour codes to MiniMessage (which BentoBox 3.14 renders natively), and translations were added for cs, hr, hu, id, it, ja, ko, lv, nl, pt, pt-BR, ro and zh-HK — 24 locales in total, matching BentoBox core. If you kept custom edits to any `locales/*.yml`, re-apply them in MiniMessage format (or delete the file to regenerate a fresh one).
+    - 🔺 **Modernised for BentoBox 3.14 / Java 21.** Updated to the current BentoBox API and Paper, with the test suite migrated to MockBukkit. This release will not load on older BentoBox or Java versions — update BentoBox first.
+
+    [Release v2.8.0](https://github.com/BentoBoxWorld/MagicCobblestoneGenerator/releases/tag/2.8.0)
 
 ## Translations
 

@@ -81,6 +81,17 @@ Commands can be found [here](Commands).
 
 Placeholders can be found [here](Placeholders).
 
+## Changelog
+
+??? note "What's new in v1.1.1"
+    **Released:** 2026-06-28
+
+    Bug-fix release — drop-in replacement, no config or locale changes.
+
+    - 🔺 🐛 **Fixed a server crash during world creation on Peaceful difficulty (Paper 26.2).** The Nether populator tried to spawn monsters (Drowned / Guardian / Elder Guardian), which is not allowed on Peaceful and crashed the chunk system. Monster spawns are now skipped on Peaceful and guarded defensively so world generation can never crash.
+
+    [Release v1.1.1](https://github.com/BentoBoxWorld/poseidon/releases/tag/1.1.1)
+
 ## Translations
 
 {{ translations("Poseidon") }}
