@@ -149,6 +149,25 @@ Since **2.8.0** generators can be capped so they only produce a set number of bl
 
 Also since **2.8.0**, generators — and individual blocks within a generator — can be limited to a minimum and maximum Y level, so different materials are produced at different heights. New GUI buttons let admins set and clear the range, and the generator lore shows players where each generator operates. Legacy templates without a height range remain fully compatible.
 
+### Unlock progression and requirements
+
+Since **2.9.0** generators can be gated behind richer requirements so you can design proper unlock trees instead of a flat list of tiers. All of these are configured from the generator edit panel in the Admin GUI:
+
+- **Prerequisite generators** — require one or more other generators to be unlocked first, building multi-step progressions.
+- **AOneBlock phase requirement** — on AOneBlock game modes, gate a generator behind a specific island phase, so tiers unlock as the island advances.
+- **OneBlock block-count requirement** — gate a generator behind the number of blocks broken on a OneBlock island.
+- **Activate on unlock** — a per-generator option that activates a generator automatically the moment it is unlocked, saving players a trip to the GUI.
+- **Purchase confirmation** — optionally require an explicit confirmation before any money is taken when buying a generator, preventing accidental purchases.
+
+=== "lose-tiers-on-level-loss"
+    !!! summary "Description"
+        *Added in 2.9.0.* Restores the pre-2.0.0 behaviour where a generator unlocked by island level is re-locked if the island level later drops below its requirement. Purchased tiers are always kept — only free, level-unlocked tiers are re-locked. Written to `config.yml` automatically on first load after upgrading.
+
+        Default: `false`
+
+!!! warning "Permission-gated generators are now revoked"
+    Since **2.9.0**, a generator unlocked via permission is re-checked and **revoked** from an island's unlocked and active lists when the current (online) owner no longer holds the required permission — for example after an ownership transfer. Purchased tiers are preserved, so access returns if the permission is regained; offline owners are left untouched. Previously such a grant was permanent.
+
 ## Commands
 
 !!! tip
@@ -169,6 +188,7 @@ Also since **2.8.0**, generators — and individual blocks within a generator �
     - `/[admin_command] generator database import <file>`: Ability to import database exported <file>.
     - `/[admin_command] generator database export <file>`: Ability to export database into <file> saved in `/plugins/BentoBox/addons/MagicCobblestoneGenerator/` folder.
     - `/[admin_command] generator why <player>`: A debugging command that allows finding issues with generators for each player.
+    - `/[admin_command] generator reset <player>`: Resets a player's island generator data — unlocked, purchased, and active generators — after a confirmation prompt. *(Added in 2.9.0.)*
 
 ## Permissions
 
@@ -299,7 +319,24 @@ Also since **2.8.0**, generators — and individual blocks within a generator �
 
 ## Changelog
 
-!!! warning "What's new in v2.8.0 — requires BentoBox 3.14.0 / Java 21"
+??? warning "What's new in v2.9.0 — permission-gated generators now revoked"
+    **Released:** 2026-07-08
+
+    Adds richer unlock progression and several admin/API improvements.
+
+    - 🔒 **Prerequisite generators.** Gate a generator behind one or more others so tiers unlock in a designed progression. Configured through a new admin GUI selector. Fixes [#88](https://github.com/BentoBoxWorld/MagicCobblestoneGenerator/issues/88).
+    - 🧱 **OneBlock / AOneBlock gating.** Require a specific AOneBlock phase, or a number of blocks broken on a OneBlock island, before a generator becomes available. Fixes [#121](https://github.com/BentoBoxWorld/MagicCobblestoneGenerator/issues/121), [#117](https://github.com/BentoBoxWorld/MagicCobblestoneGenerator/issues/117).
+    - ⚙️ **Re-lock level tiers on level loss.** A new `lose-tiers-on-level-loss` setting (default `false`) re-locks level-unlocked generators if an island's level drops. Purchased tiers are always kept. Fixes [#118](https://github.com/BentoBoxWorld/MagicCobblestoneGenerator/issues/118).
+    - ✨ **Activate on unlock.** Generators can now activate automatically the moment they are unlocked. Fixes [#106](https://github.com/BentoBoxWorld/MagicCobblestoneGenerator/issues/106).
+    - 💰 **Purchase confirmation.** Optionally ask players to confirm before money is taken for a generator. Fixes [#109](https://github.com/BentoBoxWorld/MagicCobblestoneGenerator/issues/109).
+    - 🛠️ **Admin data reset.** A new `/[admin_command] generator reset <player>` command resets a player's unlocked, purchased, and active generators after a confirmation prompt. Fixes [#149](https://github.com/BentoBoxWorld/MagicCobblestoneGenerator/issues/149).
+    - 🔌 **New cancellable API events** `GeneratorPreBuyEvent` and `GeneratorTreasureDropEvent` for other addons to hook into (see the API section below).
+    - 🔺 **Behaviour change:** permission-gated generators are now **revoked** when an island's online owner no longer holds the required permission — for example after an ownership transfer. Purchased tiers are preserved, so access returns if the permission is regained.
+    - 🔡 **Locale note:** new `en-US.yml` keys were added for the prerequisite selector, activate-on-unlock, purchase confirmation, the admin reset command, and OneBlock/AOneBlock requirement messages. Regenerate or update your locale files to pick up the new strings.
+
+    [Release v2.9.0](https://github.com/BentoBoxWorld/MagicCobblestoneGenerator/releases/tag/2.9.0)
+
+??? warning "What's new in v2.8.0 — requires BentoBox 3.14.0 / Java 21"
     **Released:** 2026-07-03
 
     - ⚙️ **Generator exhaustion.** Optionally rate-limit how many blocks a generator produces per period, with a cooldown once the limit is hit. Configurable globally (`exhaustion.*` in `config.yml`) and per generator tier (`exhaustion-limit` in the template). Opt-in and disabled by default. See the Configuration section above.
@@ -424,6 +461,67 @@ The JavaDocs for MagicCobblestoneGenerator can be found [here](https://ci.codemc
 
             String generator = event.getGenerator();
             String generatorID = event.getGeneratorID();
+        }
+        ```
+
+=== "GeneratorPreBuyEvent"
+    !!! summary "Description"
+        Event that is triggered **before** a generator is purchased, allowing the buy to be cancelled or inspected. Extends the shared `GeneratorEvent` base.
+        This event is cancellable.
+
+        Since 2.9.0 version.
+
+        Link to the class: [GeneratorPreBuyEvent](https://github.com/BentoBoxWorld/MagicCobblestoneGenerator/blob/develop/src/main/java/world/bentobox/magiccobblestonegenerator/events/GeneratorPreBuyEvent.java)
+
+    !!! question "Variables"
+        - `String islandUUID` - the targeted island id.
+        - `UUID targetPlayer` - id of the player who is buying the generator.
+        - `String generator` - the name of the generator being bought.
+        - `String generatorID` - the id of the generator being bought.
+
+        
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.LOW)
+        public void onGeneratorPreBuy(GeneratorPreBuyEvent event) {
+            UUID user = event.getTargetPlayer();
+            String island = event.getIslandUUID();
+            String generatorID = event.getGeneratorID();
+
+            // Veto the purchase if needed
+            if (someCondition) {
+                event.setCancelled(true);
+            }
+        }
+        ```
+
+=== "GeneratorTreasureDropEvent"
+    !!! summary "Description"
+        Event that is triggered when a treasure is about to drop from a generator, allowing the drop to be cancelled or altered. Extends the shared `GeneratorEvent` base.
+        This event is cancellable.
+
+        Since 2.9.0 version.
+
+        Link to the class: [GeneratorTreasureDropEvent](https://github.com/BentoBoxWorld/MagicCobblestoneGenerator/blob/develop/src/main/java/world/bentobox/magiccobblestonegenerator/events/GeneratorTreasureDropEvent.java)
+
+    !!! question "Variables"
+        - `String islandUUID` - the targeted island id.
+        - `UUID targetPlayer` - id of the player the treasure is dropping for.
+        - `String generator` - the name of the generator dropping the treasure.
+        - `String generatorID` - the id of the generator dropping the treasure.
+        - `Location location` - the location the treasure is about to drop at.
+        - `ItemStack itemStack` - the treasure item about to drop (can be modified).
+
+        
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.LOW)
+        public void onTreasureDrop(GeneratorTreasureDropEvent event) {
+            Location location = event.getLocation();
+            ItemStack treasure = event.getItemStack();
+
+            // Cancel the drop or swap the item
+            event.setCancelled(true);
         }
         ```
 

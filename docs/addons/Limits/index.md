@@ -145,6 +145,16 @@ Some items cannot be limited (right now). The reasons are usually because there 
 
 ## Changelog
 
+??? note "What's new in v1.28.4"
+    **Released:** 2026-07-06
+
+    Maintenance release focused on keeping entity counts accurate and reliably persisted. No config or locale changes are required.
+
+    - 🐛 **Entity counts no longer drift above reality.** Under some spawn/removal sequences the tracked entity count could climb above the number of entities actually on the island, eventually blocking spawns that should have been allowed. Counts now stay in sync with the real island population. [[#273](https://github.com/BentoBoxWorld/Limits/pull/273)]
+    - 🐛 **Entity count persistence centralized.** All entity count mutations now flow through `BlockLimitsListener`, so changes are enrolled in the normal batch-save cycle instead of only being written on addon disable. This prevents count loss on an unclean shutdown or crash. [[#274](https://github.com/BentoBoxWorld/Limits/pull/274)]
+
+    [Release v1.28.4](https://github.com/BentoBoxWorld/Limits/releases/tag/1.28.4)
+
 ??? note "What's new in v1.28.3"
     **Released:** 2026-06-29
 
