@@ -47,6 +47,14 @@ This removes the island from the database and marks the area for cleanup. The pl
 
 As of BentoBox 3.16.1, the actual region files are reaped on the next housekeeping sweep (default: 24 h) rather than on demand. If the island shares a region file with other live islands, the deleted area stays in place until that region is clear. To force immediate cleanup, run `/bbox admin purge deleted` after the delete — it will only remove blocks if the region file no longer hosts any live island. For surgical block removal in a shared region, use WorldEdit or remove the blocks manually.
 
+### Deleting and recovering the island you are standing on
+
+Since BentoBox 3.19.0, a delete can be triggered — and reversed — without naming a player, as long as you are standing on the island. Because the region files are only reaped on the next housekeeping sweep, a soft-deleted island can be rescued right up until that purge runs:
+
+- `/[admin_command] delete` (no player argument) soft-deletes the island you are standing on after a confirmation prompt. It is refused if the island still has a team.
+- `/[admin_command] undelete` clears the pending-deletion status of the island you are standing on, leaving it unowned.
+- `/[admin_command] register <player>` on an island pending deletion now shows a confirmation prompt; confirming registers the island to that player and cancels its deletion.
+
 ## Inactive Island Cleanup
 
 If players abandon the server, their islands stay in the world. BentoBox does not automatically delete inactive islands, but the **deletion flag** and external tools can be used to manage this. Many server admins handle this by setting a reset limit and reviewing inactive players periodically.

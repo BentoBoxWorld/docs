@@ -38,6 +38,43 @@ You can find the latest config file: [config.yml](https://github.com/BentoBoxWor
 
         Allows to create some fresh air above your cave.
 
+=== "world.structures"
+    !!! summary "Description"
+        *Added in 1.23.0.* A map of vanilla structures that may generate in the **overworld** cave world. Set a structure to `false` to stop it generating; structures not listed here generate as normal. Use the vanilla structure key, for example `ancient_city`, `trial_chambers`, `mineshaft`, `mineshaft_mesa`, `stronghold`, `mansion`, `monument`, `pillager_outpost`, `ruined_portal`, `trail_ruins`, `village_plains`, `desert_pyramid`, `jungle_pyramid`, `igloo`, `swamp_hut`.
+
+        Large structures like Ancient Cities and Trial Chambers can fill or unbalance a solid cave world, so they are **disabled by default**. Only affects newly generated overworld chunks.
+
+        Default:
+        ```yaml
+        structures:
+          ancient_city: false
+          trial_chambers: false
+          mansion: false
+          mineshaft: true
+          stronghold: true
+        ```
+
+=== "world.overworld-cave-fill"
+    !!! summary "Description"
+        *Added in 1.23.0.* Overworld cave density. Vanilla generates a dense 1.18+ cave network (cheese and spaghetti caves) which, on a solid cave world, can feel like "nothing but passageways". This re-solidifies a fraction of that cave air after generation using a low-frequency noise field, so whole regions close up into separate chambers rather than punching random single holes.
+
+        - `0.0` keeps every vanilla cave (densest, the original behaviour).
+        - `1.0` fills nearly all caves (almost solid).
+        - Try `0.4` – `0.6` to thin them out.
+
+        Underground biomes, ores, decorations and structures are kept either way. Only affects newly generated chunks.
+
+        Default: `0.0`
+
+=== "world.overworld-carvers"
+    !!! summary "Description"
+        *Added in 1.23.0.* Generate vanilla carver caves (big ravines and long round tunnels) in the overworld. These stack on top of the noise caves. Set to `false` to remove the ravines and wide tunnels while keeping the noise caves.
+
+        !!! warning
+            BentoBox does not support changing this value mid-game. If you need to change it, do a full reset of your worlds and databases.
+
+        Default: `true`
+
 === "world.normal.roof"
     !!! summary "Description"
         Allows toggling if overworld top block should be bedrock block. Otherwise, it will be made of stone.
@@ -125,7 +162,35 @@ Addon introduces 1 BentoBox Settings flag:
 
 ## Changelog
 
-!!! warning "What's new in v1.21.0 — Breaking: world generation reworked"
+??? note "What's new in v1.23.0"
+    **Released:** 2026-07-07
+
+    Hands admins direct control over what fills the overworld cave world, building on the 1.22.0 generation work.
+
+    - ⚙️ **Configurable overworld structures.** A new `structures:` section in `config.yml` toggles individual vanilla structures (Ancient Cities, Trial Chambers, Mansions, Mineshafts, Strongholds and more). The largest, world-filling structures are disabled by default. Fixes [#112](https://github.com/BentoBoxWorld/CaveBlock/issues/112).
+    - ⚙️ **Overworld cave density control.** A new `overworld-cave-fill` setting (`0.0`–`1.0`, default `0.0`) re-solidifies a fraction of the dense vanilla cave network so worlds feel less like endless passageways, while keeping biomes, ores, decorations and structures intact. Fixes [#111](https://github.com/BentoBoxWorld/CaveBlock/issues/111).
+    - ⚙️ **Carver cave toggle.** A new `overworld-carvers` setting (default `true`) removes vanilla ravines and wide tunnels while keeping the noise caves. This one cannot be changed mid-game.
+
+    New options are written to `config.yml` automatically on first run and only affect **newly generated** chunks; defaults preserve the 1.22.0 behaviour, except that the largest structures are now off by default. See the Configuration section above.
+
+    [Release v1.23.0](https://github.com/BentoBoxWorld/CaveBlock/releases/tag/1.23.0)
+
+??? warning "What's new in v1.22.0 — Nether & End generation reworked"
+    **Released:** 2026-07-06
+
+    Rebuilds how the **Nether** and **The End** are generated. Previously both dimensions were a solid block of rock peppered with random single blocks — including stray floating fire that caused lag — and had no real caves.
+
+    - 🔺 **Nether & End generation overhaul.** Both dimensions are now filled solid and carved by a 3D noise cave generator into connected tunnels and chambers, with a solid margin against the floor and roof.
+    - 🌋 **Nether lava sea.** The lowest cave voids fill with lava rather than open air; the floor and roof stay solid so the world stays enclosed.
+    - 🗺️ **Natural Nether biomes.** The five Nether biomes are shared into natural, roughly equal-area regions, so several biomes appear within a single island.
+    - 🌿 **Biome-aware decorations.** Crimson/warped nylium, roots, fungi and vines; soul sand valleys with soul fire and bones; basalt deltas with columns and magma fires; glowstone ceiling patches; end rods and chorus in The End.
+    - ⚡ **No more laggy floating fire.** Fire is now sparse and grounded on netherrack/magma.
+
+    🔺 **World generation changed:** The new generator only affects **newly generated** chunks. Existing Nether/End chunks keep the old look, so you may see a seam where old meets new. Regenerate those dimensions (or start fresh worlds) if you want a consistent look.
+
+    [Release v1.22.0](https://github.com/BentoBoxWorld/CaveBlock/releases/tag/1.22.0)
+
+??? warning "What's new in v1.21.0 — Breaking: world generation reworked"
     **Released:** 2026-06-27
 
     A major generation overhaul. CaveBlock now targets **Paper 1.21.11 on Java 21** and the **BentoBox 3.14 API**.

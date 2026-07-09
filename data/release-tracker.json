@@ -1,9 +1,9 @@
 {
-  "last_run": "2026-07-03T00:00:00Z",
+  "last_run": "2026-07-08T02:07:59Z",
   "repos": {
     "BentoBox": {
-      "last_checked": "2026-07-03T00:00:00Z",
-      "last_release": "3.18.1",
+      "last_checked": "2026-07-08T02:07:59Z",
+      "last_release": "3.19.0",
       "doc_path": "BentoBox/",
       "category": "core"
     },
@@ -14,7 +14,7 @@
       "category": "gamemode"
     },
     "AOneBlock": {
-      "last_checked": "2026-07-03T00:00:00Z",
+      "last_checked": "2026-07-08T02:07:59Z",
       "last_release": "1.25.1",
       "doc_path": "gamemodes/AOneBlock/index.md",
       "category": "gamemode"
@@ -32,8 +32,8 @@
       "category": "gamemode"
     },
     "CaveBlock": {
-      "last_checked": "2026-07-03T00:00:00Z",
-      "last_release": "1.21.0",
+      "last_checked": "2026-07-08T02:07:59Z",
+      "last_release": "1.23.0",
       "doc_path": "gamemodes/CaveBlock/index.md",
       "category": "gamemode"
     },
@@ -152,14 +152,14 @@
       "category": "addon"
     },
     "Limits": {
-      "last_checked": "2026-07-03T00:00:00Z",
-      "last_release": "1.28.3",
+      "last_checked": "2026-07-08T02:07:59Z",
+      "last_release": "1.28.4",
       "doc_path": "addons/Limits/index.md",
       "category": "addon"
     },
     "MagicCobblestoneGenerator": {
-      "last_checked": "2026-07-03T00:00:00Z",
-      "last_release": "2.8.0",
+      "last_checked": "2026-07-08T02:07:59Z",
+      "last_release": "2.9.0",
       "doc_path": "addons/MagicCobblestoneGenerator/index.md",
       "category": "addon"
     },

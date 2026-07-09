@@ -33,6 +33,9 @@ Each game mode has its own admin command. For BSkyBlock it's `/bsb`, for AcidIsl
 |---|---|
 | `/[admin] info <player>` | Shows full details of a player's island |
 | `/[admin] delete <player>` | Deletes a player's island |
+| `/[admin] delete` | *(3.19.0)* With no player argument, soft-deletes the island you are **standing on** after confirmation (refused if it still has a team) |
+| `/[admin] undelete` | *(3.19.0)* Clears the pending-deletion status of the island you are **standing on**, leaving it unowned, before its region files are purged |
+| `/[admin] register <player>` | Registers an unowned island to a player. On an island pending deletion this now shows a confirmation prompt and cancels the deletion instead of refusing |
 | `/[admin] setrange <player> <range>` | Changes a player's island protection range |
 | `/[admin] range removebonus <player> [id]` | Removes all bonus protection ranges from a single island, or just those for a given id |
 | `/[admin] range purgebonus <id>` | Removes a bonus range id from **every** island in the world — ideal after uninstalling an addon that granted bonus ranges. The scan runs asynchronously so it won't freeze large servers |
@@ -102,7 +105,23 @@ This reloads BentoBox and all addons, including locales. Note that some changes 
 
 ## Changelog
 
-!!! warning "What's new in v3.18.0 — Minecraft 26.2 support requires Java 25 (server)"
+!!! warning "What's new in v3.19.0 — bed/anchor respawns now honored"
+    **Released:** 2026-07-08
+
+    Compatibility: Paper Minecraft 1.21.5 – 26.2, Java 25+.
+
+    - 🔡 **New `FISHING` protection flag.** Stops players fishing into protected areas from outside the island (the flag checks the hook's location). Defaults to visitor rank, so nothing changes until you raise it.
+    - 🔺 **Bed & respawn-anchor spawns are now honored.** Dying on an island now respawns you at your bed or charged respawn anchor when it's on an island you're a member of. Controlled by the new `BED_ANCHOR_RESPAWN` world setting (**enabled by default**); economy-sensitive servers that want the old "always respawn at island home" behaviour should disable it.
+    - 🐛 **End exit portal no longer dumps you at world spawn.** Jumping through the end exit portal now routes you to your safe island home on multi-gamemode servers.
+    - 🐛 **Item frames and paintings survive blueprints.** Frames keep their facing and contents, and paintings restore their artwork, instead of popping off or facing the wrong way.
+    - 🔡 **Recover islands pending deletion.** New `/[admin] undelete`, a stand-on `/[admin] delete` (no player argument), and a confirmation prompt on `/[admin] register` can now rescue soft-deleted islands before their region files are purged (see the Per-Game-Mode Admin Commands table above).
+    - ⚙️ **BlueMap island layer survives reloads.** Owner pins and area boxes no longer vanish after `/bluemap reload`. A new `bluemap` section in `config.yml` adds `island-markers` and `island-areas` toggles (both default `true`), mirroring the Dynmap toggles, plus marker customization.
+    - ⚙️ **Configurable team panel button icons + member/prospect text.** The STATUS, RANK-filter and INVITE buttons in the team panel now honour the `icon:` set in `team_panel.yml`, and the member/prospect button name and description are now driven by locale keys. Defaults reproduce the previous appearance exactly.
+    - ⚡ **Settings-GUI click spam no longer spikes MSPT.** Spam-clicking `/is settings` dropped from ~30–40 MSPT to negligible via in-place panel refresh and a translation cache.
+
+    [Release v3.19.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.19.0)
+
+??? warning "What's new in v3.18.0 — Minecraft 26.2 support requires Java 25 (server)"
     **Released:** 2026-06-27
 
     - 🔺 **Minecraft 26.2 support + Java 25.** BentoBox now runs on the Minecraft 26.x line (26.2 supported at runtime) and the build has migrated to the Java 25 toolchain. **Your server must run on a Java 25-capable Paper build for the 26.x line.** Already-built addon jars keep working unchanged — only addon *developers* recompiling against this release need to move their own build to Java 25. Compatibility: Paper Minecraft 1.21.5 – 26.2, Java 25+.
