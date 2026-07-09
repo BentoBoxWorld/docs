@@ -32,15 +32,15 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 
 ### border type {...}
 **Command**: `/[player command] border type {barrier | vanilla}`  
-**Description**: Sets the border type.  
-**Permission**: `[gamemode].border.set-type`. Default: `true`.  
+**Description**: Sets the border type. Run with no argument to toggle between the available types.  
+**Permission**: `[gamemode].border.type`. Default: `true`.  
 **Example**: `/[player command] border type barrier`  
 
-### color {red|green|blue}
-**Command**: `/[player command] color {red | green | blue}`  
+### border color {red|green|blue}
+**Command**: `/[player command] border color {red | green | blue}`  
 **Description**: Sets the vanilla world border color for the player. Only applies when using the vanilla border type.  
-**Permission**: `[gamemode].color.red`, `[gamemode].color.green`, `[gamemode].color.blue` (or `[gamemode].color.*` for all). Default: `op`.  
-**Example**: `/[player command] color green`  
+**Permission**: `[gamemode].border.color.red`, `[gamemode].border.color.green`, `[gamemode].border.color.blue` (or `[gamemode].border.color.*` for all). Default: `op`.  
+**Example**: `/[player command] border color green`  
 
 !!! tip
     `[gamemode]` is a prefix that differs depending on the gamemode you are running.
@@ -70,6 +70,33 @@ Default value:
 disabled-gamemodes: []
 ```
 
+### Border type
+The default kind of border new players get. There are two choices:
+
+- `VANILLA` — uses Minecraft's own round world-border effect (the wobbly wall you see in the vanilla game). It can be tinted a colour.
+- `BARRIER` — uses invisible barrier blocks and coloured particles that only appear as you get close to the edge.
+
+Players who have permission can switch their own border with `/[player command] border type`. If they don't have permission, they get whatever you set here.
+
+```yml
+type: VANILLA
+```
+
+### Vanilla border colour
+The colour of the vanilla world border. Only used when the border type is `VANILLA`.  
+Choices are `RED`, `GREEN`, or `BLUE`. Players with permission can pick their own colour with `/[player command] border color`.
+
+```yml
+color: BLUE
+```
+
+### Bounce items back
+If `true`, items a player throws at the border are bounced back inside instead of flying out. Set to `false` to let thrown items pass through.
+
+```yml
+bounce-back: true
+```
+
 ### Return teleport
 Controls whether if players somehow manage to pass through the border (e.g. teleport in the same world), should they be teleported back to their islands.
 
@@ -87,6 +114,13 @@ return-teleport: true
     use-barrier-blocks: false
     return-teleport: false
     ```
+
+### Return teleport safety block
+Only used when `return-teleport` is `true`. If a player gets teleported back inside the border and lands somewhere unsafe (for example over a drop or in lava), this places a safe block under their feet so they don't get hurt.
+
+```yml
+return-teleport-safety-block: true
+```
 
 ### Use barrier blocks.
 Only applies for players who are **not** using the vanilla border type.
@@ -127,11 +161,19 @@ Set to `false` if you don't want **any** wall particles to be shown.
 show-particles: true
 ```
 
-### Show warps on map
-Controls whether the vanilla world border color feature is available. Colors for individual players are set with the `/[player_command] color` command. Requires a web map plugin (Dynmap or BlueMap) and the BentoBox map hook.
+### Barrier offset
+Only applies for players who are **not** using the vanilla border type.
+
+Normally the border sits exactly at the edge of the player's protection range. This setting pushes the barrier **outwards** by the number of blocks you give it, so players can walk a bit past their protected area before hitting the wall.
+
+Important things to know:
+
+- It does **not** make the protected area bigger — players still can't build or protect the extra space, they can only stand in it.
+- The border will never go further out than the island distance, no matter how big a number you set.
+- The minimum (and default) value is `0`, which means the border sits right on the protection range.
 
 ```yml
-show-warps-on-map: true
+barrier-offset: 0
 ```
 
 ## Placeholders
@@ -139,6 +181,51 @@ show-warps-on-map: true
 | Placeholder | Description | Version |
 |---|---|---|
 | `%Border_color%` | The current border color for the player (`red`, `green`, or `blue`) | 4.8.0 |
+
+## FAQ
+
+??? question "How do I change the size of the border?"
+    The border isn't a size of its own — it's drawn around each island's **protection range**. So to make the border bigger or smaller, you change the protection range.
+
+    - Give players a bigger range with a permission like `[gamemode].island.range.<number>` (for example `bskyblock.island.range.150`).
+    - Admins can set the range on a specific island with the admin range command, e.g. `/bsbadmin range set <player> <number>`.
+    - The range can never be bigger than **half the distance between islands**, and that distance is set once when the world is created and can't be changed afterwards.
+
+    See [Island Range and Spacing](../../BentoBox/About/IslandManagement.md#island-range-and-spacing) for the full details.
+
+??? question "Can I make the border a bit bigger than the island's range?"
+    Yes! Use the `barrier-offset` setting in `config.yml`. It pushes the border outwards by however many blocks you choose, so players can step a little past their protected area before hitting the wall.
+
+    Remember this only moves the wall — it does **not** give players any extra land they can build on or protect. See the [Barrier offset](#barrier-offset) setting above.
+
+??? question "What's the difference between the barrier and vanilla border types?"
+    - **Vanilla** uses Minecraft's built-in world-border effect — the shimmering wall you already know from the normal game. You can tint it red, green or blue.
+    - **Barrier** uses invisible barrier blocks plus coloured particles that only show up when you get near the edge.
+
+    Players with permission can switch between them with `/[player command] border type`.
+
+??? question "I don't want a solid wall — can I just show a line players can cross?"
+    Yes. Set `use-barrier-blocks: false` so there's no solid wall, and `return-teleport: false` so players aren't pulled back. That leaves only the visual border. Put this in `config.yml`:
+
+    ```yml
+    use-barrier-blocks: false
+    return-teleport: false
+    ```
+
+??? question "How do I change the border's colour?"
+    Colours only work with the **vanilla** border type. Set a server-wide default with the `color` setting in `config.yml` (`RED`, `GREEN` or `BLUE`). Players with permission can pick their own colour in-game with `/[player command] border color {red|green|blue}`.
+
+??? question "How do I turn the border off?"
+    Players can toggle their own border on or off with `/[player command] border` (they need the `[gamemode].border.toggle` permission). To have it off for everyone by default, set `show-by-default: false` in `config.yml`.
+
+??? question "The border isn't showing up — what should I check?"
+    - Make sure the game mode isn't listed under `disabled-gamemodes` in `config.yml`.
+    - Check the player actually has the border toggled on (`/[player command] border`) and that `show-by-default` is `true`.
+    - The border only appears around your own island's protection range, so you need to be near an edge to see it.
+    - If you're using the **barrier** type with `show-particles: false`, the wall is invisible until you touch it — that's expected.
+
+??? question "Can you add a feature X?"
+    Please request it on the [issue tracker](https://github.com/BentoBoxWorld/Border/issues).
 
 ## Changelog
 
