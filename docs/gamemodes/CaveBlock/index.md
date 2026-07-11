@@ -162,6 +162,16 @@ Addon introduces 1 BentoBox Settings flag:
 
 ## Changelog
 
+??? note "What's new in v1.23.1"
+    **Released:** 2026-07-09
+
+    A bugfix release that closes the structure-suppression hole introduced in 1.23.0. Recommended for all servers running 1.23.0 that disable vanilla structures.
+
+    - 🔺 **Disabled structures no longer freeze the server.** Disabling a structure only cancelled its *placement*, not its placement *rules*, so structure searches (`/locate`, Eyes of Ender, explorer/treasure maps, dolphins, villager map trades) kept scanning out to the radius cap and freezing the main thread. A new `StructuresLocateEvent` handler now removes disabled structures from the search up front, returning "not found" instantly. Fixes [#116](https://github.com/BentoBoxWorld/CaveBlock/issues/116).
+    - 🔺 **Structures no longer slip through in the spawn area.** The suppression listener is now registered early in `createWorlds()`, before the first spawn chunks generate, so a disabled structure can no longer appear near spawn.
+
+    [Release v1.23.1](https://github.com/BentoBoxWorld/CaveBlock/releases/tag/1.23.1)
+
 ??? note "What's new in v1.23.0"
     **Released:** 2026-07-07
 
