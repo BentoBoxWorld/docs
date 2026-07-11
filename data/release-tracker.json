@@ -1,9 +1,9 @@
 {
-  "last_run": "2026-07-11T00:00:00Z",
+  "last_run": "2026-07-11T23:36:19Z",
   "repos": {
     "BentoBox": {
-      "last_checked": "2026-07-08T02:07:59Z",
-      "last_release": "3.19.0",
+      "last_checked": "2026-07-11T23:36:19Z",
+      "last_release": "3.20.0",
       "doc_path": "BentoBox/",
       "category": "core"
     },
@@ -158,8 +158,8 @@
       "category": "addon"
     },
     "MagicCobblestoneGenerator": {
-      "last_checked": "2026-07-08T02:07:59Z",
-      "last_release": "2.9.0",
+      "last_checked": "2026-07-11T23:36:19Z",
+      "last_release": "2.10.0",
       "doc_path": "addons/MagicCobblestoneGenerator/index.md",
       "category": "addon"
     },

@@ -105,7 +105,20 @@ This reloads BentoBox and all addons, including locales. Note that some changes 
 
 ## Changelog
 
-!!! warning "What's new in v3.19.0 — bed/anchor respawns now honored"
+!!! note "What's new in v3.20.0 — command suggestions & core structure suppression"
+    **Released:** 2026-07-11
+
+    A quality-of-life release. Compatibility: Paper Minecraft 1.21.5 – 26.2, Java 25+. Nothing changes on upgrade unless you opt in.
+
+    - 🔡 ⚙️ **Did-you-mean command suggestions.** A mistyped command like `/teams` or `/island invit Floris` now offers the closest matching BentoBox command — clickable, or accept by typing `yes`/`y` within 30 seconds — instead of dumping the help text. Suggestions match labels and aliases across every command tree, are permission-filtered, and use the game-mode world the player is standing in to disambiguate. Two new toggles under `general.did-you-mean` in `config.yml` — `unknown-commands` and `subcommands` — both default **on**; set either to `false` and `/bbox reload` to disable.
+    - ⚙️ 🔺 **Core vanilla-structure suppression for every game mode.** Disabling a vanilla structure is now a single core setting instead of a per-addon job. A new `world.disabled-structures` list in `config.yml` (applied to every BentoBox overworld/nether/end) stops the listed structures generating **and** skips them in structure searches — `/locate`, Eyes of Ender, explorer/treasure maps, dolphins and villager cartographer trades — fixing the long-standing `/locate` main-thread freeze and near-spawn structure leaks. Keys are case- and separator-insensitive (`trial_chambers`, `ancient-city`). A game mode can override the list per-structure. **The list is empty by default, so behaviour is unchanged until you opt in.**
+    - 🔌 **Nexo hook.** BentoBox can now place and detect [Nexo](https://nexomc.com/) custom blocks and items, alongside the other custom-item integrations.
+    - 🔌 **Oraxen block placement.** `OraxenHook.placeBlock` exposes Oraxen custom-block placement to addons, matching the other custom-block hooks.
+    - 🔡 **Locale note:** three new `general.did-you-mean` keys were added to all 22 bundled locales, and the pre-existing missing key `commands.admin.team.setowner.specify-island` was filled in every non-English file. Regenerate or update any custom locale files.
+
+    [Release v3.20.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.20.0)
+
+??? warning "What's new in v3.19.0 — bed/anchor respawns now honored"
     **Released:** 2026-07-08
 
     Compatibility: Paper Minecraft 1.21.5 – 26.2, Java 25+.
