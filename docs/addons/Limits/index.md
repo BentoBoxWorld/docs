@@ -26,10 +26,15 @@ The config.yml has the following sections:
 * blocklimits
 * blocklimits-nether
 * blocklimits-end
+* blockgrouplimits *(1.29.0+)*
+* blockgrouplimits-nether / blockgrouplimits-end *(1.29.0+)*
 * worlds
 * entitylimits
 * entitylimits-nether
 * entitylimits-end
+* entitygrouplimits
+
+It also has these top-level toggles (all added in **1.29.0** unless noted): `apply-member-limit-perms`, `show-limit-messages`, `stacked-plants-count-as-one`, and `log-limits-on-join`.
 
 !!! info "Per-dimension limits (1.28.2+)"
     As of **1.28.2**, block counts, entity counts, limits, and offsets are tracked **independently for the overworld, nether, and end**. A single limit defined in `blocklimits` or `entitylimits` applies separately to each dimension — e.g. `HOPPER: 10` allows 10 hoppers in the overworld, 10 in the nether, and 10 in the end (30 total across the island). Use the optional `-nether` / `-end` sections to override a single dimension.
@@ -76,6 +81,78 @@ entitygrouplimits:
       - ZOMBIE
       - CREEPER
 ```
+
+### blockgrouplimits
+
+!!! info "Since 1.29.0"
+    The block-side counterpart to `entitygrouplimits`: one shared limit across a set of block materials. The counts of every member are summed and checked against the group limit, so players can't dodge a limit by converting between related blocks (e.g. grass → dirt) or splitting across variants (piston / sticky piston). Individual `blocklimits` still apply on top if both are set.
+
+Define a named group with an `icon`, a shared `limit`, and a `materials` list:
+
+```yaml
+blockgrouplimits:
+  Pistons:
+    icon: PISTON
+    limit: 10
+    materials:
+    - PISTON
+    - STICKY_PISTON
+  Soil:
+    icon: GRASS_BLOCK
+    limit: 200
+    materials:
+    - GRASS_BLOCK
+    - DIRT
+    - DIRT_PATH
+    - FARMLAND
+```
+
+Per-environment overrides are supported via `blockgrouplimits-nether` / `blockgrouplimits-end`, which override only the numeric limit of a group already defined in `blockgrouplimits`:
+
+```yaml
+blockgrouplimits-nether:
+  Pistons: 5
+```
+
+!!! warning "Run a recount after changing groups"
+    After adding a block group (or changing `stacked-plants-count-as-one` below), run `/[player_command] limits recount` so stored counts match the new counting rules.
+
+### ItemsAdder & Oraxen custom blocks
+
+!!! info "Since 1.29.0"
+    Custom blocks from **ItemsAdder** and **Oraxen** can be limited using their ids directly in the existing `blocklimits` section (and its `-nether`/`-end` and `worlds:` overrides). Enforcement uses each plugin's own place/break events via BentoBox hooks, registered only when the plugin is installed. Quote keys containing a colon.
+
+```yaml
+blocklimits:
+  "iafestivities:christmas/christmas_tree/green_orb": 5
+  "oraxen:caveblock": 10
+```
+
+### Other toggles
+
+=== "apply-member-limit-perms"
+    !!! summary "Description"
+        (**1.29.0+**) When `true`, a team member's `<gamemode>.island.limit.*` permissions are merged into the island's limits when they log in — the highest value wins. Coop and trusted players are not team members and their permissions never apply.
+
+        Default: `false`
+
+=== "show-limit-messages"
+    !!! summary "Description"
+        (**1.29.0+**) When `false`, limits are enforced silently — placements and spawns are still blocked, but players receive no hit-limit message.
+
+        Default: `true`
+
+=== "stacked-plants-count-as-one"
+    !!! summary "Description"
+        (**1.29.0+**) When `true`, a `SUGAR_CANE` or `BAMBOO` stalk counts as a single plant no matter how tall it grows — only the base segment is counted. Run a recount after changing this option.
+
+        Default: `false`
+
+=== "log-limits-on-join"
+    !!! summary "Description"
+        Log an island's limits to the console when its owner joins. As of **1.29.0** this **defaults to `false`** (it previously defaulted to `true`) because it flooded the console on servers with many permission-based limits. Set it back to `true` if you relied on that output for debugging.
+
+        Default: `false`
 
 ## Permissions
 
@@ -139,11 +216,33 @@ Some items cannot be limited (right now). The reasons are usually because there 
 * Ender crystals
 * Ender pearls
 * Ender dragon
-* Item frames
-* Paintings
+
+!!! tip "Item frames and paintings can now be limited (1.29.0)"
+    Item frames, glow item frames, and paintings were previously on this list. Since **1.29.0** entity counting is persistent and event-driven, so all three can now be configured under `entitylimits` like any other entity.
 
 
 ## Changelog
+
+??? note "What's new in v1.29.0"
+    **Released:** 2026-07-10
+
+    Compatibility: BentoBox API 2.7.1 · Paper Minecraft 1.21.11 – 26.2 · Java 21.
+
+    - ⚙️ **Block group limits.** One shared limit across a set of block materials (e.g. pistons + sticky pistons, or grass/dirt/farmland), so players can't dodge a limit by converting between related blocks. Configured under `blockgrouplimits`, with `-nether`/`-end` overrides. See the Configuration section above.
+    - ⚙️ **ItemsAdder & Oraxen custom block limits.** Limit custom blocks straight from `blocklimits` using their namespaced ids.
+    - ⚙️ **Team member limit permissions (opt-in).** With `apply-member-limit-perms: true`, team members' `island.limit.*` permissions can contribute to the island's limits, not just the owner's.
+    - 🔡 **Reached-limits placeholders & API.** New `%Limits_<gamemode>_island_reached_limits%` placeholders (plus `_overworld`/`_nether`/`_end`) list which limits are maxed, backed by a new `Limits#getReachedLimits(...)` API. Closes the oldest open ticket in the tracker (filed in 2018).
+    - ⚙️ **Stackable plants can count as one.** Optionally count a whole sugar cane or bamboo stalk as a single plant (`stacked-plants-count-as-one`).
+    - ⚙️ **Silent enforcement option.** `show-limit-messages: false` turns off hit-limit chat messages while keeping limits enforced.
+    - 🔡 **Manual material/entity name translations.** Locale files can now translate the block/entity names shown in the GUI and hit-limit messages.
+    - **Item frames, glow item frames, and paintings can now be limited** under `entitylimits`.
+    - 🐛 **Fix: phantom entity counts from portaled mobs** (e.g. `Chicken 10/10` with no chickens on the island) and a copper golem build bypassing the `COPPER_CHEST` limit.
+    - ⚙️ **`log-limits-on-join` now defaults to `false`** — set it back to `true` if you relied on that console output.
+
+    !!! warning "New config options are not added automatically"
+        New keys do **not** appear in an existing `config.yml` — add the ones you want from the list above, or delete the config to regenerate it. After adding a block group or changing `stacked-plants-count-as-one`, run a recount so stored counts match the new counting rules.
+
+    [Release v1.29.0](https://github.com/BentoBoxWorld/Limits/releases/tag/1.29.0)
 
 ??? note "What's new in v1.28.4"
     **Released:** 2026-07-06

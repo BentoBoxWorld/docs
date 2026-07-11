@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-07-08T02:07:59Z",
+  "last_run": "2026-07-11T00:00:00Z",
   "repos": {
     "BentoBox": {
       "last_checked": "2026-07-08T02:07:59Z",
@@ -32,8 +32,8 @@
       "category": "gamemode"
     },
     "CaveBlock": {
-      "last_checked": "2026-07-08T02:07:59Z",
-      "last_release": "1.23.0",
+      "last_checked": "2026-07-11T00:00:00Z",
+      "last_release": "1.23.1",
       "doc_path": "gamemodes/CaveBlock/index.md",
       "category": "gamemode"
     },
@@ -152,8 +152,8 @@
       "category": "addon"
     },
     "Limits": {
-      "last_checked": "2026-07-08T02:07:59Z",
-      "last_release": "1.28.4",
+      "last_checked": "2026-07-11T00:00:00Z",
+      "last_release": "1.29.0",
       "doc_path": "addons/Limits/index.md",
       "category": "addon"
     },
