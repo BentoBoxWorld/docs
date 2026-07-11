@@ -168,6 +168,20 @@ Since **2.9.0** generators can be gated behind richer requirements so you can de
 !!! warning "Permission-gated generators are now revoked"
     Since **2.9.0**, a generator unlocked via permission is re-checked and **revoked** from an island's unlocked and active lists when the current (online) owner no longer holds the required permission — for example after an ownership transfer. Purchased tiers are preserved, so access returns if the permission is regained; offline owners are left untouched. Previously such a grant was permanent.
 
+### Custom block outputs (ItemsAdder, CraftEngine, Oraxen, Nexo)
+
+Since **2.10.0** a generator tier can produce **custom blocks** from ItemsAdder, CraftEngine, Oraxen and Nexo, not just vanilla materials — for example a diamond-encrusted ItemsAdder ore rolls into the weighted-random mix alongside everything else. All access to those plugins is routed through BentoBox core hooks, so the addon never depends on them directly.
+
+- Blocks are stored as string IDs: vanilla names such as `COBBLESTONE`, or provider-prefixed IDs `itemsadder:namespace:id`, `craftengine:namespace:id`, `oraxen:id`, `nexo:id`. **Existing databases and templates load unchanged.**
+- The admin edit panel gains an **Add Custom Block** button — enter the ID in chat and it is validated against the hook registry. Panels render custom blocks with the provider's own texture and display name.
+- If a picked custom block is unavailable at generation time (the provider or block is missing), the generator falls back to the vanilla block and reports why via `/[admin_command] generator why`, rather than failing silently. Unregistered custom blocks in a template import with a warning so templates stay portable across servers.
+
+!!! note "Provider availability"
+    ItemsAdder and CraftEngine generate blocks today. Oraxen and Nexo are wired up and will generate once the matching BentoBox core hooks ship (BentoBox 3.20.0 adds the Nexo hook and `OraxenHook.placeBlock`).
+
+!!! warning "Requires BentoBox 3.19.1 or newer"
+    2.10.0 depends on the custom-block hook API added in BentoBox 3.19.1 and **will not load on an older core**. Update BentoBox before dropping in this jar.
+
 ## Commands
 
 !!! tip
@@ -318,6 +332,20 @@ Since **2.9.0** generators can be gated behind richer requirements so you can de
     ```
 
 ## Changelog
+
+??? warning "What's new in v2.10.0 — custom blocks, requires BentoBox 3.19.1"
+    **Released:** 2026-07-11
+
+    Generators can now drop custom blocks from other plugins, routed through BentoBox core hooks.
+
+    - 🔺 **Custom block support.** Generator tiers can produce blocks from **ItemsAdder, CraftEngine, Oraxen and Nexo** as well as vanilla materials. Blocks are stored as string IDs (`COBBLESTONE`, or `itemsadder:namespace:id`, `craftengine:namespace:id`, `oraxen:id`, `nexo:id`); existing databases load unchanged. Fixes [#103](https://github.com/BentoBoxWorld/MagicCobblestoneGenerator/issues/103). See the Configuration section above.
+    - ✨ **Add Custom Block panel button** with chat-input validation against the hook registry; panels render custom blocks with the provider's own texture and name. Unavailable custom blocks fall back to the vanilla block with a `/why` report instead of failing silently. ItemsAdder and CraftEngine generate today; Oraxen and Nexo generate once BentoBox 3.20.0's hooks are present.
+    - 🐛 **Treasure chance edits now save.** Editing a treasure's chance in the admin panel wrote to the deprecated `treasureChanceMap` instead of `treasureItemChanceMap`, so edits were lost — fixed.
+    - ⚙️ **Templates accept custom blocks.** `generatorTemplate.yml` now accepts quoted, provider-prefixed block keys. No config action is required for existing setups; unregistered custom blocks import with a warning.
+    - 🔡 **Locale note:** new `en-US.yml` keys were added for the custom block UI. Regenerate or update your locale files to pick up the new strings.
+    - 🔺 **Requires BentoBox 3.19.1 or newer.** The custom-block hook API this release calls is only available from 3.19.1; the addon will not load on an older core. Update BentoBox first.
+
+    [Release v2.10.0](https://github.com/BentoBoxWorld/MagicCobblestoneGenerator/releases/tag/2.10.0)
 
 ??? warning "What's new in v2.9.0 — permission-gated generators now revoked"
     **Released:** 2026-07-08
