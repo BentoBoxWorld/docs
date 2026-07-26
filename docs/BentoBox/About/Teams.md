@@ -140,6 +140,12 @@ There is a small chance that the inviter loses the rank required to invite playe
 !!! tip "Confirmation time"
     The default time players have to confirm a command is 10 seconds. If your players need more time, increase this value in BentoBox's `config.yml`. Players can also press the up arrow to recall the previous command rather than retyping it.
 
+#### Invite dialogs
+
+Since BentoBox 3.21.0, receiving a team invite can automatically open a modal **[Accept] / [Decline]** dialog, so the player does not have to notice the chat message and type the accept or reject command. This needs a Minecraft 26+ server and is controlled by `island.dialogs.team-invites` in BentoBox's `config.yml` (default `true`). On older servers, or with the toggle off, the invite arrives as the usual chat message.
+
+Sensitive-command confirmations — such as `team kick` and `team leave` — can likewise be shown as a **[Confirm] / [Cancel]** dialog instead of asking the player to type the command a second time. That is `island.dialogs.confirmations` (default `true`), and it falls back to the type-it-again behaviour whenever dialogs are unavailable.
+
 #### What happens when a player accepts
 
 When a player accepts a team invite, BentoBox automatically:
