@@ -223,6 +223,20 @@ Some items cannot be limited (right now). The reasons are usually because there 
 
 ## Changelog
 
+??? note "What's new in v1.29.1"
+    **Released:** 2026-07-23
+
+    Compatibility: BentoBox API 2.7.1 · Paper Minecraft 1.21.11 – 26.2 · Java 21. No config or locale changes — this is a drop-in replacement.
+
+    - 🐛 **Natural breeding now respects entity limits.** Breeding that happens without a player involved (bees, foxes, villager-run breeders, and similar) bypassed the limit check entirely, so counts could grow past the configured limit. All breeding is now checked. Players with op or the bypass permission are still exempt.
+    - 🐛 **Auto-breeders no longer retry every tick.** When a breed attempt is refused at the limit, both parents are put on a breeding cooldown, and no hit-limit message is sent to nearby players unless a player actually fed the animals.
+    - 🐛 **Player entries no longer leak into the entity tracking map.** Players were being added to the entity-island tracking map and never removed.
+    - 🐛 **Boats are now included in `recount`.** The admin recount counted minecarts but skipped boats, which zeroed boat counts that the live tracker could not then recover.
+
+    Thanks to [@daniel-skopek](https://github.com/daniel-skopek) for the fixes.
+
+    [Release v1.29.1](https://github.com/BentoBoxWorld/Limits/releases/tag/1.29.1)
+
 ??? note "What's new in v1.29.0"
     **Released:** 2026-07-10
 

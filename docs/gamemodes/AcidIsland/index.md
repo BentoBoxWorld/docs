@@ -55,6 +55,29 @@ The latest `config.yml` can be found [here](https://github.com/BentoBoxWorld/Aci
 
     Default: `true`
 
+### Sulfur ocean
+
+!!! new "Added in AcidIsland 2.0.0"
+    On Minecraft 26.2 and later the acid sea is acid-green sulfur water, dotted with bubbling sulfur vents that gas the surface with nausea and periodically erupt as geysers. The ocean floor is a weighted mix of sand, gravel, sandstone and tuff with bubbling magma blocks, plus scatterings of sulfur and cinnabar on 26.2+. The same jar still runs on Minecraft 1.21.x servers, where the 26.2 features disable themselves and the water falls back to the classic warm ocean.
+
+!!! warning "These are world generation settings"
+    All three options below bake in when a chunk is generated. BentoBox does not support changing them mid-game — existing chunks keep their current look, so expect a visible seam at old chunk borders unless you start a fresh world.
+
+??? note "world.default-biome"
+    The default biome for the overworld. `SULFUR_CAVES` (Minecraft 26.2+) gives acid-green water with matching green fog. On older servers that biome does not exist and `WARM_OCEAN` is used instead.
+
+    Default: `SULFUR_CAVES` (was `WARM_OCEAN` before 2.0.0)
+
+??? note "world.sulfur-vent-chance"
+    Chance (0–100) per chunk of a sulfur vent generating just below the sea surface. Vents are made of potent sulfur over a magma block and bubble, gas, and erupt as geysers. They come in four natural shapes — chimney, mound, twin and spiky crag — with random variation. Requires Minecraft 26.2 or later; ignored on older servers.
+
+    Default: `10`
+
+??? note "world.make-structures"
+    Generate vanilla structures in the worlds. Trial chambers and other underground structures generate buried beneath the ocean floor, giving players a reason to dig down, and making the trial key in the starter kit earnable.
+
+    Default: `true` (was `false` before 2.0.0)
+
 ## Permissions
 
 Permissions can be found [here](Permissions).
@@ -68,6 +91,35 @@ Commands can be found [here](Commands).
 Placeholders can be found [here](Placeholders).
 
 ## Changelog
+
+!!! warning "What's new in v2.0.0 — sulfur ocean (world generation changes)"
+    **Released:** 2026-07-20
+
+    AcidIsland embraces Minecraft 26.2's sulfur pools as the signature look of the acid ocean. Compatibility: BentoBox API 3.14.0 · Minecraft 1.21.11 – 26.2 (sulfur features require 26.2+) · Java 21.
+
+    - ⚙️ **Acid-green sulfur water.** The default overworld biome is now `SULFUR_CAVES`, turning all water acid-green with matching green fog. On servers older than 26.2 the biome does not exist and the world falls back to `WARM_OCEAN`.
+    - ⚙️ **Sulfur vents and geysers.** Potent sulfur vents generate just below the sea surface: bubbles, a nausea gas cloud on the surface, and periodic geyser eruptions, in four natural shapes with random variation. Per-chunk chance is set by the new `world.sulfur-vent-chance` option (default 10%); requires Minecraft 26.2+.
+    - **Varied ocean floor.** The barren sand floor is now a weighted mix of sand, gravel, sandstone and tuff with bubbling magma blocks, plus sulfur and cinnabar on 26.2+. Older servers get gravel and tuff in place of the 26.2 blocks.
+    - **New "Sulfur Spring Refuge" starter island.** A hardy spruce outcrop with leaf litter, eyeblossoms, a wither rose, podzol, a tuff sanctum below and a goat, with the same utilitarian starter kit as the cherry grove island. Built entirely from 1.21-safe blocks.
+    - ⚙️ **Structures on by default.** `world.make-structures` now defaults to `true`, so trial chambers and other underground structures generate buried beneath the ocean floor.
+
+    🔺 **World generation changes.** The new water biome, vents, ocean floor and structures all bake in at chunk generation. Existing worlds keep their current look in explored chunks; for the full 2.0.0 experience start a fresh world, or expect a visible seam at old chunk borders.
+
+    ⚙️ **Existing configs are not changed.** Your `config.yml` keeps its saved values. To adopt the new defaults on an existing install, set `default-biome: SULFUR_CAVES` and `make-structures: true`, add `sulfur-vent-chance: 10`, or delete the config to regenerate it.
+
+    🔺 **New blueprints on existing installs.** BentoBox only extracts bundled blueprints into a *missing* blueprints folder. To see the new island option on an existing install, copy `sulfur-spring.blueprint` and `sulfur_spring.json` from the jar into `plugins/BentoBox/addons/AcidIsland/blueprints/`.
+
+    [Release v2.0.0](https://github.com/BentoBoxWorld/AcidIsland/releases/tag/2.0.0)
+
+??? note "What's new in v1.22.1"
+    **Released:** 2026-06-28
+
+    Maintenance release. No configuration or locale changes are required.
+
+    - 🐛 **Duplicate permission keys in `addon.yml` fixed.** Several commands legitimately share one permission node — `/ai ban`, `/ai unban` and `/ai banlist` all use `acidisland.island.ban` — but they were written as separate YAML entries with identical keys. YAML keeps only the last of a duplicated key, so earlier permission descriptions were silently dropped and the server logged `duplicate keys found` on every load. Each shared node is now a single entry with a combined description, and the startup warnings are gone.
+    - Added Minecraft 26.2 (and backfilled 26.1.2) to the published game-versions list.
+
+    [Release v1.22.1](https://github.com/BentoBoxWorld/AcidIsland/releases/tag/1.22.1)
 
 ??? note "What's new in v1.22.0 — Purified water mechanic"
     **Released:** 2026-04-15

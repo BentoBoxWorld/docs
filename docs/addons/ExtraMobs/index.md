@@ -38,14 +38,86 @@ Addon will replace Cod, Salmon or Tropical fish with Guardian by chance from con
  - biome in given location is deep ocean or any its variants
  - first block above water where fish is spawned is prismarine, prismarine brick or dark prismarine (blocks, slabs and stairs).     
 
+## Configuration
+
+The latest `config.yml` can be found [here](https://github.com/BentoBoxWorld/ExtraMobs/blob/develop/src/main/resources/config.yml).
+
+??? note "disabled-gamemodes"
+    A list of GameModes in which the addon should not work. Each entry goes on its own line starting with `-`.
+
+    Default: `[]` (empty — the addon runs in every GameMode)
+
+??? note "nether-chances"
+    Chances of replacing a Zombified Piglin in the Nether. `wither-skeleton` and `blaze` are each a probability in the range 0.0–1.0.
+
+    Defaults: `wither-skeleton: 0.01`, `blaze: 0.1`
+
+??? note "end-chances"
+    `shulker` — chance of replacing an Enderman in the End with a Shulker.
+
+    Default: `0.1`
+
+??? note "overworld-chance"
+    `guardian` — chance of replacing a Cod, Salmon or Tropical Fish in the Overworld with a Guardian.
+
+    Default: `0.1`
+
+??? note "gamemode-settings"
+    Per-GameMode replacement rules that override the global chances above. Added in 1.15.0.
+
+    Each key is the exact GameMode addon name (case-sensitive), and each GameMode may define up to three environment sections — `world:` for the overworld, `nether:`, and `end:`. Each section is a list of rules with `old` (the `EntityType` to replace), `new` (the replacement `EntityType`), and `chance` (0.0–1.0).
+
+    Per-GameMode rules are tried in order before the global defaults for that environment. If a rule matches the spawning entity **and** its chance roll succeeds, the replacement is applied and processing stops for that event. If no rule matches, or every matching rule's roll fails, the global `nether-chances` / `end-chances` / `overworld-chance` values are used as a fallback.
+
+    Default: `{}` — opt-in, so the global chances continue to apply to any GameMode not listed here.
+
+    ```yaml
+    gamemode-settings:
+      BSkyBlock:
+        nether:
+          - old: ZOMBIFIED_PIGLIN
+            new: WITHER_SKELETON
+            chance: 0.05
+          - old: ZOMBIFIED_PIGLIN
+            new: BLAZE
+            chance: 0.1
+        end:
+          - old: ENDERMAN
+            new: SHULKER
+            chance: 0.3
+        world:
+          - old: COD
+            new: GUARDIAN
+            chance: 0.15
+      AcidIsland:
+        end:
+          - old: ENDERMAN
+            new: SHULKER
+            chance: 0.5
+    ```
+
 ## Compatibility
 
-- [x] BentoBox - 1.11.0 version
+- [x] BentoBox 3.14.0 or later
+- [x] Paper Minecraft 1.21.x
+- [x] Java 21 or later
 
-Addon is build on Minecraft 1.15.2 and BentoBox 1.11.0 version, however, it should even work on Minecraft 1.13.2 and BentoBox 1.0 Release.
-
-Addon supports all Game mode addons.
+The addon supports all game mode addons.
 
 ## Translations
 
 {{ translations("ExtraMobs") }}
+
+## Changelog
+
+!!! note "What's new in v1.15.0 — Java 21 and BentoBox 3.14.0 required"
+    **Released:** 2026-05-31
+
+    Compatibility: BentoBox API 3.14.0+ · Paper Minecraft 1.21.x · Java 21+.
+
+    - ⚙️ **Per-GameMode spawn replacement rules.** A new `gamemode-settings` config block defines replacement rules for each BentoBox GameMode separately, rather than sharing one global setting across the whole server. It defaults to `{}` and is opt-in, so the existing global chance values continue to work for any GameMode that is not listed. See the Configuration section above.
+    - 🔺 **Java 21 and BentoBox 3.14.0 are now required.** Make sure your server meets both before upgrading.
+    - **Pladdon entry point and `plugin.yml` added,** so the addon loads as a modern BentoBox addon.
+    - Test suite rebuilt on JUnit 5 and MockBukkit, GitHub Actions build with SonarCloud analysis added, and various maintainability issues resolved.
+
+    [Release v1.15.0](https://github.com/BentoBoxWorld/ExtraMobs/releases/tag/1.15.0)

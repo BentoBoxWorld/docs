@@ -105,7 +105,19 @@ This reloads BentoBox and all addons, including locales. Note that some changes 
 
 ## Changelog
 
-!!! note "What's new in v3.20.0 — command suggestions & core structure suppression"
+!!! note "What's new in v3.21.0 — modal dialogs"
+    **Released:** 2026-07-22
+
+    A player-experience release. Compatibility: Paper Minecraft 1.21.5 – 26.2, Java 25+.
+
+    - ⚙️ 🔡 **Modal dialogs for high-friction flows.** Sensitive-command confirmations, the `/island go` destination picker, team invites, and a first-join game-mode chooser can now appear as real modal dialogs the player cannot misread or scroll past. A new `island.dialogs` section in `config.yml` holds one toggle per flow — `confirmations`, `go-picker` and `team-invites` default **on**, `game-mode-selection` defaults **off** because it is intrusive by design. Dialogs need a Minecraft 26+ server; on anything older every toggle is ignored and the classic chat/command behaviour is used, so no action is needed there.
+    - **Forgiving `/island go` matching.** `/island go myisland`, `hom`, or a name typed with the wrong case or a stray double space now teleports the player where they meant instead of failing an exact match and dumping the full list. See [Home Locations](IslandManagement.md#home-locations).
+    - 🔡 **Locale note:** new dialog keys (`general.dialogs.*`, plus dialog and picker keys under the confirmation, `island go` and team-invite commands) were added to all 22 bundled locales. Regenerate or update any custom locale files.
+    - 🔧 **Addon developers** get the same `world.bentobox.bentobox.api.dialogs` API used by core — see [Modal dialogs](../Developer-Documentation.md#modal-dialogs).
+
+    [Release v3.21.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.21.0)
+
+??? note "What's new in v3.20.0 — command suggestions & core structure suppression"
     **Released:** 2026-07-11
 
     A quality-of-life release. Compatibility: Paper Minecraft 1.21.5 – 26.2, Java 25+. Nothing changes on upgrade unless you opt in.

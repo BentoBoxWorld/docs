@@ -4,7 +4,7 @@ One block. That's it. That's where you start.
 
 Mine it and it comes back as something else — a grass block, a tree, a chest, a mob. Mine it again. Keep going. Slowly, painstakingly, you build an island from nothing, unlocking new phases as you progress: Plains, Underground, Ocean, Jungle, Nether, and beyond. Each phase brings new blocks, new mobs, and new surprises. Some very hostile surprises.
 
-**AOneBlock** is BentoBox's take on IJAminecraft's beloved OneBlock map — rebuilt as a full multiplayer server experience with 11 themed phases, 11,000+ blocks of content, loot chests of varying rarity, and enough depth to keep players coming back for weeks.
+**AOneBlock** is BentoBox's take on IJAminecraft's beloved OneBlock map — rebuilt as a full multiplayer server experience with 20 themed phases, 15,000+ blocks of content, loot chests of varying rarity, and enough depth to keep players coming back for weeks.
 
 Created and maintained by [tastybento](https://github.com/tastybento).
 
@@ -34,6 +34,42 @@ The main `config.yml` file contains basic information about game-mode addon setu
 After addon is successfully installed, it will create a config.yml file. Every option in this file comes with comments about them. Please check file for more information.
 You can find the latest config file: [config.yml](https://github.com/BentoBoxWorld/AOneBlock/blob/develop/src/main/resources/config.yml)
 
+### The Phase Index — `phases_index.yml`
+
+!!! new "Added in AOneBlock 1.26.0"
+    `phases_index.yml` sits next to the `phases` folder and is the source of truth for which phases load, in what order, how long each one is, and which Minecraft version each one needs. It is read **before** any phase file is parsed, so a phase that needs a newer Minecraft version is skipped without its YAML — and any items inside it — ever being touched.
+
+Each entry in the `phases:` list takes these fields:
+
+| Field | Meaning |
+|---|---|
+| `file` | Base name of the phase file in the `phases` folder, without `.yml`. The chest file is `<file>_chests.yml`. |
+| `section` | The top-level key inside the phase file (historically the start block). |
+| `name` | Display name, used in logs and in the `/[admin_command] phases` panel. |
+| `length` | Number of blocks in the phase. |
+| `enabled` | Optional, defaults to `true`. Set `false` to leave a phase out. |
+| `requiredMinecraftVersion` | Optional. The phase is skipped — taking up no blocks at all — on servers older than this version. |
+
+Start blocks are **computed**: they are the running sum of the lengths of the enabled phases above, starting at 0. That means phases can be reordered freely and a skipped phase collapses out of the progression. After the last phase the block count jumps to `gotoAtEnd`.
+
+A top-level `adminLengths: true` is written automatically the first time you edit a length in `/[admin_command] phases`. From then on reconciliation never recomputes lengths, so your values survive later file additions, renames and upgrades.
+
+#### Reconciliation
+
+!!! note "Since 1.26.1 the phases folder is the source of truth"
+    The index is reconciled with the files actually on disk on every load, and on every save from the admin panel, so what `/[admin_command] phases` shows is what your server really runs. Watch the startup log for lines beginning `Phase index:` — they say exactly what was changed.
+
+- An entry whose file was **renamed across addon versions** is re-pointed at your file by phase name, so the phase loads again.
+- An entry whose file is **missing but shipped in the jar** is restored automatically. This is what makes new phases appear on upgraded servers, since files in `phases/` are never overwritten.
+- **Custom phase files** dropped into the folder are added automatically. A numeric key slots in at its legacy start block; anything else is appended at the end for you to arrange in the panel.
+- Entries whose files are gone for good are removed with a warning, so the panel never lists phases that do not exist.
+- When repair was needed, lengths are recomputed from your files' legacy start-block keys, preserving the layout your server actually ran before the index existed — unless `adminLengths` is set.
+
+!!! warning "Deleting a phase"
+    To remove a phase permanently, delete its files, or toggle it off in `/[admin_command] phases`. Deleting only its index entry does not work — reconciliation re-adds any phase file it finds in the folder.
+
+    A malformed index falls back to the old direct file loading, so a bad edit cannot leave the addon stuck.
+
 ### Phase Config Files
 
 The config files to make the phases are in the `phases` folder.
@@ -41,6 +77,9 @@ The config files to make the phases are in the `phases` folder.
 There are two files per phase - a file that contains the blocks and mobs, and a file that contains the chests.
 
 The first number of any file is how many blocks need to be mined to reach that phase. This is the phase's key number.
+
+!!! tip "Numbers in phase file names are optional since 1.26.1"
+    Custom phase files no longer need a numeric start block in the file name or as the YAML section key — `desert.yml` with a `desert:` section works. Chest files still pair by file name (`<file>_chests.yml`). The numbers in the shipped files are historical: with the index in charge, the panel's start and length values are the truth. Numeric keys remain useful because they tell reconciliation where a file belongs and how long it was.
 
 === "name"
     !!! summary "Description"
@@ -90,6 +129,23 @@ The first number of any file is how many blocks need to be mined to reach that p
         `biome` is an experimental option. However, it changes biome only for the "magic" block location. 
         So we would suggest to use the Biomes addon that has an option to change the biome on whole island. 
         You can do it with phase start commands which would trigger biome change.
+
+=== "requiredMinecraftVersion"
+    !!! summary "Description"
+        Since 1.26.0, a phase, a single block, or a single mob can declare the minimum Minecraft version it needs. Anything the server is too old for is skipped with a single info log line instead of throwing `Tried to load invalid item` or `ConfigurationSerialization` errors.
+
+        At the phase level the value belongs in `phases_index.yml` as well, so the phase can be skipped before its file is parsed at all. Set at the phase level, the phase takes up no blocks on an older server and the phases after it collapse up.
+
+        Individual `blocks` and `mobs` entries take an object form with `weight` plus their own `requiredMinecraftVersion`. Chest files are read item by item, so an item your server version does not know is skipped on its own and the rest of the chest still loads.
+
+    !!! example "Example"
+        ```yaml
+            blocks:
+              NETHERRACK: 300
+              DRIED_GHAST:
+                weight: 25
+                requiredMinecraftVersion: '1.21.6'
+        ```
 
 === "start-commands"
     !!! summary "Description"
@@ -348,6 +404,16 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     - `/[admin_command] sanity [<phase>]`: sends a message if phases (or `<phase>`) chests are correct.
     - `/[admin_command] setcount <player> <number>`: allows changing the current phase to a `<player>` where `<number>` is the phase start number.
     - `/[admin_command] setchest <phase> <rarity>`: saves a chest that player is looking at into `<phase>` chests section with `<rarity>`.
+    - `/[admin_command] phases`: opens the phase order editor. (Since 1.26.0)
+
+    ??? tip "Using the phase order editor"
+        `/[admin_command] phases` shows every phase in order with its computed start block, length and state. It edits `phases_index.yml`, and drops and toggles save the index and reload the phases immediately.
+
+        - **Left-click** a phase to pick it up — the rest shrink left. Click where it should go to shove the others right and drop it, or use the drop-at-end slot. Click anywhere else, or close the panel, to put it back without saving.
+        - **Right-click** toggles a phase on or off.
+        - **Shift-left-click** sets a phase's length (since 1.26.1). The panel closes and a chat prompt shows the current length; type a whole number to apply it, or `cancel` to keep it. Invalid input re-prompts, and the prompt times out after 60 seconds. The first length edit writes `adminLengths: true` into the index so your values are never recomputed again.
+
+        Disabled phases show as gray glass and version-locked ones as barriers — both can still be reordered. A phase with no configured icon uses its first block.
 
 
 By default, BentoBox GameMode addons comes with the default sub-command set, however, each addon may introduce even more sub commands.
@@ -372,6 +438,7 @@ By default, BentoBox GameMode addons comes with the default sub-command set, how
     - `aoneblock.admin.sanity` - Let the player use the '/[admin_command] sanity' command. Default OP.
     - `aoneblock.admin.setchest` - Let the player use the '/[admin_command] setchest' command. Default OP.
     - `aoneblock.admin.setcount` - Let the player use the '/[admin_command] setcount' command. Default OP.
+    - `aoneblock.admin.phases` - Let the player use the '/[admin_command] phases' command to open the phase order editor. Default OP. (Since 1.26.0)
 
 By default, BentoBox GameMode addons comes with the default sub-permission set, however, each addon may introduce even more sub-permissions.
 
@@ -424,15 +491,17 @@ By default, BentoBox GameMode addons comes with [default placeholders set](../..
     Please add it to the list [here](https://github.com/BentoBoxWorld/AOneBlock/issues).
 
 ??? question "What phases are there?"
-    There are 11 phases: Plains, Underground, Winter, Ocean, Jungle, Swamp, Dungeon, Desert, The Nether, Plenty, Desolation, and The End. 
+    There are 20 shipped phases, in this order: Plains, Underground, Winter, Ocean, Jungle, Swamp, Dungeon, Desert, The Nether, Plenty, Desolation, Deep Dark, The End, Lush Caves, Dripstone Caves, Mangrove Swamp, Meadow, Cherry Grove, Jagged Peaks, and Sulfur Caves.
 
     Each phase features a set of blocks, items, and mobs appropriate for the setting.
 
-??? question "How many blocks are there in the 11 phases?"
-    There are currently 11 thousand blocks!
+    Sulfur Caves requires Minecraft 26.2 or later. On older servers it is skipped and Jagged Peaks runs to the loop point instead. You can reorder, disable and resize phases yourself with `/[admin_command] phases`, and add your own phase files to the `phases` folder.
+
+??? question "How many blocks are there in all the phases?"
+    15,500 blocks with the shipped phases on a Minecraft 26.2+ server, or 15,000 without the Sulfur Caves phase.
 
 ??? question "What happens after the last phase?"
-    The phases repeat.
+    The phases repeat — the block count jumps back to the `gotoAtEnd` value in `phases_index.yml`, which is 0 by default.
 
 ??? question "Why do I keep falling and dying!"
     There are tricks to surviving, but it might be difficult! You need to build defenses.
@@ -697,3 +766,62 @@ AOneBlock has some custom events that are called only in AOneBlock. But BentoBox
     - 🐛 **`my_island_*` placeholders fixed for visiting team members.** When a player who belongs to a team visited another island, the `my_island_*` placeholders resolved to the visited island's team data instead of the player's own island. They now always resolve to the player's own island.
 
     [Release v1.25.1](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.25.1)
+
+??? note "What's new in v1.25.2"
+    **Released:** 2026-07-18
+
+    Bug-fix release — drop-in replacement, no config or locale changes.
+
+    - 🐛 **Jobs Reborn infinite-reward exploit closed.** When the `MAGIC_BLOCK` flag denied a player from breaking the magic block, plugins that listen for block breaks — such as Jobs Reborn — still saw the break as successful and paid out rewards. Because the block instantly respawns, a visitor could mine the same valuable block indefinitely for infinite job rewards. The denied break is now cancelled before other plugins process it.
+    - 🐛 **`actionbar: false` now actually disables the action bar.** If the boss bar was enabled, the action bar progress display kept showing even with `actionbar: false` set, and the same applied in reverse to the boss bar. Both settings are now respected, and the progress displays are no longer updated twice per block break when both are enabled.
+
+    [Release v1.25.2](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.25.2)
+
+!!! warning "What's new in v1.26.0 — the phase index (review after upgrading)"
+    **Released:** 2026-07-20
+
+    Adds the Sulfur Caves phase for Minecraft 26.2 servers, and — because shipping a 26.2-only phase to an addon that also runs on 1.21.x needed real version handling — introduces the phase index that controls which phases load, in what order, and on which server versions. Compatibility: BentoBox API 3.15.0+ · Minecraft 1.21.5 or later · Java 21.
+
+    - **Sulfur Caves phase.** A new phase at the 15000 spot: sulfur and cinnabar layered through typical underground blocks, with Sulfur Cubes, cave spiders and friends at the wiki's spawn weights, plus themed chests that can drop the *Bounce* music disc. The end-of-game loop moves from 15000 to 15500. The phase declares `requiredMinecraftVersion: '26.2'`, so it appears automatically on 26.2+ servers and is skipped with a single info log on older ones — Jagged Peaks simply runs to the loop point instead.
+    - 🔺 **New `phases_index.yml`.** Now the source of truth for phase order, length, enabled state and required Minecraft version. Start blocks are the running sum of the lengths above, so phases can be moved freely and a skipped phase collapses out of the progression. The index is read **before** any phase file is parsed, which kills the `Tried to load invalid item` and `ConfigurationSerialization` stack traces that newer-version items used to cause on older servers. See the Configuration section above.
+    - **Version-gated blocks, mobs and chest items.** Chest files are now read item by item, so an item this server version does not know is skipped with one log line and the rest of the chest loads. Block and mob entries accept an object form with a per-entry `requiredMinecraftVersion`.
+    - 🔡 **New `/[admin_command] phases` panel** (permission `aoneblock.admin.phases`, OP by default) to reorder, insert and toggle phases by clicking them around an inventory panel.
+
+    🔺 **A `phases_index.yml` is generated on first start** from the phase files in your data folder, and from then on it controls phase order and lengths. Worth a quick review after the first boot, especially if you have hand-edited phases. A malformed index falls back to the old direct file loading, so nothing can get stuck.
+
+    🔺 **Existing installs do not get the new phase files automatically.** Files in `addons/AOneBlock/phases/` are never overwritten. On 1.26.0 you had to copy `15000_sulfur_caves.yml` and `15000_sulfur_caves_chests.yml` from the jar yourself; from 1.26.1 reconciliation restores them for you.
+
+    🔡 **New locale keys** were added for the phase order editor — regenerate or update translated locale files.
+
+    [Release v1.26.0](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.26.0)
+
+!!! warning "What's new in v1.26.1 — the phases folder is now the source of truth"
+    **Released:** 2026-07-21
+
+    A bug-fix release for the 1.26.0 phase index. In 1.26.0 upgrading servers received the *stock* `phases_index.yml`, which references the current jar's file names — but existing `phases/` folders hold older or customized layouts. Phases silently failed to load, Sulfur Caves never appeared on upgraded servers, and `/[admin_command] phases` showed a preset instead of the server's reality.
+
+    - 🔺 **Self-healing phase index.** The index is now reconciled with the `phases/` folder on every load and on every panel save: entries renamed across addon versions are re-pointed at your file by phase name, entries missing but shipped in the jar are restored (so Sulfur Caves appears on upgraded 26.2 servers), custom phase files are added automatically, and entries whose files are gone for good are removed with a warning. Where repair was needed, lengths are recomputed from your files' legacy start-block keys, preserving the layout your server actually ran.
+    - 🔡 **Set phase lengths in the panel.** Shift-left-click a phase to set its length via a chat prompt. The first length edit writes `adminLengths: true` into `phases_index.yml`, after which reconciliation never recomputes lengths again.
+    - **Numbers in phase file names are now optional.** A custom `desert.yml` with a `desert:` section works; chest files still pair by file name.
+    - 🔡 **Panel polish.** Phase icons fall back to the phase's first block instead of stone, the "How to use" book wraps onto four lines, and the per-phase lore is shorter for small monitors.
+
+    🔺 **Your `phases_index.yml` will likely be rewritten on the first boot** to match the files in your phases folder. Watch the log for lines starting `Phase index:` — they say exactly what was re-pointed, restored, added or removed. Phases that vanished after the 1.26.0 upgrade come back on their own.
+
+    🔺 **To remove a phase permanently, delete its files,** or toggle it off in the panel. Deleting only its index entry no longer works — reconciliation re-adds any phase file it finds.
+
+    🔡 **New and changed locale keys** for the length prompt and the reworked panel text.
+
+    [Release v1.26.1](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.26.1)
+
+??? note "What's new in v1.26.2"
+    **Released:** 2026-07-25
+
+    Bug-fix release for a loot regression introduced in 1.26.0. **If you are on 1.26.0 or 1.26.1, update.**
+
+    - 🐛 **Chest items keep their meta again.** Since 1.26.0 chest files have been read with plain SnakeYAML rather than `YamlConfiguration`, so that an item unknown to your server version can be skipped on its own instead of taking down the whole chest file. The side effect was that nothing was deserialized on the way in: an item's `meta` section arrived as a plain map, and Bukkit's item deserializer silently ignores meta that is not already an `ItemMeta`. Enchantments, potion effects and names were dropped without a line in the log — most visibly the enchanted books from the Plains chests, but it applied to every chest item in every phase, including potions, tipped arrows, custom-named items, banners, player heads and written books.
+
+        Chest item definitions are now walked properly and their meta is deserialized before the item is built. The 1.26.0 behaviour is unchanged — an item that does not exist on your Minecraft version is still skipped with a log line — and a meta section that cannot be read now costs only its meta, and says so in the log, rather than losing the item.
+
+    No phase file changes are needed: the old-style enchantment names in the shipped phase YAML (`PROTECTION_FALL` and friends) are still translated by the server, so customized chest files work as they are. Items players have **already** looted stay as they are — the meta was lost when the chest was filled, so there is nothing to repair after the fact. Every chest generated from now on is correct.
+
+    [Release v1.26.2](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.26.2)

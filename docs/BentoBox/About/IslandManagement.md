@@ -25,6 +25,18 @@ Players can set multiple home locations on their island with `/island sethome`. 
 [gamemode].island.home.maxhomes.<number>
 ```
 
+### Finding the right home
+
+Since BentoBox 3.21.0, `/island go <name>` no longer needs an exact, case-sensitive match. The typed name is resolved in decreasing order of confidence:
+
+1. An exact match on an island or home name.
+2. A match ignoring case, colour codes and extra whitespace — so `myisland` finds `MyIsland` and a stray double space is forgiven.
+3. A unique case-insensitive prefix — `hom` finds `Home`.
+
+Anything still ambiguous falls through to the usual list of destinations rather than guessing, and the resolved canonical name is used for the teleport so named homes stay accurate.
+
+If the player runs `/island go` with no name at all and has more than one island or home to pick from, BentoBox can show a **destination picker** — a modal dialog with one button per destination. This needs a Minecraft 26+ server and is controlled by `island.dialogs.go-picker` in BentoBox's `config.yml` (default `true`). On older servers, or with the toggle off, the classic clickable chat list is shown instead.
+
 ## Resetting an Island
 
 Players can start fresh by resetting their island with `/island reset`. This **deletes the current island** and creates a brand new one. Admins can:

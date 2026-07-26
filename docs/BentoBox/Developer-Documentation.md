@@ -61,3 +61,39 @@ PlayerEvent.builder()
 ```
 
 This is purely additive — all classes are new and no existing API changed, so 3.17.0 is binary-compatible with existing addons. The [Inventory Switcher addon](../addons/InvSwitcher/index.md) uses these events to protect per-world inventories and balances during resets. See [Release 3.17.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.17.0).
+
+# Modal dialogs
+
+*Added in BentoBox 3.21.0.*
+
+`world.bentobox.bentobox.api.dialogs` wraps Paper's modal dialog system, which requires **Minecraft 26 or later**. Dialogs sit alongside the Panels API: a panel is an inventory the player can click away, a dialog is a modal the player has to answer. Core uses them for command confirmations, the `/island go` destination picker, team invites, and the first-join game-mode chooser.
+
+| Class | Purpose |
+| --- | --- |
+| `Dialogs` | `Dialogs.isSupported()` — whether this server can show dialogs |
+| `DialogBuilder` | Fluent builder: `title`, `body`, `escapable`, `pause`, `confirmation`, `button`, `build` |
+| `DialogButton` | A label, an optional tooltip, and a `Consumer<User>` click handler |
+| `BBDialog` | The built dialog — `show(User)` to display it |
+
+`title(...)`, `body(...)` and `DialogButton.of(...)` each take either an Adventure `Component` or a `User` plus a locale reference (with optional variables), so dialog text is translated the same way as the rest of your addon. Everything is `Component`-based end to end, so click actions survive.
+
+```java
+if (!Dialogs.isSupported()) {
+    // Pre-26 server: fall back to your chat or panel flow
+    askInChat(user);
+    return;
+}
+new DialogBuilder()
+    .title(user, "myaddon.confirm.title")
+    .body(user, "myaddon.confirm.body", "[name]", island.getName())
+    .confirmation(
+        DialogButton.of(user, "myaddon.confirm.yes", u -> doTheThing(u)),
+        DialogButton.of(user, "myaddon.confirm.no", u -> u.sendMessage("myaddon.confirm.cancelled")))
+    .build()
+    .show(user);
+```
+
+!!! warning "Always provide a fallback"
+    Check `Dialogs.isSupported()` and keep your previous chat or panel behaviour for older servers, exactly as core does. Button click handlers run on the main thread, so they can touch the Bukkit API directly.
+
+See [Release 3.21.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.21.0).

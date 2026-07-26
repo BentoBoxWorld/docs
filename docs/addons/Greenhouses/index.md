@@ -79,21 +79,39 @@ Read the file release notes for changes and instructions on how to upgrade.
 
 ## Player Commands
 
-Add these commands to /island, /ai:
+Add these commands to /island, /ai. The command label is `greenhouse`, with the aliases `gh` and `greenhouses`.
 
+* **greenhouses** - opens the recipe GUI; clicking on a recipe tries to make that greenhouse
 * **greenhouses help** - lists these commands
-* **greenhouses make**: Tries to make a greenhouse by finding the first valid recipe
+* **greenhouses make [recipe]**: Tries to make a greenhouse, by finding the first valid recipe or by using the named one
 * **greenhouses remove**: Removes a greenhouse that you are standing in if you are the owner
-* **greenhouses list**: Lists all the recipes available
-* **greenhouses recipe**: Display the recipe GUI - clicking on a recipe will try to make a greenhouse
+
+!!! warning "`list` and `recipe` were removed in 1.10.0"
+    These two player commands were documented but never actually registered — they were unreachable stubs, and calling them only ever produced an unknown-command error. They were deleted in 1.10.0. `/is greenhouses` with no arguments opens the recipe GUI, which is what they were supposed to do.
 
 ## Admin Commands
 
-Use after the game mode admin command, e.g. /bsb or /acid
+!!! new "Added in Greenhouses 1.10.0"
+    Before 1.10.0 the addon had no admin command tree at all. If a greenhouse record went bad, the only option was to stop the server and edit the database by hand.
 
-* **greenhouses reload** : Reloads config files
-* **greenhouses info <player>**: provides info on the player's island greenhouses
-* **greenhouses info**: provides info on the greenhouse you are in
+Registered under your game mode's admin command, e.g. `/bsbadmin greenhouses` or `/acid greenhouses`. The label is `greenhouses`, with the aliases `greenhouse` and `gh`.
+
+| Command | What it does |
+|---|---|
+| `list [player] [page]` | Paginated list of greenhouses, optionally just one player's. Records that failed to load are **always** listed too, with the reason. |
+| `info [id]` | Recipe, owner, world, location, bounding box, area, original biome, hopper, broken status and missing blocks. With no ID, uses the greenhouse you are standing in. |
+| `delete <id>` | Deletes a record — loaded or not — after asking you to confirm. |
+| `tp <id>` | Teleports you to the middle of the greenhouse floor. Alias: `teleport`. |
+| `verify [id]` | Re-checks one or all greenhouses against their recipe and reports what is missing. Alias: `check`. |
+| `reload` | Re-reads `biomes.yml`, then re-loads the greenhouses from the database. |
+
+- IDs come from `list` and can be shortened to any prefix that matches **only one** greenhouse. An ambiguous prefix is treated as no match rather than a guess, because deleting the wrong greenhouse cannot be undone.
+- Everything except `tp` works from the server console.
+- Greenhouse records that cannot be loaded — overlapping, unknown recipe, missing world, no location — are kept in memory with the reason instead of being silently dropped. That is what makes them listable and deletable.
+- Records are never deleted automatically. Removing a player's greenhouse without being asked would be worse than a recurring warning.
+
+!!! tip "Overlapping greenhouses"
+    If two persisted greenhouses overlap, one is skipped at startup and named in the log along with the record it overlaps. Use `/bsbadmin greenhouses list` to see the skipped records and why, then `/bsbadmin greenhouses delete <id>` to remove the one you do not want. No database editing and no restart needed.
 
 ## Permissions
 
@@ -121,9 +139,42 @@ The permission can be anything you like, e.g., a rank permission, **myserver.VIP
      description: Gives access to admin commands
      default: op
 
+Since 1.10.0 each admin sub-command also has its own node — `greenhouses.admin.list`, `.info`, `.delete`, `.tp`, `.verify` and `.reload` — all defaulting to `op`. Operators need no action, but if you grant admin access through a permissions plugin you will want to add them. They were missing from `addon.yml` entirely before that release, which is why nothing but op access worked.
+
 ## Translations
 
 {{ translations("Greenhouses") }}
+
+!!! note "What's new in v1.10.0 — admin commands"
+    **Released:** 2026-07-26
+
+    Greenhouses finally has an admin command tree. Compatibility: BentoBox API 2.7.1 · Minecraft 1.21.5+ · Java 21.
+
+    - 🛠️ **Admin commands.** `list`, `info`, `delete`, `tp`, `verify` and `reload`, registered under your game mode's admin command (e.g. `/bsbadmin greenhouses`). See the Admin Commands section above. Greenhouse records that cannot be loaded — overlapping, unknown recipe, missing world, no location — are now kept in memory with the reason instead of being silently dropped, which is what makes them showable and deletable. Records are still never deleted automatically.
+    - ⚙️ **New permissions.** The six sub-commands each have their own node under `greenhouses.admin.*`, all defaulting to `op`. They were missing from `addon.yml` entirely before this release, which is why nothing but op access worked.
+    - 🐛 **Checking a greenhouse whose recipe no longer exists no longer throws an NPE.** When a database record names a recipe that is not in `biomes.yml`, the check now reports `FAIL_UNKNOWN_RECIPE`.
+    - 🐛 **`getFloorHeight` no longer throws on a record with no location** — the very records most likely to be broken. It falls back to the bounding box.
+    - 🔺 **Snow now reports success from every column it scanned,** not just the last one. `SnowTracker` was overwriting its result on each column, so a greenhouse that made snow in ninety columns and missed the last reported failure — and that value decides whether water is consumed from the hopper.
+    - 🧹 All 68 open SonarCloud issues resolved, five methods refactored below the cognitive-complexity threshold, dead code removed, and the test suite grown from 177 to 224 tests.
+
+    🔡 **Translators wanted.** The admin commands add messages under `greenhouses.commands.admin.*`, currently English only. The other 24 locale files fall back to the key names until they are translated.
+
+    🔺 **Three player commands were deleted — but none of them worked.** `InfoCommand`, `ListCommand` and `RecipeCommand` were unregistered stubs with placeholder bodies. `InfoCommand` even declared itself under the label `make`, which would have collided with the real make command had anyone ever enabled it. This page previously listed `greenhouses list` and `greenhouses recipe` as working player commands; they were not, and that has been corrected. `/is greenhouses` with no arguments still opens the recipe GUI.
+
+    [Release v1.10.0](https://github.com/BentoBoxWorld/Greenhouses/releases/tag/1.10.0)
+
+??? warning "What's new in v1.9.6 — overlapping greenhouses are now diagnosable"
+    **Released:** 2026-07-25
+
+    - 🐛 **Overlapping greenhouses are now diagnosable.** If two persisted greenhouses overlap, one is skipped at startup — but the log line used to say only `Greenhouse overlaps with another greenhouse. Skipping...`, which gave you nothing to act on and repeated on every restart. The warning now names **both** records with their `uniqueId`, recipe, owner, world, location and bounding box, and tells you how to fix it. The summary line reads `Loaded 63 greenhouses out of 65 in the database.` and closes with a tally of how many were skipped.
+    - 🔺 **Greenhouse load order is now deterministic.** Greenhouses were loaded in whatever order the database returned, so with two overlapping records either could win, and it could flip between restarts. They are now sorted by `uniqueId` before loading, so the outcome is stable until you remove one of the records.
+    - ⚙️ **Duplicate `SQUID` entry removed from the `OCEAN` recipe** in `biomes.yml`. It was listed twice, which triggers a duplicate-key warning from SnakeYAML on newer server versions. YAML keeps the last occurrence, so the effective value (`20:WATER`) is preserved and mob spawning is unchanged.
+
+    ⚙️ **The `biomes.yml` fix does not apply itself.** Your server already has its own `biomes.yml` on disk and the addon will not overwrite it. If you see a SnakeYAML duplicate-key warning for `SQUID`, open `plugins/BentoBox/addons/Greenhouses/biomes.yml`, find the `OCEAN` section, and delete the first of the two `SQUID:` lines. First-time installs get the corrected file automatically.
+
+    🔺 **This release reports overlapping greenhouses but does not remove them.** Skipped records are left in the database on purpose — silently deleting a player's greenhouse would be worse than a recurring warning. In 1.9.6 you had to remove the stale record yourself using the `uniqueId`s now printed in the log; 1.10.0 adds admin commands that do it in-game.
+
+    [Release v1.9.6](https://github.com/BentoBoxWorld/Greenhouses/releases/tag/1.9.6)
 
 ??? note "What's new in v1.9.5"
     **Released:** 2026-06-03
