@@ -36,6 +36,7 @@ nav:
         - Chat: addons/Chat/index.md
         - CheckMeOut: addons/CheckMeOut/index.md
         - ControlPanel: addons/ControlPanel/index.md
+        - DeathChest: addons/DeathChest/index.md
         - DimensionalTrees: addons/DimensionalTrees/index.md
         - ExtraMobs: addons/ExtraMobs/index.md
         - FarmersDance: addons/FarmersDance/index.md
