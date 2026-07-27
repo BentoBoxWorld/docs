@@ -134,6 +134,7 @@ hide:
     <a href="addons/Chat/" class="bb-chip">Chat</a>
     <a href="addons/CheckMeOut/" class="bb-chip">CheckMeOut</a>
     <a href="addons/ControlPanel/" class="bb-chip">ControlPanel</a>
+    <a href="addons/DeathChest/" class="bb-chip">DeathChest</a>
     <a href="addons/DimensionalTrees/" class="bb-chip">DimensionalTrees</a>
     <a href="addons/ExtraMobs/" class="bb-chip">ExtraMobs</a>
     <a href="addons/FarmersDance/" class="bb-chip">FarmersDance</a>
