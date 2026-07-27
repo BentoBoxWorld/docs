@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-07-26T04:16:18Z",
+  "last_run": "2026-07-27T15:02:00Z",
   "repos": {
     "BentoBox": {
       "last_checked": "2026-07-26T04:16:18Z",
@@ -8,8 +8,8 @@
       "category": "core"
     },
     "AcidIsland": {
-      "last_checked": "2026-07-26T04:16:18Z",
-      "last_release": "2.0.0",
+      "last_checked": "2026-07-27T15:02:00Z",
+      "last_release": "2.1.1",
       "doc_path": "gamemodes/AcidIsland/index.md",
       "category": "gamemode"
     },
@@ -80,8 +80,8 @@
       "category": "addon"
     },
     "Challenges": {
-      "last_checked": "2026-07-03T00:00:00Z",
-      "last_release": "1.7.0",
+      "last_checked": "2026-07-27T15:02:00Z",
+      "last_release": "1.8.0",
       "doc_path": "addons/Challenges/index.md",
       "category": "addon"
     },

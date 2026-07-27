@@ -60,8 +60,8 @@ The latest `config.yml` can be found [here](https://github.com/BentoBoxWorld/Aci
 !!! new "Added in AcidIsland 2.0.0"
     On Minecraft 26.2 and later the acid sea is acid-green sulfur water, dotted with bubbling sulfur vents that gas the surface with nausea and periodically erupt as geysers. The ocean floor is a weighted mix of sand, gravel, sandstone and tuff with bubbling magma blocks, plus scatterings of sulfur and cinnabar on 26.2+. The same jar still runs on Minecraft 1.21.x servers, where the 26.2 features disable themselves and the water falls back to the classic warm ocean.
 
-!!! warning "These are world generation settings"
-    All three options below bake in when a chunk is generated. BentoBox does not support changing them mid-game — existing chunks keep their current look, so expect a visible seam at old chunk borders unless you start a fresh world.
+!!! warning "`default-biome` and `make-structures` are world generation settings"
+    These two bake in when a chunk is generated. BentoBox does not support changing them mid-game — existing chunks keep their current look, so expect a visible seam at old chunk borders unless you start a fresh world. `sulfur-vent-chance` is the exception: since 2.1.0 it can be changed on a live server, it simply only affects chunks generated from then on.
 
 ??? note "world.default-biome"
     The default biome for the overworld. `SULFUR_CAVES` (Minecraft 26.2+) gives acid-green water with matching green fog. On older servers that biome does not exist and `WARM_OCEAN` is used instead.
@@ -71,12 +71,91 @@ The latest `config.yml` can be found [here](https://github.com/BentoBoxWorld/Aci
 ??? note "world.sulfur-vent-chance"
     Chance (0–100) per chunk of a sulfur vent generating just below the sea surface. Vents are made of potent sulfur over a magma block and bubble, gas, and erupt as geysers. They come in four natural shapes — chimney, mound, twin and spiky crag — with random variation. Requires Minecraft 26.2 or later; ignored on older servers.
 
+    Since 2.1.0 this can be changed without a world reset — the new value applies to newly generated chunks only.
+
     Default: `10`
 
 ??? note "world.make-structures"
     Generate vanilla structures in the worlds. Trial chambers and other underground structures generate buried beneath the ocean floor, giving players a reason to dig down, and making the trial key in the starter kit earnable.
 
     Default: `true` (was `false` before 2.0.0)
+
+### Geyser offerings
+
+!!! new "Added in AcidIsland 2.1.0, completed in 2.1.1"
+    Throw items into the water around a sulfur vent and the geyser swallows them as offerings. When the vent next erupts it spews rewards back out of the plume — transmuted, not returned. What you feed it shapes what comes out: sacrifice ores and it leans towards gems, sacrifice wood and it leans towards living things. The mechanic requires Minecraft 26.2 or later (where sulfur vents exist) and quietly disables itself on older servers.
+
+    Since 2.1.1 a vent **trades rather than gambles**: it works out what your offering was worth and hands back rewards worth roughly the same, so a diamond comes back in gems and a stack of cobble comes back in cobble-grade tat. Items floating near a vent drift into its pool, so a throw does not have to be accurate, and a fed vent is provoked into erupting a few seconds later so the payout lands while the player is still watching.
+
+    Only items thrown by a player count — death drops, block drops and mob drops that wash into a pool are left alone. Items the acid dissolves within a vent's pool count as offerings instead of being lost, and spewed rewards are tagged so they can never be recycled into new offerings. Mining a vent out forfeits its pending offerings.
+
+??? note "world.geyser-offerings.enabled"
+    Master switch for the geyser offering mechanic.
+
+    Default: `true`
+
+??? note "world.geyser-offerings.max-rewards"
+    Maximum number of rewards a single eruption can spew, however many items were offered.
+
+    Default: `12`
+
+??? note "world.geyser-offerings.match-value"
+    Answer an offering with rewards of roughly the same worth, instead of one random reward per item. A vent transmutes rather than destroys: feed it a diamond and it owes a diamond's worth back, feed it cobble and it owes cobble. Worth comes from `geyser-values.yml`, which can defer to the Level addon's block values. Turn this off for the 2.1.0 one-roll-per-item payout.
+
+    Default: `true` (added in 2.1.1)
+
+??? note "world.geyser-offerings.exchange-rate"
+    Fraction of the offered worth a vent pays back when matching worth. `1.0` is a fair trade, below `1.0` makes the vent take a cut, above `1.0` makes offering profitable in itself — which players will farm, so raise with care.
+
+    Default: `1.0` (added in 2.1.1)
+
+??? note "world.geyser-offerings.reward-ceiling"
+    The most a single reward may be worth, as a multiple of the worth of the richest item offered. A stack of cobble is worth an emerald and a cobble generator is infinite, so without this a vent becomes a gem printer. Rewards named in a `from:` list in `geyser-loot.yml` ignore this — a transmutation the admin has written down is always allowed. Set to `0` for no limit.
+
+    Default: `8.0` (added in 2.1.1)
+
+??? note "world.geyser-offerings.erupt-on-offering"
+    Provoke a fed vent into erupting a few seconds after it is fed, instead of waiting for the vanilla eruption cycle, so the reward follows the offering while the player is still there to see it. Turn this off to leave eruption timing entirely to vanilla — offerings are then held until the vent erupts.
+
+    Default: `true` (added in 2.1.1)
+
+#### geyser-loot.yml
+
+Rewards are defined in `geyser-loot.yml`, copied into `plugins/BentoBox/addons/AcidIsland/` on first run. Each entry is either an item or a console command:
+
+```yaml
+loot:
+  - {item: RAW_IRON, weight: 30, channel: mineral, amount: {min: 1, max: 3}}
+  - {item: OBSIDIAN, weight: 10, channel: nether, from: [MAGMA_BLOCK, BASALT, LAVA_BUCKET]}
+  - {item: MUSIC_DISC_13, weight: 1, from: [BONE, GUNPOWDER]}
+  - {command: "give %player% cod 1", weight: 1, value: 4}
+```
+
+| Key | Meaning |
+| --- | --- |
+| `item` / `command` | The reward. Commands run from the console; `%player%` is substituted. |
+| `weight` | Relative chance of the entry rolling — higher is more common. |
+| `channel` | Optional. One of `gems`, `nether`, `mineral`, `forestry`, `husbandry`. Offerings pull the table towards their own channel by the share of the offering's *worth* that went into it. |
+| `from` | Optional list of materials that transmute into this reward. Offer any of them and the entry becomes eight times as likely — and it ignores `reward-ceiling`, so it is the one way for a vent to hand back something far richer than what went in. |
+| `amount` | Optional item count, fixed or a `{min, max}` range. Default `1`. |
+| `value` | Optional worth of one of this reward, overriding the material's worth. Command rewards are free unless they set this, so give paid commands a value or they will turn up in every payout. |
+
+!!! warning "Upgrading from 2.1.0"
+    `geyser-loot.yml` is only written when it is missing, so a copy left over from 2.1.0 will not gain the `from:` transmutations or `value:` fields and none of the named transmutations will work. Delete the file so it regenerates, then re-apply your edits.
+
+#### geyser-values.yml
+
+`geyser-values.yml` says what a material is worth to a vent. The scale is arbitrary — only the ratios matter — and it is anchored on iron ingot `6`, gold ingot `12`, emerald `15`, diamond `45`, so a diamond comes back as three emeralds, or an emerald and two gold ingots.
+
+Worth is resolved in this order, first hit wins:
+
+1. the `values:` map in the file
+2. the **Level addon's** block values for the world, if Level is installed and `use-level-addon: true` — so a server that has already tuned Level does not have to tune this twice. Delete an entry from `values:` to defer that material to Level.
+3. the `default:` worth, for anything nothing else knows about
+
+Worth is by material only: enchantments, custom names and the contents of shulker boxes are not counted, so gear is worth its base material.
+
+The file is created automatically on first run.
 
 ## Permissions
 
@@ -90,7 +169,48 @@ Commands can be found [here](Commands).
 
 Placeholders can be found [here](Placeholders).
 
+## API
+
+Other addons can hook into the geyser offering mechanic with two events, both added in 2.1.0:
+
+- `GeyserSacrificeEvent` — fired when a vent swallows an offering. Cancellable.
+- `GeyserTransmuteEvent` — fired when a vent spews a reward.
+
 ## Changelog
+
+!!! warning "What's new in v2.1.1 — vents trade instead of gamble (delete `geyser-loot.yml`)"
+    **Released:** 2026-07-26
+
+    2.1.0 shipped the geyser offering mechanic but not the economy that was supposed to come with it: a vent rolled one reward per item thrown in, so a stack of cobble and a diamond bought the same spin, and the mechanic never said a word to the player. 2.1.1 completes it. Compatibility: BentoBox API 3.14.0 · Minecraft 1.21.5 – 26.2 (geyser features require 26.2+) · Java 21.
+
+    - ⚙️ 🔺 **Worth matching.** A new `geyser-values.yml` says what a material is worth to a vent, anchored on iron ingot 6, gold ingot 12, emerald 15, diamond 45. A vent adds up what it was fed and keeps rolling rewards it can still afford until that worth is spent. Four new options under `world.geyser-offerings`: `match-value`, `exchange-rate`, `reward-ceiling` and `erupt-on-offering` (see Configuration above). Where the file is silent, worth can defer to the **Level addon's** block values via `use-level-addon: true`.
+    - ⚙️ **Named transmutations.** Loot entries in `geyser-loot.yml` now take a `from:` list of materials that transmute into them — magma blocks make obsidian, iron makes gold, bones with gunpowder make music discs. A `from:` entry is eight times as likely and ignores `reward-ceiling`, making it the place to put rewards that would otherwise need a mob farm.
+    - 🔡 **The vent finally speaks.** A new `acidisland.geyser` locale section adds offering, churning and payout messages plus display names for the five reward channels, in all 24 locales. They are action bar messages by default — remove the `[actionbar]` tag to send them in chat.
+    - **Throws no longer have to be accurate.** Items floating near a vent drift into its pool, and a fed vent is provoked into erupting a few seconds later so the payout lands while the player is still watching.
+    - **Channel bias by worth.** Offerings still pull the reward table towards their own channel, but the pull is weighted by worth rather than item count — one diamond steers as firmly as the stack of cobble it is worth.
+
+    🔺 **Delete `geyser-loot.yml`** from `plugins/BentoBox/addons/AcidIsland/` if you ran 2.1.0. The file is only written when it is missing, so an existing copy will not gain the `from:` transmutations or `value:` fields. Re-apply your edits to the regenerated file.
+
+    ⚙️ `geyser-values.yml` is created automatically on first run, and the four new config options are added to `config.yml` on start with existing settings preserved. 🔡 Regenerate or update your locale files to pick up the `acidisland.geyser` strings. Servers that preferred the 2.1.0 payout can set `match-value: false` and keep everything else.
+
+    [Release v2.1.1](https://github.com/BentoBoxWorld/AcidIsland/releases/tag/2.1.1)
+
+??? note "What's new in v2.1.0 — geyser offerings"
+    **Released:** 2026-07-26
+
+    AcidIsland 2.1.0 turns the sulfur vents from scenery into an economy. Throw items into the water around a vent and the geyser consumes them as offerings, then pays you back on its next eruption, spewing transmuted rewards out of the plume. Compatibility: BentoBox API 3.14.0 · Minecraft 1.21.11 – 26.2 (geyser offerings require 26.2+) · Java 21.
+
+    - ⚙️ **Geyser offerings.** Items floating in the pool around a sulfur vent are consumed with a sizzle as offerings — anywhere within the pool counts, no pixel-perfect aim needed. When the vent next erupts, one reward per item offered (capped, configurable) is spewed from the plume in a radial fountain.
+    - **Channels.** Offerings are categorized into **gems**, **nether**, **mineral**, **forestry** and **husbandry**, and bias the reward table towards what was sacrificed.
+    - ⚙️ **New `geyser-loot.yml`**, copied to the addon data folder on first run: weighted item entries with amount ranges, plus console command rewards with `%player%` substitution.
+    - ⚙️ **New `world.geyser-offerings` config section**: `enabled` (default `true`) and `max-rewards` per eruption (default `12`).
+    - **New API events** for other addons: `GeyserSacrificeEvent` (cancellable) and `GeyserTransmuteEvent`.
+    - **Works with acid item destruction.** Items the acid dissolves within a vent's pool count as offerings instead of being lost, whatever your `acid.damage.acid.item` destroy time — and spewed rewards are tagged so they can never be recycled into new offerings. Mined-out vents forfeit their pending offerings; the geyser is not a storage unit.
+    - ⚙️ **`world.sulfur-vent-chance` no longer demands a world reset** to change. It only affects newly generated chunks, so admins can tune vent density on a live server.
+
+    **No world reset needed.** Offerings work at any existing sulfur vent — this release makes no world generation changes.
+
+    [Release v2.1.0](https://github.com/BentoBoxWorld/AcidIsland/releases/tag/2.1.0)
 
 !!! warning "What's new in v2.0.0 — sulfur ocean (world generation changes)"
     **Released:** 2026-07-20

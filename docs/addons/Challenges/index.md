@@ -24,6 +24,35 @@ Config file contains main functions for the addon.
 
 The latest config.yml can be found [here](https://github.com/BentoBoxWorld/Challenges/blob/develop/src/main/resources/config.yml).
 
+??? note "gui-settings.undeployed-view-mode"
+    How undeployed challenges appear in the player GUI.
+
+    - `VISIBLE` — undeployed challenges are always shown.
+    - `HIDDEN` — undeployed challenges are never shown.
+    - `TOGGLEABLE` — the player GUI gets a button so each player can show or hide undeployed challenges themselves. Defaults to shown, so it starts out like `VISIBLE`. Handy for hyping upcoming challenges while letting players tidy their view. Fully implemented in 1.8.0 — before that it behaved like `VISIBLE`.
+
+    Default: `VISIBLE`
+
+??? note "gui-settings.open-anywhere"
+    Allow players to open the challenges GUI without being on their island. Completing a challenge still requires being on the island when world protection is enabled.
+
+    Default: `false` (added in 1.8.0)
+
+??? note "gui-settings.description-color"
+    Default colour applied to every line of a challenge's own description text, so you do not have to prefix each challenge with the same colour. Uses MiniMessage tags, including hex (e.g. `<white>`, `<#55FFFF>` or `<color:#55FFFF>`); legacy `&` codes also still work. Leave empty for no default. A colour written in the description itself still overrides this. Does not affect per-challenge locale overrides.
+
+    Default: `''` (added in 1.8.0)
+
+??? note "gui-settings.reward-text-color"
+    Default colour applied to every line of a challenge's own reward text, both first-time and repeat reward text. Same format as `description-color`. Leave empty for no default.
+
+    Default: `''` (added in 1.8.0)
+
+??? note "include-undeployed"
+    Whether undeployed challenges count towards level completion. Disabling this means only deployed challenges count, so an undeployed challenge will not block a level from being completed.
+
+    Default: `true` (shipped in `config.yml` since 1.8.0)
+
 ### Template
 
 Challenges addon contains a template file which can be used to import challenges into database. This file is useful for bulk challenge adding for people that do not like to use ingame-gui. However, be aware, that not all functions are available for the template file, and some items/options can be added only via GUI.
@@ -48,6 +77,15 @@ The example template file: [template.yml](https://github.com/BentoBoxWorld/Chall
     - **Per-member ("Roll Call Feast")** — every present member must contribute their own share, so no one can freeload; the configured amount is the team total, split across the online members.
 
     Rewards go to every online member, completion and cooldown are shared by the whole team, and team statistic challenges only count progress earned *while on the team*. Team challenges can be shown greyed-out to soloists as a recruitment nudge or hidden entirely. Five reference challenges — **All Hands on Deck**, **Pooled Tribute**, **Synchronized Build**, **Combined Effort** and **Roll Call Feast** — ship in the bundled `default.json`, and the admin challenge editor exposes toggles for all of the new options.
+
+??? question "Can a reward be made rare, or gambled for?"
+    Yes. Since **1.8.0** each challenge can be given a percentage chance to actually grant its reward on completion, set per challenge in the admin editor. This lets you build "lucky" challenges where the reward is not guaranteed — useful for repeatable challenges and loot-style gameplay.
+
+??? question "Can completing a challenge raise the island level?"
+    Yes. Since **1.8.0** a challenge or a level can award island level points directly through the [Level addon](/en/latest/addons/Level/), so challenges can feed into island progression instead of only handing out items, money and XP. Set it up in the admin editor alongside the other reward types.
+
+??? question "Can a challenge require the player to be in a particular biome?"
+    Yes, for island challenges. Since **1.8.0** island challenges gain a **Required Biomes** option: the player must be standing in one of the chosen biomes to complete the challenge. Biomes are picked from a paginated biome selector in the admin GUI — left-click to add, right-click to clear. Biomes are stored by key, so the data stays robust across Minecraft versions and unknown biomes simply never match.
 
 ??? question "Can I specify an enchantment on required/reward items?"
     Unfortunately Spigot does not have a general item parsing mechanics. So plugin authors need to create their own. Challenges addon uses BentoBox [Item Parser](/en/latest/BentoBox/ItemParser/). If function is not supported by it, then you cannot. However, you can always use in-game admin GUI to set any items you want. There is not any limitation.
@@ -283,6 +321,33 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     ```
 
 ## Changelog
+
+!!! warning "What's new in v1.8.0 — toggleable undeployed challenges need a panel update"
+    **Released:** 2026-07-26
+
+    Compatibility: BentoBox 3.14.0 · Minecraft 1.21.x · Java 21.
+
+    - ✨ **Optional reward chance.** Each challenge can now roll a configurable percentage chance to actually grant its reward, so rewards can be made rare or gambled for. Set per challenge in the admin editor.
+    - 💎 **Island level rewards.** Completing a challenge or a level can raise the island level directly via the Level addon, so challenges feed into island progression instead of only handing out items, money and XP.
+    - 🔡 **Biome requirement for island challenges.** Island challenges can require the player to be standing in one of a chosen set of biomes, picked from a new paginated biome selector in the admin GUI. Biomes are stored by key, so unknown biomes simply never match.
+    - 🔡 ⚙️ 🔺 **Toggleable undeployed challenges.** `undeployed-view-mode: TOGGLEABLE` was previously a no-op that behaved like `VISIBLE`. It is now fully implemented: players get a button to show or hide undeployed challenges for themselves, defaulting to shown.
+    - ⚙️ **Default text colour.** Two new settings — `gui-settings.description-color` and `gui-settings.reward-text-color` — apply a default MiniMessage colour to every line of a challenge's description and reward text, instead of prefixing every challenge by hand. A colour written in the text still overrides the default.
+    - 📊 **Completion-percentage placeholders.** New `[gamemode]_challenges_completed_percent` and `[gamemode]_challenges_latest_level_completed_percent` placeholders for scoreboards, tab lists and other placeholder-driven displays.
+    - 🔡 ⚙️ **Open the GUI off-island.** The new `gui-settings.open-anywhere` option lets players open the Challenges GUI without standing on their island. Completion itself still requires being on the island when world protection is enabled.
+    - 🐛 Locked levels no longer show their "Congratulations…" unlock message while the status still reads locked.
+    - 🐛 The player GUI now honours the per-challenge `removeWhenCompleted` flag, so completed one-time challenges flagged that way disappear as intended.
+    - 🐛 Completing challenges for a player through admin mode now runs the level-completion check, so admin completions count toward finishing a level.
+    - 🐛 With "ignore meta-data", potion requirements now compare the base potion type instead of treating potions as a blank item.
+    - 🔡 Confirmation prompts now tell players to type `confirm` / `cancel`, so import/reset/wipe confirmations are no longer a guessing game.
+    - ⚙️ The `include-undeployed` setting is now shipped and documented in `config.yml`.
+
+    🔺 **Toggleable undeployed challenges need a panel update.** The new show/hide button lives in the player panel template (`panels/main_panel.yml`). Servers that already have that file will not see the button until they either delete it so it regenerates, or add the `TOGGLE_UNDEPLOYED` button to it by hand. Fresh installs get it automatically. `VISIBLE` and `HIDDEN` modes are unchanged.
+
+    ⚙️ **New config keys** `gui-settings.open-anywhere`, `gui-settings.description-color`, `gui-settings.reward-text-color` and the top-level `include-undeployed` are added to your `config.yml` automatically with safe defaults — no behaviour change.
+
+    🔡 **Locale note.** Several locale keys were added (reward chance, biome selector, toggle button, confirmation instruction and more). If you maintain custom translations, regenerate or merge them so the new strings appear.
+
+    [Release v1.8.0](https://github.com/BentoBoxWorld/Challenges/releases/tag/1.8.0)
 
 ??? note "What's new in v1.7.0"
     **Released:** 2026-07-01
