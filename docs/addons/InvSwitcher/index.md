@@ -22,6 +22,61 @@ The following are switched per-world:
 2. Restart the server
 3. Done!
 
+## Compatibility with other inventory plugins
+
+!!! warning "Do not run two inventory managers"
+    InvSwitcher must be the only plugin managing per-world inventories. Running it alongside
+    Multiverse-Inventories, PerWorldInventory, MultiInv or similar makes both plugins save and
+    restore the player on every world change, and they overwrite each other's data.
+
+The usual symptom is disappearing items: pick up an item on your island, go to the lobby, come
+back, and the island inventory is empty. Nothing appears in the console, because neither plugin is
+failing — each is faithfully saving a player state the other has already rewritten. In testing, the
+island inventory ended up filed under the *lobby's* storage key, and an empty inventory under the
+island's.
+
+The InvSwitcher version makes no difference. If you are seeing this, check for a second inventory
+plugin before anything else.
+
+### Multiverse-Inventories
+
+Two things commonly mislead admins here:
+
+- **Leaving the BentoBox worlds out of every inventory group does not help.** Groups control which
+  worlds *share* an inventory, not which worlds Multiverse-Inventories handles. It still writes a
+  per-world profile for a world that is in no group.
+- **`/mv remove <world>` does not help either.** Multiverse-Core re-registers BentoBox worlds as
+  they are created, so the removal is silently undone on the next restart. Setting
+  `auto-import-3rd-party-worlds: false` does not prevent this — it only suppresses the import sweep
+  that runs when Multiverse-Core starts, which is before BentoBox has created its worlds.
+
+Multiverse-Inventories has no config option to ignore a world, but it does have a bypass
+permission. First enable it in the Multiverse-Inventories `config.yml` (it ships as `false`):
+
+```yml
+share-handling:
+  enable-bypass-permissions: true
+```
+
+Then grant `mvinv.bypass.world.<world>` for each BentoBox world — including its nether and end — to
+every player. With [LuckPerms](https://luckperms.net/):
+
+```
+lp group default permission set mvinv.bypass.world.bskyblock_world true
+lp group default permission set mvinv.bypass.world.bskyblock_world_nether true
+lp group default permission set mvinv.bypass.world.bskyblock_world_the_end true
+```
+
+Setting the nodes on a group that every player inherits (such as `default`) covers new players
+automatically. Repeat for each game mode world you run.
+
+!!! tip "Operators do not get this permission automatically"
+    Granting op is not enough — the node has to be given explicitly. Testing as an op without it
+    looks exactly like the fix not working.
+
+Use one node per world. Avoid `mvinv.bypass.world.*`, which switches Multiverse-Inventories off for
+every world, including the ones you still want it to manage.
+
 ## Config.yml
 
 InvSwitcher has a `config.yml` with two main sections.
