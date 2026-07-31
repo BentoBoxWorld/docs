@@ -52,6 +52,7 @@ This example is for when you are in the BSkyBlock world. For AcidIsland, just us
 * Can I build a Nether greenhouse? Try it and see... (Actually, you may need permission)
 * Can I build greenhouses in the Nether? Yes. You can colonize the nether with them.
 * What kind of mobs spawn in the biomes? It's what you would expect, wolves in Cold Taiga, horses on plains, etc.
+* How can an admin update the Nether greenhouse to have a chance to spawn Wither Skeletons? Add the mob to the `NETHER` recipe in `biomes.yml` — see [Customising mob spawns](#customising-mob-spawns-example-wither-skeletons) below.
 
 ## Required Plugin
 
@@ -112,6 +113,37 @@ Registered under your game mode's admin command, e.g. `/bsbadmin greenhouses` or
 
 !!! tip "Overlapping greenhouses"
     If two persisted greenhouses overlap, one is skipped at startup and named in the log along with the record it overlaps. Use `/bsbadmin greenhouses list` to see the skipped records and why, then `/bsbadmin greenhouses delete <id>` to remove the one you do not want. No database editing and no restart needed.
+
+## Customising mob spawns (example: Wither Skeletons)
+
+Every mob a greenhouse can spawn is defined per recipe in `plugins/BentoBox/addons/Greenhouses/biomes.yml`, so adding a new mob is just a config edit. Each entry in a recipe's `mobs:` section has the format:
+
+```
+ENTITY_TYPE: chance:BLOCK_TO_SPAWN_ON
+```
+
+For example, to give the Nether greenhouse a chance to spawn Wither Skeletons, find the `NETHER:` recipe and add one line to its `mobs:` section:
+
+```yaml
+NETHER:
+  # ...
+  mobs:
+    ZOMBIFIED_PIGLIN: 10:NETHERRACK
+    PIGLIN: 10:NETHERRACK
+    STRIDER: 10:LAVA
+    ENDERMAN: 5:NETHERRACK
+    WITHER_SKELETON: 5:NETHERRACK
+```
+
+This gives a 5% chance per spawn attempt for a Wither Skeleton to appear on a netherrack block inside the greenhouse. The spawn-on block can be any block in the greenhouse — for a more fortress-like feel you could use `WITHER_SKELETON: 10:NETHER_BRICKS` instead, but then players need nether bricks inside the greenhouse for it to trigger.
+
+Apply the change with **/bsbadmin greenhouses reload** (or your game mode's admin equivalent, e.g. **/acid greenhouses reload**), or restart the server. Existing greenhouses pick up the new mob without being rebuilt.
+
+Things to keep in mind:
+
+* **All the chances in one recipe must add up to 100 or less.** If a new entry pushes the total over 100, that mob is skipped and an error is logged on load (`Mob chances add up to > 100% in NETHER biome recipe! Skipping ...`).
+* Spawning is also limited by the recipe's `moblimit` and `maxmobs` values, and by the mob tick interval in `config.yml` — so a low percentage can feel rare in practice.
+* The `ENTITY_TYPE` must be a valid [Bukkit EntityType](https://jd.papermc.io/paper/1.21.5/org/bukkit/entity/EntityType.html) name; unknown names are skipped with a warning.
 
 ## Permissions
 
