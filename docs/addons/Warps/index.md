@@ -196,6 +196,19 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
     [Release v1.19.0](https://github.com/BentoBoxWorld/Warps/releases/tag/1.19.0)
 
+??? note "What's new in v1.19.1"
+    **Released:** 2026-07-30
+
+    Patch release — no config or locale changes are required.
+
+    - 🐛 **Sign owners are notified when a warp falls back to the sign block.** When no safe spot exists in front of a warp sign — common where signs sit at a platform edge with void in front — visitors were silently teleported onto the sign's own block: no `WarpInitiateEvent`, no vanish check, and no "X warped to your warp sign!" message for the owner. The fallback now runs through the same completion path as a normal warp, so events, vanish handling, sound and the owner notification behave identically wherever the visitor lands. The arrival yaw also now matches the sign's facing.
+    - Publishing to CurseForge and Hangar is now automated alongside the existing Modrinth workflow, and MC 26.1.2 was added to the Modrinth game-versions list.
+    - `addon.yml` API version bumped to 3.12.0, with additional softdepend entries for better load ordering.
+
+    Compatibility: BentoBox API 3.12.0+, Minecraft 1.21.x, Java 21.
+
+    [Release v1.19.1](https://github.com/BentoBoxWorld/Warps/releases/tag/1.19.1)
+
 ## Translations
 
 {{ translations("Warps") }}

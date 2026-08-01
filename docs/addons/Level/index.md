@@ -185,6 +185,12 @@ This section defines values for blocks and limits for them.
 
     Format: `MATERIAL: NUMBER`
 
+    Since Level 2.28.0 these limits also apply to **donated** blocks, so a player cannot earn points past a block's cap by donating instead of placing:
+
+    - The level calculation caps each donated block type at its current limit. If you lower a limit after players have donated, only up to the new limit counts.
+    - `/[player_command] donate hand`, `/[player_command] donate inv` and the donation panel all check the limit up front, trimming the confirm prompt to the amount that will actually count (with a warning line when trimmed) and refusing outright when everything offered is already at its limit.
+    - Limit lookups are case-insensitive, so mixed-case custom block IDs (e.g. Oraxen items) resolve the same limit everywhere.
+
 ??? note "blocks"
     This section lists the value of a block in all game modes (worlds). 
     To specific world-specific values, use the next section. 
@@ -336,6 +342,9 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     - `/[player_command] donate hand [amount]`: donates the item currently held in the player's hand (or the specified amount of it) directly to island level without opening the GUI. Requires `[gamemode].island.level.donate` permission.
     - `/[player_command] donate inv`: lists every donatable block in the player's inventory with per-material values and a running total, then on confirm donates them all and runs a level recalc. Items with no configured value and non-blocks stay in the inventory. Requires `[gamemode].island.level.donate` permission.
 
+    !!! note
+        Since 2.28.0, all three donation paths respect the block `limits` set in [`blockconfig.yml`](#blockconfigyml), and donated points are recalculated from current block values on every recalculation.
+
 
 === "Admin commands"
     - `/[admin_command] level <player>`: triggers level calculation for player. Requires `[gamemode].admin.level` permission.
@@ -485,6 +494,34 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     🔡 **Locales updated.** All 18 shipped locales gained new `island.donate.inv.*` keys (`keyword`, `confirm-header`, `confirm-line`, `confirm-total`). If you have customised locale files in `plugins/BentoBox/addons/Level/locales/`, copy the new `donate.inv` block into them or the new `/island donate inv` flow will show raw keys.
 
     [Release v2.27.0](https://github.com/BentoBoxWorld/Level/releases/tag/2.27.0)
+
+??? warning "What's new in v2.28.0 — action required"
+    **Released:** 2026-07-28
+
+    Compatibility: BentoBox API 3.16.0, Minecraft 1.21.x and 26.1.x, Java 21.
+
+    - 🔺 **Donation limits are enforced end-to-end.** Block limits defined in [`blockconfig.yml`](#blockconfigyml) now apply everywhere donations are involved. The level calculation caps each donated block type at its current limit, and `/island donate hand`, `/island donate inv` and the donation GUI all check the limit up front — trimming the confirm prompt to the amount that will actually count, skipping materials already at their cap, and showing a clear "donation limits reached" message instead of a misleading 0-point prompt. Admin level reports cap donated lines at the current limit (marked "capped at N") so they sum to the donated total.
+    - **Donated points now follow current block values.** Points are recomputed from the stored donated-blocks map using current (and world-specific) values on every recalculation, so changing a value in `blockconfig.yml` applies retroactively instead of using a stale stored total. The donation GUI's "Currently donated" figure shows the same effective points the level uses.
+    - Limit lookups are case-insensitive, so mixed-case custom block IDs (e.g. Oraxen items) resolve the same limit everywhere.
+    - Releases now publish automatically to CurseForge and Hangar alongside Modrinth, and Minecraft 26.1.2 was added to the supported versions.
+
+    🔺 **Island levels may drop after upgrading** on servers where players donated past a block's limit — those blocks are now excluded from the level calculation. This is the intended fix, but be ready for questions.
+
+    🔡 **Locales updated.** All 17 shipped locales gained three new keys under `island.donate` (`limit-reached`, `limit-notice`, `limit-reached-all`). If you have customised locale files in `plugins/BentoBox/addons/Level/locales/`, add these keys or the limit warnings will show raw keys.
+
+    !!! note "Dev-build users"
+        The experimental per-chunk zeroing engine that appeared in snapshot builds during this cycle was removed before release and is **not** part of 2.28.0. Stable-release users are unaffected.
+
+    [Release v2.28.0](https://github.com/BentoBoxWorld/Level/releases/tag/2.28.0)
+
+??? note "What's new in v2.28.1"
+    **Released:** 2026-07-29
+
+    Bug-fix release — drop-in replacement for 2.28.0, with no locale, config or panel changes.
+
+    - 🐛 **The value panel's search button no longer stacks duplicate chat prompts.** Every click started another 90-second "Please enter a search value" conversation. If the first prompt was not visible — for example when a chat-managing plugin such as CMI swallowed it — players clicked repeatedly, stacking conversations that later replayed as alternating `Conversation cancelled!` / `Please enter a search value` spam with the GUI re-opening each time. The search input now repeats the question when a conversation is already pending instead of queueing a second one.
+
+    [Release v2.28.1](https://github.com/BentoBoxWorld/Level/releases/tag/2.28.1)
 
 ## Translations
 

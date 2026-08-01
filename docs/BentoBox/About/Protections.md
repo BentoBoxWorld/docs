@@ -78,6 +78,14 @@ Island owners open the settings GUI with `/island settings`. Admins can hide ind
 | **Leaf decay** | Whether leaf blocks decay naturally when logs are removed. |
 | **Mob spawning** | Whether monsters or animals can spawn on the island, including from spawner blocks. |
 
+### Viewing the World Rules Off-Island
+
+Since BentoBox 3.22.0, `/island settings` also works when the player is not standing on an island and does not own one — out in the wilderness, or in a game mode where players never own islands at all.
+
+In that case the panel opens with a single read-only **World Protections** tab listing each protection flag as active or disabled for the world. That is what actually governs a player off-island: with no island underneath them, a protection flag resolves to the world's on/off switch rather than to any rank. Nothing is clickable, and the island settings tab is not shown, since there is no island to configure.
+
+Players who are on or own an island see exactly the panel they always did.
+
 ## World Settings Admins Control
 
 These settings apply to the whole game mode world. Only admins can change them, via `/[admin_command] settings`. Players can view (but not change) these in a read-only mode so they understand the server rules.
