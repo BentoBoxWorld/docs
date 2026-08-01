@@ -105,7 +105,27 @@ This reloads BentoBox and all addons, including locales. Note that some changes 
 
 ## Changelog
 
-!!! note "What's new in v3.21.0 — modal dialogs"
+!!! note "What's new in v3.22.0 — Brigadier commands"
+    **Released:** 2026-08-01
+
+    A commands-and-visibility release. Compatibility: Paper Minecraft 1.21.5 – 26.2, Java 25+.
+
+    - ⚙️ 🔺 **Commands are registered with Paper's Brigadier API.** Players now see BentoBox subcommands and completions *as they type* — `/island t…` offers `team` in the chat bar — instead of the client knowing nothing until enter or TAB. The subcommand tree is advertised to a depth of 4; deeper subcommands still work, they just are not pre-advertised. Aliases and the `plugin:label` form are sent as redirects rather than duplicated trees. A new `general.brigadier-commands` option in `config.yml` defaults **on**; set it to `false` and `/bbox reload` to fall back to the legacy command map if another plugin conflicts. BentoBox also falls back automatically if it cannot hook the registrar.
+    - 🔺 **Structure searches are suppressed automatically in worlds that generate no structures.** A cartographer rolling an explorer-map trade — or an Eye of Ender, dolphin or treasure map — used to run a synchronous structure search that could never succeed in a void world, scanning to the radius cap and blowing past the 60-second watchdog. BentoBox now asks the world's generator whether it places structures at all and skips the search if it does not, with **no configuration needed**. AOneBlock and BSkyBlock get this automatically; SkyGrid, Boxed, CaveBlock and AcidIsland are unaffected because they do generate structures. A per-world `structures` entry of `true` still force-enables a structure, as an escape hatch for converted worlds that contain pre-existing ones. This complements the opt-in `world.disabled-structures` list added in 3.20.0.
+    - **`/island settings` now opens out in the world.** Players away from any island, or in a game mode where they never own one, used to get "You do not have an island!". The panel now opens with a read-only **World Protections** tab showing which protection flags are active for the world — which is exactly what governs them where they are standing. See [Protection](Protections.md#viewing-the-world-rules-off-island).
+    - 🐛 **Addon data queued during shutdown is no longer discarded.** Anything an addon saved from `onDisable()` was queued into a database pipeline that had already stopped draining, so it was silently, intermittently lost on every restart. Nine bundled addons save on disable — Boxed, AOneBlock, Raft, Challenges, Limits, DragonFights, CheckMeOut, ControlPanel and InvSwitcher — and with InvSwitcher the stale stored inventory was then re-applied on join, making it a rollback rather than just a lost write. Shutdown writes are now drained before the database closes.
+    - 🐛 **BentoBox commands work from NPCs, signs and GUI plugins again.** Brigadier registration had taken BentoBox commands out of the Bukkit command map that other plugins dispatch through, so an NPC running `/oneblock go` answered with the server's no-permission message and ran nothing. Commands are now registered with the command map as well. This only ever affected 3.22.0 development builds.
+    - 🐛 **`Island.setFlag` no longer discards writes.** Setting a protection rank on an island that had no entry yet for that flag — which is every freshly created island — silently did nothing. `SETTING` and `WORLD_SETTING` flags were unaffected.
+    - 🐛 **Repeated warnings stay throttled.** A player alternating between two different limit messages bypassed the 4-second notification cooldown entirely. Each distinct message is now throttled independently.
+    - 🐛 **BlueMap marker sets stay in their own worlds.** An addon's marker set no longer appears in the sidebar of every other map on the server, and `createMarkerSet()` / `removeMarkerSet()` no longer throw during a `/bluemap reload`.
+    - 🐛 **Multiverse tidy-up.** BentoBox worlds now get `auto-load: false` even when Multiverse already knew about them, and the dead seed-world (`<world>/bentobox`) registration is gone. Existing stale entries still need `/mv remove`.
+    - 🐛 **Flags from addons dropped for missing dependencies are cleaned up.** An addon whose hard dependency was absent had already registered its flags and listeners before being dropped, leaving listeners firing for a world that never existed.
+    - **Six new bStats charts** report addon and game mode versions, addon API levels, settings changed away from their defaults, and how and where commands fail. Only the failure kind and a stable permission-derived command key are submitted — never arguments or player names.
+    - 🔡 **Traditional Chinese (`zh-TW`) locale** added, contributed by @qwe664. No existing locale keys changed, so custom locale files need no work.
+
+    [Release v3.22.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.22.0)
+
+??? note "What's new in v3.21.0 — modal dialogs"
     **Released:** 2026-07-22
 
     A player-experience release. Compatibility: Paper Minecraft 1.21.5 – 26.2, Java 25+.

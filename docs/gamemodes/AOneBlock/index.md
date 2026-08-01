@@ -825,3 +825,14 @@ AOneBlock has some custom events that are called only in AOneBlock. But BentoBox
     No phase file changes are needed: the old-style enchantment names in the shipped phase YAML (`PROTECTION_FALL` and friends) are still translated by the server, so customized chest files work as they are. Items players have **already** looted stay as they are — the meta was lost when the chest was filled, so there is nothing to repair after the fact. Every chest generated from now on is correct.
 
     [Release v1.26.2](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.26.2)
+
+??? note "What's new in v1.26.3"
+    **Released:** 2026-07-29
+
+    Bug-fix release for the phases GUI — drop-in replacement, with no config, locale or phase file changes.
+
+    - 🐛 **"Click to change" is only offered when the click can succeed.** The `/[player_command] phases` panel decided whether to offer the phase-change action from island state and phase requirements alone, and never checked whether the player held the `aoneblock.island.setcount` permission that the click actually uses. On servers where that permission is negated for some or all ranks, players saw the tooltip on every eligible phase and got *"You don't have the permission to execute this command"* when they clicked. The panel now checks the permission before offering the action. If the subcommand cannot be resolved for any reason the panel stays permissive as before, so no phase becomes unclickable because of this change. Players who **do** hold the permission see no difference.
+
+    Compatibility: BentoBox API 3.15.0+, Minecraft 1.21.5 or later (the Sulfur Caves phase itself activates on Minecraft 26.2+), Java 21.
+
+    [Release v1.26.3](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.26.3)

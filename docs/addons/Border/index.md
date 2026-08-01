@@ -36,11 +36,23 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 **Permission**: `[gamemode].border.type`. Default: `true`.  
 **Example**: `/[player command] border type barrier`  
 
+### bordertype {...}
+**Command**: `/[player command] bordertype {barrier | vanilla}`  
+**Description**: The same command as `border type`, registered directly under the game mode command.  
+**Permission**: `[gamemode].border.bordertype`. Default: `false`.  
+**Example**: `/[player command] bordertype vanilla`  
+
 ### border color {red|green|blue}
-**Command**: `/[player command] border color {red | green | blue}`  
+**Command**: `/[player command] border color {red | green | blue}` (also available as `/[player command] bordercolor {red | green | blue}`)  
 **Description**: Sets the vanilla world border color for the player. Only applies when using the vanilla border type.  
-**Permission**: `[gamemode].border.color.red`, `[gamemode].border.color.green`, `[gamemode].border.color.blue` (or `[gamemode].border.color.*` for all). Default: `op`.  
+**Permission**: `[gamemode].border.color` to run the command at all. Default: `true`.  
+Each colour then needs its own permission: `[gamemode].border.color.red`, `[gamemode].border.color.green`, `[gamemode].border.color.blue` (or `[gamemode].border.color.*` for all). Default: `op`.  
 **Example**: `/[player command] border color green`  
+
+!!! warning "Permission changes in 4.8.5"
+    `[gamemode].border.color` was never declared before 4.8.5, so it silently fell back to op-only and ordinary players could not run the colour command at all. It is now declared with a `true` default.
+
+    The declared node `[gamemode].bordertype` was also renamed to `[gamemode].border.bordertype`, which is the node the command really checks. If you granted or denied `[gamemode].bordertype` in LuckPerms (or similar), update the rule — the old node never had any effect.
 
 !!! tip
     `[gamemode]` is a prefix that differs depending on the gamemode you are running.
@@ -263,6 +275,20 @@ barrier-offset: 0
     No config or locale changes are required. If you worked around the bug with `bordertype barrier`, you can switch back to `vanilla` once 4.8.4 is installed.
 
     [Release v4.8.4](https://github.com/BentoBoxWorld/Border/releases/tag/4.8.4)
+
+??? warning "What's new in v4.8.5 — permission changes"
+    **Released:** 2026-08-01
+
+    A compatibility and permissions patch. No config or locale changes are required.
+
+    - 🐛 **Death drops are no longer hijacked from other plugins.** The death-drop protection added in 4.7.0 pulled every item out of `PlayerDeathEvent`, spawned them by hand and cleared the list — so DeathChest, grave plugins and keep-inventory features ran later and saw an empty event, with the items already on the ground. With the default `bounce-back: true` that silently broke all of them. Border now leaves the event's drops alone, runs at MONITOR priority, and bounces back only the items the server itself spawns near the death spot on the following tick. If another plugin takes the drops, nothing is bounced; if they survive, they bounce back exactly as before, keeping vanilla velocities and despawn timers.
+    - 🔺 **`[gamemode].border.color` is now declared with a `true` default,** so ordinary players can use the colour command as documented. It was never declared in `addon.yml` before, so it fell back to op-only. The individual colours (`.red`, `.green`, `.blue`) remain `op`. If you granted these explicitly to work around the bug, those grants still work.
+    - 🔺 **`[gamemode].bordertype` renamed to `[gamemode].border.bordertype`,** which is the node `BorderTypeCommand` actually checks. Its `false` default is unchanged. Update any LuckPerms rule referencing the old node — it never had any effect either way.
+    - Releases are now published automatically to CurseForge and Hangar alongside Modrinth, and the Modrinth listing covers 1.21.5 – 1.21.11 and 26.1.x.
+
+    Compatibility: BentoBox API 3.12.0+, Minecraft 1.21.5 – 1.21.11 and 26.1.x, Java 21.
+
+    [Release v4.8.5](https://github.com/BentoBoxWorld/Border/releases/tag/4.8.5)
 
 ## Translations
 
