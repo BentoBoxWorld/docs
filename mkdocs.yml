@@ -19,7 +19,9 @@ nav:
     - Game Modes:
         - Choosing a Game Mode: gamemodes/Comparison.md
         - AcidIsland: gamemodes/AcidIsland/index.md
-        - AOneBlock: gamemodes/AOneBlock/index.md
+        - AOneBlock:
+            - Overview: gamemodes/AOneBlock/index.md
+            - Customizing Phases: gamemodes/AOneBlock/Phases.md
         - BSkyBlock: gamemodes/BSkyBlock/index.md
         - Boxed: gamemodes/Boxed/index.md
         - CaveBlock: gamemodes/CaveBlock/index.md

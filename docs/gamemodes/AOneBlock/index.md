@@ -72,6 +72,9 @@ A top-level `adminLengths: true` is written automatically the first time you edi
 
 ### Phase Config Files
 
+!!! abstract "Full guide: [Customizing Phases](Phases.md)"
+    A complete walkthrough of phase files — what every number means, how the weighted block/mob pool works with worked examples, chests, custom blocks, version gating, and how to build a phase from scratch.
+
 The config files to make the phases are in the `phases` folder.
 
 There are two files per phase - a file that contains the blocks and mobs, and a file that contains the chests.
@@ -240,11 +243,17 @@ The first number of any file is how many blocks need to be mined to reach that p
 
 === "blocks"
     !!! summary "Description"
-        The blocks section list Bukkit Materials followed by a relative probability. 
-    
+        The blocks section lists Bukkit Materials followed by a **weight**.
+
+        A weight is not how many of that block will appear, and it is not a percentage — it is that entry's share of a raffle. Every time the magic block is broken, all the weights in the phase are added up and one entry is picked at random in proportion to its weight:
+
+        `chance of an entry = its weight ÷ total of all weights in the phase`
+
+        Because only the ratio matters, `STONE: 1000, DIRT: 200` behaves exactly like `STONE: 10, DIRT: 2`. The shipped files use large numbers so that a rare entry can be added at a small weight without rescaling everything else.
+
         Available values you can find here: [Materials](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html)
-    
-        All the probability values are added up for the whole phase and the chance of the block being placed is the relative probability divided by the total of all the probabilities.
+
+        See [Customizing Phases](Phases.md#weights-the-blocks-and-mobs-sections) for worked examples and tuning advice.
 
     !!! example "Example"
         ```yaml
@@ -255,10 +264,16 @@ The first number of any file is how many blocks need to be mined to reach that p
         
         This example shows that there is 40% chance to spawn a grass block while 60% to spawn stone. (2 / (2+3)) and (3 / (2+3))
 
+    !!! tip "`CHEST` is special"
+        When `CHEST` is rolled, it is filled from that phase's `_chests.yml` file. Its weight is the chance of getting *a* chest; the rarity is then a second, separate roll — COMMON 62%, UNCOMMON 25%, RARE 9%, EPIC 4%. Those rarity chances are fixed in code.
+
 === "mobs"
     !!! summary "Description"
-        The mob section list mobs that can spawn and their relative probability along with blocks.
+        The mob section lists mobs that can spawn and their weight.
         You can only list entities that are alive and can spawn in this list. [EntityTypes](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html)
+
+    !!! warning "Mobs share the same pool as blocks"
+        `mobs:` is not a separate roll. Mob weights are added to the **same** total as the `blocks:` and `custom-blocks:` weights, so `CHICKEN: 200` is exactly as likely as a block of weight 200 — and adding mobs makes every block slightly rarer.
 
     !!! example "Example"
         ```yaml
@@ -267,6 +282,8 @@ The first number of any file is how many blocks need to be mined to reach that p
               SPIDER: 75
         ```
 
+        In the shipped Plains phase the block weights total 11450 and the mob weights another 665, giving a phase total of 12115. So `COW: 150` is 150 / 12115 = 1.2% of broken blocks.
+
 === "Custom Blocks"
     !!! summary "Description"
         Since version 1.11 you can now specify custom blocks (thanks to [@HSGamer](https://github.com/HSGamer)).
@@ -274,6 +291,11 @@ The first number of any file is how many blocks need to be mined to reach that p
         
         To define custom blocks in `blocks` section, you need to add `-` before each element.
         Also, blocks must be defined with type, data and probability values.
+
+        The `probability` field is a **weight**, exactly like the numbers in `blocks:` and `mobs:`, and it joins the same pool — `probability: 10` is as likely as a block of weight 10.
+
+        You can also keep the map-form `blocks:` section untouched and put custom entries in a sibling `custom-blocks:` list instead. It takes the same entries and feeds the same pool.
+
         Supported types are: 
         
           - `block-data`: uses `/setblock` command to place a block in the world. Requires `data` field
