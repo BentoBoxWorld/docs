@@ -27,6 +27,7 @@ On first install the seeder creates 8 example upgrades. Once you delete an examp
 Each upgrade is made up of one or more **tiers**. A tier covers a range of levels — for example, a tier might cover levels 0 to 4, meaning any player whose upgrade level falls in that range is affected by that tier's rewards.
 
 - When a player purchases an upgrade their level increases by 1.
+- The purchase panel shows each upgrade's progress in the item lore, e.g. `Level: 2 / 5` — the island's current level and the highest level its tiers allow. The line is styled by the `upgrades.ui.upgradepanel.currentlevel` locale key; blank the key to hide it. *(Since 1.0.5.)*
 - The rewards applied are always those of the tier whose range contains the player's current level. Moving into a new tier's range immediately switches to that tier's rewards.
 - A tier can require **multiple prices** (all must be paid) and grant **multiple rewards** (all are applied).
 - Price and reward formulas can use variables (see [Formula Variables](#formula-variables)) to scale automatically with level, island level, or team size.
@@ -155,6 +156,23 @@ Permissions are granted automatically by the addon based on upgrade configuratio
 The `UpgradeAPI` class is exposed for other addons to query and modify upgrade data programmatically. See the JavaDocs linked from the addon description above.
 
 ## Changelog
+
+??? note "What's new in v1.0.5"
+    **Released:** 2026-08-03
+
+    - 🔡 **Current / max level in the upgrade lore.** Each upgrade item in the purchase panel now leads its lore with a `Level: current / max` line, including on maxed-out upgrades, so players can see their progress at a glance. Driven by the new `upgrades.ui.upgradepanel.currentlevel` locale key (translated in all five bundled locales) — restyle or blank it to customise or hide the line.
+    - **API:** `UpgradeAPI` gains an overridable `getMaxLevel(Island)` hook (default `-1` = unknown, which omits the line) so custom upgrades can opt in.
+
+    [Release v1.0.5](https://github.com/BentoBoxWorld/Upgrades/releases/tag/1.0.5)
+
+??? note "What's new in v1.0.4"
+    **Released:** 2026-08-02
+
+    - 🔺 **Limits upgrades work again.** Purchasing block/entity/entity-group upgrades failed with a `NoSuchMethodError` against current Limits addon versions. Upgrades now uses the Limits per-environment API — **update Limits to 1.28.2 or newer**.
+    - ⚙️ **`config.yml` cleaned up.** The file now documents that upgrades are database-driven; inert sections from the old config-driven system were removed. The `block/entity/entity-group-limits-upgrade` key names are still read to suppress the Limits addon's own permission-based limits.
+    - Nine latent bugs fixed (potential NPEs in formula paths) and internal cleanup of unused classes.
+
+    [Release v1.0.4](https://github.com/BentoBoxWorld/Upgrades/releases/tag/1.0.4)
 
 ??? note "What's new in v1.0.3"
     **Released:** 2026-06-16
