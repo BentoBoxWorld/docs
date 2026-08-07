@@ -134,3 +134,7 @@ TopBlock,aoneblock_island_lifetime_top_<number>,Lifetime count of magic blocks m
 Border,Border_color,Current border color (red/green/blue) for the player,4.8.0
 InvSwitcher,[gamemode]_invswitcher_balance,The player's money balance for this gamemode's world,1.18.0
 InvSwitcher,[gamemode]_invswitcher_balance_formatted,The player's money balance for this gamemode's world formatted with currency name,1.18.0
+TradeWinds,tradewinds_rank,The player's Seafarer rank name (Deck Hand ... Mythic Mariner),0.1.0
+TradeWinds,tradewinds_charted,How many islands the player has charted (including any admin adjustment),0.1.0
+TradeWinds,tradewinds_top_name_<1-10>,Name of the sailor at this position on the charted-islands top ten,0.1.0
+TradeWinds,tradewinds_top_charted_<1-10>,Charted-island count of the sailor at this position on the top ten,0.1.0
