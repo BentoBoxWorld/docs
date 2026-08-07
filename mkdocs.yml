@@ -28,6 +28,12 @@ nav:
         - Poseidon: gamemodes/Poseidon/index.md
         - SkyGrid: gamemodes/SkyGrid/index.md
         - Stranger Realms: gamemodes/StrangerRealms/index.md
+        - TradeWinds:
+            - Overview: gamemodes/TradeWinds/index.md
+            - The Sailor's Handbook: gamemodes/TradeWinds/Gameplay.md
+            - Commands: gamemodes/TradeWinds/Commands.md
+            - Permissions: gamemodes/TradeWinds/Permissions.md
+            - Placeholders: gamemodes/TradeWinds/Placeholders.md
               
     - Addons:
         - Bank: addons/Bank/index.md
