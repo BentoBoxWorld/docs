@@ -18,6 +18,7 @@ You can also run **more than one** at the same time — many servers offer two o
 | **Boxed** | Normal world | Easy–Medium | Complete advancements to grow your confined space | Medium |
 | **Poseidon** | Ocean | Medium | Survive entirely underwater | Medium |
 | **StrangerRealms** | Overworld + Upside Down | Medium–Hard | Claim land while managing a dangerous mirror dimension | Medium–High |
+| **TradeWinds** | Sea (endless trading ocean) | Easy–Hard (by region) | Sail between NPC trading islands, buying low and selling high | Medium |
 
 ---
 
@@ -47,25 +48,30 @@ You can also run **more than one** at the same time — many servers offer two o
 ### I want a story-inspired experience with complex mechanics
 **StrangerRealms** — The Upside Down mirror dimension adds a layer of strategy. Better suited to players who are comfortable with Minecraft and ready for something more involved.
 
+### I want an economy-driven trading game
+**TradeWinds** — Buy low and sell high across an endless procedurally generated ocean of NPC trading ports. Difficulty is geography: the waters near spawn are patrolled and calm, while contraband, pirates, and PvP bounty space are all further out — so it works for a family server and a cut-throat one at the same time. Requires Vault and an economy plugin.
+
 ---
 
 ## Feature Support by Game Mode
 
 Most BentoBox addons work with all game modes. A few have specific compatibility requirements.
 
-| Feature | BSkyBlock | AOneBlock | AcidIsland | CaveBlock | SkyGrid | Boxed | Poseidon | StrangerRealms |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Level addon | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Challenges | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Warps | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| InvSwitcher | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Border addon | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌* |
-| Nether world | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌** |
-| End world | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Feature | BSkyBlock | AOneBlock | AcidIsland | CaveBlock | SkyGrid | Boxed | Poseidon | StrangerRealms | TradeWinds |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Level addon | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Challenges | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Warps | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| InvSwitcher | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Border addon | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌* | ✅ |
+| Nether world | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌** | ❌*** |
+| End world | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌*** |
 
 \* StrangerRealms has its own built-in border system — do not use the Border addon with it.
 
 \*\* StrangerRealms replaces the Nether with the Upside Down dimension.
+
+\*\*\* TradeWinds replaces the Nether with the Interstice (a hostile nether sea reached by warp misjumps) and deliberately has no End world. TradeWinds also requires Vault plus an economy plugin.
 
 ---
 

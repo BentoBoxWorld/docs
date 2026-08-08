@@ -75,6 +75,14 @@ Players survive in an Overworld while managing an eerie mirror dimension — the
 
 ---
 
+### TradeWinds — Sea Trading
+
+Players start with a rowing boat and a little coal on an endless, procedurally generated ocean scattered with NPC trading islands. The boat is the cargo hold: buy low at one port, sell high at another, upgrade the hull, chart new islands to climb the Seafarer ranks, and eventually claim an islet of your own. Requires Vault and an economy plugin.
+
+**Best for:** Servers that want an economy-driven trading game — safe waters near spawn suit casual players, while smuggling, pirates, and PvP bounties wait further out.
+
+---
+
 ## Installing a Game Mode
 
 Game modes are downloaded as `.jar` files and placed in:
