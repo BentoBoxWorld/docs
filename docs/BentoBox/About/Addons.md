@@ -30,6 +30,7 @@ These create the world your players actually play in. Install at least one.
 | **Boxed** | A box that grows as you complete advancements |
 | **Poseidon** | Underwater survival |
 | **StrangerRealms** | Survival with a dangerous mirrored dimension |
+| **TradeWinds** | Sea trading across an endless ocean of NPC ports (requires Vault) |
 
 See [Game Modes](GameModes.md) for full descriptions, or [compare them](../../gamemodes/Comparison.md) to help pick one.
 

@@ -67,6 +67,7 @@ island-go: "[sound:entity_experience_orb_pickup:1:1][title]Teleporting...[subtit
 - [Poseidon](../gamemodes/Poseidon/index.md#translations)
 - [SkyGrid](../gamemodes/SkyGrid/index.md#translations)
 - [Stranger Realms](../gamemodes/StrangerRealms/index.md#translations)
+- [TradeWinds](../gamemodes/TradeWinds/index.md#translations)
 
 ## Addons
 
