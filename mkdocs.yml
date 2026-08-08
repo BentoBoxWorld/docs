@@ -25,6 +25,13 @@ nav:
         - BSkyBlock: gamemodes/BSkyBlock/index.md
         - Boxed: gamemodes/Boxed/index.md
         - CaveBlock: gamemodes/CaveBlock/index.md
+        - ChunkBlock:
+            - Overview: gamemodes/ChunkBlock/index.md
+            - Claiming Chunks: gamemodes/ChunkBlock/Chunks.md
+            - Phases: gamemodes/ChunkBlock/Phases.md
+            - Commands: gamemodes/ChunkBlock/Commands.md
+            - Permissions: gamemodes/ChunkBlock/Permissions.md
+            - Placeholders: gamemodes/ChunkBlock/Placeholders.md
         - Poseidon: gamemodes/Poseidon/index.md
         - SkyGrid: gamemodes/SkyGrid/index.md
         - Stranger Realms: gamemodes/StrangerRealms/index.md
