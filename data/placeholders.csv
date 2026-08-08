@@ -131,6 +131,12 @@ TopBlock,aoneblock_island_phase_name_top_<number>,Name of the phase they have re
 TopBlock,aoneblock_island_phase_number_top_<number>,Phase number (e.g. Plains is 1; Underground is 2) at the `<number>` position, 1.0.1
 TopBlock,aoneblock_island_count_top_<number>,Block Count of magic blocks mined this round at the `<number>` position, 1.0.1
 TopBlock,aoneblock_island_lifetime_top_<number>,Lifetime count of magic blocks mined at the `<number>` position, 1.0.1
+TopBlock,chunkblock_island_player_name_top_<number>,Island owner's name at the `<number>` position, 2.1.0
+TopBlock,chunkblock_island_member_names_top_<number>,Name of island team members at the `<number>` position, 2.1.0
+TopBlock,chunkblock_island_phase_name_top_<number>,Name of the phase they have reached at the `<number>` position, 2.1.0
+TopBlock,chunkblock_island_phase_number_top_<number>,Phase number (e.g. Plains is 1; Underground is 2) at the `<number>` position, 2.1.0
+TopBlock,chunkblock_island_count_top_<number>,Block Count of magic blocks mined this round at the `<number>` position, 2.1.0
+TopBlock,chunkblock_island_lifetime_top_<number>,Lifetime count of magic blocks mined at the `<number>` position, 2.1.0
 Border,Border_color,Current border color (red/green/blue) for the player,4.8.0
 InvSwitcher,[gamemode]_invswitcher_balance,The player's money balance for this gamemode's world,1.18.0
 InvSwitcher,[gamemode]_invswitcher_balance_formatted,The player's money balance for this gamemode's world formatted with currency name,1.18.0
@@ -138,3 +144,25 @@ TradeWinds,tradewinds_rank,The player's Seafarer rank name (Deck Hand ... Mythic
 TradeWinds,tradewinds_charted,How many islands the player has charted (including any admin adjustment),0.1.0
 TradeWinds,tradewinds_top_name_<1-10>,Name of the sailor at this position on the charted-islands top ten,0.1.0
 TradeWinds,tradewinds_top_charted_<1-10>,Charted-island count of the sailor at this position on the top ten,0.1.0
+ChunkBlock,chunkblock_island_chunks,Number of chunks the player's island has unlocked including the centre chunk,1.0.0
+ChunkBlock,chunkblock_island_max_chunks,Maximum number of chunks the player's island can unlock,1.0.0
+ChunkBlock,chunkblock_island_chunk_credit,Level credit the island has available to spend on chunks,1.0.0
+ChunkBlock,chunkblock_island_next_chunk_level,Total island level needed to afford the next chunk,1.0.0
+ChunkBlock,chunkblock_island_ring,Ring number of the outermost claimed chunk (0 is the centre chunk alone),1.0.0
+ChunkBlock,chunkblock_my_island_phase,The phase of your island,1.0.0
+ChunkBlock,chunkblock_my_island_count,The magic block count of your island,1.0.0
+ChunkBlock,chunkblock_my_island_lifetime_count,The lifetime magic block count of your island,1.0.0
+ChunkBlock,chunkblock_my_island_next_phase,The next phase for your island,1.0.0
+ChunkBlock,chunkblock_my_island_blocks_for_phase,Number of blocks in the current phase of your island,1.0.0
+ChunkBlock,chunkblock_my_island_blocks_to_next_phase,Blocks to go until the next phase or "infinite" if there is no next phase,1.0.0
+ChunkBlock,chunkblock_my_island_percent_done,Phase completion percentage of your island,1.0.0
+ChunkBlock,chunkblock_my_island_done_scale,Phase completion scale bar of your island,1.0.0
+ChunkBlock,chunkblock_my_island_phase_block_list,List of blocks that can appear in your island's current phase,1.0.0
+ChunkBlock,chunkblock_visited_island_phase,The phase of the island you are standing on,1.0.0
+ChunkBlock,chunkblock_visited_island_count,The magic block count of the island you are standing on,1.0.0
+ChunkBlock,chunkblock_visited_island_lifetime_count,The lifetime magic block count of the island you are standing on,1.0.0
+ChunkBlock,chunkblock_visited_island_next_phase,The next phase for the island you are standing on,1.0.0
+ChunkBlock,chunkblock_visited_island_blocks_to_next_phase,Blocks until the next phase for the island you are standing on,1.0.0
+ChunkBlock,chunkblock_visited_island_percent_done,Phase completion percentage of the island you are standing on,1.0.0
+ChunkBlock,chunkblock_visited_island_done_scale,Phase completion scale bar of the island you are standing on,1.0.0
+ChunkBlock,chunkblock_visited_island_phase_block_list,List of blocks that can appear in the current phase of the island you are standing on,1.0.0

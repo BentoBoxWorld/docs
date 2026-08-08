@@ -1,6 +1,8 @@
 # TopBlock
 
-Add-on for BentoBox to calculate island levels for AOneBlock specifically. Ranks are determined by how many magic blocks have been mined - the count.
+Add-on for BentoBox that produces a Top Ten ranking for magic-block game modes. Ranks are determined by how many magic blocks have been mined - the count.
+
+TopBlock supports [**AOneBlock**](../../gamemodes/AOneBlock/index.md) and [**ChunkBlock**](../../gamemodes/ChunkBlock/index.md). You can install either one or both — when both are present, each game mode gets its own completely separate top ten, its own `topblock` command, and its own set of placeholders. A player's standing in AOneBlock has no effect on their standing in ChunkBlock.
 
 Created and maintained by [tastybento](https://github.com/tastybento).
 
@@ -13,6 +15,9 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 3. The addon will create a data folder and inside the folder will be a config.yml
 4. Edit the config.yml how you want.
 5. Restart the server if you make a change
+
+!!! note "TopBlock is not standalone"
+    TopBlock requires **at least one** of [AOneBlock](../../gamemodes/AOneBlock/index.md) or [ChunkBlock](../../gamemodes/ChunkBlock/index.md) to be installed alongside it. If neither is found, TopBlock logs an error and disables itself. It hooks whichever of the two it finds at startup, so installing or removing a game mode later only takes effect after a restart.
 
 ## Configuration
 
@@ -27,11 +32,11 @@ Config file contains main functions for the addon.
 
 The latest config.yml can be found [here](https://github.com/BentoBoxWorld/TopBlock/blob/develop/src/main/resources/config.yml).
 
-This section defines a number of overall settings for the add-on.
+This section defines a number of overall settings for the add-on. These settings are global — they apply to every game mode TopBlock has hooked. There is no per-game-mode configuration.
 
 ??? note "refresh-time"
     How often the Top Ten should be refreshed in minutes. Minimum is 1 minute, default is 5.
-    Each refresh requires reading every island from the database, so this should not be done too often.
+    Each refresh requires reading every island of every hooked game mode from the database, so this should not be done too often. If you run both AOneBlock and ChunkBlock, each refresh reads both sets of islands, so consider leaving this at the default or raising it.
 
     Default: `5`
 
@@ -116,13 +121,27 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     As an example, on BSkyBlock, the default `[player_command]` is `island`, and the default `[admin_command]` is `bsbadmin`.
 
 === "Player commands"
-    - `/[player_command] topblock`: access to the top panel. Requires `aoneblock.island.topblock` permission.
+    - `/[player_command] topblock`: access to the top panel. Requires the `island.topblock` permission for that game mode (`aoneblock.island.topblock` or `chunkblock.island.topblock`).
+
+TopBlock registers the `topblock` subcommand on **each** game mode it hooks, so with both installed you get `/ob topblock` for AOneBlock and the equivalent under ChunkBlock's player command. Each opens the panel for the game mode whose world you ran it in — the two leaderboards are entirely separate.
 
 ## Permissions
 
 === "Player permissions"
-    - `aoneblock.island.topblock` - (default: `true`) - Allows player to use the `/[player_command] top` command.
-    - `aoneblock.intopten` - (default: `true`) - Controls whether the player's island appears in the top ten. Remove from an admin or tester to exclude them from the leaderboard.
+    - `aoneblock.island.topblock` - (default: `true`) - Allows player to use the `/[player_command] topblock` command in AOneBlock.
+    - `aoneblock.intopten` - (default: `true`) - Controls whether the player's island appears in the AOneBlock top ten. Remove from an admin or tester to exclude them from the leaderboard.
+    - `chunkblock.island.topblock` - (default: `true`) - Allows player to use the `/[player_command] topblock` command in ChunkBlock.
+    - `chunkblock.intopten` - (default: `true`) - Controls whether the player's island appears in the ChunkBlock top ten.
+
+??? question "How do I hide a player from the leaderboard?"
+    Remove (or negate) the `intopten` permission for the game mode you want to hide them from — `aoneblock.intopten` or `chunkblock.intopten`. Because the prefix is per game mode, you can hide someone from one leaderboard while leaving them visible in the other.
+
+    Two things to be aware of:
+
+    - The permission is only checked while the island **owner is online**. Offline owners are always included, because Bukkit cannot reliably evaluate permissions for a player who is not logged in. So remove the permission from the account that actually logs in, not from an alt.
+    - Only the **island owner's** permission is checked. Team members' permissions make no difference.
+
+    The change takes effect at the next refresh, so allow up to `refresh-time` minutes for the island to drop off the list.
 
 ??? question "Something is missing?"
     You can find the comprehensive list of permissions in the [addon.yml](https://github.com/BentoBoxWorld/TopBlock/blob/develop/src/main/resources/addon.yml) file of this addon.  
@@ -130,6 +149,8 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
 
 ## Placeholders
+
+Placeholders are registered separately for each game mode TopBlock has hooked, using that game mode's own prefix. The `chunkblock_` set only exists if ChunkBlock is installed, and reports ChunkBlock's own ranking — the two never mix.
 
 {{ placeholders_source(source="TopBlock") }}
 
@@ -139,6 +160,20 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     Please add it to the list [here](https://github.com/BentoBoxWorld/TopBlock/issues).
 
 ## Changelog
+
+??? note "What's new in v2.1.0 — ChunkBlock support"
+    **Released:** 2026-08-07
+
+    TopBlock is no longer AOneBlock-only. It now supports **ChunkBlock** as well, and either game mode — or both together — can be installed.
+
+    - ✨ **ChunkBlock support.** TopBlock hooks whichever of AOneBlock and ChunkBlock it finds at startup. With both installed, each keeps a completely separate top ten, `topblock` command, and placeholder set.
+    - ✨ **New placeholders** — the full `%chunkblock_island_*_top_<number>%` set, mirroring the existing `aoneblock_` ones and reporting ChunkBlock's own ranking.
+    - ✨ **New permissions** — `chunkblock.island.topblock` and `chunkblock.intopten`, both default `true`, mirroring the AOneBlock equivalents. Because the prefix is per game mode, you can hide a player from one leaderboard while leaving them visible in the other.
+    - 🔺 **AOneBlock is now a soft dependency.** TopBlock previously refused to load without AOneBlock; it now only disables itself if *neither* supported game mode is present. Existing AOneBlock-only setups are unaffected and need no changes.
+
+    ℹ️ This is a drop-in update for AOneBlock servers — no config, panel, or locale changes are required.
+
+    [Release v2.1.0](https://github.com/BentoBoxWorld/TopBlock/releases/tag/2.1.0)
 
 ??? warning "What's new in v2.0.0 — platform upgrade required"
     **Released:** 2026-04-26
