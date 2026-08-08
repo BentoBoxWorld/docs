@@ -98,7 +98,7 @@ Encounter kills pay **booty**—customs-stamped salvage straight into the hold, 
 
 ## 🛠️ For the admin at the helm
 
-- **The seed is the world.** Back up `config.yml` with the database; `galaxy.seed` *is* your world. Publish it if you want players theory-crafting routes on Discord, keep it secret if you want explorers.
+- **The seed is the world.** Back up `config.yml` with the database; `ocean.seed` *is* your world. Publish it if you want players theory-crafting routes on Discord, keep it secret if you want explorers.
 - **The boat logbook** (`boats.logbook`, on by default) writes one console line per boat lifecycle event—placed, broken up, captured, bought, went down with its sailor—with coordinates. When a player asks *"where did my boat go?"*, the answer is in the log.
 - **`/twadmin boat <player>`** reads their boat records straight from the database: cargo, fuel, last-seen position, and whether the hull is actually afloat there, in someone's pack, or sitting in an unloaded chunk. `restore` regenerates a genuinely lost boat, cargo intact—it refuses while the real hull is loaded, so it can't be used to duplicate.
 - **`/twadmin islands` / `tpisland`** for touring, **`customs`** to see the law's view of any spot, **`priceaudit`** to verify every good has a price, and **`warpfail`** to test the Interstice on demand.
