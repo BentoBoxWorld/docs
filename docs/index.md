@@ -34,7 +34,7 @@ hide:
       <div class="bb-stat__l">game modes</div>
     </div>
     <div class="bb-stat">
-      <div class="bb-stat__n">MC 1.15 &rarr; 26.1.x</div>
+      <div class="bb-stat__n">MC 1.15 &rarr; 26.2.x</div>
       <div class="bb-stat__l">supported</div>
     </div>
   </div>

@@ -149,4 +149,4 @@ This shows the island's location, owner, team members, and current protection ra
     - 🔺 Seed worlds (`<world>/bentobox`) are no longer created. The seed-world plumbing (`createSeedWorlds`, `removeSeedWorlds`, the in-memory copies, the on-disk folders) is gone. Any stale `<world>/bentobox` folders left over from earlier versions are safe to delete manually.
     - 🔺 API: `GameModeAddon#isUsesNewChunkGeneration()` is deprecated for removal. Existing overrides keep working (the value is ignored) but emit a deprecation warning — remove the override at your convenience.
 
-    **Compatibility:** Paper Minecraft 1.21.5 – 26.1.2, Java 21+.
+    **Compatibility:** Paper Minecraft 1.21.5 – 26.2.x, Java 21+.

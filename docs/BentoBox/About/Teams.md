@@ -247,7 +247,7 @@ After flipping `isTeamsDisabled` on for a world that already has teams, run `/[a
     - Removed the dead `commands.admin.team.kick.success-all` key.
     - All 22 bundled translations are in sync.
 
-    **Compatibility:** Paper Minecraft 1.21.5 – 26.1.2, Java 21+.
+    **Compatibility:** Paper Minecraft 1.21.5 – 26.2.x, Java 21+.
 
 ??? note "What's new in v3.16.2"
     **Released:** 2026-05-19
@@ -258,4 +258,4 @@ After flipping `isTeamsDisabled` on for a world that already has teams, run `/[a
     - 🔺 **API: `Island.setRange` no longer silently corrupts island data.** `setRange` now refuses any value that disagrees with the game mode's configured `distance-between-islands` and logs the calling stack frame. Game modes that legitimately resize claims (e.g., StrangerRealms) continue to work — they already override `GameModeAddon.isEnforceEqualRanges()` to return `false`. If you maintain an addon and see `Refusing Island.setRange(...)` warnings, the log names the exact caller.
     - 🐛 **CraftEngine 26.5+ compatibility.** `CraftEngineHook.getItemStack(id)` now uses `BukkitItemDefinition#buildBukkitItem()` and works against the rewritten CraftEngine API.
 
-    **Compatibility:** Paper Minecraft 1.21.5 – 26.1.2, Java 21+.
+    **Compatibility:** Paper Minecraft 1.21.5 – 26.2.x, Java 21+.
