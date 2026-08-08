@@ -37,7 +37,7 @@ That loop—plan, sail, trade, risk a little more than last time—is the whole 
 1. **Download the TradeWinds addon** and place it in `/plugins/BentoBox/addons/`
 2. **Start the server**—`tradewinds_world` (the ocean) and `tradewinds_world_nether` (the Interstice) generate automatically. There is deliberately **no End world**.
 3. **Log in and look around as Op**: `/twadmin islands` lists the nearest trading islands and `/twadmin tpisland <#>` teleports you to one.
-4. **Pick your world seed** *(optional, before players join)*: set `galaxy.seed` in `config.yml`. Every island position, type, and name flows from this one number—change it later and it is a different ocean.
+4. **Pick your world seed** *(optional, before players join)*: set `ocean.seed` in `config.yml`. Every island position, type, and name flows from this one number—change it later and it is a different ocean.
 5. **Tune the economy to taste** *(optional)*: prices, boat costs, warp fuel rates, crime, and encounter tables are all in `config.yml` with the intended defaults already in place.
 
 !!! tip "Recommended companions"
@@ -64,10 +64,10 @@ The full command reference is [here](Commands.md).
 Everything gameplay-shaped lives in `config.yml`, introduced stage by stage with comments explaining *why* each default is what it is. The one setting every admin should look at before launch:
 
 ```yaml
-galaxy:
-  # The galaxy seed. Every island position, type, security band, biome, name and
+ocean:
+  # The ocean seed. Every island position, type, security band, biome, name and
   # route cost derives deterministically from this one number - share it and another
-  # server gets the same trading galaxy. 0 means: use the world seed.
+  # server gets the same trading ocean. 0 means: use the world seed.
   seed: 20260729
 ```
 
