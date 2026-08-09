@@ -24,6 +24,7 @@ These create the world your players actually play in. Install at least one.
 |---|---|
 | **BSkyBlock** | Classic Skyblock — floating island in the sky |
 | **AOneBlock** | Start from a single magical regenerating block |
+| **ChunkBlock** | One block in a walled chunk — spend island levels to claim more (requires Level) |
 | **AcidIsland** | Skyblock where the ocean is acid |
 | **CaveBlock** | Survival in a solid underground world |
 | **SkyGrid** | Scattered single blocks across the void |

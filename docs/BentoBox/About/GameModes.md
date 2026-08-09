@@ -27,6 +27,14 @@ Players start with a single magical block floating in the void. Every time they 
 
 ---
 
+### ChunkBlock — One Block in a Walled Chunk
+
+Players start on the same magical regenerating block as AOneBlock, but the world is a single 16×16 chunk with a border nothing can cross — not walking, flying, pearling or digging. Island level is the currency for territory: build the level up, walk to the wall and punch it in the direction you want, and the next chunk opens. Lose levels and the newest chunks re-lock (builds untouched) until the levels come back. Requires the [Level](../../addons/Level/index.md) addon.
+
+**Best for:** Servers that want the one-block loop with a hard reason to keep levelling, and expansion the players earn a chunk at a time.
+
+---
+
 ### AcidIsland — Survival in Acid
 
 Similar to Skyblock, but the ocean surrounding the islands is filled with acid that damages players. Swimming is dangerous, so players must build carefully and avoid falling in.
