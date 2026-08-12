@@ -64,9 +64,11 @@ island-go: "[sound:entity_experience_orb_pickup:1:1][title]Teleporting...[subtit
 - [Boxed](../gamemodes/Boxed/index.md#translations)
 - [BSkyBlock](../gamemodes/BSkyBlock/index.md#translations)
 - [CaveBlock](../gamemodes/CaveBlock/index.md#translations)
+- [ChunkBlock](../gamemodes/ChunkBlock/index.md#translations)
 - [Poseidon](../gamemodes/Poseidon/index.md#translations)
 - [SkyGrid](../gamemodes/SkyGrid/index.md#translations)
 - [Stranger Realms](../gamemodes/StrangerRealms/index.md#translations)
+- [TradeWinds](../gamemodes/TradeWinds/index.md#translations)
 
 ## Addons
 

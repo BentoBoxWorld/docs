@@ -27,6 +27,14 @@ Players start with a single magical block floating in the void. Every time they 
 
 ---
 
+### ChunkBlock — One Block in a Walled Chunk
+
+Players start on the same magical regenerating block as AOneBlock, but the world is a single 16×16 chunk with a border nothing can cross — not walking, flying, pearling or digging. Island level is the currency for territory: build the level up, walk to the wall and punch it in the direction you want, and the next chunk opens. Lose levels and the newest chunks re-lock (builds untouched) until the levels come back. Requires the [Level](../../addons/Level/index.md) addon.
+
+**Best for:** Servers that want the one-block loop with a hard reason to keep levelling, and expansion the players earn a chunk at a time.
+
+---
+
 ### AcidIsland — Survival in Acid
 
 Similar to Skyblock, but the ocean surrounding the islands is filled with acid that damages players. Swimming is dangerous, so players must build carefully and avoid falling in.
@@ -72,6 +80,14 @@ Players start on or under the ocean surface and must build and survive in an ent
 Players survive in an Overworld while managing an eerie mirror dimension — the Upside Down — that is a dark, dangerous copy of their world. Interactions between the two dimensions create unique challenges.
 
 **Best for:** Servers that want a story-inspired, more complex survival experience with dimensional mechanics.
+
+---
+
+### TradeWinds — Sea Trading
+
+Players start with a rowing boat and a little coal on an endless, procedurally generated ocean scattered with NPC trading islands. The boat is the cargo hold: buy low at one port, sell high at another, upgrade the hull, chart new islands to climb the Seafarer ranks, and eventually claim an islet of your own. Requires Vault and an economy plugin.
+
+**Best for:** Servers that want an economy-driven trading game — safe waters near spawn suit casual players, while smuggling, pirates, and PvP bounties wait further out.
 
 ---
 
