@@ -37,7 +37,9 @@ Template file are mostly for users who do not like to use ingame editing GUI. Ho
         # Icon used in GUI's. Number at the end allows to specify stack size for item.
         # Default value: Paper.
         icon: "PAPER:1"
-        # Generator type: COBBLESTONE, STONE or BASALT. Self explanatory.
+        # Generator type: which vanilla lava mechanic this tier replaces.
+        # COBBLESTONE, STONE, BASALT, COBBLESTONE_OR_STONE, BASALT_OR_COBBLESTONE,
+        # BASALT_OR_STONE or ANY. See the "Generator types" section below.
         # Default value: COBBLESTONE
         type: COBBLESTONE
         # Indicates if genertor is default generator. Default generators ignores requirement section.
@@ -113,6 +115,25 @@ Template file are mostly for users who do not like to use ingame editing GUI. Ho
           - generator_id_1
           - generator_id_2
     ```
+
+### Generator types (which lava mechanic a tier replaces)
+
+Minecraft creates blocks from lava in four different ways, and a generator tier only fires for the ones its **type** covers. This is the main setting that controls *where* a generator can be used:
+
+| Vanilla mechanic | Block vanilla creates | Generator type |
+|---|---|---|
+| A lava **source** touches water | Obsidian | *not handled by the addon* |
+| **Flowing lava** touches water at the same level | Cobblestone | `COBBLESTONE` |
+| **Flowing lava** flows down onto water | Stone | `STONE` |
+| **Flowing lava** flows onto soul soil next to blue ice | Basalt | `BASALT` |
+
+The type is set per generator tier, either in the Admin GUI — `/[admin] generator` → pick a tier → the **Type** button, which opens a picker listing every type with a hint about the mechanic behind it — or with the `type:` key in the template file. The combined types `COBBLESTONE_OR_STONE`, `BASALT_OR_COBBLESTONE`, `BASALT_OR_STONE` and `ANY` make a tier fire for more than one mechanic.
+
+!!! warning "`STONE` generators work on any body of water"
+    A `STONE` generator fires wherever a player can pour lava onto water — including open ocean inside the island protection range. On water-heavy game modes such as **AcidIsland**, one lava bucket can therefore convert large amounts of ocean into generator blocks, and boost the island level along with it. Two ways to prevent that:
+
+    - **Do not give players `STONE` tiers.** Use `COBBLESTONE` and/or `BASALT` types only, so generating blocks requires a properly built generator.
+    - **Restrict the height range.** Give `STONE` tiers a minimum and maximum Y that excludes sea level, so they work in caves or high above the water but not on the ocean surface. See [Per-block height ranges](#per-block-height-ranges).
 
 ### Generator exhaustion (rate limiting)
 
@@ -253,6 +274,9 @@ Since **2.10.0** a generator tier can produce **custom blocks** from ItemsAdder,
 ??? question "I have a generator that shows up in Admin GUI, but players do not see it."
     Most likely it is because of "deployment" status. To avoid with issues when players starts to activate generators while an admin is adding them, generators are undeployed and noone can use them. You can activate them by editing generator via Admin GUI and clicking on lever in Edit Generator GUI.
     ![deployed](resources/deployed.png){: loading=lazy }
+
+??? question "Players are using a lava bucket on the ocean to generate blocks. How do I stop that?"
+    That is a `STONE` generator working as designed: vanilla turns water into stone whenever lava flows down onto it, so a `STONE` tier fires on any water the player can reach, open ocean included. Either stop handing out `STONE` tiers and use `COBBLESTONE` and/or `BASALT` types instead, or give your `STONE` tiers a height range that excludes sea level. See [Generator types](#generator-types-which-lava-mechanic-a-tier-replaces).
 
 ??? question "What is treasures?"
     Treasures are things that are dropped uppon block generation. It allows to give an extra customization for each generator.
