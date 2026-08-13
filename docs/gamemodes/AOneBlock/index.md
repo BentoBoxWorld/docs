@@ -540,6 +540,37 @@ By default, BentoBox GameMode addons comes with [default placeholders set](../..
 ??? question "My magic block is liquid! How can I mine it?"
     Use a bucket.
 
+??? question "How do I stop visitors mining other players' magic blocks?"
+    This option already exists — you do not need a new config setting. If visitors are mining someone else's block, that island's owner has set the `Break Blocks` and `Magic Block` protection settings to allow it. The fix is to reset those settings across the world and then hide the icons so owners cannot turn them back on.
+
+    Do these steps **in this order**, or step 3 will undo step 1.
+
+    **1. Set the defaults for new islands**
+
+    Run `/oba settings` and open the **Island Defaults** tab (the cracked stone bricks icon). Left-click `Break Blocks` and `Magic Block` until both read **Member**. This saves to the AOneBlock `config.yml` automatically.
+
+    **2. Reload**
+
+    Run `/bbox reload`, or restart the server.
+
+    **3. Apply those defaults to all existing islands**
+
+    ```
+    /oba resetflags BREAK_BLOCKS
+    /oba resetflags MAGIC_BLOCK
+    ```
+
+    Confirm each one. This overwrites whatever every island currently has with the default you set in step 1, so it must come after step 1.
+
+    **4. Hide the settings so owners cannot change them back**
+
+    As an Op, stand on an island, run `/ob settings`, and SHIFT-LEFT-CLICK `Break Blocks` and `Magic Block`. Each one gains a Curse of Vanishing glow, meaning it is now hidden. Ops still see it; everyone else no longer has the icon in their panel at all.
+
+    Every island will now refuse anyone below Member rank breaking blocks, including the magic block, and players cannot change it.
+
+    !!! tip
+        SHIFT-LEFT-CLICK hides *any* protection setting this way, per world, and the hidden list is saved to the game mode's config. SHIFT-LEFT-CLICK a hidden setting again to bring it back.
+
 ??? question "Which mobs can spawn?"
     Each phase has a different set of mobs that can spawn. Be careful because they may push you off! If you listen carefully, you may hear hostile mobs coming.
 
