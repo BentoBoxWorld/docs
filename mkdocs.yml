@@ -17,6 +17,7 @@ nav:
     - Glossary: Glossary.md
     - FAQ: FAQ.md
     - Privacy: BentoBox/Privacy.md
+    - AI Policy: BentoBox/AI-Policy.md
     - Game Modes:
         - Choosing a Game Mode: gamemodes/Comparison.md
         - AcidIsland: gamemodes/AcidIsland/index.md
