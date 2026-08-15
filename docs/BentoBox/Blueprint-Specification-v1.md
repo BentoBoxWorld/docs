@@ -2,6 +2,9 @@
 
 **Version 1**
 
+!!! warning "Superseded"
+    This page is kept for historical reference. The current, complete specification — including every field of blueprints, blocks, entities, and bundles, plus published JSON Schemas for validation — is the [Blueprint File Format](Blueprint-Format.md) page.
+
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](http://www.ietf.org/rfc/rfc2119.txt).
 
 ## Introduction
