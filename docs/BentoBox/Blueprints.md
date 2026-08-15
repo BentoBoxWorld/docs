@@ -82,6 +82,8 @@ When using blueprints in the game, always use just the name of the blueprint. On
 !!! note "Legacy `.blu` files"
     Blueprint files previously used a compressed binary `.blu` format. BentoBox will automatically load legacy `.blu` files for backward compatibility, but all new blueprints are saved as `.blueprint` (plain JSON). You can version-control and diff `.blueprint` files normally. Do not try to create or edit `.blu` files by hand.
 
+If you edit or generate these files directly, the full field-level reference is the [Blueprint File Format](Blueprint-Format.md) page, and BentoBox publishes [JSON Schemas](https://github.com/BentoBoxWorld/BentoBox/tree/develop/schemas) you can validate against.
+
 ## Incomplete bundles
 Bundles must always have an Overworld/Normal world blueprint. If they do not, then the default island blueprint will be used and an error logged in the console.
 Bundles do not have to have Nether or End World blueprints, but if they do not, no island will be pasted in those worlds (obviously).
