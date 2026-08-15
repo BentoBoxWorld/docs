@@ -17,6 +17,9 @@ nav:
     - Glossary: Glossary.md
     - FAQ: FAQ.md
     - Privacy: BentoBox/Privacy.md
+    - AI Policy: BentoBox/AI-Policy.md
+    - Code of Conduct: BentoBox/CodeOfConduct.md
+    - Contributing: BentoBox/Contributing.md
     - Game Modes:
         - Choosing a Game Mode: gamemodes/Comparison.md
         - AcidIsland: gamemodes/AcidIsland/index.md
@@ -86,6 +89,7 @@ nav:
         - "Get Data From Addons": BentoBox/Request-Handler-API---How-plugins-can-get-data-from-addons.md
 theme:
   name: material
+  custom_dir: overrides
   palette:
     scheme: slate
     primary: deep orange

@@ -2,6 +2,7 @@ import csv
 import json
 import logging
 import os
+import re
 
 import requests
 import yaml
@@ -186,6 +187,58 @@ def _fetch_translation_status(repo: str, branch: str):
     results.sort(key=lambda x: x["name"].lower())
     _translations_cache[cache_key] = results
     return results
+
+
+# ── Org-wide policy pages ────────────────────────────────────────────
+# Pulls the canonical policy documents from the BentoBoxWorld/.github repo
+# at build time so this site never carries a stale copy. Each entry maps
+# the filename in that repo to the local doc page that mirrors it, so
+# cross-references between the policies can be rewritten to work here too.
+POLICY_REPO = ".github"
+POLICY_BRANCH = "master"
+POLICY_LOCAL_PAGES = {
+    "PRIVACY.md": "Privacy.md",
+    "AI_POLICY.md": "AI-Policy.md",
+    "CODE_OF_CONDUCT.md": "CodeOfConduct.md",
+    "CONTRIBUTING.md": "Contributing.md",
+}
+_POLICY_LINK_RE = re.compile(
+    r"\]\((" + "|".join(re.escape(name) for name in POLICY_LOCAL_PAGES) + r")(#[^)\s]*)?\)"
+)
+
+_policy_cache: dict = {}
+
+
+def _rewrite_policy_links(text: str) -> str:
+    """Point relative links between policy files at their local doc pages
+    instead of the bare filenames, which only resolve on GitHub."""
+    return _POLICY_LINK_RE.sub(
+        lambda m: f"]({POLICY_LOCAL_PAGES[m.group(1)]}{m.group(2) or ''})", text
+    )
+
+
+def _fetch_policy_markdown(filename: str):
+    """Fetch a policy file's raw Markdown from BentoBoxWorld/.github. Cached
+    per build; returns None (rather than raising) on any failure so a single
+    flaky fetch doesn't break the whole site build."""
+    if filename in _policy_cache:
+        return _policy_cache[filename]
+
+    url = (
+        f"https://raw.githubusercontent.com/{GITHUB_ORG}/{POLICY_REPO}/"
+        f"{POLICY_BRANCH}/{filename}"
+    )
+    try:
+        r = requests.get(url, timeout=15)
+        text = r.text if r.status_code == 200 else None
+        if text is None:
+            log.warning("policy(%s): fetch returned %s", filename, r.status_code)
+    except Exception as e:
+        log.warning("policy(%s): fetch failed: %s", filename, e)
+        text = None
+
+    _policy_cache[filename] = text
+    return text
 
 
 def define_env(env):
@@ -395,6 +448,31 @@ def define_env(env):
                             result += f"| <span class='icon-minecraft {icon_css(row['icon'])}'></span> | {row['flag']} | {row['name']} | {row['description']} | {row['default']} |\n"
 
         return result
+
+    @env.macro
+    def policy_page(filename: str):
+        source_url = (
+            f"https://github.com/{GITHUB_ORG}/{POLICY_REPO}/blob/"
+            f"{POLICY_BRANCH}/{filename}"
+        )
+        text = _fetch_policy_markdown(filename)
+        if text is None:
+            return (
+                '!!! warning "Could not load this page"\n'
+                "    This page is normally pulled automatically from "
+                f"[{filename} in BentoBoxWorld/.github]({source_url}) when "
+                "the site is built, but the fetch failed this time. View "
+                f"it directly on [GitHub]({source_url}) instead.\n"
+            )
+
+        note = (
+            '!!! note "Synced from GitHub"\n'
+            "    This page is pulled automatically from "
+            f"[{filename} in BentoBoxWorld/.github]({source_url}) every "
+            "time the documentation site is built, so it always matches "
+            "the canonical, org-wide policy.\n\n"
+        )
+        return note + _rewrite_policy_links(text)
 
     # Creates a table of requested flags type.
     @env.macro
