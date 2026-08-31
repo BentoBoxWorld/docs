@@ -105,7 +105,34 @@ This reloads BentoBox and all addons, including locales. Note that some changes 
 
 ## Changelog
 
-!!! note "What's new in v3.22.0 — Brigadier commands"
+!!! note "What's new in v3.22.3 — bStats opt-out & Paper 26.2"
+    **Released:** 2026-08-22
+
+    Mostly a bug-fix and API release. Compatibility: Paper Minecraft 1.21.5 – 26.2, Java 25+.
+
+    - ⚙️ **bStats metrics opt-out.** A new `general.metrics` option in `config.yml` (default **`true`**) lets you disable BentoBox's anonymous, aggregate usage statistics without touching the global switch in `plugins/bStats/config.yml`, which turns bStats off for every plugin on the server. Set it to `false` and **restart** — the collector is registered at startup, so `/bbox reload` is not enough. No personal data is ever sent; see [Privacy & Data Collection](../Privacy.md).
+    - 🔺 **Built against Paper 26.2 and Adventure 5.** Addon authors: Adventure 5 seals `Component` (Mockito can no longer mock it) and replaces `ClickEvent.value()` with `payload()`. Addons already deployed on a 26.2 server may be affected at runtime; recompiling against BentoBox 3.22.3 surfaces any issues at compile time — see [PR #3067](https://github.com/BentoBoxWorld/BentoBox/pull/3067) for the full removal list. Server admins need do nothing.
+    - 🔲 **Dialog grid layout for addon developers.** `DialogBuilder#columns(int)` lays a multi-action dialog's buttons out in a grid instead of the default two-wide list, and `DialogButton` gains a width (1–1024) plus `withWidth(int)`. Existing callers are unaffected.
+    - 🐛 **Player-head 429 spam fixed.** Opening a panel with player heads (a top-ten list, say) could flood the console with HTTP 429 errors from `sessionserver.mojang.com`, because heads delivered without texture data were re-resolved on every open. Texture-less heads now degrade to a plain head, and a failed fetch no longer evicts a cached head that already works.
+    - 🐛 **YAML numbers load into the declared field type.** A config value such as `20`, written without a decimal point, now loads correctly into `double`, `float` and `long` fields instead of throwing `ClassCastException`.
+    - 🐛 **Literal colour names in panels.** The Management panel showed addon names like `whiteChallenges` after a colour refactor; fixed.
+    - 📄 Published JSON Schemas (draft 2020-12) for the `.blueprint` and blueprint-bundle file formats.
+
+    [Release v3.22.3](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.22.3)
+
+??? note "What's new in v3.22.2"
+    **Released:** 2026-08-10
+
+    A bug-fix patch on top of 3.22.0 — no new features, config keys or locale changes; a drop-in replacement. There is no 3.22.1 release. Compatibility: Paper Minecraft 1.21.5 – 26.2, Java 25+.
+
+    - 🔺 🐛 **Player name lookups resolve to the right account.** `/[player_command] team trust <name>` and `/[player_command] info <name>` could silently answer for a UUID that had not held that name in months: superseded name records were never deleted from the database, and the lookup took the first match. Names are now matched ignoring case, stale records are deleted, and online players are checked first. **Take a backup before updating** — existing databases heal themselves as players log in (the purge runs once per rename, not per join) and no manual migration is needed.
+    - 🐛 **Bedrock players can use panels again.** Geyser expands one tap into several Java click packets in the same tick, and the `panel.click-cooldown-ms` check introduced in 3.22.0 was swallowing the one that mattered — every tap got `slow-down` and nothing happened. Same-tick clicks are now treated as one gesture; spam protection is unchanged at one action-bearing click per tick.
+    - 🐛 **A disabled addon no longer leaves broken commands behind.** A game mode dropped for a missing dependency (ChunkBlock without Level, for instance) kept its commands registered, and every subcommand threw an NPE. Commands, flags and listeners are now all withdrawn when an addon fails to enable.
+    - 🐛 **Returning from a standard nether lands you on your own island.** With a shared nether and `create-and-link-portals: false` (AOneBlock's default), players coming back through a portal were dumped on whichever island sits nearest 0,0. The destination now falls back to the island's home location.
+
+    [Release v3.22.2](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.22.2)
+
+??? note "What's new in v3.22.0 — Brigadier commands"
     **Released:** 2026-08-01
 
     A commands-and-visibility release. Compatibility: Paper Minecraft 1.21.5 – 26.2, Java 25+.

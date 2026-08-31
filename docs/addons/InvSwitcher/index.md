@@ -14,7 +14,7 @@ The following are switched per-world:
 * Experience
 * Health
 * Game mode (creative, survival, etc.)
-* Money (per-world economy, added in 1.18.0)
+* Money (per-world economy, added in 1.18.0 — **off by default since 1.19.3**, enable with `options.money: true`)
 
 ## How to use
 
@@ -87,11 +87,23 @@ Lists the gamemode worlds that InvSwitcher operates in. Nether and End worlds ar
 
 ```yml
 worlds:
-- bskyblock_world
 - acidisland_world
 - oneblock_world
-# ... etc.
+- boxed_world
+- bskyblock_world
+- skyblock-world
+- caveblock-world
+- poseidon_world
+- stranger_world
+- skygrid-world     # added to the default config in 1.19.2
+- raft_world        # added in 1.19.2
+- brix_world        # added in 1.19.2
+- parkour_world     # added in 1.19.2
+- tradewinds_world
 ```
+
+!!! warning "Existing configs are not rewritten"
+    New default worlds only appear on a fresh install. If your `config.yml` predates 1.19.2 and you run SkyGrid, Raft, Brix, Parkour or TradeWinds, add those entries to the `worlds:` list by hand and restart. A world that is not listed is silently not managed — InvSwitcher logs the worlds it hooks on startup, so check that list to confirm.
 
 ### Options
 
@@ -107,7 +119,7 @@ options:
   experience: true
   ender-chest: true
   statistics: true
-  money: true          # Per-world money (added in 1.18.0). Requires Vault.
+  money: false         # Per-world money (added in 1.18.0). Off by default since 1.19.3. Requires Vault.
   # Per-island inventory switching (added in 1.17.0)
   # The world-level option must also be true for the island option to take effect.
   islands:
@@ -127,7 +139,7 @@ Set `islands.active: true` to allow players who own more than one island to main
 
 ### Economy
 
-Added in 1.18.0. When `options.money` is enabled, InvSwitcher registers itself as the Vault economy provider and keeps a **separate balance for each switched world**. Transactions (shop sales, `/pay`, jobs, etc.) are routed to the balance of the world they belong to — even when the target player is offline or in a different world. Worlds InvSwitcher does not manage are passed through to your existing economy plugin (e.g. EssentialsX); if no other economy is present, InvSwitcher handles every world itself.
+Added in 1.18.0. **Off by default since 1.19.3** — InvSwitcher no longer registers itself as the Vault economy unless you opt in with `options.money: true`. When enabled, InvSwitcher registers itself as the Vault economy provider and keeps a **separate balance for each switched world**. Transactions (shop sales, `/pay`, jobs, etc.) are routed to the balance of the world they belong to — even when the target player is offline or in a different world. Worlds InvSwitcher does not manage are passed through to your existing economy plugin (e.g. EssentialsX); if no other economy is present, InvSwitcher handles every world itself.
 
 !!! warning "Requires Vault"
     Per-world money requires the [Vault](https://www.spigotmc.org/resources/vault.34315/) plugin. A separate economy plugin is optional — InvSwitcher can be the only economy. If you run the **Bank** addon, island wallets become per-world too.
@@ -168,6 +180,27 @@ Added in 1.18.0. Each managed game mode gains its own economy commands, scoped t
     | `/[admin_command] eco set <player> <amount>` | Set a player's balance |
     | `/[admin_command] eco balance <player>` | Show a player's balance |
 
+## Permissions
+
+!!! tip
+    `[gamemode]` is a prefix that differs depending on the gamemode you are running — for example `bskyblock.invswitcher.balance`.
+
+The economy commands are only registered when `options.money` is enabled and Vault is installed, so these permissions only matter on servers running the per-world economy. *(Declared in `addon.yml` since 1.19.2 — before that the nodes were unregistered, so the commands were denied to everyone but ops.)*
+
+=== "Player permissions"
+    - `[gamemode].invswitcher.balance` - (default: `true`) - Player can use the `balance` command.
+    - `[gamemode].invswitcher.pay` - (default: `true`) - Player can use the `pay` command.
+
+=== "Admin permissions"
+    - `[gamemode].invswitcher.admin.eco` - (default: `op`) - Player can use the admin `eco` command.
+    - `[gamemode].invswitcher.admin.eco.balance` - (default: `op`) - Player can use the admin `eco balance` command.
+    - `[gamemode].invswitcher.admin.eco.give` - (default: `op`) - Player can use the admin `eco give` command.
+    - `[gamemode].invswitcher.admin.eco.take` - (default: `op`) - Player can use the admin `eco take` command.
+    - `[gamemode].invswitcher.admin.eco.set` - (default: `op`) - Player can use the admin `eco set` command.
+
+!!! note
+    The player nodes default to `true`, so most servers need to do nothing. If your permissions plugin denies unlisted nodes, grant them to your default group.
+
 ## What it does
 This addon will give players a separate inventory, health, food level, advancements and experience for each gamemode installed and their corresponding worlds. It enables players to play each gamemode independently of each other.
 
@@ -181,6 +214,27 @@ This addon will give players a separate inventory, health, food level, advanceme
 - It is not limited to just BentoBox worlds. It applies to all worlds on the server (right now).
 
 ## Changelog
+
+??? note "What's new in v1.19.3"
+    **Released:** 2026-08-04
+
+    - ⚙️ **Per-world money is now off by default.** InvSwitcher no longer registers itself as the Vault economy unless you opt in with `options.money: true` in `config.yml`. Nothing else about the feature has changed.
+
+    ⚙️ **Existing configs are not rewritten** — the new default only applies to fresh installs. If your `config.yml` already contains `options.money: true` and you do not want InvSwitcher to manage money, set it to `false` and restart.
+
+    [Release v1.19.3](https://github.com/BentoBoxWorld/InvSwitcher/releases/tag/1.19.3)
+
+??? warning "What's new in v1.19.2 — rollback fix, new permissions and default worlds"
+    **Released:** 2026-08-04
+
+    Compatibility: BentoBox 3.17.0 · Paper Minecraft 1.21.5 – 26.1.2 · Java 21.
+
+    - 🐛 **Inventories no longer roll back for players online at shutdown.** BentoBox closes its database immediately after addons are disabled, so the asynchronous shutdown save lost the race and was silently dropped — everything a player did since their last world change was lost, and the stale snapshot was then written back over their real inventory on next login. Shutdown saves are now synchronous; regular in-game saves stay asynchronous. Players who logged out before the stop were never affected, and data already lost cannot be recovered.
+    - 🔺 **Economy commands work for normal players.** `/[player_command] balance` and `pay` failed with a permission error for every non-op because `addon.yml` declared no permissions. The nodes are now registered — `[gamemode].invswitcher.balance` and `.pay` default to `true`, the admin `eco` nodes to `op`. See the Permissions section above. If your permissions plugin denies unlisted nodes, grant the player nodes to your default group.
+    - ⚙️ **Missing game mode worlds added to the default config.** `skygrid-world`, `raft_world`, `brix_world` and `parkour_world` were absent from the shipped `worlds:` list, so a fresh install silently did not manage them. **Existing configs are not rewritten** — add the entries by hand if you run those game modes.
+    - 📄 New section on not running a second inventory manager (Multiverse-Inventories, PerWorldInventory, MultiInv) — see [Compatibility with other inventory plugins](#compatibility-with-other-inventory-plugins).
+
+    [Release v1.19.2](https://github.com/BentoBoxWorld/InvSwitcher/releases/tag/1.19.2)
 
 ??? note "What's new in v1.19.1"
     **Released:** 2026-07-02

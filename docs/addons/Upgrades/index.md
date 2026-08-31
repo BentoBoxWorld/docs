@@ -7,7 +7,7 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 {{ addon_description("Upgrades", true) }}
 
 !!! warning "Version 1.0.0 is a complete rewrite"
-    Upgrades 1.0.0 replaced the old config-file-based system with a fully **database-driven architecture**. Upgrade definitions, tiers, prices, and rewards are now stored in BentoBox's database and managed entirely in-game. **The old `config.yml` is no longer used** — remove it before installing 1.0.0 if you are upgrading from 0.x.
+    Upgrades 1.0.0 replaced the old config-file-based system with a fully **database-driven architecture**. Upgrade definitions, tiers, prices, and rewards are now stored in BentoBox's database and managed entirely in-game. **The old `config.yml` no longer defines upgrades** — remove it before installing 1.0.0 if you are upgrading from 0.x. The file 1.0.x generates holds only a handful of settings; see [What `config.yml` still does](#what-configyml-still-does).
 
 ## Installation
 
@@ -21,6 +21,17 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 Upgrades, their tiers, prices, and rewards are stored in BentoBox's database (YAML, JSON, MySQL, MongoDB, etc.). There is no large config file to edit. All upgrade data is loaded, cached, and saved automatically by the addon.
 
 On first install the seeder creates 8 example upgrades. Once you delete an example upgrade it will not be re-seeded on the next restart. To re-trigger seeding, delete the `.seeded-gamemodes` marker file from the addon data folder.
+
+### What `config.yml` still does
+
+!!! info "Since 1.0.4"
+    The `config.yml` now says up front that upgrades are **not** defined there, and the inert `range-upgrade`, `command-upgrade`, `entity-icon`, `entity-group-icon` and `command-icon` sections from the old config-driven system have been removed. The latest file is [here](https://github.com/BentoBoxWorld/Upgrades/blob/develop/src/main/resources/config.yml).
+
+    Three sections are still read — `block-limits-upgrade`, `entity-limits-upgrade` and `entity-group-limits-upgrade` — but they do **not** create upgrades. They tell Upgrades which limits it owns, so the [Limits](../Limits/index.md) addon's own permission-based limits are suppressed for them and the two do not fight over the same limit. **Only the key names matter** (`HOPPER`, `CHICKEN`, `group1`…); the tier values beneath them are ignored and kept only so older files still load. A `gamemodes:` block can override the set per game mode.
+
+    `disabled-gamemodes` (game modes where Upgrades is inactive) and `chat-input-escape` (the string that cancels a chat prompt in the admin panels, default `END`) also still apply. Everything else in an older file is inert and can be deleted; existing files are not rewritten on upgrade.
+
+    🔺 Before 1.0.4 an `entity-limits-upgrade` entry only took effect if the same entity also appeared in the now-removed `entity-icon` section. Entity entries now take effect on their own — if you had an entity listed without a matching icon, its Limits permissions are now suppressed where previously they were not.
 
 ## Tiers and Levels
 
@@ -88,6 +99,8 @@ The three Limits rewards all use the **same reward editor** and let you raise a 
 | **Type** | Click to cycle between `BLOCK`, `ENTITY`, and `ENTITY_GROUP`. Choose `BLOCK` to limit a block such as a hopper. |
 | **Target** | The thing being limited. Type it in chat. For `BLOCK` use a Bukkit [Material](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html) name (e.g. `HOPPER`, `CHEST`); for `ENTITY` an [EntityType](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html) name (e.g. `CHICKEN`); for `ENTITY_GROUP` a group name that **matches a group defined in the Limits addon**. |
 | **Amount** | How much the limit is raised **per level**. Accepts a plain number or a formula using the [Formula Variables](#formula-variables) (e.g. `1`, or `[level] * 2`). |
+
+4. List the same Target under the matching section of `config.yml` (`block-limits-upgrade`, `entity-limits-upgrade` or `entity-group-limits-upgrade`) so the Limits addon's permission-based limit for it is suppressed — see [What `config.yml` still does](#what-configyml-still-does).
 
 A green pane in the reward editor means the configuration is valid; a red pane means a required field (usually the Target) is still missing.
 

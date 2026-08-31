@@ -194,13 +194,14 @@ fixedBlocks:
 
 ### `holograms`
 
-Same numbering, but the value is the text to float above the magic block. `&` colour codes work.
+Same numbering, but the value is the text to float above the magic block. Legacy `&` colour codes, `&#RRGGBB` hex colours and [MiniMessage](https://docs.advntr.dev/minimessage/format.html) tags (gradients included) all work and can be mixed *(hex and MiniMessage since 1.27.0)*. The same syntaxes are accepted in the action bar and in locale strings.
 
 ```yaml
 holograms:
-  0: "&aFirst block is grass!"
-  1: "&aSecond block is grass!"
-  3: "&aGood Luck!"
+  0: "&a&lFirst block is grass!"                        # legacy codes
+  1: "&#55FF55Second block is grass!"                   # hex
+  2: "<green><bold>Good Luck!"                          # MiniMessage
+  3: "<gradient:#55FF55:#00AA00>Good Luck!</gradient>"  # gradient
 ```
 
 The very first hologram — the one shown before phase 1 begins — lives in the addon's locale file, not here.
