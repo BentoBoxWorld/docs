@@ -34,6 +34,11 @@ The main `config.yml` file contains basic information about game-mode addon setu
 After addon is successfully installed, it will create a config.yml file. Every option in this file comes with comments about them. Please check file for more information.
 You can find the latest config file: [config.yml](https://github.com/BentoBoxWorld/AOneBlock/blob/develop/src/main/resources/config.yml)
 
+!!! new "Since AOneBlock 1.27.0 — `island.save-every`"
+    How often island progress is written to the database, in blocks broken. Progress is also saved on every phase change, when a player logs out, and at shutdown, so this only decides how much can be lost if the server dies *without* shutting down cleanly (a crash, a `kill -9`, a hosting-panel force-restart). Lower is safer but writes more often; the minimum is `1`.
+
+    Default: `10` (replacing the old hardcoded 50). Existing configs pick up the default automatically.
+
 ### The Phase Index — `phases_index.yml`
 
 !!! new "Added in AOneBlock 1.26.0"
@@ -599,6 +604,8 @@ By default, BentoBox GameMode addons comes with [default placeholders set](../..
     
     However, since 1.13 version and Minecraft 1.19.4, you do not need any extra plugins for holograms. They will be displayed using Minecraft Text Entity.
 
+    Hologram text accepts legacy `&` colour codes, `&#RRGGBB` hex colours and MiniMessage tags (gradients included) — the hex and MiniMessage forms since 1.27.0. See [Customizing Phases](Phases.md#holograms).
+
 ??? question "Should I use the Levels addon?"
     It's up to you, but if you do be aware that levels could get high because players have an infinite block. 
     I prefer not to use it and instead use the Likes addon.
@@ -889,3 +896,30 @@ AOneBlock has some custom events that are called only in AOneBlock. But BentoBox
     Compatibility: BentoBox API 3.15.0+, Minecraft 1.21.5 or later (the Sulfur Caves phase itself activates on Minecraft 26.2+), Java 21.
 
     [Release v1.26.3](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.26.3)
+
+!!! warning "What's new in v1.27.0 — requires BentoBox 3.22.0 and Java 25"
+    **Released:** 2026-08-08
+
+    Fixes silent, repeated loss of island progress on restart, and adds MiniMessage and hex colours to phase text. Compatibility: BentoBox API 3.22.0+ · Minecraft 26.x or 1.21.5+ (the Sulfur Caves phase activates on 26.2+) · **Java 25 server**.
+
+    - 🔺 🐛 **Island progress is no longer lost on restart.** If a player was online when the server restarted, their block count rolled back to the last checkpoint — up to 49 blocks of mining undone, every restart. AOneBlock is a Pladdon, so the server disables it *before* BentoBox, and the shutdown save went into a queue that every BentoBox before 3.22.0 discarded silently. The shutdown save is now a direct write, independent of the core.
+    - ⚙️ **New `island.save-every` option** — how often progress is written to the database, in blocks broken. Defaults to **10**, replacing the old hardcoded 50, so at most 9 blocks can be lost to a crash rather than 49. Progress is also saved on phase change, logout and shutdown. Added to existing configs automatically. See the Configuration section above.
+    - 🎨 **MiniMessage and hex colours in phase text.** Holograms only understood the sixteen legacy `&` codes, and the action bar used a different serializer; both now accept legacy codes, `&#RRGGBB` hex, MiniMessage tags and gradients, mixed freely — the same applies to locale strings. Also fixes `§` codes appearing as literal text in the starting hologram and action bar. Existing `&` codes keep working; nothing needs changing.
+    - 📄 `0_plains.yml` now explains what the numbers mean — weights in `blocks:`/`mobs:`/`custom-blocks:`, positions in `fixedBlocks:`/`holograms:` — and documents the accepted colour syntaxes.
+
+    🔺 **Update BentoBox to 3.22.0 or newer first.** `api-version` has been raised, so on an older core BentoBox refuses to load the addon (*"Cannot load AOneBlock because it requires BentoBox version 3.22.0 or greater"*). BentoBox 3.22.0 in turn needs a **Java 25** server — upgrade the JVM before either jar if you are still on Java 21.
+
+    [Release v1.27.0](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.27.0)
+
+??? note "What's new in v1.27.1"
+    **Released:** 2026-08-29
+
+    Bug-fix release — no config or phase file changes, and existing locale customisations keep working. Compatibility: BentoBox API 3.22.0+ · Minecraft 26.x or 1.21.5+ · Java 25.
+
+    - 🐛 **`my_island_*` placeholders work for team members again.** Since 1.26.0, `%aoneblock_my_island_count%`, `%aoneblock_my_island_percent_done%`, `%aoneblock_my_island_phase%` and the rest only worked for the island **owner**; team members got the empty defaults (`0`, `0%`, `Unknown`). The lookup is now a preference order: an island the player owns wins, and a player who owns none falls back to the team island they belong to.
+    - 🐛 **Boss bar no longer breaks under minion/NPC plugins.** When JetsMinions (or any plugin that breaks blocks via armor-stand entities) mined the magic block, the `MagicBlockEvent` carried no player UUID and the boss bar listener threw `IllegalArgumentException` on every break. It now returns early when there is nobody to show a bar to.
+    - 🐛 **Glow lichen and vines survive being placed.** Multiface plants (`GLOW_LICHEN`, `VINE`, `SCULK_VEIN`, `RESIN_CLUMP`) spawned attached to no face, so the first neighbouring block update deleted them and bone meal could not spread them. They are now attached to whatever solid neighbours exist; if nothing is there, the magic block becomes a support block (moss, or sculk for sculk veins) with the plant growing on it.
+    - 🔡 **All 18 bundled locale files converted to MiniMessage.** Legacy `&` codes still parse, so customised files in `locales/` keep working unchanged.
+    - 🔡 **Traditional Chinese (`zh-TW`) completed** by @qwe664 — the 26 keys missing since 1.27.0 added and terminology revised.
+
+    [Release v1.27.1](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.27.1)

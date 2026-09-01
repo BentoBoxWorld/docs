@@ -45,6 +45,8 @@ It also has these top-level toggles (all added in **1.29.0** unless noted): `app
 
 This section lists the maximum number of blocks allowed for each block material. Do not use non-block materials because they will not work. The limits apply independently in every dimension (overworld, nether, end).
 
+Growth and damage variants are normalised to their canonical block — `BAMBOO_SAPLING` counts as `BAMBOO`, and since **1.30.0** `KELP_PLANT` counts as `KELP` — so a variant name used as a limit key (e.g. `KELP_PLANT` or `CHIPPED_ANVIL`) configures the canonical block's limit.
+
 ### blocklimits-nether / blocklimits-end
 
 Optional sections that override the `blocklimits` defaults for the nether or the end respectively. They are commented out in the default config; uncomment and add entries to set dimension-specific block limits.
@@ -144,7 +146,7 @@ blocklimits:
 
 === "stacked-plants-count-as-one"
     !!! summary "Description"
-        (**1.29.0+**) When `true`, a `SUGAR_CANE` or `BAMBOO` stalk counts as a single plant no matter how tall it grows — only the base segment is counted. Run a recount after changing this option.
+        (**1.29.0+**) When `true`, a `SUGAR_CANE`, `BAMBOO` or `KELP` (kelp since **1.30.0**) stalk counts as a single plant no matter how tall it grows — only the base segment is counted. Run a recount after changing this option.
 
         Default: `false`
 
@@ -222,6 +224,18 @@ Some items cannot be limited (right now). The reasons are usually because there 
 
 
 ## Changelog
+
+??? warning "What's new in v1.30.0 — kelp recount recommended"
+    **Released:** 2026-08-15
+
+    Two counting-accuracy fixes. Compatibility: BentoBox API 2.7.1 · Paper Minecraft 1.21.11 – 26.2 · Java 21. No config or locale changes.
+
+    - 🐛 **Bees can always leave their hives.** A bee exiting a hive is not a new bee — its count was already subtracted when it entered — but the exit was still limit-checked. On an island at its bee limit the release was cancelled, the server retried every few ticks, nearby players were spammed with "Bee spawning limited to ..." and the stored bees were trapped forever. Hive exits are now exempt from the check while still being counted, so the enter/exit cycle stays net-zero. A placed hive item carrying never-counted bees can leave the island slightly over its limit; that simply blocks further spawns and breeding until the population drops.
+    - 🔺 🐛 **Kelp columns count correctly.** Kelp growth converts the `KELP` tip into a `KELP_PLANT` stalk segment with no Bukkit event, so the old block was never decremented and kelp counts only ever grew, eventually blocking placement at phantom totals. `KELP_PLANT` is now normalised to `KELP` (like `BAMBOO_SAPLING`/`BAMBOO`): growth is count-neutral, breaking the base of a column decrements every segment, `KELP` participates in `stacked-plants-count-as-one`, and variant names such as `KELP_PLANT` or `CHIPPED_ANVIL` used as limit keys configure the canonical limit.
+
+    🔺 **If you limit kelp, run a recount.** Stored kelp counts may have drifted upward under previous versions. Run `/[admin_command] limits calc <player>` on affected islands — or have players run `/[player_command] limits recount` — so counts match reality.
+
+    [Release v1.30.0](https://github.com/BentoBoxWorld/Limits/releases/tag/1.30.0)
 
 ??? note "What's new in v1.29.1"
     **Released:** 2026-07-23

@@ -36,7 +36,7 @@ This section defines a number of overall settings for the add-on. These settings
 
 ??? note "refresh-time"
     How often the Top Ten should be refreshed in minutes. Minimum is 1 minute, default is 5.
-    Each refresh requires reading every island of every hooked game mode from the database, so this should not be done too often. If you run both AOneBlock and ChunkBlock, each refresh reads both sets of islands, so consider leaving this at the default or raising it.
+    Each refresh requires reading every island of every hooked game mode from the database, so this should not be done too often (since 2.1.1 that read runs off the main thread, so it no longer causes lag spikes). If you run both AOneBlock and ChunkBlock, each refresh reads both sets of islands, so consider leaving this at the default or raising it.
 
     Default: `5`
 
@@ -161,15 +161,26 @@ Placeholders are registered separately for each game mode TopBlock has hooked, u
 
 ## Changelog
 
-??? note "What's new in v2.1.0 — ChunkBlock support"
-    **Released:** 2026-08-07
+??? note "What's new in v2.1.1"
+    **Released:** 2026-08-27
 
-    TopBlock is no longer AOneBlock-only. It now supports **ChunkBlock** as well, and either game mode — or both together — can be installed.
+    Patch release — no config, locale or data format changes; a drop-in replacement for 2.1.0.
+
+    - 🐛 **Top ten refresh no longer stalls the main thread.** The refresh task (every `refresh-time` minutes, default 5) read the game mode's entire island database synchronously on the main thread — up to ~1 second per cycle on servers with many islands, and twice when both AOneBlock and ChunkBlock were hooked — causing periodic lag spikes. The database read now runs asynchronously; only the cheap island and permission lookups stay on the main thread.
+
+    [Release v2.1.1](https://github.com/BentoBoxWorld/TopBlock/releases/tag/2.1.1)
+
+??? note "What's new in v2.1.0 — ChunkBlock support"
+    **Released:** 2026-08-21
+
+    TopBlock is no longer AOneBlock-only. It now supports **ChunkBlock** as well, and either game mode — or both together — can be installed. Compatibility: BentoBox API 3.14.0+ · AOneBlock 1.18.0+ and/or ChunkBlock 1.0.1+ · Paper Minecraft 1.21.x · Java 21.
 
     - ✨ **ChunkBlock support.** TopBlock hooks whichever of AOneBlock and ChunkBlock it finds at startup. With both installed, each keeps a completely separate top ten, `topblock` command, and placeholder set.
     - ✨ **New placeholders** — the full `%chunkblock_island_*_top_<number>%` set, mirroring the existing `aoneblock_` ones and reporting ChunkBlock's own ranking.
     - ✨ **New permissions** — `chunkblock.island.topblock` and `chunkblock.intopten`, both default `true`, mirroring the AOneBlock equivalents. Because the prefix is per game mode, you can hide a player from one leaderboard while leaving them visible in the other.
     - 🔺 **AOneBlock is now a soft dependency.** TopBlock previously refused to load without AOneBlock; it now only disables itself if *neither* supported game mode is present. Existing AOneBlock-only setups are unaffected and need no changes.
+    - 🐛 **Each top ten only shows its own game mode's islands.** AOneBlock and ChunkBlock both store islands under `database/OneBlockIslands/`, so a ChunkBlock refresh loaded AOneBlock's records too and the wrong players appeared. Islands are now filtered by the game mode's world.
+    - 🐛 **Steve heads in the top ten panel fixed.** If `top_panel.yml` had `icon: PLAYER_HEAD` uncommented, skin resolution was never triggered and every head rendered as Steve. The panel now falls through to the name-based head path.
 
     ℹ️ This is a drop-in update for AOneBlock servers — no config, panel, or locale changes are required.
 
