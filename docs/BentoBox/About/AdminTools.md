@@ -31,7 +31,8 @@ Each game mode has its own admin command. For BSkyBlock it's `/bsb`, for AcidIsl
 
 | Command | What it does |
 |---|---|
-| `/[admin] info <player>` | Shows full details of a player's island |
+| `/[admin] info <player>` | Shows full details of a player's island. *(3.22.4)* If the player has several islands in the world (own and team), every island is listed, each with its name |
+| `/[admin] info <player> [island name]` | *(3.22.4)* Shows just the named island. Accepts island names and home names, matched forgivingly (case-insensitive, unique prefix), with tab completion; an unknown name lists the valid ones |
 | `/[admin] delete <player>` | Deletes a player's island |
 | `/[admin] delete` | *(3.19.0)* With no player argument, soft-deletes the island you are **standing on** after confirmation (refused if it still has a team) |
 | `/[admin] undelete` | *(3.19.0)* Clears the pending-deletion status of the island you are **standing on**, leaving it unowned, before its region files are purged |
