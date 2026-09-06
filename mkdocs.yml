@@ -90,6 +90,9 @@ nav:
 theme:
   name: material
   custom_dir: overrides
+  # Zensical-only: keep the Material for MkDocs look when building with Zensical.
+  # MkDocs passes unknown theme keys through, so this is harmless for mkdocs build.
+  variant: classic
   palette:
     scheme: slate
     primary: deep orange
