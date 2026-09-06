@@ -322,7 +322,17 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
 ## Changelog
 
-!!! warning "What's new in v1.8.0 — toggleable undeployed challenges need a panel update"
+!!! note "What's new in v1.8.1"
+    **Released:** 2026-09-05
+
+    A bug-fix and translation release. Compatibility: BentoBox 3.14.0 · Minecraft 1.21.x · Java 21. No config keys were added or renamed.
+
+    - 🐛 **Anvil-made enchanted books now count for inventory challenges.** Items that pass through an anvil (for example two enchanted books combined into a higher level) carry a `repair_cost` component, and the strict item comparison treated them as a different item, so such challenges could only be completed with "ignore metadata" — which then accepted *any* enchanted book. The repair cost is now disregarded when matching required items; enchantments, levels, names, lore and all other item data are still compared.
+    - 🔡 **Traditional Chinese (`zh-TW`)** translation improved and brought to full coverage for the 1.8.0 strings. If you run a customised `zh-TW.yml`, delete it (or merge by hand) to pick up the improvements. Other languages are unaffected.
+
+    [Release v1.8.1](https://github.com/BentoBoxWorld/Challenges/releases/tag/1.8.1)
+
+??? warning "What's new in v1.8.0 — toggleable undeployed challenges need a panel update"
     **Released:** 2026-07-26
 
     Compatibility: BentoBox 3.14.0 · Minecraft 1.21.x · Java 21.

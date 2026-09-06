@@ -69,7 +69,7 @@ Both are located in `plugins/BentoBox/addons/ControlPanel/`.
 
 ### config.yml
 
-The main configuration file has one setting:
+The main configuration file has two settings:
 
 ??? note "disabled-gamemodes"
     A list of GameMode addon names where ControlPanel should not operate. ControlPanel will not hook into these gamemodes.
@@ -83,9 +83,17 @@ The main configuration file has one setting:
       - AcidIsland
     ```
 
+??? note "template-file"
+    (**1.16.1+**) The template file that control panels are imported from. It is read when panels are first seeded and re-read on every `/{admin} bentobox reload`, so editing it and reloading applies your changes. It must exist in the addon folder (`plugins/BentoBox/addons/ControlPanel/`). The reload, the admin `import` command and the initial seeding all honour this setting, so you can point the addon at your own file.
+
+    Default: `controlPanelTemplate.yml`
+
 ### controlPanelTemplate.yml
 
-This file defines all control panels and their buttons. After editing it, run `/{admin} cp import` to load your changes.
+This file defines all control panels and their buttons. After editing it, run `/{admin} bentobox reload` (**1.16.1+**) or `/{admin} cp import` to load your changes.
+
+!!! warning "Reload replaces stored panels (1.16.1+)"
+    Panels live in BentoBox's database, and before 1.16.1 the template was only a one-time seed: editing it and running `bbox reload` silently did nothing unless you also ran `cp import`. Since **1.16.1** every reload wipes each active game mode's stored panels and re-imports them from the template file. Panels you *removed* from the template disappear too, and anything that existed only in the database is lost — keep all your changes in the template file.
 
 #### Panel structure
 
@@ -315,12 +323,12 @@ panel-list:
     ```
 
 ??? tip "Reloading after changes"
-    After editing `controlPanelTemplate.yml`, run `/{admin} cp import` to reload. If you've made changes to `config.yml`, use the BentoBox reload command instead: `/{admin} bentobox reload`.
+    After editing `controlPanelTemplate.yml`, run `/{admin} bentobox reload` (since **1.16.1** this re-imports the template) or `/{admin} cp import`. Changes to `config.yml` also need `/{admin} bentobox reload`.
 
 ## FAQ
 
 ??? question "How can I change the ControlPanel?"
-    ControlPanel stores panels in the database, but you edit them through the template file. After making changes to `controlPanelTemplate.yml`, import them by running `/{admin} controlpanel import`. You can also create additional template files and import them by name: `/{admin} controlpanel import myPanels`.
+    ControlPanel stores panels in the database, but you edit them through the template file. After making changes to `controlPanelTemplate.yml`, run `/{admin} bentobox reload` (**1.16.1+**) or import them with `/{admin} controlpanel import`. You can also create additional template files and import them by name: `/{admin} controlpanel import myPanels`, or point the `template-file` config option at your own file.
 
 ??? question "Can I have different panels for different users?"
     Yes. Define multiple panels in the template file, each with a different `permission` suffix. Then assign players the corresponding permission, e.g. `bskyblock.controlpanel.panel.vip`. Players without a specific panel permission see the panel marked `defaultPanel: true`.
@@ -336,6 +344,22 @@ panel-list:
 
 ??? question "Can you add feature X?"
     Please add it to the list [here](https://github.com/BentoBoxWorld/ControlPanel/issues).
+
+## Changelog
+
+!!! warning "What's new in v1.16.1 — reload now overwrites stored panels"
+    **Released:** 2026-09-02
+
+    Compatibility: BentoBox 2.7.1 or later (verified with 3.7.4 on Minecraft 1.21.4) · Minecraft 1.21.4 – 26.2 · Java 21.
+
+    - 🔺 ⚙️ **`bbox reload` re-imports the template.** Editing `controlPanelTemplate.yml` and reloading did nothing, because panels live in the database and the template was only a one-time seed. Reload now wipes each active game mode's stored panels and re-imports them from the template, so template edits take effect without `cp import` — and panels removed from the template disappear instead of lingering.
+    - ⚙️ **New `template-file` config option** (default `controlPanelTemplate.yml`). Reload, initial seeding and the admin `import` command all honour it, so you can point the addon at your own file.
+    - 🔺 **Minimum BentoBox version lowered to 2.7.1.** 1.16.0 declared an `api-version` of 3.10.0 that nothing in the code needed, so BentoBox refused to load it (`INCOMPATIBLE`) on servers that cannot run BentoBox 3.10+ — notably Minecraft 1.21.4, which tops out at BentoBox 3.7.4. Those servers can use the current ControlPanel again.
+    - 🔡 Updated Traditional Chinese (`zh-TW`) translations.
+
+    🔺 **Reload now overwrites stored panels.** If you have been relying on database-only panel changes (anything not in `controlPanelTemplate.yml`), put them in the template before updating or they will be lost on the next reload. The new `template-file` key is added to `config.yml` automatically; existing installs keep working with no changes.
+
+    [Release v1.16.1](https://github.com/BentoBoxWorld/ControlPanel/releases/tag/1.16.1)
 
 ## Translations
 

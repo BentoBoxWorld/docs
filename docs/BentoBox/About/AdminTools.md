@@ -106,7 +106,23 @@ This reloads BentoBox and all addons, including locales. Note that some changes 
 
 ## Changelog
 
-!!! note "What's new in v3.22.3 — bStats opt-out & Paper 26.2"
+!!! note "What's new in v3.22.4"
+    **Released:** 2026-09-06
+
+    A bug-fix and performance release. Compatibility: Paper Minecraft 1.21.x – 26.2, Java 25+.
+
+    - 🔡 **`/[admin] info <player>` shows every island.** All of a player's islands in the world (owned and team) are listed, each block headed by the island name, and a new optional `[island name]` argument picks just one — see the [command table](#per-game-mode-admin-commands) above. Name matching is forgiving (exact, then case- and space-insensitive, then unique prefix), multi-word names need no quotes, and tab completion offers the player's island and home names.
+    - ⚙️ **Island history cap.** A new `island.history.max-entries` option in `config.yml` caps how many history (log) entries each island keeps; the oldest are dropped first. The default **`0`** means unlimited, so existing servers keep their current behaviour. Capping can undercount the historical-members placeholder once old `JOINED` entries are dropped.
+    - 🐛 **Purge no longer crashes.** `/[admin] purge <days> confirm` failed with `IslandEvent may only be triggered synchronously` on the first fully reaped island and left its database row behind. Island events are now fired on the main thread after the async region deletion.
+    - 🐛 **Sub-command labels no longer change.** Typing an alias such as `/ob h` renamed the shared `go` command to `h` in everyone's tab completion and help — much more visible since Brigadier registration in 3.22.0. Fixed; the `home` / `h` aliases are unchanged.
+    - 🐛 **Player heads resolve through the server.** Online players' heads come from their live profile and everyone else is looked up in Paper's own profile cache before falling back to mc-heads or Mojang, so panels such as TopBlock show real heads instead of Steve after rate limits.
+    - ⚡ Performance: bounds checks no longer allocate, map sweeps use iterators, and a shared GSON instance replaces per-call construction.
+
+    🔡 **Locale note.** `commands.admin.info.parameters` now reads `<player> [island name]` and a new key `commands.admin.info.island-name` was added. All 24 bundled locales are updated; if you maintain a custom locale file, add the new key or the admin info block will show the raw key for the island name line.
+
+    [Release v3.22.4](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.22.4)
+
+??? note "What's new in v3.22.3 — bStats opt-out & Paper 26.2"
     **Released:** 2026-08-22
 
     Mostly a bug-fix and API release. Compatibility: Paper Minecraft 1.21.5 – 26.2, Java 25+.

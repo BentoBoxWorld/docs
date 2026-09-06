@@ -177,7 +177,29 @@ Since 1.10.0 each admin sub-command also has its own node — `greenhouses.admin
 
 {{ translations("Greenhouses") }}
 
-!!! note "What's new in v1.10.0 — admin commands"
+!!! warning "What's new in v1.10.2 — fixes a crash on Paper 26.2"
+    **Released:** 2026-09-06
+
+    Compatibility: BentoBox API 2.7.1 · Minecraft 1.21.5+ · Java 21. No config or locale changes.
+
+    - 🐛 **Plant growth no longer crashes when a hopper runs out of bone meal.** When the roof hopper held a single bone meal and at least one plant grew, Greenhouses wrote the remainder back as a zero-amount item. Older servers tolerated that silently; Paper 26.2 throws `IllegalArgumentException: amount must be greater than 0` from `EcoSystemManager.setBoneMeal` on every plant tick and aborts the growth pass for that greenhouse. The last bone meal is now simply removed from the hopper.
+
+    🔺 **If you are on Paper 26.2 or newer, this update is strongly recommended.** Every greenhouse whose hopper empties will otherwise log this error each tick and stop growing plants until bone meal is added again.
+
+    [Release v1.10.2](https://github.com/BentoBoxWorld/Greenhouses/releases/tag/1.10.2)
+
+??? warning "What's new in v1.10.1 — recount if you run Limits"
+    **Released:** 2026-09-01
+
+    Compatibility: BentoBox API 2.7.1 · Minecraft 1.21.5+ · Java 21. No config or locale changes.
+
+    - 🐛 **Greenhouses no longer lets mobs slip past the Limits addon.** When Limits cancelled a spawn at an entity limit, Greenhouses carried on with the never-spawned entity, ran its "does this mob fit inside the glass?" check and, when it did not fit (ghasts are 4×4×4, so often), called `remove()` on it. Paper fires an `EntityRemoveEvent` for that even though the mob never entered the world, and Limits counted it as a real removal, so its counter crept downward and the next spawn was let through — the reported case was ghasts at 4/3. Cancelled spawns are now left alone entirely. Limits 1.30.1 contains the matching hardening on its side.
+
+    🔺 **If you saw this,** Limits' counter for the affected island is still wrong until it is rebuilt. Have the player run `/[player_command] limits recount` (or run the admin `/[admin_command] limits calc <player>`) once after updating.
+
+    [Release v1.10.1](https://github.com/BentoBoxWorld/Greenhouses/releases/tag/1.10.1)
+
+??? note "What's new in v1.10.0 — admin commands"
     **Released:** 2026-07-26
 
     Greenhouses finally has an admin command tree. Compatibility: BentoBox API 2.7.1 · Minecraft 1.21.5+ · Java 21.
