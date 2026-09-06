@@ -156,6 +156,47 @@ blocklimits:
 
         Default: `false`
 
+### Automatic entity recounts
+
+!!! info "Since 1.30.2"
+    Entity counts are maintained incrementally, so any missed event (sniffer egg hatches, mobs crossing portals, increments lost in a crash before the batched save) can leave them stuck away from reality with no way to recover except a manual recount. These options reconcile counts automatically in the background. They are **off by default** because a recount loads every chunk of the island's protection area: cost scales with the square of the protection range (64 chunks per world at range 50, 2,601 at range 400). Recounts are async, rate-limited to one island at a time, deduplicated and throttled per island, and only rewrite **entity** counts — block counts are left alone. A recount *replaces* counts rather than merging them, so it is only accurate when the island's chunks are loaded.
+
+=== "recount-on-join"
+    !!! summary "Description"
+        Run a background entity-only recount of an island when its owner logs in.
+
+        Default: `false`
+
+=== "recount-on-join-cooldown"
+    !!! summary "Description"
+        Minimum seconds between automatic recounts of the same island (shared with the periodic sweep).
+
+        Default: `300`
+
+=== "recount-periodic"
+    !!! summary "Description"
+        Periodically sweep online islands to reconcile their entity counts, even while owners stay logged in. Same cost and caveats as `recount-on-join`.
+
+        Default: `false`
+
+=== "recount-periodic-interval"
+    !!! summary "Description"
+        Seconds between periodic sweep cycles.
+
+        Default: `300`
+
+=== "recount-periodic-batch"
+    !!! summary "Description"
+        Islands to reconcile per sweep cycle. Keep small on high-population servers.
+
+        Default: `2`
+
+=== "recount-max-chunks"
+    !!! summary "Description"
+        Islands whose protection area covers more than this many chunks per world are never recounted automatically; a warning is logged once per island. 1000 chunks is a protection range of about 240. Manual recounts via the `recount` and `calc` commands are not affected.
+
+        Default: `1000`
+
 ## Permissions
 
 Island owners can have exclusive permissions that override the default or world settings. Two formats are supported:
@@ -189,6 +230,9 @@ Full permissions are listed [here](Permissions).
 ## Placeholders
 
 {{ placeholders_source(source="Limits") }}
+
+!!! note "Block placeholder names"
+    `[material]` is the lower-cased Minecraft key without the `minecraft:` namespace, e.g. `%Limits_bskyblock_island_spawner_limit%`. Custom blocks from ItemsAdder or Oraxen use `namespace_key` (for example `itemsadder_ruby_block`), since a colon is not valid in a placeholder name. Between 1.28.0 and 1.30.0 the block `_count`, `_limit` and `_base_limit` placeholders were mistakenly registered with the namespace baked in and did not resolve; fixed in **1.30.1**.
 
 
 ## Translations
@@ -224,6 +268,31 @@ Some items cannot be limited (right now). The reasons are usually because there 
 
 
 ## Changelog
+
+??? note "What's new in v1.30.2 — automatic entity recounts"
+    **Released:** 2026-09-06
+
+    A piston-counting fix plus a new opt-in feature. Compatibility: BentoBox API 2.7.1 · Paper Minecraft 1.21.11 – 26.2 · Java 21.
+
+    - ⚙️ **Automatic entity recounts (opt-in).** New `recount-on-join` and `recount-periodic` options reconcile drifting entity counts in the background — see [Automatic entity recounts](#automatic-entity-recounts) above. Six new keys (`recount-on-join`, `recount-on-join-cooldown`, `recount-periodic`, `recount-periodic-interval`, `recount-periodic-batch`, `recount-max-chunks`) are added to `config.yml` automatically with safe defaults, so nothing changes unless you enable them. Read the config comments before turning them on. Thanks @daniel-skopek.
+    - 🐛 **Extended pistons no longer count twice.** The admin recount (`calc`) counted both the base and the head of every extended piston, so a redstone build with all its pistons extended doubled the count (16 sticky pistons showing as 32/30) and every recalc put the wrong number back. The recount now counts only the base, and explosions that destroy both parts decrement once.
+    - 🐛 **Entities crossing portals off-island decrement correctly.** An entity going through a portal while outside its island's protection range never had its source-dimension count decremented.
+
+    **Piston note:** islands whose piston count is inflated show the right number after one more recount (`/[admin_command] limits calc <player>`) on this version.
+
+    [Release v1.30.2](https://github.com/BentoBoxWorld/Limits/releases/tag/1.30.2)
+
+??? warning "What's new in v1.30.1 — recount if you run Greenhouses"
+    **Released:** 2026-09-04
+
+    Two accuracy fixes. Compatibility: BentoBox API 2.7.1 · Paper Minecraft 1.21.11 – 26.2 · Java 21. No config or locale changes.
+
+    - 🐛 **Block count and limit placeholders work again.** Since 1.28.0 every block placeholder was registered with the `minecraft:` namespace baked into its name, so `%Limits_bskyblock_island_spawner_limit%` was really `%Limits_bskyblock_island_minecraft:spawner_limit%` and PlaceholderAPI returned it unparsed. All block `_count`, `_limit` and `_base_limit` placeholders, including the `_overworld`, `_nether` and `_end` variants, are now registered under the documented names. Entity placeholders were never affected.
+    - 🔺 🐛 **Entity counts no longer drift when a cancelled spawn is removed.** When Limits cancelled a spawn at the limit and the spawning plugin then called `remove()` on that never-added entity (Greenhouses did this), Paper still fired `EntityRemoveEvent` and Limits decremented the count for a mob that was never counted, so the next spawn slipped through (e.g. 4/3 ghasts). Removals of entities that never entered the world are now ignored.
+
+    🔺 **Recount note:** if you run Greenhouses (or any plugin that removes entities it failed to spawn), entity counts on affected islands may have drifted low under previous versions. Run `/[admin_command] limits calc <player>` on affected islands, or have players run `/[player_command] limits recount`, so counts match reality.
+
+    [Release v1.30.1](https://github.com/BentoBoxWorld/Limits/releases/tag/1.30.1)
 
 ??? warning "What's new in v1.30.0 — kelp recount recommended"
     **Released:** 2026-08-15
