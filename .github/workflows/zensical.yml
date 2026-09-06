@@ -1,0 +1,40 @@
+# Trial build with Zensical, run alongside the Read the Docs MkDocs build.
+# Zensical is the successor to Material for MkDocs (which reaches end of life
+# on 2026-11-05). This workflow keeps the repo verified against it so a later
+# switch of the production build is a config change rather than a migration.
+name: Zensical build
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-zensical.txt
+      - run: pip install -r requirements-zensical.txt
+      - run: zensical build
+        env:
+          # Lifts the unauthenticated GitHub rate limit used by the
+          # translations() macro in main.py.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Sanity-check output
+        run: |
+          test -f site/index.html
+          test -f site/addons/Level/index.html
+          # Macros must have rendered, not been passed through as text.
+          ! grep -rl '{{ *addon_description' site
+          grep -q 'md-footer-policies__link' site/FAQ/index.html
+      - uses: actions/upload-artifact@v4
+        with:
+          name: zensical-site
+          path: site
+          retention-days: 7
