@@ -1,4 +1,6 @@
 site_name: BentoBox World
+# Zensical cannot read READTHEDOCS_CANONICAL_URL, so the canonical URL is set explicitly.
+site_url: https://docs.bentobox.world/en/latest/
 copyright: "© Copyright 2017-2026 tastybento and the BentoBoxWorld community (CC-BY 4.0)."
 repo_url: https://github.com/BentoBoxWorld/BentoBox
 repo_name: BentoBoxWorld/BentoBox
