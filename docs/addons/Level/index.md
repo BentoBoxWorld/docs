@@ -141,17 +141,19 @@ This section defines a number of overall settings for the add-on.
 ??? note "deathpenalty"
     Allows to specify the death penalty.
 
-    How many block values a player will lose per death. 
-    Default value of 100 means that for every death, the player will lose 1 level (if levelcost is 100).
-    
+    How many block values the island will lose per death.
+    Default value of 100 means that for every death, the island will lose 1 level (if levelcost is 100).
+
+    Since v2.29.0 deaths are tracked **per island** by Level itself: only deaths that happen in the island's own space, by one of its members, count against it, and they stay with the island even if that member later leaves. See [How does the death penalty work?](#faq) for the full rules and how this interacts with the game mode's `deaths` settings.
+
     Set to zero to not use this feature.
 
     Default: `100`
 
 ??? note "sumteamdeaths"
-    Allows to sum all team members for the death penalty.
+    **Deprecated since v2.29.0.** Level now always counts every death that occurred on the island, regardless of which member died.
 
-    If false, only the leader's deaths counts.
+    The setting is read exactly once per island, when Level migrates the legacy per-world death counts from BentoBox on the first calculation after upgrading. If `true`, the migrated count is the sum of all members' old deaths; if `false`, only the owner's. Leave it at whatever value you had when you upgrade so migrated levels match, then ignore it.
 
     Default: `false`
 
@@ -393,6 +395,29 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 ??? question "Can you add a feature X?"
     Please add it to the list [here](https://github.com/BentoBoxWorld/Level/issues).
 
+??? question "How does the death penalty work?"
+    Since v2.29.0 Level keeps its own death record for every island, separate from BentoBox's per-player death counter. The rules are:
+
+    - A death counts against an island only if it happens **inside that island's space** and the player who died is a **member** of it. Dying in another world, or while visiting someone else's island, counts for nothing.
+    - **Joining a team carries nothing over.** A new member's earlier deaths stay with their own island, so inviting a player who has died a lot does not drop the team's level.
+    - **Leaving or being kicked does not restore the level.** The departed member's deaths on that island are kept as an anonymous count, so the handicap never drops just because a frequently-dying member left. Leaving and rejoining does not double count.
+    - **Island reset or deletion** clears the island's death record.
+    - The handicap is `deaths × deathpenalty` block values, subtracted before the `level-calc` formula runs.
+    - The admin level report (`/[admin_command] level <player>`) breaks the handicap down per member by name, with a separate line for deaths by former members or migrated from the old per-world counter.
+
+    **Game mode `deaths` settings.** Each game mode's `config.yml` has a `deaths` block. After v2.29.0 only two of its settings affect island levels:
+
+    | Setting | Effect on Level |
+    |---|---|
+    | `counted` | Master switch. If `false`, Level records no deaths at all. |
+    | `max` | Caps how many deaths each member can contribute to an island's penalty. |
+    | `team-join-reset` | None. Only affects BentoBox's own counter and the `%[gamemode]_deaths%` placeholder. |
+    | `reset-on-new-island` | None. Level clears an island's own record on reset or deletion. |
+
+    BentoBox's `/[admin_command] deaths set|add|reset` commands change BentoBox's counter, not Level's per-island record, so they no longer affect levels either.
+
+    **Upgrading from an earlier version.** Existing death counts are migrated once per island the first time it is calculated, a member dies on it, or a member leaves. The migrated value reproduces what the old formula would have computed at that moment (using `sumteamdeaths`), so island levels do not change on upgrade.
+
 ??? question "How to make that `level-cost` increases after each level?"
     The `level-cost` setting is a fixed value and cannot be made to increase iteratively per level, because BentoBox calculates island levels by applying a single formula to the total block count — not by iterating level by level.
 
@@ -522,6 +547,21 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     - 🐛 **The value panel's search button no longer stacks duplicate chat prompts.** Every click started another 90-second "Please enter a search value" conversation. If the first prompt was not visible — for example when a chat-managing plugin such as CMI swallowed it — players clicked repeatedly, stacking conversations that later replayed as alternating `Conversation cancelled!` / `Please enter a search value` spam with the GUI re-opening each time. The search input now repeats the question when a conversation is already pending instead of queueing a second one.
 
     [Release v2.28.1](https://github.com/BentoBoxWorld/Level/releases/tag/2.28.1)
+
+??? warning "What's new in v2.29.0 — behaviour change"
+    **Released:** September 2026
+
+    Compatibility: BentoBox API 3.16.0, Minecraft 1.21.x and 26.1.x, Java 21.
+
+    - 🔺 **Deaths are now tracked per island.** Level no longer reads BentoBox's per-player, per-world death counter when calculating. A death counts only if it happens in the island's own space and the player is a member; joining a team carries nothing over; deaths of members who later leave stay with the island; island reset clears the record. This fixes team levels collapsing when a player with a long death history was invited, and bouncing back when they were kicked. See [How does the death penalty work?](#faq).
+    - ⚙️ **`sumteamdeaths` is deprecated.** It is read once per island to migrate the old count and otherwise ignored. Existing levels do not change on upgrade.
+    - 🔺 The game mode's `team-join-reset` and `reset-on-new-island` settings, and the `/[admin_command] deaths` commands, no longer influence levels. `counted` and `max` still do.
+    - The admin level report lists deaths per member by name, plus a line for former-member and migrated deaths.
+    - 🐛 Opening the details panel from the top-ten panel's View button without an island no longer throws an error.
+    - 🐛 The value panel no longer errors on a malformed block key when building an icon.
+    - 🆕 Traditional Chinese (`zh-TW`) locale added. Thanks @qwe664!
+
+    [Release v2.29.0](https://github.com/BentoBoxWorld/Level/releases/tag/2.29.0)
 
 ## Translations
 

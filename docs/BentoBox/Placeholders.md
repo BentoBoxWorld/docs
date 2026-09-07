@@ -78,7 +78,7 @@ All gamemode addons get some default placeholders automatically registered to th
 | %[gamemode]_rank% | Rank the player has on his island | 1.5.0 |
 | %[gamemode]_resets% | Number of times the player has reset his island | 1.5.0 |
 | %[gamemode]_resets_left% | Number of times the player can reset his island | 1.5.0 |
-| %[gamemode]_deaths% | Number of times the player died | 1.12.0 |
+| %[gamemode]_deaths% | Number of times the player died in this game mode, as counted by BentoBox (capped by the game mode's `deaths.max`). This is not the per-island death count used by the Level addon since Level 2.29.0. | 1.12.0 |
 | %[gamemode]_on_island% | Whether the player is on an island he is part of or not | 1.13.0 |
 
 ### Flag placeholders

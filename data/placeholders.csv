@@ -42,7 +42,7 @@ BentoBox,[gamemode]_owns_island,Whether the player is an owner of an island,1.14
 BentoBox,[gamemode]_rank,Rank the player has on his island,1.5.0
 BentoBox,[gamemode]_resets,Number of times the player has reset his island,1.5.0
 BentoBox,[gamemode]_resets_left,Number of times the player can reset his island,1.5.0
-BentoBox,[gamemode]_deaths,Number of times the player died,1.12.0
+BentoBox,[gamemode]_deaths,"Number of times the player died in this game mode, as counted by BentoBox (not the per-island count used by Level 2.29.0+)",1.12.0
 BentoBox,[gamemode]_on_island,Whether the player is on an island he is part of or not,1.13.0
 BentoBox,[gamemode]_island_online_members_count,The number of online island members,2.0.1
 BentoBox,[gamemode]_visited_island_online_members_count,The number of online visited island members,2.0.1
