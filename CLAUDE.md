@@ -4,36 +4,28 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-This is the source repository for the BentoBox main documentation site at **https://docs.bentobox.world**. It is built with [MkDocs](https://www.mkdocs.org/) using the Material theme. When commits are pushed to the `master` branch, [ReadTheDocs.org](https://readthedocs.org/) automatically pulls the changes, builds the site, and publishes the updated documentation live within minutes.
+This is the source repository for the BentoBox main documentation site at **https://docs.bentobox.world**. It is built with [Zensical](https://zensical.org), the successor to Material for MkDocs, which reads the MkDocs-style `mkdocs.yml`. When commits are pushed to the `master` branch, [ReadTheDocs.org](https://readthedocs.org/) automatically pulls the changes, builds the site, and publishes the updated documentation live within minutes.
 
 ## Commands
 
 ### Local Development
 
 ```bash
-# Install dependencies
-pip install -r requirements.txt
+# Install dependencies (Python 3.10+ required)
+pip install -r requirements-zensical.txt
 
 # Serve locally with live reload
-mkdocs serve
+zensical serve
 
 # Build static site
-mkdocs build
+zensical build
 ```
 
-The local server runs at `http://127.0.0.1:8000` by default.
+The local server runs at `http://localhost:8000` by default. `.github/workflows/zensical.yml` runs the same build on every push and PR.
 
-### Alternative build with Zensical (trial)
+### MkDocs fallback
 
-[Zensical](https://zensical.org) is the successor to Material for MkDocs, which reaches end of life on 2026-11-05. It reads the same `mkdocs.yml` and runs the `main.py` macros natively. The repo is kept buildable with both tools; `.github/workflows/zensical.yml` runs a Zensical build on every push and PR. Production (Read the Docs) still uses MkDocs.
-
-```bash
-# Python 3.10+ required
-pip install -r requirements-zensical.txt
-zensical serve   # or: zensical build
-```
-
-Known differences when building with Zensical: the `git-revision-date-localized` plugin is not supported, so the "last updated" line is omitted, and `theme.variant: classic` in `mkdocs.yml` is only read by Zensical (MkDocs ignores it).
+Material for MkDocs reaches end of life on 2026-11-05, but the repo stays buildable with it: `pip install -r requirements.txt && mkdocs build`. Zensical reads the same `mkdocs.yml`. Differences: Zensical does not support the `git-revision-date-localized` plugin (so no "last updated" line), and `theme.variant: classic` is only read by Zensical (MkDocs ignores it). To fall back on Read the Docs, restore the `mkdocs:` section in `.readthedocs.yml` and point it at `requirements.txt`.
 
 ## Architecture
 

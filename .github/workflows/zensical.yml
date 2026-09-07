@@ -1,7 +1,5 @@
-# Trial build with Zensical, run alongside the Read the Docs MkDocs build.
-# Zensical is the successor to Material for MkDocs (which reaches end of life
-# on 2026-11-05). This workflow keeps the repo verified against it so a later
-# switch of the production build is a config change rather than a migration.
+# Builds the site with Zensical, the same tool Read the Docs uses for
+# production (see .readthedocs.yml), and checks the output is sane.
 name: Zensical build
 
 on:
