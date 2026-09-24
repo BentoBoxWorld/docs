@@ -207,3 +207,34 @@ panel_name:
     Be aware, not all options are usable by players.
 
     `action` supports tooltip generation. Tooltips will be always added at the end of the button description and will be in the order of actions.
+
+??? question "What is `fallback` for buttons?"
+    A button may carry a `fallback`: another button definition (or the name of a `reusable`) that is shown when the button itself cannot be, for example a tab that does not apply in the current situation, or a paged slot with nothing left to show. A fallback is a full button, so it may have its own `data` and `actions`, and even its own `fallback`. The settings panels use this to put the tab shown off-island in the same slot as the tab shown on an island.
+    ```yaml
+    2:
+      icon: SHIELD
+      title: protection.panel.PROTECTION.title
+      data:
+        type: TAB
+        tab: PROTECTION
+      fallback:
+        icon: STONE_BRICKS
+        title: protection.panel.WORLD_DEFAULTS.title
+        data:
+          type: TAB
+          tab: WORLD_PROTECTION
+    ```
+    Fallbacks work as of BentoBox 3.23.0; earlier versions skipped the fallback and showed its own fallback instead.
+
+??? question "Which BentoBox panels are customizable?"
+    BentoBox writes these templates to `plugins/BentoBox/panels/` on first start. A game mode addon may ship its own copy of any of them in its own `panels` folder, which is then used for that game mode.
+
+    | File | Panel |
+    | --- | --- |
+    | `island_creation_panel.yml` | Blueprint bundle choice when creating an island |
+    | `island_homes_panel.yml` | `/[player_command] homes` |
+    | `language_panel.yml` | `/[player_command] language` |
+    | `team_panel.yml` and `team_invite_panel.yml` | `/[player_command] team` and its invite screen |
+    | `settings_panel.yml` | `/[player_command] settings`, see [Customizing the Settings Panel](/en/latest/BentoBox/Island-Protection,-Flags-&-Ranks/#customizing-the-settings-panel) |
+    | `admin_settings_panel.yml` | `/[admin_command] settings` |
+    | `placeholder_panel.yml` and `placeholder_list_panel.yml` | The placeholder browser |

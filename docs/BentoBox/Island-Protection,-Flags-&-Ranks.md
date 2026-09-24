@@ -69,6 +69,27 @@ Admins can later unhide the Flag by reiterating the same procedure.
 
 *Player's view of all the basic Flags being allowed to be displayed.*
 
+### Customizing the Settings Panel
+
+!!! new "Added in BentoBox 3.23.0"
+    The Settings Panel is laid out by a template file, like the other [customizable GUIs](/en/latest/Tutorials/generic/Customizable-GUI/).
+
+The layout of the Settings Panel comes from `plugins/BentoBox/panels/settings_panel.yml`, which BentoBox writes on first start. A game mode addon can ship its own copy in its `panels` folder (for example `plugins/BentoBox/addons/BSkyBlock/panels/settings_panel.yml`), and that one is used for that game mode instead. The default file reproduces the panel exactly as it looked before, so nothing changes until you edit it. If the file cannot be read, BentoBox logs an error and shows the built-in panel.
+
+Every button is placed with a `data.type`:
+
+| Type | What it shows |
+| --- | --- |
+| `TAB` | A tab button. `data.tab` is `PROTECTION`, `SETTING`, or `WORLD_PROTECTION` (the read-only view a player gets when not standing on an island). A tab that does not apply is not shown and the button's `fallback` is used instead. |
+| `FLAG` | One slot of the paged flag list. Put as many of these as you want flags per page. With `data.flag: <FLAG_ID>` the slot always shows that flag instead, and the flag leaves the paged list; this is how the lock and change-settings icons are placed. |
+| `MODE` | The display mode switch. Icons can be set per mode with `basic-icon`, `advanced-icon` and `expert-icon` in `data`. |
+| `RESET` | Reset every flag to its default. Only the island owner sees it. |
+| `NEXT`, `PREVIOUS` | Paging. Only shown when there is a page to go to. |
+
+**Title and tab names are separate.** The panel title is the template's `title`, by default the locale entry `panels.settings.title`, which is translated with `[tab]` (the name of the tab being shown) and `[world_name]`. The default is just `[tab]`. Each tab button has its own `title` and `description`, by default the `protection.panel.PROTECTION.title` and similar entries. So you can style the title one way and the tab buttons another, in either the template or the locale.
+
+**Lore layout.** A flag's lore is built from `protection.panel.flag-item.description-layout` (protection flags), `setting-layout` (settings) or `menu-layout` (flags that open a sub-panel) in the locale. As of 3.23.0 these layouts may contain `[ranks]`, where the rank list of a protection flag is inserted, and `[tooltips]`, where the tooltips of the flag button's `actions` in the template are inserted. Without `[ranks]` the rank list is appended after the layout, as before; without `[tooltips]` any tooltips are appended after an empty line. To move the click hints under the rank list, remove them from the layout, put `[ranks]` and `[tooltips]` where you want them, and declare the hints as tooltips on the `flag_button` in the template. A flag button's own `title` and `description` in the template may name a different locale entry to use as the name and lore layout for that panel only.
+
 ![Curse of Vanishing](https://user-images.githubusercontent.com/20014332/80591692-6799b500-8a1e-11ea-9ab8-e076f47d2220.png)
 
 *The "Curse of Vanishing" being applied to one of the Flag.*
@@ -150,6 +171,9 @@ Command cooldowns and teleport warm-up delays can be skipped with:
 ## Admin Settings Panel
 
 The **Admin Settings Panel** is accessible via `/[admin_command] settings` (with no arguments). It contains three tabs:
+
+!!! new "Added in BentoBox 3.23.0"
+    The Admin Settings Panel is laid out by `plugins/BentoBox/panels/admin_settings_panel.yml`, in the same way as the [player's Settings Panel](#customizing-the-settings-panel). Its tab types are `WORLD_SETTING`, `WORLD_DEFAULTS` and `ISLAND_DEFAULTS`; the last two need the `[gamemode].admin.set-world-defaults` permission and are hidden without it. The same file lays out `/[admin_command] settings <player_name>`: each world tab names an island tab (`PROTECTION`, `SETTING`) as its `fallback`, which is what is shown when there is an island.
 
 ### World Settings
 
