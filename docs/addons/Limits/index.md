@@ -267,6 +267,31 @@ Some items cannot be limited (right now). The reasons are usually because there 
     Item frames, glow item frames, and paintings were previously on this list. Since **1.29.0** entity counting is persistent and event-driven, so all three can now be configured under `entitylimits` like any other entity.
 
 
+## For developers: exempting entities
+
+!!! info "Coming in the next release after 1.30.2"
+
+Another plugin or addon can spawn entities that Limits ignores completely. This is useful for temporary mobs such as event waves or minigame NPCs that shouldn't use up an island's entity limits. Tag the entity with the persistent data key `limits:exempt` (any value) **in the spawn consumer**, so the tag is already there when `CreatureSpawnEvent` fires:
+
+```java
+NamespacedKey limitsExempt = NamespacedKey.fromString("limits:exempt");
+world.spawn(location, Zombie.class, zombie ->
+        zombie.getPersistentDataContainer().set(limitsExempt, PersistentDataType.BYTE, (byte) 1));
+```
+
+A tagged entity:
+
+- is never blocked by an entity or group limit
+- is never counted, so it doesn't use up the island's limit
+- doesn't change any counts when it dies, is removed, or goes through a portal
+- is skipped by recounts, both the `calc` command and [automatic recounts](#automatic-entity-recounts)
+
+Untagged entities on the same island are limited as usual. The tag is saved with the entity, so the exemption survives chunk unloads and server restarts. You don't need Limits as a dependency; if you compile against it, `Limits.EXEMPT_KEY` is the same key.
+
+!!! warning "Tag at spawn time only"
+    Add the tag when the entity spawns and never add or remove it afterwards. An entity tagged later has already been counted and won't be decremented when it's removed, and removing the tag later causes the opposite problem. Either way the island's count is wrong until the next recount.
+
+
 ## Changelog
 
 ??? note "What's new in v1.30.2 — automatic entity recounts"
