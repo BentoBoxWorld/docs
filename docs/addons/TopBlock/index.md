@@ -161,6 +161,17 @@ Placeholders are registered separately for each game mode TopBlock has hooked, u
 
 ## Changelog
 
+??? note "What's new in v2.1.2"
+    **Released:** 2026-09-26
+
+    Patch release — no config, locale or data format changes; a drop-in replacement for 2.1.1.
+
+    - 🐛 **No more main-thread database reads during the top ten refresh.** 2.1.1 moved the game mode's island data read off the main thread, but matching each entry to its BentoBox island still ran there. That loaded every offline island from the database on the first refresh after a restart, and ran one existence query per stale AOneBlock/ChunkBlock entry every refresh (a problem on MySQL and other SQL backends). Island lookups now run in the async refresh task, unknown islands are skipped without touching the database, and islands are no longer pulled into BentoBox's cache just to build the top ten.
+
+    If you are still on 2.1.0 and seeing lag spikes every 5 minutes, upgrade now.
+
+    [Release v2.1.2](https://github.com/BentoBoxWorld/TopBlock/releases/tag/2.1.2)
+
 ??? note "What's new in v2.1.1"
     **Released:** 2026-08-27
 

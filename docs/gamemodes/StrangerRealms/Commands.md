@@ -275,8 +275,8 @@ tr>
 <td align='left'>strangerrealms.mod.team</td>
 </tr>
 <tr>
-<td align='left'><b>/stranger setrank <player> <rank></b></td>
-<td align='left'>set a player's rank on their claim</td>
+<td align='left'><b>/stranger setrank <player> <rank> [island owner | x,y,z]</b></td>
+<td align='left'>set a player's rank on their claim - works from the console; the rank can be a keyword (member, sub-owner, trusted, coop), name or number. Name the owner or the centre x,y,z to pick a specific claim</td>
 <td align='left'>strangerrealms.admin.setrank</td>
 </tr>
 <tr>

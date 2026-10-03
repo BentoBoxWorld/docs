@@ -54,10 +54,13 @@ Each entry in the `phases:` list takes these fields:
 | `length` | Number of blocks in the phase. |
 | `enabled` | Optional, defaults to `true`. Set `false` to leave a phase out. |
 | `requiredMinecraftVersion` | Optional. The phase is skipped — taking up no blocks at all — on servers older than this version. |
+| `addedIn` | Optional, shipped index only. The addon version that first shipped the phase. Used once, when upgrading an index written before `shippedPhases` existed, to tell new phases apart from ones an admin removed. |
 
 Start blocks are **computed**: they are the running sum of the lengths of the enabled phases above, starting at 0. That means phases can be reordered freely and a skipped phase collapses out of the progression. After the last phase the block count jumps to `gotoAtEnd`.
 
 A top-level `adminLengths: true` is written automatically the first time you edit a length in `/[admin_command] phases`. From then on reconciliation never recomputes lengths, so your values survive later file additions, renames and upgrades.
+
+A top-level `shippedPhases` list is also written automatically (since 1.28.0). It records every phase this server has been offered from the addon jar. Leave it in place: it is how AOneBlock tells a phase you removed on purpose from a new one shipped in an upgrade.
 
 #### Reconciliation
 
@@ -65,13 +68,14 @@ A top-level `adminLengths: true` is written automatically the first time you edi
     The index is reconciled with the files actually on disk on every load, and on every save from the admin panel, so what `/[admin_command] phases` shows is what your server really runs. Watch the startup log for lines beginning `Phase index:` — they say exactly what was changed.
 
 - An entry whose file was **renamed across addon versions** is re-pointed at your file by phase name, so the phase loads again.
-- An entry whose file is **missing but shipped in the jar** is restored automatically. This is what makes new phases appear on upgraded servers, since files in `phases/` are never overwritten.
+- An entry whose file is **missing but shipped in the jar** is restored automatically, since files in `phases/` are never overwritten.
+- *(1.28.0)* A **phase shipped in a newer addon version** is added once, on the first start after the upgrade, if it is not in the index and not yet in `shippedPhases`. It goes straight after the phase that precedes it in the shipped order, even if you have moved that phase, and its phase and chest files are copied into `phases/`. The log shows `Phase index: added new phase <name>`.
 - **Custom phase files** dropped into the folder are added automatically. A numeric key slots in at its legacy start block; anything else is appended at the end for you to arrange in the panel.
 - Entries whose files are gone for good are removed with a warning, so the panel never lists phases that do not exist.
 - When repair was needed, lengths are recomputed from your files' legacy start-block keys, preserving the layout your server actually ran before the index existed — unless `adminLengths` is set.
 
 !!! warning "Deleting a phase"
-    To remove a phase permanently, delete its files, or toggle it off in `/[admin_command] phases`. Deleting only its index entry does not work — reconciliation re-adds any phase file it finds in the folder.
+    To remove a phase permanently, delete its index entry **and** its files; because it is already listed in `shippedPhases`, it will not come back on later upgrades. To just turn a phase off, toggle it off in `/[admin_command] phases`. Deleting only its index entry does not work — reconciliation re-adds any phase file it finds in the folder.
 
     A malformed index falls back to the old direct file loading, so a bad edit cannot leave the addon stuck.
 
@@ -518,14 +522,14 @@ By default, BentoBox GameMode addons comes with [default placeholders set](../..
     Please add it to the list [here](https://github.com/BentoBoxWorld/AOneBlock/issues).
 
 ??? question "What phases are there?"
-    There are 20 shipped phases, in this order: Plains, Underground, Winter, Ocean, Jungle, Swamp, Dungeon, Desert, The Nether, Plenty, Desolation, Deep Dark, The End, Lush Caves, Dripstone Caves, Mangrove Swamp, Meadow, Cherry Grove, Jagged Peaks, and Sulfur Caves.
+    There are 21 shipped phases, in this order: Plains, Underground, Winter, Ocean, Jungle, Swamp, Dungeon, Desert, The Nether, Plenty, Desolation, Deep Dark, The End, Lush Caves, Dripstone Caves, Mangrove Swamp, Meadow, Cherry Grove, Jagged Peaks, Sulfur Caves, and Dappled Forest.
 
     Each phase features a set of blocks, items, and mobs appropriate for the setting.
 
-    Sulfur Caves requires Minecraft 26.2 or later. On older servers it is skipped and Jagged Peaks runs to the loop point instead. You can reorder, disable and resize phases yourself with `/[admin_command] phases`, and add your own phase files to the `phases` folder.
+    Sulfur Caves requires Minecraft 26.2 or later, and Dappled Forest requires Minecraft 26.3 or later. On older servers they are skipped and take up no blocks, so the previous phase runs to the loop point instead. You can reorder, disable and resize phases yourself with `/[admin_command] phases`, and add your own phase files to the `phases` folder.
 
 ??? question "How many blocks are there in all the phases?"
-    15,500 blocks with the shipped phases on a Minecraft 26.2+ server, or 15,000 without the Sulfur Caves phase.
+    16,000 blocks with the shipped phases on a Minecraft 26.3+ server, 15,500 on 26.2 (no Dappled Forest), or 15,000 on older servers (no Sulfur Caves either).
 
 ??? question "What happens after the last phase?"
     The phases repeat — the block count jumps back to the `gotoAtEnd` value in `phases_index.yml`, which is 0 by default.
@@ -923,3 +927,17 @@ AOneBlock has some custom events that are called only in AOneBlock. But BentoBox
     - 🔡 **Traditional Chinese (`zh-TW`) completed** by @qwe664 — the 26 keys missing since 1.27.0 added and terminology revised.
 
     [Release v1.27.1](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.27.1)
+
+!!! warning "What's new in v1.28.0 — Dappled Forest phase added on first start"
+    **Released:** 2026-09-26
+
+    Compatibility: BentoBox API 3.22.0+ · Minecraft 26.x or 1.21.5+ (Sulfur Caves needs 26.2+, Dappled Forest needs 26.3+) · Java 25.
+
+    - 🍂 **Dappled Forest phase** for Minecraft 26.3. It follows Sulfur Caves for 500 blocks, so the loop back to Plains moves from block 15500 to 16000. Poplar logs, yellow, orange and red poplar leaves (persistent, so they don't decay), leaf litter, red shrubs and wool stairs in all 16 colours; sheep, pigs, chickens, cows, rabbits and foxes plus the usual hostile mobs; chests with poplar saplings, shelf mushrooms, cushions, straw beds, a copper axe, an iron spear and more. On servers older than 26.3 the phase is skipped and takes up no blocks.
+    - 🔺 **New phases now reach existing servers.** `phases_index.yml` gains a `shippedPhases` list, and a phase shipped in a later version is added to the index once, straight after the phase before it in the shipped order. Phases you removed stay removed. See [Reconciliation](#reconciliation).
+    - 🐛 The block-break handler no longer throws a NullPointerException when no phase covers the current block count (for example a `gotoAtEnd` below the first phase, or phase files that failed to load). AOneBlock logs an error with the island and block number and cancels the break, so the magic block isn't lost.
+    - ⚙️ The comments on the `deaths` settings in `config.yml` now explain which settings still affect island levels under [Level](../../addons/Level/index.md) 2.29.0. Only comments changed.
+
+    🔺 **Dappled Forest is added to your phase order on the first start** (log: `Phase index: added new phase Dappled Forest`) and its files are copied into `phases/`. Your existing order, lengths and enabled flags are not changed. If you don't want it, disable it in `/[admin_command] phases`.
+
+    [Release v1.28.0](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.28.0)

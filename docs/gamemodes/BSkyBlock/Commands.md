@@ -131,8 +131,8 @@
 <td align='left'>bskyblock.mod.team</td>
 </tr>
 <tr>
-<td align='left'><b>/bsbadmin setrank <player> <rank></b></td>
-<td align='left'>set a player's rank on their island</td>
+<td align='left'><b>/bsbadmin setrank <player> <rank> [island owner | x,y,z]</b></td>
+<td align='left'>set a player's rank on their island - works from the console; the rank can be a keyword (member, sub-owner, trusted, coop), name or number. Name the owner or the centre x,y,z to pick a specific island</td>
 <td align='left'>bskyblock.admin.setrank</td>
 </tr>
 <tr>

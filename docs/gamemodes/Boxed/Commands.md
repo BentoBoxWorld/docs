@@ -64,6 +64,11 @@ All the commands are the same as other game modes, like BSkyBlock.
 <td align='left'></td>
 </tr>
 <tr>
+<td align='left'><b>/boxadmin place <structure> [x y z] [rotation] [mirror] [NO_MOBS]</b></td>
+<td align='left'>place a structure from the seed world into the current box; use ~ for the current coordinate. NO_MOBS (3.4.1+) suppresses the structure's built-in mobs. /boxadmin place undo removes the last placement</td>
+<td align='left'>boxed.commands.boxadmin.place</td>
+</tr>
+<tr>
 <td align='left'><b>/boxadmin range</b></td>
 <td align='left'>Admin island range command</td>
 <td align='left'></td>
@@ -129,8 +134,8 @@ All the commands are the same as other game modes, like BSkyBlock.
 <td align='left'>boxed.admin.register</td>
 </tr>
 <tr>
-<td align='left'><b>/boxadmin setrank <player> <rank></b></td>
-<td align='left'>set a player's rank on their island</td>
+<td align='left'><b>/boxadmin setrank <player> <rank> [island owner | x,y,z]</b></td>
+<td align='left'>set a player's rank on their island - works from the console; the rank can be a keyword (member, sub-owner, trusted, coop), name or number. Name the owner or the centre x,y,z to pick a specific island</td>
 <td align='left'></td>
 </tr>
 <tr>
