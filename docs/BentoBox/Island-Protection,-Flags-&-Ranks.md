@@ -59,6 +59,9 @@ The display mode can be changed by clicking on the ingot in the top-right corner
 
 ![Expert Protection Flags](https://user-images.githubusercontent.com/20014332/80592793-4df96d00-8a20-11ea-891e-8833578642e4.png)
 
+!!! new "Changed in BentoBox 3.23.3"
+    The Settings Panel remembers the display mode each player last chose and opens in it the next time. One mode is shared by the Protection and Settings tabs. If a tab has no flags to show in the chosen mode, it shows the next mode up without changing the player's choice. The admin settings panel always opens in `EXPERT`.
+
 ### Hide Flags
 
 As of [BentoBox 1.4.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.4.0), admins can hide Flags in the GUI by opening the Settings Panel and ++shift+left-button++ on the icon of the Flag they want to hide.
@@ -68,6 +71,14 @@ Admins can later unhide the Flag by reiterating the same procedure.
 ![Default flags](https://user-images.githubusercontent.com/20014332/80591609-45a03280-8a1e-11ea-9e37-4725d62cdb3c.png)
 
 *Player's view of all the basic Flags being allowed to be displayed.*
+
+![Curse of Vanishing](https://user-images.githubusercontent.com/20014332/80591692-6799b500-8a1e-11ea-9ab8-e076f47d2220.png)
+
+*The "Curse of Vanishing" being applied to one of the Flag.*
+
+![A bunch of hidden flags](https://user-images.githubusercontent.com/20014332/80591757-839d5680-8a1e-11ea-8864-83b09252a7b9.png)
+
+*Player's view of the basic Flags, with the "trapdoor" Flag being hidden.*
 
 ### Customizing the Settings Panel
 
@@ -90,13 +101,53 @@ Every button is placed with a `data.type`:
 
 **Lore layout.** A flag's lore is built from `protection.panel.flag-item.description-layout` (protection flags), `setting-layout` (settings) or `menu-layout` (flags that open a sub-panel) in the locale. As of 3.23.0 these layouts may contain `[ranks]`, where the rank list of a protection flag is inserted, and `[tooltips]`, where the tooltips of the flag button's `actions` in the template are inserted. Without `[ranks]` the rank list is appended after the layout, as before; without `[tooltips]` any tooltips are appended after an empty line. To move the click hints under the rank list, remove them from the layout, put `[ranks]` and `[tooltips]` where you want them, and declare the hints as tooltips on the `flag_button` in the template. A flag button's own `title` and `description` in the template may name a different locale entry to use as the name and lore layout for that panel only.
 
-![Curse of Vanishing](https://user-images.githubusercontent.com/20014332/80591692-6799b500-8a1e-11ea-9ab8-e076f47d2220.png)
+### Command Ranks
 
-*The "Curse of Vanishing" being applied to one of the Flag.*
+The **Command Ranks** icon on the Settings tab opens a panel where the island owner chooses the lowest [rank](#ranks) that may use each team command, for example who may invite, kick, or set the island's name. **Left-** and **right-clicking** a command cycles through the ranks, as for a Protection Flag. Operators can hide a command from players with ++shift+left-button++, the same way as [hiding a Flag](#hide-flags).
 
-![A bunch of hidden flags](https://user-images.githubusercontent.com/20014332/80591757-839d5680-8a1e-11ea-8864-83b09252a7b9.png)
+As of BentoBox 3.23.3 a player only sees the commands they have permission to use. If you deny a command's permission on your server, for example `[gamemode].island.border`, it no longer appears in this panel either. Previously only the top-level command was checked, so sub-commands the player could not run were still listed.
 
-*Player's view of the basic Flags, with the "trapdoor" Flag being hidden.*
+#### Customizing the Command Ranks panel
+
+!!! new "Added in BentoBox 3.23.3"
+    The Command Ranks panel is laid out by a template file, like the [Settings Panel](#customizing-the-settings-panel).
+
+The layout comes from `plugins/BentoBox/panels/command_ranks_panel.yml`, which BentoBox writes on first start. A game mode addon can ship its own copy in its `panels` folder, and that one is used for that game mode instead. The default file keeps the panel looking as it did before: a map for each command, no filler, and only as many rows as the commands need. If the file cannot be read, BentoBox shows the built-in panel.
+
+Every button is placed with a `data.type`:
+
+| Type | What it shows |
+| --- | --- |
+| `COMMAND` | One slot of the paged command list. Put as many of these as you want commands per page; the default has 45. |
+| `NEXT`, `PREVIOUS` | Paging. Only shown when there is a page to go to. |
+
+The built-in panel stopped at 49 commands, so any beyond that were never shown. The template pages instead.
+
+How a command is drawn can be changed on the `command_button` in the template's `reusable` section:
+
+- `icon` replaces the default `MAP`.
+- `title` is a locale entry (or text) used as the name layout instead of `protection.panel.flag-item.name-layout`. `[name]` is the command, e.g. `/island sethome`.
+- `description` is a locale entry (or text) used as the lore layout instead of `protection.panel.flag-item.description-layout`. `[description]` is the command's text from `protection.panel.flag-item.command-instructions`. The rank list is added after it.
+- `actions` only add tooltips, which are added after the rank list. The clicks themselves always work as described above. The default layout already includes the click hints.
+
+For example, to show each command as paper and fill the empty slots:
+
+```yaml
+command_ranks_panel:
+  title: protection.flags.COMMAND_RANKS.name
+  type: INVENTORY
+  background:
+    icon: LIGHT_BLUE_STAINED_GLASS_PANE
+    title: "&b&r"
+  force-shown: 6
+  content:
+    # ... rows of command_button, and the paging buttons, as in the default file
+  reusable:
+    command_button:
+      icon: PAPER
+      data:
+        type: COMMAND
+```
 
 ## Ranks
 
