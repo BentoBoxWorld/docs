@@ -103,8 +103,8 @@
 <td align='left'>skygrid.mod.team</td>
 </tr>
 <tr>
-<td align='left'><b>/sgadmin setrank <player> <rank></b></td>
-<td align='left'>set a player's rank on their area</td>
+<td align='left'><b>/sgadmin setrank <player> <rank> [island owner | x,y,z]</b></td>
+<td align='left'>set a player's rank on their area - works from the console; the rank can be a keyword (member, sub-owner, trusted, coop), name or number. Name the owner or the centre x,y,z to pick a specific area</td>
 <td align='left'>skygrid.admin.setrank</td>
 </tr>
 <tr>

@@ -139,6 +139,19 @@ Placeholders can be found [here](Placeholders).
 
 ## Changelog
 
+??? note "What's new in v3.4.1"
+    **Released:** 2026-09-25
+
+    A maintenance release. Requires BentoBox **3.17.0** or newer. Compatibility: Paper 1.21.x – 26.x · Java 21.
+
+    - 🐛 **No more `contloc out of spec` crash on enable.** On first boot an explorer map rolled from a loot chest could search far outside the seed area, where continentalness drops below -1.2, and BentoBox skipped Boxed. Out-of-range values now fall into the outermost bands.
+    - 🐛 **`/boxadmin place ... NO_MOBS` works.** The 7th argument was rejected before it could be read; it is now accepted and no longer carries over into later placements.
+    - 🐛 A missing pair of parentheses picked the wrong biome in some erosion level 5 seed areas. Only seed worlds generated after the upgrade are affected.
+    - ⚙️ Clearer `area.deaths` comments in `config.yml`, explaining which death settings affect island levels under [Level](../../addons/Level/index.md) 2.29.0 and which only affect BentoBox's death counter and `%boxed_deaths%`. Only comments changed.
+    - Releases are now also published to CurseForge and Hangar.
+
+    [Release v3.4.1](https://github.com/BentoBoxWorld/Boxed/releases/tag/3.4.1)
+
 ??? note "What's new in v3.4.0"
     **Released:** 2026-05-30
 
