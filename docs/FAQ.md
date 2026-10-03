@@ -129,6 +129,25 @@ In the Boxed `config.yml` there is a `structures` list. Removing entries from th
 
 Multiverse generally works with most gamemodes, **except Boxed and Poseidon**, which require their own world generator to be set in `bukkit.yml`. If you use Multiverse with one of those, the world won't generate correctly. MyWorlds is a popular alternative.
 
+### Why can't other plugins find my BentoBox worlds at startup?
+
+BentoBox creates and loads its own gamemode worlds. When it registers them with Multiverse, it sets `auto-load: false` so that Multiverse does not load them first. The catch is timing: BentoBox loads its worlds on the first server tick, **after** every plugin has finished enabling. A plugin that expects all worlds to exist once Multiverse has enabled (holograms, NPCs, warps, anything that loads saved locations at startup) will not find the BentoBox worlds and may fail to load data in them.
+
+If you hit this, let Multiverse load the worlds early by turning auto-load on for each BentoBox world, including the nether and end:
+
+```
+/mv modify bskyblock_world set auto-load true
+/mv modify bskyblock_world_nether set auto-load true
+/mv modify bskyblock_world_the_end set auto-load true
+```
+
+Use your own world names. They are listed in `plugins/Multiverse-Core/worlds.yml`.
+
+BentoBox only sets `auto-load: false` the first time it registers a world, so your setting is kept across restarts. This needs BentoBox 3.23.3 or later. Versions 3.22.0 to 3.23.1 reset it to `false` on every startup.
+
+!!! warning "Not for Boxed"
+    Only do this for gamemodes whose world generator is ready before Multiverse enables, such as BSkyBlock, AcidIsland, CaveBlock and AOneBlock. Do **not** do it for Boxed: its generator depends on seed worlds that BentoBox has to create first, so a Boxed world loaded early by Multiverse will not generate correctly.
+
 ## Mobs, spawning and entities
 
 ### Why do my fish, dolphins or squid only spawn near bedrock at y -63?
