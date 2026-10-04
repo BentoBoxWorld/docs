@@ -37,6 +37,7 @@ Each game mode has its own admin command. For BSkyBlock it's `/bsb`, for AcidIsl
 | `/[admin] delete` | *(3.19.0)* With no player argument, soft-deletes the island you are **standing on** after confirmation (refused if it still has a team) |
 | `/[admin] undelete` | *(3.19.0)* Clears the pending-deletion status of the island you are **standing on**, leaving it unowned, before its region files are purged |
 | `/[admin] register <player>` | Registers an unowned island to a player. On an island pending deletion this now shows a confirmation prompt and cancels the deletion instead of refusing |
+| `/[admin] setrank <player> <rank> [island owner | x,y,z]` | *(3.23.0)* Sets a team member's rank; works from the console. The rank can be a keyword (`member`, `sub-owner`, `trusted`, `coop`, or any addon rank without the `ranks.` prefix), the translated rank name, or its number, case-insensitively; an unknown rank lists the valid ones. With no island argument it acts on the island the player is a *member* of (not one they own), so it cannot demote an owner. Name the island's owner, or its centre as `x,y,z`, to choose a specific island. The `owner`, `mod` and `admin` ranks are refused — use `team setowner` to transfer ownership |
 | `/[admin] setrange <player> <range>` | Changes a player's island protection range |
 | `/[admin] range removebonus <player> [id]` | Removes all bonus protection ranges from a single island, or just those for a given id |
 | `/[admin] range purgebonus <id>` | Removes a bonus range id from **every** island in the world — ideal after uninstalling an addon that granted bonus ranges. The scan runs asynchronously so it won't freeze large servers |
@@ -106,7 +107,47 @@ This reloads BentoBox and all addons, including locales. Note that some changes 
 
 ## Changelog
 
-!!! note "What's new in v3.22.4"
+!!! note "What's new in v3.23.3 — obsidian dupe fix & Command Ranks template"
+    **Released:** 2026-10-03
+
+    A bug-fix and panels release. No `config.yml` or locale changes. Compatibility: Paper Minecraft 1.21.5 – 26.3, Java 25+.
+
+    - 🐛 **Obsidian scooping dupe fixed.** With OBSIDIAN_SCOOPING, the lava was handed out one tick after the click without re-checking, so mining the obsidian in that tick gave both the obsidian and the lava, and moving the bucket out of the hand could give lava without using a bucket. Both are now re-checked first. **Updating is recommended for every server with OBSIDIAN_SCOOPING enabled.**
+    - ⚙️ **Customisable Command Ranks panel.** Laid out by the new `panels/command_ranks_panel.yml` (written on first start; a game mode's own copy takes precedence), with `COMMAND`, `NEXT` and `PREVIOUS` buttons. It now pages at 45 commands — the old panel silently dropped every command after the 49th. See [Customizing the Command Ranks panel](../Island-Protection,-Flags-&-Ranks.md#customizing-the-command-ranks-panel).
+    - ✨ **Settings panel improvements.** `/island settings` opens in the Basic/Advanced/Expert mode the player last chose, and the Protection and Settings tabs share one mode (the admin panel still opens in Expert). Command Ranks hides sub-commands the player has no permission for (ops still see everything). The Break Spawners icon no longer shows vanilla's spawn egg tooltip.
+    - 🐛 **Multiverse `auto-load` respected.** Since 3.22.0 the Multiverse hook reset `auto-load: false` on every BentoBox world at every startup. It is now set only when BentoBox first imports a world; existing Multiverse entries are left as configured.
+    - 🧩 **Addon API:** the admin `deaths set|add|remove|reset` commands fire `PlayerDeathsChangedEvent` (world, player, action, amount, old and new counts), so Level can follow admin changes. It is not fired for natural deaths.
+
+    [Release v3.23.3](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.23.3)
+
+??? note "What's new in v3.23.1 — Minecraft 26.3 & template-driven settings panels"
+    **Released:** 2026-09-25
+
+    Compatibility: Paper Minecraft 1.21.5 – 26.3, Java 25+.
+
+    - 🎮 **Minecraft 26.3 "Wilderness Bound" support.** The new cushions are protected by existing flags — placing needs PLACE_BLOCKS, hitting or shooting needs BREAK_BLOCKS, and sitting needs RIDING — and straw beds are protected by BED, so visitors can no longer sleep in (and use up) an island's straw beds. No new flags. At release, Paper 26.3 was only available as alpha builds (tested on build 41).
+    - ⚙️🔡 **Customisable settings panels.** `/island settings` and `/admin settings` are built from `panels/settings_panel.yml` and `panels/admin_settings_panel.yml`, written on first start. Tab layout, pinned flags, the panel title and the order of a flag's lore can be customised; the defaults look exactly like the old panels. See [Customizing the Settings Panel](../Island-Protection,-Flags-&-Ranks.md#customizing-the-settings-panel).
+    - 🐛 **Deleted islands no longer count against a player.** After a reset or `/[admin] delete`, the island stayed in the per-player index until restart, which blocked transfers ("player already owns N islands") and confused `/[admin] delete`.
+    - 🐛 A template button's `fallback:` record now renders correctly.
+
+    🔡 **Locale note.** One new key, `panels.settings.title`, sets the settings panel title separately from the tab names. Custom locale files without it fall back to the bundled text. The flag lore layout (`protection.panel.flag-item.description-layout`) can now use the `[ranks]` and `[tooltips]` placeholders, but is unchanged unless you opt in.
+
+    [Release v3.23.1](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.23.1)
+
+??? note "What's new in v3.23.0 — console-ready setrank"
+    **Released:** 2026-09-19
+
+    Compatibility: Paper Minecraft 1.21.x – 26.2, Java 25+.
+
+    - 🔡 **`/[admin] setrank` works from the console.** New syntax `/[admin] setrank <player> <rank> [island owner | x,y,z]`, backwards compatible. Ranks can be given by keyword, translated name or number; the right island is picked when the player owns one island and is a member of another; and an island can be named by its centre. Tab completion was off by one and is fixed. The affected player is told their rank changed — see the [command table](#per-game-mode-admin-commands) above.
+    - 💡 **Behaviour change:** with no island argument, `setrank` now acts on the island the player is a *member* of rather than their own island, so it can no longer accidentally demote an owner. Setting `owner` is refused with a pointer to `setowner`.
+    - 🐛 **Metadata console spam fixed.** Player and island metadata maps are now thread-safe. A corrupted map previously threw `NoSuchElementException` on every player move (seen via Border) until restart.
+
+    🔡 **Locale note.** `commands.admin.setrank` gained `cannot-set-owner`, `already-rank` and `admin-changed-rank`; `unknown-rank` now takes `[rank]` and `[ranks]`. All 24 bundled locales are updated; add the new keys to any custom locale file.
+
+    [Release v3.23.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.23.0)
+
+??? note "What's new in v3.22.4"
     **Released:** 2026-09-06
 
     A bug-fix and performance release. Compatibility: Paper Minecraft 1.21.x – 26.2, Java 25+.

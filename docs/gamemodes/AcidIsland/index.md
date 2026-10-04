@@ -178,6 +178,18 @@ Other addons can hook into the geyser offering mechanic with two events, both ad
 
 ## Changelog
 
+??? note "What's new in v2.1.2 — sulfur vents on Minecraft 26.3"
+    **Released:** 2026-09-25
+
+    A bug-fix release for Minecraft 26.3. No config or locale changes. Compatibility: BentoBox API 3.14.0 · Minecraft 1.21.5 – 26.3 (sulfur sea and geysers need 26.2+) · Java 21.
+
+    - 🐛 **Sulfur vents generate intact on 26.3.** Vanilla biome decoration ran after AcidIsland built the sea and overwrote every vent cap, leaving plain sulfur with no bubbling, gas or geysers, plus one `ServerInternalException ... PotentSulfurBlockEntity` warning per vent. Vents are now placed after decoration.
+    - ⚙️ The `deaths` comments in `config.yml` now explain which settings affect island levels under [Level](../../addons/Level/index.md) 2.29.0. No settings or defaults changed.
+
+    🔺 **Only newly generated chunks are fixed.** Vents in chunks already generated on 26.3 keep their plain caps. Because vents are now placed later, a given seed puts vents in different spots than in 2.1.1.
+
+    [Release v2.1.2](https://github.com/BentoBoxWorld/AcidIsland/releases/tag/2.1.2)
+
 !!! warning "What's new in v2.1.1 — vents trade instead of gamble (delete `geyser-loot.yml`)"
     **Released:** 2026-07-26
 

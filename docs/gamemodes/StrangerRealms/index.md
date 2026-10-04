@@ -90,6 +90,15 @@ Permissions can be found [here](Permissions).
 
     **Compatibility:** BentoBox API 3.9.0+, Minecraft 1.21.10+, Java 21.
 
+??? note "What's new in v1.0.6 — Paper 26.3 fix"
+    **Released:** 2026-09-26
+
+    See the full notes: [Release 1.0.6](https://github.com/BentoBoxWorld/StrangerRealms/releases/tag/1.0.6)
+
+    - 🐛 **No more sculk sensor warnings when the Upside Down is created on Paper 26.3.** Vanilla cave carvers ran after StrangerRealms placed its sculk sensors and replaced some with lava, and Paper logged a `ServerInternalException` (*"Trying to set block entity SculkSensorBlockEntity ..."*) for each one. Sensors are now placed by a block populator after carvers and decoration. Density is unchanged, and already-generated chunks are not changed.
+
+    **Compatibility:** BentoBox API 3.9.0+, Minecraft 1.21.10+ (including 26.1.x, 26.2 and 26.3), Java 21.
+
 ## Translations
 
 {{ translations("StrangerRealms") }}
