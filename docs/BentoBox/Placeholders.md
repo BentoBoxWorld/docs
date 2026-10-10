@@ -112,6 +112,7 @@ Gamemodes and Addons can also bring their own placeholders. We highly recommend 
 - Addons
     - [Bank](../../addons/Bank/#placeholders)
     - [Challenges](../../addons/Challenges/#placeholders)
+    - [IslandStats](../../addons/IslandStats/#placeholders)
     - [Level](../../addons/Level/#placeholders)
     - [Likes](../../addons/Likes/#placeholders)
     - [Limits](../../addons/Limits/#placeholders)
