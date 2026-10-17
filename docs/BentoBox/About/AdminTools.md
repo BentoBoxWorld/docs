@@ -107,7 +107,18 @@ This reloads BentoBox and all addons, including locales. Note that some changes 
 
 ## Changelog
 
-!!! note "What's new in v3.23.3 — obsidian dupe fix & Command Ranks template"
+!!! note "What's new in v3.23.4 — safe End arrival & inventory use in panels"
+    **Released:** 2026-10-17
+
+    A bug-fix release. No `config.yml`, locale or panel template changes. Compatibility: Paper Minecraft 1.21.5 – 26.3, Java 25+.
+
+    - 🐛 **End portal no longer drops players into the void.** With `create-obsidian-platform: false`, the player was sent straight to the portal destination whether or not there was a floor. Unsafe End arrivals now go to the nearest safe spot, then the highest block, then a pod. Repeat portal events while the player stands in the portal are cancelled, so they are not sent to the vanilla End spawn. Arrivals that are already safe still teleport instantly, and nothing changes when the platform is on. Safe-spot pods now place the player in the centre of the block.
+    - ✨ **Use your own inventory while a panel is open.** Players can pick up, place, swap and drop items (Q / Ctrl+Q) and use bundles in their own inventory while a BentoBox panel such as `/island settings` is open. Shift-clicks, double-click collecting and drags that touch a panel slot stay blocked, so items cannot end up in the panel.
+    - 🧩 **Addon API:** `PanelListener` has a new default method, `allowsPlayerInventoryClicks()`, which returns `false`, so panels with a listener (such as icon pickers in Challenges and Biomes) behave as before. Return `true` to opt in. See [Templated Panel](../../Tutorials/api/Templated-Panel.md#listener-method). `Addon.getConfig()` now returns an empty configuration instead of `null` when the addon has no `config.yml`, so `saveConfig()` no longer throws.
+
+    [Release v3.23.4](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.23.4)
+
+??? note "What's new in v3.23.3 — obsidian dupe fix & Command Ranks template"
     **Released:** 2026-10-03
 
     A bug-fix and panels release. No `config.yml` or locale changes. Compatibility: Paper Minecraft 1.21.5 – 26.3, Java 25+.

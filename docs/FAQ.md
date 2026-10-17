@@ -119,6 +119,8 @@ To enable linking nether portals you need to find option in gamemode config: `cr
 
 To enable creating proper end obsidian platform (like in vanilla end) you need to find option `create-obsidian-platform` and set it to `true`.
 
+If `create-obsidian-platform` is `false`, BentoBox (3.23.4 and later) checks where a player arrives in the End. If there is no floor, it sends them to the nearest safe spot, then the highest block, and builds a small pod if there is neither, so players cannot fall into the void.
+
 Be aware, that enabling these options opens the same exploits with unlimitated obsidian generation that original Minecraft has.
 
 ### How do I disable structure generation in Boxed?
