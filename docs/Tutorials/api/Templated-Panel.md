@@ -96,6 +96,7 @@ The `TemplatedPanelBuilder` class is part of the BentoBox API, designed to facil
 - `listener(PanelListener listener)`: Adds a `PanelListener` to the panel for handling user interactions. Returns the `TemplatedPanelBuilder` instance for chaining.
 - Listeners are not required as functionality for moving to another tab, or reacting to a click is handled within the API.
 - You may only need a Listener if you need some custom functionality.
+- By default, a panel with a listener cancels every click in the player's own inventory and passes it to `onInventoryClick`, which lets a panel react to those clicks, for example to pick an icon. Since BentoBox 3.23.4, override `allowsPlayerInventoryClicks()` to return `true` to let players pick up, place, swap, drop items and use bundles in their own inventory while the panel is open. Those clicks are then left to vanilla and are not passed to `onInventoryClick`. Shift-clicks, double-click collecting and drags onto panel slots are always blocked. Panels without a listener always allow inventory use.
 
 ### Type Builder Registration
 
