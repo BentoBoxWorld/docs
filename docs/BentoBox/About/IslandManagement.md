@@ -30,7 +30,7 @@ Players can set multiple home locations on their island with `/island sethome`. 
 Since BentoBox 3.21.0, `/island go <name>` no longer needs an exact, case-sensitive match. The typed name is resolved in decreasing order of confidence:
 
 1. An exact match on an island or home name.
-2. A match ignoring case, colour codes and extra whitespace — so `myisland` finds `MyIsland` and a stray double space is forgiven.
+2. A match ignoring case, colour codes and extra whitespace — so `myisland` finds `MyIsland` and a stray double space is forgiven. Since 3.23.5, underscores also count as spaces, so `happy_place` finds `Happy Place`.
 3. A unique case-insensitive prefix — `hom` finds `Home`.
 
 Anything still ambiguous falls through to the usual list of destinations rather than guessing, and the resolved canonical name is used for the teleport so named homes stay accurate.

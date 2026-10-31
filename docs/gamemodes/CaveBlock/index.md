@@ -162,6 +162,23 @@ Addon introduces 1 BentoBox Settings flag:
 
 ## Changelog
 
+??? note "What's new in v1.23.2"
+    **Released:** 2026-10-19
+
+    A maintenance release. Compatibility: BentoBox API 3.14+, Minecraft 1.21.x, Java 21.
+
+    - 🐛 **`/[admin_command] reload` now confirms it worked.** The reload always reloaded `config.yml`, but silently. It now sends a message, which also explains that changes only apply to newly generated chunks and that the world name, dimensions and command aliases need a server restart.
+    - 🐛 **`world.world-depth` changes apply on reload.** Players are no longer blocked at the old cave ceiling until a restart; the height limit follows the reloaded setting straight away.
+    - 🔡 **Slimmer locale files.** `en-US.yml` now uses a `prefixes` section (island → cave, and so on) that BentoBox substitutes into its default strings, replacing about 125 copied overrides. CaveBlock now shows BentoBox's current wording. Indonesian (`id`) and Romanian (`ro`) are now fully translated, and `cave-limit-reached` was added to several other locales.
+    - **Easier `lush` starter cave.** The `lush` blueprint was reworked because it was too hard to survive in.
+    - ⚙️ **Clearer `deaths` comments** in `config.yml`, explaining how each setting interacts with [Level 2.29.0's per-cave death tracking](../../addons/Level/index.md#faq). No keys or values changed.
+
+    🔡 **Locale note:** to switch to the slimmer files, back up any customizations, delete `plugins/BentoBox/locales/CaveBlock/` and restart.
+
+    🔺 **Lush blueprint note:** blueprints are only copied from the jar when the blueprints folder does not exist, so existing servers keep the old `lush` cave. To use the new one, copy `blueprints/lush.blueprint` from the jar into `plugins/BentoBox/addons/CaveBlock/blueprints/` and restart. Existing caves are not changed.
+
+    [Release v1.23.2](https://github.com/BentoBoxWorld/CaveBlock/releases/tag/1.23.2)
+
 ??? note "What's new in v1.23.1"
     **Released:** 2026-07-09
 
