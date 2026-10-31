@@ -107,7 +107,19 @@ This reloads BentoBox and all addons, including locales. Note that some changes 
 
 ## Changelog
 
-!!! note "What's new in v3.23.4 — safe End arrival & inventory use in panels"
+!!! note "What's new in v3.23.5 — Sulfur Cube TNT protection & `/island go` underscores"
+    **Released:** 2026-10-31
+
+    A bug-fix release. No `config.yml`, locale or panel template changes. Compatibility: Paper Minecraft 1.21.5 – 26.3, Java 25+.
+
+    - 🔺 **Sulfur Cube explosions now follow the TNT flags.** A Sulfur Cube that had absorbed TNT exploded as itself rather than as primed TNT, so it was not checked against `TNT_DAMAGE` and could destroy builds on islands with TNT damage turned off. Its explosions now follow `TNT_DAMAGE` on islands and `WORLD_TNT_DAMAGE` off-island, for both block and entity damage. A player lighting a Sulfur Cube with flint and steel or a fire charge is checked against `TNT_PRIMING`, as for a TNT block. Ignition by redstone, dispensers or other explosions has no player, so `TNT_PRIMING` cannot apply, but the explosion still follows `TNT_DAMAGE`. Servers older than Minecraft 26.2 have no Sulfur Cube, so nothing changes there.
+    - 🐛 **`/island go` treats underscores as spaces.** `/island go happy_place` now finds a home named `Happy Place`. An exact match still wins, and a name that matches more than one destination is rejected rather than guessed. See [Finding the right home](IslandManagement.md#finding-the-right-home).
+
+    **AOneBlock note:** AOneBlock ships with `TNT_DAMAGE: true` by default, so Sulfur Cube explosions there still do damage unless you set it to `false`.
+
+    [Release v3.23.5](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.23.5)
+
+??? note "What's new in v3.23.4 — safe End arrival & inventory use in panels"
     **Released:** 2026-10-17
 
     A bug-fix release. No `config.yml`, locale or panel template changes. Compatibility: Paper Minecraft 1.21.5 – 26.3, Java 25+.

@@ -414,7 +414,13 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     | `team-join-reset` | None. Only affects BentoBox's own counter and the `%[gamemode]_deaths%` placeholder. |
     | `reset-on-new-island` | None. Level clears an island's own record on reset or deletion. |
 
-    BentoBox's `/[admin_command] deaths set|add|reset` commands change BentoBox's counter, not Level's per-island record, so they no longer affect levels either.
+    **Admin deaths commands.** Since v2.30.0 (with BentoBox 3.23.3 or later), the game mode's `/[admin_command] deaths set|add|remove|reset <player>` commands also change the player's deaths on **every island they are a member of** in that game mode. Islands where they are only trusted or coop are not changed.
+
+    - **add** adds to the player's count on the island, up to `deaths.max`.
+    - **remove** takes from the player's own count first, then from the island's anonymous deaths (former members or migrated). The total never goes below 0.
+    - **set** and **reset** set the player's count and also **clear the island's anonymous deaths**. Other current members' counts are not changed. Use `add` or `remove` to change only one player's count.
+
+    On v2.29.0, or on a BentoBox older than 3.23.3, these commands only change BentoBox's own counter and do not affect levels.
 
     **Upgrading from an earlier version.** Existing death counts are migrated once per island the first time it is calculated, a member dies on it, or a member leaves. The migrated value reproduces what the old formula would have computed at that moment (using `sumteamdeaths`), so island levels do not change on upgrade.
 
@@ -562,6 +568,19 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     - 🆕 Traditional Chinese (`zh-TW`) locale added. Thanks @qwe664!
 
     [Release v2.29.0](https://github.com/BentoBoxWorld/Level/releases/tag/2.29.0)
+
+??? warning "What's new in v2.30.0 — admin deaths commands change island deaths"
+    **Released:** 2026-10-31
+
+    Compatibility: BentoBox API 3.16.0 (3.23.3+ needed for the deaths commands), Minecraft 1.21.x and 26.1.x – 26.3, Java 21.
+
+    - 🔺 **`/[admin_command] deaths` commands work on island levels again.** In 2.29.0 they only changed BentoBox's counter, so an admin could set a player to 0 deaths and `/[player_command] level` still showed the old number. `set`, `add`, `remove` and `reset` now apply to every island the player is a member of. See [How does the death penalty work?](#faq).
+    - 🔺 **`set` and `reset` clear former members' deaths.** Running either on any member of a team island also clears deaths left by former members and deaths migrated from before 2.29.0.
+    - 🔺 **Needs BentoBox 3.23.3 or later.** On an older BentoBox, Level logs a note at startup and behaves as in 2.29.0.
+    - ⚙️ The `deathpenalty` comment in `config.yml` describes this. The setting itself has not changed.
+    - Built and tested against Paper 26.3; Minecraft 26.2 and 26.3 are listed as supported.
+
+    [Release v2.30.0](https://github.com/BentoBoxWorld/Level/releases/tag/2.30.0)
 
 ## Translations
 

@@ -59,6 +59,9 @@ This section lists block limits for specific worlds. You must name the world spe
 
 This section lists the default entity limits within a player's island space (protected area and to island limit). A limit of 5 will allow up to 5 entities. Affects all types of creature spawning. Also includes entities like MINECARTS. As of **1.28.2**, entity limits apply independently per dimension, so the nether and end are now counted and limited correctly (this fixes the long-standing bug where nether/end counts reset to zero on chunk unload).
 
+!!! tip "Cushions (1.31.0, Minecraft 26.3+)"
+    Cushions can be limited like any other entity, for example `CUSHION: 10`. They can also be limited with permissions (`<gamemode>.island.limit.CUSHION.<number>`) and used in entity groups. Cushions placed before 1.31.0 were never counted, so run `/[admin_command] limits calc <player>` on islands that already have some.
+
 ### entitylimits-nether / entitylimits-end
 
 Optional sections that override the `entitylimits` defaults for the nether or the end respectively. They are commented out in the default config; uncomment and add entries to set dimension-specific entity limits.
@@ -269,7 +272,7 @@ Some items cannot be limited (right now). The reasons are usually because there 
 
 ## For developers: exempting entities
 
-!!! info "Coming in the next release after 1.30.2"
+!!! info "Since 1.31.0"
 
 Another plugin or addon can spawn entities that Limits ignores completely. This is useful for temporary mobs such as event waves or minigame NPCs that shouldn't use up an island's entity limits. Tag the entity with the persistent data key `limits:exempt` (any value) **in the spawn consumer**, so the tag is already there when `CreatureSpawnEvent` fires:
 
@@ -293,6 +296,19 @@ Untagged entities on the same island are limited as usual. The tag is saved with
 
 
 ## Changelog
+
+??? note "What's new in v1.31.0 — cushion limits & exempt entities"
+    **Released:** 2026-10-31
+
+    Compatibility: BentoBox API 2.7.1 · Paper Minecraft 1.21.11 – 26.3 · Java 21. No config or locale changes.
+
+    - 🐛 **Cushion limits are enforced.** A `CUSHION` entry in `entitylimits` was loaded but never enforced. Placing a cushion is now checked against the limit (with the usual message and `mod.bypass` handling) and counted, and the count stays correct across chunk loads and `calc` recounts. The limits panel shows a cushion icon. Fixes [#307](https://github.com/BentoBoxWorld/Limits/issues/307).
+    - ✨ **Plugins can exempt their own entities.** An entity tagged with the persistent data key `limits:exempt` is never blocked or counted. See [For developers: exempting entities](#for-developers-exempting-entities). Fixes [#304](https://github.com/BentoBoxWorld/Limits/issues/304).
+    - Built against Paper 26.3 and BentoBox 3.23.1. The jar still targets Java 21 and loads on servers older than 26.3.
+
+    **Existing cushions:** cushions placed before this update were never counted. Run `/[admin_command] limits calc <player>` on islands that already have some, or they can go over the limit by that many.
+
+    [Release v1.31.0](https://github.com/BentoBoxWorld/Limits/releases/tag/1.31.0)
 
 ??? note "What's new in v1.30.2 — automatic entity recounts"
     **Released:** 2026-09-06
