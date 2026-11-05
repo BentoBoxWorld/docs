@@ -126,4 +126,4 @@ Natural and spawner mob spawning is decided in this order. The first rule that m
 Spawns caused directly by a player, such as breeding, spawn eggs or building a golem, are never gated by any of these.
 
 !!! note "Where the allow list is stored"
-    Unlike the other world settings, the allow list is not in the game mode's `config.yml`. BentoBox stores it itself, one record per game mode, in its database: with the default flat-file database it is `plugins/BentoBox/database/WorldSettings/<GameMode>.yml`. It is seeded with `IRON_GOLEM` the first time the game mode is seen; after that only the admin's edits in the panel apply. Clearing the record restores the seed.
+    Unlike the other world settings, the allow list is not in the game mode's `config.yml`. BentoBox stores it itself, one record per game mode, in its database: with the default flat-file database it is `plugins/BentoBox/database/CoreWorldSettings/<GameMode>.json`. It is seeded with `IRON_GOLEM` the first time the game mode is seen; after that only the admin's edits in the panel apply. Clearing the record restores the seed.
