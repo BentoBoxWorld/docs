@@ -92,6 +92,7 @@ These settings apply to the whole game mode world. Only admins can change them, 
 
 | Setting | What it does | Default |
 |---|---|---|
+| **Always-allowed entity types** | Entities that spawn no matter what the animal and monster spawning flags say, on islands and in the world. Use it to let village iron farms work on a server, or an island, that has animal spawning turned off. Iron Golem is allowed by default. The block list (*Global mob spawning*) still wins. See [Mob spawning precedence](#mob-spawning-precedence). | Iron Golem |
 | **Chest explosion damage** | Protects chests from being destroyed by explosions (Creepers, TNT, Withers, Ghasts). Prevents grief but means chests can be used to make explosion-proof rooms. | On |
 | **Clean Super Flat** | If the world generator stops working, new chunks generate as flat grass. This setting detects and repairs those chunks. Leave it off unless you have this problem — it is resource-intensive. | Off |
 | **Coarse Dirt Tilling** | Prevents players from converting coarse dirt into regular dirt using a hoe. Dirt is scarce and valuable in most game modes; coarse dirt tilling can be exploited to generate it cheaply if gravel is easy to obtain. | Off (prevention on) |
@@ -113,3 +114,16 @@ These settings apply to the whole game mode world. Only admins can change them, 
 | **Spawner type protection** | Prevent players from changing the mob type of spawner blocks using spawn eggs. Useful when spawners are given as rewards. | On |
 | **Tree growth boundary** | Prevent trees from growing beyond the island protection boundary. Without this, trees can intrude on other islands or create unreachable blocks. | On |
 | **Wither damage** | Limit the destruction the Wither can cause on and between islands. | On |
+
+### Mob spawning precedence
+
+Natural and spawner mob spawning is decided in this order. The first rule that matches wins.
+
+1. **Global mob spawning** block list (`protection.block-mobs` in the game mode config). A blocked type never spawns.
+2. **Always-allowed entity types** allow list. An allowed type spawns regardless of the flags below.
+3. The island's **Animal natural spawn**, **Monster natural spawn**, **Animal spawners spawn** and **Monster spawners spawn** settings, or the world's defaults for those flags when there is no island.
+
+Spawns caused directly by a player, such as breeding, spawn eggs or building a golem, are never gated by any of these.
+
+!!! note "Where the allow list is stored"
+    Unlike the other world settings, the allow list is not in the game mode's `config.yml`. BentoBox stores it itself, one record per game mode, in its database: with the default flat-file database it is `plugins/BentoBox/database/WorldSettings/<GameMode>.yml`. It is seeded with `IRON_GOLEM` the first time the game mode is seen; after that only the admin's edits in the panel apply. Clearing the record restores the seed.

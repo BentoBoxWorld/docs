@@ -1,5 +1,6 @@
 source,flag,name,icon,description,type,mode,default,min,max
 BentoBox,ALLAY,"Allay interaction",AMETHYST_SHARD,"Allow giving and taking items to/from Allay",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,ALLOW_MOBS,"Always-allowed entity types",IRON_INGOT,"Entities that always spawn, even when animal or monster spawning is off. Overrides the island and world spawning flags; the Limit entity type spawning block list still wins. Stored by BentoBox per game mode and seeded with Iron Golem.",WORLD_SETTING,EXPERT,false,,
 BentoBox,ANIMAL_NATURAL_SPAWN,"Animal natural spawn",APPLE,"Toggle natural animal spawning",SETTING,EXPERT,true,,
 BentoBox,ANIMAL_SPAWNERS_SPAWN,"Animal spawners",SPAWNER,"Toggle animal spawning with spawners",SETTING,EXPERT,true,,
 BentoBox,ANVIL,"Anvils",ANVIL,"Toggle interaction",PROTECTION,BASIC,MEMBER_RANK,VISITOR_RANK,OWNER_RANK

@@ -230,6 +230,9 @@ The **Admin Settings Panel** is accessible via `/[admin_command] settings` (with
 
 Toggles world-level setting flags that apply across the entire game world.
 
+!!! new "Added in BentoBox 3.23.6"
+    The **Always-allowed entity types** item (iron ingot) opens a list of every living entity type. Green types spawn even when animal or monster spawning is off, on any island or in the world; Iron Golem is green by default so village iron farms keep working. The **Global mob spawning** block list still takes priority. The list is stored by BentoBox, not in the game mode's `config.yml`; see [Mob spawning precedence](../About/Protections.md#mob-spawning-precedence). Requires `[gamemode].admin.settings.ALLOW_MOBS`.
+
 ### World Default Protection
 
 Controls which protection flags are active outside of any island boundaries (i.e. for visitors in the wilderness).
