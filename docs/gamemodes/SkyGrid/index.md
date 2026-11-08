@@ -33,6 +33,22 @@ Commands can be found [here](Commands).
 
 Placeholders can be found [here](Placeholders).
 
+## Changelog
+
+??? warning "What's new in v2.2.4 — world generation fix"
+    **Released:** 2026-11-05
+
+    Compatibility: BentoBox API 3.3.1 · Minecraft 1.21.x (tested on Paper 26.3) · Java 21.
+
+    - 🔺 **Grid no longer full of stone and grass.** Vanilla terrain was generated underneath the grid and vanilla surface generation replaced blocks with grass. Grid spots now only get blocks from your config. [PR #88](https://github.com/BentoBoxWorld/SkyGrid/pull/88)
+    - 🔺 **Chunks no longer repeat.** Every chunk started from the same random sequence, so the same pattern repeated every 16 blocks. Each chunk now gets its own. [PR #88](https://github.com/BentoBoxWorld/SkyGrid/pull/88)
+    - **Sugar cane now has water.** It sits in a small sandstone basin so the water stays put. Basin water can freeze in cold biomes. [PR #89](https://github.com/BentoBoxWorld/SkyGrid/pull/89)
+    - **Cactus and dead bushes no longer float.** They now stand on sand on top of sandstone. [PR #89](https://github.com/BentoBoxWorld/SkyGrid/pull/89)
+
+    🔺 **Existing worlds:** already-generated chunks don't change, so there will be a visible mismatch where old and new chunks meet. For a consistent grid, delete your SkyGrid worlds and let them regenerate — **this removes every island in those worlds**, so plan it with your players and back up first.
+
+    [Release v2.2.4](https://github.com/BentoBoxWorld/SkyGrid/releases/tag/2.2.4)
+
 ## Translations
 
 {{ translations("SkyGrid") }}

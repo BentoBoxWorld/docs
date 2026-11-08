@@ -19,6 +19,21 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 ## Commands
 There is a user command and an admin command called "limits". Admins can check the limits of a specific island owner. Both show a GUI panel with the limits and the current count.
 
+Counts can be rebuilt from what is actually on the island:
+
+| Command | Description |
+|---|---|
+| `/[player_command] limits recount` | Recount the player's own island. |
+| `/[admin_command] limits calc <player>` | Recount a player's island (blocks and entities). |
+| `/[admin_command] limits calc <player> entities` | (**1.32.0+**) Recount entities only for a player's island; block counts are left untouched. |
+| `/[admin_command] limits calc all` | (**1.32.0+**) Queue every owned island in the world for a recount. |
+| `/[admin_command] limits calc all entities` | (**1.32.0+**) Recount entities only on every owned island. Much cheaper, and the quickest fix for wiped mob counts. |
+
+Recounts run strictly one island at a time in the background, and the player `recount` and admin `calc` commands share one queue. Asking to recount an island that is already queued reports that the recount is in progress. With `calc all`, the admin is told how many islands were queued, then how many finished and how many timed out.
+
+!!! tip "Fixing wiped entity counts"
+    Run `/[admin_command] limits calc all entities` once (e.g. `/bsbadmin limits calc all entities`) to rebuild entity counts on every island in a game mode. To keep them correct afterwards, turn on the [automatic recounts](#automatic-entity-recounts).
+
 ## Setup - Config.yml
 
 The config.yml has the following sections:
@@ -34,12 +49,30 @@ The config.yml has the following sections:
 * entitylimits-end
 * entitygrouplimits
 
-It also has these top-level toggles (all added in **1.29.0** unless noted): `apply-member-limit-perms`, `show-limit-messages`, `stacked-plants-count-as-one`, and `log-limits-on-join`.
+It also has these top-level toggles (all added in **1.29.0** unless noted): `shared-dimension-limits` (**1.33.0**), `apply-member-limit-perms`, `show-limit-messages`, `stacked-plants-count-as-one`, and `log-limits-on-join`.
 
 !!! info "Per-dimension limits (1.28.2+)"
-    As of **1.28.2**, block counts, entity counts, limits, and offsets are tracked **independently for the overworld, nether, and end**. A single limit defined in `blocklimits` or `entitylimits` applies separately to each dimension — e.g. `HOPPER: 10` allows 10 hoppers in the overworld, 10 in the nether, and 10 in the end (30 total across the island). Use the optional `-nether` / `-end` sections to override a single dimension.
+    As of **1.28.2**, block counts, entity counts, limits, and offsets are tracked **independently for the overworld, nether, and end**. Unless [`shared-dimension-limits`](#shared-dimension-limits) is on, a single limit defined in `blocklimits` or `entitylimits` applies separately to each dimension — e.g. `HOPPER: 10` allows 10 hoppers in the overworld, 10 in the nether, and 10 in the end (30 total across the island). Use the optional `-nether` / `-end` sections to override a single dimension.
 
     On first load after upgrading, your existing single-dimension data is migrated automatically into the **overworld** slot. The on-disk format changes, so take a backup before upgrading and note that downgrading afterwards is not supported.
+
+### shared-dimension-limits
+
+!!! info "Since 1.33.0"
+    When `true`, each block, entity and group limit covers the **whole island** — overworld, nether and end together — instead of applying separately in each dimension. `HOPPER: 10` then means 10 hoppers in total, wherever they are. The limits panel shows a single "All dimensions" tab with island-wide totals.
+
+Counts are still kept per dimension behind the scenes, so the setting can be switched on or off at any time with no recount and no data change.
+
+When limits are shared, the island's overworld limits apply to the island as a whole:
+
+- **These apply:** `blocklimits`, `entitylimits`, the entity and block group limits, the overworld entry under `worlds:`, all-dimension and overworld permissions (`<gamemode>.island.limit.<KEY>.<NUMBER>` and `<gamemode>.island.limit.overworld.<KEY>.<NUMBER>`), and offsets.
+- **These are ignored:** the `-nether` and `-end` config sections, nether and end entries under `worlds:`, and nether-only or end-only permissions. A warning is logged at startup for each ignored config section.
+- **Placeholders:** the `_limit`, `_base_limit` and `reached_limits` placeholders report the shared limit and the island-wide total. The dimension-suffixed `_count` placeholders still show each dimension's own count.
+
+Default: `true` for new installs. A `config.yml` from before 1.33.0 has no such line, so it keeps separate limits per dimension until you add `shared-dimension-limits: true`.
+
+!!! warning "Check your limits before switching on"
+    A shared limit is effectively a third of what the same number allowed before, if players were using all three dimensions. An island that is already over a shared limit keeps everything it has, but can't place or spawn more until it is back under the limit. You may want to raise some limits when you turn this on. Also note that deleting `config.yml` to regenerate it turns shared limits **on**; set it to `false` to keep separate limits.
 
 ### blocklimits
 
@@ -296,6 +329,32 @@ Untagged entities on the same island are limited as usual. The tag is saved with
 
 
 ## Changelog
+
+??? note "What's new in v1.33.0 — shared limits across dimensions"
+    **Released:** 2026-11-07
+
+    Compatibility: BentoBox API 2.7.1 · Paper Minecraft 1.21.11 – 26.3 · Java 21.
+
+    - ⚙️🔡 **Share limits across island dimensions.** The new [`shared-dimension-limits`](#shared-dimension-limits) setting makes each block, entity and group limit cover the overworld, nether and end together. New installs have it on; existing servers keep separate limits until the admin adds `shared-dimension-limits: true` to `config.yml`. Fixes [#310](https://github.com/BentoBoxWorld/Limits/issues/310).
+    - 🔡 **Panel title fixed in other languages.** Every language except English showed a literal `[sort]` in the limits panel title. It now shows the dimension name. No locale regeneration needed.
+    - 🔡 **`calc all` messages translated** into every language; picked up automatically on restart.
+
+    🔺 A shared limit is effectively a third of what the same number allowed before if players use all three dimensions — check your limits before switching it on. Regenerating `config.yml` turns it on.
+
+    [Release v1.33.0](https://github.com/BentoBoxWorld/Limits/releases/tag/1.33.0)
+
+??? note "What's new in v1.32.0 — accurate recounts & calc all"
+    **Released:** 2026-11-02
+
+    Compatibility: BentoBox API 2.7.1 · Paper Minecraft 1.21.11 – 26.3 · Java 21. No config changes.
+
+    - 🐛 **Recounts no longer miss mobs in unloaded chunks.** Chunks loaded for a recount could unload before the count finished, so their mobs were counted as zero and the island's counts went down. This mostly affected `calc` on offline players' islands and `recount-on-join` when the owner logged in away from their island. Recounts now keep each chunk loaded (without ticking) until its entities are counted, 100 chunks at a time per world.
+    - 🔡 **`calc all` and `entities`.** `/[admin_command] limits calc all` queues every owned island for a recount; add `entities` to rebuild entity counts only. `entities` also works for one player: `calc <player> entities`. See [Commands](#commands).
+    - **Recount command fixes:** `recount` and `calc` no longer leave a background task running forever and now share one queue; recounting an already-queued island says it is in progress; a partial recount interrupted by a server stop is discarded instead of saved; the timeout message now displays; the unknown-player message shows the typed name.
+
+    🔡 The `calc` help text and two new messages (`admin.limits.calc.all-queued`, `admin.limits.calc.all-finished`) were added to the locale files. Missing messages fall back to English.
+
+    [Release v1.32.0](https://github.com/BentoBoxWorld/Limits/releases/tag/1.32.0)
 
 ??? note "What's new in v1.31.0 — cushion limits & exempt entities"
     **Released:** 2026-10-31
