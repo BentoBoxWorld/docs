@@ -107,7 +107,25 @@ This reloads BentoBox and all addons, including locales. Note that some changes 
 
 ## Changelog
 
-!!! note "What's new in v3.23.5 — Sulfur Cube TNT protection & `/island go` underscores"
+!!! note "What's new in v3.23.6 — always-allowed entity types & blueprint loading fix"
+    **Released:** 2026-11-07
+
+    No `config.yml` changes. Compatibility: Paper Minecraft 1.21.5 – 26.3, Java 25+.
+
+    - 🔡 **Always-allowed entity types (`ALLOW_MOBS`).** A new world setting in each game mode's admin settings panel (iron ingot icon) lists entity types that spawn even when animal or monster spawning is off, at world and island level. Iron Golem is on the list by default, so village iron farms keep working. The **Limit entity type spawning** block list still wins if a type is on both. Permission: `[gamemode].admin.settings.ALLOW_MOBS`. See [Mob spawning precedence](Protections.md#mob-spawning-precedence).
+    - 🔺 **"All blueprints loaded" could fail to fire.** With several game modes loading blueprints at once, BentoBox could miss a completion and never reach its ready state, so addon `allLoaded()` hooks, ready-gated commands and `BentoBoxReadyEvent` never ran. Fixed, along with four related main-thread/async races.
+    - 📊 **bStats:** failed commands now report the locale key the player saw as the reason and are counted per server; a new `worldSize` chart reports the on-disk size of island worlds as a bracket.
+    - Fixed a spurious first-run `File not found` log from the new core world settings store.
+
+    🔺 **Iron farms:** where animal spawning was turned off to stop golems, golems will spawn again. Remove Iron Golem from "Always-allowed entity types" to restore the old behaviour.
+
+    🔺 **New data store:** the allow list is saved per game mode by BentoBox, not in the game mode's `config.yml` — `plugins/BentoBox/database/CoreWorldSettings/<GameMode>.json` on flat-file, the `WorldSettings` table on SQL/Mongo.
+
+    🔡 **Locale note:** new keys under `protection.flags.ALLOW_MOBS` (`name`, `description`, `always`, `flags`). Custom locale files without them show the key names.
+
+    [Release v3.23.6](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.23.6)
+
+??? note "What's new in v3.23.5 — Sulfur Cube TNT protection & `/island go` underscores"
     **Released:** 2026-10-31
 
     A bug-fix release. No `config.yml`, locale or panel template changes. Compatibility: Paper Minecraft 1.21.5 – 26.3, Java 25+.
