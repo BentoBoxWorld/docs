@@ -3,59 +3,114 @@
 [TOC]
 
 ## Introduction
-Player (and even Environment, such as entities, pistons...) interactions with islands are ruled by a set of **Flags** that **determine *who* or *what* can do what on an island**. These Flags are mostly handled and provided by BentoBox, yet addons (e.g. [Greenhouses](https://github.com/BentoBoxWorld/Greenhouses)) can add their own.
 
-See a list of flags [here](/en/latest/BentoBox/Flags).
+Everything a player (or the environment: pistons, mobs, fire, explosions…) can do in a BentoBox game world is controlled by **Flags**. Each flag covers one kind of action, such as breaking blocks, opening chests or hurting animals. Most flags come with BentoBox. Addons such as [Greenhouses](https://github.com/BentoBoxWorld/Greenhouses) can add more.
 
-## Settings Panel
+See the [list of flags](Flags.md) for every flag, its icon and its default.
 
-The **Settings Panel** is the GUI in which the island owner is able to edit how the Flags are configured for his island. Other players, including island members, are only able to view them.
+There are three types of flag:
 
-This GUI can be opened using the following command: `/[player_command] settings` (which requires the following permission: `[gamemode].island.settings`).
+| Type | What it controls | Who changes it |
+| --- | --- | --- |
+| **Protection** | Which [rank](#ranks) may do an action, e.g. *Break blocks*. On an island it is a rank. Off an island it is on or off for everyone. | The island owner on their island. Admins for the world and for new islands. |
+| **Setting** | An island-wide on/off switch, e.g. *PVP* or *Animal spawning*. | The island owner. |
+| **World setting** | A switch for the whole game world, e.g. *Creeper damage*. | Admins only. |
+
+### On an island, off an island, and new islands
+
+The most common confusion is that one protection flag can have **three different values**, depending on where the player is standing and which island is meant:
+
+| Question | Where it is set | Panel tab |
+| --- | --- | --- |
+| What rank may do this on **this island**? | That island's settings | `/[player_command] settings` → **Protection** |
+| What may anyone do **outside any island** in this world? | The world's protection flags (`world.flags` in the game mode's `config.yml`) | `/[admin_command] settings` → **World Protections** |
+| What rank will a **new island** start with? | `world.default-island-flags` in the game mode's `config.yml` | `/[admin_command] settings` → **Island Defaults** |
+
+Changing one never changes the others. In particular, **Island Defaults has no effect outside islands**, and **World Protections has no effect on islands**.
+
+### Where an island ends
+
+An island's protection does not cover its whole grid square. Islands are placed `distance-between-islands` apart, but each one is only protected within its **protection range**, a square of `protection-range` blocks out from the island's centre in each direction. The range can be raised per island with `/[admin_command] range` or the `[gamemode].island.range.<number>` permission.
+
+Anywhere outside a protection range counts as **off-island**, even if it is inside an island's grid square. That includes the void between islands, the area around the world spawn if it is not an island, and the wilderness in game modes such as Boxed. Off-island, the [World Protections](#world-protections) apply.
+
+## Ranks
+
+Every player has a rank on each island: owner, member, visitor and so on. A protection flag sets the **lowest rank allowed** to do the action. Anyone at that rank or higher is allowed. Ranks are numbers, so higher means more trusted:
+
+| Rank | Value | Who has it |
+| --- | --- | --- |
+| Banned | -1 | Players banned from the island. They cannot enter it. |
+| Visitor | 0 | Anyone who is not part of the island. |
+| Coop | 200 | Players added with `/[player_command] team coop`. Removed when every team member has logged off. |
+| Trusted | 400 | Players added with `/[player_command] team trust`. Kept across logins. |
+| Member | 500 | Team members. |
+| Sub-owner | 900 | Team members promoted with `/[player_command] team promote`. |
+| Owner | 1000 | The island owner. |
+| Mod | 5000 | Not given to players. Reserved. |
+| Admin | 10000 | Not given to players. Reserved. |
+
+So a flag set to *Member* lets members, sub-owners and the owner do the action, but not trusted players, coops or visitors. A flag set to *Visitor* lets everyone do it.
+
+Addons can register more ranks between these.
+
+Admins can see or change a player's rank with `/[admin_command] getrank <player>` and `/[admin_command] setrank <player> <rank>`.
+
+## Island Settings Panel
+
+The **Settings Panel** is where an island owner configures their island. Open it with `/[player_command] settings` (permission `[gamemode].island.settings`). Everyone on the island can view it. Only the owner can change it, along with any rank the owner allows with the **Change settings** flag (the crafting table, top row).
 
 ![Default view of the Settings Panel](https://user-images.githubusercontent.com/20014332/80591492-1689c100-8a1e-11ea-9a59-c55f35ab6ad9.png)
 
 *Default view of the Settings Panel.*
 
-Admins can change the settings of a player's island by using the admin settings command: `/[admin_command] settings <player_name>`
+The panel shows the island whose area the player is standing in, or their own island if they are elsewhere. Admins can open any player's island with `/[admin_command] settings <player_name>`.
 
 ### Protection Tab
 
-The **Protection Tab** is the tab displayed upon opening the Setting Panel. It includes the **Protection Flags**.
+The **Protection** tab is shown first and lists the island's **protection flags**.
 
-**Protection Flags** are Flags that can be set by [rank](#ranks). By **left-** or **right-clicking** on the icon of a Flag, the island owner will cycle through the various ranks so that the interaction the Flag is ruling will be allowed or disallowed depending on the rank of a player.
+**Left-click** a flag to raise the rank it needs and **right-click** to lower it. The lore lists the ranks and highlights the current one. Going past *Owner* wraps around to *Visitor*, and the other way round.
 
 ![Example of a Protection Flag](https://user-images.githubusercontent.com/20014332/62974085-b31c1c80-be17-11e9-8b27-2fd4bf54ae87.png)
 
 *Example of a Protection Flag.*
 
-By default, most of the Protection Flags are set to allow only island members (or above rank) to do the interaction. However, some are initially allowed for visitors too. See [the gamemode's config.yml].
+A new island starts with the ranks set on the [Island Defaults](#island-defaults) tab. Most flags start at *Member*, so visitors can look but not touch. A few start lower so visitors can use them. For example, *Lock* starts at *Visitor*, which means the island is open to visitors.
 
 ![Example of a Protection Flag which is, by default, allowing visitors to do the interaction.](https://user-images.githubusercontent.com/20014332/62974359-553c0480-be18-11e9-8679-0033fd8bf8bd.png)
 
 *Example of a Protection Flag which is, by default, allowing visitors to do the interaction.*
 
-Admins can set how protections will work outside of island boundaries by using the admin settings command: `/[admin_command] settings`
-
 ### Settings Tab
+
+The **Settings** tab lists the island's **setting flags**: on/off switches for the island as a whole, such as PVP, fire spread, leaf decay and mob spawning. Click a setting to toggle it.
+
+Each setting also needs the permission `[gamemode].settings.<FLAG_ID>` (or `[gamemode].settings.*`). This lets a server take a setting away from players completely, for example to stop them turning PVP off. Some settings, such as PVP, have a cooldown between changes.
+
+This tab also has the [Command Ranks](#command-ranks) icon.
+
+### World Protection view
+
+!!! new "Added in BentoBox 3.22.0"
+
+A player who has no island in the world, and is not standing in another island's area, sees a read-only **World Protections** tab instead. It shows what anyone may do off-island, as set by the admin on the [World Protections](#world-protections) tab. It is for information only and cannot be changed from here.
 
 ### Display mode
 
-As of [BentoBox 1.6.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.6.0), various amounts of Flags can be displayed in the Settings Panel, depending on the **display mode**.
-It is either `BASIC`, `ADVANCED` or `EXPERT`.
-The display mode can be changed by clicking on the ingot in the top-right corner of the Settings Panel.
+Depending on the **display mode**, the Settings Panel shows more or fewer flags. The mode is `BASIC`, `ADVANCED` or `EXPERT`. Change it by clicking the ingot in the top-right corner of the panel.
 
-![Changing the display mode](https://user-images.githubusercontent.com/20014332/80592558-f0652080-8a1f-11ea-9b7a-eaf3d585b753.png).
+![Changing the display mode](https://user-images.githubusercontent.com/20014332/80592558-f0652080-8a1f-11ea-9b7a-eaf3d585b753.png)
 
-`BASIC` is the default display mode and features the Flags we deem essential to manage the island.
+`BASIC` is the default and shows the flags most players need.
 
 ![Basic Protection Flags](https://user-images.githubusercontent.com/20014332/80592424-b98f0a80-8a1f-11ea-94f5-3b2246b6ae61.png)
 
-`ADVANCED` features more Flags to allow further customization of the island.
+`ADVANCED` shows more flags for finer control.
 
 ![Advanced Protection Flags](https://user-images.githubusercontent.com/20014332/80592698-24d8dc80-8a20-11ea-93d5-3b1b8dbcd18d.png)
 
-`EXPERT` features all the available Flags. There are so many that it requires additional pages.
+`EXPERT` shows every flag and needs extra pages.
 
 ![Expert Protection Flags](https://user-images.githubusercontent.com/20014332/80592793-4df96d00-8a20-11ea-891e-8833578642e4.png)
 
@@ -64,9 +119,9 @@ The display mode can be changed by clicking on the ingot in the top-right corner
 
 ### Hide Flags
 
-As of [BentoBox 1.4.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.4.0), admins can hide Flags in the GUI by opening the Settings Panel and ++shift+left-button++ on the icon of the Flag they want to hide.
-This will apply a "Curse of Vanishing" enchantment to the icon and will result in the corresponding Flag being hidden to the players.
-Admins can later unhide the Flag by reiterating the same procedure.
+Operators can hide a flag from players: open the Settings Panel and ++shift+left-button++ the flag's icon. The icon gets a "Curse of Vanishing" glint, and players no longer see the flag. Do the same again to show it. Hidden flags are stored in `world.hidden-flags` in the game mode's `config.yml`.
+
+Hiding a flag only removes it from the panel. The flag keeps its current value and is still enforced. To make sure players cannot change a flag, set its value first, then hide it.
 
 ![Default flags](https://user-images.githubusercontent.com/20014332/80591609-45a03280-8a1e-11ea-9e37-4725d62cdb3c.png)
 
@@ -149,19 +204,79 @@ command_ranks_panel:
         type: COMMAND
 ```
 
-## Ranks
+## Admin Settings Panel
 
-TODO.
+Run `/[admin_command] settings` with **no arguments** while in the game world to open the **Admin Settings Panel** (permission `[gamemode].admin.settings`). It has three tabs. They control the world and new islands, not any existing island.
 
-* BANNED: -1 (partially unused)
-* VISITOR: 0
-* COOP: 200
-* TRUSTED: 400
-* MEMBER: 500
-* SUB-OWNER: 900
-* OWNER: 1000
-* MOD: 5000 (unused)
-* ADMIN: 10000 (unused)
+!!! tip
+    Each game mode has its own admin command and its own settings. Run the command for the game mode you want to change, e.g. `/bsbadmin settings` for BSkyBlock or `/acid settings` for AcidIsland.
+
+!!! new "Added in BentoBox 3.23.0"
+    The Admin Settings Panel is laid out by `plugins/BentoBox/panels/admin_settings_panel.yml`, in the same way as the [player's Settings Panel](#customizing-the-settings-panel). Its tab types are `WORLD_SETTING`, `WORLD_DEFAULTS` and `ISLAND_DEFAULTS`; the last two need the `[gamemode].admin.set-world-defaults` permission and are hidden without it. The same file lays out `/[admin_command] settings <player_name>`: each world tab names an island tab (`PROTECTION`, `SETTING`) as its `fallback`, which is what is shown when there is an island.
+
+Changes made in these tabs are saved to the game mode's `config.yml` straight away.
+
+### World Settings
+
+The first tab lists the **world setting** flags: switches that apply to the whole game world, on and off islands, such as *Creeper damage*, *Offline redstone* or *Visitor keep inventory*. Click a flag to turn it on or off. Each needs the permission `[gamemode].admin.world.settings.<FLAG_ID>`, which operators have.
+
+World settings can also be set from the console or chat:
+
+```
+/[admin_command] settings <FLAG_ID> <Active|Disabled>
+```
+
+!!! new "Added in BentoBox 3.23.6"
+    The **Always-allowed entity types** item (iron ingot) opens a list of every living entity type. Green types spawn even when animal or monster spawning is off, on any island or in the world; Iron Golem is green by default so village iron farms keep working. The **Global mob spawning** block list still takes priority. The list is stored by BentoBox, not in the game mode's `config.yml`; see [Mob spawning precedence](About/Protections.md#mob-spawning-precedence). Requires `[gamemode].admin.settings.ALLOW_MOBS`.
+
+### World Protections
+
+The second tab, **World Protections**, decides what players may do **outside any island's protection range**. That includes the void between islands, the spawn area if it is not an island, and the wilderness. See [Where an island ends](#where-an-island-ends).
+
+Off an island there is no team and no ranks, so each protection flag here is just **on or off for everyone**. Click a flag to switch it:
+
+- **Allowed**: anyone may do the action off-island.
+- **Not allowed**: nobody may, apart from operators and players with a [bypass permission](#bypass-the-protection).
+
+Most protection flags are **not allowed** off-island by default, so players cannot build, break blocks or use items outside their island. This tab needs `[gamemode].admin.set-world-defaults`, and each flag also needs `[gamemode].admin.world.settings.<FLAG_ID>`. Operators have both. The values are stored under `world.flags` in the game mode's `config.yml`.
+
+!!! example "Letting players build bridges between islands"
+    Players can only build on their own island, so they cannot bridge to a neighbour. To let them build off-island:
+
+    1. Stand in the game world and run `/[admin_command] settings` with no player name.
+    2. Open the **World Protections** tab. It is neither the first tab nor **Island Defaults**.
+    3. Switch on **Place blocks** and **Break blocks**, plus anything else players need out there, such as buckets, doors or pressure plates.
+
+    The islands themselves stay protected by their own settings. To let visitors take things from other islands as well, set the [Island Defaults](#island-defaults) for new islands, or change existing islands with `/[admin_command] settings <player>`.
+
+Players without an island can see these values (read-only) in `/[player_command] settings`. See [World Protection view](#world-protection-view).
+
+### Island Defaults
+
+!!! new "Added in BentoBox 3.14.0"
+    The **Island Defaults** tab sets the flags that **newly created islands** start with. Before, this could only be done in the game mode's `config.yml`.
+
+The third tab sets the starting value of every flag for **new islands**:
+
+- Each **protection flag** shows its default rank. Left-click or right-click to cycle through the ranks.
+- Each **setting flag** shows its default on/off state. Click to toggle it.
+
+These values are stored in `world.default-island-flags` and `world.default-island-settings` in the game mode's `config.yml`. A flag that is not listed there uses the flag's built-in default.
+
+Changes only apply to islands created **after** the change. To push the defaults onto **existing** islands, run `/[admin_command] resetflags` to reset every flag on every island, or `/[admin_command] resetflags <FLAG_ID>` to reset one flag. This overwrites whatever the island owners have set, so you are asked to confirm.
+
+This tab does **not** control what players may do outside islands. For that, use [World Protections](#world-protections).
+
+### Changing a player's island
+
+`/[admin_command] settings <player_name>` opens the Protection and Settings tabs for that player's island, as the owner would see them, so an admin can change any flag. `/[admin_command] settings spawn-island` does the same for the spawn island.
+
+The same can be done from the command line:
+
+```
+/[admin_command] settings <player_name> <FLAG_ID> <rank>              # protection flag, e.g. Visitor
+/[admin_command] settings <player_name> <FLAG_ID> <Active|Disabled>   # setting flag
+```
 
 ## Bypass the protection
 
@@ -216,32 +331,22 @@ Command cooldowns and teleport warm-up delays can be skipped with:
 ### What is never protected
 
 - **Non-BentoBox worlds.** Protection only exists in game-mode worlds (and their linked standard Nether/End). The server's default worlds and other plugins' worlds are never checked.
-- **The "wild".** When a player is inside a game-mode world but not standing on any island, the world's default flag settings apply rather than an island's — these are configured in the **Admin Settings Panel** below (or the game mode's `config.yml`).
+- **Off-island areas follow different rules.** When a player is in a game-mode world but outside every island's protection range, the [World Protections](#world-protections) apply instead of any island's flags.
 - **Deleted islands are the exception:** on an island that is pending deletion, nothing is allowed by default — apart from operators and holders of a `mod.bypassprotect` / `mod.bypass.<FLAG_ID>.everywhere` permission, whose bypass is checked first.
 
-## Admin Settings Panel
+## Troubleshooting
 
-The **Admin Settings Panel** is accessible via `/[admin_command] settings` (with no arguments). It contains three tabs:
+**Players can't build or break blocks between islands.**
+That area is off-island, so the [World Protections](#world-protections) tab applies. Turn on the flags you need there. Changing Island Defaults will not help.
 
-!!! new "Added in BentoBox 3.23.0"
-    The Admin Settings Panel is laid out by `plugins/BentoBox/panels/admin_settings_panel.yml`, in the same way as the [player's Settings Panel](#customizing-the-settings-panel). Its tab types are `WORLD_SETTING`, `WORLD_DEFAULTS` and `ISLAND_DEFAULTS`; the last two need the `[gamemode].admin.set-world-defaults` permission and are hidden without it. The same file lays out `/[admin_command] settings <player_name>`: each world tab names an island tab (`PROTECTION`, `SETTING`) as its `fallback`, which is what is shown when there is an island.
+**I changed Island Defaults but existing islands didn't change.**
+Island Defaults only apply to islands created afterwards. Use `/[admin_command] resetflags` to apply them to existing islands, or change single islands with `/[admin_command] settings <player>`.
 
-### World Settings
+**A player can't change a setting even though they own the island.**
+The setting probably needs the `[gamemode].settings.<FLAG_ID>` permission, or the setting is on cooldown.
 
-Toggles world-level setting flags that apply across the entire game world.
+**I'm an operator and can't test whether protection works.**
+Operators bypass every protection flag. Test with a non-op account. `/[admin_command] switch` only turns off the moderator bypass permissions, not operator status.
 
-!!! new "Added in BentoBox 3.23.6"
-    The **Always-allowed entity types** item (iron ingot) opens a list of every living entity type. Green types spawn even when animal or monster spawning is off, on any island or in the world; Iron Golem is green by default so village iron farms keep working. The **Global mob spawning** block list still takes priority. The list is stored by BentoBox, not in the game mode's `config.yml`; see [Mob spawning precedence](About/Protections.md#mob-spawning-precedence). Requires `[gamemode].admin.settings.ALLOW_MOBS`.
-
-### World Default Protection
-
-Controls which protection flags are active outside of any island boundaries (i.e. for visitors in the wilderness).
-
-### Island Defaults
-
-!!! new "Added in BentoBox 3.14.0"
-    The **Island Defaults** tab is a new tab in the Admin Settings Panel that allows admins to set the default flag values applied to **newly created islands**.
-
-Previously, these defaults could only be changed in the gamemode's `config.yml`. Now they can be changed directly in-game by opening `/[admin_command] settings` and navigating to the **Island Defaults** tab (tab 3).
-
-Each protection flag is listed with its current default rank — clicking cycles it through the rank ladder. Each island settings flag shows its current default `true`/`false` state — clicking toggles it. Changes are saved immediately to the world settings and take effect for all **new** islands created after the change. Existing islands are not affected.
+**I don't know which flag is blocking an action.**
+Run `/[admin_command] why <player>` to log every protection check for that player to the console, then do the action. The log names the flag, the location and the result. Run the command again to stop.
