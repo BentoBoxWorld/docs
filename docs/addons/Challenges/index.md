@@ -10,13 +10,70 @@ Created and maintained by [BONNe](https://github.com/BONNe).
 
 1. Place the addon jar in the addons folder of the BentoBox plugin
 2. Restart the server
-3. Run the admin challenges command, e.g., `/bsbadmin challenges` to configure the addon
+3. Follow [Getting started](#getting-started) below to load some challenges. The addon ships with none active.
+
+## Getting started
+
+A fresh install has **no challenges and no levels**. Until an admin adds some, players who run `/[player_command] challenges` are only told that challenges are not set up in that world yet. Challenges are stored per game mode, so repeat these steps for each game mode you run.
+
+1. Join the server as an admin and run `/[admin_command] challenges` (for example `/bsbadmin challenges` for BSkyBlock or `/acid challenges` for AcidIsland). This opens the Admin GUI for that game mode.
+2. Load a set of challenges. Most servers should use the [Web Library](#web-library), which has ready-made challenge packs for the different game modes.
+3. Check the result as a player with `/[player_command] challenges` (for example `/island challenges`).
+4. Adjust anything you like with **Edit Challenge** and **Edit Level** in the Admin GUI.
+
+There are four ways to get challenges into a game mode:
+
+| Method | Admin GUI button | Use it when |
+| --- | --- | --- |
+| [Web Library](#web-library) | **Library** | You want a ready-made, up-to-date pack. **Recommended.** |
+| Bundled defaults | **Import Database**, then choose `default` | The server cannot reach GitHub. `default.json` is saved to `addons/Challenges/` on first start. |
+| [Template file](#template) | **Import Template** | You prefer to write challenges in YAML and import them in bulk. |
+| By hand | **Add Challenge** / **Add Level** | You want to build your own from scratch. |
+
+!!! warning
+    **Import Database** and **Import Template** replace all challenges and levels that the game mode already has. Use **Export Challenges** first if you want a backup.
+
+## Web Library
+
+The Web Library is a public collection of challenge packs that the addon downloads from the [BentoBoxWorld/weblink](https://github.com/BentoBoxWorld/weblink/tree/master/challenges) repository. It is the easiest way to get a full set of challenges, and it is where new and updated packs are published.
+
+### Installing a pack
+
+1. Run `/[admin_command] challenges` to open the Admin GUI.
+2. Click the **Library** button (cobweb icon, bottom right). If it shows a barrier with "Library download requested...", the list is still downloading: wait a few seconds and it changes by itself.
+3. Pick a pack. Hover over an entry to see its author, description, the game mode it was written for, and its language.
+4. Type `confirm` in chat when asked. The pack is downloaded and imported into the game mode you opened the Admin GUI for.
+
+The list is filtered by language. It starts on your Minecraft client language, or English if there are no packs in your language. Click the **Language** button at the top of the Library to see packs in other languages. The cobweb button next to it, **Download Libraries**, fetches the list again if you want to check for new packs without waiting.
+
+!!! warning "The Library only installs into an empty game mode"
+    If the game mode already has challenges or levels, the download is refused with "Challenges already exist in your world. Cannot proceed!". To switch packs, first click **Challenge Wipe** (TNT icon) in the Admin GUI, then install the new pack. Challenge Wipe removes challenges and levels only. Right-clicking that button switches it to **Complete Wipe**, which also removes all player progress.
+
+### Available packs
+
+| Pack | Written for | Languages |
+| --- | --- | --- |
+| Skyblock | BSkyBlock | en, de, es, fr, ru, zh-CN |
+| AcidIsland | AcidIsland | en, de, es, fr, ru, zh-CN |
+| Poseidon | Poseidon | en, de, es, fr, ru, zh-CN |
+| Gusher Challenges | Gusher | en |
+| default | BSkyBlock | en, ru, zh-CN |
+| ASkyBlock | BSkyBlock | en, de, zh-CN |
+
+**Skyblock** is the current pack for skyblock-style game modes and targets vanilla 1.21+. **default** is the same set that ships inside the addon jar, and **ASkyBlock** is the challenge set from the old ASkyBlock plugin. The list changes over time, so the Library in game is always the authoritative version.
+
+"Written for" is a recommendation, not a restriction. Any pack can be installed into any game mode, and its challenges are stored under that game mode.
+
+### If the Library is unavailable
+
+- The Library button shows a structure void icon and does nothing when BentoBox is not allowed to contact GitHub. Set `web.github.download-data: true` in BentoBox's `config.yml` and restart.
+- If the server has no outbound access to GitHub, use **Import Database** and choose `default` to load the bundled challenges instead. You can also download a pack's `.json` file from the [weblink repository](https://github.com/BentoBoxWorld/weblink/tree/master/challenges/library), put it in `addons/Challenges/`, and load it with **Import Database**. When that folder holds only one `.json` file, Import Database skips the list and asks for confirmation straight away.
+
+### Sharing your own pack
+
+Click **Export Challenges** in the Admin GUI to save a game mode's challenges and levels to a `.json` file in `addons/Challenges/`. That file can be loaded on another server with **Import Database**, or submitted to the [weblink repository](https://github.com/BentoBoxWorld/weblink) as a pull request to have it added to the Library.
 
 ## Configuration
-
-By default, the challenges addon comes without any challenge or levels. On first runtime only the Admin GUI will be accessible.
-Admins can create their own challenges or load a set of default challenges. Default challenges contains 5 levels and 57 challenges.
-There also exist a Web Library, where admins can download public challenges. It is accessible via the Admin GUI by clicking on the Web icon.
 
 ### config.yml
 
@@ -264,6 +321,9 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
 
 ??? question "Can you add a feature X?"
     Please add it to the list [here](https://github.com/BentoBoxWorld/Challenges/issues).
+
+??? question "Are there ready-made challenges or templates I can use?"
+    Yes. Open the Admin GUI with `/[admin_command] challenges` and click **Library** to download a challenge pack for your game mode. See [Web Library](#web-library) for the steps and the list of packs.
 
 ??? question "How can I add a new challenge?"
     The official way is to add challenge via Admin GUI or Template file.
