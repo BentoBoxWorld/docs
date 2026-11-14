@@ -31,7 +31,7 @@ There are four ways to get challenges into a game mode:
 | By hand | **Add Challenge** / **Add Level** | You want to build your own from scratch. |
 
 !!! warning
-    **Import Database** and **Import Template** replace all challenges and levels that the game mode already has. Use **Export Challenges** first if you want a backup.
+    Every import replaces all challenges and levels that the game mode already has. Use **Export Challenges** first if you want a backup.
 
 ## Web Library
 
@@ -46,8 +46,10 @@ The Web Library is a public collection of challenge packs that the addon downloa
 
 The list is filtered by language. It starts on your Minecraft client language, or English if there are no packs in your language. Click the **Language** button at the top of the Library to see packs in other languages. The cobweb button next to it, **Download Libraries**, fetches the list again if you want to check for new packs without waiting.
 
-!!! warning "The Library only installs into an empty game mode"
-    If the game mode already has challenges or levels, the download is refused with "Challenges already exist in your world. Cannot proceed!". To switch packs, first click **Challenge Wipe** (TNT icon) in the Admin GUI, then install the new pack. Challenge Wipe removes challenges and levels only. Right-clicking that button switches it to **Complete Wipe**, which also removes all player progress.
+!!! warning "Installing a pack replaces the current challenges"
+    Installing a pack removes the challenges and levels that the game mode already has and loads the new ones. Player progress is kept. Use **Export Challenges** first if you want a backup.
+
+    Versions up to 1.8.1 do not replace. They refuse the download with "Challenges already exist in your world. Cannot proceed!". On those versions, first click **Challenge Wipe** (TNT icon) in the Admin GUI, then install the pack. Challenge Wipe removes challenges and levels only. Right-clicking that button switches it to **Complete Wipe**, which also removes all player progress.
 
 ### Available packs
 
