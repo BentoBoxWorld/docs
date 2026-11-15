@@ -32,13 +32,32 @@ nav:
     - Game Modes:
         - "What is a game mode?": BentoBox/About/GameModes.md
         - Choosing a Game Mode: gamemodes/Comparison.md
-        - AcidIsland: gamemodes/AcidIsland/index.md
+        - AcidIsland:
+            - Overview: gamemodes/AcidIsland/index.md
+            - Commands: gamemodes/AcidIsland/Commands.md
+            - Permissions: gamemodes/AcidIsland/Permissions.md
+            - Placeholders: gamemodes/AcidIsland/Placeholders.md
         - AOneBlock:
             - Overview: gamemodes/AOneBlock/index.md
             - Customizing Phases: gamemodes/AOneBlock/Phases.md
-        - BSkyBlock: gamemodes/BSkyBlock/index.md
-        - Boxed: gamemodes/Boxed/index.md
-        - CaveBlock: gamemodes/CaveBlock/index.md
+            - Commands: gamemodes/AOneBlock/Commands.md
+            - Permissions: gamemodes/AOneBlock/Permissions.md
+            - Placeholders: gamemodes/AOneBlock/Placeholders.md
+        - BSkyBlock:
+            - Overview: gamemodes/BSkyBlock/index.md
+            - Commands: gamemodes/BSkyBlock/Commands.md
+            - Permissions: gamemodes/BSkyBlock/Permissions.md
+            - Placeholders: gamemodes/BSkyBlock/Placeholders.md
+        - Boxed:
+            - Overview: gamemodes/Boxed/index.md
+            - Commands: gamemodes/Boxed/Commands.md
+            - Permissions: gamemodes/Boxed/Permissions.md
+            - Placeholders: gamemodes/Boxed/Placeholders.md
+        - CaveBlock:
+            - Overview: gamemodes/CaveBlock/index.md
+            - Commands: gamemodes/CaveBlock/Commands.md
+            - Permissions: gamemodes/CaveBlock/Permissions.md
+            - Placeholders: gamemodes/CaveBlock/Placeholders.md
         - ChunkBlock:
             - Overview: gamemodes/ChunkBlock/index.md
             - Claiming Chunks: gamemodes/ChunkBlock/Chunks.md
@@ -46,9 +65,20 @@ nav:
             - Commands: gamemodes/ChunkBlock/Commands.md
             - Permissions: gamemodes/ChunkBlock/Permissions.md
             - Placeholders: gamemodes/ChunkBlock/Placeholders.md
-        - Poseidon: gamemodes/Poseidon/index.md
-        - SkyGrid: gamemodes/SkyGrid/index.md
-        - Stranger Realms: gamemodes/StrangerRealms/index.md
+        - Poseidon:
+            - Overview: gamemodes/Poseidon/index.md
+            - Commands: gamemodes/Poseidon/Commands.md
+            - Permissions: gamemodes/Poseidon/Permissions.md
+            - Placeholders: gamemodes/Poseidon/Placeholders.md
+        - SkyGrid:
+            - Overview: gamemodes/SkyGrid/index.md
+            - Commands: gamemodes/SkyGrid/Commands.md
+            - Permissions: gamemodes/SkyGrid/Permissions.md
+            - Placeholders: gamemodes/SkyGrid/Placeholders.md
+        - Stranger Realms:
+            - Overview: gamemodes/StrangerRealms/index.md
+            - Commands: gamemodes/StrangerRealms/Commands.md
+            - Permissions: gamemodes/StrangerRealms/Permissions.md
         - TradeWinds:
             - Overview: gamemodes/TradeWinds/index.md
             - The Sailor's Handbook: gamemodes/TradeWinds/Gameplay.md

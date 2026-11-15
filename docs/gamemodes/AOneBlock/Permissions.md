@@ -1,66 +1,54 @@
 # AOneBlock Permissions
 
-| Permission                       | Enable For | Description                                        |
-|-----------------------------------|------------|----------------------------------------------------|
-| aoneblock.admin                   | op         | Allow use of '/obadmin' command - admin command    |
-| aoneblock.admin.blueprint         | op         | Allow use of '/obadmin blueprint' command - manage blueprints |
-| aoneblock.admin.clearresetall     | op         | Allow clearing of island reset limit of all players |
-| aoneblock.admin.delete            | op         | Let a player completely remove a player (including island) |
-| aoneblock.admin.getrank           | op         | Get a player's rank                                |
-| aoneblock.admin.noban             | op         | Player cannot be banned from an island             |
-| aoneblock.admin.noexpel           | op         | Player cannot be expelled from an island           |
-| aoneblock.admin.purge             | op         | Allow use of '/obadmin purge' command - purge islands abandoned for more than specified days |
-| aoneblock.admin.range             | op         | Allow use of '/obadmin range' command - manage island range |
-| aoneblock.admin.register          | op         | Let a player register the nearest island to another player |
-| aoneblock.admin.reload            | op         | Reload the config.yml                              |
-| aoneblock.admin.setchest          | op         | Puts the looked-at chest into a phase with a given rarity |
-| aoneblock.admin.setlanguage       | op         | Resets all player languages and sets the default language |
-| aoneblock.admin.setrank           | op         | Set a player's rank                                |
-| aoneblock.admin.setrange          | op         | Allows setting of island protection range          |
-| aoneblock.admin.setspawn          | op         | Allows use of spawn tools                          |
-| aoneblock.admin.settingsreset     | op         | Resets all the islands to default protection settings |
-| aoneblock.admin.tp                | op         | Allows teleport to an island                       |
-| aoneblock.island.actionbar        | true       | Allow use of '/ob actionbar' command - toggle the actionbar progress display |
-| aoneblock.island.bossbar          | true       | Allow use of '/ob bossbar' command - toggle the bossbar progress display |
-| aoneblock.count                   | true       | Allow use of the aoneblock count command           |
-| aoneblock.island                  | true       | Allow use of '/ob' command - the main island command |
-| aoneblock.phases                  | false      | Allow use of '/ob phases' command - show a list of all the phases |
-| aoneblock.island.ban              | true       | Allow use of '/ob ban' or '/ob unban' command - manage banned players |
-| aoneblock.island.create           | true       | Allow use of '/ob create' command - create an island, using optional blueprint |
-| aoneblock.island.deletehome       | op         | Allow use of '/ob deletehome' command - delete a home location |
-| aoneblock.island.expel            | true       | Allow use of '/ob expel' command - expel visitors  |
-| aoneblock.island.home             | true       | Allow use of '/ob go' command - teleport to your island |
-| aoneblock.island.homes            | op         | Allow use of '/ob homes' command - list your homes |
-| aoneblock.island.info             | true       | Allow use of '/ob info' command - display island info |
-| aoneblock.island.language         | true       | Allow use of '/ob language' command - select a language |
-| aoneblock.island.lock             | true       | Allows island locking in settings                  |
-| aoneblock.island.name             | true       | Allow use of '/ob setname' or '/ob resetname' command - set your island name |
-| aoneblock.island.near             | true       | Allow use of '/ob near' command - show the name of nearby islands |
-| aoneblock.island.renamehome       | op         | Allow use of '/ob renamehome' command - rename a home location |
-| aoneblock.island.reset            | true       | Allow use of '/ob reset' command - restart your island |
-| aoneblock.island.setcount         | op         | Allow use of '/ob setCount' command - set block count to completed value |
-| aoneblock.island.sethome          | true       | Allow use of '/ob sethome' command - set your home teleport point |
-| aoneblock.island.settings         | true       | Allow use of '/ob settings' command - display island settings |
-| aoneblock.island.spawn            | true       | Allow use of '/ob spawn' command - teleport to island spawn if set |
-| aoneblock.island.team             | true       | Allow use of '/ob team' command - manage your team |
-| aoneblock.island.team.accept      | true       | Allow use of '/ob team accept' command - accept an invitation |
-| aoneblock.island.team.coop        | true       | Allow use of '/ob team coop' command - cooperate with other players |
-| aoneblock.island.team.invite      | true       | Allow use of '/ob team invite' command - invite a player to join your island |
-| aoneblock.island.team.kick        | true       | Allow use of '/ob team kick' command - remove a member from the team |
-| aoneblock.island.team.leave       | true       | Allow use of '/ob team leave' command - leave the island team |
-| aoneblock.island.team.promote     | true       | Allow use of '/ob team promote' command - promote a team member |
-| aoneblock.island.team.reject      | true       | Allow use of '/ob team reject' command - reject an invite |
-| aoneblock.island.team.setowner    | true       | Allow use of '/ob team setowner' command - transfer island ownership |
-| aoneblock.island.team.trust       | true       | Allow use of '/ob team trust' command - trust a player on your island |
-| aoneblock.mod.bypassban           | op         | Bypasses island ban                                |
-| aoneblock.mod.bypassexpel         | op         | Allow moderator to bypass island expulsion         |
-| aoneblock.mod.bypasslock          | op         | Bypasses an island lock                            |
-| aoneblock.mod.bypasscooldowns     | op         | Allow moderator to bypass cooldowns                |
-| aoneblock.mod.bypassdelays        | op         | Allow moderator to bypass delays                   |
-| aoneblock.mod.bypassprotect       | op         | Allow moderator to bypass island protection        |
-| aoneblock.mod.clearreset          | false      | Allow clearing of island reset limit               |
-| aoneblock.mod.info                | op         | Let a moderator see info on a player               |
-| aoneblock.mod.lock                | op         | Allows lock or unlock of an island                 |
-| aoneblock.mod.switch              | op         | Allow use of '/obadmin switch' command - toggle protection bypass |
-| aoneblock.respawn-block           | true       | Allow use of '/ob respawnBlock' command - respawn magic block |
-| aoneblock.settings.*              | true       | Allow use of settings on island                    |
+AOneBlock permissions start with `aoneblock.`. Every permission is listed in the [Permissions reference](../../BentoBox/Permissions.md) with `[gamemode]` in place of `aoneblock`. For VIP perks such as bigger teams, islands and more homes, see [Permissions & VIP Perks](../../BentoBox/Permissions-Guide.md).
+
+## Player commands: who has them by default
+
+These defaults come from AOneBlock's `addon.yml`. **Everyone** means all players have the permission unless you take it away; **Operators** means you need to give it to players with your permissions plugin. Run `/bentobox perms` in the console to see the defaults on your server.
+
+| Permission | Commands | Default |
+|---|---|---|
+| `aoneblock.island` | The player command itself | Everyone |
+| `aoneblock.island.create` | `create` | Everyone |
+| `aoneblock.island.home` | `go` | Everyone |
+| `aoneblock.island.homes` | `homes` | Everyone |
+| `aoneblock.island.sethome` | `sethome` | Everyone |
+| `aoneblock.island.deletehome` | `deletehome` | Everyone |
+| `aoneblock.island.renamehome` | `renamehome` | Everyone |
+| `aoneblock.island.spawn` | `spawn` | Everyone |
+| `aoneblock.island.info` | `info` | Everyone |
+| `aoneblock.island.near` | `near` | Everyone |
+| `aoneblock.island.reset` | `reset` | Everyone |
+| `aoneblock.island.name` | `setname`, `resetname` | Everyone |
+| `aoneblock.island.language` | `language` | Everyone |
+| `aoneblock.island.settings` | `settings` | Everyone |
+| `aoneblock.island.lock` | `lock` | Everyone |
+| `aoneblock.island.ban` | `ban`, `unban`, `banlist` | Everyone |
+| `aoneblock.island.expel` | `expel` | Everyone |
+| `aoneblock.island.team` | `team` | Everyone |
+| `aoneblock.island.team.invite` | `team invite` | Everyone |
+| `aoneblock.island.team.accept` | `team accept` | Everyone |
+| `aoneblock.island.team.reject` | `team reject` | Everyone |
+| `aoneblock.island.team.leave` | `team leave` | Everyone |
+| `aoneblock.island.team.kick` | `team kick` | Everyone |
+| `aoneblock.island.team.promote` | `team promote`, `team demote` | Everyone |
+| `aoneblock.island.team.setowner` | `team setowner` | Everyone |
+| `aoneblock.island.team.trust` | `team trust`, `team untrust` | Everyone |
+| `aoneblock.island.team.coop` | `team coop`, `team uncoop` | Everyone |
+
+## Permissions only in AOneBlock
+
+| Permission | Allows | Default |
+|---|---|---|
+| `aoneblock.count` | `/ob count` | Everyone |
+| `aoneblock.phases` | `/ob phases` | Nobody |
+| `aoneblock.island.setcount` | `/ob setCount` | Operators |
+| `aoneblock.respawn-block` | `/ob respawnBlock` | Everyone |
+| `aoneblock.island.bossbar` | `/ob bossbar` | Everyone |
+| `aoneblock.island.actionbar` | `/ob actionbar` | Everyone |
+| `aoneblock.admin.setcount` | `/obadmin setcount` | Operators |
+| `aoneblock.admin.setchest` | `/obadmin setchest` | Operators |
+| `aoneblock.admin.sanity` | `/obadmin sanity` | Operators |
+| `aoneblock.admin.phases` | `/obadmin phases` | Operators |
+
+Admin and moderator permissions (`aoneblock.admin.*`, `aoneblock.mod.*`) are for operators by default. See [Staff permissions](../../BentoBox/Permissions-Guide.md#staff-permissions).
