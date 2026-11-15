@@ -216,7 +216,7 @@ To act sooner:
 - **Shared region, need it gone immediately:** remove the blocks by hand with **WorldEdit** (`//pos1`/`//pos2`/`//set air`) or by regenerating the chunks. The island is already gone from the database; this is purely cosmetic block removal.
 - **Restart after purging** so Paper's chunk cache is cleared and the empty area stops rendering.
 
-See [Island Deletion (Admin)](BentoBox/About/IslandManagement.md#island-deletion-admin) for the full lifecycle.
+See [Island Deletion (Admin)](BentoBox/About/IslandManagement.md#deleting-islands) for the full lifecycle.
 
 ## Teams, coop and visitors
 

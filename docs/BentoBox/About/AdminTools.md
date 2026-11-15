@@ -131,7 +131,7 @@ This reloads BentoBox and all addons, including locales. Note that some changes 
     A bug-fix release. No `config.yml`, locale or panel template changes. Compatibility: Paper Minecraft 1.21.5 – 26.3, Java 25+.
 
     - 🔺 **Sulfur Cube explosions now follow the TNT flags.** A Sulfur Cube that had absorbed TNT exploded as itself rather than as primed TNT, so it was not checked against `TNT_DAMAGE` and could destroy builds on islands with TNT damage turned off. Its explosions now follow `TNT_DAMAGE` on islands and `WORLD_TNT_DAMAGE` off-island, for both block and entity damage. A player lighting a Sulfur Cube with flint and steel or a fire charge is checked against `TNT_PRIMING`, as for a TNT block. Ignition by redstone, dispensers or other explosions has no player, so `TNT_PRIMING` cannot apply, but the explosion still follows `TNT_DAMAGE`. Servers older than Minecraft 26.2 have no Sulfur Cube, so nothing changes there.
-    - 🐛 **`/island go` treats underscores as spaces.** `/island go happy_place` now finds a home named `Happy Place`. An exact match still wins, and a name that matches more than one destination is rejected rather than guessed. See [Finding the right home](IslandManagement.md#finding-the-right-home).
+    - 🐛 **`/island go` treats underscores as spaces.** `/island go happy_place` now finds a home named `Happy Place`. An exact match still wins, and a name that matches more than one destination is rejected rather than guessed. See [Finding the right home](IslandManagement.md#homes).
 
     **AOneBlock note:** AOneBlock ships with `TNT_DAMAGE: true` by default, so Sulfur Cube explosions there still do damage unless you set it to `false`.
 
@@ -257,7 +257,7 @@ This reloads BentoBox and all addons, including locales. Note that some changes 
     A player-experience release. Compatibility: Paper Minecraft 1.21.5 – 26.2, Java 25+.
 
     - ⚙️ 🔡 **Modal dialogs for high-friction flows.** Sensitive-command confirmations, the `/island go` destination picker, team invites, and a first-join game-mode chooser can now appear as real modal dialogs the player cannot misread or scroll past. A new `island.dialogs` section in `config.yml` holds one toggle per flow — `confirmations`, `go-picker` and `team-invites` default **on**, `game-mode-selection` defaults **off** because it is intrusive by design. Dialogs need a Minecraft 26+ server; on anything older every toggle is ignored and the classic chat/command behaviour is used, so no action is needed there.
-    - **Forgiving `/island go` matching.** `/island go myisland`, `hom`, or a name typed with the wrong case or a stray double space now teleports the player where they meant instead of failing an exact match and dumping the full list. See [Home Locations](IslandManagement.md#home-locations).
+    - **Forgiving `/island go` matching.** `/island go myisland`, `hom`, or a name typed with the wrong case or a stray double space now teleports the player where they meant instead of failing an exact match and dumping the full list. See [Home Locations](IslandManagement.md#homes).
     - 🔡 **Locale note:** new dialog keys (`general.dialogs.*`, plus dialog and picker keys under the confirmation, `island go` and team-invite commands) were added to all 22 bundled locales. Regenerate or update any custom locale files.
     - 🔧 **Addon developers** get the same `world.bentobox.bentobox.api.dialogs` API used by core — see [Modal dialogs](../Developer-Documentation.md#modal-dialogs).
 

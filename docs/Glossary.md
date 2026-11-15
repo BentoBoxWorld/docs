@@ -53,7 +53,7 @@ The radius of the area around an island centre that is protected. No other playe
 A trust level assigned to players in relation to a specific island. From lowest to highest: **Banned**, **Visitor**, **Coop**, **Trusted**, **Member**, **Sub-Owner**, **Owner**. Ranks control what actions a player can take on an island. See [Teams](BentoBox/About/Teams.md).
 
 ## Reset
-When a player deletes their own island and starts fresh with a new one. The number of times a player can reset is configurable. See [Island Management](BentoBox/About/IslandManagement.md#resetting-an-island).
+When a player deletes their own island and starts fresh with a new one. The number of times a player can reset is configurable. See [Island Management](BentoBox/About/IslandManagement.md#resetting-islands).
 
 ## Sub-Owner
 An island rank below Owner but above Member. Sub-owners have almost all the same permissions as the owner. Multiple sub-owners can exist on one island.

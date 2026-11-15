@@ -1,152 +1,230 @@
-# Island Management
+# Islands
 
-At the heart of every BentoBox game mode is the **island** — a protected area of the world that belongs to a player or a team. BentoBox handles the full lifecycle of islands so you don't have to manage any of it manually.
+Every BentoBox game mode is built on **islands**: a protected area of the world that belongs to one player or a team. (In game modes like CaveBlock or Boxed the "island" is a cave or a box, but it works the same way.) This page covers how islands are created, sized, reset and deleted, how homes work, and how to clean up old islands.
 
-## Creating an Island
+!!! info "Commands on this page"
+    Commands are shown for BSkyBlock (`/island`, `/bsbadmin`). Other game modes use their own command names, for example `/ob` in AOneBlock. Permissions start with the game mode's prefix, for example `bskyblock.` or `aoneblock.`. For what players see, send them the [Player Guide](../Player-Guide.md).
 
-When a player joins a game mode for the first time and runs the main command (e.g. `/island` for BSkyBlock, `/oneblock` for AOneBlock), BentoBox automatically:
+## Before you open: plan the world
 
-1. Finds a free spot in the world for them.
-2. Pastes their **starter island** from a Blueprint (a saved island template).
-3. Teleports them to their new island's spawn point.
-4. Registers the island as theirs in the database.
-
-Players get exactly one island per game mode. If your server runs multiple game modes (e.g. both BSkyBlock and AcidIsland), each player gets a separate island in each world.
-
-## Island Names
-
-Players can give their island a custom name using `/island setname <name>`. Names show up in various places — leaderboards, the Warps addon, and placeholders displayed by other plugins. Admins can restrict what names are allowed via the game mode's `config.yml`.
-
-## Home Locations
-
-Players can set multiple home locations on their island with `/island sethome`. When they use `/island go` or `/island home`, they teleport to their home point. Multiple named homes can be unlocked via permissions:
-
-```
-[gamemode].island.home.maxhomes.<number>
-```
-
-### Finding the right home
-
-Since BentoBox 3.21.0, `/island go <name>` no longer needs an exact, case-sensitive match. The typed name is resolved in decreasing order of confidence:
-
-1. An exact match on an island or home name.
-2. A match ignoring case, colour codes and extra whitespace — so `myisland` finds `MyIsland` and a stray double space is forgiven. Since 3.23.5, underscores also count as spaces, so `happy_place` finds `Happy Place`.
-3. A unique case-insensitive prefix — `hom` finds `Home`.
-
-Anything still ambiguous falls through to the usual list of destinations rather than guessing, and the resolved canonical name is used for the teleport so named homes stay accurate.
-
-If the player runs `/island go` with no name at all and has more than one island or home to pick from, BentoBox can show a **destination picker** — a modal dialog with one button per destination. This needs a Minecraft 26+ server and is controlled by `island.dialogs.go-picker` in BentoBox's `config.yml` (default `true`). On older servers, or with the toggle off, the classic clickable chat list is shown instead.
-
-## Resetting an Island
-
-Players can start fresh by resetting their island with `/island reset`. This **deletes the current island** and creates a brand new one. Admins can:
-
-- Limit how many times a player can reset (set in `config.yml`).
-- Grant extra resets via the permission `[gamemode].island.reset.maxresets.<number>`.
-- Set resets to unlimited with the value `-1`.
-
-!!! warning
-    Island resets are permanent. The old island and everything built on it is deleted. Advise players to back up anything important before resetting.
-
-## Island Deletion (Admin)
-
-Admins can delete a player's island with:
-```
-/[admin_command] delete <player>
-```
-
-This removes the island from the database and marks the area for cleanup. The player can create a new island immediately afterwards.
-
-As of BentoBox 3.16.1, the actual region files are reaped on the next housekeeping sweep (default: 24 h) rather than on demand. If the island shares a region file with other live islands, the deleted area stays in place until that region is clear. To force immediate cleanup, run `/bbox admin purge deleted` after the delete — it will only remove blocks if the region file no longer hosts any live island. For surgical block removal in a shared region, use WorldEdit or remove the blocks manually.
-
-### Deleting and recovering the island you are standing on
-
-Since BentoBox 3.19.0, a delete can be triggered — and reversed — without naming a player, as long as you are standing on the island. Because the region files are only reaped on the next housekeeping sweep, a soft-deleted island can be rescued right up until that purge runs:
-
-- `/[admin_command] delete` (no player argument) soft-deletes the island you are standing on after a confirmation prompt. It is refused if the island still has a team.
-- `/[admin_command] undelete` clears the pending-deletion status of the island you are standing on, leaving it unowned.
-- `/[admin_command] register <player>` on an island pending deletion now shows a confirmation prompt; confirming registers the island to that player and cancels its deletion.
-
-## Inactive Island Cleanup
-
-If players abandon the server, their islands stay in the world. BentoBox does not automatically delete inactive islands, but the **deletion flag** and external tools can be used to manage this. Many server admins handle this by setting a reset limit and reviewing inactive players periodically.
-
-## What Happens When a Player Leaves a Team
-
-If a player is a member (not owner) and leaves a team or is kicked, they lose access to that island. They can then create their own island, subject to any reset limits. If the player *was* the owner, they must transfer ownership before leaving — they cannot simply walk away from an owned island.
-
-## Multiple Islands (Concurrent Islands)
-
-By default, each player has one island per game mode. BentoBox optionally supports **concurrent islands** — allowing a single player to own more than one island at a time. This is an advanced feature configured in the game mode's `config.yml` and controlled by permissions.
-
-### Config Examples
-
-There are two places where concurrent islands can be configured:
-
-**1. BentoBox `config.yml`** — sets the global default for all game modes:
-
-```yaml
-island:
-  # The default number of concurrent islands a player may have.
-  # This may be overridden by individual game mode config settings.
-  concurrent-islands: 1
-```
-
-**2. Game mode `config.yml`** (e.g. BSkyBlock) — overrides the global default for that game mode:
+Two settings in the game mode's `config.yml` **cannot be changed after islands exist**. Changing them later means wiping the world and database, so decide before players join:
 
 ```yaml
 world:
-  # The number of concurrent islands a player can have in the world.
-  # A value of 0 will use the BentoBox config.yml default.
-  concurrent-islands: 1
-  # Disallow players to have other islands if they are in a team.
+  # Radius of each island's space, in blocks.
+  # Island centres are twice this apart, so 400 puts centres 800 blocks apart.
+  distance-between-islands: 400
+  # How much of that space the owner protects to start with (a radius).
+  # Can be raised later per island, up to distance-between-islands.
+  protection-range: 50
+```
+
+- `distance-between-islands` is the **most** an island can ever grow to. Set it to the largest size you might want to give VIPs or sell as upgrades.
+- `protection-range` is where islands **start**. It's the area players can build in and protect.
+
+Other settings you may want to look at: `island-height` (Y level of the starting island), `max-islands` (cap the number of islands in the world, `0` = no limit) and `start-x`/`start-z` (which also can't change later).
+
+## Creating islands
+
+New players type `/island`. BentoBox:
+
+1. Shows the **Create Island** menu if there's more than one starter island to choose from (otherwise it skips this).
+2. Finds the next free spot, pastes the starter island, and teleports the player there.
+
+You can change what happens:
+
+| Setting (game mode `config.yml`) | Default | What it does |
+|---|---|---|
+| `new-player-action` | `create` | What `/island` does for players without an island |
+| `default-action` | `go` | What `/island` does for players with an island |
+| `create-island-on-first-login.enable` | `false` | Create an island automatically when a new player joins |
+| `teleport-player-to-island-when-created` | `true` | Teleport the player when their island is ready |
+
+**Choice of starter islands.** Each choice in the Create Island menu is a blueprint bundle. To make one available only to some players (for example a VIP island), set it to require a permission in `/bsbadmin blueprint`, then give `bskyblock.island.create.<bundle-name>`. See [Starter Islands (Blueprints)](BlueprintsSummary.md) and [Making Blueprints](../Blueprints.md).
+
+## Island size (protection range)
+
+The protection range is the radius around the island centre that the owner controls. Players see it with `/island info`; admins can show it in game with `/bsbadmin range display`.
+
+To give some players bigger islands:
+
+| How | Command or permission |
+|---|---|
+| By rank or VIP, automatically | Give the owner `bskyblock.island.range.<number>`. Checked when the island is created and when the owner logs in |
+| One island, by hand | `/bsbadmin range set <player> <range>`, or `range add` / `range remove` to change it by an amount |
+| Back to the default | `/bsbadmin range reset <player>` |
+
+The range can't go above `distance-between-islands`. Addons like [Upgrades](../../addons/Upgrades/index.md) can also add range as a bonus; remove addon bonuses with `/bsbadmin range removebonus <player>`.
+
+## Homes
+
+Players teleport to their island with `/island` or `/island go`, and move their home with `/island sethome`.
+
+By default each island has one home. To allow more named homes:
+
+```yaml
+island:
+  max-homes: 1    # game mode config.yml
+```
+
+or give the owner `bskyblock.island.maxhomes.<number>`. Players then use `/island sethome <name>`, `/island go <name>` and `/island homes`. Admins can change one island with `/bsbadmin maxhomes <player> <number>`.
+
+`/island go <name>` finds the home even if the player gets the capital letters wrong or only types the start of the name. On Minecraft 26 and later, a player with several homes who types `/island go` gets a pop-up to pick one (`island.dialogs.go-picker` in BentoBox's `config.yml`).
+
+**Homes in the Nether and End** (when the game mode has island Nether and End worlds) are controlled by `island.sethome.nether.allow` and `island.sethome.the-end.allow`.
+
+| Admin task | Command |
+|---|---|
+| Put a player's home back to the default spot | `/bsbadmin resethome <player>` |
+| Delete all of a player's named homes | `/bsbadmin deletehomes <player>` |
+| Go to a player's island | `/bsbadmin tp <player>` |
+
+## Island names
+
+Players name their island with `/island setname <name>` and remove it with `/island resetname`. Names show in leaderboards, warps and placeholders.
+
+Set the rules in **BentoBox's** `config.yml`:
+
+```yaml
+island:
+  name:
+    min-length: 4
+    max-length: 20
+    uniqueness: false   # true = no two islands in a game mode can share a name
+```
+
+Players need `bskyblock.island.name.format` to use colours in names. Admins can clear an offensive name by standing on the island and running `/bsbadmin resetname`.
+
+## Resetting islands
+
+`/island reset` gives a player a fresh island. **The old island is deleted.** Only the owner can reset; any team members are removed from the island.
+
+Control it in the game mode's `config.yml`:
+
+```yaml
+island:
+  reset:
+    reset-limit: -1   # -1 = unlimited, 0 = no resets, 2 = two resets (three islands in total)
+```
+
+and in BentoBox's `config.yml`:
+
+```yaml
+island:
+  cooldown:
+    time:
+      reset: 300        # seconds a player must wait between resets
+  confirmation:
+    commands:
+      reset: true       # players must confirm before resetting
+```
+
+What gets cleared from the player (inventory, ender chest, money, XP) on a new island is set by the `on-join` options described in [Teams & Ranks](Teams.md#what-happens-to-items-and-money-when-players-join-or-leave).
+
+To give a player more resets, change their reset count:
+
+| Command | Effect |
+|---|---|
+| `/bsbadmin resets reset <player>` | Back to 0 resets used |
+| `/bsbadmin resets set <player> <number>` | Set how many resets they've used |
+| `/bsbadmin resets add <player> <number>` | Count more resets as used |
+| `/bsbadmin resets remove <player> <number>` | Give resets back |
+
+There's no permission for extra resets; use these commands, for example from a rank-up or store plugin.
+
+## Deleting islands
+
+| I want to… | Command |
+|---|---|
+| Delete a player's island | `/bsbadmin delete <player>` |
+| Delete the island I'm standing on | `/bsbadmin delete` (refused while it still has a team) |
+| Undo a delete before cleanup runs | Stand on it and run `/bsbadmin undelete` |
+| Give a deleted or unowned island to a player | Stand on it and run `/bsbadmin register <player>` |
+| Remove an owner but keep the blocks | `/bsbadmin unregister <owner>` |
+
+Deleting an island removes the owner straight away, so the player can create a new one. The **blocks** are removed later, when the region files are cleaned up (see below). Until then, `undelete` or `register` can bring the island back.
+
+## Cleaning up old islands
+
+Deleted and reset islands, and islands from players who never came back, take up disk space. BentoBox removes them by deleting the world's **region files** (each covers a 512×512 block area) once no active island is in them.
+
+**Automatic cleanup** is set in BentoBox's `config.yml`:
+
+```yaml
+island:
+  deletion:
+    housekeeping:
+      deleted-sweep:
+        enabled: true         # clean up deleted and reset islands
+        interval-hours: 24
+      age-sweep:
+        enabled: false        # also clean up islands nobody has visited
+        interval-days: 30
+        min-age-days: 60
+  purge-level: 10             # never purge islands above this level (needs Level)
+```
+
+The deleted-island sweep is safe and on by default. The age sweep is off by default because it removes abandoned islands that were never deleted.
+
+**Manual cleanup:**
+
+| Command | What it does |
+|---|---|
+| `/bsbadmin purge <days>` | Deletes islands in region files nobody has touched for that many days |
+| `/bsbadmin purge deleted` | Cleans up deleted islands now instead of waiting for the sweep |
+| `/bsbadmin purge unowned` | Marks islands with no owner as deletable |
+| `/bsbadmin purge protect` | Stand on an island and run this to protect it from all purges |
+
+Purges skip islands with online players, spawn islands, protected islands, and islands above `purge-level`.
+
+!!! warning "Back up first"
+    Purging deletes region files from disk and can't be undone. Back up the world folder before your first purge. Islands that share a region file with an active island stay until that region is clear.
+
+## Multiple islands per player
+
+Players can own more than one island in a game mode if you allow it:
+
+```yaml
+island:
+  concurrent-islands: 1          # BentoBox config.yml: default for all game modes
+
+world:
+  concurrent-islands: 1          # game mode config.yml: 0 = use BentoBox's value
   disallow-team-member-islands: true
 ```
 
-For example, to let every player own up to **3** islands in BSkyBlock, set `concurrent-islands: 3` in the BSkyBlock `config.yml`. If you also want team members to be able to create their own islands, set `disallow-team-member-islands: false`.
+Or give players `bskyblock.island.number.<number>`. See [Multiple Islands](../ConcurrentIslands.md) for how players create and switch between islands.
 
-### Permission
+## Finding out about an island
 
-The per-player maximum can be overridden with a permission node:
-
-```
-[gamemode].island.number.<number>
-```
-
-Replace `[gamemode]` with the game mode prefix and `<number>` with the maximum number of islands allowed. For example:
-
-| Permission | Effect |
+| Command | Shows |
 |---|---|
-| `bskyblock.island.number.5` | Allows the player up to 5 islands in BSkyBlock |
-| `acidisland.island.number.3` | Allows the player up to 3 islands in AcidIsland |
-| `caveblock.island.number.2` | Allows the player up to 2 islands in CaveBlock |
+| `/island info` | Owner, team, size and location of the island you're on |
+| `/bsbadmin info [player]` | Full details: owner, members, range, homes, resets, deaths, and more. With no name, the island you're on |
+| `/bsbadmin why <player>` | Logs why a player can or can't do something. See [Admin Tools](AdminTools.md) |
 
-The permission value overrides the `concurrent-islands` config value for that player. If a player does not have the permission, the config value is used as the default.
+## Troubleshooting
 
-!!! tip
-    For a full guide — including how players create, navigate, and manage multiple islands — see the [Concurrent Islands](../../BentoBox/ConcurrentIslands.md) page.
+**The server won't start after I changed `distance-between-islands`.**
+It can't change once islands exist. Put the old value back.
 
-## Island Range and Spacing
+**A VIP permission for a bigger island or more homes didn't apply.**
+Permissions are checked for the island **owner**, when they log in (and at island creation for range). Have the owner log out and in.
 
-Islands are placed in a grid. The spacing between island centres is set once in `config.yml` (`distance-between-islands`) and **cannot be changed once the world has been created**. Choose this value before players start joining. A larger value gives more build space between islands; a smaller value makes the world more compact.
+**A player has no resets left.**
+`/bsbadmin resets reset <player>`.
 
-The player's **protection range** — the area they actually own and can protect — is always smaller than or equal to half the island distance. It can be expanded by admins or by player permissions up to that maximum.
+**A deleted island is still there.**
+Its blocks go when the region file is cleaned up, at the next deleted-island sweep (24 hours by default), or run `/bsbadmin purge deleted`. If another active island shares the region file, the blocks stay.
 
-## Seeing Island Info
+**Disk usage keeps growing.**
+Make sure `deleted-sweep` is enabled, and consider `/bsbadmin purge <days>` or the age sweep for abandoned islands.
 
-Players can check their own island info with `/island info`. Admins can check any island with:
-```
-/[admin_command] info <player>
-```
-This shows the island's location, owner, team members, and current protection range.
+## See also
 
-??? note "What's new in v3.16.1"
-    **Released:** 2026-05-17
-
-    Targeted patch for `/bbox admin delete`. See the full notes: [Release 3.16.1](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.16.1)
-
-    - 🔺 `/bbox admin delete` now actually deletes the island. The reap happens on the next housekeeping sweep (default: 24 h) rather than instantly; if the region file still hosts live islands, the deleted island remains in the deleted state until the region is clear. Use WorldEdit or remove blocks manually if you need immediate cleanup of a shared region.
-    - 🔺 Seed worlds (`<world>/bentobox`) are no longer created. The seed-world plumbing (`createSeedWorlds`, `removeSeedWorlds`, the in-memory copies, the on-disk folders) is gone. Any stale `<world>/bentobox` folders left over from earlier versions are safe to delete manually.
-    - 🔺 API: `GameModeAddon#isUsesNewChunkGeneration()` is deprecated for removal. Existing overrides keep working (the value is ignored) but emit a deprecation warning — remove the override at your convenience.
-
-    **Compatibility:** Paper Minecraft 1.21.5 – 26.1.2, Java 21+.
+- [Player Guide](../Player-Guide.md): the commands your players use
+- [Teams & Ranks](Teams.md)
+- [Protection, Flags & Ranks](../Island-Protection,-Flags-&-Ranks.md)
+- [Starter Islands (Blueprints)](BlueprintsSummary.md)
+- [Multiple Islands](../ConcurrentIslands.md)
+- [Admin Tools](AdminTools.md)

@@ -203,7 +203,7 @@ barrier-offset: 0
     - Admins can set the range on a specific island with the admin range command, e.g. `/bsbadmin range set <player> <number>`.
     - The range can never be bigger than **half the distance between islands**, and that distance is set once when the world is created and can't be changed afterwards.
 
-    See [Island Range and Spacing](../../BentoBox/About/IslandManagement.md#island-range-and-spacing) for the full details.
+    See [Island Range and Spacing](../../BentoBox/About/IslandManagement.md#island-size-protection-range) for the full details.
 
 ??? question "Can I make the border a bit bigger than the island's range?"
     Yes! Use the `barrier-offset` setting in `config.yml`. It pushes the border outwards by however many blocks you choose, so players can step a little past their protected area before hitting the wall.
