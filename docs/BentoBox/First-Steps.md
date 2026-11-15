@@ -116,7 +116,7 @@ Quick summary:
 3. Use `/[admin_command] blueprint copy` then `save myisland`
 4. Open `/[admin_command] blueprint` to manage bundles
 
-See [Blueprints](About/BlueprintsSummary.md) for the full walkthrough.
+See [Starter Islands (Blueprints)](Blueprints.md) for the full walkthrough.
 
 ---
 
