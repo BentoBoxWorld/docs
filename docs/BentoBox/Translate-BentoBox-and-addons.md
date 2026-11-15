@@ -1,61 +1,27 @@
+# Translating BentoBox
+
+Help translate BentoBox, its game modes and addons. To change messages on your own server instead, see [Languages & Messages](About/Multilingual.md).
+
 ## Available locales
 
 {{ translations("BentoBox") }}
 
-## MiniMessage Formatting
+## How to help
 
-BentoBox uses [MiniMessage](https://docs.advntr.dev/minimessage/format.html) for all locale strings. This means you can use MiniMessage tags in your translations to apply rich text formatting. For example:
+Translations are made with AI help, so most of the work is done, but AI makes mistakes. The most useful thing you can do is correct them.
 
-```yaml
-my-message: "<green>Welcome to the island!</green>"
-my-message: "<bold><red>Warning!</red></bold> Something happened."
-my-message: "<gradient:gold:yellow>Island Name</gradient>"
-```
+1. Find the locale file in the project's GitHub repository, under `src/main/resources/locales/` (for example `fr.yml`). The links below go to each project's translation status.
+2. Fix the text and open a pull request. To add a new language, copy `en-US.yml`, rename it to the language code and translate it.
+3. Or report the mistake on [Discord](https://discord.bentobox.world) and we'll fix it.
 
-Legacy `§` or `&` color codes are still supported for backwards compatibility and will be automatically converted to MiniMessage format when loaded.
+The [translation tool](https://download.bentobox.world/translate.html) runs in your browser and can help with whole files. Translators get a special community badge.
 
-## Message Delivery Tags
+When translating:
 
-Locale strings can control how messages are delivered to players using special inline tags. When no delivery tag is present, the message is sent in chat (the default behavior).
-
-### `[actionbar]`
-
-Sends the message as an **action bar** message (the text displayed above the hotbar).
-
-```yaml
-island-go: "[actionbar]Teleporting..."
-```
-
-### `[title]` and `[subtitle]`
-
-Sends the message as a **title** overlay on screen. `[title]` displays the large heading text and `[subtitle]` displays smaller text below it. `[subtitle]` is not a standalone delivery type — it only works as a separator inside a `[title]` message. Without `[title]`, it falls through to the chat path.
-
-```yaml
-# Title with subtitle
-island-go: "[title]Teleporting...[subtitle]Wait a second."
-# Title only (empty title, text as subtitle)
-scooping: "[title][subtitle]You scooped the lava!"
-```
-
-### `[sound:name:volume:pitch]`
-
-Plays a **sound** for the player. Volume and pitch are optional (default `1.0`). Use underscore-separated sound names from the Bukkit/Minecraft sound list (e.g. `entity_experience_orb_pickup`). The sound tag can be combined with any delivery type tag.
-
-```yaml
-island-go: "[sound:entity_experience_orb_pickup:1:1][title]Teleporting...[subtitle]Wait a second."
-```
-
-!!! note
-    Non-player senders (e.g. the console) will fall back to chat output when action bar or title tags are used.
-
-## Guidelines
-
-* We now have a tool to enable translations of file at [https://download.bentobox.world/translate.html](https://download.bentobox.world/translate.html). This runs localling in your browser and may help translation. Submit new files as PRs on GitHub.
-* Translators get a special badge!
-* Do not translate text inside square brackets because those are placeholders, e.g. [name] should remain in English
-* Test your translations - try to check everything you can before submitting it
-* Do not include any advertising, swear words, or derogatory comments in the translations. We do check them before accepting the PR.
-* Feel free to ask questions on Discord about translations.
+- **Don't translate anything in square brackets.** `[name]`, `[number]` and `[prefix_island]` are filled in by BentoBox and must stay in English.
+- **Keep the formatting tags** like `<green>` and delivery tags like `[actionbar]`. See [Languages & Messages](About/Multilingual.md#colours-and-formatting).
+- **Test it on a server** if you can, to check the text fits in menus and titles.
+- **No advertising, swearing or insults.** We check every file before accepting it.
 
 ## Game Modes
 
