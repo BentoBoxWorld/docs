@@ -26,7 +26,7 @@ Game mode permissions start with the game mode's prefix, written `[gamemode].` h
 
 ## Game mode: player commands
 
-Most of these are given to everyone by the game mode. Check with `/bentobox perms`; in some game modes `island.homes`, `island.deletehome` and `island.renamehome` are operator-only by default.
+Most of these are given to everyone by the game mode. Check with `/bentobox perms`: in game mode releases from before November 2026, `island.homes`, `island.deletehome` and `island.renamehome` are operator-only in most game modes, and SkyGrid is also missing most `island.team` permissions.
 
 | Permission | Allows |
 |---|---|

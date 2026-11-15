@@ -22,8 +22,8 @@ Addons add their own permissions. They're listed on each [addon's page](../addon
 
 Run **`/bentobox perms`** in the console. It prints every BentoBox and game mode command permission with its default (`TRUE` for everyone, `OP` for operators, `FALSE` for nobody), in a format you can paste into a permissions plugin.
 
-!!! warning "Some player commands are operator-only by default"
-    In BSkyBlock, AOneBlock and AcidIsland, `island.deletehome` and `island.renamehome` default to operators only. In AOneBlock and AcidIsland, so does `island.homes`. If you give players more than one home, give these to them as well:
+!!! warning "Home commands may be operator-only"
+    In game mode releases from before November 2026, `island.homes`, `island.deletehome` and `island.renamehome` are operator-only in most game modes, and SkyGrid also leaves out most team commands. If `/bentobox perms` shows them as `OP`, and you give players more than one home, give these to them as well:
 
     ```
     /lp group default permission set bskyblock.island.homes true
