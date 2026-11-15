@@ -7,22 +7,29 @@ repo_name: BentoBoxWorld/BentoBox
 edit_uri: ""
 nav:
     - Home: index.md
-    - "What does BentoBox do?":
-        - Island Management: BentoBox/About/IslandManagement.md
-        - Game Modes: BentoBox/About/GameModes.md
-        - Addons: BentoBox/About/Addons.md
-        - Team Handling: BentoBox/About/Teams.md
+    - Getting Started:
+        - "How To Install": BentoBox/Install-Bentobox.md
+        - "Your First 30 Minutes": BentoBox/First-Steps.md
+        - "Choosing a Game Mode": gamemodes/Comparison.md
+        - "Set a BentoBox world as the server's default world": BentoBox/Set-a-BentoBox-world-as-the-server-default-world.md
+        - Glossary: Glossary.md
+    - Admin Guides:
         - Protection: BentoBox/About/Protections.md
-        - Blueprints: BentoBox/About/BlueprintsSummary.md
-        - Multilingual Support: BentoBox/About/Multilingual.md
-        - Admin Tools: BentoBox/About/AdminTools.md
-    - Glossary: Glossary.md
-    - FAQ: FAQ.md
-    - Privacy: BentoBox/Privacy.md
-    - AI Policy: BentoBox/AI-Policy.md
-    - Code of Conduct: BentoBox/CodeOfConduct.md
-    - Contributing: BentoBox/Contributing.md
+        - "Protection, Flags & Ranks": "BentoBox/Island-Protection,-Flags-&-Ranks.md"
+        - "Teams & Ranks": BentoBox/About/Teams.md
+        - Islands: BentoBox/About/IslandManagement.md
+        - "Multiple Islands": BentoBox/ConcurrentIslands.md
+        - "Starter Islands (Blueprints)": BentoBox/About/BlueprintsSummary.md
+        - "Making Blueprints": BentoBox/Blueprints.md
+        - "Customizing Menus": Tutorials/generic/Customizable-GUI.md
+        - "Bigger Create Island Menu": Tutorials/generic/Bigger-Create-Island-Menu.md
+        - "Languages & Messages": BentoBox/About/Multilingual.md
+        - "Translating BentoBox": BentoBox/Translate-BentoBox-and-addons.md
+        - "Admin Tools": BentoBox/About/AdminTools.md
+        - "Changing Database": BentoBox/Database-transition.md
+        - "Converting from ASkyBlock": Converter/index.md
     - Game Modes:
+        - "What is a game mode?": BentoBox/About/GameModes.md
         - Choosing a Game Mode: gamemodes/Comparison.md
         - AcidIsland: gamemodes/AcidIsland/index.md
         - AOneBlock:
@@ -47,8 +54,8 @@ nav:
             - Commands: gamemodes/TradeWinds/Commands.md
             - Permissions: gamemodes/TradeWinds/Permissions.md
             - Placeholders: gamemodes/TradeWinds/Placeholders.md
-              
     - Addons:
+        - "What are addons?": BentoBox/About/Addons.md
         - Bank: addons/Bank/index.md
         - Biomes: addons/Biomes/index.md
         - Border: addons/Border/index.md
@@ -75,21 +82,31 @@ nav:
         - Visit: addons/Visit/index.md
         - VoidPortals: addons/VoidPortals/index.md
         - Warps: addons/Warps/index.md
-    - "Tutorials – Generic":
-        - "Your First 30 Minutes": BentoBox/First-Steps.md
-        - "How To Install": BentoBox/Install-Bentobox.md
-        - "Set a BentoBox world as the server's default world": BentoBox/Set-a-BentoBox-world-as-the-server-default-world.md
-        - "Database transition": BentoBox/Database-transition.md
-        - "Customizable GUIs": Tutorials/generic/Customizable-GUI.md
-        - "Bigger Create Island menu": Tutorials/generic/Bigger-Create-Island-Menu.md
-    - "Tutorials – API":
+    - Reference:
+        - Commands: BentoBox/Commands.md
+        - Permissions: BentoBox/Permissions.md
+        - Flags: BentoBox/Flags.md
+        - Placeholders: BentoBox/Placeholders.md
+        - "Item Format": BentoBox/ItemParser.md
+        - "BentoBox Folders": BentoBox/List-of-BentoBox-directories.md
+    - FAQ: FAQ.md
+    - Developers:
+        - "Developer Overview": BentoBox/Developer-Documentation.md
         - "Create an Addon": Tutorials/api/Create-an-addon.md
+        - "The addon.yml File": BentoBox/How-to-fill-in-the-addon_yml-file.md
+        - "Creating a Game Mode": BentoBox/Creating-a-Game-Mode.md
         - "Config API": BentoBox/Config-API.md
         - "Database API": BentoBox/Database-API.md
         - "Metadata API": BentoBox/MetadataAPI.md
         - "Templated Panel API": Tutorials/api/Templated-Panel.md
         - "Blueprint File Format": BentoBox/Blueprint-Format.md
         - "Get Data From Addons": BentoBox/Request-Handler-API---How-plugins-can-get-data-from-addons.md
+    - About the Project:
+        - Contributing: BentoBox/Contributing.md
+        - "Code of Conduct": BentoBox/CodeOfConduct.md
+        - "AI Policy": BentoBox/AI-Policy.md
+        - Privacy: BentoBox/Privacy.md
+
 theme:
   name: material
   custom_dir: overrides
