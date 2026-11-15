@@ -90,6 +90,7 @@ nav:
         - Placeholders: BentoBox/Placeholders.md
         - "Item Format": BentoBox/ItemParser.md
         - "BentoBox Folders": BentoBox/List-of-BentoBox-directories.md
+        - "BentoBox Release Notes": BentoBox/Release-Notes.md
     - FAQ: FAQ.md
     - Developers:
         - "Developer Overview": BentoBox/Developer-Documentation.md
