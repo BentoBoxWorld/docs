@@ -227,7 +227,49 @@ World settings can also be set from the console or chat:
 ```
 
 !!! new "Added in BentoBox 3.23.6"
-    The **Always-allowed entity types** item (iron ingot) opens a list of every living entity type. Green types spawn even when animal or monster spawning is off, on any island or in the world; Iron Golem is green by default so village iron farms keep working. The **Global mob spawning** block list still takes priority. The list is stored by BentoBox, not in the game mode's `config.yml`; see [Mob spawning precedence](About/Protections.md#mob-spawning-precedence). Requires `[gamemode].admin.settings.ALLOW_MOBS`.
+    The **Always-allowed entity types** item (iron ingot) opens a list of every living entity type. Green types spawn even when animal or monster spawning is off, on any island or in the world; Iron Golem is green by default so village iron farms keep working. The **Global mob spawning** block list still takes priority. The list is stored by BentoBox, not in the game mode's `config.yml`; see [Mob spawning precedence](#mob-spawning-precedence). Requires `[gamemode].admin.settings.ALLOW_MOBS`.
+
+#### What each world setting does
+
+These are the world settings most servers will want to review. Defaults are for BSkyBlock; other game modes may differ. Every flag is listed in [Flags](Flags.md).
+
+| Setting | What it does | Default |
+|---|---|---|
+| **Always-allowed entity types** | Entities that spawn no matter what the animal and monster spawning flags say, on islands and in the world. Use it to let village iron farms work on a server, or an island, that has animal spawning turned off. Iron Golem is allowed by default. The block list (*Global mob spawning*) still wins. See [Mob spawning precedence](#mob-spawning-precedence). | Iron Golem |
+| **Chest explosion damage** | Protects chests from being destroyed by explosions (Creepers, TNT, Withers, Ghasts). Prevents grief but means chests can be used to make explosion-proof rooms. | On |
+| **Clean Super Flat** | If the world generator stops working, new chunks generate as flat grass. This setting detects and repairs those chunks. Leave it off unless you have this problem — it is resource-intensive. | Off |
+| **Coarse Dirt Tilling** | Prevents players from converting coarse dirt into regular dirt using a hoe. Dirt is scarce and valuable in most game modes; coarse dirt tilling can be exploited to generate it cheaply if gravel is easy to obtain. | Off (prevention on) |
+| **Creeper explosions** | Prevent Creeper explosion damage to island blocks. Creepers are the most common cause of island destruction. Preventing this makes the game easier, but reduces admin support load. | On |
+| **Creeper visitor ignition** | Prevent visitors from using flint & steel to prime Creepers on someone else's island — a common griefing method. | On |
+| **Ender Chests** | Block access to and crafting of Ender Chests, which can smuggle items between game mode worlds. Disable if you use a per-world Ender Chest plugin. | On (blocked) |
+| **Enderman block theft** | Prevent Endermen from picking up blocks from islands. Without this, players lose blocks they did not remove themselves. | On |
+| **Geo-limiting mobs** | Prevent certain mobs (e.g. the Wither, flying mobs) from leaving the island they were spawned on. If they cross the boundary they are removed. | On |
+| **Visitor protection** | Protect visitors from most types of damage while on another player's island. Also teleports visitors to safety if they fall into the void. | On |
+| **Item frame protection** | Prevent item frames from being broken or having their items knocked out by non-members. | On |
+| **Global mob spawning** | Set which mob types can spawn anywhere in the world, overriding all other spawning settings. For example, disable Phantoms server-wide. | Varies |
+| **Liquid flow outside islands** | Stop lava and water from flowing beyond island protection boundaries, preventing cobblestone formation between islands or floods. | On |
+| **Mob spawning outside islands** | Prevent mobs from spawning in the areas between islands, concentrating spawning inside island zones. Not recommended for AcidIsland as it looks unnatural. | Off |
+| **Obsidian scooping** | Allow players to right-click an isolated single obsidian block with an empty bucket to recover lava. Helps new players who accidentally make obsidian during cobblestone generator setup. | On |
+| **Offline plant growth** | Stop crops and plants from growing on an island when no team members are online, even if a visitor is loading the chunks. | Off |
+| **Offline Redstone** | Disable Redstone circuits on an island when no team members are online. | Off |
+| **Piston outside boundary** | Stop pistons from pushing blocks beyond the island's protection boundary — a common exploit for griefing adjacent islands. | On |
+| **Remove mobs on teleport** | Clear hostile mobs from the area when a player teleports to their island home, preventing surprise deaths on arrival. | On |
+| **Spawner type protection** | Prevent players from changing the mob type of spawner blocks using spawn eggs. Useful when spawners are given as rewards. | On |
+| **Tree growth boundary** | Prevent trees from growing beyond the island protection boundary. Without this, trees can intrude on other islands or create unreachable blocks. | On |
+| **Wither damage** | Limit the destruction the Wither can cause on and between islands. | On |
+
+#### Mob spawning precedence
+
+Natural and spawner mob spawning is decided in this order. The first rule that matches wins.
+
+1. **Global mob spawning** block list (`protection.block-mobs` in the game mode config). A blocked type never spawns.
+2. **Always-allowed entity types** allow list. An allowed type spawns regardless of the flags below.
+3. The island's **Animal natural spawn**, **Monster natural spawn**, **Animal spawners spawn** and **Monster spawners spawn** settings, or the world's defaults for those flags when there is no island.
+
+Spawns caused directly by a player, such as breeding, spawn eggs or building a golem, are never gated by any of these.
+
+!!! note "Where the allow list is stored"
+    Unlike the other world settings, the allow list is not in the game mode's `config.yml`. BentoBox stores it itself, one record per game mode, in its database: with the default flat-file database it is `plugins/BentoBox/database/CoreWorldSettings/<GameMode>.json`. It is seeded with `IRON_GOLEM` the first time the game mode is seen; after that only the admin's edits in the panel apply. Clearing the record restores the seed.
 
 ### World Protections
 
@@ -350,3 +392,9 @@ Operators bypass every protection flag. Test with a non-op account. `/[admin_com
 
 **I don't know which flag is blocking an action.**
 Run `/[admin_command] why <player>` to log every protection check for that player to the console, then do the action. The log names the flag, the location and the result. Run the command again to stop.
+
+**`why` says the action is allowed, but the player is still blocked.**
+Something other than BentoBox is blocking it: another plugin, or the server itself (for example spawn protection in `server.properties`).
+
+**Should I use WorldGuard in BentoBox worlds?**
+You don't need it: BentoBox protects islands and the space between them. If you do use WorldGuard there, its regions and BentoBox's flags both apply, which can block things unexpectedly. Keep WorldGuard regions out of game mode worlds, or check them first when something is blocked.
