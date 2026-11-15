@@ -15,7 +15,6 @@ nav:
         - Glossary: Glossary.md
     - "Player Guide": BentoBox/Player-Guide.md
     - Admin Guides:
-        - Protection: BentoBox/About/Protections.md
         - "Protection, Flags & Ranks": "BentoBox/Island-Protection,-Flags-&-Ranks.md"
         - "Teams & Ranks": BentoBox/About/Teams.md
         - Islands: BentoBox/About/IslandManagement.md
