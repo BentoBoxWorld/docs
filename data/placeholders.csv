@@ -1,51 +1,82 @@
 source,placeholder,desc,version
-BentoBox,[gamemode]_world_friendly_name,Name of the gamemode's world,1.4.0
-BentoBox,[gamemode]_world_islands,Number of islands in this gamemode's world,1.5.0
-BentoBox,[gamemode]_island_distance,Half the distance between islands' centers of the gamemode's world,1.4.0
-BentoBox,[gamemode]_island_distance_diameter,Distance between islands of the gamemode's world,1.5.0
-BentoBox,[gamemode]_island_protection_range,Radius of the island's protection range,1.4.0
-BentoBox,[gamemode]_island_protection_range_diameter,Diameter of the island's protection range ,1.5.0
-BentoBox,[gamemode]_island_owner,Name of the island's owner,1.4.0
-BentoBox,[gamemode]_island_creation_date,Creation date of the island,1.4.0
-BentoBox,[gamemode]_island_name,Name of the island,1.4.0
-BentoBox,[gamemode]_island_name_<number>,Name of the players <number> island,2.3.0
+BentoBox,[gamemode]_deaths,"Number of times the player died in this game mode, as counted by BentoBox (not the per-island count used by Level 2.29.0+)",1.12.0
+BentoBox,[gamemode]_has_island,Whether the player has an island or not,1.5.0
+BentoBox,[gamemode]_island_bans_count,Number of players banned from the island,1.5.0
 BentoBox,[gamemode]_island_center,Coordinates of the island's center,1.5.0
 BentoBox,[gamemode]_island_center_x,X coordinate of the island's center,1.5.0
 BentoBox,[gamemode]_island_center_y,Y coordinate of the island's center,1.5.0
 BentoBox,[gamemode]_island_center_z,Z coordinate of the island's center,1.5.0
-BentoBox,[gamemode]_island_members_max,Maximum number of members there can be on the island,1.5.0
+BentoBox,[gamemode]_island_coop_list,A comma separated list of player names that are at least COOP on this island,2.4.2
+BentoBox,[gamemode]_island_coops_count,Number of players cooped to the island,1.5.0
+BentoBox,[gamemode]_island_creation_date,Creation date of the island,3.2.0
+BentoBox,[gamemode]_island_creation_time,Island creation time,3.2.0
+BentoBox,[gamemode]_island_distance,Half the distance between islands' centers of the gamemode's world,1.4.0
+BentoBox,[gamemode]_island_distance_diameter,Distance between islands of the gamemode's world,1.5.0
+BentoBox,[gamemode]_island_historical_members_count,Number of players that are or have ever been a MEMBER on this island,3.0.0
+BentoBox,[gamemode]_island_location,"Coordinates of the island's location, which may be different to the center",1.16.0
+BentoBox,[gamemode]_island_location_x,X coordinate of the island's location,1.16.0
+BentoBox,[gamemode]_island_location_y,Y coordinate of the island's location,1.16.0
+BentoBox,[gamemode]_island_location_z,Z coordinate of the island's location,1.16.0
+BentoBox,[gamemode]_island_max_homes,Max homes for this island,2.6.0
 BentoBox,[gamemode]_island_members_count,"Number of members, subowners and owner there are on the island",1.5.0
 BentoBox,[gamemode]_island_members_list,Comma separated list of player names that are at least MEMBER on the island,1.13.0
-BentoBox,[gamemode]_island_members_list_<number>,Comma separated list of player names that are at least MEMBER on the players <number> island,2.3.0
+BentoBox,[gamemode]_island_members_max,Maximum number of members there can be on the island,1.5.0
+BentoBox,[gamemode]_island_coop_max,Maximum number of coops the island can have,2.6.0
+BentoBox,[gamemode]_island_trust_max,Maximum number of trusted players the island can have,2.6.0
+BentoBox,[gamemode]_island_name,Name of the island,1.4.0
+BentoBox,[gamemode]_island_owner,Name of the island's owner,1.4.0
+BentoBox,[gamemode]_island_protection_range,Radius of the island's protection range,1.4.0
+BentoBox,[gamemode]_island_protection_range_diameter,Diameter of the island's protection range,1.5.0
+BentoBox,[gamemode]_island_rank,Rank the user has on their island,
+BentoBox,[gamemode]_island_trusted_list,A comma separated list of player names that are at least TRUSTED on this island,2.4.2
 BentoBox,[gamemode]_island_trustees_count,Number of players trusted to the island,1.5.0
-BentoBox,[gamemode]_island_coops_count,Number of players cooped to the island,1.5.0
+BentoBox,[gamemode]_island_uuid,Island unique ID,1.15.4
 BentoBox,[gamemode]_island_visitors_count,Number of players currently visiting the island,1.5.0
-BentoBox,[gamemode]_island_bans_count,Number of players banned from the island,1.5.0
-BentoBox,[gamemode]_visited_island_protection_range,Radius of the protection range of the island the player is standing on,1.5.2
-BentoBox,[gamemode]_visited_island_protection_range_diameter,Diameter of the protection range of the island the player is standing on,1.5.2
-BentoBox,[gamemode]_visited_island_owner,Name of the owner of the island the player is standing on,1.5.2
-BentoBox,[gamemode]_visited_island_creation_date,Creation date of the island the player is standing on,1.5.2
-BentoBox,[gamemode]_visited_island_name,Name of the island the player is standing on,1.5.2
-BentoBox,[gamemode]_visited_island_center,Coordinates of the center of the island the player is standing on,1.5.2
-BentoBox,[gamemode]_visited_island_center_x,X coordinate of the center of the island the player is standing on,1.5.2
-BentoBox,[gamemode]_visited_island_center_y,Y coordinate of the center of the island the player is standing on,1.5.2
-BentoBox,[gamemode]_visited_island_center_z,Z coordinate of the center of the island the player is standing on,1.5.2
-BentoBox,[gamemode]_visited_island_members_max,Maximum number of members there can be on the island the player is standing on,1.5.2
-BentoBox,[gamemode]_visited_island_members_count,"Number of members, subowners and owner there are on the island",1.5.2
-BentoBox,[gamemode]_visited_island_members_list,Comma separated list of player names that are at least MEMBER on the island the player is standing on,1.13.0
-BentoBox,[gamemode]_visited_island_trustees_count,Number of players trusted on the island the player is standing on,1.5.2
-BentoBox,[gamemode]_visited_island_coops_count,Number of players cooped to the island the player is standing on,1.5.2
-BentoBox,[gamemode]_visited_island_visitors_count,Number of players currently visiting the island the player is standing on,1.5.2
-BentoBox,[gamemode]_visited_island_bans_count,Number of players banned from the island the player is standing on,1.5.2
-BentoBox,[gamemode]_has_island,Whether the player has an island or not,1.5.0
+BentoBox,[gamemode]_on_island,Whether the player is on an island he is part of or not,1.13.0
 BentoBox,[gamemode]_owns_island,Whether the player is an owner of an island,1.14.0
 BentoBox,[gamemode]_rank,Rank the player has on his island,1.5.0
 BentoBox,[gamemode]_resets,Number of times the player has reset his island,1.5.0
 BentoBox,[gamemode]_resets_left,Number of times the player can reset his island,1.5.0
-BentoBox,[gamemode]_deaths,"Number of times the player died in this game mode, as counted by BentoBox (not the per-island count used by Level 2.29.0+)",1.12.0
-BentoBox,[gamemode]_on_island,Whether the player is on an island he is part of or not,1.13.0
-BentoBox,[gamemode]_island_online_members_count,The number of online island members,2.0.1
-BentoBox,[gamemode]_visited_island_online_members_count,The number of online visited island members,2.0.1
+BentoBox,[gamemode]_visited_island_bans_count,Number of players banned from the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_center,Coordinates of the center of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_center_x,X coordinate of the center of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_center_y,Y coordinate of the center of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_center_z,Z coordinate of the center of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_coop_list,A comma separated list of player names that are COOP on the island the player is standing on,2.4.2
+BentoBox,[gamemode]_visited_island_coops_count,Number of players cooped to the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_creation_date,Creation date of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_location,Coordinates of the location of the island the player is standing on,1.16.0
+BentoBox,[gamemode]_visited_island_location_x,X coordinate of the location of the island the player is standing on,1.16.0
+BentoBox,[gamemode]_visited_island_location_y,Y coordinate of the location of the island the player is standing on,1.16.0
+BentoBox,[gamemode]_visited_island_location_z,Z coordinate of the location of the island the player is standing on,1.16.0
+BentoBox,[gamemode]_visited_island_max_homes,Max homes of the island the player is standing on,2.6.0
+BentoBox,[gamemode]_visited_island_members_count,"Number of members, subowners and owner there are on the island",1.5.2
+BentoBox,[gamemode]_visited_island_members_list,Comma separated list of player names that are at least MEMBER on the island the player is standing on,1.13.0
+BentoBox,[gamemode]_visited_island_members_max,Maximum number of members there can be on the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_coop_max,Maximum number of coops the island the player is standing on can have,2.6.0
+BentoBox,[gamemode]_visited_island_trust_max,Maximum number of trusted players the island the player is standing on can have,2.6.0
+BentoBox,[gamemode]_visited_island_name,Name of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_owner,Name of the owner of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_protection_range,Radius of the protection range of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_protection_range_diameter,Diameter of the protection range of the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_rank,Rank this player has on this island,2.4.0
+BentoBox,[gamemode]_visited_island_trusted_list,A comma separated list of player names that are TRUSTED on the island the player is standing on,2.4.2
+BentoBox,[gamemode]_visited_island_trustees_count,Number of players trusted on the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_uuid,Visited island unique ID,1.15.4
+BentoBox,[gamemode]_visited_island_visitors_count,Number of players currently visiting the island the player is standing on,1.5.2
+BentoBox,[gamemode]_world_friendly_name,Name of the gamemode's world,1.4.0
+BentoBox,[gamemode]_world_islands,Number of islands in this gamemode's world,1.5.0
+BentoBox,[gamemode]_island_online_members_count,Number of island members currently online,2.1.0
+BentoBox,[gamemode]_visited_island_online_members_count,Number of members currently online on the island the player is standing on,2.1.0
+BentoBox,[gamemode]_island_name_<n>,"Name of the player's island number N, when players can own more than one island (one placeholder per allowed island)",2.3.0
+BentoBox,[gamemode]_island_memberlist_<n>,"Comma-separated member list of the player's island number N, when players can own more than one island",2.3.0
+BentoBox,[gamemode]_island_member_name_<n>,"Name of island member number N (Member rank or above), for N from 1 to 50",2.0.0
+BentoBox,[gamemode]_island_member_rank_<n>,"Rank of island member number N, for N from 1 to 50",2.0.0
+BentoBox,[gamemode]_island_banned_name_<n>,"Name of banned player number N, for N from 1 to 50",2.0.0
+BentoBox,[gamemode]_visited_island_member_name_<n>,Name of member number N of the island the player is standing on,2.0.0
+BentoBox,[gamemode]_visited_island_member_rank_<n>,Rank of member number N of the island the player is standing on,2.0.0
+BentoBox,[gamemode]_visited_island_banned_name_<n>,Name of banned player number N on the island the player is standing on,2.0.0
+BentoBox,[gamemode]_flag_<flag_id>,"Value of a flag, using its lower-case ID: the minimum rank for a protection flag on the player's island, true/false for an island setting or a world setting",3.14.0
 Bank,Bank_[gamemode]_island_balance,Island balance of the player's island,1.1.0
 Bank,Bank_[gamemode]_visited_island_balance,Island balance of the island the player is standing on,1.1.0
 Bank,Bank_[gamemode]_island_balance_number,Island balance of the player's island as a raw number,1.3.0
