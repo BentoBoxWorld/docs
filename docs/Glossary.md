@@ -11,7 +11,7 @@ A file (`.jar`) that extends BentoBox with new features. Addons go in `plugins/B
 Each game mode has an admin-only command for managing islands, settings, and players. For BSkyBlock it is `/bsb`, for AcidIsland it is `/acid admin`, etc. The exact command is listed in each game mode's documentation.
 
 ## Blueprint
-A saved template of a built island used when a player creates a new island. BentoBox comes with default blueprints but admins can create their own in-game. Blueprints are stored in `plugins/BentoBox/blueprints/`. See [Blueprints](BentoBox/About/BlueprintsSummary.md).
+A saved template of a built island used when a player creates a new island. BentoBox comes with default blueprints but admins can create their own in-game. Each game mode keeps its blueprints in `plugins/BentoBox/addons/<GameMode>/blueprints/`. See [Starter Islands (Blueprints)](BentoBox/Blueprints.md).
 
 ## Blueprint Bundle
 A named set of blueprints (one each for the Overworld, Nether, and End) grouped together. When a player creates a new island, they may be presented with a choice of bundles. Each bundle can have its own icon, description, and permission requirement.

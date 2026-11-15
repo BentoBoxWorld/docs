@@ -40,7 +40,7 @@ You can change what happens:
 | `create-island-on-first-login.enable` | `false` | Create an island automatically when a new player joins |
 | `teleport-player-to-island-when-created` | `true` | Teleport the player when their island is ready |
 
-**Choice of starter islands.** Each choice in the Create Island menu is a blueprint bundle. To make one available only to some players (for example a VIP island), set it to require a permission in `/bsbadmin blueprint`, then give `bskyblock.island.create.<bundle-name>`. See [Starter Islands (Blueprints)](BlueprintsSummary.md) and [Making Blueprints](../Blueprints.md).
+**Choice of starter islands.** Each choice in the Create Island menu is a blueprint bundle. To make one available only to some players (for example a VIP island), set it to require a permission in `/bsbadmin blueprint`, then give `bskyblock.island.create.<bundle-name>`. See [Starter Islands (Blueprints)](../Blueprints.md).
 
 ## Island size (protection range)
 
@@ -225,6 +225,6 @@ Make sure `deleted-sweep` is enabled, and consider `/bsbadmin purge <days>` or t
 - [Player Guide](../Player-Guide.md): the commands your players use
 - [Teams & Ranks](Teams.md)
 - [Protection, Flags & Ranks](../Island-Protection,-Flags-&-Ranks.md)
-- [Starter Islands (Blueprints)](BlueprintsSummary.md)
+- [Starter Islands (Blueprints)](../Blueprints.md)
 - [Multiple Islands](../ConcurrentIslands.md)
 - [Admin Tools](AdminTools.md)

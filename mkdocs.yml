@@ -21,8 +21,7 @@ nav:
         - Islands: BentoBox/About/IslandManagement.md
         - "Multiple Islands": BentoBox/ConcurrentIslands.md
         - "Permissions & VIP Perks": BentoBox/Permissions-Guide.md
-        - "Starter Islands (Blueprints)": BentoBox/About/BlueprintsSummary.md
-        - "Making Blueprints": BentoBox/Blueprints.md
+        - "Starter Islands (Blueprints)": BentoBox/Blueprints.md
         - "Customizing Menus": Tutorials/generic/Customizable-GUI.md
         - "Bigger Create Island Menu": Tutorials/generic/Bigger-Create-Island-Menu.md
         - "Languages & Messages": BentoBox/About/Multilingual.md
