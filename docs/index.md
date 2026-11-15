@@ -17,12 +17,13 @@ hide:
     <a href="BentoBox/First-Steps" class="bb-btn bb-btn-primary">First 30 minutes &rarr;</a>
     <a href="FAQ" class="bb-btn bb-btn-ghost">FAQ &amp; troubleshooting</a>
     <a href="gamemodes/Comparison" class="bb-btn bb-btn-ghost">Choose a game mode</a>
+    <a href="BentoBox/Player-Guide" class="bb-btn bb-btn-ghost">Player Guide</a>
     <a href="https://download.bentobox.world" class="bb-btn bb-btn-ghost">Download builds</a>
   </div>
 
   <div class="bb-stats">
     <div class="bb-stat">
-      <div class="bb-stat__n">1,400+</div>
+      <div class="bb-stat__n">1,600+</div>
       <div class="bb-stat__l">servers</div>
     </div>
     <div class="bb-stat">
@@ -73,6 +74,64 @@ hide:
       <p class="bb-step-title">First 30 minutes</p>
       <p class="bb-step-body">From fresh install to players having fun: configs, addons, defaults.</p>
       <a href="BentoBox/First-Steps" class="bb-step-link">Read guide &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── ADMIN GUIDES ───────────────────────────────────────────── -->
+<div class="bb-section">
+  <div class="bb-section-header">
+    <h2>Admin guides</h2>
+    <a href="BentoBox/Player-Guide" class="bb-section-link">Player Guide for your players &rarr;</a>
+  </div>
+  <div class="bb-steps">
+    <div class="bb-step-card">
+      <div class="bb-step-header">
+        <span class="bb-step-num">Protection</span>
+      </div>
+      <p class="bb-step-title">Protection, flags &amp; ranks</p>
+      <p class="bb-step-body">What visitors and team members can do on an island, and the rules for the rest of the world.</p>
+      <a href="BentoBox/Island-Protection,-Flags-&amp;-Ranks" class="bb-step-link">Read guide &rarr;</a>
+    </div>
+    <div class="bb-step-card">
+      <div class="bb-step-header">
+        <span class="bb-step-num">Teams</span>
+      </div>
+      <p class="bb-step-title">Teams &amp; ranks</p>
+      <p class="bb-step-body">Team sizes, bigger teams for VIPs, trust and coop, and what happens when players join or leave.</p>
+      <a href="BentoBox/About/Teams" class="bb-step-link">Read guide &rarr;</a>
+    </div>
+    <div class="bb-step-card">
+      <div class="bb-step-header">
+        <span class="bb-step-num">Islands</span>
+      </div>
+      <p class="bb-step-title">Islands</p>
+      <p class="bb-step-body">Creating, resetting and deleting islands, homes, and letting players own more than one.</p>
+      <a href="BentoBox/About/IslandManagement" class="bb-step-link">Read guide &rarr;</a>
+    </div>
+    <div class="bb-step-card">
+      <div class="bb-step-header">
+        <span class="bb-step-num">Blueprints</span>
+      </div>
+      <p class="bb-step-title">Starter islands</p>
+      <p class="bb-step-body">Build the islands players start on and offer a choice in the Create Island menu.</p>
+      <a href="BentoBox/Blueprints" class="bb-step-link">Read guide &rarr;</a>
+    </div>
+    <div class="bb-step-card">
+      <div class="bb-step-header">
+        <span class="bb-step-num">Menus</span>
+      </div>
+      <p class="bb-step-title">Customizing menus</p>
+      <p class="bb-step-body">Change the titles, icons, layout and size of the team, settings, homes and other menus.</p>
+      <a href="Tutorials/generic/Customizable-GUI" class="bb-step-link">Read guide &rarr;</a>
+    </div>
+    <div class="bb-step-card">
+      <div class="bb-step-header">
+        <span class="bb-step-num">Reference</span>
+      </div>
+      <p class="bb-step-title">Commands &amp; permissions</p>
+      <p class="bb-step-body">Every BentoBox command and permission, plus flags and placeholders.</p>
+      <a href="BentoBox/Commands" class="bb-step-link">Open reference &rarr;</a>
     </div>
   </div>
 </div>
@@ -179,7 +238,7 @@ hide:
     <div class="bb-sponsor-card">
       <p class="bb-card-eyebrow" style="color:oklch(0.78 0.13 220)">Open source</p>
       <p class="bb-card-title">Sponsor BentoBox</p>
-      <p class="bb-card-body">Every contribution keeps the games running and the updates coming. Free and open source, used on 1,400+ servers worldwide.</p>
+      <p class="bb-card-body">Every contribution keeps the games running and the updates coming. Free and open source, used on 1,600+ servers worldwide.</p>
       <div class="bb-btn-row">
         <a href="https://github.com/sponsors/tastybento" class="bb-btn bb-btn-sm bb-btn-ink">&#9829; GitHub Sponsors</a>
         <a href="https://www.paypal.me/BentoBoxWorld" class="bb-btn bb-btn-sm bb-btn-ghost">PayPal</a>
