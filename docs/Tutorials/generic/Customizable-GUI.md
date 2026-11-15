@@ -1,241 +1,223 @@
-## Customizable GUI's
+# Customizing Menus
 
-BentoBox 1.17 introduced an API for GUI customization. However, due to the number of required changes, not everything is yet customizable, and only few addons has implemented this feature.
+Most of the menus players see in BentoBox (the team menu, island settings, the Create Island menu, homes, language and more) are built from **panel templates**: YAML files you can edit. You can change the title, the size of the menu, the background, which icon each button uses, its text, and where it sits.
 
-Example of customizable GUI:
+You can't invent new kinds of buttons. Each menu only understands the button types its code provides. For a menu of your own with buttons that run commands, use the [ControlPanel](../../addons/ControlPanel/index.md) addon.
+
+## Where the menu files are
+
+| Menus from | Folder |
+|---|---|
+| BentoBox | `plugins/BentoBox/panels/` |
+| A game mode, for that game mode only | `plugins/BentoBox/addons/<GameMode>/panels/` |
+| An addon (Level, Challenges, Warps…) | `plugins/BentoBox/addons/<Addon>/panels/` |
+
+BentoBox writes its templates to `plugins/BentoBox/panels/` the first time each menu is used. Addons write theirs to their own folder.
+
+### BentoBox's menus
+
+| File | Menu | Can a game mode have its own copy? |
+|---|---|---|
+| `island_creation_panel.yml` | Choosing an island when creating or resetting | Yes |
+| `island_homes_panel.yml` | `/island homes` | Yes |
+| `language_panel.yml` | `/island language` | Yes |
+| `settings_panel.yml` | `/island settings` | Yes |
+| `admin_settings_panel.yml` | `/bsbadmin settings` | Yes |
+| `command_ranks_panel.yml` | Command Ranks page in the settings menu | Yes |
+| `team_panel.yml` | `/island team` | No |
+| `team_invite_panel.yml` | The invite screen in the team menu | No |
+| `placeholder_panel.yml`, `placeholder_list_panel.yml` | The placeholder browser | No |
+
+**Different menus per game mode:** copy the file from `plugins/BentoBox/panels/` into the game mode's `panels` folder (create the folder if needed) and edit the copy. For example, `plugins/BentoBox/addons/AOneBlock/panels/island_creation_panel.yml` changes the Create Island menu for AOneBlock only. The other game modes keep using the BentoBox version.
+
+### Addon menus
+
+Addons that use templates include Level (`top_panel`, `value_panel`, `detail_panel`, `donation_panel`), Challenges, Biomes, Warps, Upgrades, Likes, Visit, TopBlock, CheckMeOut, MagicCobblestoneGenerator, AOneBlock (`phases_panel`) and CauldronWitchery. Look in each addon's `panels` folder. They use the same format as below.
+
+## Making a change
+
+1. Stop players from opening the menu, or do this on a test server first.
+2. Edit the `.yml` file. Keep a copy of the original.
+3. Run `/bentobox reload`. This closes open menus and reloads the templates.
+4. Open the menu in game and check it.
+
+If a menu stops opening or shows nothing, the YAML is probably invalid. Check the server console for an error and paste the file into a YAML checker. **To get the default back**, delete the file. BentoBox copies its default back the next time the menu opens. For an addon's file, restart the server.
+
+## Common changes
+
+### Change the title or button text
+
+Text can be either plain text or a **locale key**. The default templates use locale keys so the menus are translated:
+
 ```yaml
-# The name of the panel. It must be the same as file name.
-panel_name:
-  # Title of the panel
-  title: "The Panel Title"
-  # Panel Type:
-  # INVENTORY - chest GUI type
-  # HOPPER - hopper GUI type
-  # DROPPER - dropper/dispenser GUI type.
-  type: INVENTORY
-  # Background item for empty slots
-  background:
-    # Icon for the element.
-    # Write format can be found in: https://docs.bentobox.world/en/latest/BentoBox/ItemParser/
-    icon: BLACK_STAINED_GLASS_PANE
-    # Title of the element
-    title: "&b&r" # Empty text
-    # Description of the element
-    description: "I am background"
-  # Border item for non-empty border slots
-  border:
-    # Icon for the element.
-    # Write format can be found in: https://docs.bentobox.world/en/latest/BentoBox/ItemParser/
-    icon: BLACK_STAINED_GLASS_PANE
-    # Title of the element
-    title: "&b&r" # Empty text
-    # Description of the element
-    description: "I am border"
-  # Rows that must be always visible
-  force-shown: [2,4]
-  # Content of the GUI.
-  content:
-    # Row number from 1 to 6
-    2:
-      # Column number
-      2: reusable_button_one
-      3: reusable_button_one
-      4: reusable_button_one
-      5: reusable_button_one
-      6: reusable_button_one
-      7: reusable_button_one
-      8: reusable_button_one
-    3:
-      1:
-        # Icon for the element.
-        # Write format can be found in: https://docs.bentobox.world/en/latest/BentoBox/ItemParser/
-        icon: tipped_arrow[potion_contents={custom_color:11546150}]
-        # Title of the element.
-        title: "Button One"
-        # Description of the element
-        description: "Button description"
-        # Data is used for defining some functions that are used for addons.
-        # The content of it depends on addon/gui implementation.
-        data:
-          type: ADDON_THING
-        # Actions allow specifying what button should do. Addons can specify extra parameters.
-        action:
-          # available options can be found here: [ClickType](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/ClickType.html)
-          left:
-            # Addons can define a type of click. 
-            type: ADDON_THING
-            # Tooltips are a text that will be added to the button description at the end.
-            tooltip: "Tooltip for a button"
-      9:
-        # Icon for the element.
-        # Write format can be found in: https://docs.bentobox.world/en/latest/BentoBox/ItemParser/
-        icon: STONE
-        # Title of the element.
-        title: "Button Twi"
-        # Description of the element
-        description: "Button description"
-        # Data is used for defining some functions that are used for addons.
-        # The content of it depends on addon/gui implementation.
-        data:
-          type: ADDON_THING
-        # Actions allow specifying what button should do. Addons can specify extra parameters.
-        action:
-          # available options can be found here: [ClickType](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/ClickType.html)
-          left:
-            # Addons can define a type of click. 
-            type: ADDON_THING
-            # Tooltips are a text that will be added to the button description at the end.
-            tooltip: "Tooltip for a button"
-    5:
-      2: reusable_button_two
-      3: reusable_button_two
-      4: reusable_button_two
-      5: reusable_button_two
-      6: reusable_button_one
-      7: reusable_button_two
-      8: reusable_button_two
-  # The reusable buttons that are used inside content part multiple times.
-  reusable:
-    # The id of reusable
-    reusable_button_one:
-      # Icon for the element.
-      # Write format can be found in: https://docs.bentobox.world/en/latest/BentoBox/ItemParser/
-      icon: GLASS
-      # Title of the element.
-      title: "Reusable Button One"
-      # Description of the element
-      description: "Button description"
-      # Data is used for defining some functions that are used for addons.
-      # The content of it depends on addon/gui implementation.
-      data:
-        type: ADDON_THING
-      # Actions allow specifying what button should do. Addons can specify extra parameters.
-      action:
-        # available options can be found here: [ClickType](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/ClickType.html)
-        left:
-          # Addons can define a type of click. 
-          type: ADDON_THING
-          # Tooltips are a text that will be added to the button description at the end.
-          tooltip: "Tooltip for a button"
-    reusable_button_two:
-      # Icon for the element.
-      # Write format can be found in: https://docs.bentobox.world/en/latest/BentoBox/ItemParser/
-      icon: DIRT
-      # Title of the element.
-      title: "Reusable Button Two"
-      # Description of the element
-      description: "Button description"
-      # Data is used for defining some functions that are used for addons.
-      # The content of it depends on addon/gui implementation.
-      data:
-        type: ADDON_THING
-      # Actions allow specifying what button should do. Addons can specify extra parameters.
-      action:
-        # available options can be found here: [ClickType](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/ClickType.html)
-        left:
-          # Addons can define a type of click. 
-          type: ADDON_THING
-          # Tooltips are a text that will be added to the button description at the end.
-          tooltip: "Tooltip for a button"
+team_panel:
+  title: commands.island.team.gui.titles.team-panel
 ```
 
-### FAQ
+- **Change the text in every language:** edit that key in the locale files (`plugins/BentoBox/locales/`, or the addon's `locales` folder). See [Languages & Messages](../../BentoBox/About/Multilingual.md).
+- **Use the same text for everyone:** replace the key with your own text, for example `title: "&6My Team"`.
 
-??? question "Can I set a multi-linguistic title and description?"
-    Yes, you can. Every text in the GUI will always try to use BentoBox localization. It means that if you specify a text that links to a translation, it will use it.
-    F.e.:
-    ```yaml
-    tooltip: panels.tooltips.left
-    ```
-    will try to get translation string from any of BentoBox locales:
-    ```yaml
-    panels:
-      tooltips:
-        left: "Left Click Tooltip"
-    ```
+### Change the background or border
 
-??? question "What is type?"
-    In Spigot plugins you can specify 3 types of inventories, that players can interact:
-    - `INVENTORY` - simple inventory like chests with 27 till 54 slots.
-    - `HOPPER` - hopper inventory with 5 slots.
-    - `DROPPER` - dropper inventory with 9 slots.
-    
-    Other inventories, like enchanting and anvil, are not supported by Spigot and requires extra plugins. That is reason why BentoBox currently do not support them.
+```yaml
+  background:
+    icon: GRAY_STAINED_GLASS_PANE
+    title: "&b&r"     # shows no name
+  border:
+    icon: LIGHT_BLUE_STAINED_GLASS_PANE
+    title: "&b&r"
+```
 
-??? question "What is background?"
-    The background item allows setting unified item for all empty spaces that will be left in the GUI.
-    It requires to have icon and title. If you do not want to have it, just remove `background` lines.
-    The only required thing under `background` is icon. `title` and `description` can be removed.
-    ```yaml
-        icon: BLACK_STAINED_GLASS_PANE
-        title: "The title of background item"
-        description: "The description of background item"
-    ```
+Delete the `background` or `border` section to leave those slots empty. `"&b&r"` is the usual way to show an item with no name; Minecraft always shows a tooltip, so it can't be hidden completely.
 
-??? question "What is border?"
-    The border item allows setting unified item all around the GUI. It will replace only empty spaced.
-    It requires to have icon and title. If you do not want to have it, just remove `border` lines.
-    The only required thing under `background` is icon. `title` and `description` can be removed.
-    ```yaml
-        icon: BLACK_STAINED_GLASS_PANE
-        title: "The title of border item"
-        description: "The description of border item"
-    ```
+### Change a button's icon
 
-??? question "Can I set empty text and hide tooltip?"
-    Unfortunately, Minecraft servers cannot disable text and tooltip rendering for clients. Only for modded clients (like fabric or forge) it can be done.
-    The closest you can get is to set an empty text with: `&b&r`
+Set `icon` on the button. Any item works, including items with data, potion colours and player heads. See [Item Format](../../BentoBox/ItemParser.md).
 
+```yaml
+      icon: DIAMOND
+      icon: tipped_arrow[potion_contents={custom_color:11546150}]
+```
 
-??? question "What is `force-shown`?"
-    In inventory GUI's we try to remove all completely empty lines. This allows to set dynamic size of GUI's for different number of available elements in them. However, sometime you want always to see a specific line. Force-show option allows to do it, and you can list integers with lines (from 0-6).
+Some buttons pick their own icon if you leave `icon` out. For example, the team menu shows the player's head and the Create Island menu shows the island's icon.
 
-??? question "What is reusable?"
-    In some GUI's you would have a lot of repeating items that you would need to specify, like challenges or biomes. Reusable allows to create a single element that will be replaced in all places where object is required from content part.
+### Move a button
 
-??? question "How to properly fill `conetent`?"
-    Content requires to specify row number (from 1 to 6) as first thing and column number for each button (from 1 to 9). It does not require to specify every slot, just the ones you want to fill. Everything else will be either empty, background or border.
-    
-    Note, that some GUI types does not have multiple rows or less columns.
+Buttons are placed by **row** (1–6) and **column** (1–9) under `content`. To move one, change its row or column number:
 
-??? question "What is `data` for buttons?"
-    Data is a way how we implemented a feature for addons to use custom functions. Like Challenges addon has two type of data: CHALLENGE and LEVEL. Each addon has its own data, and it may contain more things than a type.
-
-??? question "What is `actions` for buttons?"
-    `Actions` allows implementing different things that will happen if player use different click options on the buttons.
-    All click options can be found here: [ClickType](https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/ClickType.html)
-    Be aware, not all options are usable by players.
-
-    `action` supports tooltip generation. Tooltips will be always added at the end of the button description and will be in the order of actions.
-
-??? question "What is `fallback` for buttons?"
-    A button may carry a `fallback`: another button definition (or the name of a `reusable`) that is shown when the button itself cannot be, for example a tab that does not apply in the current situation, or a paged slot with nothing left to show. A fallback is a full button, so it may have its own `data` and `actions`, and even its own `fallback`. The settings panels use this to put the tab shown off-island in the same slot as the tab shown on an island.
-    ```yaml
-    2:
-      icon: SHIELD
-      title: protection.panel.PROTECTION.title
-      data:
-        type: TAB
-        tab: PROTECTION
-      fallback:
-        icon: STONE_BRICKS
-        title: protection.panel.WORLD_DEFAULTS.title
+```yaml
+  content:
+    1:        # row 1
+      1:      # column 1
         data:
-          type: TAB
-          tab: WORLD_PROTECTION
-    ```
-    Fallbacks work as of BentoBox 3.23.0; earlier versions skipped the fallback and showed its own fallback instead.
+          type: STATUS
+```
 
-??? question "Which BentoBox panels are customizable?"
-    BentoBox writes these templates to `plugins/BentoBox/panels/` on first start. A game mode addon may ship its own copy of any of them in its own `panels` folder, which is then used for that game mode.
+### Make a menu taller
 
-    | File | Panel |
-    | --- | --- |
-    | `island_creation_panel.yml` | Blueprint bundle choice when creating an island |
-    | `island_homes_panel.yml` | `/[player_command] homes` |
-    | `language_panel.yml` | `/[player_command] language` |
-    | `team_panel.yml` and `team_invite_panel.yml` | `/[player_command] team` and its invite screen |
-    | `settings_panel.yml` | `/[player_command] settings`, see [Customizing the Settings Panel](/en/latest/BentoBox/Island-Protection,-Flags-&-Ranks/#customizing-the-settings-panel) |
-    | `admin_settings_panel.yml` | `/[admin_command] settings` |
-    | `command_ranks_panel.yml` | The Command Ranks panel opened from the settings panel (3.23.3+), see [Customizing the Command Ranks panel](/en/latest/BentoBox/Island-Protection,-Flags-&-Ranks/#customizing-the-command-ranks-panel) |
-    | `placeholder_panel.yml` and `placeholder_list_panel.yml` | The placeholder browser |
+Menus shrink to fit the rows that have buttons. To keep rows even when they're empty, use `force-shown`:
+
+```yaml
+  force-shown: 6        # always show rows 1 to 6
+  force-shown: [2, 4]   # always show rows 2 and 4
+```
+
+This only adds empty rows. To show **more items per page** (more islands, more homes), add more of the repeating buttons too. The [Bigger Create Island Menu](Bigger-Create-Island-Menu.md) page walks through this.
+
+### Remove a button
+
+Delete the button from `content`. The slot then shows the background. Some buttons are needed for the menu to work: keep `NEXT`/`PREVIOUS` buttons in menus that can have more than one page.
+
+## How a template is laid out
+
+Every template has the same parts. This shortened example is based on the Create Island menu:
+
+```yaml
+island_creation_panel:          # must match the file name
+  title: panels.island_creation.title
+  type: INVENTORY               # INVENTORY (chest), HOPPER (5 slots) or DROPPER (9 slots)
+  background:
+    icon: BLACK_STAINED_GLASS_PANE
+    title: "&b&r"
+  border:
+    icon: BLACK_STAINED_GLASS_PANE
+    title: "&b&r"
+  force-shown: []
+  content:
+    2:
+      2: blueprint_bundle_button    # a name refers to a button in `reusable`
+      3: blueprint_bundle_button
+    3:
+      9:                            # or define the button right here
+        icon: ARROW
+        title: panels.buttons.next.name
+        description: panels.buttons.next.description
+        data:
+          type: NEXT
+        actions:
+          next:
+            click-type: UNKNOWN
+            tooltip: panels.tips.click-to-next
+  reusable:
+    blueprint_bundle_button:
+      title: panels.island_creation.buttons.bundle.name
+      description: panels.island_creation.buttons.bundle.description
+      data:
+        type: BUNDLE
+      actions:
+        select:
+          click-type: UNKNOWN
+          tooltip: panels.tips.click-to-choose
+```
+
+### Button settings
+
+| Setting | What it does |
+|---|---|
+| `icon` | The item shown. See [Item Format](../../BentoBox/ItemParser.md) |
+| `title` | The item's name: text or a locale key |
+| `description` | The lines under the name: text or a locale key |
+| `data` | **What the button is.** `type` picks the button type (see below). Some types take extra settings, for example `tab` on a settings tab button |
+| `actions` | What each click does, and the tooltip line added for it |
+| `fallback` | Another button to show when this one can't be shown, for example when there's nothing left to fill a slot on the last page. It can be a full button or the name of a `reusable` button. Needs BentoBox 3.23.0 or later |
+
+### Repeating buttons (`reusable`)
+
+Menus that list things (islands, homes, team members, languages, flags) use one button design for every entry. Define it once under `reusable` and put its name in each slot where an entry can appear. The menu fills those slots in order and pages through the rest.
+
+### Click actions
+
+Each action has a name, a click type and a tooltip:
+
+```yaml
+        actions:              # the team menu's member button
+          kick:
+            click-type: SHIFT_RIGHT
+            tooltip: commands.island.team.gui.tips.SHIFT_RIGHT.kick
+          setowner:
+            click-type: SHIFT_LEFT
+            tooltip: commands.island.team.gui.tips.SHIFT_LEFT.setowner
+```
+
+- `click-type` is a Minecraft click: `LEFT`, `RIGHT`, `SHIFT_LEFT`, `SHIFT_RIGHT`, `MIDDLE`, `DROP` and so on. `UNKNOWN` means any click.
+- The action name (`kick`, `setowner`) is what the menu does. Use the names already in the default file. You can change which click triggers an action, or remove an action you don't want players to use from the menu.
+- Tooltips are added below the description, in the order the actions are listed.
+
+### Button types in BentoBox's menus
+
+| Menu | Button types (`data: type:`) |
+|---|---|
+| Create Island | `BUNDLE`, `NEXT`, `PREVIOUS` |
+| Homes | `ISLAND`, `NEXT`, `PREVIOUS` |
+| Language | `LOCALE`, `NEXT`, `PREVIOUS` |
+| Team | `STATUS`, `MEMBER`, `RANK`, `INVITE`, `INVITED` |
+| Team invite | `PROSPECT`, `SEARCH`, `BACK`, `NEXT`, `PREVIOUS` |
+| Settings / admin settings | `FLAG`, `TAB`, `MODE`, `RESET`, `NEXT`, `PREVIOUS` |
+| Command ranks | `COMMAND`, `NEXT`, `PREVIOUS` |
+| Placeholders | `BENTOBOX`, `ADDON`, `PLACEHOLDER`, `BACK`, `NEXT`, `PREVIOUS` |
+
+The default files have comments explaining each one. The settings menus are covered in detail in [Protection, Flags & Ranks](../../BentoBox/Island-Protection,-Flags-&-Ranks.md#customizing-the-settings-panel).
+
+## Troubleshooting
+
+**My change doesn't show.**
+Run `/bentobox reload`, then reopen the menu. If the game mode has its own copy in `addons/<GameMode>/panels/`, that copy is used instead of the one in `plugins/BentoBox/panels/`.
+
+**The menu is empty or won't open after editing.**
+The YAML is invalid or the top-level name no longer matches the file name. Check the console, fix the file, or delete it to get the default back.
+
+**I added rows but nothing appears in them.**
+`force-shown` only adds space. Add the repeating button (for example `blueprint_bundle_button`) to the new slots.
+
+**Text shows as `commands.island.…` instead of words.**
+That key is missing from the locale file for the player's language. Add it, or use plain text instead.
+
+**I want a button that runs a command.**
+Templates can't do this. Use the [ControlPanel](../../addons/ControlPanel/index.md) addon.
+
+## See also
+
+- [Bigger Create Island Menu](Bigger-Create-Island-Menu.md): a full worked example
+- [Item Format](../../BentoBox/ItemParser.md): writing icons
+- [Languages & Messages](../../BentoBox/About/Multilingual.md): changing menu text
+- [Templated Panel API](../api/Templated-Panel.md): for developers adding templates to their own addons
