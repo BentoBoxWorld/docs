@@ -25,7 +25,7 @@ For what they do, see the [Player Guide](../../BentoBox/Player-Guide.md) and the
 
 | Command | What it does | Permission | Default |
 |---|---|---|---|
-| `/boxadmin place <x> <y> <z> <rotation> <mirror> <no mobs>` | Place a structure at a location | `boxed.boxed.commands.boxadmin.place` | Operators (not declared) |
+| `/boxadmin place <x> <y> <z> <rotation> <mirror> <no mobs>` | Place a structure at a location | `boxed.admin.place` | Operators |
 
 ## Addon commands
 
