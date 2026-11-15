@@ -20,6 +20,7 @@ nav:
         - "Teams & Ranks": BentoBox/About/Teams.md
         - Islands: BentoBox/About/IslandManagement.md
         - "Multiple Islands": BentoBox/ConcurrentIslands.md
+        - "Permissions & VIP Perks": BentoBox/Permissions-Guide.md
         - "Starter Islands (Blueprints)": BentoBox/About/BlueprintsSummary.md
         - "Making Blueprints": BentoBox/Blueprints.md
         - "Customizing Menus": Tutorials/generic/Customizable-GUI.md
