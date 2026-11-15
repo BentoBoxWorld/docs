@@ -26,7 +26,7 @@ For what they do, see the [Player Guide](../../BentoBox/Player-Guide.md) and the
 | Command | What it does | Permission | Default |
 |---|---|---|---|
 | `/ob count` | Show your block count and phase | `aoneblock.count` | Everyone |
-| `/ob phases` | Show a list of all the phases | `aoneblock.phases` | Nobody |
+| `/ob phases` | Show a list of all the phases | `aoneblock.phases` | Operators |
 | `/ob setCount <count>` | Set your block count back to a value you have already reached | `aoneblock.island.setcount` | Operators |
 | `/ob respawnBlock` | Respawn the magic block if it has disappeared (alias: check) | `aoneblock.respawn-block` | Everyone |
 | `/ob bossbar` | Turn the phase boss bar on or off | `aoneblock.island.bossbar` | Everyone |

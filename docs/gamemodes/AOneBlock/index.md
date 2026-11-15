@@ -459,7 +459,7 @@ By default, BentoBox GameMode addons comes with the default sub-command set, how
 
 === "Player permissions"
     - `aoneblock.count` - Let the player use the '/[player_command] count' command. Enabled by default.
-    - `aoneblock.phases` - Let the player use the '/[player_command] phases' command. Disabled by default.
+    - `aoneblock.phases` - Let the player use the '/[player_command] phases' command. Default OP.
     - `aoneblock.island.setcount` - Let the player use the '/[player_command] setcount' command. Disabled by default.
     - `aoneblock.respawn-block` - Let the player use the '/[player_command] check' command. Enabled by default.
     - `aoneblock.island.bossbar` - Let the player use the '/[player_command] bossbar' command. Enabled by default. (Requires `bossbar: true` in config)

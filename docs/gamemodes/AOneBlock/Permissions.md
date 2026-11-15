@@ -41,7 +41,7 @@ These defaults come from AOneBlock's `addon.yml`. **Everyone** means all players
 | Permission | Allows | Default |
 |---|---|---|
 | `aoneblock.count` | `/ob count` | Everyone |
-| `aoneblock.phases` | `/ob phases` | Nobody |
+| `aoneblock.phases` | `/ob phases` | Operators |
 | `aoneblock.island.setcount` | `/ob setCount` | Operators |
 | `aoneblock.respawn-block` | `/ob respawnBlock` | Everyone |
 | `aoneblock.island.bossbar` | `/ob bossbar` | Everyone |

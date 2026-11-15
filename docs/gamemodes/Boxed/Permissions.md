@@ -40,6 +40,6 @@ These defaults come from Boxed's `addon.yml`. **Everyone** means all players hav
 
 | Permission | Allows | Default |
 |---|---|---|
-| `boxed.boxed.commands.boxadmin.place` | `/boxadmin place` | Operators (not declared) |
+| `boxed.admin.place` | `/boxadmin place` | Operators |
 
 Admin and moderator permissions (`boxed.admin.*`, `boxed.mod.*`) are for operators by default. See [Staff permissions](../../BentoBox/Permissions-Guide.md#staff-permissions).
