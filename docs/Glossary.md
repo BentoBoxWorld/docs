@@ -23,7 +23,7 @@ A temporary island rank given to players who are not full team members. A coop p
 An addon that adds extra functionality (challenges, fly, warps, etc.) on top of a game mode. Feature addons are optional. See [Addons](BentoBox/About/Addons.md).
 
 ## Flag
-A single protection or settings toggle that controls what is or isn't allowed on an island or in the game world. Flags are managed through the in-game settings GUI. Examples: whether visitors can break blocks, whether creepers can explode, whether leaf blocks decay. See [Protection](BentoBox/About/Protections.md).
+A single protection or settings toggle that controls what is or isn't allowed on an island or in the game world. Flags are managed through the in-game settings GUI. Examples: whether visitors can break blocks, whether creepers can explode, whether leaf blocks decay. See [Protection](BentoBox/Island-Protection,-Flags-&-Ranks.md).
 
 ## Game Mode
 An addon that defines the type of game world players play in — the world type, how islands are generated, and the overall challenge. Examples: BSkyBlock, AcidIsland, AOneBlock. You must install at least one game mode for BentoBox to do anything. See [Game Modes](BentoBox/About/GameModes.md).
@@ -65,4 +65,4 @@ A permanent guest rank for players who are not full team members. Unlike [coop](
 The default rank for any player who is on an island they do not own or belong to. What visitors can do is controlled by the island owner through the settings GUI.
 
 ## World Settings
-Protection and behaviour settings that apply to the entire game mode world, not just individual islands. Only admins can change these. Accessed via `/[admin_command] settings`. See [Protection](BentoBox/About/Protections.md).
+Protection and behaviour settings that apply to the entire game mode world, not just individual islands. Only admins can change these. Accessed via `/[admin_command] settings`. See [Protection](BentoBox/Island-Protection,-Flags-&-Ranks.md).
