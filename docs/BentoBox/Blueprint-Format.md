@@ -1,6 +1,6 @@
 # Blueprint File Format
 
-**Specification version 2**
+**Specification version 2.1**
 
 This page documents the on-disk JSON format BentoBox uses for island blueprints (`.blueprint` files) and blueprint bundles (bundle `.json` files). It is the human-readable companion to the machine-readable [JSON Schemas](https://github.com/BentoBoxWorld/BentoBox/tree/develop/schemas) shipped in the BentoBox repository, which can be used to validate files in editors or CI.
 
@@ -13,6 +13,7 @@ If you want to *make* blueprints in game, see the [Blueprints page](Blueprints.m
 | 1 | 2019-06-09 | [1.5.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/1.5.0) | Initial version, derivative of the BentoBox Schem format |
 | 1.1 | 2026 | 2.x | Storage changed from zipped binary to plain JSON; `.blueprint` became the primary extension |
 | 2 | 2026-08-14 | 3.22.x | Full field-level specification generated from the source; JSON Schemas published |
+| 2.1 | 2026-11-16 | 3.23.8 | Optional [fill block](#compact-blueprints-fill) (`fill`, `fillMin`, `fillMax`); entities record their height within the block (`y`); sizes count both corner blocks |
 
 ## File types
 
@@ -30,7 +31,7 @@ Blueprints are written with Gson. These rules apply throughout and explain the s
 
 - Only the fields listed in this specification are emitted; producers must not add other keys.
 - **Vectors** (`org.bukkit.util.Vector`) are a 3-element JSON array of numbers: `[x, y, z]`. Block positions customarily hold integers, but the underlying type is double.
-- **Maps keyed by a Vector** use Gson's complex-map-key form: a JSON *array of pairs* — `[[<vector>, <value>], ...]` — **not** a JSON object. This applies to `blocks`, `attached`, and `entities`.
+- **Maps keyed by a Vector** use Gson's complex-map-key form: a JSON *array of pairs* — `[[<vector>, <value>], ...]` — **not** a JSON object. This applies to `blocks`, `attached`, and `entities`. An **empty** map is written as an empty object `{}`, so readers must accept both `[]` and `{}` for an empty map.
 - **Maps keyed by an enum** (e.g. a bundle's `blueprints` map) are ordinary JSON objects with the enum name as the key.
 - **Maps keyed by an integer** (inventory slot → item) are JSON objects with stringified integer keys (`"0"`, `"13"`, …).
 - **ItemStacks** are serialized to Bukkit YAML (via `ConfigurationSerializable`) and stored as a JSON *string*. Treat the value as an opaque YAML document parseable by `YamlConfiguration#loadFromString`.
@@ -50,9 +51,11 @@ The top-level object of a `.blueprint` file. It describes a block volume, attach
 | `icon` | string | Icon material: a Bukkit `Material` name (`DIAMOND`), a vanilla key (`minecraft:diamond`), or a resource-pack custom model key. Default `PAPER`. |
 | `description` | string[] | Lore lines shown under the icon in selection UIs. |
 | `bedrock` | Vector | Anchor point. When pasted, blueprint `(0,0,0)` is translated so `bedrock` lands on the paste target. If omitted, BentoBox auto-creates one at `(xSize/2, ySize/2, zSize/2)` at load time. |
-| `xSize`, `ySize`, `zSize` | integer | Bounding-box dimensions in blocks. |
+| `xSize`, `ySize`, `zSize` | integer | Size of the copied area in blocks, counting both corner blocks. Blueprints copied before 3.23.8 may be one short on an axis. |
 | `sink` | boolean | If true, the blueprint descends until it finds a surface at paste time instead of pasting at the anchor's exact Y. |
-| `blocks` | Vector-keyed map | Primary blocks, keyed by position relative to the blueprint origin (`0..size-1` on each axis). See [BlueprintBlock](#blueprintblock). |
+| `blocks` | Vector-keyed map | Primary blocks, keyed by position relative to the blueprint origin (`0..size-1` on each axis). See [BlueprintBlock](#blueprintblock). With a `fill`, positions in the fill box that are missing here get the fill block. |
+| `fill` | [BlueprintBlock](#blueprintblock) | Since 3.23.8. Block pasted at every position from `fillMin` to `fillMax` that has no entry in `blocks`. Absent means no fill. See [Compact blueprints](#compact-blueprints-fill). |
+| `fillMin`, `fillMax` | Vector | Since 3.23.8. Corners of the fill box, inclusive, relative to the blueprint origin. Present together with `fill`. |
 | `attached` | Vector-keyed map | Blocks pasted **after** `blocks` because they attach to a support: torches, ladders, rails, beds, doors, signs, etc. Same coordinate conventions as `blocks`. |
 | `entities` | Vector-keyed map of lists | Entities to spawn per block position. Multiple entities may share one key; fine in-block offsets live on [BlueprintEntity](#blueprintentity). |
 
@@ -78,6 +81,38 @@ A minimal example:
   ]
 }
 ```
+
+### Compact blueprints (fill)
+
+A position that is missing from `blocks` normally means "leave the world as it is here". A copy made with `air` records every position in its box, though, and most of them are plain air, or water for an island built in the sea.
+
+Since 3.23.8, when a blueprint's `blocks` cover **every** position of their bounding box, BentoBox stores the most common *plain* block once as `fill`, with the box corners in `fillMin` and `fillMax`, and drops those blocks from `blocks`. A plain block has only `blockData` and optionally `biome`: no sign text, inventory, spawner, banner patterns or ItemsAdder id. Blocks with a different biome from the fill stay in `blocks`.
+
+To paste a blueprint with a fill, place the fill block at every position from `fillMin` to `fillMax` that has no entry in `blocks`, then paste `blocks`, `attached` and `entities` as usual. The result is the same as the uncompacted blueprint.
+
+- A copy that leaves positions out, made without `air` or with `air nowater`, can't use a fill, because a fill would overwrite the spots meant to be left alone. It is written without one.
+- Blueprints without a fill are read exactly as before. BentoBox compacts a fully covered older blueprint in memory when it loads it, and writes the compact form the next time it saves it.
+- BentoBox versions before 3.23.8 ignore the fill fields, so a compact blueprint pasted by an older BentoBox is missing its air or water.
+
+```json
+{
+  "name": "sea-island",
+  "bedrock": [2.0, 1.0, 2.0],
+  "xSize": 5, "ySize": 4, "zSize": 5,
+  "fill": {"blockData": "minecraft:water[level=0]"},
+  "fillMin": [0.0, 0.0, 0.0],
+  "fillMax": [4.0, 3.0, 4.0],
+  "blocks": [
+    [[2.0, 1.0, 2.0], {"blockData": "minecraft:bedrock"}],
+    [[2.0, 2.0, 2.0], {"blockData": "minecraft:sand"}],
+    [[2.0, 3.0, 2.0], {"blockData": "minecraft:air"}]
+  ],
+  "attached": {},
+  "entities": {}
+}
+```
+
+Here every position in the 5 × 4 × 5 box is water except the three listed blocks.
 
 ## BlueprintBlock
 
@@ -135,7 +170,7 @@ One entity to spawn. Only `type` is required. Unset fields mean "leave the Bukki
 |---|---|---|
 | `type` | string | **Required.** Bukkit `EntityType` name (`VILLAGER`, `ARMOR_STAND`, `ITEM_FRAME`, …). |
 | `customName` | string | Display name; legacy `§` colour codes supported. |
-| `x`, `y`, `z` | number | Fine offset within the position cell (typically `0.0 ≤ v < 1.0`). |
+| `x`, `y`, `z` | number | Offset within the position cell (typically `0.0 ≤ v < 1.0`). Display entities use all three. Since 3.23.8, other non-hanging entities record `y`, the height they stood at within the block (a floating boat, a mob on a slab), and spawn at it; they always spawn at the horizontal centre of the cell. `0` spawns at the bottom of the cell. |
 | `glowing` | boolean | Glow effect. |
 | `gravity` | boolean | Whether gravity applies. |
 | `visualFire` | boolean | Render fire regardless of `fireTicks`. |
