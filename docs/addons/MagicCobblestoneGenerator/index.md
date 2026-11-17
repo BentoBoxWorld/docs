@@ -139,32 +139,91 @@ The type is set per generator tier, either in the Admin GUI — `/[admin] genera
 
 Since **2.8.0** generators can be capped so they only produce a set number of blocks within a time period before going on cooldown — useful for discouraging fully-automated AFK farms. The feature is **opt-in and disabled by default** (a limit of `0`), so existing setups are unaffected until you enable it. When a generator is temporarily on cooldown, players receive a `generator-exhausted` message.
 
+#### Where the settings live
+
+Exhaustion has two parts, and they are set in different places:
+
+| What | Where to change it | Scope |
+|---|---|---|
+| **Limit** — how many blocks per period | `exhaustion.limit` in `config.yml`, **or** per tier with the **Exhaustion Limit** button in the Admin GUI / `exhaustion-limit` in the template | Global default, overridable per tier |
+| **Period** — how long the block count is collected | `exhaustion.period` in `config.yml` | Global only |
+| **Cooldown** — how long the generator stops after hitting the limit | `exhaustion.cooldown` in `config.yml` | Global only |
+| **Warning spam limit** | `exhaustion.notification-cooldown` in `config.yml` | Global only |
+
+The **Exhaustion Limit** button in the generator edit panel (`/[admin_command] generator` → pick a tier) only sets the block count. **The period and the cooldown are not in the GUI** — change them in the addon's config file:
+
+```
+plugins/BentoBox/addons/MagicCobblestoneGenerator/config.yml
+```
+
+```yaml
+exhaustion:
+  # Default blocks per period for all tiers. 0 or less = no limit.
+  limit: 0
+  # Length of the counting period, in MINUTES.
+  period: 60
+  # How long a generator stays on cooldown after hitting the limit, in MINUTES.
+  cooldown: 1440
+  # Minimum time between two warning messages, in SECONDS.
+  notification-cooldown: 60
+```
+
+Restart the server after editing so the new values are loaded.
+
 === "exhaustion.limit"
     !!! summary "Description"
-        The default number of blocks a generator may produce during a single exhaustion period. `0` or less disables the limitation (the default). Each generator tier can override this via the per-tier `exhaustion-limit` key (see below).
+        The default number of blocks a generator may produce during a single exhaustion period. `0` or less disables the limitation (the default). Each generator tier can override this (see [Per-tier limit](#per-tier-limit) below).
 
         Default: `0`
 
 === "exhaustion.period"
     !!! summary "Description"
-        The length of the exhaustion period, in **minutes**. The block count resets at the end of each period.
+        The length of the exhaustion period, in **minutes**. The block count resets at the end of each period. Applies to every generator tier.
 
         Default: `60`
 
 === "exhaustion.cooldown"
     !!! summary "Description"
-        How long, in **minutes**, a generator stays on cooldown after reaching its exhaustion limit.
+        How long, in **minutes**, a generator stays on cooldown after reaching its exhaustion limit. Applies to every generator tier. Set it to `0` to have no extra cooldown: the generator simply stops until the current period ends. A cooldown shorter than the period does not end the pause early (see [How it works](#how-it-works)).
 
         Default: `1440` (24 hours)
 
 === "exhaustion.notification-cooldown"
     !!! summary "Description"
-        The minimum time, in **seconds**, between two exhaustion warning messages shown to the same player.
+        The minimum time, in **seconds**, between two exhaustion warning messages for the same generator on the same island.
 
         Default: `60`
 
-!!! tip "Per-tier limit"
-    Each generator tier can override the global limit with an `exhaustion-limit` key in the generator template (and in the admin GUI), so different tiers can be throttled independently.
+#### How it works
+
+Each island counts blocks separately for every generator tier it has active.
+
+1. The first block a tier makes starts a **period** (`exhaustion.period` minutes long).
+2. Each generated block adds 1 to the count.
+3. If the count reaches the limit **before the period ends**, the next attempt puts the tier on **cooldown** for `exhaustion.cooldown` minutes. Island members get the `generator-exhausted` message, which shows the minutes left.
+4. While a tier is on cooldown it does not replace any blocks: lava and water make plain vanilla cobblestone, stone or basalt.
+5. The count goes back to 0 only when the **period** ends. If the cooldown is over but the period is still running, the count is still at the limit, so the tier goes straight back on cooldown. In practice the generator stays stopped until the cooldown is over **and** the period has ended, whichever is later.
+
+!!! example
+    With `limit: 10`, `period: 60`, `cooldown: 1440`: if an island makes 10 blocks within an hour, the generator then stops for 24 hours. To let players make 10 blocks per hour and then just wait for the hour to finish, set `cooldown: 0`. For a shorter break overall, make both values smaller, e.g. `period: 10` and `cooldown: 10`.
+
+!!! tip "Seeing the current state"
+    The placeholders `[gamemode]_magiccobblestonegenerator_generator_exhaustion_status` (blocks made / limit for each active generator) and `[gamemode]_magiccobblestonegenerator_exhausted_generator_names` (generators on cooldown) show where an island stands.
+
+#### Per-tier limit
+
+Each generator tier can override the global block limit, so different tiers can be throttled independently:
+
+- **Admin GUI:** `/[admin_command] generator` → pick a tier → **Exhaustion Limit** (clock icon) → type a number in chat.
+- **Template:** the `exhaustion-limit` key for the tier in `generatorTemplate.yml`.
+
+| Value | Meaning |
+|---|---|
+| `-1` | Use `exhaustion.limit` from `config.yml` (the default) |
+| `0` | No limit for this tier |
+| Any positive number | That many blocks per period for this tier |
+
+Only the limit can be set per tier. Every tier uses the same period and cooldown from `config.yml`.
 
 ### Per-block height ranges
 
