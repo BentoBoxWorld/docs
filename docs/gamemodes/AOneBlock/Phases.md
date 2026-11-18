@@ -370,9 +370,27 @@ custom-blocks:
     mob: ZOMBIE
     underlying-block: STONE
     probability: 5
+  - type: mob-data
+    data: breeze{Glowing:1b,attributes:[{id:scale,base:2f}]}
+    underlying-block: STONE
+    probability: 15
   - type: itemsadder
     id: mypack:ruby_ore
     probability: 10
+  - type: mythic-mob
+    mob: SkeletalKnight      # MythicMob type id (required)
+    level: 3                 # optional, default 1
+    power: 1.0               # optional, default 0
+    display-name: "Boss"     # optional
+    stance: ""               # optional
+    underlying-block: STONE  # optional
+    probability: 5
+  - type: nexo
+    id: custom_block
+    probability: 10
+  - type: craftengine
+    id: craftengine:custom_block
+    probability: 25
 ```
 
 | `type` | What it does | Requires |
