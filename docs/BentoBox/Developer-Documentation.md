@@ -97,3 +97,61 @@ new DialogBuilder()
     Check `Dialogs.isSupported()` and keep your previous chat or panel behaviour for older servers, exactly as core does. Button click handlers run on the main thread, so they can touch the Bukkit API directly.
 
 See [Release 3.21.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.21.0).
+
+## Dialog forms
+
+*Added in BentoBox 3.24.0.*
+
+A dialog can have input fields. Add them with `DialogBuilder.input(DialogField)` and read what the player entered from the `DialogResponse` passed to a submit button.
+
+| Class | Purpose |
+| --- | --- |
+| `DialogField` | A field: `DialogField.text(...)`, `number(...)`, `toggle(...)` or `choice(...)`. Each has a key, which may contain only letters, digits and underscores and must be unique in the dialog |
+| `DialogButton.submit(...)` | A button whose handler is a `BiConsumer<User, DialogResponse>` |
+| `DialogResponse` | The values, by field key: `getText`, `getNumber`, `getInt`, `getBoolean`, `getChoice`. Each returns an `Optional`, empty if there is no such field or the value is of another type |
+
+```java
+new DialogBuilder()
+    .title(user, "myaddon.edit.title")
+    .input(DialogField.text(user, "name", "myaddon.edit.name", current.getName()).maxLength(32))
+    .input(DialogField.number(user, "chance", "myaddon.edit.chance", 0, 100, current.getChance()).step(0.5f))
+    .input(DialogField.toggle(user, "enabled", "myaddon.edit.enabled", current.isEnabled()))
+    .button(DialogButton.submit(user, "general.buttons.save", (u, response) -> {
+        current.setName(response.getText("name").orElse(""));
+        current.setChance(response.getNumber("chance").orElse(0f));
+        current.setEnabled(response.getBoolean("enabled").orElse(false));
+    }))
+    .build()
+    .show(user);
+```
+
+`DialogBuilder` also gained `body(ItemStack, Component)` to show an item in the body, `notice(DialogButton)` for a message with a single button, and `afterAction(AfterAction)` to choose what the client does after a click. The existing dialog API is unchanged.
+
+# Paged panels and value pickers
+
+*Added in BentoBox 3.24.0.*
+
+Two additions to the Panels API (`world.bentobox.bentobox.api.panels`) for lists that don't fit in one inventory.
+
+**`PagedPanelBuilder`** builds a `PagedPanel`: a list of any length, shown a page at a time. The bottom row is the control row. Its first and last slots hold the previous and next buttons when there is a page to go to, and the seven slots between take your own fixed controls, such as Back or Add. Turning the page refreshes the open inventory in place.
+
+```java
+PagedPanelBuilder b = new PagedPanelBuilder().user(user).name(user.getTranslation("myaddon.list.title"));
+things.forEach(t -> b.item(toPanelItem(t)));
+b.control(4, backButton).build();
+```
+
+**`PickerPanel<T>`** is a paged panel for choosing one value. `PickerPanel.materials(user)`, `entities(user)` and `biomes(user)` are ready-made; `PickerPanel.of(...)` takes any collection. A picker can have a Search button, which asks for text in a dialog and is hidden on servers without dialogs, and can let the player click an item in their own inventory to choose it. Its text is in BentoBox's locale files under `panels.picker`.
+
+```java
+PickerPanel.materials(user)
+    .title(user.getTranslation("myaddon.pick-block"))
+    .filter(Material::isBlock)
+    .onPick(m -> { recipe.setIcon(m); openEditor(user); })
+    .onCancel(() -> openEditor(user))
+    .open();
+```
+
+Templated panels also understand two button types without any code, `COMMAND` and `CLOSE`; see [Command and Close buttons](../Tutorials/generic/Customizable-GUI.md#command-and-close-buttons). A panel that registers its own type of the same name keeps its own behaviour.
+
+See [Release 3.24.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.24.0).

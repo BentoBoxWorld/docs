@@ -265,6 +265,7 @@ The easiest way to change all of this is in game with `/[admin_command] phases`,
   end-commands: [ ... ]
   end-commands-first-time: [ ... ]
   requirements: { ... }
+  finale: { ... }             # optional boss that ends the phase (1.29.0+)
 ```
 
 === "name"
@@ -328,6 +329,94 @@ start-commands:
 end-commands-first-time:
 - 'broadcast &c&l[!] &b[player] &fhas completed the &d&n[phase]&f phase for the first time.'
 ```
+
+---
+
+## Phase finales — the boss that ends a phase
+
+*Added in AOneBlock 1.29.0.*
+
+A phase with a `finale:` section ends with a boss fight. When the last block of the phase is mined, the magic block seals itself and the boss spawns on top of it. The phase does not change until the boss is dead. A phase with no `finale:` section ends the way it always has.
+
+```yaml
+  finale:
+    boss: GIANT
+    name: '<dark_green>The Colossus'
+    health: 100
+    scale: 0.5
+    damage: 4
+    speed: 0.25
+    minions:
+      ZOMBIE: 2
+    drops:
+      IRON_INGOT: 8
+      BREAD: 8
+```
+
+### How a fight goes
+
+- **The warning.** Over the last 20 blocks of the phase a heartbeat plays and rises in pitch, and a bell tolls five blocks from the end. The phase bar shows the boss's name once it is waiting.
+- **The fight.** The boss spawns on the magic block with a raid horn and a lightning flash. The magic block can't be mined until the boss is dead, and the phase bar steps aside for the boss's own health bar.
+- **Fair to the island.** Only players can hurt the boss: melee, projectiles and pets. The boss and its minions can't break, burn or blow up blocks, and the boss is pulled back if it leaves the island.
+- **Knock-offs.** Players can still be knocked off. A boss knocked into the void comes back to the magic block, unless `void-respawn` is `false`.
+- **Losing.** If everyone dies or leaves, the boss retreats after about ten seconds. Hitting the magic block summons it again. Each lost fight makes the next attempt 10% easier, down to half health.
+- **Teams.** Boss health grows by 50% for each extra player on the island, up to four players.
+- **Rewards.** The boss drops its `drops`, then `commands` run on every win and `first-time-commands` only the first time the island beats it.
+
+Finales are skipped on Peaceful difficulty, because the boss could not spawn.
+
+### Options
+
+| Option | What it does | Default |
+|---|---|---|
+| `boss` | `EntityType` of the boss. `GIANT` has no AI in vanilla; AOneBlock gives it one, which needs Paper | Required |
+| `name` | Display name. MiniMessage or legacy `&` codes | The mob's name |
+| `health` | Base max health. The server's limit is 1024 unless you raise `settings.attribute.maxHealth` in `spigot.yml` | |
+| `scale` | Size multiplier. `1` is normal size | `1` |
+| `damage` | Attack damage. Omit it or use `0` for the mob's own | The mob's own |
+| `speed` | Movement speed. Omit it or use `0` for the mob's own | The mob's own |
+| `void-respawn` | `true`: a boss knocked into the void comes back to the magic block. `false`: the void kills it, and that counts as a win | `true` |
+| `warning` | How many blocks before the end the warning starts. `0` for no warning | `20` |
+| `minions` | Mobs that spawn with the boss, as `TYPE: count` | None |
+| `drops` | Items dropped when the boss dies, as `MATERIAL: amount` | None |
+| `commands` | Commands run every time the boss is defeated. Same prefixes and placeholders as [`end-commands`](#commands-on-phase-change) | None |
+| `first-time-commands` | Commands run only the first time the island defeats the boss | None |
+
+The shipped `0_plains.yml` documents every option in its comments.
+
+### Turning finales on and off
+
+- **All finales:** set `island.phase-finales: false` in AOneBlock's `config.yml`.
+- **One phase:** delete the `finale:` section from that phase's file.
+
+!!! warning "Servers upgraded from before 1.29.0 have no bosses"
+    An upgrade never overwrites the phase files in `plugins/BentoBox/addons/AOneBlock/phases/`, so they have no `finale:` sections. Copy the `finale:` section from each [shipped phase file](https://github.com/BentoBoxWorld/AOneBlock/tree/master/src/main/resources/phases) into your own file and restart. New installs have them from the start.
+
+### The shipped bosses
+
+| Phase | Boss | Mob |
+|---|---|---|
+| Plains | The Colossus | Giant |
+| Underground | The Broodmother | Spider |
+| Winter | The Frostbitten | Stray |
+| Ocean | The Drowned King | Drowned |
+| Jungle | The Temple Guardian | Iron golem |
+| Swamp | The Bog Witch | Witch |
+| Dungeon | The Jailer | Wither skeleton |
+| Desert | The Pharaoh | Husk |
+| The Nether | The Warlord | Piglin brute |
+| Plenty | The Harvest Beast | Ravager |
+| Desolation | The Last Titan | Giant |
+| Deep Dark | The Warden | Warden |
+| The End | The Void Walker | Enderman |
+| Lush Caves | The Mossback | Bogged |
+| Dripstone Caves | The Burrower | Silverfish |
+| Mangrove Swamp | The Mire Lurker | Cave spider |
+| Meadow | The Summoner | Evoker |
+| Cherry Grove | The Petal Phantom | Illusioner |
+| Jagged Peaks | The Gale | Breeze |
+| Sulfur Caves | Brimstone | Blaze |
+| Dappled Forest | The Woodcutter | Vindicator |
 
 ---
 
@@ -482,6 +571,7 @@ Chest files are read item by item, so an item your server version does not know 
 | `Phase name trying to be set to X but already set to Y. Duplicate phase file?` | Two files use the same top-level section key |
 | A phase never appears | It is `enabled: false` in `phases_index.yml`, or its `requiredMinecraftVersion` is newer than the server |
 | Chests come out empty | The chest file's top-level key does not match the phase file's, or its items failed to load — run `/[admin_command] sanity` |
+| A phase ends with no boss | The phase file has no `finale:` section (servers upgraded from before 1.29.0 must [add them](#turning-finales-on-and-off)), `island.phase-finales` is `false`, or the world is on Peaceful difficulty |
 | Edits do nothing | The addon was not reloaded, or you edited the file in `src/main/resources` in the jar rather than `plugins/BentoBox/addons/AOneBlock/phases/` |
 
 Watch the server log at startup. Every phase file loaded is logged, as is every rejected block, mob and item, and every change the index reconciler makes (lines beginning `Phase index:`).

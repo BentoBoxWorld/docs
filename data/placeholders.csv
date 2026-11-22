@@ -32,6 +32,7 @@ BentoBox,[gamemode]_island_trusted_list,A comma separated list of player names t
 BentoBox,[gamemode]_island_trustees_count,Number of players trusted to the island,1.5.0
 BentoBox,[gamemode]_island_uuid,Island unique ID,1.15.4
 BentoBox,[gamemode]_island_visitors_count,Number of players currently visiting the island,1.5.0
+BentoBox,[gamemode]_island_visitors_list,A comma separated list of the names of players currently visiting the island,3.24.0
 BentoBox,[gamemode]_on_island,Whether the player is on an island he is part of or not,1.13.0
 BentoBox,[gamemode]_owns_island,Whether the player is an owner of an island,1.14.0
 BentoBox,[gamemode]_rank,Rank the player has on his island,1.5.0
@@ -64,6 +65,7 @@ BentoBox,[gamemode]_visited_island_trusted_list,A comma separated list of player
 BentoBox,[gamemode]_visited_island_trustees_count,Number of players trusted on the island the player is standing on,1.5.2
 BentoBox,[gamemode]_visited_island_uuid,Visited island unique ID,1.15.4
 BentoBox,[gamemode]_visited_island_visitors_count,Number of players currently visiting the island the player is standing on,1.5.2
+BentoBox,[gamemode]_visited_island_visitors_list,A comma separated list of the names of players currently visiting the island the player is standing on,3.24.0
 BentoBox,[gamemode]_world_friendly_name,Name of the gamemode's world,1.4.0
 BentoBox,[gamemode]_world_islands,Number of islands in this gamemode's world,1.5.0
 BentoBox,[gamemode]_island_online_members_count,Number of island members currently online,2.1.0

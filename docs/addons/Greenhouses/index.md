@@ -58,7 +58,7 @@ This example is for when you are in the BSkyBlock world. For AcidIsland, just us
 
 This version of Greenhouses is an add-on for BentoBox and will not run stand-alone!
 
-1. BentoBox - make sure you use the latest version!
+1. BentoBox - make sure you use the latest version! Greenhouses 1.11.0 needs BentoBox 3.24.0 or later, Paper 1.21.11 to 26.3 and Java 25.
 
 ## Installation and Configuration
 
@@ -71,6 +71,13 @@ This version of Greenhouses is an add-on for BentoBox and will not run stand-alo
 7. Configure the **biomes.yml** if you wish (advanced).
 8. Type **/bsbadmin greenhouses reload** in the game to reload the config or restart the server.
 9. Done!
+
+One `config.yml` option was added in Greenhouses 1.11.0:
+
+??? note "sample-ticks"
+    Added in Greenhouses 1.11.0. How often, in server ticks (20 = 1 second), random spots in each greenhouse are picked for mob spawning and block conversion. Lower values spread the work more evenly. This does not change the overall rates, which are set by `mobtick` and `blocktick`: on average each spot still gets one chance per `mobtick` or `blocktick`, so mobs arrive gradually instead of all at once.
+
+    Default: `20`
 
 To make your first greenhouse, build a glass box and type **/is greenhouses make** to see what kind of greenhouse you get. Type **/is greenhouses** to see the recipes.
 
@@ -105,14 +112,75 @@ Registered under your game mode's admin command, e.g. `/bsbadmin greenhouses` or
 | `tp <id>` | Teleports you to the middle of the greenhouse floor. Alias: `teleport`. |
 | `verify [id]` | Re-checks one or all greenhouses against their recipe and reports what is missing. Alias: `check`. |
 | `reload` | Re-reads `biomes.yml`, then re-loads the greenhouses from the database. |
+| `edit [recipe]` | Opens the [recipe editor](#in-game-recipe-editor), or one recipe's editor. Since 1.11.0. |
+| `build <recipe> [x y z] [WxDxH] [keep\|clear]` | Builds a [test greenhouse](#test-greenhouse-builder) for a recipe, around you or at the given floor centre. Since 1.11.0. |
 
 - IDs come from `list` and can be shortened to any prefix that matches **only one** greenhouse. An ambiguous prefix is treated as no match rather than a guess, because deleting the wrong greenhouse cannot be undone.
-- Everything except `tp` works from the server console.
+- Everything except `tp`, `edit` and `build` works from the server console.
 - Greenhouse records that cannot be loaded — overlapping, unknown recipe, missing world, no location — are kept in memory with the reason instead of being silently dropped. That is what makes them listable and deletable.
 - Records are never deleted automatically. Removing a player's greenhouse without being asked would be worse than a recurring warning.
 
 !!! tip "Overlapping greenhouses"
     If two persisted greenhouses overlap, one is skipped at startup and named in the log along with the record it overlaps. Use `/bsbadmin greenhouses list` to see the skipped records and why, then `/bsbadmin greenhouses delete <id>` to remove the one you do not want. No database editing and no restart needed.
+
+### Admin hub
+
+*Added in Greenhouses 1.11.0.*
+
+Running `/bsbadmin greenhouses` with no arguments opens a GUI that gives access to every admin tool. From the console, the command still shows help. The hub has these buttons:
+
+- **Recipes** opens the recipe editor.
+- **Greenhouses** opens the greenhouse browser.
+- **Build a test greenhouse** builds a test greenhouse where you stand.
+- **Check all greenhouses** re-checks every greenhouse.
+- **Reload** reloads, after you confirm.
+
+Each button appears only if you have the permission for that sub-command, and it runs the same command you would type, so the permission checks and messages are the same.
+
+The browser lists every greenhouse, including any that failed to load, and can be filtered by owner. In the browser:
+
+| Click | What it does |
+|---|---|
+| Left-click | Teleports to the greenhouse |
+| Right-click | Checks it |
+| Shift-click | Shows its details |
+| ++q++ | Deletes it, after a confirmation dialog |
+
+### In-game recipe editor
+
+*Added in Greenhouses 1.11.0.*
+
+`/bsbadmin greenhouses edit [recipe]` (permission `[gamemode].greenhouses.admin.edit`) creates, edits, duplicates and deletes biome recipes without touching `biomes.yml` or restarting. You can change every part of a recipe:
+
+- icon, name and description;
+- biome, priority and permission;
+- water, lava and ice coverage;
+- [per-habitat mob limits](#mob-limits-per-habitat);
+- required blocks, plants, mobs (including variants) and block conversions.
+
+Blocks can be picked from a searchable list or by clicking an item in your inventory.
+
+When you save:
+
+- The recipe is checked first.
+- `biomes.yml` is backed up to `backups/`, and the last 10 backups are kept.
+- Only the recipe you changed is rewritten, and comments are kept.
+- Greenhouses use the new rules straight away, with no restart.
+
+Each admin's unsaved changes are kept until they save or discard them. If another admin saves the same recipe while you are editing, you can overwrite their version or start again from it. Deleting a recipe never deletes greenhouses: the greenhouses that used it are listed as unloaded instead.
+
+### Test greenhouse builder
+
+*Added in Greenhouses 1.11.0.*
+
+`/bsbadmin greenhouses build <recipe> [x y z] [WxDxH] [keep|clear]` (permission `[gamemode].greenhouses.admin.build`) builds a working greenhouse for a recipe and registers it:
+
+- glass walls;
+- a door in a style that suits the biome, on the side you face;
+- a roof hopper filled with bone meal;
+- the blocks, water and lava the recipe needs (ocean greenhouses are flooded, and Nether ones get lava).
+
+`keep` builds around whatever is already there, such as a tree. `clear` empties the space first, after you confirm. `~ ~ ~` coordinates work.
 
 ## Customising mob spawns (example: Wither Skeletons)
 
@@ -141,9 +209,31 @@ Apply the change with **/bsbadmin greenhouses reload** (or your game mode's admi
 
 Things to keep in mind:
 
-* **All the chances in one recipe must add up to 100 or less.** If a new entry pushes the total over 100, that mob is skipped and an error is logged on load (`Mob chances add up to > 100% in NETHER biome recipe! Skipping ...`).
+* **All the chances in one recipe must add up to 100 or less.** If a new entry pushes the total over 100, that mob is skipped and an error is logged on load (`Mob chances add up to > 100% in NETHER biome recipe! Skipping ...`). Before 1.11.0, a rounding error could reject chances that totalled exactly 100.
 * Spawning is also limited by the recipe's `moblimit` and `maxmobs` values, and by the mob tick interval in `config.yml` — so a low percentage can feel rare in practice.
 * The `ENTITY_TYPE` must be a valid [Bukkit EntityType](https://jd.papermc.io/paper/1.21.5/org/bukkit/entity/EntityType.html) name; unknown names are skipped with a warning.
+* On Minecraft 26.x the mooshroom is `MOOSHROOM`, not `MUSHROOM_COW`. Rename any `MUSHROOM_COW` entries in your `biomes.yml`.
+* Since 1.11.0 the same changes can be made in game with the [recipe editor](#in-game-recipe-editor).
+
+### Mob limits per habitat
+
+*Added in Greenhouses 1.11.0.*
+
+`moblimit` is the number of floor blocks each mob needs, which is the wrong measure for a deep ocean, a lava lake or flying mobs. A recipe can set three more optional keys in `biomes.yml`. Each counts its own mobs, and each value is the number of blocks per mob:
+
+| Key | Mobs it counts | Space it is measured against |
+|---|---|---|
+| `moblimit-water` | Mobs that spawn on water | Water blocks |
+| `moblimit-lava` | Mobs that spawn on lava | Lava blocks |
+| `moblimit-air` | Flying mobs: allays, bats, bees, ghasts, parrots, phantoms and vexes | The greenhouse's internal volume |
+
+Ground mobs keep using `moblimit`, and `maxmobs` still caps the total. If a limit is not given, those mobs share `moblimit` with the ground mobs, so recipes without the new keys behave as before. The shipped `biomes.yml` sets:
+
+- `moblimit-water`: beaches, snowy beach and ocean (9), and river (1);
+- `moblimit-lava`: nether and warped forest (9);
+- `moblimit-air`: jungle and dripstone caves (27), and soul sand valley (64).
+
+`moblimit` is exact since 1.11.0: 81 blocks at 9 blocks per mob gives 9 mobs, not 10. Natural (vanilla) spawns inside a greenhouse are also cancelled since 1.11.0, so only the recipe's own mobs appear.
 
 ## Permissions
 
@@ -171,13 +261,36 @@ The permission can be anything you like, e.g., a rank permission, **myserver.VIP
      description: Gives access to admin commands
      default: op
 
-Since 1.10.0 each admin sub-command also has its own node — `greenhouses.admin.list`, `.info`, `.delete`, `.tp`, `.verify` and `.reload` — all defaulting to `op`. Operators need no action, but if you grant admin access through a permissions plugin you will want to add them. They were missing from `addon.yml` entirely before that release, which is why nothing but op access worked.
+Since 1.10.0 each admin sub-command also has its own node — `greenhouses.admin.list`, `.info`, `.delete`, `.tp`, `.verify` and `.reload` — all defaulting to `op`. 1.11.0 adds `.edit` and `.build`. Operators need no action, but if you grant admin access through a permissions plugin you will want to add them. They were missing from `addon.yml` entirely before that release, which is why nothing but op access worked.
 
 ## Translations
 
 {{ translations("Greenhouses") }}
 
-!!! warning "What's new in v1.10.2 — fixes a crash on Paper 26.2"
+!!! warning "What's new in v1.11.0 — admin hub and recipe editor; requires BentoBox 3.24.0"
+    **Released:** 2026-11-22
+
+    Compatibility: BentoBox API 3.24.0 or later · Paper 1.21.11 to 26.3 · Java 25.
+
+    - 🔡 **Admin hub.** `/[admin_command] greenhouses` now opens a GUI that gives access to every admin tool: edit recipes, browse greenhouses, build test greenhouses, check them all and reload. See [Admin hub](#admin-hub).
+    - 🔡 **In-game recipe editor.** `/[admin_command] greenhouses edit [recipe]` creates, edits, duplicates and deletes biome recipes without touching `biomes.yml` or restarting. See [In-game recipe editor](#in-game-recipe-editor).
+    - 🔡 **Test greenhouse builder.** `/[admin_command] greenhouses build <recipe>` builds a working greenhouse for any recipe where you stand. See [Test greenhouse builder](#test-greenhouse-builder).
+    - ⚙️ **Smoother mob spawning and block conversion.** Both used to scan every block of every greenhouse in a single tick, so a greenhouse filled to its mob cap all at once. They now run every `sample-ticks` ticks (new setting, default `20`) on a random sample of spots. Average rates are unchanged, and mobs are counted inside each greenhouse's own area rather than across the whole world.
+    - **Separate mob limits for water, lava and air.** New optional recipe keys `moblimit-water`, `moblimit-lava` and `moblimit-air`. See [Mob limits per habitat](#mob-limits-per-habitat).
+    - 🐛 **Natural spawns inside greenhouses are blocked.** The spawn guard only matched wall and roof blocks, so taiga greenhouses filled with wolves and Nether ones with ghasts, magma cubes and zombified piglins.
+    - 🐛 `moblimit` allowed one mob too many; plants are now placed only where they can survive; chances totalling exactly 100% are no longer rejected.
+    - 🔡 **Recipe descriptions and MiniMessage colours** in the recipe panel, translated into all 22 languages.
+    - New permissions `[gamemode].greenhouses.admin.edit` and `[gamemode].greenhouses.admin.build`, both defaulting to `op`.
+
+    🔺 **Requires BentoBox 3.24.0 and Paper 1.21.11+.** The recipe editor and admin hub use BentoBox's new dialog and paged-panel API, so older BentoBox versions refuse to load this addon. Update BentoBox first.
+
+    🔺 **`biomes.yml` is not replaced.** The shipped file has changed: recipes have descriptions and MiniMessage names, the per-habitat mob limits are set, and `MUSHROOM_COW` is now `MOOSHROOM`. Your file is kept as it is. To use the new defaults, merge the changes in yourself or rename your file so a fresh one is generated. In both cases, rename any `MUSHROOM_COW` entries to `MOOSHROOM`, because the old name is not valid on 26.x.
+
+    🔡 **Locale files.** To get all the text fixes, delete `plugins/BentoBox/locales/Greenhouses/` before you start the server. BentoBox adds new locale keys to existing files, but it does not update keys that changed.
+
+    [Release v1.11.0](https://github.com/BentoBoxWorld/Greenhouses/releases/tag/1.11.0)
+
+??? warning "What's new in v1.10.2 — fixes a crash on Paper 26.2"
     **Released:** 2026-09-06
 
     Compatibility: BentoBox API 2.7.1 · Minecraft 1.21.5+ · Java 21. No config or locale changes.

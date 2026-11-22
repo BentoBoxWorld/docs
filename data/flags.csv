@@ -33,6 +33,7 @@ BentoBox,COMMAND_RANKS,"Command Ranks",PLAYER_HEAD,"Configure command ranks",PRO
 BentoBox,COMPOSTER,"Composters",COMPOSTER,"Toggle composter interaction",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
 BentoBox,CONTAINER,"All containers",CHEST,"Toggle interaction with all containers. Includes: Barrel, bee hive, brewing stand, chest, composter, dispenser, dropper, flower pot, furnace, hopper, item frame, jukebox, minecart chest, shulker box, trapped chest.  Changing individual settings overrides this flag.",PROTECTION,BASIC,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
 BentoBox,CRAFTING,"Workbenches",CRAFTING_TABLE,"Toggle use",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
+BentoBox,CREEPER_BLOCK_DAMAGE,"Creeper block damage",GUNPOWDER,"Toggle whether creepers break blocks on this island. Hidden from players by default. The explosion still hurts players and mobs. If the CREEPER_DAMAGE world setting is off, creepers break no blocks anywhere.",SETTING,EXPERT,true,,
 BentoBox,CREEPER_DAMAGE,"Creeper damage protection",GREEN_SHULKER_BOX,"Toggle creeper damage protection ",WORLD_SETTING,EXPERT,true,,
 BentoBox,CREEPER_GRIEFING,"Creeper griefing protection",CREEPER_HEAD,"Toggle creeper griefing protection when ignited by island visitor. ",WORLD_SETTING,EXPERT,false,,
 BentoBox,CROP_TRAMPLE,"Trample crops",WHEAT,"Toggle crop trampling",PROTECTION,EXPERT,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
@@ -103,6 +104,7 @@ BentoBox,PRESSURE_PLATE,"Pressure Plates",STONE_PRESSURE_PLATE,"Toggle usage",PR
 BentoBox,PREVENT_TELEPORT_WHEN_FALLING,"Prevent teleport when falling",FEATHER,"Prevent players from teleporting back to their island using commands if they are falling.",WORLD_SETTING,EXPERT,false,,
 BentoBox,PVP_END,"End PVP",END_CRYSTAL,"Enable/Disable PVP in the End.",SETTING,BASIC,false,,
 BentoBox,PVP_NETHER,"Nether PVP",IRON_AXE,"Enable/Disable PVP in the Nether.",SETTING,BASIC,false,,
+BentoBox,PVP_OUTSIDE_ISLANDS,"PVP outside islands",STONE_SWORD,"Enable/Disable PVP where there is no island. On an island, its own PVP setting always applies.",WORLD_SETTING,EXPERT,false,,
 BentoBox,PVP_OVERWORLD,"Overworld PVP",ARROW,"Enable/Disable PVP on island.",SETTING,BASIC,false,,
 BentoBox,REDSTONE,"Redstone items",REDSTONE,"Toggle use",PROTECTION,ADVANCED,MEMBER_RANK,VISITOR_RANK,OWNER_RANK
 BentoBox,REMOVE_END_EXIT_ISLAND,"Remove end exit island",DRAGON_HEAD,"Prevents the end exit island from generating at coordinates 0,0",WORLD_SETTING,EXPERT,true,,

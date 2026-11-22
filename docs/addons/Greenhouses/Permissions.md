@@ -10,4 +10,6 @@
 | [gamemode].greenhouses.admin.tp     | Allows teleporting to a greenhouse (since 1.10.0)                                                                                                   | op          |
 | [gamemode].greenhouses.admin.verify | Allows re-checking greenhouses against their recipe (since 1.10.0)                                                                                  | op          |
 | [gamemode].greenhouses.admin.reload | Allows reloading biomes.yml and the greenhouse database (since 1.10.0)                                                                              | op          |
+| [gamemode].greenhouses.admin.build | Allows building test greenhouses (since 1.11.0)                                                                                                     | op          |
+| [gamemode].greenhouses.admin.edit  | Allows editing greenhouse recipes in game (since 1.11.0)                                                                                           | op          |
 | greenhouses.biome.nether            | Gives access to nether biomes. Per-biome permissions are set in `biomes.yml` - see the [Greenhouses page](index.md#permissions).                     | true        |

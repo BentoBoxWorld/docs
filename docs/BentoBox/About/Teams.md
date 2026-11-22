@@ -45,6 +45,7 @@ Players open the team menu with `/island team`. From the menu they can see their
 |---|---|
 | `/island team` | Opens the team menu |
 | `/island team invite <player>` | Invites an online player to join the team |
+| `/island team uninvite <player>` | Withdraws a pending team, trust or coop invite |
 | `/island team accept` | Accepts a pending invite (team, trust or coop) |
 | `/island team reject` | Rejects a pending invite |
 | `/island team leave` | Leaves the team. The owner cannot leave; they must give the island away first |
@@ -58,6 +59,8 @@ Players open the team menu with `/island team`. From the menu they can see their
 | `/island team uncoop <player>` | Removes the Coop rank |
 
 A player can only have **one** pending invite at a time. A new invite replaces the old one.
+
+An invite that isn't accepted or rejected **expires after 24 hours** by default (see [Invite expiry, cooldowns and confirmations](#invite-expiry-cooldowns-and-confirmations)). Before then, it can be taken back with `/island team uninvite <player>`. The player who sent the invite can always withdraw it; anyone else on the island needs the rank that is allowed to invite. The command uses the same permission as `team invite`. Both need BentoBox 3.24.0 or later.
 
 On Minecraft 26 and later, a player who receives a team invite sees an **Accept / Decline** dialog, so they don't need to type the command. Sensitive commands like `kick` and `leave` also ask for confirmation in a dialog. Both can be turned off in BentoBox's `config.yml` (`island.dialogs.team-invites` and `island.dialogs.confirmations`).
 
@@ -146,12 +149,13 @@ island:
 
 These run from the console unless the command starts with `[SUDO]`, which runs it as the player.
 
-### Invite cooldowns and confirmations
+### Invite expiry, cooldowns and confirmations
 
 These are in **BentoBox's** `config.yml` (in `plugins/BentoBox/`), and apply to all game modes:
 
 ```yaml
 island:
+  invite-expiry-hours: 24   # hours a team, trust or coop invite stays open; 0 = never expires
   cooldown:
     time:
       invite: 60   # minutes before a kicked or leaving player can be invited back to that island
@@ -166,6 +170,8 @@ island:
 ```
 
 The invite cooldown stops players from repeatedly joining, finishing challenges, leaving, and rejoining.
+
+`invite-expiry-hours` was added in BentoBox 3.24.0; before that, invites did not expire. Invites that are open when you upgrade get one full expiry period from the first time they are checked. Set it to `0` to keep invites open, as before.
 
 ### Turning teams off
 
@@ -208,7 +214,7 @@ The value decides where the rank sits. `700` is between Member (500) and Sub-Own
 The limit includes the owner. Check `max-team-size`, and whether the owner has a `team.maxsize` permission. The owner must log in once for a new permission to apply.
 
 **A player can't be invited.**
-They may already be on a team (they must leave first), already have a pending invite, or be in the invite cooldown after leaving or being kicked from that island.
+They may already be on a team (they must leave first), already have a pending invite, or be in the invite cooldown after leaving or being kicked from that island. A pending invite from your island can be withdrawn with `/island team uninvite <player>`; otherwise it expires after `invite-expiry-hours`.
 
 **Coop players keep losing their rank.**
 That is how coop works: it ends when no team member is online. Use trust instead for players who should keep access.

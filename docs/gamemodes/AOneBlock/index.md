@@ -39,6 +39,11 @@ You can find the latest config file: [config.yml](https://github.com/BentoBoxWor
 
     Default: `10` (replacing the old hardcoded 50). Existing configs pick up the default automatically.
 
+!!! new "Since AOneBlock 1.29.0 — `island.phase-finales`"
+    Whether phases end with a boss fight. A phase whose file has a `finale:` section ends with a boss that must be defeated before the magic block moves on to the next phase. Set this to `false` to turn all finales off. See [Phase finales](Phases.md#phase-finales-the-boss-that-ends-a-phase).
+
+    Default: `true`. It is added to existing configs automatically.
+
 ### The Phase Index — `phases_index.yml`
 
 !!! new "Added in AOneBlock 1.26.0"
@@ -524,7 +529,7 @@ By default, BentoBox GameMode addons comes with [default placeholders set](../..
 ??? question "What phases are there?"
     There are 21 shipped phases, in this order: Plains, Underground, Winter, Ocean, Jungle, Swamp, Dungeon, Desert, The Nether, Plenty, Desolation, Deep Dark, The End, Lush Caves, Dripstone Caves, Mangrove Swamp, Meadow, Cherry Grove, Jagged Peaks, Sulfur Caves, and Dappled Forest.
 
-    Each phase features a set of blocks, items, and mobs appropriate for the setting.
+    Each phase features a set of blocks, items, and mobs appropriate for the setting. Since 1.29.0, each shipped phase also ends with its own boss; see [Phase finales](Phases.md#phase-finales-the-boss-that-ends-a-phase).
 
     Sulfur Caves requires Minecraft 26.2 or later, and Dappled Forest requires Minecraft 26.3 or later. On older servers they are skipped and take up no blocks, so the previous phase runs to the loop point instead. You can reorder, disable and resize phases yourself with `/[admin_command] phases`, and add your own phase files to the `phases` folder.
 
@@ -598,6 +603,11 @@ By default, BentoBox GameMode addons comes with [default placeholders set](../..
     However, BentoBox is customizable, and you can enable nether islands and end world in AOneBlock config file.
 
     Be aware, magic block is located only in overworld.
+
+??? question "What happens at the end of a phase?"
+    Since AOneBlock 1.29.0, when the last block of a phase is mined the magic block seals itself and a boss rises on top of it. The next phase doesn't start until the boss is dead. If everyone dies or leaves, the boss retreats, and hitting the magic block summons it again.
+
+    Servers that upgraded from an older version don't have bosses until an admin adds a `finale:` section to their phase files. See [Phase finales](Phases.md#phase-finales-the-boss-that-ends-a-phase).
 
 ??? question "What is the end goal?"
     It's whatever you want it to be! 
@@ -775,6 +785,55 @@ AOneBlock has some custom events that are called only in AOneBlock. But BentoBox
         }
         ```
 
+=== "PhaseFinaleStartEvent"
+    !!! summary "Description"
+        Added in AOneBlock 1.29.0. This event is triggered when a [phase finale](Phases.md#phase-finales-the-boss-that-ends-a-phase) is about to start, before the boss spawns. It is cancellable: cancelling it skips the fight, so no boss spawns and the island moves on to the next phase.
+
+        Link to the class: [PhaseFinaleStartEvent](https://github.com/BentoBoxWorld/AOneBlock/blob/develop/src/main/java/world/bentobox/aoneblock/events/PhaseFinaleStartEvent.java)
+
+    !!! question "Variables"
+        - `String phase` - the name of the phase that is ending.
+        - `PhaseFinale finale` - the finale definition from the phase file.
+        - `@NonNull Island island` - the island where the finale happens.
+        - `@Nullable UUID playerUUID` - the player who triggered the finale. Can be Null.
+        - `@NonNull Block block` - the magic block.
+
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+        public void onFinaleStart(PhaseFinaleStartEvent event) {
+            if (event.getPhase().equals("Plains")) {
+                // No boss at the end of Plains
+                event.setCancelled(true);
+            }
+        }
+        ```
+
+=== "PhaseFinaleEndEvent"
+    !!! summary "Description"
+        Added in AOneBlock 1.29.0. This event is triggered when a phase finale ends, either because the boss was defeated or because it left (everyone died or went away, or the boss was removed).
+
+        Link to the class: [PhaseFinaleEndEvent](https://github.com/BentoBoxWorld/AOneBlock/blob/develop/src/main/java/world/bentobox/aoneblock/events/PhaseFinaleEndEvent.java)
+
+    !!! question "Variables"
+        - `String phase` - the name of the phase that is ending.
+        - `boolean defeated` - true if the boss was defeated, false if the fight was abandoned.
+        - `boolean firstTime` - true if this is the first time the island defeated this boss.
+        - `@NonNull Island island` - the island where the finale happened.
+        - `@Nullable UUID playerUUID` - the player who killed the boss. Can be Null.
+        - `@NonNull Block block` - the magic block.
+
+    !!! example "Code example"
+        ```java
+        @EventHandler(priority = EventPriority.MONITOR)
+        public void onFinaleEnd(PhaseFinaleEndEvent event) {
+            if (event.isDefeated() && event.isFirstTime()) {
+                String phase = event.getPhase();
+                Island island = event.getIsland();
+            }
+        }
+        ```
+
 ## Changelog
 
 ??? warning "What's new in v1.23.0 — locale and config update required"
@@ -941,3 +1000,20 @@ AOneBlock has some custom events that are called only in AOneBlock. But BentoBox
     🔺 **Dappled Forest is added to your phase order on the first start** (log: `Phase index: added new phase Dappled Forest`) and its files are copied into `phases/`. Your existing order, lengths and enabled flags are not changed. If you don't want it, disable it in `/[admin_command] phases`.
 
     [Release v1.28.0](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.28.0)
+
+!!! warning "What's new in v1.29.0 — phase finales (existing servers must add them by hand)"
+    **Released:** 2026-11-14
+
+    Compatibility: BentoBox API 3.22.0+ · Minecraft 26.x or 1.21.5+ (Sulfur Caves needs 26.2+, Dappled Forest needs 26.3+) · Java 25.
+
+    - ⚔️ **Phase finales.** Every shipped phase now ends with a boss fight. When the last block of a phase is mined, the magic block seals itself and a boss rises on top of it; the next phase doesn't start until the boss is dead. Each of the 21 shipped phases has its own boss, from The Colossus (a giant) at the end of Plains to the Warden at the end of Deep Dark. See [Phase finales](Phases.md#phase-finales-the-boss-that-ends-a-phase) for the rules and every option.
+    - ⚙️ **New config option `island.phase-finales`** (default `true`). Set it to `false` to turn all finales off. It is added to `config.yml` automatically.
+    - 🛠️ **For developers:** `PhaseFinaleStartEvent` (cancellable; cancelling it skips the fight) and `PhaseFinaleEndEvent` are fired around each fight. See [Events](#events).
+
+    🔺 **Existing servers don't get bosses automatically.** Your phase files belong to your server and an upgrade never overwrites them, so they have no `finale:` sections. To add the bosses, copy the `finale:` section from each [shipped phase file](https://github.com/BentoBoxWorld/AOneBlock/tree/master/src/main/resources/phases) into your own file in `plugins/BentoBox/addons/AOneBlock/phases/` and restart. New installs have them from the start.
+
+    🔡 **Five new messages** under `aoneblock.finale` in `en-US.yml`. Delete `plugins/BentoBox/locales/AOneBlock/en-US.yml` to regenerate it, or add the keys by hand if you have customised it. The other languages are not translated yet and show the English text.
+
+    Finales are skipped on Peaceful difficulty, because the boss could not spawn. Boss health, damage and rewards are first settings and will be tuned as people play.
+
+    [Release v1.29.0](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.29.0)

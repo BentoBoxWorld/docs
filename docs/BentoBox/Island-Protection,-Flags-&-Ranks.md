@@ -88,6 +88,8 @@ The **Settings** tab lists the island's **setting flags**: on/off switches for t
 
 Each setting also needs the permission `[gamemode].settings.<FLAG_ID>` (or `[gamemode].settings.*`). This lets a server take a setting away from players completely, for example to stop them turning PVP off. Some settings, such as PVP, have a cooldown between changes.
 
+Since BentoBox 3.24.0 there is also a **Creeper block damage** setting (`CREEPER_BLOCK_DAMAGE`), which lets an owner stop creepers breaking blocks on their island. The explosion still happens and still hurts players and mobs. It is [hidden](#hide-flags) by default, so players don't see it until an operator shows it. If the world setting *Creeper explosions* (`CREEPER_DAMAGE`) is off, creepers break no blocks anywhere, whatever this setting says.
+
 This tab also has the [Command Ranks](#command-ranks) icon.
 
 ### World Protection view
@@ -253,6 +255,7 @@ These are the world settings most servers will want to review. Defaults are for 
 | **Offline plant growth** | Stop crops and plants from growing on an island when no team members are online, even if a visitor is loading the chunks. | Off |
 | **Offline Redstone** | Disable Redstone circuits on an island when no team members are online. | Off |
 | **Piston outside boundary** | Stop pistons from pushing blocks beyond the island's protection boundary — a common exploit for griefing adjacent islands. | On |
+| **PVP outside islands** | Allow PVP in the parts of the world that have no island. On an island, the island's own PVP setting always decides. Needs BentoBox 3.24.0 or later; before that, PVP was always off where there was no island. | Off |
 | **Remove mobs on teleport** | Clear hostile mobs from the area when a player teleports to their island home, preventing surprise deaths on arrival. | On |
 | **Spawner type protection** | Prevent players from changing the mob type of spawner blocks using spawn eggs. Useful when spawners are given as rewards. | On |
 | **Tree growth boundary** | Prevent trees from growing beyond the island protection boundary. Without this, trees can intrude on other islands or create unreachable blocks. | On |
@@ -360,6 +363,15 @@ Island locks, bans and expulsions have their own bypass permissions, separate fr
 - `[gamemode].mod.bypassban` — enter an island you are banned from.
 - `[gamemode].mod.bypassexpel` and `[gamemode].admin.noexpel` — cannot be expelled.
 - `[gamemode].admin.noban` — cannot be banned.
+
+A player who rides a boat, a minecart or a mount into an island they are locked out of or banned from is turned back **with the vehicle**, rather than being thrown out of it. If any rider is not allowed in, the vehicle does not enter. A player turned away from a locked island also sees the island's border for a few seconds, so they can tell where it starts. Only that player sees it. Both need BentoBox 3.24.0 or later. The border is set in BentoBox's `config.yml`:
+
+```yaml
+island:
+  locked-border:
+    show: true    # false turns the border off
+    color: RED    # RED, GREEN or BLUE
+```
 
 Any entity carrying the Bukkit `NPC` metadata (for example Citizens NPCs) is also allowed through lock, ban, PVP and invincible-visitor checks, so plugin NPCs are not trapped or harmed by island protection.
 

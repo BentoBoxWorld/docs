@@ -28,7 +28,7 @@ To replace a game mode's default island instead of adding a new one, save over i
 
 Without `air`, only the blocks you built are copied. When the island is pasted, every other spot in the area is left as it is in the world, so water or stone there stays.
 
-With `air`, every spot in the area is copied, so the whole area replaces what's in the world, air included. Since BentoBox 3.23.8, the most common plain block in the area (usually air, or water for an island in the sea) is stored once rather than once per spot, so a large `air` copy doesn't make a large file.
+With `air`, every spot in the area is copied, so the whole area replaces what's in the world, air included. Since BentoBox 3.24.0, the most common plain block in the area (usually air, or water for an island in the sea) is stored once rather than once per spot, so a large `air` copy doesn't make a large file.
 
 `nowater` leaves out water: wherever there was water, the world is left as it is when pasted. Used with `air`, this means the area is no longer fully copied, so every air block is stored one by one and the file is bigger. Only use `air nowater` when you need the world's own water to stay, for example in an ocean.
 
@@ -107,7 +107,14 @@ You can copy these files between servers, keep them in version control, or edit 
 
 ## Pasting speed
 
-Copying and pasting happen a little at a time, so large islands don't freeze the server; a big island can take a few seconds. If island creation causes lag, lower `paste-speed` (blocks per tick) in BentoBox's `config.yml`.
+Copying and pasting happen a little at a time, so large islands don't freeze the server; a big island can take a few seconds. Two settings under `island` in BentoBox's `config.yml` control this:
+
+| Setting | Default | What it does |
+|---|---|---|
+| `paste-time-budget` | `10` | Milliseconds of each tick that pasting and copying may use. A tick is 50 ms. BentoBox keeps placing batches until this time is used up, so large islands paste much faster when the server has time to spare. `0` places one batch per tick, as before 3.24.0. |
+| `paste-speed` | `64` | Blocks in one batch. |
+
+If island creation causes lag, lower `paste-time-budget` first. `paste-time-budget` needs BentoBox 3.24.0 or later; older versions place one `paste-speed` batch per tick.
 
 ## Troubleshooting
 
@@ -118,13 +125,16 @@ Add a bedrock block to the island, copy again, then save.
 Add a `[spawn_here]` sign, with air above it for the player.
 
 **The island is surrounded by water (or stone) gaps that shouldn't be there**, or water from the world flows into it.
-Copy with `air` so the space around the island is part of the blueprint. Since 3.23.8, the air is stored once for the whole area, so a bigger selection costs little.
+Copy with `air` so the space around the island is part of the blueprint. Since 3.24.0, the air is stored once for the whole area, so a bigger selection costs little.
 
 **A boat sinks into the water, or a mob is stuck in a slab, after pasting.**
-The blueprint was copied before BentoBox 3.23.8, which didn't record how high an entity stood within its block. Paste it, then copy and save it again.
+The blueprint was copied before BentoBox 3.24.0, which didn't record how high an entity stood within its block. Paste it, then copy and save it again.
 
 **My new bundle doesn't show in the Create Island menu.**
 Check that it has an Overworld blueprint, that it doesn't require a permission the player lacks, and, if it has a use limit, that the player hasn't used it up. With `hide-used-blueprints: true` in BentoBox's `config.yml`, used-up bundles are hidden.
+
+**The console reports a missing or broken `default` bundle at startup.**
+Since 3.24.0, BentoBox checks each game mode's `default` bundle when it loads and names the file to fix, instead of leaving players with an empty island. Restore the bundle file it names, or fix the blueprint the bundle points to. If there is no `default` bundle and exactly one other bundle, that one is used.
 
 **The welcome sign shows `[start]`.**
 The `[start]` text comes from the game mode's locale file. Check `<gamemode>.sign.line0` to `line3` exist in it.

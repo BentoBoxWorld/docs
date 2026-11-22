@@ -526,7 +526,7 @@ Pasting the island or generating the chunks are the main causes of this issue.
 
 Firstly, the paste speed may be too much for your server.
 Try lowering it.
-Look in the BentoBox `config.yml` for this setting:
+Look in the BentoBox `config.yml` for these settings. On BentoBox 3.24.0 and later, lower `paste-time-budget` first:
 
 ```yaml
 # Number of blocks to paste per tick when pasting blueprints.
@@ -534,6 +534,11 @@ Look in the BentoBox `config.yml` for this setting:
 # On the contrary, greater values will make pasting take less time, but this benefit is quickly severely impacted by the
 # resulting amount of chunks that must be loaded to fulfill the process, which often causes the server to hang out.
 paste-speed: 64
+# Milliseconds per tick that pasting and copying blueprints may use. Blocks are pasted in batches of
+# paste-speed until this time is used up, so larger islands paste much faster when the server has spare time.
+# A tick is 50 ms. Lower this if island creation causes lag. 0 pastes a single batch per tick (the old behavior).
+# Added since 3.24.0.
+paste-time-budget: 10
 ```
 
 If you are running timings, the `BlueprintPaster` task should ideally be taking a long time, yet take a low percentage of a tick time.

@@ -2,7 +2,57 @@
 
 Highlights of recent BentoBox releases for server admins. For every change, see the [GitHub releases](https://github.com/BentoBoxWorld/BentoBox/releases). Game modes and addons list their own changes at the bottom of their pages.
 
-!!! note "What's new in v3.23.6 — always-allowed entity types & blueprint loading fix"
+!!! note "What's new in v3.24.0 — smaller blueprints, faster pasting, invite expiry & PVP outside islands"
+    **Released:** 2026-11-22
+
+    A feature release. Compatibility: Paper Minecraft 1.21.5 – 26.3, Java 25+.
+
+    - 🔺 **Smaller blueprints.** A blueprint now stores its air (or water) once as a "fill" instead of once per block, so blueprint files are much smaller and load faster. Old blueprints load as before and are converted only when saved again. See [Blueprints](Blueprints.md) and the [file format](Blueprint-Format.md#compact-blueprints-fill).
+    - ⚙️ **Faster island pasting.** Pasting and copying now run for `island.paste-time-budget` milliseconds each tick (default 10) instead of placing one batch per tick, so large islands appear much sooner when the server has time to spare. See [Pasting speed](Blueprints.md#pasting-speed).
+    - ⚙️ **Vehicles are turned back from locked and banned islands.** A player riding a boat, minecart or mount into an island they may not enter is turned back with the vehicle instead of being thrown out and stranded. A locked island briefly shows its border to the player who was turned away. See [Locks, bans and expels](Island-Protection,-Flags-&-Ranks.md#locks-bans-and-expels).
+    - ⚙️🔡 **Withdraw and expire team invites.** `/island team uninvite <player>` takes back a team, trust or coop invite, and invites now expire after 24 hours by default. See [Teams](About/Teams.md#what-players-can-do).
+    - 🔡 **PVP outside islands.** A new world setting, `PVP_OUTSIDE_ISLANDS`, off by default, allows PVP where there is no island. See [World Settings](Island-Protection,-Flags-&-Ranks.md#what-each-world-setting-does).
+    - 🔡 **Per-island creeper block damage.** A new island setting, `CREEPER_BLOCK_DAMAGE`, hidden unless an admin shows it. See [Settings Tab](Island-Protection,-Flags-&-Ranks.md#settings-tab).
+    - **Command and Close buttons in every menu.** Menu templates can have a button that runs a command as the player or closes the menu, in BentoBox and in every addon. See [Customizing Menus](../Tutorials/generic/Customizable-GUI.md#command-and-close-buttons).
+    - **Visitor list placeholders.** `%[gamemode]_island_visitors_list%` and `%[gamemode]_visited_island_visitors_list%` give the names of the players visiting an island. See [Placeholders](Placeholders.md).
+    - 🔡 **Dialog forms, paged panels and value pickers** for addon developers. See [Developer Documentation](Developer-Documentation.md#dialog-forms).
+    - **MythicMobs names kept.** A MythicMobs mob spawned by an addon without a name keeps the display name from its MythicMobs config.
+    - 🐛 **Items with data components** (such as attribute modifiers) are no longer replaced with air when read back from the database.
+    - 🐛 **Housekeeping no longer stalls the server.** It saves only the worlds it is purging, one per tick, and does nothing on the main thread when there is nothing to purge.
+    - 🐛 **Protection fixes.** Throwing experience bottles checks `EXPERIENCE_BOTTLE_THROWING`; placing items on blocks checks the block that was clicked; the ban check looks at the team of the island the ban applies to; rank change events name the right player and previous rank.
+    - 🐛 **Missing or broken `default` blueprint bundle** is reported at startup, naming the file to fix.
+    - 🐛 Also fixed: blueprint copy sizes and boats sinking after a paste; Slimefun block data left behind by a purge (not yet tested against a live Slimefun server); the old material name `GRASS` now loads as `SHORT_GRASS`; a misleading "Could not hook with Vault" error at startup.
+
+    🔺 **Blueprints saved by this version are not for older servers.** A blueprint saved by 3.24.0 still loads in an older BentoBox, but pastes without its air or water fill. Do not share newly saved blueprints with servers running 3.23.7 or earlier.
+
+    🔺 **Team invites now expire.** Invites that are open when you upgrade get one full expiry period from the first time they are checked. Set `island.invite-expiry-hours` to `0` to keep invites open forever, as before.
+
+    ⚙️ **Config note:** four settings are added under `island` in `config.yml`. Each uses its default if you do nothing.
+
+    | Setting | Default | What it does |
+    | --- | --- | --- |
+    | `invite-expiry-hours` | `24` | Hours a team, trust or coop invite stays open. `0` never expires. |
+    | `locked-border.show` | `true` | Show a locked island's border to a player who is turned away from it. |
+    | `locked-border.color` | `RED` | Color of that border: `RED`, `GREEN` or `BLUE`. |
+    | `paste-time-budget` | `10` | Milliseconds per tick for pasting and copying blueprints. Lower it if island creation causes lag; `0` is the old behavior. |
+
+    🔡 **Locale note:** new keys for the uninvite command, the `CREEPER_BLOCK_DAMAGE` and `PVP_OUTSIDE_ISLANDS` flags, and the value pickers (`panels.picker`). They are added to existing locale files automatically and are translated in every bundled language.
+
+    [Release v3.24.0](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.24.0)
+
+??? note "What's new in v3.23.7 — rank colours with old locale files & click hints"
+    **Released:** 2026-11-11
+
+    A small fix release. No `config.yml` or panel template changes. Compatibility: Paper Minecraft 1.21.5 – 26.3, Java 25+.
+
+    - 🔺 **Protection flags looked as if they couldn't be changed.** On servers whose locale files were first written by BentoBox 3.12 or earlier, every rank in a protection flag's tooltip showed in the same cyan, so allowed, blocked and minimum ranks looked identical and a click seemed to do nothing. Old locale files show green, red and dark green ranks again. This also affected the team menu's rank filter and the Command Ranks panel.
+    - 🔡 **Click hints restored in nine languages.** Czech, German, Spanish, French, Italian, Japanese, Latvian, Polish and Turkish were missing the "Left click / Right click" hints on protection flags and the "Click to toggle / open" hints on settings. The Italian layouts and the Turkish blocked-rank line are also fixed.
+
+    🔡 **Refresh your locale files** if you have upgraded from an older BentoBox. BentoBox never overwrites existing locale text, so a server upgraded over many versions keeps the wording it was first installed with. See [Languages & Messages](About/Multilingual.md#troubleshooting) for how.
+
+    [Release v3.23.7](https://github.com/BentoBoxWorld/BentoBox/releases/tag/3.23.7)
+
+??? note "What's new in v3.23.6 — always-allowed entity types & blueprint loading fix"
     **Released:** 2026-11-07
 
     No `config.yml` changes. Compatibility: Paper Minecraft 1.21.5 – 26.3, Java 25+.
