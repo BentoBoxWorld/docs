@@ -66,6 +66,20 @@ This section defines a number of overall settings for the add-on.
 
     Default: `true`
 
+??? note "zero-disabled-game-modes"
+    A list of game modes where island levels are not zeroed. Since Level 2.31.0.
+
+    Zeroing suits void worlds, where the only blocks at the start are the starter island. In worlds with generated terrain, such as CaveBlock, give natural blocks a value of 0 for that world in [`blockconfig.yml`](#blockconfigyml) and list the game mode here.
+
+    Islands in a listed game mode are not zeroed when created or reset, and any initial count already stored for them is ignored (it is not deleted). The admin command that sets an island's initial level is not registered for these game modes. Has no effect if `zero-new-island-levels` is `false`.
+
+    ```yaml
+    zero-disabled-game-modes:
+    - CaveBlock
+    ```
+
+    Default: `[]`
+
 ??? note "donations-only"
     If true, the island block scan is skipped entirely and the island level is computed only from blocks donated via `/island donate`. This removes the per-recalculation CPU cost of scanning the island.
 
@@ -226,6 +240,8 @@ This section defines values for blocks and limits for them.
     ```
 
     In this example, AcidIsland will use the same values as BSkyBlock for all blocks except for sand, sandstone and ice.
+
+    Since Level 2.31.0 the default file gives natural terrain, ores, cave decorations, obsidian and naturally generated spawners a value of 0 in `caveblock-world`, and obsidian a value of 0 in `acidisland_world`. Level never overwrites an existing `blockconfig.yml`, so upgraded servers must copy these sections from the [default file](https://github.com/BentoBoxWorld/Level/blob/master/src/main/resources/blockconfig.yml) themselves. See [What's new in v2.31.0](#changelog).
 
 ### Customizable GUI's
 
@@ -581,6 +597,30 @@ You can find more information how BentoBox custom GUI's works here: [Custom GUI'
     - Built and tested against Paper 26.3; Minecraft 26.2 and 26.3 are listed as supported.
 
     [Release v2.30.0](https://github.com/BentoBoxWorld/Level/releases/tag/2.30.0)
+
+!!! warning "What's new in v2.31.0 — CaveBlock servers must edit blockconfig.yml"
+    **Released:** 2026-11-22
+
+    Compatibility: BentoBox API 3.16.0 (3.23.3+ needed for the deaths commands), Minecraft 1.21.x and 26.1.x – 26.3, Java 21.
+
+    - ⚡ **Level scans no longer generate chunks.** A scan skips any chunk that has never been generated. Before this, the first scan of a new CaveBlock island tried to generate its whole 2000 × 2000 block area, ran past the 5 minute `calculation-timeout` and held up every other island's scan. [#464](https://github.com/BentoBoxWorld/Level/pull/464)
+    - ⚡ **Chunks are loaded in parallel,** 100 at a time. On a test server, a scan of 2,927 generated chunks dropped from over a minute to about 10 seconds. [#465](https://github.com/BentoBoxWorld/Level/pull/465)
+    - ⚙️ **New setting `zero-disabled-game-modes`** (empty by default) switches zeroing off for the game modes you list. See [config.yml](#configyml).
+    - 🔺 **New default block values.** In `caveblock-world`, natural terrain, all ores, cave decorations, bubble columns, naturally generated spawners and obsidian are worth 0. In `acidisland_world`, obsidian is worth 0. Blocks from generated structures such as mineshafts keep their value. These values are only written to a **new** `blockconfig.yml`.
+    - 🐛 A player asking for their own level during the cooldown is refused before the command runs, so it is no longer counted as a bad-arguments error.
+
+    🔺 **If you run CaveBlock, edit `plugins/BentoBox/addons/Level/blockconfig.yml` before players run `/cb level`:**
+
+    1. Replace the `caveblock-world` section under `worlds:` with the one from the [default blockconfig.yml](https://github.com/BentoBoxWorld/Level/blob/master/src/main/resources/blockconfig.yml). At the default protection range of 1000, scans could not finish before this release, so islands show level 0. They now finish, and with the old values they count all the natural terrain in the cave.
+    2. Add `CaveBlock` to `zero-disabled-game-modes` in `config.yml`. Islands zeroed under the old values have an initial count that includes natural terrain, which would hold levels down once that terrain is worth 0.
+
+    CaveBlock levels and the top ten will change either way. Deepslate, ores, obsidian and the other listed blocks earn nothing in CaveBlock, including ones a player places. With zeroing off, blocks from generated structures already in a cave (rails, planks, fences, chests) start to count.
+
+    **AcidIsland (optional):** add `obsidian: 0` under `acidisland_world`. Islands lose 10 points for each obsidian block on them.
+
+    Other game modes are not affected.
+
+    [Release v2.31.0](https://github.com/BentoBoxWorld/Level/releases/tag/2.31.0)
 
 ## Translations
 

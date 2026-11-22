@@ -44,6 +44,23 @@ You can find the latest config file: [config.yml](https://github.com/BentoBoxWor
 
     Default: `true`. It is added to existing configs automatically.
 
+!!! new "Since AOneBlock 1.30.0 — `island.teams-disabled`"
+    Turns off the team system in AOneBlock worlds. Players cannot invite, accept invites, kick, leave, promote, demote or change the island owner. Trust and coop still work. After turning it on, run `/obadmin team disbandall` once to remove existing team members.
+
+    Default: `false`. It is added to existing configs automatically.
+
+!!! new "Since AOneBlock 1.30.0 — `world.structure-settings`"
+    Turns individual vanilla structures on or off in AOneBlock worlds, overriding the global `world.disabled-structures` list in BentoBox's `config.yml`. The key is the vanilla structure id; `false` disables it and `true` forces it on. Structures you don't list follow the BentoBox setting. AOneBlock's own void generator places no structures, so this only matters with `use-own-generator: true`.
+
+    ```yaml
+    world:
+      structure-settings:
+        monument: false
+        trial_chambers: false
+    ```
+
+    Default: `{}`. It is added to existing configs automatically.
+
 ### The Phase Index — `phases_index.yml`
 
 !!! new "Added in AOneBlock 1.26.0"
@@ -1017,3 +1034,24 @@ AOneBlock has some custom events that are called only in AOneBlock. But BentoBox
     Finales are skipped on Peaceful difficulty, because the boss could not spawn. Boss health, damage and rewards are first settings and will be tuned as people play.
 
     [Release v1.29.0](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.29.0)
+
+!!! warning "What's new in v1.30.0 — MythicMobs bosses, requires BentoBox 3.23.0"
+    **Released:** 2026-11-22
+
+    Compatibility: BentoBox API 3.23.0+ · Minecraft 26.x or 1.21.5+ (Sulfur Caves needs 26.2+, Dappled Forest needs 26.3+) · Java 25 · MythicMobs optional.
+
+    - 💀 **MythicMobs finale bosses and minions.** A phase's `finale:` section can name a MythicMobs mob with `mythic-boss:` and add `mythic-minions:`, at `mythic-level:`. The usual fight rules apply, and the mob's own skills, AI and drops still work. `boss:` becomes an optional fallback, and `health: 0` now means "the mob's own health". Nothing changes for existing phases. See [MythicMobs bosses and minions](Phases.md#mythicmobs-bosses-and-minions).
+    - ⚙️ **New config option `island.teams-disabled`** (default `false`) turns off the team system in AOneBlock worlds. Trust and coop still work.
+    - ⚙️ **New config option `world.structure-settings`** (default `{}`) turns individual vanilla structures on or off, overriding BentoBox's global list. See [config.yml](#configyml) for both.
+    - 🏠 **Homes for everyone.** `aoneblock.island.homes`, `aoneblock.island.renamehome` and `aoneblock.island.deletehome` now default to all players instead of operators. Rename and delete are still limited by island rank. Negate the permissions in your permissions plugin to keep them operator-only.
+    - **`/ob phases` for operators.** `aoneblock.phases` defaulted to nobody, so even operators needed a grant. It now defaults to operators.
+    - ⚙️ **New default settings for new installs.** Eight hazard settings are hidden from players (`TNT_DAMAGE`, `BLOCK_EXPLODE_DAMAGE`, `FIRE_BURNING`, `FIRE_IGNITE`, `FIRE_SPREAD`, `LEAF_DECAY`, `ENDERMAN_TELEPORT`, `SHULKER_TELEPORT`). Ten harmless actions are allowed outside islands (`ITEM_DROP`, `ITEM_PICKUP`, `EXPERIENCE_PICKUP`, `HURT_MONSTERS`, `FISHING`, `BOAT`, `RIDING`, `ELYTRA`, `ENDER_PEARL`, `EXPERIENCE_BOTTLE_THROWING`). `EXPERIENCE_PICKUP` on islands goes from Member to Visitor, and `PISTON_PUSH` is on, so pistons can't push blocks out of an island.
+    - 🐛 **AOneBlock's flags only show in AOneBlock.** Flags such as Magic Block Protection were listed in every game mode's settings panels, where they did nothing.
+
+    🔺 **Update BentoBox to 3.23.0 or later first.** This version won't load on an older BentoBox, and the server must run Java 25.
+
+    ⚙️ **The new default settings don't reach existing servers.** Your `config.yml` is not overwritten. To use them, copy the `world.flags`, `world.default-island-flags` and `world.hidden-flags` entries from the [shipped config.yml](https://github.com/BentoBoxWorld/AOneBlock/blob/master/src/main/resources/config.yml) into yours, or change them in the admin settings panels. The two new config options are added automatically with defaults that change nothing.
+
+    No locale changes.
+
+    [Release v1.30.0](https://github.com/BentoBoxWorld/AOneBlock/releases/tag/1.30.0)

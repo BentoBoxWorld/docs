@@ -21,6 +21,43 @@ Created and maintained by [tastybento](https://github.com/tastybento).
 6. Delete any worlds that were created by default if you made changes that would affect them.
 7. Restart the server.
 
+## Configuration
+
+SkyGrid's `config.yml` lists the blocks that make up the grid in each world, with a weight for each. The latest file is [here](https://github.com/BentoBoxWorld/SkyGrid/blob/master/src/main/resources/config.yml).
+
+### Spawner mobs
+
+Since SkyGrid 2.3.0 you choose which mobs come out of the grid's spawners. Each world has its own list, in the format `EntityType: weight`:
+
+| World | List |
+|---|---|
+| Over world | `world.spawners` |
+| Nether | `world.nether.spawners` |
+| End | `world.end.spawners` |
+
+```yaml
+world:
+  end:
+    spawners:
+      ENDERMAN: 45
+      ENDERMITE: 54
+      SHULKER: 1
+```
+
+- A mob is picked in proportion to its weight. In the example, 1 end spawner in 100 is a shulker spawner.
+- To stop spawners of one type being made, remove the mob or set its weight to `0`. For example, remove `VILLAGER` and `IRON_GOLEM` from `world.spawners`.
+- To have no spawners at all, remove `SPAWNER` from that world's blocks list.
+- If a list is empty, SkyGrid uses its built-in list and writes it to the file.
+- Mobs that can't be in a spawner, such as `ARROW`, are skipped with a warning in the console.
+
+Changes only affect chunks generated afterwards.
+
+### Grid height and alignment
+
+Grid blocks are placed every 4 blocks. Since 2.3.0, `world.skygrid-height` is rounded to the nearest multiple of 4 (maximum 252), so the centre of each player's area is on a grid layer.
+
+`world.start-x`, `world.start-z` and `world.space-around-players` should also be multiples of 4. SkyGrid logs a warning if they aren't, but doesn't change them, because that would move every area in an existing world.
+
 ## Permissions
 
 Permissions can be found [here](Permissions).
@@ -48,6 +85,20 @@ Placeholders can be found [here](Placeholders).
     🔺 **Existing worlds:** already-generated chunks don't change, so there will be a visible mismatch where old and new chunks meet. For a consistent grid, delete your SkyGrid worlds and let them regenerate — **this removes every island in those worlds**, so plan it with your players and back up first.
 
     [Release v2.2.4](https://github.com/BentoBoxWorld/SkyGrid/releases/tag/2.2.4)
+
+!!! warning "What's new in v2.3.0 — spawner mobs, and players get team and home commands"
+    **Released:** 2026-11-22
+
+    Compatibility: BentoBox API 3.3.1 · Minecraft 1.21.x and 26.x · Java 21.
+
+    - ⚙️ **Configurable spawner mobs.** New lists `world.spawners`, `world.nether.spawners` and `world.end.spawners` set which mobs spawners can hold and how common each is. They are added to existing configs with the same odds as before. See [Spawner mobs](#spawner-mobs). [PR #94](https://github.com/BentoBoxWorld/SkyGrid/pull/94)
+    - ⚙️ **Grid height lines up with the grid.** `skygrid-height` is rounded to the nearest multiple of 4 (maximum 252). The grid doesn't change, but players' spawn points can move by up to 2 blocks. SkyGrid warns if `start-x`, `start-z` or `space-around-players` aren't multiples of 4. See [Grid height and alignment](#grid-height-and-alignment). [PR #94](https://github.com/BentoBoxWorld/SkyGrid/pull/94)
+    - 🔺 **Players can use team and home commands.** 12 player permissions were not declared, so only operators had them: team `invite`, `accept`, `reject`, `kick`, `leave`, `promote` and `setowner`, `info`, `near`, and `homes`, `renamehome` and `deletehome`. They now default to everyone. See [Permissions](Permissions.md). [PR #92](https://github.com/BentoBoxWorld/SkyGrid/pull/92)
+    - ⚙️ **New default settings for new installs.** Eight hazard settings are hidden from players (`TNT_DAMAGE`, `BLOCK_EXPLODE_DAMAGE`, `FIRE_BURNING`, `FIRE_IGNITE`, `FIRE_SPREAD`, `LEAF_DECAY`, `ENDERMAN_TELEPORT`, `SHULKER_TELEPORT`), and `PISTON_PUSH` is listed and off. Existing servers keep their `config.yml`; copy the entries into `world.hidden-flags` and `world.flags` if you want them. [PR #93](https://github.com/BentoBoxWorld/SkyGrid/pull/93)
+
+    🔺 **If you kept team or home commands for operators or certain ranks on purpose,** negate the permissions you want to keep restricted in your permissions plugin, for example `skygrid.island.team.invite`.
+
+    [Release v2.3.0](https://github.com/BentoBoxWorld/SkyGrid/releases/tag/2.3.0)
 
 ## Translations
 
