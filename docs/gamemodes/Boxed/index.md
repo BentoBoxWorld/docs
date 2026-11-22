@@ -89,6 +89,34 @@ Each player will have a land of their own to explore up to the limit of the isla
 *World Seed*
 The world seed is what it is used to generate the lands. I recommend keeping this value. If you change it the land may be very different.
 
+Options added in Boxed 3.5.0:
+
+??? note "boxed.structure-time-budget"
+    Milliseconds per tick that placing vanilla structures (villages, shipwrecks and so on) in boxes may use. Structures are placed one at a time until this time is used up, so a new box gets its structures within seconds when the server has time to spare. A tick is 50 ms. Lower this if structure placement causes lag. `0` places one structure per tick.
+
+    A structure is placed only once every chunk it could touch is loaded, so a structure near the edge of a box appears when a player first comes close to it, not straight after the box is created.
+
+    Default: `10`
+
+??? note "world.structure-settings"
+    Turns individual vanilla structures off or on in Boxed worlds. This covers world generation and structure searches: `/locate`, Eyes of Ender, explorer and treasure maps, dolphins and cartographer trades. The key is the vanilla structure id and the value is `false` to disable the structure, or `true` to force it on even if BentoBox's global `world.disabled-structures` list disables it. Structures not listed follow BentoBox's global list.
+
+    ```yaml
+    structure-settings:
+      monument: false
+      trial_chambers: false
+    ```
+
+    Default: `{}`
+
+??? note "area.teams-disabled"
+    Turns off the team system in Boxed worlds. When `true`, players cannot invite, accept team invites, kick, leave, promote, demote or change the owner. Trust and coop still work. After turning this on, run `/boxadmin team disbandall` once to break up existing teams. See [Turning teams off](../../BentoBox/About/Teams.md#turning-teams-off).
+
+    Default: `false`
+
+!!! tip "If creating a box causes lag"
+    Try BentoBox's chunk pre-generation: `island.pregeneration.enabled: true` in BentoBox's `config.yml` (BentoBox 3.14.0 and newer). It generates the chunks for the next few boxes in the background, before anyone needs them.
+
 ### Blueprint
 
 There is one blueprint "island" that is used to generate the tree, chest and blocks below down to y = 5. The default height of the surface is about y = 65, so the blueprint has to be about 60 blocks tall. If you make any good blueprints, please share them!
@@ -138,6 +166,24 @@ Commands can be found [here](Commands).
 Placeholders can be found [here](Placeholders).
 
 ## Changelog
+
+!!! warning "What's new in v3.5.0 — requires Java 25 and BentoBox 3.23.0"
+    **Released:** 2026-11-21
+
+    Compatibility: BentoBox 3.23.0 or newer · Paper 1.21.5 – 26.3 · Java 25.
+
+    - 🔺 **Java 25 required.** Boxed is now built for Java 25 and BentoBox 3.23. It will not load on an older Java, even on Minecraft 1.21.x servers.
+    - ⚙️ **Smoother structure placement in new boxes.** The villages, shipwrecks, ruins and other structures in a new box used to be placed one every 3 seconds, about 3½ minutes for a box. They are now placed within a per-tick time budget, `boxed.structure-time-budget` (default `10` ms), and appear within seconds. They no longer make the server generate chunks during a tick: a structure waits until every chunk it could touch is loaded, so one near the edge of a box appears when a player first comes close.
+    - 🔺 **Structures are no longer placed twice.** After a restart, structures could be placed again on top of a player's box, overwriting builds and spawning extra mobs. This is fixed, and lists saved by older versions are cleaned up automatically.
+    - ⚙️ **Disable teams** with the new `area.teams-disabled` option (default `false`). Trust and coop still work.
+    - ⚙️ **Control vanilla structures** with the new `world.structure-settings` option, which turns individual structures off, or forces them on, in Boxed worlds.
+    - 🔺 **Players can list, rename and delete their homes.** `boxed.island.homes`, `boxed.island.renamehome` and `boxed.island.deletehome` were not declared, so only operators had them. They now default to everyone. Negate them in your permissions plugin if you don't want that.
+    - 🔺 **`/boxadmin place` uses `boxed.admin.place`** (default operators). It used to check the undeclared node `boxed.boxed.commands.boxadmin.place`. If you granted that to staff who aren't operators, grant `boxed.admin.place` instead.
+    - 🐛 A structure that couldn't be loaded no longer stops all later structures until a restart, and a missing structure name in `structures.yml` no longer skips every structure listed after it.
+
+    The new options are added to `config.yml` with their defaults; see [config.yml](#configyml).
+
+    [Release v3.5.0](https://github.com/BentoBoxWorld/Boxed/releases/tag/3.5.0)
 
 ??? note "What's new in v3.4.1"
     **Released:** 2026-09-25

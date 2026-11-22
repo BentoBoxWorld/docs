@@ -36,6 +36,8 @@ You have two ways to let friends help you.
 1. Invite them: `/island team invite <name>`. They must be online.
 2. They accept with `/island team accept` (or click **Accept** if a pop-up appears).
 
+Changed your mind? `/island team uninvite <name>` takes the invite back. An invite that isn't answered runs out by itself, after a day on most servers.
+
 !!! warning "Joining someone else's island"
     When you accept a team invite, you usually **lose your own island**. You'll be asked to confirm first. Depending on the server, your inventory may be cleared too.
 

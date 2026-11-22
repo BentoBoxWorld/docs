@@ -183,6 +183,28 @@ Each action has a name, a click type and a tooltip:
 - The action name (`kick`, `setowner`) is what the menu does. Use the names already in the default file. You can change which click triggers an action, or remove an action you don't want players to use from the menu.
 - Tooltips are added below the description, in the order the actions are listed.
 
+### Command and Close buttons
+
+Two button types work in **every** menu that has a template, in BentoBox and in addons. They need BentoBox 3.24.0 or later.
+
+| Type | What it does |
+|---|---|
+| `COMMAND` | Closes the menu and runs `data.command` as the player who clicked, with that player's own permissions. `[player]` in the command is replaced by their name. A leading `/` is optional. |
+| `CLOSE` | Closes the menu. |
+
+For example, a button that goes back to a menu from another plugin:
+
+```yaml
+      9:
+        icon: OAK_DOOR
+        title: "Back to menu"
+        data:
+          type: COMMAND
+          command: "menu open main"
+```
+
+With no `actions`, any click works. If you list `actions`, only those click types work, and their tooltips are added under the description. A `COMMAND` button with no `data.command` is left out and a warning is logged. A menu that already has its own button type of the same name keeps its own behaviour: in the Command Ranks menu, `COMMAND` is still one command in the list.
+
 ### Button types in BentoBox's menus
 
 | Menu | Button types (`data: type:`) |

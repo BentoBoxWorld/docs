@@ -136,5 +136,8 @@ The key is missing in the player's language, the server's default language and E
 **After an update, a message still has the old wording.**
 Your file keeps the old text. Delete that line or the whole file and run `/bentobox reload locales`.
 
+**Every rank in a protection flag's tooltip is the same colour, or flags have no "Left click / Right click" hints.**
+The locale files were first written by an old BentoBox and still have the old text. BentoBox 3.23.7 shows the rank colours correctly again with old files, but only fresh files have the click hints and every later wording fix. To refresh them: stop the server, rename `plugins/BentoBox/locales/BentoBox/` (for example to `BentoBox-old`), start the server so the current files are written, then copy your own edits back across. The same works for an addon's folder in `plugins/BentoBox/locales/<AddonName>/`.
+
 **The YAML file won't load after editing.**
 Usually a missing quote or wrong indentation. Put messages containing `:` or `#` in quotes, and check the console for the line number.

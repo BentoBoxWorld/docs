@@ -72,6 +72,7 @@ The `/bentobox` command (alias `/bbox`) manages BentoBox itself.
 | `/[player_command] team setowner <player>` | Transfer your island ownership to a member | `[gamemode].island.team.setowner` |
 | `/[player_command] team trust <player>` | Give a player trusted rank on your island | `[gamemode].island.team.trust` |
 | `/[player_command] team uncoop <player>` | Remove a coop rank from player | `[gamemode].island.team.coop` |
+| `/[player_command] team uninvite <player>` | Withdraw a pending team, trust or coop invite (BentoBox 3.24.0+) | `[gamemode].island.team.invite` |
 | `/[player_command] team untrust <player>` | Remove trusted player rank from player | `[gamemode].island.team.trust` |
 | `/[player_command] unban <player>` | Unban a player from your island | `[gamemode].island.ban` |
 
