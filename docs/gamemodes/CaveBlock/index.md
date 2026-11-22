@@ -160,6 +160,9 @@ Addon introduces 1 BentoBox Settings flag:
     Please add it to the list [here](https://github.com/BentoBoxWorld/CaveBlock/issues).
 
 
+??? question "Island levels are 0, huge, or rise as players explore. Why?"
+    CaveBlock is a solid world, so the [Level](../../addons/Level/index.md) addon needs natural terrain to be worth 0. Use Level 2.31.0 or later, copy the `caveblock-world` section from its default `blockconfig.yml`, and add `CaveBlock` to `zero-disabled-game-modes` in Level's `config.yml`. New installs of Level have the block values already. See [What's new in Level 2.31.0](../../addons/Level/index.md#changelog).
+
 ## Changelog
 
 ??? note "What's new in v1.23.2"

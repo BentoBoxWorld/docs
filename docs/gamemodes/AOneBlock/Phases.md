@@ -369,20 +369,48 @@ Finales are skipped on Peaceful difficulty, because the boss could not spawn.
 
 | Option | What it does | Default |
 |---|---|---|
-| `boss` | `EntityType` of the boss. `GIANT` has no AI in vanilla; AOneBlock gives it one, which needs Paper | Required |
-| `name` | Display name. MiniMessage or legacy `&` codes | The mob's name |
-| `health` | Base max health. The server's limit is 1024 unless you raise `settings.attribute.maxHealth` in `spigot.yml` | |
-| `scale` | Size multiplier. `1` is normal size | `1` |
+| `boss` | `EntityType` of the boss. `GIANT` has no AI in vanilla; AOneBlock gives it one, which needs Paper. With `mythic-boss`, this is the optional fallback | Required, unless `mythic-boss` is set |
+| `mythic-boss` | A [MythicMobs](#mythicmobs-bosses-and-minions) mob type to use as the boss instead (1.30.0+) | None |
+| `mythic-level` | Level of the MythicMobs boss and of `mythic-minions` (1.30.0+) | `1` |
+| `name` | Display name. MiniMessage or legacy `&` codes. Set it for a `mythic-boss` too, or the boss bar shows its type id | The mob's name |
+| `health` | Base max health. `0` keeps the mob's own health (1.30.0+). The server's limit is 1024 unless you raise `settings.attribute.maxHealth` in `spigot.yml` | `100`, or `0` for a `mythic-boss` |
+| `scale` | Size multiplier. `1` is normal size | `1`, or the mob's own size for a `mythic-boss` |
 | `damage` | Attack damage. Omit it or use `0` for the mob's own | The mob's own |
 | `speed` | Movement speed. Omit it or use `0` for the mob's own | The mob's own |
 | `void-respawn` | `true`: a boss knocked into the void comes back to the magic block. `false`: the void kills it, and that counts as a win | `true` |
 | `warning` | How many blocks before the end the warning starts. `0` for no warning | `20` |
 | `minions` | Mobs that spawn with the boss, as `TYPE: count` | None |
+| `mythic-minions` | MythicMobs mobs that spawn with the boss, as `type: count`. They use `mythic-level` (1.30.0+) | None |
 | `drops` | Items dropped when the boss dies, as `MATERIAL: amount` | None |
 | `commands` | Commands run every time the boss is defeated. Same prefixes and placeholders as [`end-commands`](#commands-on-phase-change) | None |
 | `first-time-commands` | Commands run only the first time the island defeats the boss | None |
 
-The shipped `0_plains.yml` documents every option in its comments.
+The shipped [`0_plains.yml`](https://github.com/BentoBoxWorld/AOneBlock/blob/master/src/main/resources/phases/0_plains.yml) documents every option in its comments. Your server's copy keeps the comments it was created with, so check the shipped file for options added in later versions.
+
+### MythicMobs bosses and minions
+
+*Added in AOneBlock 1.30.0.*
+
+If the MythicMobs plugin is installed, a finale can use one of your MythicMobs mobs as its boss, and MythicMobs mobs as minions. BentoBox hooks into MythicMobs automatically; there is nothing to turn on.
+
+```yaml
+  finale:
+    mythic-boss: SkeletonKing      # MythicMobs mob type
+    mythic-level: 3                # optional, default 1
+    boss: WITHER_SKELETON          # optional fallback if the MythicMob can't spawn
+    name: '<gold>The Skeleton King'
+    mythic-minions:                # MythicMobs type: count
+      SkeletalMinion: 3
+    minions:                       # vanilla minions still work too
+      ZOMBIE: 2
+    drops:
+      DIAMOND: 4
+```
+
+- **Same fight rules.** A MythicMobs boss is kept on the island, has a boss bar, only takes damage from players, gets more health for each extra player and less after a lost fight. Its MythicMobs skills, AI and drops still work. The finale's `drops` and commands are given as well.
+- **Health and size.** The boss keeps the health and size from its MythicMobs config unless the phase file sets `health` or `scale`.
+- **Minions.** `mythic-minions` works with a vanilla boss or a MythicMobs boss. Like vanilla minions, they can't change blocks and are removed when the fight ends. They currently show their type id as their name.
+- **Fallback.** If MythicMobs isn't installed or doesn't know the mob, the `boss` type is used. With no `boss`, the phase moves on without a fight. An unknown minion type is logged and skipped.
 
 ### Turning finales on and off
 
@@ -571,7 +599,7 @@ Chest files are read item by item, so an item your server version does not know 
 | `Phase name trying to be set to X but already set to Y. Duplicate phase file?` | Two files use the same top-level section key |
 | A phase never appears | It is `enabled: false` in `phases_index.yml`, or its `requiredMinecraftVersion` is newer than the server |
 | Chests come out empty | The chest file's top-level key does not match the phase file's, or its items failed to load — run `/[admin_command] sanity` |
-| A phase ends with no boss | The phase file has no `finale:` section (servers upgraded from before 1.29.0 must [add them](#turning-finales-on-and-off)), `island.phase-finales` is `false`, or the world is on Peaceful difficulty |
+| A phase ends with no boss | The phase file has no `finale:` section (servers upgraded from before 1.29.0 must [add them](#turning-finales-on-and-off)), `island.phase-finales` is `false`, or the world is on Peaceful difficulty. With `mythic-boss` and no `boss` fallback, MythicMobs is not installed or doesn't know that mob type |
 | Edits do nothing | The addon was not reloaded, or you edited the file in `src/main/resources` in the jar rather than `plugins/BentoBox/addons/AOneBlock/phases/` |
 
 Watch the server log at startup. Every phase file loaded is logged, as is every rejected block, mob and item, and every change the index reconciler makes (lines beginning `Phase index:`).
