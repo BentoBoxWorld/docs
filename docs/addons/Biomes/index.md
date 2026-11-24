@@ -10,7 +10,7 @@ Created and maintained by [BONNe](https://github.com/BONNe).
 
 1. Put the addon jar in the `plugins/BentoBox/addons` folder.
 2. Start and stop the server to let Biomes generate its configuration files.
-3. Edit the [`config.yml`](#config.yml) and [`biomesTemplate.yml`](#Template) files (you can find them in the `plugins/BentoBox/addons/Biomes` folder).
+3. Edit the [`config.yml`](#configyml) and [`biomesTemplate.yml`](#template) files (you can find them in the `plugins/BentoBox/addons/Biomes` folder).
 4. Restart the server.
 5. Import the biomes into the gamemode.
 

@@ -23,7 +23,7 @@ hide:
 
   <div class="bb-stats">
     <div class="bb-stat">
-      <div class="bb-stat__n">1,600+</div>
+      <div class="bb-stat__n">{{ server_count() }}</div>
       <div class="bb-stat__l">servers</div>
     </div>
     <div class="bb-stat">
@@ -238,7 +238,7 @@ hide:
     <div class="bb-sponsor-card">
       <p class="bb-card-eyebrow" style="color:oklch(0.78 0.13 220)">Open source</p>
       <p class="bb-card-title">Sponsor BentoBox</p>
-      <p class="bb-card-body">Every contribution keeps the games running and the updates coming. Free and open source, used on 1,600+ servers worldwide.</p>
+      <p class="bb-card-body">Every contribution keeps the games running and the updates coming. Free and open source, used on {{ server_count() }} servers worldwide.</p>
       <div class="bb-btn-row">
         <a href="https://github.com/sponsors/tastybento" class="bb-btn bb-btn-sm bb-btn-ink">&#9829; GitHub Sponsors</a>
         <a href="https://www.paypal.me/BentoBoxWorld" class="bb-btn bb-btn-sm bb-btn-ghost">PayPal</a>
