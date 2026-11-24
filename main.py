@@ -241,7 +241,36 @@ def _fetch_policy_markdown(filename: str):
     return text
 
 
+# Server count shown on the homepage. The Downloads site already pulls this
+# from bStats and smooths it (24h peak, floored to 100, ratcheted), so reuse
+# its endpoint to keep both sites showing the same number.
+SERVER_STATS_URL = "https://download.bentobox.world/api/stats"
+SERVER_COUNT_FALLBACK = 1700
+_server_count_cache: dict = {}
+
+
+def _fetch_server_count() -> int:
+    if "n" in _server_count_cache:
+        return _server_count_cache["n"]
+    n = SERVER_COUNT_FALLBACK
+    try:
+        r = requests.get(SERVER_STATS_URL, timeout=10)
+        r.raise_for_status()
+        value = int(r.json().get("servers", 0))
+        if value > 0:
+            n = value
+    except Exception as e:  # network/JSON errors: keep the fallback
+        log.warning("server count fetch failed, using %s: %s", n, e)
+    _server_count_cache["n"] = n
+    return n
+
+
 def define_env(env):
+
+    @env.macro
+    def server_count():
+        """Rounded server count, e.g. "1,700+"."""
+        return f"{_fetch_server_count():,}+"
 
     @env.macro
     def translations(repo: str, branch: str = "develop"):
